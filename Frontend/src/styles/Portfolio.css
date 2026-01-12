@@ -1,0 +1,190 @@
+/* =========================================
+   PORTFOLIO PAGE STYLES
+   ========================================= */
+
+.portfolio-page {
+    /* Match Stats Section Dark Gradient */
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    min-height: 100vh;
+    color: white;
+}
+
+.portfolio-page .section-title {
+    color: white !important;
+    /* Override standard blue */
+}
+
+.portfolio-page .dash-tagline {
+    color: #94a3b8 !important;
+    /* Slate 400 for contrast */
+}
+
+.portfolio-filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    margin-left: 3.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Subtle border */
+    padding-bottom: 1rem;
+}
+
+.portfolio-filter-btn {
+    background: none;
+    border: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #94a3b8;
+    /* Muted slate */
+    cursor: pointer;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+    letter-spacing: 0.05em;
+    position: relative;
+}
+
+.portfolio-filter-btn:hover {
+    color: #ffffff;
+}
+
+.portfolio-filter-btn.active {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.portfolio-filter-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #0066cc;
+}
+
+/* Grid Layout */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-left: 0;
+}
+
+/* Project Card */
+.portfolio-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    cursor: pointer;
+    background: #1e293b;
+    /* Dark card base */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Image Interaction */
+.portfolio-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0.9;
+}
+
+.portfolio-card:hover .portfolio-img {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* Overlay & Content */
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+}
+
+.portfolio-card:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-content {
+    width: 100%;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.portfolio-card:hover .portfolio-content {
+    transform: translateY(0);
+}
+
+.portfolio-title {
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+}
+
+.portfolio-cta {
+    background: none;
+    border: none;
+    color: #0066cc;
+    /* Brand Blue */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.portfolio-cta .arrow {
+    transition: transform 0.3s ease;
+}
+
+.portfolio-cta:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-filter-container {
+        margin-left: 0;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 0.5rem;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .portfolio-filter-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .portfolio-filter-btn {
+        white-space: nowrap;
+    }
+}

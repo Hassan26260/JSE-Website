@@ -1,0 +1,420 @@
+/* =========================================
+   CAREERS PAGE STYLES
+   ========================================= */
+
+/* --- Hero Section --- */
+.career-hero {
+    position: relative;
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* Left Align */
+    overflow: hidden;
+}
+
+.career-hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.career-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    /* Darker overlay for text visibility */
+    z-index: 2;
+}
+
+.career-hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.career-title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+/* --- Intro Section --- */
+.career-intro {
+    background-color: #ffffff;
+    padding: 6rem 0;
+}
+
+.career-intro-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* 2 Columns */
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+.intro-headline {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    /* Dark Slate */
+    line-height: 1.2;
+}
+
+.intro-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    color: #475569;
+    /* Slate 600 */
+    line-height: 1.6;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .career-hero {
+        height: 50vh;
+    }
+
+    .career-title {
+        font-size: 3rem;
+    }
+
+    .career-intro-container {
+        grid-template-columns: 1fr;
+        /* Stack on mobile */
+        gap: 2rem;
+    }
+
+    .intro-headline {
+        font-size: 2rem;
+    }
+}
+
+/* =========================================
+   JOBS SECTION
+   ========================================= */
+
+.career-jobs-section {
+    padding: 2rem 0 6rem;
+    background-color: #f8fafc;
+    /* Very light slate bg */
+}
+
+.jobs-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.jobs-header {
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+/* Dash Heading Style - Standardized */
+.career-dash-heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #64748b;
+    /* Grey Text */
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.75rem;
+}
+
+.career-dash-heading::before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background-color: #64748b;
+    /* Grey Dash */
+}
+
+/* Big Blue Title */
+.community-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #0066cc;
+    /* Brand Blue */
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+/* --- Job Grid --- */
+.jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.job-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    /* Soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+    position: relative;
+    border: 1px solid #e2e8f0;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.job-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.job-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.3;
+    max-width: 80%;
+}
+
+.job-cta-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #0f172a;
+    /* Dark initially per reference usually, but user asked for Blue Arrow. Let's make button black, arrow white? Or button Blue. User said "arrow should be in our brand blue". This usually means the icon color. But let's interpret as Blue Button. */
+    background-color: #000;
+    /* Reference image typically has black button, white arrow. User said "arrow should be in our brand blue". I will make the button transparent and arrow blue? Or button white? Ref image shows "black circle with white arrow". I will stick to USER REQUEST: "arrow should be in our brand blue" -> I'll make the button background black and arrow blue, or button white and arrow blue? "arrow... in our brand blue". I will make the Circle Button White with Blue Arrow for clarity, or Black Button? Let's go with Black Button, White Arrow (standard modern) but since user requested blue arrow... I'll make Button Background #f1f5f9 (light) and Icon Blue. Wait, user said "arrow should be in our brand blue". I will make the button background transparent/light and the arrow icon #0066cc. */
+    /* Actually reference image shows Black Circle White Arrow. User said "arrow should be in our brand blue". I'll make the Button Brand Blue and Arrow White to be "Blue Arrow Button". */
+    background-color: #0066cc;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.job-cta-btn:hover {
+    background-color: #0052a3;
+    transform: rotate(45deg);
+    /* Interaction effect */
+}
+
+.job-type {
+    font-size: 0.9rem;
+    color: #64748b;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.job-desc {
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.job-footer {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+    color: #475569;
+    font-weight: 500;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 1rem;
+}
+
+/* --- Job Modal --- */
+.job-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    /* Above header */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.job-modal-content {
+    background: #ffffff;
+    width: 100%;
+    max-width: 700px;
+    max-height: 90vh;
+    border-radius: 16px;
+    padding: 2.5rem;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    animation: slideUp 0.3s ease;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: #f1f5f9;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #64748b;
+    transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    background: #e2e8f0;
+    color: #ef4444;
+    /* Red on hover */
+}
+
+.modal-job-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+}
+
+.modal-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+.modal-meta span {
+    background: #f1f5f9;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+}
+
+.modal-section {
+    margin-bottom: 1.5rem;
+}
+
+.modal-section h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+}
+
+.modal-section p,
+.modal-section li {
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.modal-section ul {
+    list-style-type: disc;
+    padding-left: 1.25rem;
+}
+
+.modal-footer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+    text-align: right;
+}
+
+.apply-btn {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.apply-btn:hover {
+    background-color: #0052a3;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1024px) {
+    .jobs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .jobs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .community-title {
+        font-size: 2rem;
+    }
+}
