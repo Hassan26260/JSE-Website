@@ -3,36 +3,15 @@
    ========================================= */
 
 /* --- Hero Section --- */
+/* --- Hero Section --- */
 .career-hero {
     position: relative;
-    height: 60vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    /* Left Align */
+    padding: 10rem 0 5.5rem;
+    background: #071230;
+    /* Match Internship/Stats/Portfolio */
+    color: #ffffff;
+    /* text-align: left; */
     overflow: hidden;
-}
-
-.career-hero-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-}
-
-.career-hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    /* Darker overlay for text visibility */
-    z-index: 2;
 }
 
 .career-hero-content {
@@ -42,15 +21,35 @@
     max-width: 1440px;
     margin: 0 auto;
     padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.career-breadcrumbs {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    /* Slate 400 */
+    /* text-transform: uppercase; */
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.career-breadcrumbs span {
+    color: #ffffff;
+    /* Active/Current Page White */
+    font-weight: 700;
 }
 
 .career-title {
-    font-size: 4rem;
-    font-weight: 700;
+    font-family: system-ui, Segoe UI, Roboto, sans-serif;
+    font-size: 3.5rem;
+    /* Adjusted size */
+    font-weight: 800;
     color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
     margin: 0;
+    line-height: 1.1;
 }
 
 /* --- Intro Section --- */
@@ -162,9 +161,10 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-size: 3rem;
     font-weight: 800;
-    color: #0066cc;
+    color: #144AE0;
     /* Brand Blue */
     margin: 0;
+    margin-bottom: 1.5rem;
     line-height: 1.1;
     letter-spacing: -0.02em;
 }
@@ -218,9 +218,9 @@
     background-color: #0f172a;
     /* Dark initially per reference usually, but user asked for Blue Arrow. Let's make button black, arrow white? Or button Blue. User said "arrow should be in our brand blue". This usually means the icon color. But let's interpret as Blue Button. */
     background-color: #000;
-    /* Reference image typically has black button, white arrow. User said "arrow should be in our brand blue". I will make the button transparent and arrow blue? Or button white? Ref image shows "black circle with white arrow". I will stick to USER REQUEST: "arrow should be in our brand blue" -> I'll make the button background black and arrow blue, or button white and arrow blue? "arrow... in our brand blue". I will make the Circle Button White with Blue Arrow for clarity, or Black Button? Let's go with Black Button, White Arrow (standard modern) but since user requested blue arrow... I'll make Button Background #f1f5f9 (light) and Icon Blue. Wait, user said "arrow should be in our brand blue". I will make the button background transparent/light and the arrow icon #0066cc. */
+    /* Reference image typically has black button, white arrow. User said "arrow should be in our brand blue". I will make the button transparent and arrow blue? Or button white? Ref image shows "black circle with white arrow". I will stick to USER REQUEST: "arrow should be in our brand blue" -> I'll make the button background black and arrow blue, or button white and arrow blue? "arrow... in our brand blue". I will make the Circle Button White with Blue Arrow for clarity, or Black Button? Let's go with Black Button, White Arrow (standard modern) but since user requested blue arrow... I'll make Button Background #f1f5f9 (light) and Icon Blue. Wait, user said "arrow should be in our brand blue". I will make the button background transparent/light and the arrow icon #144AE0. */
     /* Actually reference image shows Black Circle White Arrow. User said "arrow should be in our brand blue". I'll make the Button Brand Blue and Arrow White to be "Blue Arrow Button". */
-    background-color: #0066cc;
+    background-color: #144AE0;
     border: none;
     display: flex;
     align-items: center;
@@ -365,7 +365,7 @@
 }
 
 .apply-btn {
-    background-color: #0066cc;
+    background-color: #144AE0;
     color: white;
     border: none;
     padding: 0.75rem 2rem;
@@ -416,5 +416,632 @@
 
     .community-title {
         font-size: 2rem;
+    }
+}
+
+/* --- Life at JSE Section (Overlapping Layout) --- */
+.life-at-jse-section {
+    padding: 6rem 0;
+    background-color: #ffffff;
+}
+
+.life-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.life-header {
+    margin-bottom: 5rem;
+    text-align: left;
+    max-width: 800px;
+}
+
+.life-row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    margin-bottom: 8rem;
+    position: relative;
+}
+
+.life-row:last-child {
+    margin-bottom: 0;
+}
+
+/* Text Card Styling */
+.life-text-card {
+    background: #ffffff;
+    padding: 3.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    /* Soft depth shadow */
+    z-index: 2;
+    /* Float above image */
+    position: relative;
+    border-top: 4px solid #144AE0;
+    /* Optional brand accent */
+    border-radius: 4px;
+}
+
+.life-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.life-desc {
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.7;
+}
+
+/* Image Wrapper Styling */
+.life-image-wrapper {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    height: 500px;
+    /* Fixed height */
+}
+
+.life-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.life-row:hover .life-img {
+    transform: scale(1.05);
+    /* Zoom interaction */
+}
+
+/* --- Layout Logic (Normal) --- */
+/* Text Left, Image Right */
+.life-row:not(.reverse) .life-text-card {
+    grid-column: 2 / 7;
+    /* Start at 2, span 5 */
+    grid-row: 1;
+}
+
+.life-row:not(.reverse) .life-image-wrapper {
+    grid-column: 6 / 12;
+    /* Start at 6, overlap text by 1 col */
+    grid-row: 1;
+}
+
+
+/* --- Layout Logic (Reverse) --- */
+/* Image Left, Text Right */
+.life-row.reverse .life-image-wrapper {
+    grid-column: 2 / 8;
+    /* Start at 2, span 6 */
+    grid-row: 1;
+}
+
+.life-row.reverse .life-text-card {
+    grid-column: 7 / 12;
+    /* Start at 7, overlap image by 1 col */
+    grid-row: 1;
+}
+
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+
+    .life-row,
+    .life-row.reverse {
+        display: flex;
+        flex-direction: column-reverse;
+        /* Image on top, Text bottom */
+        gap: 0;
+        margin-bottom: 5rem;
+    }
+
+    .life-image-wrapper {
+        width: 100%;
+        height: 350px;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .life-text-card {
+        width: 90%;
+        /* Floating look */
+        margin: -3rem auto 0;
+        /* Pull up to overlap image */
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media (max-width: 768px) {
+    .life-text-card {
+        width: 100%;
+        margin: 0;
+        /* Reset overlap */
+        box-shadow: none;
+        border: 1px solid #f1f5f9;
+        border-top: 4px solid #144AE0;
+        /* Keep accent */
+        border-radius: 0 0 12px 12px;
+    }
+
+    .life-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* --- What We JSE-ians Do Section (3-Column Cards) --- */
+.jse-values-section {
+    padding: 6rem 0;
+    background-color: #f8fafc;
+    /* Light Slate Alt Background */
+}
+
+.jse-values-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.jse-values-header {
+    margin-bottom: 4rem;
+    text-align: left;
+    max-width: 800px;
+}
+
+.jse-values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.jse-value-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 3.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid #f1f5f9;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.jse-value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    /* Deep Depth Shadow */
+}
+
+.jse-value-icon {
+    margin-bottom: 2rem;
+    color: #475569;
+    /* Slate 600 - Default Icon Color */
+    /* Optional: Circle bg if cleaner look desired, but reference shows plain icon on white */
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.jse-value-card:hover .jse-value-icon {
+    color: #144AE0;
+    /* Brand Blue on Hover */
+    background: #e0f2fe;
+    /* Light Blue bg on hover */
+}
+
+.jse-value-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1rem;
+}
+
+.jse-value-desc {
+    font-size: 1.1rem;
+    color: #64748b;
+    line-height: 1.6;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .jse-values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .jse-values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .jse-value-card {
+        padding: 2.5rem 1.5rem;
+    }
+}
+
+/* --- Alumni Portfolio Carousel (Dark Section, 70-80vh) --- */
+.alumni-carousel-section {
+    position: relative;
+    padding: 6rem 0;
+    background: #071230;
+    /* Dark Blue Gradient */
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.alumni-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+    margin-bottom: 4rem;
+}
+
+.alumni-header {
+    text-align: left;
+    max-width: 900px;
+}
+
+.alumni-tagline {
+    font-size: 1.125rem;
+    color: #94a3b8;
+    /* Slate 400 */
+    margin-top: 1rem;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+/* Marquee Wrapper */
+.alumni-marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 2rem;
+    /* Space for shadows */
+}
+
+/* Marquee Track */
+.alumni-marquee-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation: marqueeScroll 40s linear infinite;
+}
+
+.alumni-marquee-wrapper:hover .alumni-marquee-track {
+    animation-play-state: paused;
+    /* Pause on Hover */
+}
+
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+
+    /* Move half way (since we duplicated) */
+}
+
+/* Card Styling */
+.alumni-card {
+    position: relative;
+    width: 320px;
+    /* Fixed width for consistency */
+    height: 480px;
+    /* Portrait aspect ratio */
+    border-radius: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.alumni-card:hover {
+    transform: translateY(-5px);
+    z-index: 2;
+}
+
+.alumni-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.alumni-card:hover .alumni-img {
+    transform: scale(1.1);
+}
+
+/* Overlay Effect (Portfolio Match) */
+.alumni-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+}
+
+.alumni-card:hover .alumni-overlay {
+    opacity: 1;
+}
+
+.alumni-content {
+    width: 100%;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.alumni-card:hover .alumni-content {
+    transform: translateY(0);
+}
+
+.alumni-title {
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+}
+
+.alumni-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #144AE0;
+    /* Brand Blue */
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.alumni-cta:hover {
+    color: #3b82f6;
+    /* Lighter Blue */
+}
+
+.alumni-cta .arrow {
+    transition: transform 0.3s ease;
+}
+
+.alumni-cta:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .alumni-card {
+        width: 260px;
+        height: 380px;
+    }
+}
+
+/* --- Expanding Image Section (Replicated from Internship) --- */
+.expanding-image-section {
+    width: 100%;
+    margin-bottom: 6rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.expanding-image-wrapper {
+    width: 70%;
+    height: 500px;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    will-change: width, border-radius;
+}
+
+.expanding-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Happy JSEians Section (Split Layout) --- */
+.happy-jseians-section {
+    padding: 6rem 0;
+    background-color: #ffffff;
+    /* Clean White Background */
+    position: relative;
+}
+
+.happy-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    /* Left (Content) vs Right (Cards) */
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+/* Sticky Left Side */
+.happy-sticky-left {
+    position: sticky;
+    top: 150px;
+    /* Stick below header */
+    height: fit-content;
+    align-self: start;
+    /* Ensure it doesn't stretch */
+}
+
+.happy-tagline {
+    font-size: 1.25rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 400px;
+}
+
+.happy-decorative-line {
+    width: 60px;
+    height: 4px;
+    background-color: #144AE0;
+    /* Brand Blue */
+    border-radius: 2px;
+}
+
+/* Right Side - Reviews List */
+.happy-reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    /* More breathing room for stagger */
+}
+
+/* Review Card Style */
+.happy-review-card {
+    background: #ffffff;
+    border: 1px solid #f1f5f9;
+    border-left: 5px solid #144AE0;
+    /* Thinner Accent */
+    border-radius: 12px;
+    padding: 1.25rem;
+    /* Very Compact Padding */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    max-width: 60%;
+    /* Very Compact Width */
+}
+
+/* Uneven / Staggered Alignment */
+.happy-review-card:nth-child(odd) {
+    align-self: flex-start;
+}
+
+.happy-review-card:nth-child(even) {
+    align-self: flex-end;
+    margin-top: 1rem;
+}
+
+.happy-review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.happy-quote-icon {
+    font-size: 2.5rem;
+    /* Smaller Quote */
+    color: #e2e8f0;
+    font-family: serif;
+    line-height: 1;
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    opacity: 0.5;
+}
+
+.happy-review-text {
+    font-size: 0.85rem;
+    /* Smaller Text */
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+}
+
+/* Author Row */
+.happy-author-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    /* Tighter gap */
+}
+
+.initials-circle {
+    width: 40px;
+    /* Smaller Circle */
+    height: 40px;
+    background-color: #144AE0;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    /* Smaller Initials */
+    flex-shrink: 0;
+}
+
+.happy-author-info h4 {
+    margin: 0;
+    font-size: 0.95rem;
+    /* Smaller Name */
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.happy-author-info p {
+    margin: 0;
+    font-size: 0.75rem;
+    /* Smaller Role */
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .happy-container {
+        grid-template-columns: 1fr;
+        /* Stack on mobile/tablet */
+        gap: 3rem;
+    }
+
+    .happy-sticky-left {
+        position: relative;
+        top: 0;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .happy-header-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .happy-tagline {
+        margin-left: auto;
+        margin-right: auto;
     }
 }

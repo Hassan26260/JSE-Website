@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import '../../styles/Internship.css';
 import internImage from '../../assets/intern-civil/pexels-linkedin-1251861.webp';
+import highlightsImage from '../../assets/intern-civil/pexels-olly-3769021.webp';
 
-// Feature Images (Placeholders from Home assets as approved plan)
+// Feature Images
 import img1 from '../../assets/images-home/skyscraper.webp';
 import img2 from '../../assets/images-home/architectural-bim.webp';
 import img3 from '../../assets/images-home/bim-modelling.webp';
@@ -10,7 +11,80 @@ import img4 from '../../assets/images-home/mep-design.webp';
 import img5 from '../../assets/images-home/hvac-design.webp';
 import img6 from '../../assets/images-home/plumbing.webp';
 
+// Simple Counting Component
+const AnimatedNumber = ({ end, duration = 2000 }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    let observer;
+    const currentRef = ref.current;
+
+    const startAnimation = () => {
+      let start = 0;
+      const endNum = parseInt(end, 10);
+      if (start === endNum) return;
+
+      const stepTime = Math.abs(Math.floor(duration / endNum));
+
+      const timer = setInterval(() => {
+        start += 1;
+        setCount(start);
+        if (start === endNum) clearInterval(timer);
+      }, stepTime);
+
+      // Cleanup interval on unmount or re-render effectively
+      return () => clearInterval(timer);
+    };
+
+    if (currentRef) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            startAnimation();
+            observer.disconnect(); // Run once
+          }
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (observer && currentRef) observer.unobserve(currentRef);
+    };
+  }, [end, duration]);
+
+  return <span ref={ref}>{count}</span>;
+};
+
 const CivilEngineering = () => {
+  // Form State
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    mobile: '',
+    message: '',
+    resume: null
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleFileChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setFormData(prev => ({ ...prev, resume: e.target.files[0] }));
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form Submitted:", formData);
+    alert("Application Submitted! (This is a frontend demo)");
+    // Backend connection would go here
+  };
 
   // Scroll to top on mount
   useEffect(() => {
@@ -98,82 +172,65 @@ const CivilEngineering = () => {
         </div>
       </section>
 
-      {/* Program Details Section (2x2 Grid) */}
-      <section className="internship-details-section">
-        <div className="container" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 2rem' }}>
-          <p className="dash-tagline">Program Highlights</p>
-          <h2 className="section-title" style={{ textAlign: 'left', marginLeft: '0', fontFamily: 'system-ui, Segoe UI, Roboto, sans-serif', fontWeight: 800 }}>Civil Engineering Internship Program & Duration</h2>
-          <p className="section-subtitle" style={{ textAlign: 'left', marginLeft: '0', maxWidth: '800px', marginBottom: '3rem', fontSize: '1.1rem', color: '#475569', lineHeight: '1.6' }}>
-            Our modern building construction internship is designed to fit your semester break or final-year journey. With a flexible program, you can dive into deeper technical learning and project exposure.
-          </p>
+      {/* Redesigned Program Highlights Section */}
+      <section className="internship-highlights-section">
+        <div className="highlights-container">
 
-          <div className="details-grid">
-
-            {/* Row 1, Col 1: Duration */}
-            <div className="detail-card duration">
-              <div className="detail-icon">
-                {/* Clock Icon */}
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-              </div>
-              <h3 className="detail-title">Duration</h3>
-              <div className="detail-value">100 Days</div>
+          {/* Left: Image Side */}
+          <div className="highlights-image-side">
+            <div className="highlights-img-wrapper">
+              <img src={highlightsImage} alt="Civil Engineering Student" className="highlights-img" />
             </div>
-
-            {/* Row 1, Col 2: Batch Schedule */}
-            <div className="detail-card batch">
-              <div className="detail-icon">
-                {/* Calendar Icon */}
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="16" y1="2" x2="16" y2="6"></line>
-                  <line x1="8" y1="2" x2="8" y2="6"></line>
-                  <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-              </div>
-              <h3 className="detail-title">Batch Schedule</h3>
-              <div className="detail-value" style={{ display: 'flex', alignItems: 'center' }}>
-                Enrollment <span className="status-badge">OPEN</span>
-              </div>
-            </div>
-
-            {/* Row 2, Col 1: Program Stack */}
-            <div className="detail-card program">
-              <div className="detail-icon">
-                {/* Layers Icon */}
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                  <polyline points="2 17 12 22 22 17"></polyline>
-                  <polyline points="2 12 12 17 22 12"></polyline>
-                </svg>
-              </div>
-              <h3 className="detail-title">Software & Skills Covered</h3>
-              <div className="skill-tags">
-                <span className="skill-tag">Tekla</span>
-                <span className="skill-tag">Structure (2D & 3D)</span>
-                <span className="skill-tag">PH</span>
-                <span className="skill-tag">AutoCAD</span>
-                <span className="skill-tag">Revit MEP</span>
-              </div>
-            </div>
-
-            {/* Row 2, Col 2: Placement */}
-            <div className="detail-card placement">
-              <div className="detail-icon">
-                {/* Award / Briefcase Icon */}
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                </svg>
-              </div>
-              <h3 className="detail-title">Placement Guarantee</h3>
-              <div className="detail-value">100% Placement Support</div>
-              <div className="placement-sub">*For candidates with no academic arrears</div>
-            </div>
-
           </div>
+
+          {/* Right: Content Side */}
+          <div className="highlights-content-side">
+            {/* <div className="highlights-badge">PROGRAM HIGHLIGHTS</div> */}
+            <h2 className="highlights-title">
+              Internship Program & Duration
+            </h2>
+            <p className="highlights-desc">
+              Look at our JSE's short work experience program and duration details before enrolling as a Structural and Environmental Engineer.
+            </p>
+
+            {/* Program Details Section - 4 Separate Cards */}
+            <div className="program-details-grid">
+
+              {/* Card 1: Duration */}
+              <div className="program-card">
+                <span className="program-detail-label">Internship Duration</span>
+                <div className="program-detail-content">
+                  <AnimatedNumber end={100} />-day program
+                </div>
+              </div>
+
+              {/* Card 2: Program */}
+              <div className="program-card">
+                <span className="program-detail-label">Program</span>
+                <div className="program-detail-content">
+                  Hands-on MEP Projects in AutoCAD & Revit
+                </div>
+              </div>
+
+              {/* Card 3: Placement */}
+              <div className="program-card">
+                <span className="program-detail-label">Placement Guarantee</span>
+                <div className="program-detail-content">
+                  <AnimatedNumber end={100} />% placement.
+                </div>
+              </div>
+
+              {/* Card 4: Batch */}
+              <div className="program-card">
+                <span className="program-detail-label">Batch Schedule</span>
+                <div className="program-detail-content">
+                  Enrollment OPEN
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -184,7 +241,7 @@ const CivilEngineering = () => {
           {/* Left: Sticky Text Content */}
           <div className="what-you-get-text-side">
             <p className="dash-tagline">Why Join Us</p>
-            <h2 className="section-title" style={{ textAlign: 'left', marginLeft: '0', fontFamily: 'system-ui, Segoe UI, Roboto, sans-serif', fontWeight: 800, fontSize: '2.5rem' }}>
+            <h2 className="section-title-m" style={{ textAlign: 'left', marginLeft: '0', fontFamily: 'system-ui, Segoe UI, Roboto, sans-serif', fontWeight: 800, fontSize: '2.5rem' }}>
               What You Get From The Internship
             </h2>
             <div className="internship-desc" style={{ marginBottom: '2.5rem' }}>
@@ -275,6 +332,122 @@ const CivilEngineering = () => {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* Application Form Section */}
+      <section className="internship-form-section">
+        <div className="form-container">
+
+          {/* Left: Join Our Team Info */}
+          <div className="form-info-side">
+            <h2 className="form-heading">Join Our Team</h2>
+            <p className="form-subtext">
+              Ready to kickstart your career? Apply now for our Civil Engineering Internship Program.
+            </p>
+
+            <div className="form-contact-details">
+              <p>72/4 Broadway,</p>
+              <p>Chennai, Tamil Nadu - 600108</p>
+              <br />
+              <p className="form-email">info@jseengineering.com</p>
+            </div>
+
+            <div className="form-socials">
+              {/* LinkedIn */}
+              <div className="social-circle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </div>
+              {/* Facebook */}
+              <div className="social-circle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                </svg>
+              </div>
+              {/* Twitter/X */}
+              <div className="social-circle">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: The Form */}
+          <div className="form-input-side">
+            <form onSubmit={handleSubmit} className="internship-form">
+
+              <div className="form-group">
+                <label>Full Name*</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className="form-input-line"
+                />
+              </div>
+
+              <div className="form-group">
+                <label>E-mail ID*</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="form-input-line"
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Mobile No.*</label>
+                <input
+                  type="tel"
+                  name="mobile"
+                  value={formData.mobile}
+                  onChange={handleInputChange}
+                  required
+                  className="form-input-line"
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Resume Upload (PDF/Doc)*</label>
+                <div className="file-upload-wrapper">
+                  <input
+                    type="file"
+                    name="resume"
+                    accept=".pdf,.doc,.docx"
+                    onChange={handleFileChange}
+                    className="form-input-file"
+                  />
+                  <span className="file-name-display">
+                    {formData.resume ? formData.resume.name : "Choose file"}
+                  </span>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label>Message*</label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                  rows="3"
+                  className="form-input-line"
+                ></textarea>
+              </div>
+
+              <button type="submit" className="form-submit-btn">Submit</button>
+
+            </form>
+          </div>
+
         </div>
       </section>
 

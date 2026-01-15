@@ -1,0 +1,233 @@
+/* =========================================
+   PRIVACY POLICY PAGE STYLES
+   ========================================= */
+
+/* --- Hero Section (Matches Career Page) --- */
+.privacy-hero {
+    position: relative;
+    padding: 10rem 0 5.5rem;
+    background: #071230;
+    /* Match Career/Internship theme */
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.privacy-hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.privacy-breadcrumbs {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    /* Slate 400 */
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.privacy-breadcrumbs span {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.privacy-title {
+    font-family: system-ui, Segoe UI, Roboto, sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.1;
+}
+
+/* --- Content Section --- */
+.privacy-content-section {
+    padding: 6rem 0;
+    background-color: #ffffff;
+}
+
+.privacy-container {
+    max-width: 1200px;
+    /* Wider container for split layout */
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Intro Section */
+.privacy-intro-box {
+    text-align: left;
+    margin-bottom: 4rem;
+}
+
+.privacy-intro-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.privacy-intro-text {
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.7;
+    max-width: 900px;
+}
+
+.privacy-separator {
+    width: 100%;
+    height: 1px;
+    background-color: #e2e8f0;
+    margin-bottom: 5rem;
+}
+
+/* Split Layout Rows */
+.privacy-row {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    /* Fixed Width Heading, Flexible Text */
+    gap: 4rem;
+    margin-bottom: 5rem;
+    align-items: flex-start;
+}
+
+.privacy-col-left h3 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    /* Slate 900 */
+    line-height: 1.4;
+    position: sticky;
+    top: 2rem;
+    /* Stick heading while scrolling content */
+}
+
+.privacy-col-right p {
+    font-size: 1.05rem;
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.privacy-list-styled {
+    list-style-type: none;
+    /* Custom bullets */
+    padding-left: 0;
+    margin-top: 1rem;
+}
+
+.privacy-list-styled li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    color: #475569;
+    line-height: 1.6;
+}
+
+.privacy-list-styled li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #144AE0;
+    /* Blue Bullet */
+    font-weight: bold;
+}
+
+.privacy-list-styled strong {
+    color: #334155;
+    font-weight: 700;
+}
+
+/* Contact Box Styling */
+.privacy-contact-box {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-top: 2rem;
+}
+
+.privacy-contact-box h4 {
+    color: #144AE0;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.contact-section {
+    margin-bottom: 1.5rem;
+}
+
+.contact-section:last-child {
+    margin-bottom: 0;
+}
+
+.contact-section h5 {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    color: #64748b;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.contact-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-section li {
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 0.25rem;
+}
+
+.contact-section a {
+    color: #144AE0;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.contact-section a:hover {
+    color: #0052a3;
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .privacy-hero {
+        padding: 8rem 0 4rem;
+    }
+
+    .privacy-title {
+        font-size: 2.5rem;
+    }
+
+    .privacy-container {
+        padding: 0 1.5rem;
+    }
+
+    .policy-block h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .privacy-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 4rem;
+    }
+
+    .privacy-col-left h3 {
+        position: static;
+        margin-bottom: 0;
+    }
+}

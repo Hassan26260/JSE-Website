@@ -89,7 +89,7 @@ body {
   padding: 0;
   min-width: 320px;
   min-height: 100vh;
-  overflow-x: hidden;
+  /* overflow-x: hidden; - Removed to fix sticky scroll issues */
 }
 
 #root {

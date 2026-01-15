@@ -1,0 +1,2061 @@
+/* Virtual Team Page Styles */
+
+/* --- Hero Section (Replicated from Home Page) --- */
+.virtual-hero-section {
+    min-height: 85vh;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center 25%;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* Left align content */
+    overflow: hidden;
+}
+
+.virtual-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(7, 18, 48, 0.9) 0%, rgba(7, 18, 48, 0.6) 100%);
+    /* Dark Blue Overlay */
+    opacity: 80%;
+    z-index: 1;
+}
+
+.virtual-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    max-width: 900px;
+    padding: 0 4rem;
+    margin-top: 5rem;
+    /* Adjust for header height */
+}
+
+.virtual-hero-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0 0 1rem 0;
+    text-transform: uppercase;
+    /* letter-spacing: 1px; */
+    line-height: 1.1;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.virtual-hero-desc {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    /* letter-spacing: 0.5px; */
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    /* line-height: 1.6; */
+    max-width: 700px;
+}
+
+.virtual-hero-cta {
+    display: inline-block;
+    background-color: #144AE0;
+    color: white;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(20, 74, 224, 0.4);
+}
+
+.virtual-hero-cta:hover {
+    background-color: #0052a3;
+    transform: translateY(-2px);
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    .virtual-hero-section {
+        min-height: 70vh;
+        align-items: center;
+    }
+
+    .virtual-hero-content {
+        text-align: center;
+        padding: 0 2rem;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .virtual-hero-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .virtual-hero-title {
+        font-size: 2.2rem;
+    }
+
+    .virtual-hero-desc {
+        font-size: 1rem;
+    }
+}
+
+/* --- Intro Section (2-Column) --- */
+.virtual-intro-section {
+    padding: 6rem 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.virtual-intro-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.virtual-intro-left h2 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 4rem;
+    font-weight: 800;
+    color: #144AE0;
+    /* Brand Blue */
+    margin: 0;
+    line-height: 1.1;
+    /* Limit to approx 2 lines visually */
+    max-width: 100%;
+}
+
+.virtual-intro-right p {
+    font-size: 2rem;
+    color: #475569;
+    /* Slate 600 */
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Responsive Intro */
+@media (max-width: 768px) {
+    .virtual-intro-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .virtual-intro-left h2 {
+        font-size: 2rem;
+    }
+}
+
+/* --- What is VE? Section --- */
+.virtual-what-section {
+    padding: 8rem 0;
+    background-color: #f8fafc;
+    /* Very light slate bg */
+}
+
+.virtual-what-container {
+    max-width: 1440px;
+    /* Increased heavily to match Intro Section */
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    /* Reduced gap to match Intro Section */
+    align-items: center;
+}
+
+/* Replaces old .virtual-tagline with .dash-tagline style */
+.dash-tagline {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #666;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.dash-tagline::before {
+    content: '';
+    display: block;
+    width: 40px;
+    /* Length of dash */
+    height: 2px;
+    /* Thickness of dash */
+    background-color: #144AE0;
+}
+
+.dash-tagline.symmetric::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: #144AE0;
+}
+
+.virtual-what-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #144AE0;
+    /* Brand Blue matching Eligibility Section */
+    margin: 0 0 2rem 0;
+    line-height: 1.2;
+}
+
+.virtual-what-desc {
+    font-size: 1.15rem;
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* Image with Depth */
+.virtual-what-image-wrapper {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.virtual-what-img {
+    width: 100%;
+    border-radius: 12px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.virtual-what-img:hover {
+    transform: translateY(-5px);
+}
+
+.virtual-image-back {
+    position: absolute;
+    top: -2rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #cbd5e1;
+    /* Accent Color */
+    opacity: 0.5;
+    border-radius: 12px;
+    z-index: 1;
+    transform: rotate(-3deg);
+    /* Tilted back layer for depth */
+}
+
+@media (max-width: 1024px) {
+    .virtual-what-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .virtual-what-image-wrapper {
+        padding-left: 0;
+        margin-top: 2rem;
+    }
+
+    .virtual-image-back {
+        top: -1rem;
+        left: -1rem;
+    }
+}
+
+/* --- Specialization Section --- */
+.virtual-spec-section {
+    padding: 6rem 0 8rem;
+    background-color: #ffffff;
+}
+
+.virtual-spec-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.virtual-spec-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #144AE0;
+    margin: 0 0 4rem 0;
+}
+
+.virtual-spec-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 400px);
+    /* Fixed Card Height */
+    gap: 2rem;
+}
+
+.virtual-spec-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    border: 1px solid #f1f5f9;
+}
+
+.virtual-spec-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    border-color: #144AE0;
+}
+
+.virtual-spec-img-wrapper {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.virtual-spec-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.virtual-spec-card:hover .virtual-spec-img {
+    transform: scale(1.1);
+}
+
+.virtual-spec-content {
+    padding: 1.5rem;
+    background: #ffffff;
+    text-align: center;
+    border-top: 1px solid #f1f5f9;
+    z-index: 2;
+    position: relative;
+}
+
+.virtual-spec-card-title {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.virtual-spec-card:hover .virtual-spec-card-title {
+    color: #144AE0;
+}
+
+/* Responsive Grid */
+@media (max-width: 1024px) {
+    .virtual-spec-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+
+    .virtual-spec-card {
+        height: 350px;
+    }
+}
+
+@media (max-width: 640px) {
+    .virtual-spec-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .virtual-spec-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- What We Offer Section --- */
+.virtual-offer-section {
+    padding: 8rem 0;
+    background-color: #f8fafc;
+    /* Very light slate bg matching What is VE? */
+}
+
+.virtual-offer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+.virtual-offer-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #144AE0;
+    /* Brand Blue */
+    margin: 0 0 2rem 0;
+    line-height: 1.2;
+}
+
+.virtual-offer-desc {
+    font-size: 1.15rem;
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.virtual-offer-image-wrapper {
+    position: relative;
+    padding-right: 2rem;
+    /* Space for back layer on right if needed, or adjust */
+}
+
+.virtual-offer-img {
+    width: 100%;
+    border-radius: 12px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.virtual-offer-img:hover {
+    transform: translateY(-5px);
+}
+
+.virtual-offer-image-back {
+    position: absolute;
+    top: -2rem;
+    right: 0;
+    /* Tilted right for left image */
+    width: 100%;
+    height: 100%;
+    background-color: #cbd5e1;
+    opacity: 0.5;
+    border-radius: 12px;
+    z-index: 1;
+    transform: rotate(3deg);
+    /* Tilted opposite way */
+}
+
+@media (max-width: 1024px) {
+    .virtual-offer-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .virtual-offer-image-wrapper {
+        padding-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    .virtual-offer-image-back {
+        top: -1rem;
+        right: -1rem;
+    }
+}
+
+/* --- How We Work (Vertical Timeline) --- */
+.virtual-process-section {
+    padding: 8rem 0;
+    background-color: #071230;
+    /* Dark Theme */
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.virtual-process-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.virtual-process-heading {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 6rem 0;
+}
+
+/* Timeline Container */
+.virtual-process-timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    /* Stagger distance */
+    padding: 2rem 0;
+}
+
+/* Center Line */
+.timeline-center-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-image: linear-gradient(to bottom, #144AE0 50%, rgba(255, 255, 255, 0.1) 50%);
+    background-size: 2px 20px;
+    /* Dashed Effect */
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* Row Layout */
+.timeline-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.timeline-row.row-right {
+    flex-direction: row-reverse;
+}
+
+/* Sides */
+.timeline-content-side,
+.timeline-empty-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.timeline-content-side {
+    justify-content: flex-end;
+    padding-right: 3rem;
+}
+
+.row-right .timeline-content-side {
+    justify-content: flex-start;
+    padding-right: 0;
+    padding-left: 3rem;
+}
+
+.timeline-empty-side {
+    justify-content: flex-start;
+    padding-left: 3rem;
+}
+
+.row-right .timeline-empty-side {
+    justify-content: flex-end;
+    padding-left: 0;
+    padding-right: 3rem;
+}
+
+/* Marker */
+.timeline-center-marker {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    background: #071230;
+    /* Hide line behind marker */
+}
+
+.marker-dot {
+    width: 20px;
+    height: 20px;
+    background-color: #071230;
+    border: 3px solid #144AE0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(20, 74, 224, 0.2);
+}
+
+/* Timeline Card */
+.timeline-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: left;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+}
+
+.timeline-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+    border-color: #144AE0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-icon-box {
+    width: 48px;
+    height: 48px;
+    background: rgba(20, 74, 224, 0.1);
+    /* Low opacity blue bg */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(20, 74, 224, 0.2);
+}
+
+.timeline-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #60a5fa;
+    margin: 0 0 0.75rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.timeline-card p {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* STEP Label */
+.timeline-step-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.15);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* Dotted Connector Lines */
+.timeline-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 3rem;
+    height: 1px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+}
+
+/* Connector specifics */
+.row-left .timeline-card::before {
+    right: -3rem;
+}
+
+.row-right .timeline-card::before {
+    left: -3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .virtual-process-heading {
+        font-size: 2.5rem;
+        margin-bottom: 4rem;
+    }
+
+    .virtual-process-timeline {
+        gap: 3rem;
+    }
+
+    .timeline-center-line {
+        left: 20px;
+        transform: none;
+    }
+
+    .timeline-row,
+    .timeline-row.row-right {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .timeline-center-marker {
+        min-width: 40px;
+        margin-right: 1rem;
+    }
+
+    .timeline-content-side {
+        width: 100%;
+        padding: 0;
+        justify-content: flex-start;
+        flex: 1;
+    }
+
+    .row-right .timeline-content-side {
+        padding: 0;
+    }
+
+    .timeline-empty-side {
+        display: none;
+    }
+
+    .timeline-card {
+        max-width: 100%;
+    }
+
+    .timeline-card::before {
+        display: none;
+    }
+}
+
+/* --- Why Choose Us Section --- */
+.virtual-why-section {
+    padding: 8rem 0;
+    background-color: #ffffff;
+}
+
+.virtual-why-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.virtual-why-header {
+    margin-bottom: 6rem;
+    text-align: left;
+    /* Alignment Change: Left */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.virtual-why-main-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #144AE0;
+    /* Brand Blue */
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Zig-Zag Layout */
+.why-row-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 8rem;
+}
+
+.why-row-split:last-child {
+    margin-bottom: 0;
+}
+
+.why-row-split.split-reverse {
+    /* No special logic needed for grid, order matches DOM, but if we wanted to swap on desktop we could use order or grid-template-areas. 
+       Since DOM order handles structure (Cards Left, Text Right), we just ensure styling works. */
+}
+
+/* Text Side - 4rem Big Text */
+/* Text Side - 4rem Big Text */
+.why-text-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.why-big-text {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 4.5rem;
+    /* Slightly larger for impact */
+    font-weight: 900;
+    color: #0f172a;
+    /* Slate 900 */
+    line-height: 1.1;
+    margin: 0;
+}
+
+/* 2nd Row Specifics - Right Align Text */
+.why-row-split.split-reverse .why-text-side {
+    align-items: flex-end;
+    text-align: right;
+}
+
+/* Cards Side - Pyramid Layout */
+.why-cards-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.why-pyramid-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* 2 Columns */
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.why-card {
+    background: #ffffff;
+    /* White bg for clean look */
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    /* Increased radius */
+    padding: 2.5rem;
+    /* More padding */
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    /* Subtle default shadow */
+}
+
+.why-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: #144AE0;
+}
+
+.why-card h4 {
+    font-size: 1.35rem;
+    /* Slightly larger heading */
+    font-weight: 700;
+    color: #144AE0;
+    margin: 0 0 1.5rem 0;
+    /* More space */
+    line-height: 1.3;
+}
+
+.why-card p {
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Bottom Center Logic: Center the last item in grid */
+.why-card.card-center {
+    grid-column: 1 / -1;
+    /* Span full width */
+    max-width: 50%;
+    /* Constrain width to look like a single card */
+    margin: 0 auto;
+    /* Center horizontally */
+}
+
+/* Fully occupy width in grid cell if not centered, but constrained is clearer */
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .virtual-why-main-title {
+        font-size: 2.8rem;
+    }
+
+    .why-big-text {
+        font-size: 3rem;
+    }
+
+    .why-row-split {
+        grid-template-columns: 1fr;
+        /* Stack vertically */
+        gap: 3rem;
+        margin-bottom: 6rem;
+    }
+
+    .why-row-split.split-reverse {
+        display: flex;
+        flex-direction: column-reverse;
+        /* Put content above text if desired, or keep column for natural flow */
+    }
+
+    .why-row-split.split-reverse .why-text-side {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    /* Let's keep natural flow: Cards then Text for Row 2 */
+    .why-row-split.split-reverse {
+        flex-direction: column;
+    }
+
+    /* Adjust Pyramid for Mobile: maybe just stack? or keep pyramid? */
+    .why-card.card-center {
+        max-width: 100%;
+        /* Full width on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .virtual-why-main-title {
+        font-size: 2.2rem;
+    }
+
+    .why-big-text {
+        font-size: 2.5rem;
+    }
+
+    .why-pyramid-grid {
+        grid-template-columns: 1fr;
+        /* Stack all cards */
+    }
+
+    .why-card.card-center {
+        grid-column: auto;
+        max-width: 100%;
+    }
+}
+
+/* --- Form Section (Replicated from Internship) --- */
+.internship-form-section {
+    padding: 6rem 0;
+    background-color: #f8fafc;
+    /* Light Slate */
+}
+
+.form-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #071230;
+    /* Dark Hero Color */
+    border-radius: 24px;
+    padding: 4rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+    color: #ffffff;
+    /* White Text Global */
+    position: relative;
+    /* For patterns */
+    overflow: hidden;
+    /* Contain patterns */
+}
+
+/* Corner Patterns (Geometric Lines) */
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 400px;
+    height: 400px;
+    /* Concentric Circles Pattern Top Left */
+    background: repeating-radial-gradient(circle at 0 0,
+            transparent 0,
+            transparent 20px,
+            rgba(20, 74, 224, 0.15) 20px,
+            rgba(20, 74, 224, 0.15) 22px);
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 0 0 100% 0;
+}
+
+.form-container::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 400px;
+    height: 400px;
+    /* Concentric Circles Pattern Bottom Right */
+    background: repeating-radial-gradient(circle at 100% 100%,
+            transparent 0,
+            transparent 20px,
+            rgba(20, 74, 224, 0.15) 20px,
+            rgba(20, 74, 224, 0.15) 22px);
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 100% 0 0 0;
+}
+
+/* Ensure Content is above patterns */
+.form-info-side,
+.form-input-side {
+    position: relative;
+    z-index: 1;
+}
+
+/* Left Info Side */
+.form-info-side {
+    flex: 0.8;
+}
+
+.form-heading {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    /* White */
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+.form-subtext {
+    font-size: 1rem;
+    color: #cbd5e1;
+    /* Slate 300 */
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    /* max-width: 300px; */
+}
+
+.form-contact-details p {
+    font-size: 1rem;
+    color: #e2e8f0;
+    /* Slate 200 */
+    margin: 0.25rem 0;
+    font-weight: 500;
+}
+
+.form-email {
+    color: #60a5fa;
+    /* Light Blue for Dark Mode */
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.form-socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.social-circle {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #475569;
+    /* Darker Border */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social-circle:hover {
+    border-color: #60a5fa;
+    color: #60a5fa;
+    background: rgba(96, 165, 250, 0.1);
+}
+
+/* Right Input Side */
+.form-input-side {
+    flex: 1.2;
+}
+
+.internship-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    /* Return to standard gap */
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #94a3b8;
+    /* Slate 400 */
+    margin-left: 0;
+}
+
+/* Just Line (Underlined) Style */
+.form-input-line {
+    width: 100%;
+    padding: 0.75rem 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #475569;
+    /* Slate border */
+    background: transparent;
+    font-size: 1rem;
+    color: #ffffff;
+    /* White Input Text */
+    border-radius: 0;
+    /* No radius */
+    outline: none;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.form-input-line:focus {
+    outline: none;
+    border-bottom-color: #60a5fa;
+    /* Blue Bottom Border on Focus */
+    box-shadow: none;
+}
+
+.form-submit-btn {
+    align-self: flex-start;
+    margin-top: 1rem;
+    background-color: #144AE0;
+    /* Brand Blue */
+    color: white;
+    font-weight: 700;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-submit-btn:hover {
+    background-color: #3b82f6;
+    /* Lighter Blue Hover */
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .form-container {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 2.5rem;
+    }
+
+    .form-info-side,
+    .form-input-side {
+        width: 100%;
+    }
+
+    .form-heading {
+        font-size: 2.5rem;
+    }
+}
+
+/* --- Advanced Technologies Section --- */
+.tech-section {
+    padding: 6rem 0;
+    background-color: #ffffff;
+}
+
+.tech-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+    box-sizing: border-box;
+    /* Prevent padding from adding to width */
+}
+
+.tech-heading-center {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #144AE0;
+    /* Brand Blue */
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+}
+
+.tech-desc-center {
+    font-size: 1.15rem;
+    color: #475569;
+    /* Slate 600 */
+    line-height: 1.8;
+    margin: 0 auto 9rem auto;
+    /* Increased margin */
+    max-width: 800px;
+}
+
+/* Split Layout Rows */
+.tech-row {
+    display: flex;
+    align-items: center;
+    /* Vertically center everything in the row */
+    gap: 0;
+    /* Gap handled by divider margins */
+    margin-bottom: 4rem;
+}
+
+.tech-side-heading {
+    flex: 0 0 300px;
+    /* Increased to accommodate 'Communication' */
+    text-align: right;
+    padding-top: 1rem;
+    border-right: none;
+    /* Removed border */
+    padding-right: 0;
+}
+
+.tech-line-divider {
+    width: 3px;
+    height: 100px;
+    /* Fixed height as requested "not longer" */
+    background-color: #144AE0;
+    margin: 0 3rem;
+    /* Spacing around the line */
+    flex-shrink: 0;
+}
+
+.tech-side-heading h3 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tech-content-side {
+    flex: 1;
+}
+
+.tech-separator {
+    height: 1px;
+    background-color: #e2e8f0;
+    margin: 4rem 0;
+    width: 100%;
+}
+
+.tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Hardware Grid adjustments */
+.hardware-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    /* Wider cards for hardware */
+}
+
+.tech-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s ease;
+    width: 140px;
+    flex-shrink: 0;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+}
+
+.tech-logo-wrapper {
+    width: 90px;
+    height: 90px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    /* Lighter shadow */
+    transition: box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.tech-card:hover .tech-logo-wrapper {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.tech-abbr {
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.tech-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #475569;
+    margin: 0;
+    text-align: center;
+}
+
+.tech-logo-img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Hardware Card Styling */
+.hardware-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.hardware-card:hover {
+    transform: translateY(-5px);
+    border-color: #144AE0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+
+
+.hardware-icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    background-color: #eff6ff;
+    /* Light blue bg like bento-blue */
+    color: #144AE0;
+    /* Blue icon color */
+    flex-shrink: 0;
+}
+
+.hardware-card:hover .hardware-icon-box {
+    background-color: #144AE0;
+    color: #ffffff;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.hardware-info h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+}
+
+.hardware-info p {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tech-heading-center {
+        font-size: 2.2rem;
+    }
+
+    .tech-grid {
+        gap: 1.5rem;
+    }
+
+    .tech-card {
+        width: 120px;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .tech-row {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+
+    .tech-side-heading {
+        flex: auto;
+        text-align: left;
+        border-right: none;
+        border-left: 4px solid #144AE0;
+        padding-right: 0;
+        padding-left: 1.5rem;
+        width: 100%;
+    }
+
+    .tech-grid,
+    .hardware-grid {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+
+    /* Client Network Section (Replicated from Home.css) */
+    .client-network-section {
+        padding: 6rem 0;
+        background-color: #ffffff;
+        text-align: center;
+    }
+
+    .client-logo-grid-wrapper {
+        margin-top: 3rem;
+        overflow: hidden;
+    }
+
+    .client-logo-rows {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .logo-row {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .client-logo-item {
+        width: 100px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        filter: none;
+        opacity: 1;
+        transition: all 0.3s ease;
+        padding: 0.5rem;
+        background: white;
+        border-radius: 8px;
+        border: 1px solid transparent;
+    }
+
+    .client-logo-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        border-color: #eee;
+    }
+
+    .client-logo-item img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+}
+
+/* Left Aligned Header Utilities */
+.dash-tagline {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #475569;
+    margin-bottom: 1rem;
+}
+
+.dash-tagline::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: currentColor;
+}
+
+.tech-desc-left {
+    font-size: 1.15rem;
+    color: #475569;
+    line-height: 1.8;
+    margin: 1rem 0 4rem 0;
+    max-width: 800px;
+    text-align: left;
+}
+
+/* Reviews Section (Replicated from Home.css) */
+.reviews-section {
+    padding: 8rem 0;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+/* Reviews Section (Replicated from Home.css) */
+.reviews-section {
+    padding: 8rem 0;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+/* Header styles removed to avoid conflict. Using virtual-why-header in JSX. */
+
+.reviews-nav-controls {
+    display: flex;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.review-nav-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    background: #ffffff;
+    color: #f59e0b;
+    /* Amber */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.review-nav-btn:hover {
+    background: #f59e0b;
+    color: #ffffff;
+    border-color: #f59e0b;
+    transform: translateY(-2px);
+}
+
+.reviews-carousel-outer {
+    width: 100%;
+    overflow: visible;
+    overflow: hidden;
+    padding: 10px;
+    margin: -10px;
+}
+
+.reviews-track {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    width: max-content;
+    padding-right: 4rem;
+}
+
+.review-card {
+    width: 400px;
+    flex-shrink: 0;
+    background: #111111;
+    /* Dark Theme Card */
+    padding: 2.5rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+    border: 1px solid #222;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    text-align: left;
+}
+
+.review-card::before {
+    content: '“';
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+    font-size: 5rem;
+    color: rgba(255, 255, 255, 0.1);
+    font-family: serif;
+    line-height: 1;
+}
+
+.review-quote {
+    font-family: "Lato", sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #e5e5e5;
+    /* Light text for dark card */
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 2;
+    font-style: normal;
+}
+
+.review-footer {
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+}
+
+.review-author {
+    font-family: "Lato", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.review-role {
+    font-family: "Lato", sans-serif;
+    font-size: 0.9rem;
+    color: #9ca3af;
+    margin: 0.25rem 0 0 0;
+}
+
+@media (max-width: 1024px) {
+    .reviews-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .review-card {
+        width: 320px;
+    }
+}
+
+@media (max-width: 600px) {
+    .reviews-track {
+        gap: 1rem;
+    }
+}
+
+/* Responsive Header Row for Testimonials */
+.virtual-header-row {
+    flex-direction: row !important;
+    /* Override default column locally */
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .virtual-header-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .virtual-header-row .reviews-nav-controls {
+        padding-bottom: 0 !important;
+        margin-top: 1rem;
+    }
+}
+
+/* =========================================
+   Workflow Section (Snake Layout)
+   ========================================= */
+/* =========================================
+   Workflow Section (Snake Layout)
+   ========================================= */
+.workflow-section {
+    padding: 4rem 2rem;
+    background-color: #f8fafc;
+}
+
+/* Header handled by .virtual-why-header globally now */
+
+.workflow-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.workflow-heading {
+    font-size: 2.5rem;
+    color: #1e293b;
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+.workflow-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Wrapper for positioning lines */
+.workflow-card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+
+/* Inner Card Content */
+.workflow-card-inner {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    /* Glowing stroke logic: Dark Blue Glow */
+    border: 1px solid #071230;
+    box-shadow: 0 0 10px rgba(7, 18, 48, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    z-index: 2;
+    /* Content above lines */
+}
+
+.workflow-card-inner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(7, 18, 48, 0.4);
+}
+
+.workflow-icon-box {
+    width: 60px;
+    height: 60px;
+    background-color: #eff6ff;
+    border-radius: 50%;
+    border: 2px solid #071230;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: #071230;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.workflow-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #144AE0;
+    /* Blue Heading */
+}
+
+.workflow-card p {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+/* Snake Line Logic for Desktop */
+@media (min-width: 992px) {
+
+    /* Grid Placement */
+    .workflow-card:nth-child(4) {
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+    .workflow-card:nth-child(5) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .workflow-card:nth-child(6) {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .workflow-card:nth-child(7) {
+        grid-column: 2;
+        grid-row: 3;
+    }
+
+    /* Shared Line Styles on Wrapper ::after */
+    .workflow-card::after {
+        z-index: 0;
+        /* Behind Inner Card (z-index: 2) */
+    }
+
+    /* Horizontal Line Row 1 (1->2->3) */
+    .workflow-card:nth-child(1)::after,
+    .workflow-card:nth-child(2)::after {
+        content: '';
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        width: 100%;
+        height: 2px;
+        background: #071230;
+        z-index: 0;
+        transform: translateX(50%);
+    }
+
+    /* 3 -> 4 (Down) - 50% width goes to right edge of container */
+    .workflow-card:nth-child(3)::after {
+        content: '';
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        width: 60%;
+        /* Extend right */
+        height: calc(100% + 2rem);
+        border-top: 2px solid #071230;
+        border-right: 2px solid #071230;
+        border-bottom: 2px solid #071230;
+        border-radius: 0 20px 20px 0;
+        z-index: 0;
+    }
+
+    /* 4 -> 5 (Left) */
+    .workflow-card:nth-child(4)::after {
+        content: '';
+        position: absolute;
+        top: 50px;
+        left: -50%;
+        width: 100%;
+        height: 2px;
+        background: #071230;
+        z-index: 0;
+    }
+
+    /* 5 -> 6 (Left) */
+    .workflow-card:nth-child(5)::after {
+        content: '';
+        position: absolute;
+        top: 50px;
+        left: -50%;
+        width: 100%;
+        height: 2px;
+        background: #071230;
+        z-index: 0;
+    }
+
+    /* 6 -> 7 (Down -> Right) */
+    .workflow-card:nth-child(6)::after {
+        content: '';
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        width: 110%;
+        /* Reach next col center (approx) */
+        height: calc(100% + 2rem);
+        border-left: 2px solid #071230;
+        border-bottom: 2px solid #071230;
+        border-bottom-left-radius: 20px;
+        z-index: 0;
+    }
+}
+
+@media (max-width: 991px) {
+    .workflow-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    /* Vertical Line */
+    .workflow-card::after {
+        content: '';
+        position: absolute;
+        bottom: -3rem;
+        left: 50%;
+        width: 2px;
+        height: 3rem;
+        background: #071230;
+        transform: translateX(-50%);
+        z-index: 0;
+    }
+
+    .workflow-card:last-child::after {
+        display: none;
+    }
+}
+
+/* =========================================
+   Secondment Bento Grid Section ("Why We Are Successful")
+   ========================================= */
+.secondment-bento-section {
+    padding: 8rem 0;
+    background-color: #ffffff;
+}
+
+.secondment-bento-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.secondment-bento-header {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.secondment-bento-heading {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #144AE0;
+    margin: 0;
+}
+
+.secondment-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    grid-auto-rows: minmax(200px, auto);
+}
+
+/* Card Base */
+.secondment-bento-card {
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid transparent;
+}
+
+.secondment-bento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Variants */
+.sb-white {
+    background-color: #f8fafc;
+    border-color: #e2e8f0;
+}
+
+.sb-white .sb-title {
+    color: #0f172a;
+}
+
+.sb-white .sb-desc {
+    color: #475569;
+}
+
+.sb-white .sb-icon-box {
+    color: #144AE0;
+    background: rgba(20, 74, 224, 0.1);
+}
+
+.sb-blue {
+    background: linear-gradient(135deg, #144AE0 0%, #0f3cb3 100%);
+    color: white;
+}
+
+.sb-blue .sb-icon-box {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(4px);
+}
+
+.sb-blue .sb-desc {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.sb-dark {
+    background: linear-gradient(135deg, #071230 0%, #0b1d4d 100%);
+    color: white;
+}
+
+.sb-dark .sb-icon-box {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    backdrop-filter: blur(4px);
+}
+
+.sb-dark .sb-desc {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.sb-photo {
+    background-size: cover;
+    background-position: center;
+    color: white;
+    border: none;
+    position: relative;
+}
+
+.sb-photo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(7, 18, 48, 0.9), rgba(7, 18, 48, 0.4));
+    z-index: 1;
+}
+
+.sb-photo .sb-icon-box {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(4px);
+    position: relative;
+    z-index: 2;
+}
+
+.sb-photo .sb-title,
+.sb-photo .sb-desc {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+/* Spans */
+.sb-span-2-col {
+    grid-column: span 2;
+}
+
+.sb-span-2-row {
+    grid-row: span 2;
+}
+
+/* Content */
+.sb-icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.sb-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.2;
+}
+
+.sb-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .secondment-bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sb-heading {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .secondment-bento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sb-span-2-col {
+        grid-column: span 1;
+    }
+}

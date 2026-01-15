@@ -150,7 +150,9 @@ const Header = () => {
             onMouseEnter={handleInternshipMouseEnter}
             onMouseLeave={handleInternshipMouseLeave}
           >
-            <span>Internship</span>
+            <Link to="/internship" className="nav-link-text" style={{ color: 'inherit', textDecoration: 'none' }}>
+              Internship
+            </Link>
             {internshipDropdown && (
               <div
                 className="dropdown-menu"

@@ -63,11 +63,11 @@
   opacity: 0.9;
 }
 
-.header:not(.scrolled) .dropdown > span {
+.header:not(.scrolled) .dropdown>span {
   color: #ffffff;
 }
 
-.header:not(.scrolled) .dropdown.active > span {
+.header:not(.scrolled) .dropdown.active>span {
   color: #ffffff;
 }
 
@@ -78,7 +78,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #0066cc;
+  background-color: #144AE0;
   transition: width 0.3s ease;
 }
 
@@ -95,11 +95,11 @@
 }
 
 .nav-link:hover {
-  color: #0066cc;
+  color: #144AE0;
 }
 
 .nav-link.active {
-  color: #0066cc;
+  color: #144AE0;
 }
 
 .nav-link.active::after {
@@ -107,7 +107,7 @@
 }
 
 .nav-link.cta-button {
-  background-color: #0066cc;
+  background-color: #144AE0;
   color: #ffffff;
   padding: 0.75rem 1.5rem;
   border-radius: 6px;
@@ -143,30 +143,30 @@
   cursor: pointer;
 }
 
-.dropdown > span {
+.dropdown>span {
   position: relative;
 }
 
-.dropdown > span::after {
+.dropdown>span::after {
   content: "";
   position: absolute;
   bottom: -0.5rem;
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #0066cc;
+  background-color: #144AE0;
   transition: width 0.3s ease;
 }
 
-.dropdown:hover > span::after {
+.dropdown:hover>span::after {
   width: 100%;
 }
 
-.dropdown.active > span::after {
+.dropdown.active>span::after {
   width: 100%;
 }
 
-.header:not(.scrolled) .dropdown > span::after {
+.header:not(.scrolled) .dropdown>span::after {
   background-color: #ffffff;
 }
 
@@ -183,6 +183,18 @@
   z-index: 1001;
 }
 
+/* Invisible bridge to prevent closing on gap hover */
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -1rem;
+  /* Covers the gap + margin */
+  left: 0;
+  width: 100%;
+  height: 1rem;
+  background: transparent;
+}
+
 .dropdown-item {
   display: block;
   padding: 0.75rem 1.5rem;
@@ -194,7 +206,7 @@
 
 .dropdown-item:hover {
   background-color: #f5f5f5;
-  color: #0066cc;
+  color: #144AE0;
 }
 
 .dropdown-item.has-submenu {
@@ -222,6 +234,17 @@
   z-index: 1002;
 }
 
+/* Invisible bridge for submenu */
+.submenu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -0.5rem;
+  width: 0.5rem;
+  height: 100%;
+  background: transparent;
+}
+
 .submenu-item {
   display: block;
   padding: 0.75rem 1.5rem;
@@ -233,7 +256,7 @@
 
 .submenu-item:hover {
   background-color: #f5f5f5;
-  color: #0066cc;
+  color: #144AE0;
 }
 
 /* Mobile responsiveness */
@@ -265,4 +288,3 @@
     border: 1px solid #e0e0e0;
   }
 }
-

@@ -335,7 +335,7 @@ const Home = () => {
           <h2 className="solutions-title">Excellence in Engineering, Unmatched in Services</h2>
           <p className="solutions-description">JSE offers customized engineering solutions to fulfill our clients project requirement.</p>
 
-          <div className="bento-grid">
+          <div className="bento-grid home-bento-grid">
             <div className="bento-item">
               <img
                 src={architecturalBim}
@@ -347,7 +347,7 @@ const Home = () => {
               />
               <div className="bento-overlay"></div>
               <div className="bento-content">
-                <h4>Architectural BIM</h4>
+                <h4 className="bento-title">Architectural BIM</h4>
                 <p>Revolutionizing architecture with detailed and accurate BIM models.</p>
               </div>
             </div>
@@ -362,7 +362,7 @@ const Home = () => {
               />
               <div className="bento-overlay"></div>
               <div className="bento-content">
-                <h4>HVAC Design</h4>
+                <h4 className="bento-title">HVAC Design</h4>
                 <p>Efficient and sustainable HVAC solutions for optimal performance.</p>
               </div>
             </div>
@@ -377,7 +377,7 @@ const Home = () => {
               />
               <div className="bento-overlay"></div>
               <div className="bento-content">
-                <h4>Plumbing & Public Health</h4>
+                <h4 className="bento-title">Plumbing & Public Health</h4>
                 <p>Reliable and safe plumbing systems designed for health and safety.</p>
               </div>
             </div>
@@ -392,7 +392,7 @@ const Home = () => {
               />
               <div className="bento-overlay"></div>
               <div className="bento-content">
-                <h4>MEP Design & Drafting</h4>
+                <h4 className="bento-title">MEP Design & Drafting</h4>
                 <p>Integrated mechanical, electrical, and plumbing systems.</p>
               </div>
             </div>
@@ -407,7 +407,7 @@ const Home = () => {
               />
               <div className="bento-overlay"></div>
               <div className="bento-content">
-                <h4>BIM Modelling</h4>
+                <h4 className="bento-title">BIM Modelling</h4>
                 <p>Precise and detailed BIM models.</p>
               </div>
             </div>
@@ -422,7 +422,7 @@ const Home = () => {
               />
               <div className="bento-overlay"></div>
               <div className="bento-content">
-                <h4>Electrical System Design</h4>
+                <h4 className="bento-title">Electrical System Design</h4>
                 <p>Innovative electrical designs.</p>
               </div>
             </div>
@@ -437,7 +437,7 @@ const Home = () => {
               />
               <div className="bento-overlay"></div>
               <div className="bento-content">
-                <h4>ELV Systems</h4>
+                <h4 className="bento-title">ELV Systems</h4>
                 <p>Advanced ELV solutions.</p>
               </div>
             </div>
@@ -452,7 +452,7 @@ const Home = () => {
               />
               <div className="bento-overlay"></div>
               <div className="bento-content">
-                <h4>Steel Structure</h4>
+                <h4 className="bento-title">Steel Structure</h4>
                 <p>Accurate Tekla detailing.</p>
               </div>
             </div>
@@ -582,7 +582,7 @@ const Home = () => {
       <section className="benefits-section">
         <div className="container">
           <p className="review-tagline dash-tagline">Client Success</p>
-          <p className="benefits-tagline dash-tagline">Why Choose Us</p>
+          <p className="benefits-tagline">Why Choose Us</p>
           <h2 className="benefits-title">Your Benefits Choosing JSE Engineering Private Limited</h2>
 
           <div className="benefits-grid">

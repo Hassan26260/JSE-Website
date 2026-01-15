@@ -93,7 +93,7 @@ const Portfolio = () => {
         {/* Header */}
         <div className="portfolio-header" style={{ marginBottom: "3rem" }}>
           <p className="dash-tagline">Our Projects</p>
-          <h1 className="section-title" style={{ textAlign: "left", margin: "0", marginLeft: "3.5rem", fontFamily: "system-ui, Segoe UI, Roboto, sans-serif", fontWeight: "800" }}>
+          <h1 className="section-title" style={{ textAlign: "left", margin: "0", fontFamily: "system-ui, Segoe UI, Roboto, sans-serif", fontWeight: "800" }}>
             HELPING YOU BUILD YOUR LEGACY
           </h1>
         </div>

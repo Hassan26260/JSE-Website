@@ -6,6 +6,7 @@ import Portfolio from "./pages/Portfolio";
 import Internship from "./pages/Internship";
 import Career from "./pages/Career";
 import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 // Service pages
 import VirtualTeam from "./pages/services/VirtualTeam";
@@ -41,6 +42,7 @@ function App() {
         <Route path="/internship" element={<MainLayout><Internship /></MainLayout>} />
         <Route path="/career" element={<MainLayout><Career /></MainLayout>} />
         <Route path="/contact" element={<MainLayout><Contact /></MainLayout>} />
+        <Route path="/privacy-policy" element={<MainLayout><PrivacyPolicy /></MainLayout>} />
 
         {/* Service routes */}
         <Route path="/services/virtual-team" element={<MainLayout><VirtualTeam /></MainLayout>} />

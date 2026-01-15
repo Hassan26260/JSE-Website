@@ -1,0 +1,775 @@
+/* ArchitecturalBIM.css */
+
+/* --- Hero Section (Matches Civil Engineering Page) --- */
+.arch-hero-section {
+    position: relative;
+    padding: 6rem 0 3rem;
+    background: #071230;
+    /* Match Internship Hero */
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    /* Vertical center */
+    padding-left: 10%;
+    /* Approximation for alignment */
+    overflow: hidden;
+    height: 60vh;
+    min-height: 400px;
+}
+
+.arch-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 80% 20%, rgba(20, 74, 224, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.arch-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+    text-align: left;
+}
+
+.arch-breadcrumbs {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    text-transform: none;
+}
+
+.arch-breadcrumbs span {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.arch-hero-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0;
+    color: #ffffff;
+    line-height: 1.1;
+}
+
+/* --- Core Pillars Section (4-Column Text) --- */
+.arch-pillars-section {
+    background-color: #ffffff;
+    /* White background */
+    color: #333333;
+    padding: 6rem 2rem;
+}
+
+.arch-pillars-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* Vertical borders handled by border-left on items */
+}
+
+.arch-pillar-col {
+    padding: 0 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* Center horizontally */
+    min-height: 400px;
+    /* Ensure consistent height */
+    position: relative;
+    border-left: 1px solid #e5e7eb;
+    /* Light grey border */
+    text-align: center;
+    /* Align text center */
+}
+
+.arch-pillar-col:first-child {
+    border-left: none;
+    /* No border for first item */
+    padding-left: 0;
+}
+
+.arch-pillar-col:last-child {
+    padding-right: 0;
+}
+
+.arch-pillar-title {
+    font-size: 2rem;
+    font-weight: 400;
+    /* Thin/Regular look like reference */
+    margin-bottom: 2rem;
+    color: #144AE0;
+    /* Blue Heading */
+    font-family: 'Lato', sans-serif;
+}
+
+.arch-pillar-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4b5563;
+    /* Dark grey text */
+    margin-bottom: 4rem;
+}
+
+.arch-pillar-num {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    color: #9ca3af;
+    /* Dimmed number */
+    margin-top: auto;
+}
+
+/* --- What is Architectural BIM Section --- */
+.arch-what-section {
+    padding: 8rem 0;
+    /* Matches VirtualTeam padding */
+    background-color: #f8fafc;
+}
+
+.arch-what-container {
+    max-width: 1440px;
+    /* Increased from 1200px */
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    /* Increased from 4rem */
+    align-items: center;
+}
+
+.arch-what-text {
+    text-align: left;
+}
+
+.arch-what-tagline {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.arch-what-tagline::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: #144AE0;
+}
+
+.arch-what-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3rem;
+    /* Increased fontsize matches VirtualTeam */
+    font-weight: 800;
+    color: #144AE0;
+    /* Blue color */
+    margin: 0 0 2rem 0;
+    line-height: 1.2;
+}
+
+.arch-what-desc {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #475569;
+    margin-bottom: 1.5rem;
+}
+
+.arch-what-image-wrapper {
+    position: relative;
+    padding-left: 2rem;
+    /* Added padding-left */
+    max-height: 450px;
+    /* Restrict height */
+    display: flex;
+    /* Helps controls img height behavior if needed */
+    align-items: center;
+}
+
+.arch-what-img {
+    width: 100%;
+    height: 100%;
+    /* Fill wrapper */
+    object-fit: cover;
+    /* Crop nicely */
+    border-radius: 12px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    max-height: 450px;
+    /* Redundant safety */
+}
+
+.arch-what-img:hover {
+    transform: translateY(-5px);
+}
+
+.arch-image-back {
+    position: absolute;
+    top: -2rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #cbd5e1;
+    border-radius: 12px;
+    z-index: 1;
+    transform: rotate(-3deg);
+    /* Tilted back layer */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .arch-what-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .arch-what-image-wrapper {
+        padding-left: 0;
+        margin-top: 2rem;
+        max-height: 350px;
+        /* Restrict height on mobile too */
+    }
+
+    .arch-image-back {
+        top: -1rem;
+        left: -1rem;
+    }
+}
+
+/* --- Application Form Section (Copied Style) --- */
+.internship-form-section {
+    padding: 6rem 0;
+    background-color: #f8fafc;
+}
+
+.form-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #071230;
+    border-radius: 24px;
+    padding: 4rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Corner Patterns */
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 400px;
+    height: 400px;
+    background: repeating-radial-gradient(circle at 0 0,
+            transparent 0,
+            transparent 20px,
+            rgba(20, 74, 224, 0.15) 20px,
+            rgba(20, 74, 224, 0.15) 22px);
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 0 0 100% 0;
+}
+
+.form-container::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 400px;
+    height: 400px;
+    background: repeating-radial-gradient(circle at 100% 100%,
+            transparent 0,
+            transparent 20px,
+            rgba(20, 74, 224, 0.15) 20px,
+            rgba(20, 74, 224, 0.15) 22px);
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 100% 0 0 0;
+}
+
+.form-info-side,
+.form-input-side {
+    position: relative;
+    z-index: 1;
+}
+
+.form-info-side {
+    flex: 0.8;
+}
+
+.form-heading {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+.form-subtext {
+    font-size: 1rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+.form-contact-details p {
+    font-size: 1rem;
+    color: #e2e8f0;
+    margin: 0.25rem 0;
+    font-weight: 500;
+}
+
+.form-email {
+    color: #60a5fa;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.form-socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.social-circle {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #475569;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social-circle:hover {
+    border-color: #60a5fa;
+    color: #60a5fa;
+    background: rgba(96, 165, 250, 0.1);
+}
+
+.form-input-side {
+    flex: 1.2;
+}
+
+.internship-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-left: 0;
+}
+
+.form-input-line {
+    width: 100%;
+    padding: 0.75rem 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #475569;
+    background: transparent;
+    font-size: 1rem;
+    color: #ffffff;
+    border-radius: 0;
+    outline: none;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.form-input-line:focus {
+    outline: none;
+    border-bottom-color: #60a5fa;
+}
+
+.form-submit-btn {
+    align-self: flex-start;
+    margin-top: 1rem;
+    background-color: #144AE0;
+    color: white;
+    font-weight: 700;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-submit-btn:hover {
+    background-color: #3b82f6;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .form-container {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 2.5rem;
+    }
+
+    .form-info-side,
+    .form-input-side {
+        width: 100%;
+    }
+}
+
+
+/* --- LOD (Levels Of Development) Section --- */
+.arch-lod-section {
+    padding: 6rem 0 8rem;
+    background-color: #ffffff;
+    border-top: 1px solid #f1f5f9;
+}
+
+.arch-lod-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.arch-lod-header {
+    max-width: 1000px;
+    margin-bottom: 5rem;
+    text-align: left;
+}
+
+.arch-lod-tagline {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.arch-lod-tagline::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: #144AE0;
+}
+
+.arch-lod-heading {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #144AE0;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.2;
+}
+
+.arch-lod-intro {
+    font-size: 1.15rem;
+    color: #475569;
+    line-height: 1.7;
+    max-width: 900px;
+}
+
+.arch-lod-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Gap is handled by padding inside items to allow borders to touch if needed, 
+       but for clean vertical dividers, we can just use border-right on elements */
+    width: 100%;
+}
+
+.arch-lod-item {
+    padding: 0 3rem;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.arch-lod-item:first-child {
+    padding-left: 0;
+}
+
+.arch-lod-item:last-child {
+    padding-right: 0;
+    border-right: none;
+}
+
+.arch-lod-icon-box {
+    margin-bottom: 2rem;
+    color: #144AE0;
+    /* Blue Icons */
+    transition: transform 0.3s ease;
+}
+
+.arch-lod-item:hover .arch-lod-icon-box {
+    transform: scale(1.1);
+}
+
+.arch-lod-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1rem;
+}
+
+.arch-lod-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #475569;
+}
+
+/* Responsive LOD */
+@media (max-width: 1024px) {
+    .arch-lod-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .arch-lod-item {
+        padding: 0;
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 3rem;
+    }
+
+    .arch-lod-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+}
+
+/* --- Services Include Section --- */
+.arch-services-section {
+    padding: 6rem 0;
+    background-color: #ffffff;
+}
+
+.arch-services-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.arch-services-header {
+    margin-bottom: 4rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.arch-services-tagline {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #144AE0;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.arch-services-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #144AE0;
+    /* Changed to Blue */
+    margin-bottom: 1.5rem;
+}
+
+.arch-services-desc {
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.6;
+}
+
+.arch-services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.arch-service-card {
+    position: relative;
+    height: 250px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.arch-service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(20, 74, 224, 0.2);
+}
+
+/* Background Image Layer */
+.arch-card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+
+.arch-service-card:hover .arch-card-bg {
+    transform: scale(1.1);
+}
+
+/* Overlay Layer */
+.arch-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Default Bento-like dark gradient */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
+    transition: background 0.3s ease;
+}
+
+.arch-service-card:hover .arch-card-overlay {
+    /* Blue solid overlay on hover */
+    background: rgba(20, 74, 224, 0.95);
+    /* Solid Brand Blue with slight transparency */
+}
+
+/* Content Layer */
+.arch-card-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* Align bottom */
+    padding: 1.5rem;
+}
+
+.arch-service-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    transform: translateY(10px);
+    /* Start slightly lower */
+    transition: transform 0.3s ease;
+}
+
+.arch-service-card-desc {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 0.5rem;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    line-height: 1.4;
+}
+
+.arch-service-card:hover .arch-service-title {
+    transform: translateY(0);
+    /* Move up */
+}
+
+.arch-service-card:hover .arch-service-card-desc {
+    opacity: 1;
+    max-height: 100px;
+    /* Allow expansion */
+    transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+    .arch-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .arch-services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .arch-pillars-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4rem 0;
+    }
+
+    .arch-pillar-col {
+        border-left: none;
+        /* Remove vertical dividers in grid */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 0 1rem 3rem 1rem;
+        min-height: auto;
+    }
+
+    .arch-pillar-col:nth-child(2) {
+        border-left: 1px solid rgba(255, 255, 255, 0.2);
+    }
+}
+
+@media (max-width: 768px) {
+    .arch-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .arch-pillars-container {
+        grid-template-columns: 1fr;
+    }
+
+    .arch-pillar-col,
+    .arch-pillar-col:nth-child(2) {
+        border-left: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 2rem 0;
+    }
+
+    .arch-pillar-col:last-child {
+        border-bottom: none;
+    }
+}

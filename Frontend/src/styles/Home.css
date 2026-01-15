@@ -73,7 +73,7 @@
 
 .hero-cta-btn {
   display: inline-block;
-  background-color: #0066cc;
+  background-color: #144AE0;
   color: white;
   padding: 1rem 2.5rem;
   font-size: 1rem;
@@ -83,7 +83,7 @@
   border-radius: 4px;
   text-decoration: none;
   transition: background 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 15px rgba(0, 102, 204, 0.4);
+  box-shadow: 0 4px 15px rgba(20, 74, 224, 0.4);
 }
 
 .hero-cta-btn:hover {
@@ -156,7 +156,7 @@
 
 .hero-card:hover .hero-card-icon {
   transform: scale(1.1);
-  color: #0066cc;
+  color: #144AE0;
   /* Optional: Slight color on hover? Or keep B&W? User said "slight hover effect" */
   filter: none;
   /* Let color show on hover for interaction feedback, implies "slight effect" */
@@ -271,7 +271,7 @@
   font-family: "Lato", sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
-  color: #0066cc;
+  color: #144AE0;
   margin: 0 0 1rem 0;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -282,7 +282,7 @@
   font-family: system-ui, Segoe UI, Roboto, sans-serif;
   font-size: 2.5rem;
   font-weight: 800;
-  color: #0066cc;
+  color: #144AE0;
   margin: 0 0 1rem 0;
   line-height: 1.2;
 }
@@ -329,8 +329,8 @@
   justify-content: center;
   width: 20px;
   height: 20px;
-  background: rgba(0, 102, 204, 0.1);
-  color: #0066cc;
+  background: rgba(20, 74, 224, 0.1);
+  color: #144AE0;
   border-radius: 50%;
   font-size: 0.75rem;
   margin-right: 0.75rem;
@@ -339,8 +339,8 @@
 
 .about-cta-btn {
   background: transparent;
-  border: 2px solid #0066cc;
-  color: #0066cc;
+  border: 2px solid #144AE0;
+  color: #144AE0;
   padding: 0.8rem 2rem;
   font-size: 0.9rem;
   font-weight: 700;
@@ -351,7 +351,7 @@
 }
 
 .about-cta-btn:hover {
-  background: #0066cc;
+  background: #144AE0;
   color: white;
 }
 
@@ -391,7 +391,7 @@
   align-items: center;
   text-align: center;
   z-index: 3;
-  border-left: 4px solid #0066cc;
+  border-left: 4px solid #144AE0;
   animation: floatBadge 3s ease-in-out infinite;
 }
 
@@ -410,7 +410,7 @@
 .badge-number {
   font-size: 2rem;
   font-weight: 800;
-  color: #0066cc;
+  color: #144AE0;
   line-height: 1;
 }
 
@@ -467,7 +467,7 @@
   font-family: "Lato", sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
-  color: #0066cc;
+  color: #144AE0;
   margin: 0 0 1rem 0;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -477,8 +477,9 @@
   font-family: system-ui, Segoe UI, Roboto, sans-serif;
   font-size: 2.5rem;
   font-weight: 800;
-  color: #0066cc;
-  margin: 0 auto 1.5rem auto;
+  color: #144AE0;
+  /* margin: 0 auto 1.5rem auto; */
+  margin-bottom: 1.5rem;
   line-height: 1.2;
   max-width: 800px;
 }
@@ -488,7 +489,8 @@
   font-size: 1.125rem;
   font-weight: 400;
   color: #666;
-  margin: 0 auto 5rem auto;
+  /* margin: 0 auto 5rem auto; */
+  margin-bottom: 5rem;
   max-width: 700px;
 }
 
@@ -707,14 +709,15 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 2.5rem 2rem 2.5rem 1rem;
+  padding: 2.5rem 1rem 2rem 1rem;
   /* More internal breathing room */
   z-index: 2;
   width: 100%;
   text-align: left;
 }
 
-.bento-content h4 {
+.bento-content h4,
+.bento-title {
   color: #ffffff;
   font-family: "Lato", sans-serif;
   font-size: 1.6rem;
@@ -723,6 +726,10 @@
   margin: 0 0 0.5rem 0;
   letter-spacing: -0.02em;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 10;
+  opacity: 1;
+  visibility: visible;
 }
 
 .bento-content p {
@@ -737,7 +744,7 @@
 /* Stats Section (Modern) */
 .stats-section {
   padding: 8rem 0;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background: #071230;
   /* Dark Modern Background */
   text-align: center;
   color: white;
@@ -752,7 +759,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: radial-gradient(circle at 20% 50%, rgba(0, 102, 204, 0.1) 0%, transparent 50%),
+  background-image: radial-gradient(circle at 20% 50%, rgba(20, 74, 224, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(143, 209, 79, 0.1) 0%, transparent 50%);
   pointer-events: none;
 }
@@ -773,7 +780,8 @@
   font-size: 2.5rem;
   font-weight: 800;
   color: white;
-  margin: 0 auto 5rem auto;
+  /* margin: 0 auto 5rem auto; */
+  margin-bottom: 5rem;
   max-width: 900px;
   line-height: 1.2;
 }
@@ -867,20 +875,20 @@
 .reviews-title,
 .benefits-title {
   text-align: left !important;
-  margin-left: 3.5rem !important;
+  /* margin-left: 3.5rem !important; */
   /* 40px dash + 16px gap */
   margin-right: auto !important;
   max-width: 900px !important;
 }
 
 /* About Section Specifics */
-.about-company-name,
+/* .about-company-name,
 .about-subtitle,
 .about-description,
 .about-features-list,
-.about-cta-btn {
-  margin-left: 3.5rem !important;
-}
+.about-cta-btn { */
+/* margin-left: 3.5rem !important; */
+
 
 .about-tagline.dash-tagline {
   margin-left: 0 !important;
@@ -897,11 +905,11 @@
 }
 
 .reviews-tagline {
-  color: #0066cc;
+  color: #144AE0;
 }
 
 .benefits-tagline {
-  color: #0066cc;
+  color: #144AE0;
 }
 
 /* Business Divisions Section (Premium Redesign) */
@@ -930,7 +938,7 @@
   flex-direction: column;
   height: 100%;
   position: relative;
-  border-top: 5px solid #0066cc;
+  border-top: 5px solid #144AE0;
   /* Brand visual anchor */
 }
 
@@ -1005,7 +1013,7 @@
   display: inline-flex;
   align-items: center;
   font-weight: 700;
-  color: #0066cc;
+  color: #144AE0;
   text-decoration: none;
   font-size: 0.95rem;
   transition: all 0.3s ease;
@@ -1124,11 +1132,11 @@
   font-family: system-ui, Segoe UI, Roboto, sans-serif;
   font-size: 2.5rem;
   font-weight: 800;
-  color: #0066cc;
+  color: #144AE0;
   margin: 0 auto 1rem auto;
   max-width: 900px;
   line-height: 1.2;
-  padding-left: 22px;
+  /* padding-left: 22px; */
 }
 
 .review-carousel {
@@ -1178,7 +1186,7 @@
 
 .review-author h4 {
   font-size: 1.2rem;
-  color: #0066cc;
+  color: #144AE0;
   font-weight: 700;
   margin-bottom: 0.25rem;
 }
@@ -1199,8 +1207,8 @@
 }
 
 .review-btn:hover {
-  background: #0066cc;
-  border-color: #0066cc;
+  background: #144AE0;
+  border-color: #144AE0;
   color: white;
 }
 
@@ -1211,10 +1219,11 @@
 }
 
 .benefits-tagline {
-  text-align: center;
+  /* text-align: center; */
+  font-family: system-ui, Segoe UI, Roboto, sans-serif;
   font-size: 3rem;
-  color: #0066cc;
-  font-weight: 600;
+  color: #144AE0;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 0.5rem;
@@ -1328,8 +1337,10 @@
   font-weight: 600;
   text-align: center;
   margin-bottom: 1rem;
-  color: #0066cc;
+  color: #144AE0;
 }
+
+
 
 .features-grid {
   display: grid;
@@ -1392,8 +1403,8 @@
 }
 
 .service-card:hover {
-  border-color: #0066cc;
-  box-shadow: 0 4px 16px rgba(0, 102, 204, 0.1);
+  border-color: #144AE0;
+  box-shadow: 0 4px 16px rgba(20, 74, 224, 0.1);
   transform: translateY(-3px);
 }
 
@@ -1412,7 +1423,7 @@
 }
 
 .service-link {
-  color: #0066cc;
+  color: #144AE0;
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
@@ -1652,7 +1663,7 @@
 /* Geographical Achievements Section */
 .geo-section {
   padding: 8rem 0;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background: #071230;
   color: #ffffff;
   position: relative;
   overflow: hidden;
@@ -1685,12 +1696,12 @@
 }
 
 .geo-title {
-  font-family: "Lato", sans-serif;
+  font-family: system-ui, Segoe UI, Roboto, sans-serif;
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 1.5rem;
   line-height: 1.1;
-  margin-left: 3.5rem;
+  /* margin-left: 3.5rem; */
   /* Indent to match tagline text */
 }
 
@@ -1700,7 +1711,7 @@
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
   max-width: 700px;
-  margin-left: 3.5rem;
+  /* margin-left: 3.5rem; */
   /* Indent */
 }
 
@@ -1852,7 +1863,7 @@
     font-size: 3rem !important;
     font-weight: 800 !important;
     /* Extra Bold */
-    color: #0066cc !important;
+    color: #144AE0 !important;
     /* Brand Blue */
     letter-spacing: -0.02em !important;
     /* Tight spacing */

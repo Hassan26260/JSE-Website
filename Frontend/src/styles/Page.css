@@ -4,7 +4,7 @@
 }
 
 .page-header {
-  background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+  background: linear-gradient(135deg, #144AE0 0%, #004499 100%);
   color: #ffffff;
   padding: 4rem 2rem;
   text-align: center;
@@ -38,7 +38,7 @@
   padding: 2.5rem;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-left: 4px solid #0066cc;
+  border-left: 4px solid #144AE0;
 }
 
 .service-item h2 {
@@ -56,7 +56,7 @@
 }
 
 .page-link {
-  color: #0066cc;
+  color: #144AE0;
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
@@ -75,7 +75,7 @@
 
 .internship-card {
   background-color: #ffffff;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   text-decoration: none;
@@ -85,9 +85,9 @@
 }
 
 .internship-card:hover {
-  border-color: #0066cc;
+  border-color: #144AE0;
   transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0, 102, 204, 0.15);
+  box-shadow: 0 8px 24px rgba(20, 74, 224, 0.15);
 }
 
 .internship-card h3 {
@@ -98,7 +98,7 @@
 }
 
 .internship-card p {
-  color: #0066cc;
+  color: #144AE0;
   font-weight: 600;
   margin: 0;
 }
@@ -120,4 +120,3 @@
     grid-template-columns: 1fr;
   }
 }
-
