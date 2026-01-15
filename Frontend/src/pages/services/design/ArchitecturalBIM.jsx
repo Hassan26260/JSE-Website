@@ -4,6 +4,21 @@ import heroImage from '../../../assets/images-home/architectural-bim.webp';
 
 import whatIsImage from '../../../assets/images-home/bim-modelling.webp';
 
+// Portfolio Imports
+import p1 from "../../../assets/portfolio.img/pexels-jgathisan0612-1580112.webp";
+import p2 from "../../../assets/portfolio.img/pexels-jimbear-998499.webp";
+import p3 from "../../../assets/portfolio.img/pexels-mantasink-1106476.webp";
+import p4 from "../../../assets/portfolio.img/pexels-pixabay-210598.webp";
+import p5 from "../../../assets/portfolio.img/pexels-pixabay-273209.webp";
+import p6 from "../../../assets/portfolio.img/pexels-pixasquare-1123982.webp";
+
+// Tech Logos
+import revitLogo from '../../../assets/virtual-eng/software logos/autodesk-revit-seeklogo.png';
+import autocadLogo from '../../../assets/virtual-eng/software logos/autocad-seeklogo.png';
+import bentleyLogo from '../../../assets/virtual-eng/software logos/bentley.png';
+import microstationLogo from '../../../assets/virtual-eng/software logos/microstation.webp';
+import projectwiseLogo from '../../../assets/virtual-eng/software logos/projectwise.webp';
+
 // Reuse images for services
 import s1 from '../../../assets/images-home/skyscraper.webp';
 import s2 from '../../../assets/images-home/architectural-bim.webp';
@@ -11,6 +26,9 @@ import s3 from '../../../assets/images-home/bim-modelling.webp';
 import s4 from '../../../assets/images-home/mep-design.webp';
 import s5 from '../../../assets/images-home/hvac-design.webp';
 import s6 from '../../../assets/images-home/plumbing.webp';
+import s7 from '../../../assets/images-home/electrical-system.webp';
+// Reusing s6 or s4 for pure firefighting if specific image not found, defaulting to s4 (MEP) for now or similar.
+import s8 from '../../../assets/images-home/hero-group-image.webp'; // Placeholder for ELV if no specific image
 
 const SERVICES_DATA = [
   { title: "BIM consulting", img: s1, desc: "Strategic guidance for successful BIM adoption." },
@@ -25,6 +43,74 @@ const SERVICES_DATA = [
   { title: "BIM Visualization", img: s4, desc: "Photorealistic renderings and walkthroughs." },
   { title: "BIM Quantity Takeoffs", img: s5, desc: "Automated material quantity extraction." },
   { title: "Collaboration and Coordination", img: s6, desc: "Streamlined team workflows and communication." }
+];
+
+const ICONIC_PROJECTS = [
+  { title: "Luxury Resort", img: p1 },
+  { title: "Urban Center", img: p2 },
+  { title: "Skyline Tower", img: p3 },
+  { title: "Theme Park", img: p4 },
+  { title: "Tech Hub", img: p5 },
+  { title: "Industrial Unit", img: p6 },
+];
+
+const CHOOSE_JSE_DATA = [
+  {
+    title: "Innovative Solutions",
+    desc: "Our BIM architectural design engineers use the latest technology to create innovative and highly detailed 3D models that bring your vision to life."
+  },
+  {
+    title: "Holistic Approach",
+    desc: "JSE integrate all aspects of architectural design, ensuring seamless coordination between different building systems for optimal functionality and aesthetics."
+  },
+  {
+    title: "Enhanced Visualization",
+    desc: "Our detailed BIM models provide a clear and comprehensive visualization of your project, allowing you to see the final product before construction begins."
+  },
+  {
+    title: "Cost Efficiency",
+    desc: "Our BIM solutions help you save time and money by optimizing design processes, reducing waste, and improving overall project efficiency."
+  }
+];
+
+const CHOOSE_JSE_DATA_2 = [
+  {
+    title: "Client Collaboration",
+    desc: "JSE work closely with you throughout the design process, ensuring that your vision is fully realized and that you are involved every step of the way."
+  },
+  {
+    title: "Regulatory Compliance",
+    desc: "Our designs adhere to all local and international building codes and standards, ensuring compliance and safety for your project."
+  },
+  {
+    title: "Quality Assurance",
+    desc: "JSE maintain rigorous quality control throughout the design process, ensuring that every aspect of your project meets the highest standards of excellence."
+  },
+  {
+    title: "Sustainable Designs",
+    desc: "We incorporate sustainable practices into our designs, helping you achieve energy efficiency and environmental sustainability."
+  }
+];
+
+const BIM_TECH_DATA = [
+  { name: 'Revit', abbr: 'Rv', bg: '#e6f7ff', img: revitLogo },
+  { name: 'AutoCAD', abbr: 'AC', bg: '#fffbe6', img: autocadLogo },
+  { name: 'Navisworks', abbr: 'Nw', bg: '#f9f0ff', img: projectwiseLogo }, // ProjectWise placeholder for Navis
+  { name: 'Bentley', abbr: 'Be', bg: '#e6fffb', img: bentleyLogo },
+  { name: 'Civil 3D', abbr: 'C3D', bg: '#fff0f6', img: revitLogo }, // Revit placeholder
+  { name: 'Tekla', abbr: 'Tk', bg: '#f0f5ff', img: microstationLogo },
+  { name: 'SketchUp', abbr: 'Sk', bg: '#f6ffed', img: bentleyLogo } // Bentley placeholder
+];
+
+const ADDITIONAL_SERVICES = [
+  { title: "Steel Structure Detailing", link: "/services/design/steel-structure-detailing", img: s1 },
+  { title: "MEP Design", link: "/services/design/mep-design", img: s4 },
+  { title: "Plumbing & Public Health", link: "/services/design/plumbing-public-health", img: s6 },
+  { title: "HVAC Design", link: "/services/design/hvac-design", img: s5 },
+  { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 }, // Reuse MEP
+  { title: "BIM Modelling", link: "/services/design/bim-modelling", img: s3 },
+  { title: "Electrical System Design", link: "/services/design/electrical-system-design", img: s7 },
+  { title: "ELV (Extra Low Voltage)", link: "/services/design/elv", img: s8 }
 ];
 
 const ArchitecturalBIM = () => {
@@ -63,10 +149,10 @@ const ArchitecturalBIM = () => {
           </div>
           <h1 className="arch-hero-title">Architectural BIM</h1>
         </div>
-      </section>
+      </section >
 
       {/* Core Pillars Section (4 Columns) */}
-      <section className="arch-pillars-section">
+      < section className="arch-pillars-section" >
         <div className="arch-pillars-container">
 
           {/* Column 1: Visualization */}
@@ -114,10 +200,10 @@ const ArchitecturalBIM = () => {
           </div>
 
         </div>
-      </section>
+      </section >
 
       {/* What is Architectural BIM Section */}
-      <section className="arch-what-section">
+      < section className="arch-what-section" >
         <div className="arch-what-container">
           {/* Text Side */}
           <div className="arch-what-text">
@@ -136,7 +222,7 @@ const ArchitecturalBIM = () => {
             <img src={whatIsImage} alt="What is Architectural BIM" className="arch-what-img" />
           </div>
         </div>
-      </section>
+      </section >
 
 
 
@@ -299,8 +385,136 @@ const ArchitecturalBIM = () => {
         </div>
       </section>
 
+      {/* Worldwide Iconic Projects Section */}
+      <section className="iconic-projects-section">
+        <div className="iconic-container">
+          <div className="iconic-header">
+            <span className="iconic-tagline">BIM projects</span>
+            <h2 className="iconic-heading">Worldwide Iconic Projects</h2>
+          </div>
+        </div>
+
+        {/* Marquee Carousel */}
+        <div className="iconic-marquee-wrapper">
+          <div className="iconic-marquee-track">
+            {/* Set 1 */}
+            {ICONIC_PROJECTS.map((project, index) => (
+              <div key={`iconic-${index}`} className="iconic-card">
+                <img src={project.img} alt={project.title} className="iconic-img" />
+                <div className="iconic-overlay">
+                  <div className="iconic-content">
+                    <h3 className="iconic-title">{project.title}</h3>
+                    <a href="/portfolio" className="iconic-cta">
+                      Know More <span className="arrow">→</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+            {/* Set 2 (Duplicate for loop) */}
+            {ICONIC_PROJECTS.map((project, index) => (
+              <div key={`iconic-dup-${index}`} className="iconic-card">
+                <img src={project.img} alt={project.title} className="iconic-img" />
+                <div className="iconic-overlay">
+                  <div className="iconic-content">
+                    <h3 className="iconic-title">{project.title}</h3>
+                    <a href="/portfolio" className="iconic-cta">
+                      Know More <span className="arrow">→</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose JSE Section */}
+      <section className="arch-choose-section">
+        <div className="arch-choose-container">
+          {/* Left Column: Text */}
+          <div className="arch-choose-left">
+            <span className="arch-choose-tagline">WHY CHOOSE US</span>
+            <h2 className="arch-choose-heading">Why Choose JSE for Architectural BIM Engineers?</h2>
+            <p className="arch-choose-desc">
+              Choosing JSE’s BIM Architectural Design Engineers means gaining a strategic partner focused on precision, efficiency, and innovation. Our team leverages advanced BIM workflows to deliver accurate, data-rich architectural models that enhance visualization, improve coordination, and reduce design conflicts from the earliest stages.
+            </p>
+          </div>
+
+          {/* Right Column: Cards Grid */}
+          <div className="arch-choose-right">
+            {CHOOSE_JSE_DATA.map((item, index) => (
+              <div key={index} className="arch-choose-card">
+                <h3 className="arch-choose-card-title">{item.title}</h3>
+                <p className="arch-choose-card-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose JSE Section (Part 2 - Reversed) */}
+      <section className="arch-choose-section">
+        <div className="arch-choose-container">
+          {/* Left Column: Cards Grid (Visually Left) */}
+          <div className="arch-choose-right">
+            {CHOOSE_JSE_DATA_2.map((item, index) => (
+              <div key={index} className="arch-choose-card">
+                <h3 className="arch-choose-card-title">{item.title}</h3>
+                <p className="arch-choose-card-desc">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Right Column: Text (Visually Right) */}
+          <div className="arch-choose-left">
+            <p className="arch-choose-desc">
+              By integrating technical expertise with practical project insight, we streamline decision-making, optimize resources, and minimize costly revisions. With JSE, you benefit from a collaborative, future-ready approach that ensures your architectural vision is executed seamlessly, on time, and to the highest quality standards.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section className="tech-section">
+        <div className="tech-container">
+          <h2 className="tech-heading-center">Transform Your Vision with Architectural BIM Precision</h2>
+          <div className="tech-grid">
+            {BIM_TECH_DATA.map((tech, index) => (
+              <div key={index} className="tech-card">
+                <div className="tech-logo-wrapper" style={{ background: tech.bg }}>
+                  {tech.img ? (
+                    <img src={tech.img} alt={tech.name} className="tech-logo-img" />
+                  ) : (
+                    <span className="tech-abbr">{tech.abbr}</span>
+                  )}
+                </div>
+                <p className="tech-name">{tech.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Services Menu Section */}
+      <section className="arch-additional-section">
+        <div className="arch-additional-container">
+          <h2 className="arch-additional-heading">Additional Services You Can Benefit From</h2>
+          <div className="arch-service-list">
+            {ADDITIONAL_SERVICES.map((item, index) => (
+              <a key={index} href={item.link} className="arch-service-item">
+                <span className="arch-service-text">{item.title}</span>
+                <div className="arch-service-img-wrapper">
+                  <img src={item.img} alt={item.title} className="arch-service-hover-img" />
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
     </div >
   );
-};
+}; // End of Component
 
 export default ArchitecturalBIM;

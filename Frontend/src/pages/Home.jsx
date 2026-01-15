@@ -55,13 +55,33 @@ const Home = () => {
   const [statsStarted, setStatsStarted] = useState(false);
   const statsRef = useRef(null);
 
+  // Form State
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+  };
+
   // Business Divisions Data
   const businessDivisions = [
     {
       title: "Design Engineering Projects",
       description: "JSE manpower service aids you get the right candidates with right professional background at convenient cost.",
       image: architecturalBim,
-      link: "/services"
+      link: "/services/design/architectural-bim"
     },
     {
       title: "Virtual Team for Hire",
@@ -197,14 +217,34 @@ const Home = () => {
   }, [isTransitioning, currentReview]);
 
 
+  // Parallax Effect for Hero Background
+  const heroRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroRef.current) {
+        const scrolled = window.pageYOffset;
+        // Move background at 50% speed of scroll
+        heroRef.current.style.backgroundPositionY = `${scrolled * 0.5}px`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="home-page">
-      <section className="hero-section" style={{ backgroundImage: `url(${heroBanner})` }}>
+      <section
+        className="hero-section"
+        ref={heroRef}
+        style={{ backgroundImage: `url(${heroBanner})` }}
+      >
         <div className="hero-overlay"></div>
         <div className="hero-main-content">
-          <h1 className="main-hero-title">Engineering Tomorrow's Infrastructure</h1>
-          <p className="main-hero-subtitle">Your Trusted Global BIM Partner</p>
-          <a href="/contact" className="hero-cta-btn">Contact Us</a>
+          <h1 className="main-hero-title">JSE Engineering</h1>
+          <p className="main-hero-subtitle">Engineering Clarity Through BIM & MEP Excellence</p>
+          <a href="#contact-form" className="hero-cta-btn">Get Started</a>
         </div>
         {/* ... truncated ... */}
         {/* <section className="reviews-section">
@@ -248,30 +288,42 @@ const Home = () => {
 
         <div className="hero-cards-container">
           <div className="hero-card">
-            <div className="hero-card-icon">🏗️</div>
+            <div className="hero-card-icon">
+              {/* BIM Icon */}
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18v-8a2 2 0 0 0-2-2h-3v-3a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v3h-3a2 2 0 0 0-2 2v8z" /></svg>
+            </div>
             <div className="hero-card-text">
-              <h3>Digital Engineering</h3>
+              <h3 style={{ color: '#144AE0' }}>Digital Engineering</h3>
               <p>Your BIM Digital Engineering Consultant</p>
             </div>
           </div>
           <div className="hero-card">
-            <div className="hero-card-icon">🏛️</div>
+            <div className="hero-card-icon">
+              {/* Arch Icon */}
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 22v-5l5-5 5 5v5M12 12l5-5 5 5v5" /></svg>
+            </div>
             <div className="hero-card-text">
-              <h3>Elite Architecture</h3>
+              <h3 style={{ color: '#144AE0' }}>Elite Architecture</h3>
               <p>Innovation To Create Elite Architecture</p>
             </div>
           </div>
           <div className="hero-card">
-            <div className="hero-card-icon">⚙️</div>
+            <div className="hero-card-icon">
+              {/* Tekla Icon for Detailing */}
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l8-4 8 4v14" /></svg>
+            </div>
             <div className="hero-card-text">
-              <h3>Precise Detailing</h3>
+              <h3 style={{ color: '#144AE0' }}>Precise Detailing</h3>
               <p>Robust Tech for Precise HVAC & MEP Design</p>
             </div>
           </div>
           <div className="hero-card">
-            <div className="hero-card-icon">👥</div>
+            <div className="hero-card-icon">
+              {/* User/Virtual Icon */}
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
             <div className="hero-card-text">
-              <h3>Virtual Employment</h3>
+              <h3 style={{ color: '#144AE0' }}>Virtual Employment</h3>
               <p>Hire Exclusive Virtual Design Consultants</p>
             </div>
           </div>
@@ -335,125 +387,109 @@ const Home = () => {
           <h2 className="solutions-title">Excellence in Engineering, Unmatched in Services</h2>
           <p className="solutions-description">JSE offers customized engineering solutions to fulfill our clients project requirement.</p>
 
-          <div className="bento-grid home-bento-grid">
-            <div className="bento-item">
+          <div className="home-bento-grid">
+            <div className="home-bento-card">
               <img
                 src={architecturalBim}
                 alt="Architectural BIM"
-                className="bento-bg"
+                className="home-bento-img"
                 loading="eager"
-                width="600"
-                height="400"
               />
-              <div className="bento-overlay"></div>
-              <div className="bento-content">
-                <h4 className="bento-title">Architectural BIM</h4>
-                <p>Revolutionizing architecture with detailed and accurate BIM models.</p>
+              <div className="home-bento-overlay"></div>
+              <div className="home-bento-content">
+                <h3 className="home-bento-title">Architectural BIM</h3>
+                <p className="home-bento-desc">Revolutionizing architecture with detailed and accurate BIM models.</p>
               </div>
             </div>
-            <div className="bento-item">
+            <div className="home-bento-card">
               <img
                 src={hvacDesign}
                 alt="HVAC Design"
-                className="bento-bg"
+                className="home-bento-img"
                 loading="eager"
-                width="600"
-                height="400"
               />
-              <div className="bento-overlay"></div>
-              <div className="bento-content">
-                <h4 className="bento-title">HVAC Design</h4>
-                <p>Efficient and sustainable HVAC solutions for optimal performance.</p>
+              <div className="home-bento-overlay"></div>
+              <div className="home-bento-content">
+                <h3 className="home-bento-title">HVAC Design</h3>
+                <p className="home-bento-desc">Efficient and sustainable HVAC solutions for optimal performance.</p>
               </div>
             </div>
-            <div className="bento-item">
+            <div className="home-bento-card">
               <img
                 src={plumbing}
                 alt="Plumbing & Public Health"
-                className="bento-bg"
+                className="home-bento-img"
                 loading="eager"
-                width="600"
-                height="400"
               />
-              <div className="bento-overlay"></div>
-              <div className="bento-content">
-                <h4 className="bento-title">Plumbing & Public Health</h4>
-                <p>Reliable and safe plumbing systems designed for health and safety.</p>
+              <div className="home-bento-overlay"></div>
+              <div className="home-bento-content">
+                <h3 className="home-bento-title">Plumbing & Public Health</h3>
+                <p className="home-bento-desc">Reliable and safe plumbing systems designed for health and safety.</p>
               </div>
             </div>
-            <div className="bento-item">
+            <div className="home-bento-card">
               <img
                 src={mepDesign}
                 alt="MEP Design & Drafting"
-                className="bento-bg"
+                className="home-bento-img"
                 loading="eager"
-                width="600"
-                height="400"
               />
-              <div className="bento-overlay"></div>
-              <div className="bento-content">
-                <h4 className="bento-title">MEP Design & Drafting</h4>
-                <p>Integrated mechanical, electrical, and plumbing systems.</p>
+              <div className="home-bento-overlay"></div>
+              <div className="home-bento-content">
+                <h3 className="home-bento-title">MEP Design & Drafting</h3>
+                <p className="home-bento-desc">Integrated mechanical, electrical, and plumbing systems.</p>
               </div>
             </div>
-            <div className="bento-item">
+            <div className="home-bento-card">
               <img
                 src={bimModelling}
                 alt="BIM Modelling"
-                className="bento-bg"
+                className="home-bento-img"
                 loading="eager"
-                width="600"
-                height="400"
               />
-              <div className="bento-overlay"></div>
-              <div className="bento-content">
-                <h4 className="bento-title">BIM Modelling</h4>
-                <p>Precise and detailed BIM models.</p>
+              <div className="home-bento-overlay"></div>
+              <div className="home-bento-content">
+                <h3 className="home-bento-title">BIM Modelling</h3>
+                <p className="home-bento-desc">Precise and detailed BIM models.</p>
               </div>
             </div>
-            <div className="bento-item">
+            <div className="home-bento-card">
               <img
                 src={electricalSystem}
                 alt="Electrical System Design"
-                className="bento-bg"
+                className="home-bento-img"
                 loading="eager"
-                width="600"
-                height="400"
               />
-              <div className="bento-overlay"></div>
-              <div className="bento-content">
-                <h4 className="bento-title">Electrical System Design</h4>
-                <p>Innovative electrical designs.</p>
+              <div className="home-bento-overlay"></div>
+              <div className="home-bento-content">
+                <h3 className="home-bento-title">Electrical System Design</h3>
+                <p className="home-bento-desc">Innovative electrical designs.</p>
               </div>
             </div>
-            <div className="bento-item">
+            <div className="home-bento-card">
               <img
                 src={mepDesign}
                 alt="ELV (Extra Low Voltage)"
-                className="bento-bg"
+                className="home-bento-img"
                 loading="eager"
-                width="600"
-                height="400"
               />
-              <div className="bento-overlay"></div>
-              <div className="bento-content">
-                <h4 className="bento-title">ELV Systems</h4>
-                <p>Advanced ELV solutions.</p>
+              <div className="home-bento-overlay"></div>
+              <div className="home-bento-content">
+                <h3 className="home-bento-title">ELV Systems</h3>
+                <p className="home-bento-desc">Advanced ELV solutions.</p>
               </div>
             </div>
-            <div className="bento-item">
+            <div className="home-bento-card">
               <img
                 src={hvacDesign}
                 alt="Steel Structure Modeling"
-                className="bento-bg"
+                className="home-bento-img"
                 loading="eager"
-                width="600"
-                height="400"
               />
-              <div className="bento-overlay"></div>
-              <div className="bento-content">
-                <h4 className="bento-title">Steel Structure</h4>
-                <p>Accurate Tekla detailing.</p>
+              <div className="home-bento-overlay"></div>
+              <div className="home-bento-content">
+                <h3 className="home-bento-title">Steel Structure</h3>
+                <p className="home-bento-desc">Accurate Tekla detailing.</p>
               </div>
             </div>
           </div>
@@ -499,30 +535,28 @@ const Home = () => {
       </section>
 
       <section className="business-divisions-section">
-        <div className="container">
-          <p className="dash-tagline" style={{ color: '#666' }}>Our Divisions</p>
-          <h2 className="section-title" style={{ fontFamily: "system-ui, Segoe UI, Roboto, sans-serif", fontWeight: "800" }}>Our Business Divisions</h2>
-          <div className="business-grid">
+        <div className="divisions-container">
+          {/* Left Column: Text */}
+          <div className="divisions-left">
+            <p className="dash-tagline" style={{ color: '#666' }}>Our Divisions</p>
+            <h2 className="section-title" style={{ fontFamily: "system-ui, Segoe UI, Roboto, sans-serif", fontWeight: "800", textAlign: 'left', margin: '0 0 1.5rem 0' }}>Our Business Divisions</h2>
+            <p className="divisions-desc">
+              By integrating technical expertise with practical project insight, we streamline decision-making, optimize resources, and minimize costly revisions. With JSE, you benefit from a collaborative, future-ready approach that ensures your architectural vision is executed seamlessly, on time, and to the highest quality standards.
+            </p>
+          </div>
+
+          {/* Right Column: 3 Cards */}
+          <div className="divisions-right">
             {businessDivisions.map((division, index) => (
-              <div key={index} className="business-card">
-                <div className="business-card-top">
-                  <img
-                    src={division.image}
-                    alt={division.title}
-                    className="business-card-img"
-                    loading="eager"
-                    width="400"
-                    height="300"
-                  />
-                </div>
-                <div className="business-card-content">
+              <a key={index} href={division.link} className="division-card-new">
+                <div className="division-info">
                   <h3>{division.title}</h3>
                   <p>{division.description}</p>
-                  <a href={division.link} className="business-learn-more">
-                    Learn More <span>&#8594;</span>
-                  </a>
                 </div>
-              </div>
+                <div className="division-arrow">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+              </a>
             ))}
           </div>
         </div>
@@ -676,78 +710,84 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <div className="container">
-          <h2 className="section-title">Why Choose JSE Engineering?</h2>
-          <div className="features-grid">
-            <div className="feature-card">
-              <div className="feature-icon">🏗️</div>
-              <h3>Expert Engineering</h3>
-              <p>
-                Professional engineering services with years of experience in
-                infrastructure and design.
-              </p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">👥</div>
-              <h3>Virtual Teams</h3>
-              <p>
-                Access skilled engineering professionals through our virtual team
-                solutions.
-              </p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">🎓</div>
-              <h3>Internship Programs</h3>
-              <p>
-                Shape the next generation of engineers through our comprehensive
-                internship programs.
-              </p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">💼</div>
-              <h3>Career Opportunities</h3>
-              <p>
-                Join our team and work on exciting projects that make a
-                difference.
-              </p>
-            </div>
-          </div>
-        </div>
+
+
       </section>
 
-      <section className="services-preview-section">
-        <div className="container">
-          <p className="dash-tagline">Our Expertise</p>
-          <h2 className="section-title">Our Services</h2>
-          <div className="services-grid">
-            <div className="service-card">
-              <h3>Design Services</h3>
-              <p>
-                Comprehensive design solutions including BIM, MEP, HVAC, and
-                more.
-              </p>
-              <a href="/services" className="service-link">
-                Learn More →
-              </a>
+      {/* Form Section */}
+      <section className="internship-form-section" id="contact-form">
+        <div className="form-container">
+          {/* Left Side: Title & Info */}
+          <div className="form-info-side">
+            <h2 className="form-heading">Start Your Project</h2>
+            <p className="form-subtext">
+              Ready to optimize your workflow with JSE's Engineering services? Fill out the details and we'll get in touch with you shortly.
+            </p>
+
+            <div className="form-contact-details">
+              <p className="form-email">info@jseengineering.com</p>
             </div>
-            <div className="service-card">
-              <h3>Virtual Team for Hire</h3>
-              <p>
-                Flexible engineering teams ready to integrate with your projects.
-              </p>
-              <a href="/services/virtual-team" className="service-link">
-                Learn More →
-              </a>
+
+            <div className="form-socials">
+              <div className="social-circle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </div>
+              <div className="social-circle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                </svg>
+              </div>
+              <div className="social-circle">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </div>
             </div>
-            <div className="service-card">
-              <h3>Secondment Team</h3>
-              <p>
-                Temporary engineering professionals to support your project needs.
-              </p>
-              <a href="/services/secondment-team" className="service-link">
-                Learn More →
-              </a>
-            </div>
+          </div>
+
+          {/* Right Side: Form */}
+          <div className="form-input-side">
+            <form onSubmit={handleSubmit} className="internship-form">
+              <div className="form-group">
+                <label>Your Name*</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className="form-input-line"
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Your Mail ID*</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="form-input-line"
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Message*</label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  rows="4"
+                  required
+                  className="form-input-line"
+                ></textarea>
+              </div>
+
+              <button type="submit" className="form-submit-btn">Submit</button>
+            </form>
           </div>
         </div>
       </section>

@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
@@ -35,6 +36,7 @@ import StructuralEnvironmentalEngineering from "./pages/internship/StructuralEnv
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<MainLayout><Home /></MainLayout>} />
         <Route path="/services" element={<MainLayout><Services /></MainLayout>} />

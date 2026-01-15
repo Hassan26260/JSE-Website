@@ -21,9 +21,10 @@
   flex-direction: column;
   justify-content: center;
   /* Vertically center */
-  align-items: flex-start;
-  /* Left align content */
   overflow: visible;
+  background-position: center top;
+  background-size: cover;
+  /* Will be controlled by JS for parallax */
 }
 
 .hero-overlay {
@@ -52,8 +53,8 @@
 }
 
 .main-hero-title {
-  font-family: "Lato", sans-serif;
-  font-size: 3.5rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 5rem;
   font-weight: 800;
   margin: 0 0 0.5rem 0;
   text-transform: uppercase;
@@ -75,12 +76,15 @@
   display: inline-block;
   background-color: #144AE0;
   color: white;
-  padding: 1rem 2.5rem;
-  font-size: 1rem;
+  padding: 0.75rem 1.75rem;
+  /* Reduced padding */
+  font-size: 0.9rem;
+  /* Reduced font size */
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-radius: 4px;
+  border-radius: 50px;
+  /* Rounded pill shape */
   text-decoration: none;
   transition: background 0.3s ease, transform 0.2s ease;
   box-shadow: 0 4px 15px rgba(20, 74, 224, 0.4);
@@ -144,22 +148,36 @@
   z-index: 5;
 }
 
-/* Icons - Black and White */
+/* Icons - Minimal Circular Background */
 .hero-card-icon {
-  font-size: 2rem;
-  /* Compact icon */
-  margin-bottom: 0.75rem;
-  color: #333;
-  filter: grayscale(100%);
-  transition: transform 0.3s ease;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  /* Very light slate/grey */
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.hero-card-icon svg {
+  width: 32px;
+  height: 32px;
+  /* Ensure SVG fits nicely */
+  stroke: #333;
+  transition: stroke 0.3s ease;
 }
 
 .hero-card:hover .hero-card-icon {
-  transform: scale(1.1);
-  color: #144AE0;
-  /* Optional: Slight color on hover? Or keep B&W? User said "slight hover effect" */
-  filter: none;
-  /* Let color show on hover for interaction feedback, implies "slight effect" */
+  background: rgba(20, 74, 224, 0.1);
+  /* Light blue bg on hover */
+  transform: translateY(-5px);
+}
+
+.hero-card:hover .hero-card-icon svg {
+  stroke: #144AE0;
 }
 
 /* Text Styling */
@@ -601,14 +619,12 @@
   padding: 0 2rem;
 }
 
-/* Bento Grid (Mosaic Layout - 8 Cards) */
-.bento-grid {
+/* --- Home Bento Grid (Specific Rewrite) --- */
+.home-bento-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 340px);
-  /* Explicit fixed rows */
   gap: 2rem;
-  /* Clean industry standard gap */
   margin-top: 5rem;
   max-width: 1400px;
   margin-left: auto;
@@ -616,130 +632,149 @@
   padding: 0 2rem;
 }
 
-.bento-item {
+.home-bento-card {
   position: relative;
   border-radius: 24px;
-  /* Smoother, larger radius */
   overflow: hidden;
-  height: 340px;
-  /* Slightly taller */
+  height: 100%;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: #000;
+  /* Fallback */
 }
 
-.bento-item:hover {
+.home-bento-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
 }
 
-/* Explicit Mosaic Placement to fix "broken" layout */
-/* Row 1 */
-.bento-item:nth-child(1) {
+/* Mosaic Layout */
+.home-bento-card:nth-child(1) {
   grid-column: 1 / span 2;
   grid-row: 1;
 }
 
-.bento-item:nth-child(2) {
+.home-bento-card:nth-child(2) {
   grid-column: 3;
   grid-row: 1;
 }
 
-.bento-item:nth-child(3) {
+.home-bento-card:nth-child(3) {
   grid-column: 4;
   grid-row: 1;
 }
 
-/* Row 2 */
-.bento-item:nth-child(4) {
+.home-bento-card:nth-child(4) {
   grid-column: 1;
   grid-row: 2;
 }
 
-.bento-item:nth-child(5) {
+.home-bento-card:nth-child(5) {
   grid-column: 2 / span 2;
   grid-row: 2;
 }
 
-.bento-item:nth-child(6) {
+.home-bento-card:nth-child(6) {
   grid-column: 4;
   grid-row: 2;
 }
 
-/* Row 3 */
-.bento-item:nth-child(7) {
+.home-bento-card:nth-child(7) {
   grid-column: 1 / span 2;
   grid-row: 3;
 }
 
-.bento-item:nth-child(8) {
+.home-bento-card:nth-child(8) {
   grid-column: 3 / span 2;
   grid-row: 3;
 }
 
-
-.bento-bg {
+/* Image */
+.home-bento-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: block;
 }
 
-.bento-item:hover .bento-bg {
+.home-bento-card:hover .home-bento-img {
   transform: scale(1.15);
 }
 
-/* Dark Premium Overlay */
-.bento-overlay {
+/* Overlay */
+.home-bento-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
-  z-index: 1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.85) 100%);
+  z-index: 10;
   transition: background 0.3s ease;
+  pointer-events: none;
 }
 
-.bento-item:hover .bento-overlay {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.9) 100%);
+.home-bento-card:hover .home-bento-overlay {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.95) 100%);
 }
 
-.bento-content {
+/* Content */
+.home-bento-content {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 2.5rem 1rem 2rem 1rem;
-  /* More internal breathing room */
-  z-index: 2;
   width: 100%;
+  padding: 2rem 1.5rem;
+  z-index: 20;
   text-align: left;
 }
 
-.bento-content h4,
-.bento-title {
+.home-bento-title {
   color: #ffffff;
   font-family: "Lato", sans-serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-  /* Extra bold for premium feel */
+  font-size: 1.5rem;
+  font-weight: 800;
   margin: 0 0 0.5rem 0;
-  letter-spacing: -0.02em;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  position: relative;
-  z-index: 10;
-  opacity: 1;
-  visibility: visible;
+  /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); */
+  line-height: 1.2;
 }
 
-.bento-content p {
-  color: rgba(255, 255, 255, 0.85);
-  /* Slightly clearer */
+.home-bento-desc {
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.95rem;
   margin: 0;
   line-height: 1.5;
-  max-width: 90%;
+  font-weight: 500;
+  max-width: 95%;
 }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .home-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    /* Allow auto flow */
+  }
+
+  .home-bento-card,
+  .home-bento-card:nth-child(n) {
+    /* Reset all placements */
+    grid-column: span 1;
+    grid-row: auto;
+    height: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-bento-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Old Bento Styles Removed/Commented Out */
+/* .bento-grid { ... } */
 
 /* Stats Section (Modern) */
 .stats-section {
@@ -1913,5 +1948,306 @@
 
   .geo-stats-container {
     flex-direction: column;
+  }
+}
+
+
+/* --- Divisions Section Redesign --- */
+.business-divisions-section {
+  padding: 8rem 0;
+  background-color: #f8f9fa;
+}
+
+.divisions-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  /* 40% - 60% roughly */
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+.divisions-left {
+  padding-right: 2rem;
+}
+
+.divisions-desc {
+  font-family: "Lato", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-top: 1rem;
+}
+
+.divisions-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* New Division Card */
+.division-card-new {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-left: 4px solid transparent;
+}
+
+.division-card-new:hover {
+  transform: translateX(10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  border-left-color: #144AE0;
+}
+
+.division-info h3 {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.division-card-new:hover .division-info h3 {
+  color: #144AE0;
+}
+
+.division-info p {
+  font-family: "Lato", sans-serif;
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.division-arrow {
+  color: #ccc;
+  transition: all 0.3s ease;
+  margin-left: 2rem;
+}
+
+.division-card-new:hover .division-arrow {
+  color: #144AE0;
+  transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .divisions-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .divisions-left {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .section-title {
+    text-align: center !important;
+  }
+}
+
+/* --- Contact Form Section (Copied from Internship) --- */
+.internship-form-section {
+  padding: 6rem 0;
+  background-color: #f8fafc;
+}
+
+.form-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #071230;
+  border-radius: 24px;
+  padding: 4rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Corner Patterns */
+.form-container::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 400px;
+  height: 400px;
+  background: repeating-radial-gradient(circle at 0 0,
+      transparent 0,
+      transparent 20px,
+      rgba(20, 74, 224, 0.15) 20px,
+      rgba(20, 74, 224, 0.15) 22px);
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 0 0 100% 0;
+}
+
+.form-container::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 400px;
+  height: 400px;
+  background: repeating-radial-gradient(circle at 100% 100%,
+      transparent 0,
+      transparent 20px,
+      rgba(20, 74, 224, 0.15) 20px,
+      rgba(20, 74, 224, 0.15) 22px);
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 100% 0 0 0;
+}
+
+.form-info-side,
+.form-input-side {
+  position: relative;
+  z-index: 1;
+}
+
+.form-info-side {
+  flex: 0.8;
+}
+
+.form-heading {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+
+.form-subtext {
+  font-size: 1rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.form-contact-details p {
+  font-size: 1rem;
+  color: #e2e8f0;
+  margin: 0.25rem 0;
+  font-weight: 500;
+}
+
+.form-email {
+  color: #60a5fa;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form-socials {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.social-circle {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #475569;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.social-circle:hover {
+  border-color: #60a5fa;
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.1);
+}
+
+.form-input-side {
+  flex: 1.2;
+}
+
+.internship-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-left: 0;
+}
+
+.form-input-line {
+  width: 100%;
+  padding: 0.75rem 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #475569;
+  background: transparent;
+  font-size: 1rem;
+  color: #ffffff;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.form-input-line:focus {
+  outline: none;
+  border-bottom-color: #60a5fa;
+}
+
+.form-submit-btn {
+  align-self: flex-start;
+  margin-top: 1rem;
+  background-color: #144AE0;
+  color: white;
+  font-weight: 700;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-submit-btn:hover {
+  background-color: #3b82f6;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .form-container {
+    flex-direction: column;
+    gap: 3rem;
+    padding: 2.5rem;
+  }
+
+  .form-info-side,
+  .form-input-side {
+    width: 100%;
   }
 }

@@ -89,6 +89,7 @@ body {
   padding: 0;
   min-width: 320px;
   min-height: 100vh;
+  scroll-behavior: smooth;
   /* overflow-x: hidden; - Removed to fix sticky scroll issues */
 }
 
