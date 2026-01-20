@@ -3,7 +3,7 @@ import '../../styles/Page.css';
 import './Builders.css';
 
 // Hero Image (Builders)
-import heroImage from '../../assets/industry/builders/pexels-mikael-blomkvist-8961624.webp';
+import heroImage from '../../assets/industry/Builders/pexels-mikael-blomkvist-8961624.webp';
 
 // Reuse existing images for content sections
 import contentImg1 from '../../assets/images-home/architectural-bim.webp';
