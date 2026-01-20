@@ -1,0 +1,1225 @@
+/* Healthcare Page Styles */
+
+/* --- Hero Section (Adapted from DesignEngineeringProjects.css) --- */
+.engineering-hero-section {
+    position: relative;
+    height: 85vh;
+    /* Large impactful hero */
+    background-size: cover;
+    background-position: center 30%;
+    /* Bring photo down */
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.engineering-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Overlay to make text pop */
+    z-index: 1;
+}
+
+.engineering-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 2rem;
+    color: #ffffff;
+}
+
+/* Breadcrumbs */
+.engineering-breadcrumbs {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    text-transform: none;
+}
+
+.engineering-breadcrumbs span {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.engineering-hero-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    text-transform: capitalize;
+}
+
+.engineering-hero-desc {
+    font-family: "Lato", sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.engineering-hero-cta {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background-color: #144AE0;
+    /* Brand Blue */
+    color: #ffffff;
+    font-family: "Lato", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.engineering-hero-cta:hover {
+    background-color: #0d3aa1;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* --- Concept Section (Adapted from VirtualTeam.css .virtual-what-section) --- */
+.engineering-concept-section {
+    padding: 8rem 0;
+    background-color: #f8fafc;
+    /* Match Secondment bg */
+    overflow: hidden;
+}
+
+.engineering-concept-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+    /* Large gap between text and image */
+}
+
+.engineering-concept-text {
+    flex: 1;
+}
+
+.engineering-concept-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #144AE0;
+    /* Brand Blue (Updated) */
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.engineering-concept-desc p {
+    font-size: 1.15rem;
+    color: #475569;
+    /* Slate 600 */
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.engineering-concept-desc p:last-child {
+    margin-bottom: 0;
+}
+
+.engineering-concept-image-wrapper {
+    flex: 1;
+    position: relative;
+    padding-left: 2rem;
+    /* Add padding for the back layer */
+}
+
+/* Decorative backdrop for image (Replicating VirtualTeam/Secondment design) */
+.engineering-image-back {
+    position: absolute;
+    top: -2rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #cbd5e1;
+    /* Accent Color */
+    opacity: 0.5;
+    border-radius: 12px;
+    z-index: 0;
+    transform: rotate(-3deg);
+    /* Tilted back layer for depth */
+    border: none;
+    /* Removed the previous border style */
+}
+
+.engineering-concept-img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    /* Matched radius */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    max-height: 500px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.engineering-concept-img:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .engineering-hero-title {
+        font-size: 3.5rem;
+    }
+
+    .engineering-concept-container {
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .engineering-concept-image-wrapper {
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .engineering-hero-section {
+        height: 70vh;
+    }
+
+    .engineering-hero-title {
+        font-size: 2.8rem;
+    }
+
+    .engineering-concept-section {
+        padding: 5rem 0;
+    }
+
+    .engineering-concept-title {
+        font-size: 2.5rem;
+    }
+}
+
+
+/* --- Healthcare Facilities Section (Sticky Layout) --- */
+.engineering-facilities-section {
+    padding: 6rem 0;
+    background-color: #ffffff;
+    position: relative;
+    border-top: 1px solid #f1f5f9;
+}
+
+.engineering-facilities-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    /* Left Heading vs Right Cards matching Career */
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+/* Sticky Left Side */
+.engineering-sticky-left {
+    position: sticky;
+    top: 150px;
+    /* Stick below header */
+    height: fit-content;
+    align-self: start;
+}
+
+.engineering-header-content {
+    max-width: 450px;
+}
+
+.engineering-tagline {
+    font-size: 1.25rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.engineering-section-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #144AE0;
+    /* Brand Blue */
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.engineering-decorative-line {
+    width: 80px;
+    height: 4px;
+    background-color: #0f172a;
+    /* Dark Accent */
+    border-radius: 2px;
+}
+
+/* Right Side - Cards List */
+.engineering-cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    /* Spacing between cards */
+}
+
+/* Facility Card Style */
+.engineering-facility-card {
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-width: 90%;
+    /* Limit width slightly for visual flow */
+    border: 1px solid #f1f5f9;
+}
+
+/* Uneven / Staggered Alignment Logic */
+.engineering-facility-card:nth-child(odd) {
+    align-self: flex-start;
+}
+
+.engineering-facility-card:nth-child(even) {
+    align-self: flex-end;
+    margin-top: 2rem;
+    /* Add stagger offset */
+}
+
+.engineering-facility-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.engineering-card-image-wrapper {
+    width: 100%;
+    height: 300px;
+    /* Large Image */
+    overflow: hidden;
+    position: relative;
+}
+
+.engineering-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.engineering-facility-card:hover .engineering-card-img {
+    transform: scale(1.05);
+}
+
+.engineering-card-content {
+    padding: 2.5rem;
+    background: #ffffff;
+    border-top: 1px solid #f1f5f9;
+    position: relative;
+}
+
+/* Optional deco line on card */
+.engineering-card-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 2.5rem;
+    width: 60px;
+    height: 4px;
+    background-color: #144AE0;
+}
+
+.engineering-card-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.engineering-card-desc {
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .engineering-facilities-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .engineering-sticky-left {
+        position: relative;
+        top: 0;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .engineering-header-content {
+        max-width: 100%;
+    }
+
+    .engineering-cards-list {
+        max-width: 600px;
+        /* Constrain width when stacked */
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .engineering-facility-card {
+        max-width: 100%;
+        align-self: center !important;
+        /* Reset stagger */
+        margin-top: 0 !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .engineering-card-image-wrapper {
+        height: 200px;
+        /* Smaller images */
+    }
+
+    .engineering-card-content {
+        padding: 1.5rem;
+    }
+
+    .engineering-card-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* --- Healthcare Hiring Section (Adapted from Internship 'Who Can Join') --- */
+.engineering-hiring-section {
+    padding: 6rem 0;
+    background-color: #f8fafc;
+}
+
+.engineering-hiring-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.engineering-hiring-image-side {
+    position: relative;
+    height: 100%;
+    min-height: 400px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.engineering-hiring-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.engineering-hiring-content-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.section-heading-blue {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #144AE0;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.section-blob-text {
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+    .engineering-hiring-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .engineering-hiring-image-side {
+        order: -1;
+        min-height: 300px;
+    }
+}
+
+
+/* --- Healthcare Bento Grid Section (Adapted from Secondment 'Bento') --- */
+.engineering-bento-section {
+    padding: 8rem 0;
+    background-color: #ffffff;
+}
+
+.engineering-bento-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.engineering-bento-header {
+    margin-bottom: 4rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.engineering-bento-heading {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #144AE0;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.engineering-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    grid-auto-rows: minmax(220px, auto);
+    /* Slightly taller */
+}
+
+/* Card Base */
+.engineering-bento-card {
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid transparent;
+}
+
+.engineering-bento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Variants */
+.hb-white {
+    background-color: #f8fafc;
+    border-color: #e2e8f0;
+}
+
+.hb-white .hb-title {
+    color: #0f172a;
+}
+
+.hb-white .hb-desc {
+    color: #475569;
+}
+
+.hb-white .hb-icon-box {
+    background: rgba(20, 74, 224, 0.1);
+    color: #144AE0;
+}
+
+.hb-blue {
+    background: linear-gradient(135deg, #144AE0 0%, #0f3cb3 100%);
+    color: white;
+}
+
+.hb-blue .hb-icon-box {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(4px);
+}
+
+.hb-blue .hb-desc {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hb-blue .hb-title {
+    color: white;
+}
+
+.hb-dark {
+    background: linear-gradient(135deg, #071230 0%, #0b1d4d 100%);
+    color: white;
+}
+
+.hb-dark .hb-icon-box {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    backdrop-filter: blur(4px);
+}
+
+.hb-dark .hb-desc {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hb-dark .hb-title {
+    color: white;
+}
+
+.hb-photo {
+    background-size: cover;
+    background-position: center;
+    color: white;
+    border: none;
+    position: relative;
+}
+
+.hb-photo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(7, 18, 48, 0.9), rgba(7, 18, 48, 0.4));
+    z-index: 1;
+}
+
+.hb-photo>* {
+    position: relative;
+    z-index: 2;
+}
+
+.hb-photo .hb-icon-box {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(4px);
+}
+
+.hb-photo .hb-title {
+    color: white;
+}
+
+.hb-photo .hb-desc {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+.hb-span-2-col {
+    grid-column: span 2;
+}
+
+/* Content */
+.hb-icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.hb-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.2;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.hb-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+    .engineering-bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .engineering-bento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hb-span-2-col {
+        grid-column: span 1;
+    }
+
+    .engineering-bento-heading {
+        font-size: 2.2rem;
+    }
+}
+
+/* --- Business Types Split Carousel Section (Redesign) --- */
+.engineering-business-section {
+    padding: 6rem 0;
+    background-color: #071230;
+    /* Dark Background */
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.engineering-business-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    /* More padding for premium look */
+}
+
+.business-split-layout {
+    display: flex;
+    /* align-items: center; */
+    gap: 6rem;
+    /* Large gap */
+    min-height: 500px;
+    /* Ensure substantial height */
+}
+
+
+/* Left Side */
+.business-left-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.business-heading {
+    font-family: system-ui, Segoe UI, Roboto, sans-serif;
+    font-size: 3rem;
+    /* Large heading */
+    font-weight: 800;
+    /* User Edit */
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    color: #ffffff;
+}
+
+.business-desc {
+    font-size: 1rem;
+    /* User Edit */
+    /* line-height: 1.7; */
+    /* User Edit */
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 3rem;
+    max-width: 500px;
+}
+
+/* Controls */
+.business-controls-wrapper {
+    margin-top: auto;
+}
+
+.business-progress-line {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-bottom: 1.5rem;
+}
+
+.business-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.slide-counter {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.1em;
+}
+
+.nav-arrows {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-arrow-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+.nav-arrow-btn:hover {
+    color: #ffffff;
+}
+
+/* --- Why Choose JSE Section (Healthcare) --- */
+.engineering-why-section {
+    padding: 8rem 0;
+    background-color: #ffffff;
+}
+
+.engineering-header-center {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 4rem auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.engineering-why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.engineering-why-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.engineering-why-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: #144AE0;
+}
+
+.engineering-icon-circle {
+    width: 64px;
+    height: 64px;
+    background-color: rgba(20, 74, 224, 0.1);
+    color: #144AE0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.engineering-why-card:hover .engineering-icon-circle {
+    background-color: #144AE0;
+    color: #ffffff;
+}
+
+.engineering-card-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1rem;
+}
+
+.engineering-card-desc {
+    font-size: 1rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.nav-arrow-btn svg {
+    width: 32px;
+    height: 32px;
+    /* Large arrows */
+}
+
+
+/* Right Side */
+.business-right-side {
+    flex: 1.2;
+    /* Slightly wider */
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    /* Removed border radius for sharp look matching reference if needed, 
+       but keeping slight radius for brand consistency is usually safer. 
+       Reference image shows sharp or full bleed. I'll use sharp. */
+}
+
+.business-feature-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(1.02);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .business-heading {
+        font-size: 2.5rem;
+    }
+
+    .business-split-layout {
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .engineering-business-container {
+        padding: 0 2rem;
+    }
+
+    .business-split-layout {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .business-right-side {
+        width: 100%;
+        height: 300px;
+    }
+
+    .business-heading {
+        font-size: 2rem;
+    }
+
+    .business-controls {
+        margin-top: 1rem;
+    }
+}
+
+/* --- Innovative Software Tools Section --- */
+.engineering-tech-section {
+    padding: 8rem 0;
+    background-color: #f8fafc;
+}
+
+.engineering-tech-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.engineering-tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.engineering-tech-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 120px;
+}
+
+.engineering-tech-logo-wrapper {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.engineering-tech-card:hover .engineering-tech-logo-wrapper {
+    transform: translateY(-5px);
+}
+
+.engineering-tech-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.engineering-tech-abbr {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #144AE0;
+}
+
+.engineering-tech-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #475569;
+    text-align: center;
+}
+
+/* --- Form Section (Copied and Adapted from Internship.css) --- */
+.engineering-form-section {
+    padding: 6rem 0;
+    background-color: #f8fafc;
+    /* Light Slate */
+}
+
+.engineering-form-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #071230;
+    /* Dark Hero Color */
+    border-radius: 24px;
+    padding: 4rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+    color: #ffffff;
+    /* White Text Global */
+    position: relative;
+    /* For patterns */
+    overflow: hidden;
+    /* Contain patterns */
+}
+
+/* Corner Patterns (Geometric Lines) */
+.engineering-form-container::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 400px;
+    height: 400px;
+    /* Concentric Circles Pattern Top Left */
+    background: repeating-radial-gradient(circle at 0 0,
+            transparent 0,
+            transparent 20px,
+            rgba(20, 74, 224, 0.15) 20px,
+            rgba(20, 74, 224, 0.15) 22px);
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 0 0 100% 0;
+}
+
+.engineering-form-container::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 400px;
+    height: 400px;
+    /* Concentric Circles Pattern Bottom Right */
+    background: repeating-radial-gradient(circle at 100% 100%,
+            transparent 0,
+            transparent 20px,
+            rgba(20, 74, 224, 0.15) 20px,
+            rgba(20, 74, 224, 0.15) 22px);
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 100% 0 0 0;
+}
+
+/* Ensure Content is above patterns */
+.engineering-form-info-side,
+.engineering-form-input-side {
+    position: relative;
+    z-index: 1;
+}
+
+/* Left Info Side */
+.engineering-form-info-side {
+    flex: 0.8;
+    padding-right: 0;
+    /* Reset from previous */
+}
+
+.engineering-form-heading {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    /* White */
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+.engineering-form-subtext {
+    font-size: 1rem;
+    color: #cbd5e1;
+    /* Slate 300 */
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+.engineering-form-contact-details p {
+    font-size: 1rem;
+    color: #e2e8f0;
+    /* Slate 200 */
+    margin: 0.25rem 0;
+    font-weight: 500;
+}
+
+.engineering-form-email {
+    color: #60a5fa;
+    /* Light Blue for Dark Mode */
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.engineering-form-socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.engineering-social-circle {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #475569;
+    /* Darker Border */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.engineering-social-circle:hover {
+    border-color: #60a5fa;
+    color: #60a5fa;
+    background: rgba(96, 165, 250, 0.1);
+}
+
+/* Right Input Side */
+.engineering-form-input-side {
+    flex: 1.2;
+    background: transparent;
+}
+
+.engineering-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.engineering-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.engineering-form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #94a3b8;
+    /* Slate 400 */
+    margin-left: 0;
+}
+
+/* Just Line (Underlined) Style */
+.engineering-form-input-line {
+    width: 100%;
+    padding: 0.75rem 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #475569;
+    /* Slate border */
+    background: transparent;
+    font-size: 1rem;
+    color: #ffffff;
+    /* White Input Text */
+    border-radius: 0;
+    /* No radius */
+    outline: none;
+    box-shadow: none;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.engineering-form-input-line:focus {
+    outline: none;
+    border-bottom-color: #60a5fa;
+    /* Blue Bottom Border on Focus */
+    box-shadow: none;
+}
+
+.engineering-form-submit-btn {
+    align-self: flex-start;
+    margin-top: 1rem;
+    background-color: #144AE0;
+    /* Brand Blue */
+    color: white;
+    font-weight: 700;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: none;
+    /* Reset if set elsewhere */
+    letter-spacing: normal;
+}
+
+.engineering-form-submit-btn:hover {
+    background-color: #3b82f6;
+    /* Lighter Blue Hover */
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .engineering-form-container {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 2.5rem;
+    }
+
+    .engineering-form-info-side,
+    .engineering-form-input-side {
+        width: 100%;
+    }
+
+    .engineering-form-heading {
+        font-size: 2.5rem;
+    }
+}

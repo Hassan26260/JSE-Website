@@ -165,7 +165,7 @@ const MechatronicsEngineering = () => {
           {/* Right: Image */}
           <div className="internship-image-side">
             <div className="internship-image-wrapper">
-              <img src={internImage} alt="Civil Engineering Internship" className="internship-img" />
+              <img src={internImage} alt="Civil Engineering Internship" className="internship-img" loading="lazy" />
             </div>
           </div>
 
@@ -179,7 +179,7 @@ const MechatronicsEngineering = () => {
           {/* Left: Image Side */}
           <div className="highlights-image-side">
             <div className="highlights-img-wrapper">
-              <img src={highlightsImage} alt="Civil Engineering Student" className="highlights-img" />
+              <img src={highlightsImage} alt="Civil Engineering Student" className="highlights-img" loading="lazy" />
             </div>
           </div>
 

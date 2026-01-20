@@ -1,90 +1,105 @@
-import React, { useState } from "react";
-import "../styles/Home.css"; // Keep for shared utilities like .dash-tagline if needed, or rely on global
-import "../styles/Portfolio.css"; // New dedicated CSS
+import React, { useState, useMemo, useEffect } from "react";
+import "../styles/Home.css";
+import "../styles/Portfolio.css";
 
-// Import new portfolio images
-import p1 from "../assets/portfolio.img/pexels-jgathisan0612-1580112.webp";
-import p2 from "../assets/portfolio.img/pexels-jimbear-998499.webp";
-import p3 from "../assets/portfolio.img/pexels-mantasink-1106476.webp";
-import p4 from "../assets/portfolio.img/pexels-pixabay-210598.webp";
-import p5 from "../assets/portfolio.img/pexels-pixabay-273209.webp";
-import p6 from "../assets/portfolio.img/pexels-pixasquare-1123982.webp";
+// Import Centralized Real Portfolio Data
+import { ARCH_PROJECTS, STEEL_PROJECTS, MEP_PROJECTS } from "../data/realPortfolio";
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [activeSubCategory, setActiveSubCategory] = useState(null);
+
+  // Modal State
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const filters = [
     "All",
-    "Hospitality",
-    "Masterplanning",
-    "Residential",
-    "Entertainment",
-    "Commercial",
-    "Industrial"
+    "MEP",
+    "Steel Detailing",
+    "Architectural Structure"
   ];
 
-  // Projects Data with new images
-  const projects = [
-    {
-      id: 1,
-      title: "Luxury Resort Masterplan",
-      category: "Hospitality",
-      image: p1
-    },
-    {
-      id: 2,
-      title: "Urban City Center",
-      category: "Masterplanning",
-      image: p2
-    },
-    {
-      id: 3,
-      title: "Skyline Residential Tower",
-      category: "Residential",
-      image: p3
-    },
-    {
-      id: 4,
-      title: "Theme Park Districting",
-      category: "Entertainment",
-      image: p4
-    },
-    {
-      id: 5,
-      title: "Tech Park Commercial Hub",
-      category: "Commercial",
-      image: p5
-    },
-    {
-      id: 6,
-      title: "Industrial Manufacturing Unit",
-      category: "Industrial",
-      image: p6
-    },
-    // Reuse some images for remaining items to fill grid
-    {
-      id: 7,
-      title: "Beachfront Villa Compound",
-      category: "Residential",
-      image: p1
-    },
-    {
-      id: 8,
-      title: "Shopping Mall Complex",
-      category: "Commercial",
-      image: p3
-    },
-    {
-      id: 9,
-      title: "Eco-Industrial Park",
-      category: "Industrial",
-      image: p2
+  // Derive All Projects
+  const allProjects = useMemo(() => {
+    return [...MEP_PROJECTS, ...STEEL_PROJECTS, ...ARCH_PROJECTS];
+  }, []);
+
+  // Derive MEP Subcategories dynamically from MEP_PROJECTS
+  const mepSubCategories = useMemo(() => {
+    const subCats = {};
+    MEP_PROJECTS.forEach(project => {
+      if (!project.subCategory) return;
+
+      if (!subCats[project.subCategory]) {
+        subCats[project.subCategory] = {
+          id: `cat-${project.subCategory.replace(/\s+/g, '-')}`,
+          title: project.subCategory,
+          image: project.image || project.gallery[0], // Use project main image as subcat thumb
+          hasMain: false
+        };
+      }
+    });
+    return Object.values(subCats);
+  }, []);
+
+  // -- Event Handlers --
+
+  const handleFilterClick = (filter) => {
+    setActiveFilter(filter);
+    setActiveSubCategory(null);
+  };
+
+  const handleSubCategoryClick = (subCatTitle) => {
+    setActiveSubCategory(subCatTitle);
+  };
+
+  const handleBackToMEP = () => {
+    setActiveSubCategory(null);
+  };
+
+  const openProjectModal = (project) => {
+    setSelectedProject(project);
+    setCurrentImageIndex(0);
+    // Disable background scroll
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeProjectModal = () => {
+    setSelectedProject(null);
+    document.body.style.overflow = 'unset';
+  };
+
+  // -- Modal Navigation --
+  const nextImage = () => {
+    if (selectedProject && currentImageIndex < selectedProject.gallery?.length - 1) {
+      setCurrentImageIndex(prev => prev + 1);
     }
-  ];
+  };
 
-  const filteredProjects = activeFilter === "All"
-    ? projects
-    : projects.filter(p => p.category === activeFilter);
+  const prevImage = () => {
+    if (currentImageIndex > 0) {
+      setCurrentImageIndex(prev => prev - 1);
+    }
+  };
+
+
+  // -- Render Logic --
+  let contentToRender = [];
+  let isFolderView = false;
+
+  if (activeFilter === "MEP" && !activeSubCategory) {
+    contentToRender = mepSubCategories;
+    isFolderView = true;
+  } else {
+    if (activeFilter === "All") {
+      contentToRender = allProjects;
+    } else if (activeFilter === "MEP") {
+      contentToRender = allProjects.filter(p => p.category === "MEP" && p.subCategory === activeSubCategory);
+    } else {
+      contentToRender = allProjects.filter(p => p.category === activeFilter);
+    }
+  }
 
   return (
     <div className="portfolio-page">
@@ -104,38 +119,139 @@ const Portfolio = () => {
             <button
               key={filter}
               className={`portfolio-filter-btn ${activeFilter === filter ? 'active' : ''}`}
-              onClick={() => setActiveFilter(filter)}
+              onClick={() => handleFilterClick(filter)}
             >
               {filter}
             </button>
           ))}
         </div>
 
-        {/* Projects Grid */}
+        {/* Breadcrumb for MEP */}
+        {activeFilter === "MEP" && activeSubCategory && (
+          <div style={{ marginBottom: "2rem" }}>
+            <button
+              onClick={handleBackToMEP}
+              className="back-btn"
+              style={{
+                background: "none",
+                border: "none",
+                color: "#144AE0",
+                cursor: "pointer",
+                fontSize: "1rem",
+                fontWeight: "600",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem"
+              }}
+            >
+              ← Back to MEP Categories
+            </button>
+            <h2 style={{ marginTop: "1rem", fontSize: "1.5rem" }}>{activeSubCategory} Projects</h2>
+          </div>
+        )}
+
+        {/* Grid */}
         <div className="portfolio-grid">
-          {filteredProjects.map((project) => (
-            <div key={project.id} className="portfolio-card">
+          {contentToRender.map((item) => (
+            <div
+              key={item.id}
+              className="portfolio-card"
+              onClick={() => {
+                if (isFolderView) {
+                  handleSubCategoryClick(item.title);
+                } else if (item.category === "Architectural Structure" || item.category === "Steel Detailing" || item.category === "MEP") {
+                  openProjectModal(item);
+                }
+              }}
+              style={{ cursor: "pointer" }}
+            >
               <img
-                src={project.image}
-                alt={project.title}
+                src={item.image}
+                alt={item.title}
                 className="portfolio-img"
-                loading="eager"
+                loading="lazy"
                 width="800"
                 height="600"
               />
               <div className="portfolio-overlay">
                 <div className="portfolio-content">
-                  <h3 className="portfolio-title">{project.title}</h3>
-                  <button className="portfolio-cta">
-                    Explore <span className="arrow">→</span>
-                  </button>
+                  <h3 className="portfolio-title">{item.title}</h3>
+                  {isFolderView ? (
+                    <span className="view-more">View Projects →</span>
+                  ) : (
+                    <button className="portfolio-cta">
+                      Explore <span className="arrow">→</span>
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
           ))}
         </div>
 
+        {contentToRender.length === 0 && (
+          <div className="no-projects">
+            <p>No projects found in this category yet.</p>
+          </div>
+        )}
       </div>
+
+      {/* Project Detail Modal */}
+      {selectedProject && (
+        <div className="project-modal-overlay" onClick={closeProjectModal}>
+          <div className="project-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-modal-btn" onClick={closeProjectModal}>×</button>
+
+            {/* Carousel */}
+            <div className="modal-carousel">
+              {selectedProject.gallery && selectedProject.gallery.length > 0 ? (
+                <>
+                  <div className="carousel-image-container">
+                    <img
+                      src={selectedProject.gallery[currentImageIndex]}
+                      alt={`Slide ${currentImageIndex}`}
+                      className="modal-img"
+                    />
+                  </div>
+
+                  {/* Controls */}
+                  <div className="carousel-controls">
+                    <button
+                      className="carousel-btn prev"
+                      onClick={prevImage}
+                      disabled={currentImageIndex === 0}
+                    >
+                      ←
+                    </button>
+                    <span className="carousel-counter">
+                      {currentImageIndex + 1} / {selectedProject.gallery.length}
+                    </span>
+                    <button
+                      className="carousel-btn next"
+                      onClick={nextImage}
+                      disabled={currentImageIndex === selectedProject.gallery.length - 1}
+                    >
+                      →
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <p>No images available.</p>
+              )}
+            </div>
+
+            {/* About Section */}
+            <div className="modal-info">
+              <h2 className="modal-title">{selectedProject.title}</h2>
+              <h4 className="modal-subtitle">About Project</h4>
+              <p className="modal-description" style={{ whiteSpace: 'pre-line' }}>
+                {selectedProject.description || "This project represents one of our key architectural achievements, showcasing our commitment to precision, sustainability, and innovative design."}
+              </p>
+            </div>
+
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -89,7 +89,7 @@ const Internship = () => {
     {
       title: "Electronics & Communication Engineering (ECE)",
       path: "/internship/electronics-communication-engineering",
-      description: "Hands-on training in ELV systems, BMS controls, and communication network design."
+      description: "Hands-on training in Extra Low Voltage systems, BMS controls, and communication network design."
     },
     {
       title: "Mechatronics Engineering",
@@ -106,6 +106,16 @@ const Internship = () => {
       path: "/internship/structural-environmental-engineering",
       description: "Analysis and design of resilient structures focusing on sustainability and environmental impact."
     },
+    {
+      title: "Electrical & Architectural",
+      path: "/internship/electrical-architectural",
+      description: "Integrated design training covering both electrical systems and architectural planning."
+    },
+    {
+      title: "Other",
+      path: "/internship/other-internships",
+      description: "Flexible internship programs covering various other engineering and technical disciplines."
+    },
   ];
 
   const tools = [
@@ -115,7 +125,7 @@ const Internship = () => {
     { title: "Dialux", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a6 6 0 0 1 6 6c0 2.22-1.21 4.15-3 5.19V17a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-3.81A6 6 0 0 1 6 8a6 6 0 0 1 6-6z" /></svg> },
     { title: "Naviswork", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12h20M12 2a10 10 0 0 1 0 20 10 10 0 0 1 0-20z" /></svg> },
     { title: "HVAC", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 12m-10 0a10 10 0 1 0 20 0a10 10 0 1 0-20 0M12 12l4.9 4.9M12 12l-4.9 4.9M12 12l4.9-4.9M12 12l-4.9-4.9" /></svg> },
-    { title: "Electrical & ELV", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg> },
+    { title: "Electrical & Extra Low Voltage", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg> },
     { title: "PHE & Firefighting", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" /></svg> },
     { title: "TEKLA", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l8-4 8 4v14" /></svg> },
     { title: "ARCH", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 22v-5l5-5 5 5v5M12 12l5-5 5 5v5" /></svg> },
@@ -131,7 +141,7 @@ const Internship = () => {
           <div className="internship-breadcrumbs">
             Home &gt; <span>Internship</span>
           </div>
-          <h1 className="internship-hero-title">Internship Programs</h1>
+          <h1 className="internship-hero-title">Internship Opportunities</h1>
           {/* <p style={{ color: '#cbd5e1', fontSize: '1.2rem', marginTop: '1rem', maxWidth: '600px' }}>
             Shape your engineering career with hands-on experience. Choose from our specialized programs designed for industry readiness.
           </p> */}
@@ -159,7 +169,7 @@ const Internship = () => {
           ref={imageRef}
           className="expanding-image-wrapper"
         >
-          <img src={heroGroupImage} alt="JSE Internship Team" className="expanding-img" />
+          <img src={heroGroupImage} alt="JSE Internship Team" className="expanding-img" loading="lazy" />
         </div>
       </section>
 
@@ -180,7 +190,7 @@ const Internship = () => {
           </div>
         </div>
         <div className="who-image-side">
-          <img src={eligibilityImage} alt="Students collaborating" className="who-img" />
+          <img src={eligibilityImage} alt="Students collaborating" className="who-img" loading="lazy" />
         </div>
       </section>
 
@@ -311,7 +321,7 @@ const Internship = () => {
       {/* Recruitment Process Section */}
       <section className="who-can-join-section" style={{ padding: '6rem 2rem', marginTop: '2rem' }}>
         <div className="who-image-side">
-          <img src={eligibilityImage} alt="Recruitment Process" className="who-img" />
+          <img src={eligibilityImage} alt="Recruitment Process" className="who-img" loading="lazy" />
         </div>
         <div className="who-content-side">
           <div className="dash-tagline">

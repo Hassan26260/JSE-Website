@@ -98,4 +98,24 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+
+}
+
+/* Global Mobile Typography Overrides */
+@media (max-width: 768px) {
+  .dash-tagline {
+    font-size: 0.75rem !important;
+    /* Force smaller size */
+    letter-spacing: 0.1em !important;
+  }
+
+  h2,
+  .section-title,
+  .stats-title,
+  .solutions-title,
+  .about-company-name {
+    font-size: 1.75rem !important;
+    /* Reduce huge headings */
+    line-height: 1.3 !important;
+  }
 }

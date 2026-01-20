@@ -1,13 +1,16 @@
 import "../styles/Home.css";
 import heroBanner from "../assets/images-home/Herobanner.webp";
 import heroGroupImage from "../assets/images-home/hero-group-image.webp";
+import whyChooseUsImage from "../assets/images-home/why choose us.png";
 import architecturalBim from "../assets/images-home/architectural-bim.webp";
 import hvacDesign from "../assets/images-home/hvac-design.webp";
 import plumbing from "../assets/images-home/plumbing.webp";
 import mepDesign from "../assets/images-home/mep-design.webp";
 import bimModelling from "../assets/images-home/bim-modelling.webp";
 import electricalSystem from "../assets/images-home/electrical-system.webp";
+
 import mapImage from "../assets/images-home/Map.png";
+import heroVideo from "../assets/images-home/hero-video.mp4";
 
 import { useState, useEffect, useRef } from "react";
 
@@ -37,7 +40,7 @@ const ClientLogoGrid = () => {
               <img
                 src={logo}
                 alt={`Client Logo ${rowIndex}-${logoIndex}`}
-                loading="eager"
+                loading="lazy"
                 width="150"
                 height="80"
               />
@@ -54,6 +57,10 @@ const Home = () => {
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [statsStarted, setStatsStarted] = useState(false);
   const statsRef = useRef(null);
+
+  // About Image Animation State
+  const [aboutImageVisible, setAboutImageVisible] = useState(false);
+  const aboutImageRef = useRef(null);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -115,6 +122,25 @@ const Home = () => {
     return () => observer.disconnect();
   }, []);
 
+  // About Image Observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setAboutImageVisible(true);
+          observer.disconnect(); // Animate once
+        }
+      },
+      { threshold: 0.3 } // Trigger when 30% visible
+    );
+
+    if (aboutImageRef.current) {
+      observer.observe(aboutImageRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   // Custom hook for counting up
   const useCountUp = (end, duration = 2000) => {
     const [count, setCount] = useState(0);
@@ -141,7 +167,17 @@ const Home = () => {
     return count;
   };
 
+
+
   const StatCounter = ({ end, suffix = "" }) => {
+    // Check for mobile width directly
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
+    // If mobile, show end value immediately
+    if (isMobile) {
+      return <span>{end}{suffix}</span>;
+    }
+
     const count = useCountUp(end);
     return <span>{count}{suffix}</span>;
   };
@@ -179,43 +215,40 @@ const Home = () => {
     }
   ];
 
-  // Clone reviews for infinite loop effect
-  const extendedReviews = [...reviews, ...reviews];
+  // Carousel State (Declared at top of component)
+  // const [currentReview, setCurrentReview] = useState(0);
+  // const [isTransitioning, setIsTransitioning] = useState(true);
+  const [visibleCards, setVisibleCards] = useState(3);
+
+  useEffect(() => {
+    const updateVisibleCards = () => {
+      if (window.innerWidth >= 1300) {
+        setVisibleCards(3);
+      } else if (window.innerWidth >= 850) {
+        setVisibleCards(2);
+      } else {
+        setVisibleCards(1);
+      }
+    };
+
+    updateVisibleCards();
+    window.addEventListener('resize', updateVisibleCards);
+    return () => window.removeEventListener('resize', updateVisibleCards);
+  }, []);
 
   const nextReview = () => {
-    setIsTransitioning(true);
-    setCurrentReview((prev) => prev + 1);
+    if (currentReview < reviews.length - visibleCards) {
+      setIsTransitioning(true);
+      setCurrentReview((prev) => prev + 1);
+    }
   };
 
   const prevReview = () => {
-    // Basic rewind for Prev button to keep it simple and robust
-    setIsTransitioning(true);
-    setCurrentReview((prev) => (prev === 0 ? reviews.length - 1 : prev - 1));
+    if (currentReview > 0) {
+      setIsTransitioning(true);
+      setCurrentReview((prev) => prev - 1);
+    }
   };
-
-  // Infinite Loop Logic: Snap back to 0 when we reach the end of the first set
-  useEffect(() => {
-    if (currentReview === reviews.length) {
-      // Wait for the transition to finish (500ms), then snap back to 0 without transition
-      const timer = setTimeout(() => {
-        setIsTransitioning(false);
-        setCurrentReview(0);
-      }, 500);
-      return () => clearTimeout(timer);
-    }
-  }, [currentReview, reviews.length]);
-
-  // Re-enable transition after snapping back
-  useEffect(() => {
-    if (!isTransitioning && currentReview === 0) {
-      // Force reflow/wait for next frame so the snap happens without transition
-      const timer = setTimeout(() => {
-        setIsTransitioning(true);
-      }, 50);
-      return () => clearTimeout(timer);
-    }
-  }, [isTransitioning, currentReview]);
-
 
   // Parallax Effect for Hero Background
   const heroRef = useRef(null);
@@ -238,8 +271,10 @@ const Home = () => {
       <section
         className="hero-section"
         ref={heroRef}
-        style={{ backgroundImage: `url(${heroBanner})` }}
       >
+        <video className="hero-video" autoPlay loop muted playsInline>
+          <source src={heroVideo} type="video/mp4" />
+        </video>
         <div className="hero-overlay"></div>
         <div className="hero-main-content">
           <h1 className="main-hero-title">JSE Engineering</h1>
@@ -366,11 +401,15 @@ const Home = () => {
           </div>
 
           <div className="about-image-container">
-            <div className="about-image-wrapper">
+            <div
+              className={`about-image-wrapper ${aboutImageVisible ? 'visible' : ''}`}
+              ref={aboutImageRef}
+            >
               <img
                 src={heroGroupImage}
                 alt="JSE Engineering Office"
                 className="about-image"
+                loading="lazy"
               />
               <div className="about-floating-badge">
                 <span className="badge-number">15+</span>
@@ -393,7 +432,8 @@ const Home = () => {
                 src={architecturalBim}
                 alt="Architectural BIM"
                 className="home-bento-img"
-                loading="eager"
+                loading="lazy"
+                decoding="async"
               />
               <div className="home-bento-overlay"></div>
               <div className="home-bento-content">
@@ -406,7 +446,8 @@ const Home = () => {
                 src={hvacDesign}
                 alt="HVAC Design"
                 className="home-bento-img"
-                loading="eager"
+                loading="lazy"
+                decoding="async"
               />
               <div className="home-bento-overlay"></div>
               <div className="home-bento-content">
@@ -419,7 +460,8 @@ const Home = () => {
                 src={plumbing}
                 alt="Plumbing & Public Health"
                 className="home-bento-img"
-                loading="eager"
+                loading="lazy"
+                decoding="async"
               />
               <div className="home-bento-overlay"></div>
               <div className="home-bento-content">
@@ -432,7 +474,8 @@ const Home = () => {
                 src={mepDesign}
                 alt="MEP Design & Drafting"
                 className="home-bento-img"
-                loading="eager"
+                loading="lazy"
+                decoding="async"
               />
               <div className="home-bento-overlay"></div>
               <div className="home-bento-content">
@@ -445,7 +488,8 @@ const Home = () => {
                 src={bimModelling}
                 alt="BIM Modelling"
                 className="home-bento-img"
-                loading="eager"
+                loading="lazy"
+                decoding="async"
               />
               <div className="home-bento-overlay"></div>
               <div className="home-bento-content">
@@ -458,7 +502,8 @@ const Home = () => {
                 src={electricalSystem}
                 alt="Electrical System Design"
                 className="home-bento-img"
-                loading="eager"
+                loading="lazy"
+                decoding="async"
               />
               <div className="home-bento-overlay"></div>
               <div className="home-bento-content">
@@ -469,14 +514,15 @@ const Home = () => {
             <div className="home-bento-card">
               <img
                 src={mepDesign}
-                alt="ELV (Extra Low Voltage)"
+                alt="Extra Low Voltage"
                 className="home-bento-img"
-                loading="eager"
+                loading="lazy"
+                decoding="async"
               />
               <div className="home-bento-overlay"></div>
               <div className="home-bento-content">
-                <h3 className="home-bento-title">ELV Systems</h3>
-                <p className="home-bento-desc">Advanced ELV solutions.</p>
+                <h3 className="home-bento-title">Extra Low Voltage Systems</h3>
+                <p className="home-bento-desc">Advanced Extra Low Voltage solutions.</p>
               </div>
             </div>
             <div className="home-bento-card">
@@ -484,7 +530,8 @@ const Home = () => {
                 src={hvacDesign}
                 alt="Steel Structure Modeling"
                 className="home-bento-img"
-                loading="eager"
+                loading="lazy"
+                decoding="async"
               />
               <div className="home-bento-overlay"></div>
               <div className="home-bento-content">
@@ -579,24 +626,33 @@ const Home = () => {
           <div className="reviews-header">
             <div className="reviews-text-group">
               <p className="reviews-tagline">Client Success</p>
-              <h2 className="reviews-title">Our clients' satisfaction is our top priority. Here’s what our clients say about their experiences with us</h2>
+              <p className="reviews-title">Our clients' satisfaction is our top priority. Here’s what our clients say about their experiences with us</p>
             </div>
             <div className="reviews-nav-controls">
-              <button className="review-nav-btn prev-btn" onClick={prevReview}>
-                &#10094; {/* Simple Arrow Hex Code or SVG? Let's use simple for now or SVG for quality. User Ref had specific arrows. SVG is safer. */}
+              <button
+                className="review-nav-btn prev-btn"
+                onClick={prevReview}
+                disabled={currentReview === 0}
+                style={{ opacity: currentReview === 0 ? 0.5 : 1, cursor: currentReview === 0 ? 'not-allowed' : 'pointer' }}
+              >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
               </button>
-              <button className="review-nav-btn next-btn" onClick={nextReview}>
+              <button
+                className="review-nav-btn next-btn"
+                onClick={nextReview}
+                disabled={currentReview >= reviews.length - visibleCards}
+                style={{ opacity: currentReview >= reviews.length - visibleCards ? 0.5 : 1, cursor: currentReview >= reviews.length - visibleCards ? 'not-allowed' : 'pointer' }}
+              >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
               </button>
             </div>
           </div>
-
           <div className="reviews-carousel-outer">
             <div
               className="reviews-track"
               style={{
-                transform: `translateX(calc(-1 * ${currentReview} * (400px + 2rem)))`
+                transform: `translateX(calc(-1 * ${currentReview} * (400px + 2rem)))`,
+                transition: 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)'
               }}
             >
               {reviews.map((review, index) => (
@@ -622,29 +678,29 @@ const Home = () => {
           <div className="benefits-grid">
             <div className="benefits-column left">
               <div className="benefit-item">
-                <h3>Top 1% US-Trained Talent</h3>
-                <p>Our architects and engineers are among the best, specifically trained for US-based projects, with extensive experience in delivering high-quality results across the country.</p>
+                <h3>Multi-Disciplinary Design Expertise</h3>
+                <p>Seamless integration of MEP, BIM, Electrical, ELV, Plumbing, HVAC & Firefighting designs under one roof.</p>
               </div>
               <div className="benefit-item">
-                <h3>One-Month Risk-Free Trial</h3>
-                <p>Try our dedicated architects and engineers risk-free with a one-month, money-back guarantee—no questions asked.</p>
+                <h3>Precision & Coordination Driven</h3>
+                <p>Designs optimized to minimize clashes, improve constructability, and reduce rework on site.</p>
               </div>
               <div className="benefit-item">
-                <h3>No Long-Term Commitments</h3>
-                <p>Enjoy the flexibility of working with us without long-term commitments or lock-in periods.</p>
+                <h3>BIM-Enabled Workflows</h3>
+                <p>Advanced BIM tools and digital coordination for better visualization, faster approvals, and accurate quantity take-offs.</p>
               </div>
               <div className="benefit-item">
-                <h3>15-Day Notice Period</h3>
-                <p>We offer a flexible 15-day notice period, allowing you to scale your team up or down as your project requirements evolve.</p>
+                <h3>Cost-Optimized Engineering Solutions</h3>
+                <p>Efficient design methodologies that reduce material cost, energy consumption, and operational expenses.</p>
               </div>
             </div>
 
             <div className="benefits-column center">
               <div className="benefit-image-container">
                 <img
-                  src={heroGroupImage}
+                  src={whyChooseUsImage}
                   alt="JSE Engineering Benefits"
-                  loading="eager"
+                  loading="lazy"
                   width="600"
                   height="400"
                 />
@@ -653,20 +709,20 @@ const Home = () => {
 
             <div className="benefits-column right">
               <div className="benefit-item">
-                <h3>Access to a Vast Talent Pool</h3>
-                <p>Gain access to our extensive pool of top-tier talent, ensuring the perfect match for your project requirements.</p>
+                <h3>Fast Turnaround & On-Time Delivery</h3>
+                <p>Structured processes ensure reliable timelines for consultants, contractors, and developers.</p>
               </div>
               <div className="benefit-item">
-                <h3>Cultural Compatibility</h3>
-                <p>Our team integrates seamlessly into your culture, fostering a collaborative and productive environment.</p>
+                <h3>Sector-Wide Project Experience</h3>
+                <p>From residential to commercial, industrial, healthcare, hospitality, and institutional sectors.</p>
               </div>
               <div className="benefit-item">
-                <h3>Customer NPS of 86 (Quality Assurance)</h3>
-                <p>Our commitment to quality is reflected in our customer Net Promoter Score (NPS) of 86.</p>
+                <h3>Skilled Technical Team & Virtual Support</h3>
+                <p>Dedicated specialists with options for secondment and virtual teams to support project execution.</p>
               </div>
               <div className="benefit-item">
-                <h3>Round-the-Clock Productivity</h3>
-                <p>Leverage time zone differences to ensure 24/7 productivity and faster project delivery timestamps.</p>
+                <h3>Client-Centric Communication & Support</h3>
+                <p>Transparent communication, progressive updates, and responsive assistance throughout project lifecycle.</p>
               </div>
             </div>
           </div>
@@ -687,7 +743,7 @@ const Home = () => {
                   src={mapImage}
                   alt="Global Presence Map"
                   className="geo-map"
-                  loading="eager"
+                  loading="lazy"
                   width="800"
                   height="450"
                 />

@@ -1,16 +1,27 @@
 import express from "express";
-import cors from "cors";
 import dotenv from "dotenv";
+import cors from "cors";
+import connectDB from "./config/db.js";
+import internshipRoutes from "./routes/internshipRoutes.js";
 
 dotenv.config();
 
+// Init app FIRST - Restart Triggered...
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// DB
+connectDB();
+
+// Routes
+app.use("/api/internships", internshipRoutes);
+
+// Test route
 app.get("/", (req, res) => {
-  res.send("JSE Backend Running");
+  res.send("API is running...");
 });
 
 const PORT = process.env.PORT || 5000;

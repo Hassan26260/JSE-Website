@@ -1,0 +1,872 @@
+/* Who We Are Page Specific Styles */
+
+.who-we-are-page {
+    width: 100%;
+}
+
+/* Hero Section - Matching VirtualTeam.css */
+.who-hero-section {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.who-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(7, 18, 48, 0.7) 0%, rgba(7, 18, 48, 0.9) 100%);
+    z-index: 1;
+}
+
+.who-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 2rem;
+    max-width: 800px;
+}
+
+.page-breadcrumbs {
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.page-breadcrumbs span {
+    color: #e2e8f0;
+}
+
+.who-hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Legacy Section */
+.legacy-section {
+    padding: 2rem 1.5rem 6rem;
+    background-color: #ffffff;
+}
+
+.legacy-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.legacy-header {
+    margin-bottom: 3rem;
+}
+
+/* Scoped Tagline for Who We Are Page */
+.who-legacy-tagline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    /* Space between lines and text */
+    color: #475569;
+    /* User preferred gray color */
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.who-legacy-tagline.justify-start {
+    justify-content: flex-start;
+}
+
+.who-legacy-tagline::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: #144AE0;
+}
+
+.who-legacy-tagline::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: #144AE0;
+}
+
+.legacy-main-title {
+    font-size: 2.5rem;
+    color: #144AE0;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.legacy-content {
+    max-width: 1200px;
+    /* Widened to reduce side margins as requested */
+    margin: 0 auto 5rem;
+    padding: 0 1rem;
+    /* Small padding prevents touching edges on small screens */
+}
+
+.legacy-content p {
+    font-size: 1.125rem;
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.legacy-closing {
+    font-weight: 600;
+    color: #334155 !important;
+}
+
+/* Stats Grid */
+.legacy-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.stat-card {
+    background: #f8fafc;
+    padding: 2.5rem 1.5rem;
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #144AE0;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+    font-family: 'Outfit', sans-serif;
+    /* Ensuring consistency in font */
+}
+
+.stat-label {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* Expanding Image Section */
+.who-expanding-section {
+    width: 100%;
+    margin-bottom: 6rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background: #fff;
+    padding-bottom: 4rem;
+}
+
+.who-expanding-wrapper {
+    width: 70%;
+    /* Initial width */
+    height: 500px;
+    /* Fixed height */
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    will-change: width, border-radius;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+}
+
+.who-expanding-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Global Presence Section */
+.global-presence-section {
+    padding: 6rem 2rem;
+    background-color: #f8fafc;
+    /* Light Slate BG */
+    overflow: hidden;
+}
+
+.global-content-container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.global-header {
+    margin-bottom: 4rem;
+    text-align: left;
+    max-width: 800px;
+}
+
+.global-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #144AE0;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.global-desc {
+    font-size: 1.15rem;
+    color: #64748b;
+    line-height: 1.7;
+}
+
+/* Carousel Container */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 2rem 0 4rem;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    /* Fade edges */
+}
+
+/* Track Animation */
+.carousel-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+}
+
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 1rem));
+    }
+
+    /* Move half of duplicated width */
+}
+
+/* Branch Cards (Image BG) */
+.branch-card {
+    flex: 0 0 350px;
+    height: 450px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: default;
+    border: none;
+    padding: 0;
+    /* Reset padding */
+}
+
+.branch-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+}
+
+/* Dark Gradient Overlay */
+.branch-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+    z-index: 1;
+    transition: background 0.4s ease;
+}
+
+.branch-card:hover::before {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(20, 74, 224, 0.3) 100%);
+    /* Blue tint on hover */
+}
+
+/* Content */
+.branch-content-overlay {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    transform: translateY(10px);
+    transition: transform 0.4s ease;
+}
+
+.branch-card:hover .branch-content-overlay {
+    transform: translateY(0);
+}
+
+.branch-name {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.branch-role {
+    font-size: 1rem;
+    color: #cbd5e1;
+    /* Slate 300 */
+    font-weight: 500;
+    margin: 0;
+    border-left: 3px solid #144AE0;
+    /* Blue accent line */
+    padding-left: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .who-hero-title {
+        font-size: 3rem;
+    }
+
+    .legacy-main-title {
+        font-size: 2.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .who-hero-section {
+        height: 50vh;
+        min-height: 400px;
+    }
+
+    .who-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .legacy-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .legacy-main-title {
+        font-size: 1.875rem;
+    }
+
+    .who-expanding-wrapper {
+        height: 300px;
+        width: 90%;
+    }
+
+    .global-title {
+        font-size: 2.25rem;
+    }
+
+    .branch-card {
+        flex: 0 0 280px;
+        height: 380px;
+    }
+
+    .branch-name {
+        font-size: 1.75rem;
+    }
+}
+
+/* Director Profile Section */
+.director-section {
+    padding: 6rem 2rem;
+    background-color: #0f172a;
+    /* Dark background as requested */
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.director-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.director-tagline {
+    display: block;
+    font-size: 0.875rem;
+    color: #38bdf8;
+    /* Light blue accent */
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.director-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    background: linear-gradient(to right, #ffffff, #94a3b8);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.director-text p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #cbd5e1;
+    margin-bottom: 1.5rem;
+}
+
+.director-text strong {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* Image Wrapper */
+.director-image-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: visible;
+    /* Allow floating elements */
+}
+
+/* Decorative Background Element for Image */
+.director-image-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    right: -20px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #144AE0;
+    border-radius: 24px;
+    z-index: 1;
+}
+
+.director-img {
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+    position: relative;
+    z-index: 2;
+    display: block;
+    filter: brightness(0.9);
+    transition: filter 0.3s ease;
+}
+
+.director-image-wrapper:hover .director-img {
+    filter: brightness(1);
+}
+
+/* Quote/Detail Box */
+.director-overlay-box {
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    background: #144AE0;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    z-index: 3;
+    max-width: 300px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: float 4s ease-in-out infinite;
+}
+
+.director-quote {
+    color: #ffffff;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Director Responsive */
+@media (max-width: 992px) {
+    .director-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .director-content,
+    .director-text {
+        text-align: left;
+        /* Keep text readable */
+    }
+
+    .director-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* Pushing Limits (ISO) Section */
+.pushing-limits-section {
+    padding: 6rem 2rem;
+    background-color: #ffffff;
+}
+
+.pushing-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+}
+
+.pushing-text-col {
+    flex: 1.2;
+}
+
+.pushing-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #144AE0;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+.pushing-desc p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #475569;
+    margin-bottom: 1.5rem;
+}
+
+.pushing-cards-col {
+    flex: 0.8;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ISO Cards */
+.iso-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+}
+
+.iso-card:hover {
+    transform: translateY(-5px);
+    border-color: #144AE0;
+    box-shadow: 0 15px 30px rgba(20, 74, 224, 0.1);
+}
+
+.iso-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: #eff6ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.iso-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 0.25rem 0;
+}
+
+.iso-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Leadership Section (Reference based) */
+.leadership-section {
+    padding: 6rem 2rem;
+    background-color: #f8fafc;
+}
+
+.leadership-container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.leadership-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 4rem;
+}
+
+.leadership-main-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    /* Dark Blue from Ref */
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    font-family: system-ui, Segoe UI, Roboto, sans-serif;
+    /* FIXED FONT as requested */
+}
+
+.leadership-main-desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #475569;
+}
+
+.leadership-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.leadership-subtitle {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+}
+
+.leadership-subtext {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #475569;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .pushing-container {
+        flex-direction: column;
+    }
+
+    .leadership-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+/* Geography Section (Copied & Adapted from Home.css) */
+.geo-section {
+    padding: 8rem 0;
+    background: #071230;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.geo-header {
+    margin-bottom: 4rem;
+    max-width: 900px;
+}
+
+.geo-tagline {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.geo-tagline::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.geo-title {
+    font-family: system-ui, Segoe UI, Roboto, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    color: #ffffff;
+}
+
+.geo-text {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    max-width: 700px;
+}
+
+.geo-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10rem;
+}
+
+.geo-map-container {
+    flex: 2;
+    position: relative;
+}
+
+.geo-map {
+    width: 100%;
+    height: auto;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+}
+
+.geo-stats-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    text-align: left;
+}
+
+.geo-stat-item h3 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #fbbf24;
+    margin: 0;
+    line-height: 1;
+}
+
+.geo-stat-item p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0.5rem 0 0 0;
+}
+
+.geo-cta-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: #ffffff;
+    color: #1e293b;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    width: fit-content;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.geo-cta-btn:hover {
+    background: #f1f5f9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1024px) {
+    .geo-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 4rem;
+    }
+
+    .geo-stats-container {
+        text-align: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .geo-stat-item h3 {
+        font-size: 3rem;
+    }
+}
+
+/* Dedicated Quote Section */
+.md-quote-section {
+    padding: 8rem 2rem;
+    background-color: #f1f5f9;
+    /* Light grey/slate bg */
+    text-align: center;
+}
+
+.quote-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.quote-icon {
+    font-size: 6rem;
+    color: #144AE0;
+    font-family: serif;
+    line-height: 1;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+}
+
+.md-main-quote {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #0f172a;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.md-quote-author {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}

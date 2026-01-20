@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
@@ -12,6 +12,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 // Service pages
 import VirtualTeam from "./pages/services/VirtualTeam";
 import SecondmentTeam from "./pages/services/SecondmentTeam";
+import DesignEngineeringProjects from "./pages/services/DesignEngineeringProjects";
 
 // Design service pages
 import ArchitecturalBIM from "./pages/services/design/ArchitecturalBIM";
@@ -24,6 +25,20 @@ import BIMModelling from "./pages/services/design/BIMModelling";
 import ElectricalSystemDesign from "./pages/services/design/ElectricalSystemDesign";
 import ELV from "./pages/services/design/ELV";
 
+// Industry pages
+import Healthcare from "./pages/industries/Healthcare";
+import Architecture from "./pages/industries/Architecture";
+import Builders from "./pages/industries/Builders";
+import GeneralContracting from "./pages/industries/GeneralContracting";
+import Manufacturing from "./pages/industries/Manufacturing";
+import Skyscrapers from "./pages/industries/Skyscrapers";
+import Engineering from "./pages/industries/Engineering";
+import Educational from "./pages/industries/Educational";
+import IndustrialInfrastructure from "./pages/industries/IndustrialInfrastructure";
+import WhoWeAre from './pages/WhoWeAre';
+import VisionMission from './pages/VisionMission';
+import History from './pages/History';
+
 // Internship pages
 import CivilEngineering from "./pages/internship/CivilEngineering";
 import MechanicalEngineering from "./pages/internship/MechanicalEngineering";
@@ -32,44 +47,80 @@ import ElectronicsCommunicationEngineering from "./pages/internship/ElectronicsC
 import MechatronicsEngineering from "./pages/internship/MechatronicsEngineering";
 import Architectural from "./pages/internship/Architectural";
 import StructuralEnvironmentalEngineering from "./pages/internship/StructuralEnvironmentalEngineering";
+import ElectricalArchitectural from "./pages/internship/ElectricalArchitectural";
+import OtherInternships from "./pages/internship/OtherInternships";
+
+// Admin Imports
+import { AuthProvider } from "./context/AuthContext";
+import Login from "./pages/admin/Login";
+import AdminLayout from "./components/admin/AdminLayout";
+import Dashboard from "./pages/admin/Dashboard";
 
 function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<MainLayout><Home /></MainLayout>} />
-        <Route path="/services" element={<MainLayout><Services /></MainLayout>} />
-        <Route path="/portfolio" element={<MainLayout><Portfolio /></MainLayout>} />
-        <Route path="/internship" element={<MainLayout><Internship /></MainLayout>} />
-        <Route path="/career" element={<MainLayout><Career /></MainLayout>} />
-        <Route path="/contact" element={<MainLayout><Contact /></MainLayout>} />
-        <Route path="/privacy-policy" element={<MainLayout><PrivacyPolicy /></MainLayout>} />
+      <AuthProvider>
+        <ScrollToTop />
+        <Routes>
+          {/* Admin Routes */}
+          <Route path="/admin/login" element={<Login />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route path="dashboard" element={<Dashboard />} />
+            {/* Redirect /admin to /admin/dashboard */}
+            <Route index element={<Navigate to="/admin/dashboard" replace />} />
+          </Route>
 
-        {/* Service routes */}
-        <Route path="/services/virtual-team" element={<MainLayout><VirtualTeam /></MainLayout>} />
-        <Route path="/services/secondment-team" element={<MainLayout><SecondmentTeam /></MainLayout>} />
+          {/* Public Routes */}
+          <Route path="/" element={<MainLayout><Home /></MainLayout>} />
+          <Route path="/services" element={<MainLayout><Services /></MainLayout>} />
+          <Route path="/portfolio" element={<MainLayout><Portfolio /></MainLayout>} />
+          <Route path="/internship" element={<MainLayout><Internship /></MainLayout>} />
+          <Route path="/career" element={<MainLayout><Career /></MainLayout>} />
+          <Route path="/contact" element={<MainLayout><Contact /></MainLayout>} />
+          <Route path="/privacy-policy" element={<MainLayout><PrivacyPolicy /></MainLayout>} />
 
-        {/* Design service routes */}
-        <Route path="/services/design/architectural-bim" element={<MainLayout><ArchitecturalBIM /></MainLayout>} />
-        <Route path="/services/design/steel-structure-detailing" element={<MainLayout><SteelStructureDetailing /></MainLayout>} />
-        <Route path="/services/design/mep-design" element={<MainLayout><MEPDesign /></MainLayout>} />
-        <Route path="/services/design/plumbing-public-health" element={<MainLayout><PlumbingPublicHealth /></MainLayout>} />
-        <Route path="/services/design/hvac-design" element={<MainLayout><HVACDesign /></MainLayout>} />
-        <Route path="/services/design/firefighting-design" element={<MainLayout><FirefightingDesign /></MainLayout>} />
-        <Route path="/services/design/bim-modelling" element={<MainLayout><BIMModelling /></MainLayout>} />
-        <Route path="/services/design/electrical-system-design" element={<MainLayout><ElectricalSystemDesign /></MainLayout>} />
-        <Route path="/services/design/elv" element={<MainLayout><ELV /></MainLayout>} />
+          {/* Service routes */}
+          <Route path="/services/virtual-team" element={<MainLayout><VirtualTeam /></MainLayout>} />
+          <Route path="/services/secondment-team" element={<MainLayout><SecondmentTeam /></MainLayout>} />
+          <Route path="/services/design" element={<MainLayout><DesignEngineeringProjects /></MainLayout>} />
 
-        {/* Internship routes */}
-        <Route path="/internship/civil-engineering" element={<MainLayout><CivilEngineering /></MainLayout>} />
-        <Route path="/internship/mechanical-engineering" element={<MainLayout><MechanicalEngineering /></MainLayout>} />
-        <Route path="/internship/electrical-electronics-engineering" element={<MainLayout><ElectricalElectronicsEngineering /></MainLayout>} />
-        <Route path="/internship/electronics-communication-engineering" element={<MainLayout><ElectronicsCommunicationEngineering /></MainLayout>} />
-        <Route path="/internship/mechatronics-engineering" element={<MainLayout><MechatronicsEngineering /></MainLayout>} />
-        <Route path="/internship/architectural" element={<MainLayout><Architectural /></MainLayout>} />
-        <Route path="/internship/structural-environmental-engineering" element={<MainLayout><StructuralEnvironmentalEngineering /></MainLayout>} />
-      </Routes>
+          {/* Industry routes */}
+          <Route path="/industries/healthcare" element={<MainLayout><Healthcare /></MainLayout>} />
+          <Route path="/industries/architecture" element={<MainLayout><Architecture /></MainLayout>} />
+          <Route path="/industries/builders" element={<MainLayout><Builders /></MainLayout>} />
+          <Route path="/industries/general-contracting" element={<MainLayout><GeneralContracting /></MainLayout>} />
+          <Route path="/industries/manufacturing" element={<MainLayout><Manufacturing /></MainLayout>} />
+          <Route path="/industries/skyscrapers" element={<MainLayout><Skyscrapers /></MainLayout>} />
+          <Route path="/industries/engineering" element={<Engineering />} />
+          <Route path="/industries/educational" element={<Educational />} />
+          <Route path="/industries/industrial" element={<IndustrialInfrastructure />} />
+          <Route path="/who-we-are" element={<WhoWeAre />} />
+          <Route path="/vision-mission" element={<VisionMission />} />
+          <Route path="/history" element={<History />} />
+
+          {/* Design service routes */}
+          <Route path="/services/design/architectural-bim" element={<MainLayout><ArchitecturalBIM /></MainLayout>} />
+          <Route path="/services/design/steel-structure-detailing" element={<MainLayout><SteelStructureDetailing /></MainLayout>} />
+          <Route path="/services/design/mep-design" element={<MainLayout><MEPDesign /></MainLayout>} />
+          <Route path="/services/design/plumbing-public-health" element={<MainLayout><PlumbingPublicHealth /></MainLayout>} />
+          <Route path="/services/design/hvac-design" element={<MainLayout><HVACDesign /></MainLayout>} />
+          <Route path="/services/design/firefighting-design" element={<MainLayout><FirefightingDesign /></MainLayout>} />
+          <Route path="/services/design/bim-modelling" element={<MainLayout><BIMModelling /></MainLayout>} />
+          <Route path="/services/design/electrical-system-design" element={<MainLayout><ElectricalSystemDesign /></MainLayout>} />
+          <Route path="/services/design/elv" element={<MainLayout><ELV /></MainLayout>} />
+
+          {/* Internship routes */}
+          <Route path="/internship/civil-engineering" element={<MainLayout><CivilEngineering /></MainLayout>} />
+          <Route path="/internship/mechanical-engineering" element={<MainLayout><MechanicalEngineering /></MainLayout>} />
+          <Route path="/internship/electrical-electronics-engineering" element={<MainLayout><ElectricalElectronicsEngineering /></MainLayout>} />
+          <Route path="/internship/electronics-communication-engineering" element={<MainLayout><ElectronicsCommunicationEngineering /></MainLayout>} />
+          <Route path="/internship/mechatronics-engineering" element={<MainLayout><MechatronicsEngineering /></MainLayout>} />
+          <Route path="/internship/architectural" element={<MainLayout><Architectural /></MainLayout>} />
+          <Route path="/internship/structural-environmental-engineering" element={<MainLayout><StructuralEnvironmentalEngineering /></MainLayout>} />
+          <Route path="/internship/electrical-architectural" element={<MainLayout><ElectricalArchitectural /></MainLayout>} />
+          <Route path="/internship/other-internships" element={<MainLayout><OtherInternships /></MainLayout>} />
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

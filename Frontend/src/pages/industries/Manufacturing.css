@@ -1,0 +1,1071 @@
+/* Architecture Page Styles */
+
+/* --- Hero Section --- */
+.manufacturing-hero-section {
+    position: relative;
+    height: 85vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.manufacturing-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.manufacturing-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 2rem;
+    color: #ffffff;
+}
+
+.manufacturing-breadcrumbs {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    text-transform: none;
+}
+
+.manufacturing-breadcrumbs span {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.manufacturing-hero-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    text-transform: capitalize;
+}
+
+.manufacturing-hero-desc {
+    font-family: "Lato", sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.manufacturing-hero-cta {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background-color: #144AE0;
+    color: #ffffff;
+    font-family: "Lato", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.manufacturing-hero-cta:hover {
+    background-color: #0d3aa1;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Industry Focus Section --- */
+.manufacturing-focus-section {
+    padding: 8rem 0;
+    background-color: #f8fafc;
+    overflow: hidden;
+}
+
+.manufacturing-focus-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+}
+
+.manufacturing-focus-text {
+    flex: 1;
+}
+
+.manufacturing-focus-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #144AE0;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.manufacturing-focus-desc p {
+    font-size: 1.15rem;
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.manufacturing-focus-desc p:last-child {
+    margin-bottom: 0;
+}
+
+.manufacturing-focus-image-wrapper {
+    flex: 1;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.manufacturing-image-back {
+    position: absolute;
+    top: -2rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #cbd5e1;
+    opacity: 0.5;
+    border-radius: 12px;
+    z-index: 0;
+    transform: rotate(-3deg);
+    border: none;
+}
+
+.manufacturing-focus-img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    max-height: 500px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.manufacturing-focus-img:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 1024px) {
+    .manufacturing-hero-title {
+        font-size: 3.5rem;
+    }
+
+    .manufacturing-focus-container {
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .manufacturing-focus-image-wrapper {
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .manufacturing-hero-section {
+        height: 70vh;
+    }
+
+    .manufacturing-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .manufacturing-hero-content {
+        padding: 0 1rem;
+    }
+
+    .manufacturing-focus-section {
+        padding: 4rem 0;
+    }
+
+    .manufacturing-focus-title {
+        font-size: 2.25rem;
+    }
+
+    .manufacturing-focus-container {
+        gap: 3rem;
+        padding: 0 1.5rem;
+    }
+
+    .manufacturing-focus-image-wrapper {
+        padding-left: 0;
+    }
+
+    .manufacturing-image-back {
+        top: -1rem;
+        left: -1rem;
+    }
+}
+
+/* --- Facilities Section --- */
+.manufacturing-facilities-section {
+    padding: 6rem 0;
+    background-color: #ffffff;
+    overflow: visible;
+    /* Explicitly allow sticky to work */
+    position: relative;
+    border-top: 1px solid #f1f5f9;
+}
+
+.manufacturing-facilities-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+/* Left Sticky Column Wrapper - Actual Sticky Element */
+.manufacturing-sticky-left {
+    position: sticky;
+    top: 150px;
+    height: fit-content;
+    align-self: start;
+    z-index: 10;
+}
+
+/* Sticky Content Inside Left Column */
+.manufacturing-header-content {
+    max-width: 450px;
+    /* Static content inside sticky wrapper */
+}
+
+/* ... (rest of styles) ... */
+
+/* --- What We Offer Section --- */
+.manufacturing-offer-section {
+    padding: 6rem 0;
+    background-color: #f8fafc;
+    /* overflow: hidden; Removed to fix sticky positioning */
+}
+
+.manufacturing-offer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    /* Adjusted ratios */
+    gap: 6rem;
+    align-items: flex-start;
+}
+
+.manufacturing-sticky-right {
+    position: sticky;
+    top: 150px;
+    height: fit-content;
+    align-self: start;
+    text-align: left;
+}
+
+.manufacturing-section-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #144AE0;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.manufacturing-decorative-line {
+    width: 80px;
+    height: 4px;
+    background-color: #0f172a;
+    border-radius: 2px;
+}
+
+.manufacturing-cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.manufacturing-facility-card {
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-width: 90%;
+    border: 1px solid #f1f5f9;
+}
+
+.manufacturing-facility-card:nth-child(odd) {
+    align-self: flex-start;
+}
+
+.manufacturing-facility-card:nth-child(even) {
+    align-self: flex-end;
+    margin-top: 2rem;
+}
+
+.manufacturing-facility-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.manufacturing-card-image-wrapper {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.manufacturing-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.manufacturing-facility-card:hover .manufacturing-card-img {
+    transform: scale(1.05);
+}
+
+.manufacturing-card-content {
+    padding: 2.5rem;
+    background: #ffffff;
+    border-top: 1px solid #f1f5f9;
+    position: relative;
+}
+
+.manufacturing-card-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 2.5rem;
+    width: 60px;
+    height: 4px;
+    background-color: #144AE0;
+}
+
+.manufacturing-card-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.manufacturing-card-desc {
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+    .manufacturing-facilities-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .manufacturing-sticky-left {
+        position: relative;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .manufacturing-header-content {
+        max-width: 100%;
+        position: static;
+        /* Disable sticky on mobile */
+    }
+
+    .manufacturing-cards-list {
+        max-width: 600px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .manufacturing-facility-card {
+        max-width: 100%;
+        align-self: center !important;
+        margin-top: 0 !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .manufacturing-card-image-wrapper {
+        height: 200px;
+    }
+
+    .manufacturing-card-content {
+        padding: 1.5rem;
+    }
+
+    .manufacturing-card-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* --- What We Offer Section --- */
+.manufacturing-offer-section {
+    padding: 6rem 0;
+    background-color: #f8fafc;
+    /* overflow: hidden; Removed to fix sticky positioning */
+}
+
+.manufacturing-offer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    /* Adjusted ratios */
+    gap: 6rem;
+    align-items: flex-start;
+}
+
+.manufacturing-sticky-right {
+    position: sticky;
+    top: 150px;
+    height: fit-content;
+    align-self: start;
+    text-align: left;
+    z-index: 10;
+}
+
+.offer-cards-left {
+    order: -1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.offer-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem;
+    border: 1px solid #f1f5f9;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.manufacturing-icon-wrapper {
+    padding: 0;
+    color: #144AE0;
+    flex-shrink: 0;
+    background: rgba(20, 74, 224, 0.05);
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.manufacturing-icon-wrapper svg {
+    width: 32px;
+    height: 32px;
+}
+
+.offer-card .manufacturing-card-content {
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+
+.offer-card .manufacturing-card-content::before {
+    display: none;
+    /* Remove the blue line from facilities cards */
+}
+
+.offer-card .manufacturing-card-title {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.offer-card .manufacturing-card-desc {
+    font-size: 1rem;
+    color: #64748b;
+}
+
+@media (max-width: 1024px) {
+    .manufacturing-offer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .manufacturing-sticky-right {
+        position: relative;
+        top: 0;
+        order: -1;
+        margin-bottom: 4rem;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .offer-cards-left {
+        order: 0;
+    }
+}
+
+/* --- Partner Section --- */
+.manufacturing-partner-section {
+    padding: 6rem 0;
+    background-color: #f8fafc;
+}
+
+.manufacturing-partner-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.manufacturing-partner-image-side {
+    position: relative;
+    height: 100%;
+    min-height: 400px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.manufacturing-partner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.manufacturing-partner-content-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.manufacturing-heading-blue {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #144AE0;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.manufacturing-blob-text {
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+    .manufacturing-partner-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .manufacturing-partner-image-side {
+        order: -1;
+        min-height: 300px;
+    }
+}
+
+/* --- Business Types Carousel (Copied) --- */
+.manufacturing-business-section {
+    padding: 6rem 0;
+    background-color: #071230;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.manufacturing-business-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 4rem;
+}
+
+.business-split-layout {
+    display: flex;
+    gap: 6rem;
+    min-height: 500px;
+}
+
+.business-left-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.business-heading {
+    font-family: system-ui, Segoe UI, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    color: #ffffff;
+}
+
+.business-desc {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 3rem;
+    max-width: 500px;
+}
+
+.business-right-side {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.business-feature-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    max-height: 500px;
+}
+
+.business-controls-wrapper {
+    margin-top: auto;
+}
+
+.business-progress-line {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-bottom: 1.5rem;
+}
+
+.business-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.slide-counter {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.1em;
+}
+
+.nav-arrows {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-arrow-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+.nav-arrow-btn:hover {
+    color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+    .business-split-layout {
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .business-right-side {
+        min-height: 300px;
+    }
+
+    .manufacturing-business-container {
+        padding: 0 2rem;
+    }
+}
+
+/* --- Why Choose JSE Section (Architecture) --- */
+.manufacturing-why-section {
+    padding: 8rem 0;
+    background-color: #ffffff;
+}
+
+.manufacturing-header-center {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 4rem auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.manufacturing-why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    /* Slightly wider for 6 cards */
+    gap: 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.manufacturing-why-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.manufacturing-why-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: #144AE0;
+}
+
+.manufacturing-icon-circle {
+    width: 64px;
+    height: 64px;
+    background-color: rgba(20, 74, 224, 0.1);
+    color: #144AE0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.manufacturing-why-card:hover .manufacturing-icon-circle {
+    background-color: #144AE0;
+    color: #ffffff;
+}
+
+.manufacturing-card-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1rem;
+}
+
+.manufacturing-card-desc {
+    font-size: 1rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* --- Contact Form Section (Architecture) --- */
+.manufacturing-form-section {
+    padding: 6rem 0;
+    background-color: #f8fafc;
+}
+
+.manufacturing-form-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #071230;
+    border-radius: 24px;
+    padding: 4rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Corner Patterns (Geometric Lines) */
+.manufacturing-form-container::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 400px;
+    height: 400px;
+    background: repeating-radial-gradient(circle at 0 0,
+            transparent 0,
+            transparent 20px,
+            rgba(20, 74, 224, 0.15) 20px,
+            rgba(20, 74, 224, 0.15) 22px);
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 0 0 100% 0;
+}
+
+.manufacturing-form-container::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 400px;
+    height: 400px;
+    background: repeating-radial-gradient(circle at 100% 100%,
+            transparent 0,
+            transparent 20px,
+            rgba(20, 74, 224, 0.15) 20px,
+            rgba(20, 74, 224, 0.15) 22px);
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 100% 0 0 0;
+}
+
+.manufacturing-form-info-side,
+.manufacturing-form-input-side {
+    position: relative;
+    z-index: 1;
+}
+
+.manufacturing-form-info-side {
+    flex: 0.8;
+}
+
+.manufacturing-form-heading {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+.manufacturing-form-subtext {
+    font-size: 1rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+.manufacturing-form-contact-details p {
+    font-size: 1rem;
+    color: #e2e8f0;
+    margin: 0.25rem 0;
+    font-weight: 500;
+}
+
+.manufacturing-form-email {
+    color: #60a5fa;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.manufacturing-form-socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.manufacturing-social-circle {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #475569;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.manufacturing-social-circle:hover {
+    border-color: #60a5fa;
+    color: #60a5fa;
+    background: rgba(96, 165, 250, 0.1);
+}
+
+.manufacturing-form-input-side {
+    flex: 1.2;
+    background: transparent;
+}
+
+.manufacturing-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.manufacturing-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.manufacturing-form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-left: 0;
+}
+
+.manufacturing-form-input-line {
+    width: 100%;
+    padding: 0.75rem 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #475569;
+    background: transparent;
+    font-size: 1rem;
+    color: #ffffff;
+    border-radius: 0;
+    outline: none;
+    box-shadow: none;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.manufacturing-form-input-line:focus {
+    outline: none;
+    border-bottom-color: #60a5fa;
+}
+
+.manufacturing-form-submit-btn {
+    align-self: flex-start;
+    margin-top: 1rem;
+    background-color: #144AE0;
+    color: white;
+    font-weight: 700;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.manufacturing-form-submit-btn:hover {
+    background-color: #3b82f6;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .manufacturing-form-container {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 2.5rem;
+    }
+
+    .manufacturing-form-info-side,
+    .manufacturing-form-input-side {
+        width: 100%;
+    }
+
+    .manufacturing-form-heading {
+        font-size: 2.5rem;
+    }
+}
+
+/* --- Innovative Software Tools Section (Architecture) --- */
+.manufacturing-tech-section {
+    padding: 8rem 0;
+    background-color: #f8fafc;
+}
+
+.manufacturing-tech-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.manufacturing-tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.manufacturing-tech-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 120px;
+}
+
+.manufacturing-tech-logo-wrapper {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.manufacturing-tech-card:hover .manufacturing-tech-logo-wrapper {
+    transform: translateY(-5px);
+}
+
+.manufacturing-tech-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.manufacturing-tech-abbr {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #144AE0;
+}
+
+.manufacturing-tech-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #475569;
+    text-align: center;
+}

@@ -5,12 +5,9 @@ import heroImage from '../../../assets/images-home/architectural-bim.webp';
 import whatIsImage from '../../../assets/images-home/bim-modelling.webp';
 
 // Portfolio Imports
-import p1 from "../../../assets/portfolio.img/pexels-jgathisan0612-1580112.webp";
-import p2 from "../../../assets/portfolio.img/pexels-jimbear-998499.webp";
-import p3 from "../../../assets/portfolio.img/pexels-mantasink-1106476.webp";
-import p4 from "../../../assets/portfolio.img/pexels-pixabay-210598.webp";
-import p5 from "../../../assets/portfolio.img/pexels-pixabay-273209.webp";
-import p6 from "../../../assets/portfolio.img/pexels-pixasquare-1123982.webp";
+// Portfolio Imports
+import { ARCH_PROJECTS } from '../../../data/realPortfolio';
+
 
 // Tech Logos
 import revitLogo from '../../../assets/virtual-eng/software logos/autodesk-revit-seeklogo.png';
@@ -45,14 +42,11 @@ const SERVICES_DATA = [
   { title: "Collaboration and Coordination", img: s6, desc: "Streamlined team workflows and communication." }
 ];
 
-const ICONIC_PROJECTS = [
-  { title: "Luxury Resort", img: p1 },
-  { title: "Urban Center", img: p2 },
-  { title: "Skyline Tower", img: p3 },
-  { title: "Theme Park", img: p4 },
-  { title: "Tech Hub", img: p5 },
-  { title: "Industrial Unit", img: p6 },
-];
+const ICONIC_PROJECTS = ARCH_PROJECTS.slice(0, 6).map(p => ({
+  title: p.title,
+  img: p.image
+}));
+
 
 const CHOOSE_JSE_DATA = [
   {
@@ -110,7 +104,7 @@ const ADDITIONAL_SERVICES = [
   { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 }, // Reuse MEP
   { title: "BIM Modelling", link: "/services/design/bim-modelling", img: s3 },
   { title: "Electrical System Design", link: "/services/design/electrical-system-design", img: s7 },
-  { title: "ELV (Extra Low Voltage)", link: "/services/design/elv", img: s8 }
+  { title: "Extra Low Voltage", link: "/services/design/elv", img: s8 }
 ];
 
 const ArchitecturalBIM = () => {
@@ -219,7 +213,9 @@ const ArchitecturalBIM = () => {
           {/* Image Side */}
           <div className="arch-what-image-wrapper">
             <div className="arch-image-back"></div>
-            <img src={whatIsImage} alt="What is Architectural BIM" className="arch-what-img" />
+            <img src={whatIsImage} alt="What is Architectural BIM" className="arch-what-img"
+              loading="lazy"
+              decoding="async" />
           </div>
         </div>
       </section >
@@ -484,7 +480,7 @@ const ArchitecturalBIM = () => {
               <div key={index} className="tech-card">
                 <div className="tech-logo-wrapper" style={{ background: tech.bg }}>
                   {tech.img ? (
-                    <img src={tech.img} alt={tech.name} className="tech-logo-img" />
+                    <img src={tech.img} alt={tech.name} className="tech-logo-img" loading="lazy" decoding="async" />
                   ) : (
                     <span className="tech-abbr">{tech.abbr}</span>
                   )}
@@ -505,7 +501,7 @@ const ArchitecturalBIM = () => {
               <a key={index} href={item.link} className="arch-service-item">
                 <span className="arch-service-text">{item.title}</span>
                 <div className="arch-service-img-wrapper">
-                  <img src={item.img} alt={item.title} className="arch-service-hover-img" />
+                  <img src={item.img} alt={item.title} className="arch-service-hover-img" loading="lazy" decoding="async" />
                 </div>
               </a>
             ))}

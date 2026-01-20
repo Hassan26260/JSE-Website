@@ -1,0 +1,357 @@
+/* Vision & Mission Page Styles */
+
+/* Hero Section (Matched to WhoWeAre.css) */
+.vm-hero-section {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.vm-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(7, 18, 48, 0.7) 0%, rgba(7, 18, 48, 0.9) 100%);
+    z-index: 1;
+}
+
+.vm-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 2rem;
+    max-width: 800px;
+}
+
+.vm-hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+    font-family: system-ui, -apple-system, sans-serif;
+    text-transform: capitalize;
+}
+
+.vm-hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-family: "Lato", sans-serif;
+    opacity: 0.9;
+}
+
+/* Partner Section */
+.vm-partner-section {
+    padding: 6rem 2rem;
+    background-color: #ffffff;
+}
+
+.vm-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.partner-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.vm-tagline {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #475569;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    display: block;
+    text-transform: uppercase;
+}
+
+.vm-main-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #144AE0;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.vm-desc p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #475569;
+    margin-bottom: 1.5rem;
+    font-family: "Lato", sans-serif;
+}
+
+/* Stats Cards */
+.vm-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.vm-stat-card {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vm-stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
+    border-color: #144AE0;
+}
+
+.vm-stat-num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #144AE0;
+    margin: 0 0 0.5rem 0;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.vm-stat-label {
+    font-size: 0.95rem;
+    color: #64748b;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Core Values / Vision Grid Section */
+.vm-core-section {
+    padding: 8rem 2rem;
+    background-color: #f1f5f9;
+}
+
+.vm-core-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #144AE0;
+    margin-bottom: 4rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vm-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.vm-card {
+    background: #ffffff;
+    padding: 3rem 2rem;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+}
+
+.vm-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: #144AE0;
+}
+
+.vm-card-icon {
+    width: 80px;
+    height: 80px;
+    background: #eff6ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem auto;
+    color: #144AE0;
+    transition: all 0.3s ease;
+}
+
+.vm-card:hover .vm-card-icon {
+    background: #144AE0;
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.vm-card h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.vm-card p {
+    font-size: 1.05rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- Core Values Carousel Section --- */
+.values-carousel-section {
+    padding: 8rem 0;
+    background-color: #ffffff;
+    overflow: hidden;
+    position: relative;
+    border-top: 1px solid #e2e8f0;
+}
+
+.values-heading-container {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 0 2rem;
+}
+
+.values-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #144AE0;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.values-track-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.values-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation: scrollValues 60s linear infinite;
+    padding: 1rem 0;
+    /* Space for shadows */
+}
+
+/* The Value Card */
+.value-card {
+    width: 350px;
+    flex-shrink: 0;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease;
+    border: 1px solid #f1f5f9;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.value-card-img-wrap {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.value-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.value-card:hover .value-card-img {
+    transform: scale(1.05);
+}
+
+.value-card-content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.value-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #144AE0;
+    margin-bottom: 1rem;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.value-card p {
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@keyframes scrollValues {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* --- Quote Section --- */
+.vm-quote-section {
+    padding: 6rem 2rem;
+    background-color: #f8fafc;
+    text-align: center;
+    border-top: 1px solid #e2e8f0;
+}
+
+.vm-quote-text {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #0f172a;
+    font-family: system-ui, -apple-system, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.vm-quote-highlight {
+    color: #144AE0;
+    font-weight: 800;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .partner-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .vm-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vm-hero-title {
+        font-size: 3rem;
+    }
+
+    .values-title {
+        font-size: 2rem;
+    }
+}

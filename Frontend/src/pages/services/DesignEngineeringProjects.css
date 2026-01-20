@@ -1,0 +1,869 @@
+/* Design Engineering Projects Page Styles - Matched to VirtualTeam.css */
+
+/* --- Hero Section --- */
+.design-hero-section {
+    min-height: 85vh;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center 25%;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* Left align content */
+    overflow: hidden;
+}
+
+.design-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(7, 18, 48, 0.9) 0%, rgba(7, 18, 48, 0.6) 100%);
+    /* Dark Blue Overlay */
+    opacity: 80%;
+    z-index: 1;
+}
+
+.design-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    max-width: 900px;
+    padding: 0 4rem;
+    margin-top: 5rem;
+    /* Adjust for header height */
+}
+
+.design-hero-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0 0 1rem 0;
+    text-transform: uppercase;
+    /* letter-spacing: 1px; */
+    line-height: 1.1;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.design-hero-desc {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    /* letter-spacing: 0.5px; */
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    /* line-height: 1.6; */
+    max-width: 700px;
+}
+
+.design-hero-cta {
+    display: inline-block;
+    background-color: #144AE0;
+    color: white;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(20, 74, 224, 0.4);
+}
+
+.design-hero-cta:hover {
+    background-color: #0052a3;
+    transform: translateY(-2px);
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    .design-hero-section {
+        min-height: 70vh;
+        align-items: center;
+    }
+
+    .design-hero-content {
+        text-align: center;
+        padding: 0 2rem;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .design-hero-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .design-hero-title {
+        font-size: 2.2rem;
+    }
+
+    .design-hero-desc {
+        font-size: 1rem;
+    }
+}
+
+/* --- Intro Section (2-Column) --- */
+.design-intro-section {
+    padding: 6rem 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.design-intro-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.design-intro-left h2 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 4rem;
+    font-weight: 800;
+    color: #144AE0;
+    /* Brand Blue */
+    margin: 0;
+    line-height: 1.1;
+    /* Limit to approx 2 lines visually */
+    max-width: 100%;
+}
+
+.design-intro-right p {
+    font-size: 2rem;
+    color: #475569;
+    /* Slate 600 */
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Responsive Intro */
+@media (max-width: 768px) {
+    .design-intro-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .design-intro-left h2 {
+        font-size: 2rem;
+    }
+}
+
+/* --- What is Design Engineering? Section --- */
+.design-what-section {
+    padding: 8rem 0;
+    background-color: #f8fafc;
+    /* Very light slate bg */
+}
+
+.design-what-container {
+    max-width: 1440px;
+    /* Increased heavily to match Intro Section */
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    /* Reduced gap to match Intro Section */
+    align-items: center;
+}
+
+/* Replaces old .virtual-tagline with .dash-tagline style */
+.dash-tagline {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #666;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.dash-tagline::before {
+    content: '';
+    display: block;
+    width: 40px;
+    /* Length of dash */
+    height: 2px;
+    /* Thickness of dash */
+    background-color: #144AE0;
+}
+
+.design-what-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #144AE0;
+    /* Brand Blue */
+    margin: 0 0 2rem 0;
+    line-height: 1.2;
+}
+
+.design-what-desc {
+    font-size: 1.15rem;
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* Image with Depth */
+.design-what-image-wrapper {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.design-what-img {
+    width: 100%;
+    border-radius: 12px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.design-what-img:hover {
+    transform: translateY(-5px);
+}
+
+.design-image-back {
+    position: absolute;
+    top: -2rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #cbd5e1;
+    /* Accent Color */
+    opacity: 0.5;
+    border-radius: 12px;
+    z-index: 1;
+    transform: rotate(-3deg);
+    /* Tilted back layer for depth */
+}
+
+@media (max-width: 1024px) {
+    .design-what-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .design-what-image-wrapper {
+        padding-left: 0;
+        margin-top: 2rem;
+    }
+
+    .design-image-back {
+        top: -1rem;
+        left: -1rem;
+    }
+}
+
+/* --- Why Choose JSE? Section (Card Grid) --- */
+.design-why-section {
+    padding: 8rem 0;
+    background-color: #ffffff;
+}
+
+.design-header-center {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.design-header-center .dash-tagline {
+    justify-content: center;
+}
+
+.design-heading-blue {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #144AE0;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.2;
+}
+
+.design-desc-center {
+    font-size: 1.15rem;
+    color: #64748b;
+    line-height: 1.7;
+}
+
+/* Grid Layout matching 'tools-grid' */
+.design-why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Card Style matching 'tool-card' */
+.design-why-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.design-why-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: #144AE0;
+}
+
+/* Icon matching 'tool-icon-circle' */
+.design-icon-circle {
+    width: 64px;
+    height: 64px;
+    background-color: rgba(20, 74, 224, 0.1);
+    /* Light Blue */
+    color: #144AE0;
+    /* Brand Blue */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.design-why-card:hover .design-icon-circle {
+    background-color: #144AE0;
+    color: #ffffff;
+}
+
+.design-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
+/* --- Process Section (Image Left, Text Right) --- */
+.design-process-section {
+    padding: 8rem 0;
+    background-color: #f8fafc;
+    /* Light Slate */
+}
+
+.design-process-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+/* Image Side (Left) */
+.design-process-image-side {
+    position: relative;
+    /* order: 0; Default is left */
+}
+
+/* Content Side (Right) */
+.design-process-content-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.design-process-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #144AE0;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.design-process-desc {
+    font-size: 1.15rem;
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+/* Reuse image wrapper style or create specific one */
+.design-process-img-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.design-process-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.design-process-img:hover {
+    transform: scale(1.03);
+}
+
+@media (max-width: 1024px) {
+    .design-process-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .design-process-image-side {
+        order: 1;
+        /* Image below text on mobile? Or keep top? Usually text first is better for mobile reading flow, but layout asked for image left on desktop. Let's stack image top or bottom. Replicating 'Who Can Join' which is typically: Image stack? Let's keep normal order, so Image Top. */
+    }
+}
+
+/* --- Expanding Image Section --- */
+.expanding-image-section {
+    width: 100%;
+    margin-bottom: 6rem;
+    overflow: hidden;
+    /* Prevent horizontal scroll during expansion */
+    display: flex;
+    justify-content: center;
+}
+
+.expanding-image-wrapper {
+    width: 70%;
+    /* Initial width */
+    height: 500px;
+    /* Fixed height or aspect ratio */
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    will-change: width, border-radius;
+}
+
+.expanding-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+    .expanding-image-wrapper {
+        height: 350px;
+        width: 90%;
+        /* Start slightly wider on mobile */
+    }
+}
+
+/* --- What We Deliver Section (Text Left, 2 Cards Right) --- */
+.design-deliver-section {
+    padding: 6rem 0;
+    background-color: #ffffff;
+}
+
+.design-deliver-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 5rem;
+}
+
+/* Left: Text Side */
+.design-deliver-text-side {
+    flex: 0.8;
+    top: 6rem;
+    position: sticky;
+    /* Optional sticky effect if content is long */
+}
+
+/* Right: Grid Side */
+.design-deliver-grid-side {
+    flex: 1.2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+/* Card Style */
+.design-deliver-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    height: 100%;
+}
+
+.design-deliver-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
+}
+
+/* Icon Wrapper */
+.design-deliver-icon-wrapper {
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: #144AE0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.design-deliver-card-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.design-deliver-card-desc {
+    font-size: 1rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .design-deliver-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .design-deliver-text-side {
+        position: static;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .design-deliver-grid-side {
+        width: 100%;
+        /* Keep 2 columns or switch to 1? usually 2 is fine for cards */
+    }
+}
+
+@media (max-width: 640px) {
+    .design-deliver-grid-side {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Our Featured Projects Section (Marquee) --- */
+.design-featured-section {
+    padding: 6rem 0 8rem;
+    background: #071230;
+    /* Dark Background */
+    position: relative;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.design-featured-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    margin-bottom: 4rem;
+}
+
+.design-featured-header {
+    text-align: left;
+    max-width: 900px;
+}
+
+.design-featured-tagline {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.design-featured-tagline::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: #144AE0;
+    border-radius: 2px;
+}
+
+.design-featured-heading {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Marquee Wrapper */
+.design-marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+/* Marquee Track */
+.design-marquee-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation: designMarqueeScroll 40s linear infinite;
+}
+
+.design-marquee-wrapper:hover .design-marquee-track {
+    animation-play-state: paused;
+}
+
+@keyframes designMarqueeScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Card Styling */
+.design-featured-card {
+    position: relative;
+    width: 320px;
+    height: 480px;
+    border-radius: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.design-featured-card:hover {
+    transform: translateY(-5px);
+    z-index: 2;
+}
+
+.design-featured-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.design-featured-card:hover .design-featured-img {
+    transform: scale(1.1);
+}
+
+/* Overlay Effect */
+.design-featured-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+}
+
+.design-featured-card:hover .design-featured-overlay {
+    opacity: 1;
+}
+
+.design-featured-content {
+    width: 100%;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.design-featured-card:hover .design-featured-content {
+    transform: translateY(0);
+}
+
+.design-featured-title {
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+}
+
+.design-featured-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #144AE0;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.design-featured-cta:hover {
+    color: #3b82f6;
+}
+
+.design-featured-cta .arrow {
+    transition: transform 0.3s ease;
+}
+
+.design-featured-cta:hover .arrow {
+    transform: translateX(5px);
+}
+
+
+/* --- Design Pillars Section (3 Columns, Image Top) --- */
+.design-pillars-section {
+    padding: 8rem 0;
+    background-color: #ffffff;
+}
+
+.design-pillars-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+}
+
+.design-pillar-card {
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 0 2.5rem;
+    border-right: 1px solid #e2e8f0;
+}
+
+.design-pillar-card:last-child {
+    border-right: none;
+}
+
+.design-pillar-card:hover {
+    transform: translateY(-5px);
+    box-shadow: none;
+}
+
+.design-pillar-img-wrapper {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.design-pillar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.design-pillar-card:hover .design-pillar-img {
+    transform: scale(1.05);
+}
+
+.design-pillar-content {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+}
+
+.design-pillar-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+}
+
+.design-pillar-desc {
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Responsive Pillars */
+@media (max-width: 1024px) {
+    .design-pillars-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .design-pillar-card {
+        border-right: none;
+        padding: 0 1.5rem 3rem 1.5rem;
+        border-bottom: 1px solid #e2e8f0;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .design-pillars-container {
+        grid-template-columns: 1fr;
+    }
+
+    .design-pillar-card {
+        padding: 0 0 3rem 0;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .design-pillar-card:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    .design-featured-heading {
+        font-size: 2.5rem;
+    }
+}

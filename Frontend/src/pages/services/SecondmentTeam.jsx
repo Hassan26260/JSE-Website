@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "../../styles/Page.css";
 import "./VirtualTeam.css"; // Reuse Virtual Team styles
 import heroImage from '../../assets/secondament-img/pexels-fauxels-3184339.webp';
-import offerImage from '../../assets/backup-img/hero-group-image.png';
+import offerImage from '../../assets/secondament-img/about.jpg';
 import whyChooseImage from '../../assets/backup-img/pexels-jimbear-998499.jpg';
 import executeImage from '../../assets/backup-img/pexels-pixasquare-1123982.jpg';
 import card2Img from '../../assets/backup-img/pexels-pixabay-273209.jpg';
@@ -175,7 +175,7 @@ const SecondmentTeam = () => {
       <section className="virtual-intro-section">
         <div className="virtual-intro-container">
           <div className="virtual-intro-left">
-            <h2>Flexible Staffing,<br />Expertise When You Need It.</h2>
+            <h2>Flexible Staffing,<br />Expertise When You Need It</h2>
           </div>
           <div className="virtual-intro-right">
             <p>
@@ -200,7 +200,7 @@ const SecondmentTeam = () => {
           </div>
           <div className="virtual-what-image-wrapper">
             <div className="virtual-image-back"></div>
-            <img src={offerImage} alt="Secondment Team Offer" className="virtual-what-img" />
+            <img src={offerImage} alt="Secondment Team Offer" className="virtual-what-img" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
@@ -259,7 +259,7 @@ const SecondmentTeam = () => {
         <div className="virtual-offer-container">
           <div className="virtual-offer-image-wrapper">
             <div className="virtual-offer-image-back"></div>
-            <img src={whyChooseImage} alt="Why Choose JSE" className="virtual-offer-img" />
+            <img src={whyChooseImage} alt="Why Choose JSE" className="virtual-offer-img" loading="lazy" decoding="async" />
           </div>
           <div className="virtual-offer-text">
             <span className="dash-tagline">WHY CHOOSE US</span>
@@ -320,6 +320,8 @@ const SecondmentTeam = () => {
               alt="How We Execute"
               className="virtual-what-img"
               style={{ maxHeight: '450px', objectFit: 'cover' }}
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
@@ -439,7 +441,7 @@ const SecondmentTeam = () => {
               <div key={index} className="tech-card">
                 <div className="tech-logo-wrapper" style={{ background: tech.bg }}>
                   {tech.img ? (
-                    <img src={tech.img} alt={tech.name} className="tech-logo-img" />
+                    <img src={tech.img} alt={tech.name} className="tech-logo-img" loading="lazy" decoding="async" />
                   ) : (
                     <span className="tech-abbr">{tech.abbr}</span>
                   )}

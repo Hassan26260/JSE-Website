@@ -90,7 +90,7 @@ const SPECIALIZATIONS = [
   { title: "HVAC Design", img: hvacImg },
   { title: "Plumbing & Public Health", img: plumbImg },
   { title: "MEP Design", img: mepImg },
-  { title: "ELV (Extra Low Voltage)", img: elvImg },
+  { title: "Extra Low Voltage", img: elvImg },
   { title: "Electrical System Design", img: elecImg },
   { title: "Steel Structure Detailing", img: steelImg },
   { title: "Firefighting System Design", img: fireImg }
@@ -189,7 +189,8 @@ const ClientLogoGrid = () => {
               <img
                 src={logo}
                 alt={`Client Logo ${rowIndex}-${logoIndex}`}
-                loading="eager"
+                loading="lazy"
+                decoding="async"
                 width="150"
                 height="80"
               />
@@ -205,39 +206,37 @@ const VirtualTeam = () => {
   // Reviews Logic
   const [currentReview, setCurrentReview] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
+  const [visibleCards, setVisibleCards] = useState(3);
 
-  // Clone reviews for infinite loop effect
-  const extendedReviews = [...REVIEWS_DATA, ...REVIEWS_DATA];
+  useEffect(() => {
+    const updateVisibleCards = () => {
+      if (window.innerWidth >= 1300) {
+        setVisibleCards(3);
+      } else if (window.innerWidth >= 850) {
+        setVisibleCards(2);
+      } else {
+        setVisibleCards(1);
+      }
+    };
+
+    updateVisibleCards();
+    window.addEventListener('resize', updateVisibleCards);
+    return () => window.removeEventListener('resize', updateVisibleCards);
+  }, []);
 
   const nextReview = () => {
-    setIsTransitioning(true);
-    setCurrentReview((prev) => prev + 1);
+    if (currentReview < REVIEWS_DATA.length - visibleCards) {
+      setIsTransitioning(true);
+      setCurrentReview((prev) => prev + 1);
+    }
   };
 
   const prevReview = () => {
-    setIsTransitioning(true);
-    setCurrentReview((prev) => (prev === 0 ? REVIEWS_DATA.length - 1 : prev - 1));
+    if (currentReview > 0) {
+      setIsTransitioning(true);
+      setCurrentReview((prev) => prev - 1);
+    }
   };
-
-  // Infinite Loop Logic
-  useEffect(() => {
-    if (currentReview === REVIEWS_DATA.length) {
-      const timer = setTimeout(() => {
-        setIsTransitioning(false);
-        setCurrentReview(0);
-      }, 500);
-      return () => clearTimeout(timer);
-    }
-  }, [currentReview]);
-
-  useEffect(() => {
-    if (!isTransitioning && currentReview === 0) {
-      const timer = setTimeout(() => {
-        setIsTransitioning(true);
-      }, 50);
-      return () => clearTimeout(timer);
-    }
-  }, [isTransitioning, currentReview]);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -257,7 +256,7 @@ const VirtualTeam = () => {
   };
 
   return (
-    <div className="virtual-team-page">
+    <div className="virtual-team-page" >
       {/* Hero Section */}
       <section className="virtual-hero-section" style={{ backgroundImage: `url(${heroImage})` }}>
         <div className="virtual-hero-overlay"></div>
@@ -273,10 +272,10 @@ const VirtualTeam = () => {
       <section className="virtual-intro-section">
         <div className="virtual-intro-container">
           <div className="virtual-intro-left">
-            <h2>Your Project,<br />Our Expertise Anywhere, Anytime.</h2>
+            <h2>Your Project,<br />Our Expertise Anywhere, Anytime</h2>
           </div>
           <div className="virtual-intro-right">
-            <p>Specialized JSE Engineering Virtual Workforce to fulfill all your comprehensive engineering demands.</p>
+            <p>Specialized JSE Engineering Virtual Workforce to fulfill all your comprehensive engineering demands</p>
           </div>
         </div>
       </section>
@@ -302,7 +301,7 @@ const VirtualTeam = () => {
           </div>
           <div className="virtual-what-image-wrapper">
             <div className="virtual-image-back"></div>
-            <img src={heroImage} alt="Virtual Engineering Concept" className="virtual-what-img" />
+            <img src={heroImage} alt="Virtual Engineering Concept" className="virtual-what-img" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
@@ -315,7 +314,7 @@ const VirtualTeam = () => {
             {SPECIALIZATIONS.map((item, index) => (
               <div key={index} className="virtual-spec-card">
                 <div className="virtual-spec-img-wrapper">
-                  <img src={item.img} alt={item.title} className="virtual-spec-img" />
+                  <img src={item.img} alt={item.title} className="virtual-spec-img" loading="lazy" decoding="async" />
                 </div>
                 <div className="virtual-spec-content">
                   <h3 className="virtual-spec-card-title">{item.title}</h3>
@@ -331,7 +330,7 @@ const VirtualTeam = () => {
         <div className="virtual-offer-container">
           <div className="virtual-offer-image-wrapper">
             <div className="virtual-offer-image-back"></div>
-            <img src={heroGroupImage} alt="What We Offer" className="virtual-offer-img" />
+            <img src={heroGroupImage} alt="What We Offer" className="virtual-offer-img" loading="lazy" decoding="async" />
           </div>
           <div className="virtual-offer-text">
             <span className="dash-tagline">OUR SERVICE</span>
@@ -354,7 +353,7 @@ const VirtualTeam = () => {
             <div className="timeline-center-line"></div>
 
             {PROCESS_STEPS.map((step, index) => (
-              <div key={index} className={`timeline-row ${index % 2 === 0 ? 'row-left' : 'row-right'}`}>
+              <div key={index} className={`timeline-row ${index % 2 === 0 ? 'row-left' : 'row-right'} `}>
                 {/* Content Side */}
                 <div className="timeline-content-side">
                   <div className="timeline-card">
@@ -430,7 +429,7 @@ const VirtualTeam = () => {
           {/* Row 1: Text Left, Cards Right */}
           <div className="why-row-split">
             <div className="why-text-side">
-              <h3 className="why-big-text">Efficiency & Speed.</h3>
+              <h3 className="why-big-text">Efficiency & Speed</h3>
             </div>
             <div className="why-cards-side">
               <div className="why-pyramid-grid">
@@ -473,7 +472,7 @@ const VirtualTeam = () => {
               </div>
             </div>
             <div className="why-text-side">
-              <h3 className="why-big-text">Borderless Growth.</h3>
+              <h3 className="why-big-text">Borderless Growth</h3>
             </div>
           </div>
         </div>
@@ -586,7 +585,7 @@ const VirtualTeam = () => {
                   <div key={index} className="tech-card">
                     <div className="tech-logo-wrapper" style={{ background: tech.bg }}>
                       {tech.img ? (
-                        <img src={tech.img} alt={tech.name} className="tech-logo-img" />
+                        <img src={tech.img} alt={tech.name} className="tech-logo-img" loading="lazy" decoding="async" />
                       ) : (
                         <span className="tech-abbr">{tech.abbr}</span>
                       )}
@@ -671,10 +670,20 @@ const VirtualTeam = () => {
               </p>
             </div>
             <div className="reviews-nav-controls" style={{ paddingBottom: '1rem' }}>
-              <button className="review-nav-btn prev-btn" onClick={prevReview}>
+              <button
+                className="review-nav-btn prev-btn"
+                onClick={prevReview}
+                disabled={currentReview === 0}
+                style={{ opacity: currentReview === 0 ? 0.5 : 1, cursor: currentReview === 0 ? 'not-allowed' : 'pointer' }}
+              >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
               </button>
-              <button className="review-nav-btn next-btn" onClick={nextReview}>
+              <button
+                className="review-nav-btn next-btn"
+                onClick={nextReview}
+                disabled={currentReview >= REVIEWS_DATA.length - visibleCards}
+                style={{ opacity: currentReview >= REVIEWS_DATA.length - visibleCards ? 0.5 : 1, cursor: currentReview >= REVIEWS_DATA.length - visibleCards ? 'not-allowed' : 'pointer' }}
+              >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
               </button>
             </div>
@@ -685,10 +694,10 @@ const VirtualTeam = () => {
               className="reviews-track"
               style={{
                 transform: `translateX(calc(-1 * ${currentReview} * (400px + 2rem)))`,
-                transition: isTransitioning ? 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)' : 'none'
+                transition: 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)'
               }}
             >
-              {extendedReviews.map((review, index) => (
+              {REVIEWS_DATA.map((review, index) => (
                 <div key={index} className="review-card">
                   <p className="review-quote">"{review.text}"</p>
                   <div className="review-footer">
