@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import "../../styles/Page.css";
 import "./VirtualTeam.css";
 import heroImage from "../../assets/virtual-eng/pexels-fauxels-3184405.webp";
@@ -87,14 +88,14 @@ const COMMUNICATION_DATA = [
 
 // Specialization Cards Data
 const SPECIALIZATIONS = [
-  { title: "Architectural BIM", img: archImg },
-  { title: "HVAC Design", img: hvacImg },
-  { title: "Plumbing & Public Health", img: plumbImg },
-  { title: "MEP Design", img: mepImg },
-  { title: "Extra Low Voltage", img: elvImg },
-  { title: "Electrical System Design", img: elecImg },
-  { title: "Steel Structure Detailing", img: steelImg },
-  { title: "Firefighting System Design", img: fireImg }
+  { title: "Architectural BIM", img: archImg, link: "/services/design/architectural-bim" },
+  { title: "HVAC Design", img: hvacImg, link: "/services/design/hvac-design" },
+  { title: "Plumbing & Public Health", img: plumbImg, link: "/services/design/plumbing-public-health" },
+  { title: "MEP Design", img: mepImg, link: "/services/design/mep-design" },
+  { title: "Extra Low Voltage", img: elvImg, link: "/services/design/elv" },
+  { title: "Electrical System Design", img: elecImg, link: "/services/design/electrical-system-design" },
+  { title: "Steel Structure Detailing", img: steelImg, link: "/services/design/steel-structure-detailing" },
+  { title: "Firefighting System Design", img: fireImg, link: "/services/design/firefighting-design" }
 ];
 
 // Why Choose Us Data
@@ -256,6 +257,13 @@ const VirtualTeam = () => {
     // Add submission logic here
   };
 
+  const scrollToForm = () => {
+    const formSection = document.getElementById('contact-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="virtual-team-page" >
       {/* Hero Section */}
@@ -266,7 +274,7 @@ const VirtualTeam = () => {
           <p className="virtual-hero-desc">
             JSE's Engineer & Architect Virtual Assistant service bridges any geographical distance to work on projects on a remote basis
           </p>
-          <a href="/contact" className="virtual-hero-cta">Hire Us</a>
+          <button onClick={scrollToForm} className="virtual-hero-cta" style={{ cursor: 'pointer', border: 'none', font: 'inherit' }}>Hire Us</button>
         </div>
       </section>
 
@@ -313,14 +321,14 @@ const VirtualTeam = () => {
           <h2 className="virtual-spec-title">Our Areas Of Specialization</h2>
           <div className="virtual-spec-grid">
             {SPECIALIZATIONS.map((item, index) => (
-              <div key={index} className="virtual-spec-card">
+              <Link to={item.link} key={index} className="virtual-spec-card">
                 <div className="virtual-spec-img-wrapper">
                   <img src={item.img} alt={item.title} className="virtual-spec-img" loading="lazy" decoding="async" />
                 </div>
                 <div className="virtual-spec-content">
                   <h3 className="virtual-spec-card-title">{item.title}</h3>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -480,7 +488,7 @@ const VirtualTeam = () => {
       </section>
 
       {/* Form Section (Replicated from Internship) */}
-      < section className="internship-form-section" >
+      <section id="contact-form" className="internship-form-section">
         <div className="form-container">
           {/* Left Side: Title & Info */}
           <div className="form-info-side">

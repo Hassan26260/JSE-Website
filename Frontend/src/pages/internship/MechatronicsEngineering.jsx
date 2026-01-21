@@ -86,6 +86,13 @@ const MechatronicsEngineering = () => {
     // Backend connection would go here
   };
 
+  const scrollToForm = () => {
+    const formSection = document.getElementById('contact-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -152,7 +159,7 @@ const MechatronicsEngineering = () => {
               </p>
             </div>
 
-            <button className="apply-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+            <button onClick={scrollToForm} className="apply-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
               Apply Now
               {/* Inline SVG Arrow */}
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -336,7 +343,7 @@ const MechatronicsEngineering = () => {
       </section>
 
       {/* Application Form Section */}
-      <section className="internship-form-section">
+      <section id="contact-form" className="internship-form-section">
         <div className="form-container">
 
           {/* Left: Join Our Team Info */}

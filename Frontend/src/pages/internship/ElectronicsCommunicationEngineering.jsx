@@ -86,6 +86,13 @@ const ElectronicsCommunicationEngineering = () => {
     // Backend connection would go here
   };
 
+  const scrollToForm = () => {
+    const formSection = document.getElementById('contact-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -249,7 +256,7 @@ const ElectronicsCommunicationEngineering = () => {
                 Grow your skills, gain real experience, and learn how JSE Engineering Internship works outside the classroom. Our comprehensive program is designed to bridge the gap between academic theory and industry reality.
               </p>
             </div>
-            <button className="apply-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+            <button onClick={scrollToForm} className="apply-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
               Start Your Journey
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -336,7 +343,7 @@ const ElectronicsCommunicationEngineering = () => {
       </section>
 
       {/* Application Form Section */}
-      <section className="internship-form-section">
+      <section id="contact-form" className="internship-form-section">
         <div className="form-container">
 
           {/* Left: Join Our Team Info */}

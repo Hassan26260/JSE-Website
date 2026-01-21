@@ -195,6 +195,13 @@ const GeneralContracting = () => {
         setFormData({ name: '', email: '', message: '' }); // Reset form
     };
 
+    const scrollToForm = () => {
+        const formSection = document.getElementById('contact-form');
+        if (formSection) {
+            formSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -222,7 +229,7 @@ const GeneralContracting = () => {
                     <p className="general-contracting-hero-desc">
                         BIM Solutions for Architectural Projects
                     </p>
-                    <a href="/contact" className="general-contracting-hero-cta">Hire Us</a>
+                    <button onClick={scrollToForm} className="general-contracting-hero-cta">Hire Us</button>
                 </div>
             </section>
 
@@ -421,7 +428,7 @@ const GeneralContracting = () => {
             </section>
 
             {/* Form Section */}
-            <section className="general-contracting-form-section">
+            <section id="contact-form" className="general-contracting-form-section">
                 <div className="general-contracting-form-container">
                     {/* Left Side: Title & Info */}
                     <div className="general-contracting-form-info-side">

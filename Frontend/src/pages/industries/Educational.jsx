@@ -172,11 +172,18 @@ const Educational = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Form Submitted", formData);
-        // Add submission logic here
+        // Handle form submission logic here
+        console.log('Form submitted:', formData);
+        alert('Thank you for contacting JSE Engineering!');
+        setFormData({ name: '', email: '', message: '' }); // Reset form
     };
 
-
+    const scrollToForm = () => {
+        const formSection = document.getElementById('contact-form');
+        if (formSection) {
+            formSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
     return (
         <div className="educational-page">
             {/* Hero Section - Adapted from DesignEngineeringProjects */}
@@ -192,7 +199,7 @@ const Educational = () => {
                     <p className="educational-hero-desc">
                         BIM Solutions for Educational Facilities
                     </p>
-                    <a href="/contact" className="educational-hero-cta">Hire Us</a>
+                    <button onClick={scrollToForm} className="educational-hero-cta" style={{ cursor: 'pointer', border: 'none', font: 'inherit' }}>Hire Us</button>
                 </div>
             </section>
 
@@ -426,7 +433,7 @@ const Educational = () => {
             </section>
 
             {/* Form Section */}
-            <section className="educational-form-section">
+            <section id="contact-form" className="educational-form-section">
                 <div className="educational-form-container">
                     {/* Left Side: Title & Info */}
                     <div className="educational-form-info-side">

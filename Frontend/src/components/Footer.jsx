@@ -18,6 +18,12 @@ const Footer = () => {
                         Transforming visions into reality with innovative engineering solutions.
                         Building a sustainable future together.
                     </p>
+                    <div className="footer-address" style={{ marginTop: '1.5rem', color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.6' }}>
+                        <p style={{ margin: 0 }}>4th Floor, Karuna Conquest IT Park,</p>
+                        <p style={{ margin: 0 }}>No. 7 MTH Road, Sai Nagar,</p>
+                        <p style={{ margin: 0 }}>Ambattur Industrial Estate,</p>
+                        <p style={{ margin: 0, fontWeight: '700', color: '#ffffff' }}>Chennai - 600058</p>
+                    </div>
 
                     {/* Socials */}
                     <div className="footer-socials">

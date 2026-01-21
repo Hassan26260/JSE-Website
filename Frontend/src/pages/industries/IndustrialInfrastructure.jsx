@@ -176,6 +176,13 @@ const IndustrialInfrastructure = () => {
         // Add submission logic here
     };
 
+    const scrollToForm = () => {
+        const formSection = document.getElementById('contact-form');
+        if (formSection) {
+            formSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
 
     return (
         <div className="industrial-page">
@@ -192,7 +199,7 @@ const IndustrialInfrastructure = () => {
                     <p className="industrial-hero-desc">
                         BIM Solutions for IndustrialInfrastructure Facilities
                     </p>
-                    <a href="/contact" className="industrial-hero-cta">Hire Us</a>
+                    <button onClick={scrollToForm} className="industrial-hero-cta" style={{ cursor: 'pointer', border: 'none', font: 'inherit' }}>Hire Us</button>
                 </div>
             </section>
 
@@ -426,7 +433,7 @@ const IndustrialInfrastructure = () => {
             </section>
 
             {/* Form Section */}
-            <section className="industrial-form-section">
+            <section id="contact-form" className="industrial-form-section">
                 <div className="industrial-form-container">
                     {/* Left Side: Title & Info */}
                     <div className="industrial-form-info-side">

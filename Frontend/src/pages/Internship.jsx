@@ -112,7 +112,7 @@ const Internship = () => {
       description: "Integrated design training covering both electrical systems and architectural planning."
     },
     {
-      title: "Other",
+      title: "Other Departments",
       path: "/internship/other-internships",
       description: "Flexible internship programs covering various other engineering and technical disciplines."
     },

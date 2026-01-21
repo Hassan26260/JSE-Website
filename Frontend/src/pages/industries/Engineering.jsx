@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import "../../styles/Page.css";
 import "./Engineering.css";
 import heroImage from "../../assets/industry/healthcare/pexels-cristian-rojas-8460371.webp";
@@ -73,49 +74,57 @@ const COMPREHENSIVE_SERVICES = [
         title: "Architectural BIM Services",
         desc: "JSE creates patient-centric designs that optimize space and workflow, ensuring comfort and safety.",
         type: "blue", // card style variant
-        span: "col-2" // span 2 columns
+        span: "col-2", // span 2 columns
+        link: "/services/design/architectural-bim"
     },
     {
         title: "HVAC System Design",
         desc: "Specialized air quality control and ventilation systems to prevent infection spread and maintain sterile environments.",
         type: "photo",
-        img: h5
+        img: h5,
+        link: "/services/design/hvac-design"
     },
     {
         title: "Electrical & Power Systems",
         desc: "Reliable power distribution modeling ensuring uninterrupted supply for critical life-support equipment.",
         type: "dark",
-        span: ""
+        span: "",
+        link: "/services/design/electrical-system-design"
     },
     {
         title: "Plumbing & Medical Gas",
         desc: "Precision routing of medical gas lines and sanitary systems compliant with healthcare hygiene standards.",
         type: "white",
-        span: ""
+        span: "",
+        link: "/services/design/plumbing-public-health"
     },
     {
         title: "Fire Protection Systems",
         desc: "Advanced detection and suppression system designs to ensure rapid response and patient safety.",
         type: "photo",
-        img: h3
+        img: h3,
+        link: "/services/design/firefighting-design"
     },
     {
         title: "Structural Engineering",
         desc: "Robust structural analysis designed to support heavy medical equipment and seismic requirements.",
         type: "dark",
-        span: "col-2"
+        span: "col-2",
+        link: "/services/design/steel-structure-detailing"
     },
     {
         title: "Extra Low Voltage & Security Systems",
         desc: "Integrated nurse call, access control, and CCTV systems for secure and responsive facility management.",
         type: "white",
-        span: "col-2"
+        span: "col-2",
+        link: "/services/design/elv"
     },
     {
         title: "Sustainability & Energy Analysis",
         desc: "Energy-efficient building models that reduce operational costs while maintaining optimal care environments.",
         type: "blue",
-        span: "col-2"
+        span: "col-2",
+        link: "/services/design"
     }
 ];
 
@@ -176,6 +185,13 @@ const Engineering = () => {
         // Add submission logic here
     };
 
+    const scrollToForm = () => {
+        const formSection = document.getElementById('contact-form');
+        if (formSection) {
+            formSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
 
     return (
         <div className="engineering-page">
@@ -192,7 +208,7 @@ const Engineering = () => {
                     <p className="engineering-hero-desc">
                         BIM Solutions for Engineering Facilities
                     </p>
-                    <a href="/contact" className="engineering-hero-cta">Hire Us</a>
+                    <button onClick={scrollToForm} className="engineering-hero-cta" style={{ cursor: 'pointer', border: 'none', font: 'inherit' }}>Hire Us</button>
                 </div>
             </section>
 
@@ -290,7 +306,8 @@ const Engineering = () => {
 
                     <div className="engineering-bento-grid">
                         {COMPREHENSIVE_SERVICES.map((item, index) => (
-                            <div
+                            <Link
+                                to={item.link}
                                 key={index}
                                 className={`engineering-bento-card hb-${item.type} ${item.span === 'col-2' ? 'hb-span-2-col' : ''}`}
                                 style={item.type === 'photo' ? { backgroundImage: `url(${item.img})` } : {}}
@@ -303,7 +320,7 @@ const Engineering = () => {
                                     <h3 className="hb-title">{item.title}</h3>
                                     <p className="hb-desc">{item.desc}</p>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -426,7 +443,7 @@ const Engineering = () => {
             </section>
 
             {/* Form Section */}
-            <section className="engineering-form-section">
+            <section id="contact-form" className="engineering-form-section">
                 <div className="engineering-form-container">
                     {/* Left Side: Title & Info */}
                     <div className="engineering-form-info-side">

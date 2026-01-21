@@ -157,6 +157,13 @@ const SecondmentTeam = () => {
     // Add submission logic here
   };
 
+  const scrollToForm = () => {
+    const formSection = document.getElementById('contact-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="virtual-team-page">
       {/* Hero Section */}
@@ -167,7 +174,7 @@ const SecondmentTeam = () => {
           <p className="virtual-hero-desc">
             Temporary engineering professionals to support your project needs
           </p>
-          <a href="/contact" className="virtual-hero-cta">Hire Us</a>
+          <button onClick={scrollToForm} className="virtual-hero-cta" style={{ cursor: 'pointer', border: 'none', font: 'inherit' }}>Hire Us</button>
         </div>
       </section>
 
@@ -454,7 +461,7 @@ const SecondmentTeam = () => {
       </section>
 
       {/* Form Section (Replicated from Virtual Team) */}
-      <section className="internship-form-section">
+      <section id="contact-form" className="internship-form-section">
         <div className="form-container">
           {/* Left Side: Title & Info */}
           <div className="form-info-side">

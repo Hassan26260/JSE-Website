@@ -174,6 +174,13 @@ const Builders = () => {
         // Add submission logic here
     };
 
+    const scrollToForm = () => {
+        const formSection = document.getElementById('contact-form');
+        if (formSection) {
+            formSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <div className="builders-page">
             {/* Hero Section */}
@@ -351,7 +358,7 @@ const Builders = () => {
             </section>
 
             {/* Form Section */}
-            <section className="builders-form-section">
+            <section id="contact-form" className="builders-form-section">
                 <div className="builders-form-container">
                     {/* Left Side: Title & Info */}
                     <div className="builders-form-info-side">

@@ -91,12 +91,12 @@ function App() {
           <Route path="/industries/general-contracting" element={<MainLayout><GeneralContracting /></MainLayout>} />
           <Route path="/industries/manufacturing" element={<MainLayout><Manufacturing /></MainLayout>} />
           <Route path="/industries/skyscrapers" element={<MainLayout><Skyscrapers /></MainLayout>} />
-          <Route path="/industries/engineering" element={<Engineering />} />
-          <Route path="/industries/educational" element={<Educational />} />
-          <Route path="/industries/industrial" element={<IndustrialInfrastructure />} />
-          <Route path="/who-we-are" element={<WhoWeAre />} />
-          <Route path="/vision-mission" element={<VisionMission />} />
-          <Route path="/history" element={<History />} />
+          <Route path="/industries/engineering" element={<MainLayout><Engineering /></MainLayout>} />
+          <Route path="/industries/educational" element={<MainLayout><Educational /></MainLayout>} />
+          <Route path="/industries/industrial" element={<MainLayout><IndustrialInfrastructure /></MainLayout>} />
+          <Route path="/who-we-are" element={<MainLayout><WhoWeAre /></MainLayout>} />
+          <Route path="/vision-mission" element={<MainLayout><VisionMission /></MainLayout>} />
+          <Route path="/history" element={<MainLayout><History /></MainLayout>} />
 
           {/* Design service routes */}
           <Route path="/services/design/architectural-bim" element={<MainLayout><ArchitecturalBIM /></MainLayout>} />

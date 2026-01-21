@@ -14,6 +14,7 @@ import mapImage from "../assets/images-home/Map.png";
 import heroVideo from "../assets/images-home/hero-video.mp4";
 
 import { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 // Helper component to render client logos in 8-7-8-7 pattern
 const ClientLogoGrid = () => {
@@ -58,6 +59,19 @@ const Home = () => {
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [statsStarted, setStatsStarted] = useState(false);
   const statsRef = useRef(null);
+  const location = useLocation();
+
+  // Handle Hash Scroll (e.g. from Header Contact Us)
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   // About Image Animation State
   const [aboutImageVisible, setAboutImageVisible] = useState(false);
@@ -398,7 +412,7 @@ const Home = () => {
               </li>
             </ul>
 
-            <button className="about-cta-btn">Discover Our Story</button>
+            <Link to="/history" className="about-cta-btn">Discover Our Story</Link>
           </div>
 
           <div className="about-image-container">
@@ -428,7 +442,7 @@ const Home = () => {
           <p className="solutions-description">JSE offers customized engineering solutions to fulfill our clients project requirement.</p>
 
           <div className="home-bento-grid">
-            <div className="home-bento-card">
+            <Link to="/services/design/architectural-bim" className="home-bento-card">
               <img
                 src={architecturalBim}
                 alt="Architectural BIM"
@@ -441,8 +455,8 @@ const Home = () => {
                 <h3 className="home-bento-title">Architectural BIM</h3>
                 <p className="home-bento-desc">Revolutionizing architecture with detailed and accurate BIM models.</p>
               </div>
-            </div>
-            <div className="home-bento-card">
+            </Link>
+            <Link to="/services/design/hvac-design" className="home-bento-card">
               <img
                 src={hvacDesign}
                 alt="HVAC Design"
@@ -455,8 +469,8 @@ const Home = () => {
                 <h3 className="home-bento-title">HVAC Design</h3>
                 <p className="home-bento-desc">Efficient and sustainable HVAC solutions for optimal performance.</p>
               </div>
-            </div>
-            <div className="home-bento-card">
+            </Link>
+            <Link to="/services/design/plumbing-public-health" className="home-bento-card">
               <img
                 src={plumbing}
                 alt="Plumbing & Public Health"
@@ -469,8 +483,8 @@ const Home = () => {
                 <h3 className="home-bento-title">Plumbing & Public Health</h3>
                 <p className="home-bento-desc">Reliable and safe plumbing systems designed for health and safety.</p>
               </div>
-            </div>
-            <div className="home-bento-card">
+            </Link>
+            <Link to="/services/design/mep-design" className="home-bento-card">
               <img
                 src={mepDesign}
                 alt="MEP Design & Drafting"
@@ -483,8 +497,8 @@ const Home = () => {
                 <h3 className="home-bento-title">MEP Design & Drafting</h3>
                 <p className="home-bento-desc">Integrated mechanical, electrical, and plumbing systems.</p>
               </div>
-            </div>
-            <div className="home-bento-card">
+            </Link>
+            <Link to="/services/design/bim-modelling" className="home-bento-card">
               <img
                 src={bimModelling}
                 alt="BIM Modelling"
@@ -497,8 +511,8 @@ const Home = () => {
                 <h3 className="home-bento-title">BIM Modelling</h3>
                 <p className="home-bento-desc">Precise and detailed BIM models.</p>
               </div>
-            </div>
-            <div className="home-bento-card">
+            </Link>
+            <Link to="/services/design/electrical-system-design" className="home-bento-card">
               <img
                 src={electricalSystem}
                 alt="Electrical System Design"
@@ -511,8 +525,8 @@ const Home = () => {
                 <h3 className="home-bento-title">Electrical System Design</h3>
                 <p className="home-bento-desc">Innovative electrical designs.</p>
               </div>
-            </div>
-            <div className="home-bento-card">
+            </Link>
+            <Link to="/services/design/elv" className="home-bento-card">
               <img
                 src={mepDesign}
                 alt="Extra Low Voltage"
@@ -525,8 +539,8 @@ const Home = () => {
                 <h3 className="home-bento-title">Extra Low Voltage Systems</h3>
                 <p className="home-bento-desc">Advanced Extra Low Voltage solutions.</p>
               </div>
-            </div>
-            <div className="home-bento-card">
+            </Link>
+            <Link to="/services/design/steel-structure-detailing" className="home-bento-card">
               <img
                 src={hvacDesign}
                 alt="Steel Structure Modeling"
@@ -539,7 +553,7 @@ const Home = () => {
                 <h3 className="home-bento-title">Steel Structure</h3>
                 <p className="home-bento-desc">Accurate Tekla detailing.</p>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>

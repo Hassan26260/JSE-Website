@@ -195,6 +195,13 @@ const Skyscrapers = () => {
         setFormData({ name: '', email: '', message: '' }); // Reset form
     };
 
+    const scrollToForm = () => {
+        const formSection = document.getElementById('contact-form');
+        if (formSection) {
+            formSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -222,7 +229,7 @@ const Skyscrapers = () => {
                     <p className="skyscrapers-hero-desc">
                         BIM Solutions for Architectural Projects
                     </p>
-                    <a href="/contact" className="skyscrapers-hero-cta">Hire Us</a>
+                    <button onClick={scrollToForm} className="skyscrapers-hero-cta" style={{ cursor: 'pointer', border: 'none', font: 'inherit' }}>Hire Us</button>
                 </div>
             </section>
 
@@ -421,7 +428,7 @@ const Skyscrapers = () => {
             </section>
 
             {/* Form Section */}
-            <section className="skyscrapers-form-section">
+            <section id="contact-form" className="skyscrapers-form-section">
                 <div className="skyscrapers-form-container">
                     {/* Left Side: Title & Info */}
                     <div className="skyscrapers-form-info-side">

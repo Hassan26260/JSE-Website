@@ -84,6 +84,13 @@ const DesignEngineeringProjects = () => {
         // Add submission logic here
     };
 
+    const scrollToForm = () => {
+        const formSection = document.getElementById('contact-form');
+        if (formSection) {
+            formSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     useEffect(() => {
         const handleScroll = () => {
             if (!imageRef.current) return;
@@ -128,7 +135,7 @@ const DesignEngineeringProjects = () => {
                         Expert engineering solutions tailored to your project needs. From concept to completion, we deliver excellence in design and implementation.
                         {/* Placeholder text, can be updated later based on user feedback */}
                     </p>
-                    <a href="/contact" className="design-hero-cta">Hire Us</a>
+                    <button onClick={scrollToForm} className="design-hero-cta" style={{ cursor: 'pointer', border: 'none', font: 'inherit' }}>Hire Us</button>
                 </div>
             </section>
 
@@ -387,7 +394,7 @@ const DesignEngineeringProjects = () => {
             </section>
 
             {/* Form Section */}
-            <section className="internship-form-section">
+            <section id="contact-form" className="internship-form-section">
                 <div className="form-container">
                     {/* Left Side: Title & Info */}
                     <div className="form-info-side">

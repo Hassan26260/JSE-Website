@@ -212,7 +212,7 @@ const Header = () => {
             Career
           </Link>
 
-          <Link to="/contact" className={`nav-link cta-button ${isActive("/contact") ? "active" : ""}`} onClick={() => setIsMobileMenuOpen(false)}>
+          <Link to="/#contact-form" className={`nav-link cta-button ${isActive("/contact") ? "active" : ""}`} onClick={() => setIsMobileMenuOpen(false)}>
             Contact Us
           </Link>
         </nav>

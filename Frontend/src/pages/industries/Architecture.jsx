@@ -195,6 +195,13 @@ const Architecture = () => {
         setFormData({ name: '', email: '', message: '' }); // Reset form
     };
 
+    const scrollToForm = () => {
+        const formSection = document.getElementById('contact-form');
+        if (formSection) {
+            formSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -222,7 +229,7 @@ const Architecture = () => {
                     <p className="architecture-hero-desc">
                         BIM Solutions for Architectural Projects
                     </p>
-                    <a href="/contact" className="architecture-hero-cta">Hire Us</a>
+                    <button onClick={scrollToForm} className="architecture-hero-cta" style={{ cursor: 'pointer', border: 'none', font: 'inherit' }}>Hire Us</button>
                 </div>
             </section>
 
@@ -419,7 +426,7 @@ const Architecture = () => {
             </section>
 
             {/* Form Section */}
-            <section className="architecture-form-section">
+            <section id="contact-form" className="architecture-form-section">
                 <div className="architecture-form-container">
                     {/* Left Side: Title & Info */}
                     <div className="architecture-form-info-side">
