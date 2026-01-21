@@ -86,13 +86,6 @@ const Footer = () => {
 
                 {/* Column 2 */}
                 <div className="footer-col">
-                    <div className="footer-group">
-                        <h4 className="footer-heading">How We Work</h4>
-                        <ul className="footer-links">
-                            <li><Link to="/solutions" className="footer-link">Our Solutions</Link></li>
-                            <li><Link to="/partnership" className="footer-link">Partnership & Collaboration</Link></li>
-                        </ul>
-                    </div>
 
                     <div className="footer-group">
                         <h4 className="footer-heading">Resources</h4>

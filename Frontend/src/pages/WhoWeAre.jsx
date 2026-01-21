@@ -3,15 +3,15 @@ import "../styles/Page.css";
 import "./WhoWeAre.css";
 // Reusing the Virtual Team hero image as a placeholder/standard
 import heroImage from "../assets/virtual-eng/pexels-fauxels-3184405.webp";
-import heroGroupImage from "../assets/images-home/hero-group-image.webp";
+import heroGroupImage from "../assets/other/pexels-josephine-joo-hee-yang-653354097-17660884.jpg";
 
-// Carousel Images
-import dubaiImg from "../assets/images-home/skyscraper.webp";
-import ausImg from "../assets/images-home/architectural-bim.webp";
-import vizagImg from "../assets/images-home/mep-design.webp";
-import tiruImg from "../assets/images-home/hvac-design.webp";
-import chennaiImg from "../assets/images-home/electrical-system.webp";
-import trichyImg from "../assets/images-home/plumbing.webp";
+// City Images
+import dubaiImg from "../assets/other/city/dubai.jpg";
+import ausImg from "../assets/other/city/australia.jpg"; // Using australia.jpg for Australia
+import vizagImg from "../assets/other/city/vizag.jpg";
+import tiruImg from "../assets/images-home/hero-group-image.jpg"; // Leaving as is (no replacement found)
+import chennaiImg from "../assets/other/city/chennai.jpg";
+import trichyImg from "../assets/other/city/trichy.jpg";
 
 // Image for Director Image (Using a professional looking one)
 import directorImg from "../assets/History/MD.jpg";

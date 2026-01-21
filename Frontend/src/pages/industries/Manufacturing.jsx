@@ -22,7 +22,7 @@ import industrialImg from '../../assets/images-home/mep-design.webp';
 import publicImg from '../../assets/images-home/hvac-design.webp'; // Placeholder
 
 // Image for Partner Section
-import partnerImage from '../../assets/images-home/hero-group-image.webp';
+import partnerImage from '../../assets/images-home/hero-group-image.jpg';
 
 // Images for Business Types Carousel (Reusing existing or placeholders)
 import archFirmImg from '../../assets/images-home/architectural-bim.webp';

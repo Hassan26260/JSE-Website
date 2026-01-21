@@ -12,7 +12,7 @@ import contentImg2 from '../../assets/images-home/bim-modelling.webp';
 // Placeholder Images for Carousel (Reusing assets)
 import h1 from '../../assets/images-home/skyscraper.webp';
 import h4 from '../../assets/images-home/architectural-bim.webp';
-import h6 from '../../assets/images-home/hero-group-image.webp';
+import h6 from '../../assets/images-home/hero-group-image.jpg';
 
 // Tech Logos
 import revitLogo from '../../assets/virtual-eng/software logos/autodesk-revit-seeklogo.png';

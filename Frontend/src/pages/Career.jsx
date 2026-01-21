@@ -6,15 +6,24 @@ import heroImage from '../assets/careers-page/pexels-yankrukov-7691728.webp';
 import lifeImg1 from '../assets/images-home/skyscraper.webp';
 import lifeImg2 from '../assets/images-home/architectural-bim.webp';
 import lifeImg3 from '../assets/images-home/bim-modelling.webp';
-import lifeImg4 from '../assets/images-home/hero-group-image.webp';
+import lifeImg4 from '../assets/images-home/hero-group-image.jpg';
 
 // Alumni Portfolio Images
-import p1 from "../assets/portfolio.img/pexels-jgathisan0612-1580112.webp";
-import p2 from "../assets/portfolio.img/pexels-jimbear-998499.webp";
-import p3 from "../assets/portfolio.img/pexels-mantasink-1106476.webp";
-import p4 from "../assets/portfolio.img/pexels-pixabay-210598.webp";
-import p5 from "../assets/portfolio.img/pexels-pixabay-273209.webp";
-import p6 from "../assets/portfolio.img/pexels-pixasquare-1123982.webp";
+// Alumni Portfolio Images
+// import p1 from "../assets/portfolio.img/pexels-jgathisan0612-1580112.webp";
+// import p2 from "../assets/portfolio.img/pexels-jimbear-998499.webp";
+// import p3 from "../assets/portfolio.img/pexels-mantasink-1106476.webp";
+// import p4 from "../assets/portfolio.img/pexels-pixabay-210598.webp";
+// import p5 from "../assets/portfolio.img/pexels-pixabay-273209.webp";
+// import p6 from "../assets/portfolio.img/pexels-pixasquare-1123982.webp";
+
+// Real Projects Import
+import { ALL_REAL_PROJECTS } from '../data/realPortfolio';
+
+const FEATURED_PROJECTS = ALL_REAL_PROJECTS.slice(0, 6).map(p => ({
+  title: p.title,
+  img: p.image
+}));
 
 const JOBS = [
   {
@@ -118,14 +127,6 @@ const Career = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const ALUMNI_PROJECTS = [
-    { img: p1, title: "Luxury Resort" },
-    { img: p2, title: "Urban Center" },
-    { img: p3, title: "Skyline Tower" },
-    { img: p4, title: "Theme Park" },
-    { img: p5, title: "Tech Hub" },
-    { img: p6, title: "Industrial Unit" }
-  ];
 
   return (
     <div className="career-page">
@@ -334,29 +335,26 @@ const Career = () => {
       </section>
 
 
-      {/* Alumni Portfolio Carousel Section */}
-      <section className="alumni-carousel-section">
-        <div className="alumni-container">
-          <div className="alumni-header">
-            <p className="career-dash-heading" style={{ color: '#94a3b8' }}>Client Success</p>
-            <h2 className="community-title" style={{ color: '#ffffff' }}>Our Proud Alumni Portfolio</h2>
-            <p className="alumni-tagline">
-              Showcasing the journeys of JSEians who grew with us, shaped our legacy, and now shine across the industry.
-            </p>
+      {/* Featured Projects Section (Replaces Alumni) */}
+      <section className="design-featured-section">
+        <div className="design-featured-container">
+          <div className="design-featured-header">
+            <span className="design-featured-tagline">Client Success</span>
+            <h2 className="design-featured-heading">Our Featured Projects</h2>
           </div>
         </div>
 
         {/* Marquee Carousel */}
-        <div className="alumni-marquee-wrapper">
-          <div className="alumni-marquee-track">
+        <div className="design-marquee-wrapper">
+          <div className="design-marquee-track">
             {/* Set 1 */}
-            {ALUMNI_PROJECTS.map((project, index) => (
-              <div key={`p-${index}`} className="alumni-card">
-                <img src={project.img} alt={project.title} className="alumni-img" />
-                <div className="alumni-overlay">
-                  <div className="alumni-content">
-                    <h3 className="alumni-title">{project.title}</h3>
-                    <a href="/portfolio" className="alumni-cta">
+            {FEATURED_PROJECTS.map((project, index) => (
+              <div key={`featured-${index}`} className="design-featured-card">
+                <img src={project.img} alt={project.title} className="design-featured-img" loading="lazy" decoding="async" />
+                <div className="design-featured-overlay">
+                  <div className="design-featured-content">
+                    <h3 className="design-featured-title">{project.title}</h3>
+                    <a href="/portfolio" className="design-featured-cta">
                       Know More <span className="arrow">→</span>
                     </a>
                   </div>
@@ -364,13 +362,13 @@ const Career = () => {
               </div>
             ))}
             {/* Set 2 (Duplicate for loop) */}
-            {ALUMNI_PROJECTS.map((project, index) => (
-              <div key={`p-dup-${index}`} className="alumni-card">
-                <img src={project.img} alt={project.title} className="alumni-img" />
-                <div className="alumni-overlay">
-                  <div className="alumni-content">
-                    <h3 className="alumni-title">{project.title}</h3>
-                    <a href="/portfolio" className="alumni-cta">
+            {FEATURED_PROJECTS.map((project, index) => (
+              <div key={`featured-dup-${index}`} className="design-featured-card">
+                <img src={project.img} alt={project.title} className="design-featured-img" loading="lazy" decoding="async" />
+                <div className="design-featured-overlay">
+                  <div className="design-featured-content">
+                    <h3 className="design-featured-title">{project.title}</h3>
+                    <a href="/portfolio" className="design-featured-cta">
                       Know More <span className="arrow">→</span>
                     </a>
                   </div>
@@ -382,7 +380,7 @@ const Career = () => {
       </section>
 
       {/* Happy JSEians Section (Split Layout) */}
-      <section className="happy-jseians-section">
+      < section className="happy-jseians-section" >
         <div className="happy-container">
           {/* Left Sticky Content */}
           <div className="happy-sticky-left">
@@ -491,68 +489,70 @@ const Career = () => {
 
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Job Modal */}
-      {selectedJob && (
-        <div className="job-modal-overlay" onClick={() => setSelectedJob(null)}>
-          <div className="job-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close-btn" onClick={() => setSelectedJob(null)}>
-              {/* Inline SVG for X */}
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
+      {
+        selectedJob && (
+          <div className="job-modal-overlay" onClick={() => setSelectedJob(null)}>
+            <div className="job-modal-content" onClick={(e) => e.stopPropagation()}>
+              <button className="modal-close-btn" onClick={() => setSelectedJob(null)}>
+                {/* Inline SVG for X */}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
 
-            <h2 className="modal-job-title">{selectedJob.title}</h2>
-            <div className="modal-meta">
-              <span className="modal-type">{selectedJob.type}</span>
-              <span className="modal-location">{selectedJob.location}</span>
-            </div>
-
-            <div className="modal-scroll-area">
-              <div className="modal-section">
-                <h4>Role Overview:</h4>
-                <p>{selectedJob.details.roleOverview}</p>
+              <h2 className="modal-job-title">{selectedJob.title}</h2>
+              <div className="modal-meta">
+                <span className="modal-type">{selectedJob.type}</span>
+                <span className="modal-location">{selectedJob.location}</span>
               </div>
 
-              <div className="modal-section">
-                <h4>Key Responsibilities:</h4>
-                <ul>
-                  {selectedJob.details.responsibilities.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
+              <div className="modal-scroll-area">
+                <div className="modal-section">
+                  <h4>Role Overview:</h4>
+                  <p>{selectedJob.details.roleOverview}</p>
+                </div>
+
+                <div className="modal-section">
+                  <h4>Key Responsibilities:</h4>
+                  <ul>
+                    {selectedJob.details.responsibilities.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="modal-section">
+                  <h4>Qualifications & Skills:</h4>
+                  <ul>
+                    {selectedJob.details.qualifications.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="modal-section">
+                  <h4>Experience Required:</h4>
+                  <p>{selectedJob.details.experience}</p>
+                </div>
+
+                <div className="modal-section">
+                  <h4>Freshers can also apply:</h4>
+                  <p>{selectedJob.details.freshers ? "Yes" : "No"}</p>
+                </div>
               </div>
 
-              <div className="modal-section">
-                <h4>Qualifications & Skills:</h4>
-                <ul>
-                  {selectedJob.details.qualifications.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
+              <div className="modal-footer">
+                <button className="apply-btn">Apply Now</button>
               </div>
-
-              <div className="modal-section">
-                <h4>Experience Required:</h4>
-                <p>{selectedJob.details.experience}</p>
-              </div>
-
-              <div className="modal-section">
-                <h4>Freshers can also apply:</h4>
-                <p>{selectedJob.details.freshers ? "Yes" : "No"}</p>
-              </div>
-            </div>
-
-            <div className="modal-footer">
-              <button className="apply-btn">Apply Now</button>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        )
+      }
+    </div >
   );
 };
 export default Career;

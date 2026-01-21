@@ -10,13 +10,41 @@ import heroImage from "../assets/images-home/skyscraper.webp";
 
 // Core Values Data
 const coreValues = [
-    { title: "Collaborative", desc: "Together, we achieve more by fostering teamwork and shared success.", img: heroImage }, // Reusing skyscraper/team concept
-    { title: "Curious", desc: "We’re always learning, exploring new ideas, and pushing boundaries to innovate.", img: heroImage },
-    { title: "Willing", desc: "Ready to go the extra mile, we embrace challenges with a can-do attitude.", img: heroImage },
-    { title: "Dependable", desc: "Count on us for reliability and trustworthiness, no matter the task at hand.", img: heroImage },
-    { title: "Adaptive", desc: "We thrive in changing environments, adapting quickly to meet evolving needs.", img: heroImage },
-    { title: "Excellence", desc: "We are dedicated to setting the highest standards, ensuring top-tier results in every project we take on.", img: heroImage },
-    { title: "Sustainability", desc: "Building a greener future through responsible practices that last for generations.", img: heroImage }
+    {
+        title: "Collaborative",
+        desc: "Together, we achieve more by fostering teamwork and shared success.",
+        icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+    },
+    {
+        title: "Curious",
+        desc: "We’re always learning, exploring new ideas, and pushing boundaries to innovate.",
+        icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+    },
+    {
+        title: "Willing",
+        desc: "Ready to go the extra mile, we embrace challenges with a can-do attitude.",
+        icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+    },
+    {
+        title: "Dependable",
+        desc: "Count on us for reliability and trustworthiness, no matter the task at hand.",
+        icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+    },
+    {
+        title: "Adaptive",
+        desc: "We thrive in changing environments, adapting quickly to meet evolving needs.",
+        icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+    },
+    {
+        title: "Excellence",
+        desc: "We are dedicated to setting the highest standards, ensuring top-tier results in every project.",
+        icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+    },
+    {
+        title: "Sustainability",
+        desc: "Building a greener future through responsible practices that last for generations.",
+        icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+    }
 ];
 
 const VisionMission = () => {
@@ -128,21 +156,17 @@ const VisionMission = () => {
                     <h2 className="values-title">Our Core Values</h2>
                 </div>
 
-                <div className="values-track-wrapper">
-                    <div className="values-track">
-                        {/* Render twice for infinite loop */}
-                        {[...coreValues, ...coreValues].map((val, index) => (
-                            <div className="value-card" key={index}>
-                                <div className="value-card-img-wrap">
-                                    <img src={val.img} alt={val.title} className="value-card-img" />
-                                </div>
-                                <div className="value-card-content">
-                                    <h3>{val.title}</h3>
-                                    <p>{val.desc}</p>
-                                </div>
+                {/* Custom Icon Cards Grid */}
+                <div className="vm-values-grid">
+                    {coreValues.map((val, index) => (
+                        <div className="vm-value-card-new" key={index}>
+                            <div className="vm-value-icon-box">
+                                {val.icon}
                             </div>
-                        ))}
-                    </div>
+                            <h3>{val.title}</h3>
+                            <p>{val.desc}</p>
+                        </div>
+                    ))}
                 </div>
             </section>
 

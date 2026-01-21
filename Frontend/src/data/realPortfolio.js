@@ -93,8 +93,8 @@ const processDynamicProjects = (globData, category, isMEP = false) => {
     });
 };
 
-export const ARCH_PROJECTS = processDynamicProjects(archGlob, "Architectural Structure");
-export const STEEL_PROJECTS = processDynamicProjects(steelGlob, "Steel Detailing");
+export const ARCH_PROJECTS = processDynamicProjects(archGlob, "Architectural & Structural");
+export const STEEL_PROJECTS = processDynamicProjects(steelGlob, "Steel Structural Detailing");
 export const MEP_PROJECTS = processDynamicProjects(mepGlob, "MEP", true);
 
 export const ALL_REAL_PROJECTS = [...MEP_PROJECTS, ...STEEL_PROJECTS, ...ARCH_PROJECTS];

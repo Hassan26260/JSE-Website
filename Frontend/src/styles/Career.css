@@ -1045,3 +1045,166 @@
         margin-right: auto;
     }
 }
+
+/* --- Featured Projects Section (Replaces Alumni) --- */
+.design-featured-section {
+    padding: 6rem 0 8rem;
+    background: #071230;
+    position: relative;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.design-featured-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    margin-bottom: 4rem;
+}
+
+.design-featured-header {
+    text-align: left;
+    max-width: 900px;
+}
+
+.design-featured-tagline {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.design-featured-tagline::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: #144AE0;
+    border-radius: 2px;
+}
+
+.design-featured-heading {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.design-marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+.design-marquee-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation: designMarqueeScroll 40s linear infinite;
+}
+
+.design-marquee-wrapper:hover .design-marquee-track {
+    animation-play-state: paused;
+}
+
+@keyframes designMarqueeScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.design-featured-card {
+    position: relative;
+    width: 320px;
+    height: 480px;
+    border-radius: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.design-featured-card:hover {
+    transform: translateY(-5px);
+    z-index: 2;
+}
+
+.design-featured-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.design-featured-card:hover .design-featured-img {
+    transform: scale(1.1);
+}
+
+.design-featured-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+}
+
+.design-featured-card:hover .design-featured-overlay {
+    opacity: 1;
+}
+
+.design-featured-content {
+    width: 100%;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.design-featured-card:hover .design-featured-content {
+    transform: translateY(0);
+}
+
+.design-featured-title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+}
+
+.design-featured-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #144AE0;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.design-featured-cta:hover {
+    color: #3b82f6;
+}
+
+.design-featured-cta .arrow {
+    transition: transform 0.3s ease;
+}
+
+.design-featured-cta:hover .arrow {
+    transform: translateX(5px);
+}

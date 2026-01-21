@@ -54,6 +54,10 @@
   transition: color 0.3s ease;
 }
 
+.header:not(.scrolled) .logo-text {
+  color: #ffffff;
+}
+
 .nav-link {
   text-decoration: none;
   color: #333;

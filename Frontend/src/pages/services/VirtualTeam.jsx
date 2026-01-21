@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "../../styles/Page.css";
 import "./VirtualTeam.css";
 import heroImage from "../../assets/virtual-eng/pexels-fauxels-3184405.webp";
+import conceptImage from "../../assets/other/Unlock the Secrets of Design Principles for Impactful Architectural Presentations _ Learn Architecture Online.jpg";
 
 // Specialization Images
 import archImg from "../../assets/images-home/architectural-bim.webp";
@@ -12,7 +13,7 @@ import elvImg from "../../assets/images-home/bim-modelling.webp"; // Placeholder
 import elecImg from "../../assets/images-home/electrical-system.webp";
 import steelImg from "../../assets/images-home/skyscraper.webp"; // Placeholder for Steel
 import fireImg from "../../assets/images-home/mep-design.webp"; // Placeholder for Fire
-import heroGroupImage from "../../assets/images-home/hero-group-image.webp";
+import heroGroupImage from "../../assets/images-home/hero-group-image.jpg";
 
 // Software Logos
 import revitImg from "../../assets/virtual-eng/software logos/autodesk-revit-seeklogo.png";
@@ -301,7 +302,7 @@ const VirtualTeam = () => {
           </div>
           <div className="virtual-what-image-wrapper">
             <div className="virtual-image-back"></div>
-            <img src={heroImage} alt="Virtual Engineering Concept" className="virtual-what-img" loading="lazy" decoding="async" />
+            <img src={conceptImage} alt="Virtual Engineering Concept" className="virtual-what-img" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>

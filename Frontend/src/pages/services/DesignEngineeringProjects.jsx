@@ -3,6 +3,7 @@ import "../../styles/Page.css";
 import "./DesignEngineeringProjects.css";
 // Correct relative path to assets from this file location (Frontend/src/pages/services)
 import heroImage from "../../assets/design-eng/pexels-thisisengineering-3862379.webp";
+import processImage from "../../assets/other/Engineering Design Portfolio.jpg";
 import expandImage from "../../assets/design-eng/pexels-karola-g-4491459.webp";
 
 // Portfolio Images for Marquee
@@ -223,7 +224,7 @@ const DesignEngineeringProjects = () => {
                 <div className="design-process-container">
                     <div className="design-process-image-side">
                         <div className="design-process-img-wrapper">
-                            <img src={heroImage} alt="Design Engineering Process" className="design-process-img" loading="lazy" decoding="async" />
+                            <img src={processImage} alt="Design Engineering Process" className="design-process-img" loading="lazy" decoding="async" />
                         </div>
                     </div>
                     <div className="design-process-content-side">

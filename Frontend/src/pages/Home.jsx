@@ -1,6 +1,7 @@
 import "../styles/Home.css";
+import "../styles/Benefits.css";
 import heroBanner from "../assets/images-home/Herobanner.webp";
-import heroGroupImage from "../assets/images-home/hero-group-image.webp";
+import heroGroupImage from "../assets/images-home/hero-group-image.jpg";
 import whyChooseUsImage from "../assets/images-home/why choose us.png";
 import architecturalBim from "../assets/images-home/architectural-bim.webp";
 import hvacDesign from "../assets/images-home/hvac-design.webp";
@@ -670,61 +671,74 @@ const Home = () => {
       </section>
 
       <section className="benefits-section">
-        <div className="container">
-          <p className="review-tagline dash-tagline">Client Success</p>
-          <p className="benefits-tagline">Why Choose Us</p>
-          <h2 className="benefits-title">Your Benefits Choosing JSE Engineering Private Limited</h2>
-
-          <div className="benefits-grid">
-            <div className="benefits-column left">
-              <div className="benefit-item">
-                <h3>Multi-Disciplinary Design Expertise</h3>
-                <p>Seamless integration of MEP, BIM, Electrical, ELV, Plumbing, HVAC & Firefighting designs under one roof.</p>
-              </div>
-              <div className="benefit-item">
-                <h3>Precision & Coordination Driven</h3>
-                <p>Designs optimized to minimize clashes, improve constructability, and reduce rework on site.</p>
-              </div>
-              <div className="benefit-item">
-                <h3>BIM-Enabled Workflows</h3>
-                <p>Advanced BIM tools and digital coordination for better visualization, faster approvals, and accurate quantity take-offs.</p>
-              </div>
-              <div className="benefit-item">
-                <h3>Cost-Optimized Engineering Solutions</h3>
-                <p>Efficient design methodologies that reduce material cost, energy consumption, and operational expenses.</p>
-              </div>
+        <div className="benefits-container">
+          {/* Left Sticky Content */}
+          <div className="benefits-sticky-left">
+            <div className="benefits-header-content">
+              <p className="dash-tagline">WHY CHOOSE US</p>
+              <h2 className="benefits-section-title">Your Benefits Choosing JSE Engineering Private Limited</h2>
+              <p className="benefits-header-desc">
+                Partnering with JSE means choosing clarity, precision, and efficiency.
+                We deliver engineering solutions that streamline construction and maximize value.
+              </p>
+              <div className="benefits-decorative-line"></div>
             </div>
+          </div>
 
-            <div className="benefits-column center">
-              <div className="benefit-image-container">
-                <img
-                  src={whyChooseUsImage}
-                  alt="JSE Engineering Benefits"
-                  loading="lazy"
-                  width="600"
-                  height="400"
-                />
+          {/* Right Scrollable Cards */}
+          <div className="benefits-cards-list">
+            {[
+              {
+                title: "Multi-Disciplinary Expertise",
+                desc: "Seamless integration of MEP, BIM, Electrical, ELV, Plumbing, HVAC & Firefighting designs under one roof.",
+                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 22v-5l5-5 5 5v5M12 12l5-5 5 5v5" /></svg>
+              },
+              {
+                title: "Precision & Coordination",
+                desc: "Designs optimized to minimize clashes, improve constructability, and reduce rework on site.",
+                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              },
+              {
+                title: "BIM-Enabled Workflows",
+                desc: "Advanced BIM tools for better visualization, faster approvals, and accurate quantity take-offs.",
+                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /></svg>
+              },
+              {
+                title: "Cost-Optimized Solutions",
+                desc: "Efficient design methodologies that reduce material cost, energy consumption, and operational expenses.",
+                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              },
+              {
+                title: "Fast Turnaround Delivery",
+                desc: "Structured processes ensure reliable timelines for consultants, contractors, and developers.",
+                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              },
+              {
+                title: "Sector-Wide Experience",
+                desc: "From residential to commercial, industrial, healthcare, hospitality, and institutional sectors.",
+                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l8-4 8 4v14"></path></svg>
+              },
+              {
+                title: "Skilled Technical Team",
+                desc: "Dedicated specialists with options for secondment and virtual teams to support project execution.",
+                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              },
+              {
+                title: "Client-Centric Support",
+                desc: "Transparent communication, progressive updates, and responsive assistance throughout project lifecycle.",
+                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              }
+            ].map((item, index) => (
+              <div key={index} className="benefit-card-new">
+                <div className="benefit-icon-wrapper">
+                  {item.icon}
+                </div>
+                <div className="benefit-card-content">
+                  <h3 className="benefit-card-title">{item.title}</h3>
+                  <p className="benefit-card-desc">{item.desc}</p>
+                </div>
               </div>
-            </div>
-
-            <div className="benefits-column right">
-              <div className="benefit-item">
-                <h3>Fast Turnaround & On-Time Delivery</h3>
-                <p>Structured processes ensure reliable timelines for consultants, contractors, and developers.</p>
-              </div>
-              <div className="benefit-item">
-                <h3>Sector-Wide Project Experience</h3>
-                <p>From residential to commercial, industrial, healthcare, hospitality, and institutional sectors.</p>
-              </div>
-              <div className="benefit-item">
-                <h3>Skilled Technical Team & Virtual Support</h3>
-                <p>Dedicated specialists with options for secondment and virtual teams to support project execution.</p>
-              </div>
-              <div className="benefit-item">
-                <h3>Client-Centric Communication & Support</h3>
-                <p>Transparent communication, progressive updates, and responsive assistance throughout project lifecycle.</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
         <section className="geo-section">

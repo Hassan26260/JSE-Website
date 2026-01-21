@@ -1,0 +1,180 @@
+/* Benefits Section (Redesign) */
+.benefits-section {
+    padding: 8rem 0;
+    background-color: #ffffff;
+    position: relative;
+    /* border-top: 1px solid #f1f5f9; optional */
+}
+
+.benefits-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    padding-bottom: 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    /* Left Heading vs Right Cards matching Healthcare */
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+/* Sticky Left Side */
+.benefits-sticky-left {
+    position: sticky;
+    top: 150px;
+    height: fit-content;
+    align-self: start;
+}
+
+.benefits-header-content {
+    max-width: 450px;
+}
+
+.benefits-section-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #144AE0;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.benefits-header-desc {
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.benefits-decorative-line {
+    width: 80px;
+    height: 4px;
+    background-color: #0f172a;
+    border-radius: 2px;
+}
+
+/* Right Side - Cards List */
+.benefits-cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    /* Slightly tighter than healthcare */
+}
+
+/* Benefit Card Style */
+.benefit-card-new {
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    /* Softer shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    /* Row layout for icon + text */
+    padding: 2.5rem;
+    max-width: 90%;
+    border: 1px solid #f1f5f9;
+    gap: 1.5rem;
+}
+
+/* Uneven / Staggered Alignment Logic */
+.benefit-card-new:nth-child(odd) {
+    align-self: flex-start;
+}
+
+.benefit-card-new:nth-child(even) {
+    align-self: flex-end;
+    margin-top: 2rem;
+}
+
+.benefit-card-new:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: #144AE0;
+}
+
+/* Icon & Content */
+.benefit-icon-wrapper {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: #f0f7ff;
+    /* Light blue tint */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #144AE0;
+}
+
+.benefit-icon-wrapper svg {
+    width: 30px;
+    height: 30px;
+}
+
+.benefit-card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.benefit-card-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 0.5rem 0;
+}
+
+.benefit-card-desc {
+    font-size: 1rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .benefits-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .benefits-sticky-left {
+        position: relative;
+        top: 0;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .benefits-header-content {
+        max-width: 100%;
+    }
+
+    .benefits-cards-list {
+        max-width: 600px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .benefit-card-new {
+        max-width: 100%;
+        align-self: center !important;
+        margin-top: 0 !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .benefit-card-new {
+        padding: 1.5rem;
+        flex-direction: column;
+        /* Stack icon and text on mobile */
+        align-items: flex-start;
+    }
+
+    .benefit-icon-wrapper {
+        margin-bottom: 1rem;
+    }
+}

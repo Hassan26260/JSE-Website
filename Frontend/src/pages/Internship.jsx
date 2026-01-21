@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import "../styles/Internship.css";
-import heroGroupImage from "../assets/images-home/hero-group-image.webp";
-import eligibilityImage from "../assets/intern-main/pexels-olly-3769021.webp";
-import careerDevImage from "../assets/intern-main/pexels-fauxels-3183197.webp";
+import heroGroupImage from "../assets/images-home/hero-group-image.jpg";
+import eligibilityImage from "../assets/other/pexels-who0ne-31573267.jpg";
+import careerDevImage from "../assets/other/pexels-sora-shimazaki-5926389.jpg";
 
 const Internship = () => {
   const imageRef = useRef(null);

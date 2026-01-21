@@ -15,9 +15,9 @@ const Portfolio = () => {
 
   const filters = [
     "All",
-    "MEP",
-    "Steel Detailing",
-    "Architectural Structure"
+    "Architectural & Structural",
+    "Steel Structural Detailing",
+    "MEP"
   ];
 
   // Derive All Projects
@@ -146,7 +146,9 @@ const Portfolio = () => {
             >
               ← Back to MEP Categories
             </button>
-            <h2 style={{ marginTop: "1rem", fontSize: "1.5rem" }}>{activeSubCategory} Projects</h2>
+            <h2 style={{ marginTop: "1rem", fontSize: "1.5rem" }}>
+              {activeSubCategory === "Shop Drawings" ? "MEP Shop Drawings" : `${activeSubCategory} Projects`}
+            </h2>
           </div>
         )}
 

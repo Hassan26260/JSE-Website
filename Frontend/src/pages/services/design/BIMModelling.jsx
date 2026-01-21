@@ -25,7 +25,7 @@ import s5 from '../../../assets/images-home/hvac-design.webp';
 import s6 from '../../../assets/images-home/plumbing.webp';
 import s7 from '../../../assets/images-home/electrical-system.webp';
 // Reusing s6 or s4 for pure firefighting if specific image not found, defaulting to s4 (MEP) for now or similar.
-import s8 from '../../../assets/images-home/hero-group-image.webp'; // Placeholder for ELV if no specific image
+import s8 from '../../../assets/images-home/hero-group-image.jpg'; // Placeholder for ELV if no specific image
 
 const SERVICES_DATA = [
   { title: "BIM consulting", img: s1, desc: "Strategic guidance for successful BIM adoption." },

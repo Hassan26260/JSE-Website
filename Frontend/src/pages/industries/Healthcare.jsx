@@ -5,7 +5,7 @@ import heroImage from "../../assets/industry/healthcare/pexels-cristian-rojas-84
 // Placeholder image for the content section
 import contentImage from "../../assets/design-eng/pexels-karola-g-4491459.webp";
 // Recruitment Image (Reused from Internship)
-import recruitmentImage from "../../assets/intern-main/pexels-olly-3769021.webp";
+import recruitmentImage from "../../assets/other/pexels-olgalioncat-7245368.jpg";
 
 // Reusing assets from home/design pages as placeholders
 
@@ -15,7 +15,7 @@ import h2 from '../../assets/images-home/bim-modelling.webp';
 import h3 from '../../assets/images-home/mep-design.webp';
 import h4 from '../../assets/images-home/architectural-bim.webp';
 import h5 from '../../assets/images-home/hvac-design.webp';
-import h6 from '../../assets/images-home/hero-group-image.webp';
+import h6 from '../../assets/images-home/hero-group-image.jpg';
 
 
 // Tech Logos for Innovative Software Tools

@@ -355,3 +355,69 @@
         font-size: 2rem;
     }
 }
+
+/* --- New Core Values Grid (Icons) --- */
+.vm-values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.vm-value-card-new {
+    background: #ffffff;
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.vm-value-card-new:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-color: #144AE0;
+}
+
+.vm-value-icon-box {
+    width: 70px;
+    height: 70px;
+    background: #ecfeff;
+    /* Light cyan/blue tint depending on brand palette, or use #eff6ff like others */
+    background: #eff6ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: #144AE0;
+    transition: all 0.3s ease;
+}
+
+.vm-value-card-new:hover .vm-value-icon-box {
+    background: #144AE0;
+    color: #ffffff;
+    /* transform: rotate(360deg);  Optional spin */
+}
+
+.vm-value-card-new h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.vm-value-card-new p {
+    font-size: 1rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+}

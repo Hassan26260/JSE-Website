@@ -15,7 +15,7 @@ import h2 from '../../assets/images-home/bim-modelling.webp';
 import h3 from '../../assets/images-home/mep-design.webp';
 import h4 from '../../assets/images-home/architectural-bim.webp';
 import h5 from '../../assets/images-home/hvac-design.webp';
-import h6 from '../../assets/images-home/hero-group-image.webp';
+import h6 from '../../assets/images-home/hero-group-image.jpg';
 
 
 // Tech Logos for Innovative Software Tools
