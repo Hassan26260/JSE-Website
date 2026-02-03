@@ -1,4 +1,8 @@
 /* ArchitecturalBIM.css */
+@font-face {
+    font-family: 'delight';
+    src: url('../assets/fonts/delight-black.otf');
+}
 
 /* --- Hero Section (Matches Civil Engineering Page) --- */
 .arch-hero-section {
@@ -52,7 +56,7 @@
 }
 
 .arch-hero-title {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'delight', system-ui;
     font-size: 3.5rem;
     font-weight: 800;
     margin: 0;

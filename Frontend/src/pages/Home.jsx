@@ -1,5 +1,8 @@
 import "../styles/Home.css";
 import "../styles/Benefits.css";
+import "../styles/ClientMarquee.css"; // New Marquee Styles
+import "../styles/TestimonialCarousel.css"; // New 3D Carousel Styles
+import { motion, AnimatePresence } from "framer-motion";
 import heroBanner from "../assets/images-home/Herobanner.webp";
 import heroGroupImage from "../assets/images-home/hero-group-image.jpg";
 import whyChooseUsImage from "../assets/images-home/why choose us.png";
@@ -10,56 +13,132 @@ import mepDesign from "../assets/images-home/mep-design.webp";
 import bimModelling from "../assets/images-home/bim-modelling.webp";
 import electricalSystem from "../assets/images-home/electrical-system.webp";
 
+// Import Consultant Logos
+import consLogo1 from '../assets/client-logo/Consultant/logo1.webp';
+import consLogo2 from '../assets/client-logo/Consultant/logo2.webp';
+import consLogo3 from '../assets/client-logo/Consultant/logo3.webp';
+import consLogo4 from '../assets/client-logo/Consultant/logo4.webp';
+import consLogo5 from '../assets/client-logo/Consultant/logo5.webp';
+import consLogo6 from '../assets/client-logo/Consultant/logo6.webp';
+import consLogo7 from '../assets/client-logo/Consultant/logo7.webp';
+import consLogo8 from '../assets/client-logo/Consultant/logo8.webp';
+import consLogo9 from '../assets/client-logo/Consultant/logo9.webp';
+import consLogo10 from '../assets/client-logo/Consultant/logo10.webp';
+import consLogo11 from '../assets/client-logo/Consultant/logo11.webp';
+import consLogo12 from '../assets/client-logo/Consultant/logo12.webp';
+import consLogo13 from '../assets/client-logo/Consultant/logo13.webp';
+
+// Import Client Logos (New)
+import clientLogo1 from '../assets/client-logo/Arabtec_Holding_Logo.jpg';
+import clientLogo2 from '../assets/client-logo/L&T.png';
+import clientLogo3 from '../assets/client-logo/NAFFCO_Logo_(Transparent).png';
+import clientLogo4 from '../assets/client-logo/voltas.jpg';
+import clientLogo5 from '../assets/client-logo/aster.jpg';
+import clientLogo6 from '../assets/client-logo/johnson-controls-middletown.jpg';
+import clientLogo7 from '../assets/client-logo/petrofac logo.png';
+import clientLogo8 from '../assets/client-logo/bk gulf.jpg';
+import clientLogo9 from '../assets/client-logo/emirates sas.jpg';
+import clientLogo10 from '../assets/client-logo/futuremetro logo.png';
+import clientLogo11 from '../assets/client-logo/al shandagha1.png';
+import clientLogo12 from '../assets/client-logo/al futtaim.png';
+import clientLogo13 from '../assets/client-logo/zone.png';
+
 import mapImage from "../assets/images-home/Map.png";
 import heroVideo from "../assets/images-home/hero-video.mp4";
+import geoStatsVideo from "../assets/images-home/131857-751353013_small.mp4"; // New Video for Geo Stats
+
+// Hero Images for Divisions
+import virtualTeamHero from "../assets/virtual-eng/pexels-fauxels-3184405.webp";
+import secondmentTeamHero from "../assets/secondament-img/pexels-fauxels-3184339.webp";
 
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-// Helper component to render client logos in 8-7-8-7 pattern
-const ClientLogoGrid = () => {
-  // Dynamically import all images from the client-logo directory
-  const modules = import.meta.glob('../assets/client-logo/*.{png,jpg,jpeg,svg,PNG,JPG,svg}', { eager: true });
-  const logos = Object.values(modules).map((mod) => mod.default);
+// Custom hook for counting up
+// Moved outside component to prevent re-creation and state loss on re-renders
+const useCountUp = (end, duration = 2000, start = false) => {
+  const [count, setCount] = useState(0);
+  const hasAnimated = useRef(false);
 
-  // Group logos into rows of 8, 7, 8, 7...
-  const rows = [];
-  let currentIndex = 0;
-  let rowSize = 8;
+  useEffect(() => {
+    if (!start || hasAnimated.current) return;
 
-  while (currentIndex < logos.length) {
-    rows.push(logos.slice(currentIndex, currentIndex + rowSize));
-    currentIndex += rowSize;
-    rowSize = rowSize === 8 ? 7 : 8; // Toggle between 8 and 7
-  }
+    let startTime = null;
+    let animationFrameId;
 
-  return (
-    <div className="client-logo-rows">
-      {rows.map((row, rowIndex) => (
-        <div key={rowIndex} className={`logo-row count-${row.length}`}>
-          {row.map((logo, logoIndex) => (
-            <div key={`${rowIndex}-${logoIndex}`} className="client-logo-item">
-              <img
-                src={logo}
-                alt={`Client Logo ${rowIndex}-${logoIndex}`}
-                loading="lazy"
-                width="150"
-                height="80"
-              />
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
-  );
+    const animate = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const progress = currentTime - startTime;
+      const percentage = Math.min(progress / duration, 1);
+
+      // Ease out quart
+      const easeOutQuart = (x) => 1 - Math.pow(1 - x, 4);
+
+      const currentCount = Math.floor(easeOutQuart(percentage) * end);
+      setCount(currentCount);
+
+      if (progress < duration) {
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        setCount(end);
+        hasAnimated.current = true;
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [end, duration, start]);
+
+  return count;
+};
+
+const StatCounter = ({ end, suffix = "", start }) => {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  if (isMobile) return <span>{end}{suffix}</span>;
+  const count = useCountUp(end, 2000, start);
+  return <span>{count}{suffix}</span>;
 };
 
 const Home = () => {
-  const [currentReview, setCurrentReview] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(true);
+
   const [statsStarted, setStatsStarted] = useState(false);
   const statsRef = useRef(null);
   const location = useLocation();
+
+  // Services Data
+  const servicesData = [
+    { title: "Architectural BIM", desc: "Revolutionizing architecture with detailed and accurate BIM models.", link: "/services/design/architectural-bim", img: architecturalBim },
+    { title: "MEP Design & Drafting", desc: "Integrated mechanical, electrical, and plumbing systems.", link: "/services/design/mep-design", img: mepDesign },
+    { title: "BIM Modelling", desc: "Precise and detailed BIM models.", link: "/services/design/bim-modelling", img: bimModelling },
+    { title: "HVAC Design", desc: "Efficient and sustainable HVAC solutions.", link: "/services/design/hvac-design", img: hvacDesign },
+    { title: "Plumbing & Public Health", desc: "Reliable and safe plumbing systems.", link: "/services/design/plumbing-public-health", img: plumbing },
+    { title: "Electrical System Design", desc: "Innovative electrical designs.", link: "/services/design/electrical-system-design", img: electricalSystem },
+    { title: "Extra Low Voltage Systems", desc: "Advanced Extra Low Voltage solutions.", link: "/services/design/elv", img: mepDesign }, // Using MEP as placeholder if ELV distinct img missing
+    { title: "Steel Structure", desc: "Accurate Tekla detailing.", link: "/services/design/steel-structure-detailing", img: hvacDesign } // Using HVAC as placeholder
+  ];
+
+  const featuredServices = servicesData.slice(0, 3);
+  const moreServices = servicesData.slice(3);
+
+  const [showMoreServices, setShowMoreServices] = useState(false);
+  const [currentMoreIndex, setCurrentMoreIndex] = useState(0);
+  const [slideDirection, setSlideDirection] = useState('next');
+
+  // Auto-play Removed as per user request
+
+
+  const handleNextMore = (e) => {
+    e.stopPropagation();
+    setSlideDirection('next');
+    setCurrentMoreIndex((prev) => (prev + 1) % servicesData.length);
+  };
+
+  const handlePrevMore = (e) => {
+    e.stopPropagation();
+    setSlideDirection('prev');
+    setCurrentMoreIndex((prev) => (prev - 1 + servicesData.length) % servicesData.length);
+  };
 
   // Handle Hash Scroll (e.g. from Header Contact Us)
   useEffect(() => {
@@ -108,13 +187,13 @@ const Home = () => {
     {
       title: "Virtual Team for Hire",
       description: "Hire own remote offshore architect team for modular construction needs, ensuring cost-effective strategy.",
-      image: heroGroupImage,
+      image: virtualTeamHero,
       link: "/services/virtual-team"
     },
     {
       title: "Secondment Team",
       description: "Get on-demand access to our pool of experienced professionals for bespoke solutions, tailored to meet your project needs.",
-      image: heroGroupImage,
+      image: secondmentTeamHero,
       link: "/services/secondment-team"
     }
   ];
@@ -125,6 +204,7 @@ const Home = () => {
       (entries) => {
         if (entries[0].isIntersecting) {
           setStatsStarted(true);
+          observer.disconnect(); // Disconnect immediately to ensure single run
         }
       },
       { threshold: 0.5 }
@@ -156,114 +236,42 @@ const Home = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Custom hook for counting up
-  const useCountUp = (end, duration = 2000) => {
-    const [count, setCount] = useState(0);
 
-    useEffect(() => {
-      if (!statsStarted) return;
-
-      let startTime = null;
-      const animate = (currentTime) => {
-        if (!startTime) startTime = currentTime;
-        const progress = currentTime - startTime;
-        const percentage = Math.min(progress / duration, 1);
-        const easeOutQuad = (t) => t * (2 - t);
-        setCount(Math.floor(easeOutQuad(percentage) * end));
-        if (progress < duration) {
-          requestAnimationFrame(animate);
-        } else {
-          setCount(end);
-        }
-      };
-      requestAnimationFrame(animate);
-    }, [statsStarted, end, duration]);
-
-    return count;
-  };
+  const [currentReview, setCurrentReview] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
 
-
-  const StatCounter = ({ end, suffix = "" }) => {
-    // Check for mobile width directly
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-
-    // If mobile, show end value immediately
-    if (isMobile) {
-      return <span>{end}{suffix}</span>;
-    }
-
-    const count = useCountUp(end);
-    return <span>{count}{suffix}</span>;
-  };
 
   const reviews = [
-    {
-      text: "The architectural BIM models for our resort provided by JSE were incredibly detailed and accurate. Their team’s expertise helped us avoid costly design revisions!",
-      author: "Ganesh S.",
-      role: "Senior Architect"
-    },
-    {
-      text: "JSE transformed our complex design vision into reality with their comprehensive BIM solutions. Their attention to detail and innovation exceeded our expectations!",
-      author: "Sarah L.",
-      role: "Project Manager"
-    },
-    {
-      text: "JSE’s Tekla detailing services were a game changer for our project. Their accuracy and attention to detail streamlined our entire construction process.",
-      author: "Krishna Rao.",
-      role: "Project Engineer"
-    },
-    {
-      text: "JSE’s firefighting design services ensured our high-rise project met all safety standards. Their expertise in compliance saved us time and future headaches.",
-      author: "Daniel H.",
-      role: "Safety Officer"
-    },
-    {
-      text: "We needed skilled BIM experts to support our in-house team, and JSE’s virtual team was the perfect fit. Their expertise and seamless collaboration made remote work feel local!",
-      author: "Ahmed M.",
-      role: "Engineering Lead"
-    },
-    {
-      text: "JSE’s MEP design services are top-notch. Their precision and clear communication helped streamline our stadium project, ensuring a flawless execution!",
-      author: "Emily R.",
-      role: "Operations Head"
-    }
+    { text: "The architectural BIM models provided by JSE were incredibly detailed and accurate.", author: "Ganesh S.", role: "Senior Architect" },
+    { text: "JSE transformed our complex design vision into reality with comprehensive BIM solutions.", author: "Sarah L.", role: "Project Manager" },
+    { text: "JSE’s Tekla detailing services were a game changer for our project.", author: "Krishna Rao", role: "Project Engineer" },
+    { text: "Firefighting design services ensured our high-rise project met all safety standards.", author: "Daniel H.", role: "Safety Officer" },
+    { text: "JSE’s MEP design services are top-notch. Precision and clear communication.", author: "Emily R.", role: "Operations Head" }
   ];
 
-  // Carousel State (Declared at top of component)
-  // const [currentReview, setCurrentReview] = useState(0);
-  // const [isTransitioning, setIsTransitioning] = useState(true);
-  const [visibleCards, setVisibleCards] = useState(3);
-
-  useEffect(() => {
-    const updateVisibleCards = () => {
-      if (window.innerWidth >= 1300) {
-        setVisibleCards(3);
-      } else if (window.innerWidth >= 850) {
-        setVisibleCards(2);
-      } else {
-        setVisibleCards(1);
-      }
-    };
-
-    updateVisibleCards();
-    window.addEventListener('resize', updateVisibleCards);
-    return () => window.removeEventListener('resize', updateVisibleCards);
-  }, []);
+  // --- Infinite Carousel Logic ---
+  const infiniteReviews = [...reviews, ...reviews];
+  // ---------------------------
 
   const nextReview = () => {
-    if (currentReview < reviews.length - visibleCards) {
-      setIsTransitioning(true);
-      setCurrentReview((prev) => prev + 1);
-    }
+    setCurrentReview((prev) => (prev + 1) % reviews.length);
   };
 
   const prevReview = () => {
-    if (currentReview > 0) {
-      setIsTransitioning(true);
-      setCurrentReview((prev) => prev - 1);
-    }
+    setCurrentReview((prev) => (prev - 1 + reviews.length) % reviews.length);
   };
+
+  // Auto-Rotation Effect
+  useEffect(() => {
+    let interval;
+    if (!isPaused) {
+      interval = setInterval(() => {
+        nextReview();
+      }, 2000);
+    }
+    return () => clearInterval(interval);
+  }, [isPaused, reviews.length]); // Re-run if pause state changes
 
   // Parallax Effect for Hero Background
   const heroRef = useRef(null);
@@ -281,6 +289,35 @@ const Home = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Hero Carousel State
+  const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+
+  const heroCarouselSlides = [
+    {
+      icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>,
+      text: "Turning design intent into build-ready reality."
+    },
+    {
+      icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>,
+      text: "Technical authority that de-risks complex construction."
+    },
+    {
+      icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>,
+      text: "High-fidelity BIM that validates projects before build."
+    },
+    {
+      icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>,
+      text: "Engineering precision for confident project execution."
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentHeroSlide((prev) => (prev + 1) % heroCarouselSlides.length);
+    }, 4000); // 4 seconds per slide
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="home-page">
       <section
@@ -291,92 +328,68 @@ const Home = () => {
           <source src={heroVideo} type="video/mp4" />
         </video>
         <div className="hero-overlay"></div>
-        <div className="hero-main-content">
-          <h1 className="main-hero-title">JSE Engineering</h1>
-          <p className="main-hero-subtitle">Engineering Clarity Through BIM & MEP Excellence</p>
-          <a href="#contact-form" className="hero-cta-btn">Get Started</a>
-        </div>
-        {/* ... truncated ... */}
-        {/* <section className="reviews-section">
-          <div className="container">
-            <div className="reviews-header">
-              <div className="reviews-text-group">
-                <p className="reviews-tagline dash-tagline">Client Success</p>
-                <h2 className="reviews-title">Our clients' satisfaction is our top priority. Here’s what our clients say about their experiences with us</h2>
-              </div>
-              <div className="reviews-nav-controls">
-                <button className="review-nav-btn prev-btn" onClick={prevReview}>
-                  &#10094;
-                </button>
-                <button className="review-nav-btn next-btn" onClick={nextReview}>
-                  &#10096;
-                </button>
-              </div>
-            </div>
 
-            <div className="reviews-carousel-outer">
-              <div
-                className="reviews-track"
-                style={{
-                  transform: `translateX(calc(-1 * ${currentReview} * (400px + 2rem)))`,
-                  transition: isTransitioning ? 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)' : 'none'
-                }}
-              >
-                {extendedReviews.map((review, index) => (
-                  <div key={index} className="review-card">
-                    <p className="review-quote">"{review.text}"</p>
-                    <div className="review-footer">
-                      <h4 className="review-author">{review.author}</h4>
-                      <p className="review-role">{review.role}</p>
-                    </div>
+        <div className="hero-content-wrapper">
+          {/* Left: Primary Messaging */}
+          <div className="hero-main-content">
+            <motion.h1
+              className="main-hero-title"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              Engineering-Led BIM.<br />Built Right.
+            </motion.h1>
+
+            <motion.div
+              className="hero-cta-group"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            >
+              <a href="#services" className="hero-cta-btn-glass">Explore Our Expertise</a>
+              <Link to="/portfolio" className="hero-cta-btn-glass">View Our Global Projects</Link>
+            </motion.div>
+          </div>
+
+          {/* Right: Glass Carousel Card */}
+          <motion.div
+            className="hero-glass-card"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          >
+            <div className="glass-card-content">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentHeroSlide}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.5 }}
+                  className="glass-slide"
+                >
+                  <div className="glass-icon">
+                    {heroCarouselSlides[currentHeroSlide].icon}
                   </div>
-                ))}
+                  <p className="glass-text">
+                    {heroCarouselSlides[currentHeroSlide].text}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Progress Indicator */}
+              <div className="glass-progress-bar">
+                <motion.div
+                  className="glass-progress-fill"
+                  key={currentHeroSlide}
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 4, ease: "linear" }}
+                />
               </div>
             </div>
-          </div>
-        </section> */}
-
-        <div className="hero-cards-container">
-          <div className="hero-card">
-            <div className="hero-card-icon">
-              {/* BIM Icon */}
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18v-8a2 2 0 0 0-2-2h-3v-3a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v3h-3a2 2 0 0 0-2 2v8z" /></svg>
-            </div>
-            <div className="hero-card-text">
-              <h3 style={{ color: '#144AE0' }}>Digital Engineering</h3>
-              <p>Your BIM Digital Engineering Consultant</p>
-            </div>
-          </div>
-          <div className="hero-card">
-            <div className="hero-card-icon">
-              {/* Arch Icon */}
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 22v-5l5-5 5 5v5M12 12l5-5 5 5v5" /></svg>
-            </div>
-            <div className="hero-card-text">
-              <h3 style={{ color: '#144AE0' }}>Elite Architecture</h3>
-              <p>Innovation To Create Elite Architecture</p>
-            </div>
-          </div>
-          <div className="hero-card">
-            <div className="hero-card-icon">
-              {/* Tekla Icon for Detailing */}
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l8-4 8 4v14" /></svg>
-            </div>
-            <div className="hero-card-text">
-              <h3 style={{ color: '#144AE0' }}>Precise Detailing</h3>
-              <p>Robust Tech for Precise HVAC & MEP Design</p>
-            </div>
-          </div>
-          <div className="hero-card">
-            <div className="hero-card-icon">
-              {/* User/Virtual Icon */}
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            </div>
-            <div className="hero-card-text">
-              <h3 style={{ color: '#144AE0' }}>Virtual Employment</h3>
-              <p>Hire Exclusive Virtual Design Consultants</p>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -384,8 +397,8 @@ const Home = () => {
       <section className="about-section">
         <div className="about-container">
           <div className="about-content-left">
-            <span className="about-tagline dash-tagline">About JSE</span>
-            <h2 className="about-company-name">Pioneering Digital Construction Engineering</h2>
+            {/* <span className="about-tagline dash-tagline">About JSE</span> */}
+            <h2 className="about-company-name">Pioneering Digital Engineering</h2>
             <h3 className="about-subtitle">Global Leaders in BIM & MEP Services</h3>
             <p className="about-description">
               JSE Engineering Pvt. Ltd. is a premier BIM Digital Engineering & Construction
@@ -435,246 +448,93 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="solutions-section">
+      <section className="client-marquee-section">
         <div className="container">
-          <p className="solutions-tagline dash-tagline">SOLUTIONS BEYOND SOFTWARE</p>
-          <h2 className="solutions-title">Excellence in Engineering, Unmatched in Services</h2>
-          <p className="solutions-description">JSE offers customized engineering solutions to fulfill our clients project requirement.</p>
 
-          <div className="home-bento-grid">
-            <Link to="/services/design/architectural-bim" className="home-bento-card">
-              <img
-                src={architecturalBim}
-                alt="Architectural BIM"
-                className="home-bento-img"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="home-bento-overlay"></div>
-              <div className="home-bento-content">
-                <h3 className="home-bento-title">Architectural BIM</h3>
-                <p className="home-bento-desc">Revolutionizing architecture with detailed and accurate BIM models.</p>
+          {/* Marquee 1: Global Consultants (Label Left, Marquee Right) */}
+          <div className="client-marquee-row consultant-row">
+            {/* Label (Stacked) */}
+            <div className="marquee-label">
+              <span className="label-line-1">Global</span>
+              <span className="label-line-2">Consultants</span>
+            </div>
+            {/* Vertical Divider */}
+            <div className="vertical-divider"></div>
+            {/* Marquee Track */}
+            <div className="marquee-container">
+              <div className="marquee-track">
+                {[
+                  consLogo1, consLogo2, consLogo3, consLogo4, consLogo5, consLogo6,
+                  consLogo7, consLogo8, consLogo9, consLogo10, consLogo11, consLogo12, consLogo13
+                ].map((logo, index) => (
+                  <img key={`cons-logo-${index}`} src={logo} alt={`Consultant Logo ${index + 1}`} className="client-logo" loading="lazy" />
+                ))}
+
+                {[
+                  consLogo1, consLogo2, consLogo3, consLogo4, consLogo5, consLogo6,
+                  consLogo7, consLogo8, consLogo9, consLogo10, consLogo11, consLogo12, consLogo13
+                ].map((logo, index) => (
+                  <img key={`cons-logo-dup-${index}`} src={logo} alt={`Consultant Logo ${index + 1}`} className="client-logo" loading="lazy" />
+                ))}
               </div>
-            </Link>
-            <Link to="/services/design/hvac-design" className="home-bento-card">
-              <img
-                src={hvacDesign}
-                alt="HVAC Design"
-                className="home-bento-img"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="home-bento-overlay"></div>
-              <div className="home-bento-content">
-                <h3 className="home-bento-title">HVAC Design</h3>
-                <p className="home-bento-desc">Efficient and sustainable HVAC solutions for optimal performance.</p>
-              </div>
-            </Link>
-            <Link to="/services/design/plumbing-public-health" className="home-bento-card">
-              <img
-                src={plumbing}
-                alt="Plumbing & Public Health"
-                className="home-bento-img"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="home-bento-overlay"></div>
-              <div className="home-bento-content">
-                <h3 className="home-bento-title">Plumbing & Public Health</h3>
-                <p className="home-bento-desc">Reliable and safe plumbing systems designed for health and safety.</p>
-              </div>
-            </Link>
-            <Link to="/services/design/mep-design" className="home-bento-card">
-              <img
-                src={mepDesign}
-                alt="MEP Design & Drafting"
-                className="home-bento-img"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="home-bento-overlay"></div>
-              <div className="home-bento-content">
-                <h3 className="home-bento-title">MEP Design & Drafting</h3>
-                <p className="home-bento-desc">Integrated mechanical, electrical, and plumbing systems.</p>
-              </div>
-            </Link>
-            <Link to="/services/design/bim-modelling" className="home-bento-card">
-              <img
-                src={bimModelling}
-                alt="BIM Modelling"
-                className="home-bento-img"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="home-bento-overlay"></div>
-              <div className="home-bento-content">
-                <h3 className="home-bento-title">BIM Modelling</h3>
-                <p className="home-bento-desc">Precise and detailed BIM models.</p>
-              </div>
-            </Link>
-            <Link to="/services/design/electrical-system-design" className="home-bento-card">
-              <img
-                src={electricalSystem}
-                alt="Electrical System Design"
-                className="home-bento-img"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="home-bento-overlay"></div>
-              <div className="home-bento-content">
-                <h3 className="home-bento-title">Electrical System Design</h3>
-                <p className="home-bento-desc">Innovative electrical designs.</p>
-              </div>
-            </Link>
-            <Link to="/services/design/elv" className="home-bento-card">
-              <img
-                src={mepDesign}
-                alt="Extra Low Voltage"
-                className="home-bento-img"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="home-bento-overlay"></div>
-              <div className="home-bento-content">
-                <h3 className="home-bento-title">Extra Low Voltage Systems</h3>
-                <p className="home-bento-desc">Advanced Extra Low Voltage solutions.</p>
-              </div>
-            </Link>
-            <Link to="/services/design/steel-structure-detailing" className="home-bento-card">
-              <img
-                src={hvacDesign}
-                alt="Steel Structure Modeling"
-                className="home-bento-img"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="home-bento-overlay"></div>
-              <div className="home-bento-content">
-                <h3 className="home-bento-title">Steel Structure</h3>
-                <p className="home-bento-desc">Accurate Tekla detailing.</p>
-              </div>
-            </Link>
+            </div>
           </div>
+
+          {/* Marquee 2: Global Contractors (Marquee Left, Label Right) */}
+          <div className="client-marquee-row client-row">
+            {/* Marquee Track (Left in Reverse) */}
+            <div className="marquee-container">
+              <div className="marquee-track reverse-track">
+                <img src={clientLogo1} alt="Client 1" className="client-logo" />
+                <img src={clientLogo2} alt="Client 2" className="client-logo" />
+                <img src={clientLogo3} alt="Client 3" className="client-logo" />
+                <img src={clientLogo4} alt="Client 4" className="client-logo" />
+                <img src={clientLogo5} alt="Client 5" className="client-logo" />
+                <img src={clientLogo6} alt="Client 6" className="client-logo" />
+                <img src={clientLogo7} alt="Client 7" className="client-logo" />
+                <img src={clientLogo8} alt="Client 8" className="client-logo" />
+                <img src={clientLogo9} alt="Client 9" className="client-logo" />
+                <img src={clientLogo10} alt="Client 10" className="client-logo" />
+                <img src={clientLogo11} alt="Client 11" className="client-logo" />
+                <img src={clientLogo12} alt="Client 12" className="client-logo" />
+                <img src={clientLogo13} alt="Client 13" className="client-logo" />
+
+                <img src={clientLogo1} alt="Client 1" className="client-logo" />
+                <img src={clientLogo2} alt="Client 2" className="client-logo" />
+                <img src={clientLogo3} alt="Client 3" className="client-logo" />
+              </div>
+            </div>
+            {/* Vertical Divider */}
+            <div className="vertical-divider"></div>
+            {/* Label (Stacked) */}
+            <div className="marquee-label">
+              <span className="label-line-1">Global</span>
+              <span className="label-line-2">Contractors</span>
+            </div>
+          </div>
+
         </div>
       </section>
 
-      <section className="stats-section" ref={statsRef}>
-        <div className="container">
-          <p className="stats-tagline dash-tagline">Standout Statistics</p>
-          <h2 className="stats-title">Our ground-breaking Impact in Building & Construction field</h2>
-
-          <div className="stats-grid">
-            <div className="stat-item">
-              <h3><StatCounter end={6000} suffix="+" /></h3>
-              <p>Successful Projects Delivered</p>
-            </div>
-            <div className="stat-item">
-              <h3><StatCounter end={20} suffix="+" /></h3>
-              <p>Countries</p>
-            </div>
-            <div className="stat-item">
-              <h3><StatCounter end={1000} suffix="+" /></h3>
-              <p>Delighted Global Clients Served</p>
-            </div>
-            <div className="stat-item">
-              <h3><StatCounter end={500} suffix="+" /></h3>
-              <p>Expert Engineers on Staff</p>
-            </div>
-            <div className="stat-item">
-              <h3><StatCounter end={99} suffix="%" /></h3>
-              <p>Client Satisfaction Rate</p>
-            </div>
-            <div className="stat-item">
-              <h3><StatCounter end={25} suffix="+" /></h3>
-              <p>Years of Industry Experience</p>
-            </div>
-            <div className="stat-item">
-              <h3><StatCounter end={5} /></h3>
-              <p>Strategic Locations</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="business-divisions-section">
-        <div className="divisions-container">
-          {/* Left Column: Text */}
-          <div className="divisions-left">
-            <p className="dash-tagline" style={{ color: '#666' }}>Our Divisions</p>
-            <h2 className="section-title" style={{ fontFamily: "system-ui, Segoe UI, Roboto, sans-serif", fontWeight: "800", textAlign: 'left', margin: '0 0 1.5rem 0' }}>Our Business Divisions</h2>
-            <p className="divisions-desc">
-              By integrating technical expertise with practical project insight, we streamline decision-making, optimize resources, and minimize costly revisions. With JSE, you benefit from a collaborative, future-ready approach that ensures your architectural vision is executed seamlessly, on time, and to the highest quality standards.
-            </p>
-          </div>
-
-          {/* Right Column: 3 Cards */}
-          <div className="divisions-right">
-            {businessDivisions.map((division, index) => (
-              <a key={index} href={division.link} className="division-card-new">
-                <div className="division-info">
-                  <h3>{division.title}</h3>
-                  <p>{division.description}</p>
-                </div>
-                <div className="division-arrow">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="client-network-section">
-        <div className="container">
-          <p className="dash-tagline" style={{ color: '#666' }}>Trusted By</p>
-          <h2 className="section-title" style={{ fontFamily: "system-ui, Segoe UI, Roboto, sans-serif", fontWeight: "800" }}>Our Client Network</h2>
-          <p className="section-subtitle">Here are our customers, we aided in designing smart sustainable future</p>
-          <div className="client-logo-grid-wrapper">
-            <ClientLogoGrid />
-          </div>
-        </div>
-      </section>
-
-      <section className="reviews-section">
-        <div className="container">
-          <p className="dash-tagline" style={{ color: '#666' }}>Trusted By</p>
+      <section className="client-reviews-section">
+        <div className="reviews-container">
+          {/* Header */}
           <div className="reviews-header">
-            <div className="reviews-text-group">
-              <p className="reviews-tagline">Client Success</p>
-              <p className="reviews-title">Our clients' satisfaction is our top priority. Here’s what our clients say about their experiences with us</p>
-            </div>
-            <div className="reviews-nav-controls">
-              <button
-                className="review-nav-btn prev-btn"
-                onClick={prevReview}
-                disabled={currentReview === 0}
-                style={{ opacity: currentReview === 0 ? 0.5 : 1, cursor: currentReview === 0 ? 'not-allowed' : 'pointer' }}
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
-              </button>
-              <button
-                className="review-nav-btn next-btn"
-                onClick={nextReview}
-                disabled={currentReview >= reviews.length - visibleCards}
-                style={{ opacity: currentReview >= reviews.length - visibleCards ? 0.5 : 1, cursor: currentReview >= reviews.length - visibleCards ? 'not-allowed' : 'pointer' }}
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
-              </button>
-            </div>
+            <h2 className="reviews-title">Client Testimonials</h2>
           </div>
-          <div className="reviews-carousel-outer">
-            <div
-              className="reviews-track"
-              style={{
-                transform: `translateX(calc(-1 * ${currentReview} * (400px + 2rem)))`,
-                transition: 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)'
-              }}
-            >
-              {reviews.map((review, index) => (
-                <div key={index} className="review-card">
-                  <p className="review-quote">"{review.text}"</p>
+
+          {/* Infinite Carousel Wrapper */}
+          <div className="reviews-carousel-wrapper">
+            <div className="reviews-track">
+              {infiniteReviews.map((review, index) => (
+                <div
+                  key={index}
+                  className="jse-review-card"
+                >
+                  <div className="review-quote-icon">❝</div>
+                  <p className="review-text">"{review.text}"</p>
                   <div className="review-footer">
-                    <h4 className="review-author">{review.author}</h4>
+                    <h4 className="review-name">{review.author}</h4>
                     <p className="review-role">{review.role}</p>
                   </div>
                 </div>
@@ -689,13 +549,13 @@ const Home = () => {
           {/* Left Sticky Content */}
           <div className="benefits-sticky-left">
             <div className="benefits-header-content">
-              <p className="dash-tagline">WHY CHOOSE US</p>
-              <h2 className="benefits-section-title">Your Benefits Choosing JSE Engineering Private Limited</h2>
-              <p className="benefits-header-desc">
+              {/* <p className="dash-tagline">WHY CHOOSE US</p> */}
+              <h2 className="benefits-section-title">Why Choose JSE?</h2>
+              {/* <p className="benefits-header-desc">
                 Partnering with JSE means choosing clarity, precision, and efficiency.
                 We deliver engineering solutions that streamline construction and maximize value.
-              </p>
-              <div className="benefits-decorative-line"></div>
+              </p> */}
+
             </div>
           </div>
 
@@ -755,48 +615,125 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <section className="geo-section">
-          <div className="container">
-            <div className="geo-header">
-              <p className="geo-tagline dash-tagline">WHERE WE WORK</p>
-              <h2 className="geo-title">Geographical Achievements.</h2>
-              <p className="geo-text">
-                With a major stand-on focus on BIM MEP solutions, JSE Engineering transcends geographical
-                boundaries delivering bespoke solutions to our builders, contractors, or real estate clients.
-              </p>
-            </div>
-            <div className="geo-content">
-              <div className="geo-map-container">
-                <img
-                  src={mapImage}
-                  alt="Global Presence Map"
-                  className="geo-map"
-                  loading="lazy"
-                  width="800"
-                  height="450"
-                />
+        <section className="stats-section" ref={statsRef}>
+          <div className="container-stats">
+            <h2 className="stats-title-center">Standout Statistics</h2>
+
+            <div className="stats-grid">
+              <div className="stat-item">
+                <h3><StatCounter end={6000} suffix="+" start={statsStarted} /></h3>
+                <p>Successful Projects Delivered</p>
               </div>
-              <div className="geo-stats-container">
-                <div className="geo-stat-item">
-                  <h3><StatCounter end={100} suffix="%" /></h3>
-                  <p>Employee Owned</p>
-                </div>
-                <div className="geo-stat-item">
-                  <h3><StatCounter end={1000} suffix="+" /></h3>
-                  <p>Active Projects</p>
-                </div>
-                <div className="geo-stat-item">
-                  <h3><StatCounter end={6000} suffix="+" /></h3>
-                  <p>Global Deliveries</p>
-                </div>
-                <a href="/history" className="geo-cta-btn">Our History</a>
+              <div className="stat-item">
+                <h3><StatCounter end={20} suffix="+" start={statsStarted} /></h3>
+                <p>Countries</p>
+              </div>
+              <div className="stat-item">
+                <h3><StatCounter end={1000} suffix="+" start={statsStarted} /></h3>
+                <p>Delighted Global Clients Served</p>
+              </div>
+              <div className="stat-item">
+                <h3><StatCounter end={25} suffix="+" start={statsStarted} /></h3>
+                <p>Years of Industry Experience</p>
               </div>
             </div>
           </div>
         </section>
-
-
       </section>
+
+      <section className="solutions-list-section">
+        <div className="solutions-list-container">
+          <div className="solutions-header-group">
+            {/* <p className="solutions-tagline dash-tagline">SOLUTIONS BEYOND SOFTWARE</p> */}
+            <h2 className="solutions-title">SOLUTIONS BEYOND SOFTWARE</h2>
+            <p className="solutions-description" style={{ marginTop: '1rem', color: '#64748b' }}>
+              JSE offers customized engineering solutions to fulfill our clients project requirement.
+            </p>
+          </div>
+
+          <div className="solutions-list-wrapper">
+            {servicesData.map((service, index) => (
+              <Link to={service.link} key={index} className="solution-list-item">
+                <span className="solution-list-text">{service.title}</span>
+                <span className="solution-list-arrow">→</span>
+                <div className="solution-item-img-wrapper">
+                  <img src={service.img} alt={service.title} className="solution-item-img" loading="lazy" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="geo-stats-section">
+        <div className="geo-stats-container">
+          {/* Left: Globe Video */}
+          <motion.div
+            className="geo-globe-wrapper"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <video autoPlay loop muted playsInline className="geo-globe-video">
+              <source src={geoStatsVideo} type="video/mp4" />
+            </video>
+          </motion.div>
+
+          {/* Right: Vertical Stats */}
+          <div className="geo-stats-content">
+            {[
+              { number: "66%", label: "Employee Owned" },
+              { number: "669+", label: "Active Projects" },
+              { number: "4,015+", label: "Global Deliveries" }
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                className="geo-stat-box"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }}
+                viewport={{ once: true }}
+              >
+                <span className="geo-stat-number">{stat.number}</span>
+                <span className="geo-stat-label">{stat.label}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="business-divisions-section">
+        <div className="divisions-stack-container">
+          {/* Header Text */}
+          <div className="divisions-header" style={{ maxWidth: '900px', margin: '0 auto 3rem auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            {/* <p className="dash-tagline" style={{ color: '#666' }}>Our Divisions</p> */}
+            <h2 className="section-title" style={{ fontFamily: "delight", fontWeight: "800", margin: '0', fontSize: '3rem', textAlign: 'center' }}>Our Business Divisions</h2>
+            {/* <p className="divisions-desc" style={{ marginTop: '1rem', color: '#64748b' }}>
+              By integrating technical expertise with practical project insight, we streamline decision-making.
+            </p> */}
+          </div>
+
+          {/* 3 Premium Cards */}
+          <div className="divisions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '3rem', width: '100%' }}>
+            {businessDivisions.map((division, index) => (
+              <Link key={index} to={division.link} className="division-card">
+                <img src={division.image} alt={division.title} className="division-bg-image" loading="lazy" />
+                <div className="division-overlay"></div>
+                <div className="division-content">
+                  <h3 className="division-title">{division.title}</h3>
+                  <p className="division-desc">{division.description}</p>
+                </div>
+                <div className="division-arrow-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
 
       {/* Form Section */}
       <section className="internship-form-section" id="contact-form">
@@ -880,4 +817,3 @@ const Home = () => {
 };
 
 export default Home;
-

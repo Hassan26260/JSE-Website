@@ -87,7 +87,261 @@
 
 .reverse-col>* {
     direction: ltr;
+
     /* Reset text direction */
+}
+
+/* --- Interactive Timeline Section (Horizontal) --- */
+.timeline-section {
+    position: relative;
+    padding: 6rem 0 8rem 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #0b0b0b;
+    /* Deep Dark Background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+.timeline-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 10;
+    padding: 0 1rem;
+}
+
+.timeline-tagline {
+    display: block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #144AE0;
+    /* Brand Blue */
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.timeline-heading {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #fff;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Timeline Flex Container */
+.timeline-container {
+    display: flex;
+    flex-direction: row;
+    /* Horizontal by default */
+    width: 100%;
+    height: 600px;
+    /* Fixed Height for alignment */
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    gap: 1rem;
+    /* Space between cards */
+}
+
+/* Individual Card (Animated Flex Item) */
+.timeline-card {
+    position: relative;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    flex: 1;
+    /* Default collapsed state */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* Align content to bottom */
+    transition: flex 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    /* Smooth Flex Transition */
+}
+
+/* Active State Expansion */
+.timeline-card.active {
+    flex: 3.5;
+    /* Expand significantly */
+    cursor: default;
+}
+
+.timeline-card.inactive {
+    flex: 1;
+}
+
+/* Background Image Container */
+.timeline-card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.timeline-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Framer Motion handles scale/filter, but defaults here */
+}
+
+.timeline-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0));
+    z-index: 1;
+}
+
+/* Collapsed Content (Label at bottom) */
+.timeline-collapsed-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem 1rem;
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.timeline-year-label {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    writing-mode: vertical-rl;
+    /* Vertical Text for narrow cards */
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    /* Flip to read upwards */
+    margin: 0 auto;
+    display: block;
+    opacity: 0.8;
+}
+
+/* Expanded Content */
+.timeline-content-wrapper {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Let clicks pass through to card unless blocked */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.timeline-expanded-content {
+    padding: 3rem;
+    max-width: 600px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    pointer-events: auto;
+    /* Enable text interaction */
+    width: 100%;
+}
+
+.timeline-expanded-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.timeline-line {
+    width: 60px;
+    height: 2px;
+    background-color: #144AE0;
+}
+
+.timeline-year-expanded {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ccc;
+}
+
+.timeline-card-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    color: #fff;
+}
+
+.timeline-card-desc p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ddd;
+    margin-bottom: 0.8rem;
+}
+
+/* --- Responsive (Mobile Stack) --- */
+@media (max-width: 1024px) {
+    .timeline-container {
+        flex-direction: column;
+        /* Stack vertically */
+        height: auto;
+        min-height: 800px;
+        padding: 0 1rem;
+    }
+
+    .timeline-card {
+        min-height: 80px;
+        /* Small strip */
+    }
+
+    .timeline-card.active {
+        min-height: 400px;
+        /* Expanded Area */
+        flex: auto;
+        /* Let it grow naturally */
+    }
+
+    .timeline-year-label {
+        writing-mode: horizontal-tb;
+        /* Normal horizontal text */
+        transform: none;
+        font-size: 1.2rem;
+        padding-top: 1rem;
+    }
+
+    .timeline-collapsed-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 0;
+    }
+
+    .timeline-expanded-content {
+        padding: 2rem;
+    }
+
+    .timeline-card-title {
+        font-size: 1.8rem;
+    }
+}
+
+
+margin-bottom: 2rem;
+}
+
+.chronicles-carousel-wrapper {
+    margin-top: 2rem;
+    mask-image: none;
+}
+
+.chronicles-track {
+    padding-left: 20%;
+    /* Center start on mobile */
+}
 }
 
 /* Better way for reverse: order property if flex/grid items defined */
@@ -143,344 +397,44 @@
     transform: translateY(-10px);
 }
 
-/* --- Timeline Section (Vertical) --- */
-.history-timeline-section {
-    padding: 8rem 0;
-    background-color: #071230;
-    /* Dark Theme */
-    color: #ffffff;
-    overflow: hidden;
-}
 
-.timeline-header {
-    text-align: center;
-    margin-bottom: 6rem;
-}
-
-.timeline-main-title {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-size: 3rem;
-    font-weight: 800;
-    color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* Renamed to avoid config with VirtualTeam.css */
-.history-process-timeline {
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 6rem;
-    padding: 2rem 0;
+gap: 3rem;
 }
 
 .history-center-line {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 2px;
-    background-image: linear-gradient(to bottom, #144AE0 50%, rgba(255, 255, 255, 0.1) 50%);
-    background-size: 2px 20px;
-    transform: translateX(-50%);
-    z-index: 1;
+    left: 20px;
+    transform: none;
 }
 
-.history-timeline-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    opacity: 0;
-    /* Init hidden for animation */
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.history-timeline-row.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
+.history-timeline-row,
 .history-timeline-row.row-right {
-    flex-direction: row-reverse;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
-.history-content-side,
-.history-empty-side {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    width: 50%;
+.history-center-marker {
+    min-width: 40px;
+    margin-right: 1rem;
 }
 
 .history-content-side {
-    justify-content: flex-end;
-    padding-right: 3rem;
+    width: 100%;
+    padding: 0;
+    flex: 1;
 }
 
 .row-right .history-content-side {
-    justify-content: flex-start;
-    padding-right: 0;
-    padding-left: 3rem;
+    padding: 0;
 }
 
 .history-empty-side {
-    justify-content: flex-start;
-    padding-left: 3rem;
+    display: none;
 }
 
-.row-right .history-empty-side {
-    justify-content: flex-end;
-    padding-left: 0;
-    padding-right: 3rem;
-}
-
-/* Marker Dot */
-.history-center-marker {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 3;
-    background: #071230;
-}
-
-.history-marker-dot {
-    width: 20px;
-    height: 20px;
-    background-color: #071230;
-    border: 3px solid #144AE0;
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(20, 74, 224, 0.2);
-}
-
-/* Card */
-.history-timeline-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    border-radius: 16px;
-    text-align: left;
-    transition: all 0.3s ease;
-    width: 100%;
-    max-width: 450px;
-    position: relative;
-}
-
-.history-timeline-card:hover {
-    background: rgba(255, 255, 255, 0.08);
-    transform: translateY(-5px);
-    border-color: #144AE0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.history-year-badge {
-    display: inline-block;
-    background: #144AE0;
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 4px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-}
-
-.history-timeline-card h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #fff;
-    margin: 0 0 1rem 0;
-    line-height: 1.4;
-}
-
-.history-timeline-card p {
-    font-size: 1rem;
-    color: #cbd5e1;
-    line-height: 1.6;
-    margin: 0;
-    margin-bottom: 0.5rem;
-}
-
-.history-timeline-card p:last-child {
-    margin-bottom: 0;
-}
-
-/* Step Label */
-.history-step-label {
-    font-family: 'Lato', sans-serif;
-    font-size: 2rem;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.1);
-    letter-spacing: 0.1em;
-}
-
-/* Connector Lines */
 .history-timeline-card::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 3rem;
-    height: 1px;
-    border-top: 1px dashed rgba(255, 255, 255, 0.3);
-    pointer-events: none;
+    display: none;
 }
-
-.row-left .history-timeline-card::before {
-    right: -3rem;
-}
-
-.row-right .history-timeline-card::before {
-    left: -3rem;
-}
-
-
-/* Responsive */
-@media (max-width: 768px) {
-    .history-process-timeline {
-        gap: 3rem;
-    }
-
-    .history-center-line {
-        left: 20px;
-        transform: none;
-    }
-
-    .history-timeline-row,
-    .history-timeline-row.row-right {
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: flex-start;
-    }
-
-    .history-center-marker {
-        min-width: 40px;
-        margin-right: 1rem;
-    }
-
-    .history-content-side {
-        width: 100%;
-        padding: 0;
-        flex: 1;
-    }
-
-    .row-right .history-content-side {
-        padding: 0;
-    }
-
-    .history-empty-side {
-        display: none;
-    }
-
-    .history-timeline-card::before {
-        display: none;
-    }
 }
 
 /* BIM Stats (Legacy - keeping for safety) */
-.bim-stats-section {
-    padding: 6rem 0;
-    background: white;
-}
-
-.bim-stats-heading {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 3rem;
-}
-
-.bim-chart-wrapper {
-    display: flex;
-    max-width: 800px;
-    margin: 0 auto;
-    gap: 1rem;
-    height: 300px;
-}
-
-.bim-y-axis {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: #666;
-    font-size: 0.9rem;
-    text-align: right;
-    padding-right: 1rem;
-    border-right: 1px solid #ddd;
-}
-
-.bim-graph-container {
-    flex: 1;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 0px;
-}
-
-.bim-bar-group {
-    display: flex;
-    gap: 8px;
-    height: 100%;
-    align-items: flex-end;
-}
-
-.bim-bar {
-    width: 40px;
-    background: #ccc;
-    position: relative;
-    border-radius: 4px 4px 0 0;
-    transition: height 1s ease;
-}
-
-.bim-bar.bar-grey {
-    background: #94a3b8;
-}
-
-.bim-bar.bar-red {
-    background: #cc0000;
-}
-
-.bim-bar-val {
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #333;
-}
-
-.bim-legend {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.bim-legend-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.bim-legend-color {
-    width: 15px;
-    height: 15px;
-    border-radius: 3px;
-}
-
-.color-grey {
-    background: #94a3b8;
-}
-
-.color-red {
-    background: #cc0000;
-}

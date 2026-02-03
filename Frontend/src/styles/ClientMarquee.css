@@ -1,0 +1,208 @@
+@font-face {
+    font-family: 'delight';
+    src: url('../assets/fonts/delight-black.otf');
+}
+
+/* Client Marquee Section */
+.client-marquee-section {
+    padding: 4rem 0 6rem 0rem;
+    /* Increased top/bottom padding significantly */
+    background-color: transparent;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Centered Header - REMOVED */
+.client-marquee-header {
+    display: none;
+}
+
+.client-marquee-tagline {
+    color: #666;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.client-marquee-title {
+    font-size: 2.5rem;
+    color: #144AE0;
+    font-weight: 800;
+    margin: 0;
+    font-family: system-ui, Segoe UI, Roboto, sans-serif;
+}
+
+/* Marquee Row Layout */
+.client-marquee-row {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    box-shadow: none;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* Top Marquee (Consultants) Spacing */
+.consultant-row {
+    margin-bottom: 120px;
+    /* Increased gap between marquees */
+}
+
+
+/* Reverse Layout for Clients */
+.client-marquee-row.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Label Container (Stacked) */
+.marquee-label {
+    flex-shrink: 0;
+    padding: 0 1rem;
+    /* Reduced side padding from 2rem to 1rem */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    /* Tighter line height */
+    color: #0f172a;
+    z-index: 2;
+    background: #fff;
+}
+
+.marquee-label .highlight {
+    color: #144AE0;
+    margin-left: 10px;
+}
+
+/* Top Text: "Global" */
+.label-line-1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Bottom Text: "Consultants/Contractors" */
+.label-line-2 {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #144AE0;
+    /* Blue */
+    text-transform: uppercase;
+    /* Optional for impact */
+    white-space: nowrap;
+    font-family: 'delight', system-ui;
+    /* Applied requested font */
+}
+
+/* Vertical Divider */
+.vertical-divider {
+    width: 3px;
+    height: 80px;
+    background-color: #cbd5e1;
+    margin: 0 1rem;
+    flex-shrink: 0;
+}
+
+/* Right Side: Infinite Marquee */
+.marquee-container {
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    width: max-content;
+    animation: scrollMarquee 30s linear infinite;
+}
+
+/* Apply Reverse Animation to the Second Marquee (Clients) */
+.client-row .marquee-track {
+    animation-direction: reverse;
+}
+
+
+/* Pause animation on hover */
+.marquee-container:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+.client-logo {
+    height: 80px;
+    /* Unified size as requested */
+    width: auto;
+    object-fit: contain;
+    opacity: 1;
+    transition: transform 0.3s;
+}
+
+.client-logo:hover {
+    transform: scale(1.15);
+}
+
+@keyframes scrollMarquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .client-marquee-section {
+        gap: 3rem;
+        /* Restore gap on mobile if rows stack differently or just keep spacing */
+    }
+
+    .client-marquee-section>.client-marquee-row:first-of-type {
+        margin-bottom: 3rem;
+        /* Less margin on mobile */
+    }
+
+    .client-marquee-row,
+    .client-marquee-row.reverse {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .marquee-label {
+        padding: 0 0 1.5rem 0;
+        width: 100%;
+        border-bottom: 2px solid #e2e8f0;
+    }
+
+    .label-top {
+        font-size: 1.5rem;
+    }
+
+    .label-bottom {
+        font-size: 2.2rem;
+    }
+
+    .marquee-divider {
+        display: none;
+    }
+
+    .marquee-container {
+        width: 100%;
+        mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    }
+
+    .marquee-logo {
+        height: 60px;
+    }
+}

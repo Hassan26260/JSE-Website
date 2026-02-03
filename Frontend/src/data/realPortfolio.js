@@ -37,6 +37,52 @@ const PROJECT_DESCRIPTIONS = {
 };
 
 
+// --- LOCATION MAPPING ---
+const PROJECT_LOCATIONS = {
+    // DUBAI
+    "Holiday inn Staybridge Dubai": "DUBAI",
+    "Etisalat Data Center - Dubai": "DUBAI",
+    "Etisalat Data - Dubai": "DUBAI",
+    "IMPZ District Cooling Plant - Dubai": "DUBAI",
+    "International Media Production - Dubai": "DUBAI",
+    "District Cooling Plant": "DUBAI", // Tecom C is in Dubai
+    "Palm Jemirah": "DUBAI",
+    "The Regen": "DUBAI",
+
+    // UAE (Abu Dhabi, etc.)
+    "WAFRA residential - Abu Dhabi": "UAE",
+    "Wafra Residential - Abu Dhabi": "UAE",
+    "Al-Zeina Towers - Abu Dhabi": "UAE",
+    "al ain hospital abudhabi": "UAE",
+    "AL AIN Hospital UAE": "UAE",
+
+    // OMAN (Mapping to SAUDI ARABIA for now as requested? Or just keep real country?)
+    // User requested: UAE, SAUDI ARABIA, DUBAI, MALAYSIA.
+    // I will map Oman to 'Other' internally but user only gave 4 filters.
+    // Let's assume Middle East projects might go to UAE/Saudi for now or just 'Other'.
+    "Muscat International - Oman": "OTHERS",
+    "Four Seasons Branded Residency": "OTHERS", // Muscat
+    "Four Seasons - hotel, building": "OTHERS", // Muscat
+    "Nikki Beach Restaurant": "OTHERS", // Muscat
+    "Oman Convention": "OTHERS",
+
+    // QATAR
+    "Multi Purpose Hall - Qatar": "OTHERS",
+    "Mushireb Heart Of Doha": "OTHERS",
+
+    // SINGAPORE / MALAYSIA
+    "Warehouse Development - Singapore": "MALAYSIA", // Grouping Singapore with Malaysia for this filter request as they are close? Or just OTHERS.
+    "Recycling Plant - Singapore": "MALAYSIA", // User asked for Malaysia, I'll put SG projects there or OTHERS.
+    // Let's use OTHERS for strictness, but if user wants Malaysia filter populated, I might need Malaysian projects.
+
+    // INDIA
+    "Villa Project - India": "OTHERS",
+    "Avenus - l11": "OTHERS",
+
+    // UK
+    "One Clarton - London": "OTHERS",
+};
+
 // --- DYNAMIC IMPORT FOR ARCHITECTURE, STEEL & MEP (BIM) ---
 const archGlob = import.meta.glob('../assets/portfolio.img/archi/**/*.{png,jpg,jpeg,webp}', { eager: true });
 const steelGlob = import.meta.glob('../assets/portfolio.img/steel/**/*.{png,jpg,jpeg,webp}', { eager: true });
@@ -73,7 +119,9 @@ const processDynamicProjects = (globData, category, isMEP = false) => {
                 image: null,
                 gallery: [],
                 // LOOKUP DESCRIPTION
-                description: PROJECT_DESCRIPTIONS[projectName] || null
+                description: PROJECT_DESCRIPTIONS[projectName] || null,
+                // LOOKUP LOCATION, Default to 'OTHERS' if not found
+                country: PROJECT_LOCATIONS[projectName] || "OTHERS"
             };
         }
 

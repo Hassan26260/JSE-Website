@@ -1,67 +1,89 @@
 import React, { useState, useMemo, useEffect } from "react";
 import "../styles/Home.css";
 import "../styles/Portfolio.css";
-
-// Import Centralized Real Portfolio Data
-import { ARCH_PROJECTS, STEEL_PROJECTS, MEP_PROJECTS } from "../data/realPortfolio";
+import api from "../services/api";
 
 const Portfolio = () => {
-  const [activeFilter, setActiveFilter] = useState("All");
-  const [activeSubCategory, setActiveSubCategory] = useState(null);
+  // State for Multi-Select Filters
+  const [selectedCategories, setSelectedCategories] = useState(["All"]);
+  const [selectedCountries, setSelectedCountries] = useState(["All"]);
+
+  // Projects Data
+  const [allProjects, setAllProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Dropdown visibility state
+  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
+  const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
 
   // Modal State
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const filters = [
-    "All",
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const fetchProjects = async () => {
+    try {
+      const { data } = await api.get('/projects');
+      setAllProjects(data);
+    } catch (error) {
+      console.error("Failed to fetch projects", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const filterOptions = [
+    "MEP",
     "Architectural & Structural",
-    "Steel Structural Detailing",
-    "MEP"
+    "Steel Structural Detailing"
   ];
 
-  // Derive All Projects
-  const allProjects = useMemo(() => {
-    return [...MEP_PROJECTS, ...STEEL_PROJECTS, ...ARCH_PROJECTS];
-  }, []);
+  const countryOptions = [
+    "UAE",
+    "SAUDI ARABIA",
+    "DUBAI",
+    "MALAYSIA"
+  ];
 
-  // Derive MEP Subcategories dynamically from MEP_PROJECTS
-  const mepSubCategories = useMemo(() => {
-    const subCats = {};
-    MEP_PROJECTS.forEach(project => {
-      if (!project.subCategory) return;
-
-      if (!subCats[project.subCategory]) {
-        subCats[project.subCategory] = {
-          id: `cat-${project.subCategory.replace(/\s+/g, '-')}`,
-          title: project.subCategory,
-          image: project.image || project.gallery[0], // Use project main image as subcat thumb
-          hasMain: false
-        };
-      }
-    });
-    return Object.values(subCats);
-  }, []);
+  const getImageUrl = (path) => {
+    if (!path) return '';
+    if (path.startsWith('http')) return path;
+    return `http://localhost:5000${path}`;
+  };
 
   // -- Event Handlers --
 
-  const handleFilterClick = (filter) => {
-    setActiveFilter(filter);
-    setActiveSubCategory(null);
-  };
+  const toggleSelection = (item, currentSelection, setSelection, allValue = "All") => {
+    if (item === allValue) {
+      setSelection([allValue]);
+      return;
+    }
 
-  const handleSubCategoryClick = (subCatTitle) => {
-    setActiveSubCategory(subCatTitle);
-  };
+    let newSelection = [...currentSelection];
 
-  const handleBackToMEP = () => {
-    setActiveSubCategory(null);
+    if (newSelection.includes(allValue)) {
+      newSelection = newSelection.filter(i => i !== allValue);
+    }
+
+    if (newSelection.includes(item)) {
+      newSelection = newSelection.filter(i => i !== item);
+    } else {
+      newSelection.push(item);
+    }
+
+    if (newSelection.length === 0) {
+      setSelection([allValue]);
+    } else {
+      setSelection(newSelection);
+    }
   };
 
   const openProjectModal = (project) => {
     setSelectedProject(project);
     setCurrentImageIndex(0);
-    // Disable background scroll
     document.body.style.overflow = 'hidden';
   };
 
@@ -83,29 +105,115 @@ const Portfolio = () => {
     }
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest('.custom-dropdown-container')) {
+        setIsCategoryDropdownOpen(false);
+        setIsCountryDropdownOpen(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
 
   // -- Render Logic --
-  let contentToRender = [];
-  let isFolderView = false;
 
-  if (activeFilter === "MEP" && !activeSubCategory) {
-    contentToRender = mepSubCategories;
-    isFolderView = true;
-  } else {
-    if (activeFilter === "All") {
-      contentToRender = allProjects;
-    } else if (activeFilter === "MEP") {
-      contentToRender = allProjects.filter(p => p.category === "MEP" && p.subCategory === activeSubCategory);
-    } else {
-      contentToRender = allProjects.filter(p => p.category === activeFilter);
-    }
-  }
+  const contentToRender = allProjects.filter(project => {
+    const pCountry = project.country ? project.country.toUpperCase() : "OTHERS";
+    const matchesCountry = selectedCountries.includes("All") || selectedCountries.includes(pCountry);
+    const matchesCategory = selectedCategories.includes("All") || selectedCategories.includes(project.category);
+    return matchesCountry && matchesCategory;
+  });
+
+  const FilterDropdown = ({ title, options, selected, onToggle, isOpen, setIsOpen }) => (
+    <div className="custom-dropdown-container" style={{ position: 'relative', display: 'inline-block', minWidth: '200px' }}>
+      <button
+        className="dropdown-btn"
+        onClick={(e) => { e.stopPropagation(); setIsOpen(!isOpen); }}
+        style={{
+          width: '100%',
+          padding: '0.75rem 1rem',
+          backgroundColor: 'white',
+          border: '1px solid #e5e7eb',
+          borderRadius: '8px',
+          textAlign: 'left',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          cursor: 'pointer',
+          fontWeight: '500',
+          color: '#374151',
+          boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+        }}
+      >
+        <span>{title} {selected.includes("All") ? "" : `(${selected.length})`}</span>
+        <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>▼</span>
+      </button>
+
+      {isOpen && (
+        <div style={{
+          position: 'absolute',
+          top: '100%',
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          marginTop: '0.5rem',
+          backgroundColor: 'white',
+          border: '1px solid #e5e7eb',
+          borderRadius: '8px',
+          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+          padding: '0.5rem',
+          maxHeight: '300px',
+          overflowY: 'auto'
+        }}>
+          <div
+            onClick={() => onToggle("All")}
+            style={{
+              padding: '0.5rem',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              borderRadius: '4px',
+              backgroundColor: selected.includes("All") ? '#eff6ff' : 'transparent',
+              color: selected.includes("All") ? '#1d4ed8' : '#374151'
+            }}
+          >
+            <input type="checkbox" checked={selected.includes("All")} readOnly style={{ cursor: 'pointer' }} />
+            <span>All</span>
+          </div>
+
+          <div style={{ height: '1px', backgroundColor: '#e5e7eb', margin: '0.5rem 0' }}></div>
+
+          {options.map(option => (
+            <div
+              key={option}
+              onClick={() => onToggle(option)}
+              style={{
+                padding: '0.5rem',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                borderRadius: '4px',
+                backgroundColor: selected.includes(option) ? '#eff6ff' : 'transparent',
+                color: selected.includes(option) ? '#1d4ed8' : '#374151'
+              }}
+            >
+              <input type="checkbox" checked={selected.includes(option)} readOnly style={{ cursor: 'pointer' }} />
+              <span>{option}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 
   return (
     <div className="portfolio-page">
       <div className="container" style={{ paddingTop: "12rem", paddingBottom: "8rem" }}>
 
-        {/* Header */}
         <div className="portfolio-header" style={{ marginBottom: "3rem" }}>
           <p className="dash-tagline">Our Projects</p>
           <h1 className="section-title" style={{ textAlign: "left", margin: "0", fontFamily: "system-ui, Segoe UI, Roboto, sans-serif", fontWeight: "800" }}>
@@ -113,110 +221,105 @@ const Portfolio = () => {
           </h1>
         </div>
 
-        {/* Filter Menu */}
-        <div className="portfolio-filter-container">
-          {filters.map((filter) => (
+        <div className="portfolio-filter-toolbar" style={{
+          display: 'flex',
+          gap: '1rem',
+          marginBottom: '2rem',
+          flexWrap: 'wrap',
+          alignItems: 'center'
+        }}>
+          <span style={{ fontWeight: '600', color: '#6b7280', marginRight: '0.5rem' }}>Filter By:</span>
+
+          <FilterDropdown
+            title="Country"
+            options={countryOptions}
+            selected={selectedCountries}
+            onToggle={(item) => toggleSelection(item, selectedCountries, setSelectedCountries)}
+            isOpen={isCountryDropdownOpen}
+            setIsOpen={(val) => { setIsCountryDropdownOpen(val); setIsCategoryDropdownOpen(false); }}
+          />
+
+          <FilterDropdown
+            title="Category"
+            options={filterOptions}
+            selected={selectedCategories}
+            onToggle={(item) => toggleSelection(item, selectedCategories, setSelectedCategories)}
+            isOpen={isCategoryDropdownOpen}
+            setIsOpen={(val) => { setIsCategoryDropdownOpen(val); setIsCountryDropdownOpen(false); }}
+          />
+
+          {(!selectedCountries.includes("All") || !selectedCategories.includes("All")) && (
             <button
-              key={filter}
-              className={`portfolio-filter-btn ${activeFilter === filter ? 'active' : ''}`}
-              onClick={() => handleFilterClick(filter)}
+              onClick={() => { setSelectedCountries(["All"]); setSelectedCategories(["All"]); }}
+              style={{
+                marginLeft: 'auto',
+                border: 'none',
+                background: 'none',
+                color: '#ef4444',
+                textDecoration: 'underline',
+                cursor: 'pointer',
+                fontSize: '0.875rem'
+              }}
             >
-              {filter}
+              Clear All Filters
             </button>
-          ))}
+          )}
         </div>
 
-        {/* Breadcrumb for MEP */}
-        {activeFilter === "MEP" && activeSubCategory && (
-          <div style={{ marginBottom: "2rem" }}>
-            <button
-              onClick={handleBackToMEP}
-              className="back-btn"
-              style={{
-                background: "none",
-                border: "none",
-                color: "#144AE0",
-                cursor: "pointer",
-                fontSize: "1rem",
-                fontWeight: "600",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem"
-              }}
-            >
-              ← Back to MEP Categories
-            </button>
-            <h2 style={{ marginTop: "1rem", fontSize: "1.5rem" }}>
-              {activeSubCategory === "Shop Drawings" ? "MEP Shop Drawings" : `${activeSubCategory} Projects`}
-            </h2>
-          </div>
-        )}
-
-        {/* Grid */}
-        <div className="portfolio-grid">
-          {contentToRender.map((item) => (
-            <div
-              key={item.id}
-              className="portfolio-card"
-              onClick={() => {
-                if (isFolderView) {
-                  handleSubCategoryClick(item.title);
-                } else if (item.category === "Architectural Structure" || item.category === "Steel Detailing" || item.category === "MEP") {
-                  openProjectModal(item);
-                }
-              }}
-              style={{ cursor: "pointer" }}
-            >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="portfolio-img"
-                loading="lazy"
-                width="800"
-                height="600"
-              />
-              <div className="portfolio-overlay">
-                <div className="portfolio-content">
-                  <h3 className="portfolio-title">{item.title}</h3>
-                  {isFolderView ? (
-                    <span className="view-more">View Projects →</span>
-                  ) : (
+        {loading ? (<p>Loading Projects...</p>) : (
+          <div className="portfolio-grid">
+            {contentToRender.map((item) => (
+              <div
+                key={item._id}
+                className="portfolio-card"
+                onClick={() => openProjectModal(item)}
+                style={{ cursor: "pointer" }}
+              >
+                <img
+                  src={getImageUrl(item.image)}
+                  alt={item.title}
+                  className="portfolio-img"
+                  loading="lazy"
+                  width="800"
+                  height="600"
+                />
+                <div className="portfolio-overlay">
+                  <div className="portfolio-content">
+                    <h3 className="portfolio-title">{item.title}</h3>
                     <button className="portfolio-cta">
                       Explore <span className="arrow">→</span>
                     </button>
-                  )}
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
 
-        {contentToRender.length === 0 && (
+              </div>
+            ))}
+          </div>
+        )}
+
+        {!loading && contentToRender.length === 0 && (
           <div className="no-projects">
-            <p>No projects found in this category yet.</p>
+            <p>No projects match your selected filters.</p>
           </div>
         )}
       </div>
 
-      {/* Project Detail Modal */}
       {selectedProject && (
         <div className="project-modal-overlay" onClick={closeProjectModal}>
           <div className="project-modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="close-modal-btn" onClick={closeProjectModal}>×</button>
 
-            {/* Carousel */}
             <div className="modal-carousel">
               {selectedProject.gallery && selectedProject.gallery.length > 0 ? (
                 <>
                   <div className="carousel-image-container">
                     <img
-                      src={selectedProject.gallery[currentImageIndex]}
+                      src={getImageUrl(selectedProject.gallery[currentImageIndex])}
                       alt={`Slide ${currentImageIndex}`}
                       className="modal-img"
                     />
                   </div>
 
-                  {/* Controls */}
                   <div className="carousel-controls">
                     <button
                       className="carousel-btn prev"
@@ -242,12 +345,24 @@ const Portfolio = () => {
               )}
             </div>
 
-            {/* About Section */}
             <div className="modal-info">
               <h2 className="modal-title">{selectedProject.title}</h2>
+              <div className="modal-meta-tags" style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
+                <span className="modal-tag" style={{ backgroundColor: '#eff6ff', color: '#1d4ed8', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontSize: '0.875rem', fontWeight: '500' }}>
+                  {selectedProject.country}
+                </span>
+                <span className="modal-tag" style={{ backgroundColor: '#fdf2f8', color: '#db2777', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontSize: '0.875rem', fontWeight: '500' }}>
+                  {selectedProject.category}
+                </span>
+                {selectedProject.subCategory && (
+                  <span className="modal-tag" style={{ backgroundColor: '#f0fdf4', color: '#15803d', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontSize: '0.875rem', fontWeight: '500' }}>
+                    {selectedProject.subCategory}
+                  </span>
+                )}
+              </div>
               <h4 className="modal-subtitle">About Project</h4>
               <p className="modal-description" style={{ whiteSpace: 'pre-line' }}>
-                {selectedProject.description || "This project represents one of our key architectural achievements, showcasing our commitment to precision, sustainability, and innovative design."}
+                {selectedProject.description || "We were awarded with a 5 star hotel in which we succesfully generated and constructed Model of MEP services for the complete building consisting of Basement ﬂoor+ Ground+8 storey + Roof +Top Roof and Complete 2D shop drawings had been extracted and implemented in construction for our client M/s. BK Gulf, Dubai."}
               </p>
             </div>
 

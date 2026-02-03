@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence, LayoutGroup, useMotionValue, useTransform, animate } from 'framer-motion';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles/Page.css";
@@ -9,13 +10,22 @@ import heroImage from "../assets/images-home/skyscraper.webp";
 import founderImage from "../assets/History/Founder.png";
 import mdImage from "../assets/History/MD.jpg";
 
+// Additional Image Imports for Chronicles
+import architecturalBim from "../assets/images-home/architectural-bim.webp";
+import skyscraper from "../assets/images-home/skyscraper.webp";
+import mepDesign from "../assets/images-home/mep-design.webp";
+import steelStructure from "../assets/images-home/Steel Structure.jpg";
+import heroGroupImage from "../assets/images-home/hero-group-image.jpg";
+import hvacDesign from "../assets/images-home/hvac-design.webp";
+
 const HISTORY_TIMELINE = [
     {
         year: "2005–2006",
         title: "FOUNDATION & EMERGENCE",
         descPoints: [
             "JSE emerged with HVAC Design & Shop Drawings and Mechanical Design & 2D Shop Drawing Services, commencing operations in Dubai, UAE and Chennai, Tamil Nadu – India."
-        ]
+        ],
+        image: architecturalBim
     },
     {
         year: "2007–2008",
@@ -23,7 +33,8 @@ const HISTORY_TIMELINE = [
         descPoints: [
             "Expansion into Electrical Design & Drawings and MEP Supervision in Dubai.",
             "Initiated Shop Drawings for one of the major UAE landmark developments — the Nad Al Sheeba Racecourse & Car Park project."
-        ]
+        ],
+        image: skyscraper
     },
     {
         year: "2009–2013",
@@ -31,7 +42,8 @@ const HISTORY_TIMELINE = [
         descPoints: [
             "Delivered High Standard Quality Shop Drawings for M/s. BK Gulf, one of the largest contractors in the UAE.",
             "Commenced MEP 3D BIM Department and strengthened BIM delivery capabilities across commercial and infrastructure projects."
-        ]
+        ],
+        image: mepDesign
     },
     {
         year: "2014–2018",
@@ -39,7 +51,8 @@ const HISTORY_TIMELINE = [
         descPoints: [
             "Established Architectural & Structural BIM Department, enabling integrated multi-discipline BIM delivery.",
             "Diversified further with the creation of the Steel Structure Department for modeling, detailing, and fabrication drawing support."
-        ]
+        ],
+        image: steelStructure
     },
     {
         year: "2019–2025",
@@ -47,14 +60,16 @@ const HISTORY_TIMELINE = [
         descPoints: [
             "Expanded regional presence with new Branch Offices at Trichy & Tirunelveli, Tamil Nadu and Vizag, Andhra Pradesh – India.",
             "Commissioned a New Expanded Office at Chennai, enhancing operations and delivery capacity for global service requirements."
-        ]
+        ],
+        image: heroGroupImage
     },
     {
         year: "2026–Present",
         title: "FUTURE READY",
         descPoints: [
             "Continuing to expand engineering, BIM, and digital delivery capabilities for international markets, leveraging advanced design technologies and multidisciplinary expertise."
-        ]
+        ],
+        image: hvacDesign
     }
 ];
 
@@ -63,7 +78,7 @@ const History = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    // Intersection Observer for Animation
+    // Intersection Observer for General Animations (Founder/MD sections)
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -73,14 +88,53 @@ const History = () => {
                     }
                 });
             },
-            { threshold: 0.2 } // Trigger when 20% visible
+            { threshold: 0.2 }
         );
 
-        const rows = document.querySelectorAll('.history-timeline-row');
+        const rows = document.querySelectorAll('.history-section');
         rows.forEach((row) => observer.observe(row));
 
         return () => observer.disconnect();
     }, []);
+
+    // --- Chronicles Carousel Logic (Framer Motion) ---
+    const [activeIndex, setActiveIndex] = useState(0);
+    const x = useMotionValue(0);
+
+    // Config
+    const CARD_WIDTH = 280; // Base width slot
+    const CARD_GAP = 40;
+    const DRAG_BUFFER = 50; // Threshold to trigger slide change
+
+    // Calculate snap positions
+    // We want the Active Card to be roughly centered in the RIGHT half of the screen or just visually pleasing.
+    // Let's assume a simplified centered carousel logic for the track.
+    // However, user asked for "Right side contains horizontal carousel... Left side contains text".
+    // So centering relative to the 'carousel container' is right.
+
+    // Handler for Drag End
+    const handleDragEnd = (event, info) => {
+        const offset = info.offset.x;
+        const velocity = info.velocity.x;
+
+        if (offset < -DRAG_BUFFER || velocity < -500) {
+            // Dragged Left -> Next Slide
+            setActiveIndex((prev) => Math.min(prev + 1, HISTORY_TIMELINE.length - 1));
+        } else if (offset > DRAG_BUFFER || velocity > 500) {
+            // Dragged Right -> Prev Slide
+            setActiveIndex((prev) => Math.max(prev - 1, 0));
+        }
+    };
+
+    // Auto-scroll track when activeIndex changes
+    // Instead of dragging the track 1:1, we often just animate to position. 
+    // True draggable carousel usually maps motionValue x to index.
+    // Simpler Premium Feel: The track animates to center the active card.
+    // We can use 'animate' from framer-motion to drive the 'x' value.
+
+    // We will control the x-position of the track strictly based on activeIndex, 
+    // but allow small drag gestures to trigger the index change.
+    // This feels like "Snap to card".
 
     return (
         <div className="history-page">
@@ -130,7 +184,7 @@ const History = () => {
                         <h2 className="history-heading">Managing Director</h2>
                         <div className="history-desc">
                             <p>
-                                Following the Footsteps of Mr. Ganaraj, his son <strong>Mr. John Suresh</strong> strongly believes in identifying business errors and fixing them with the latest BIM technology solutions.
+                                Following the Footsteps of Mr. Gamearaj, his son <strong>Mr. John Suresh</strong> strongly believes in identifying business errors and fixing them with the latest BIM technology solutions.
                             </p>
                             <p>
                                 With 3+ decades of modeling experience and a command of subject knowledge, Suresh is passionate about sharing his expertise through mentoring young engineers and motivating the team to explore new industrial challenges.
@@ -143,109 +197,92 @@ const History = () => {
                 </div>
             </section>
 
-            {/* Vertical Timeline Section (Redesigned) */}
-            <section className="history-timeline-section">
-                <div className="history-container">
-                    <div className="timeline-header">
-                        <h2 className="timeline-main-title">CHRONICLE</h2>
-                    </div>
+            {/* Interactive Timeline Section (Premium Framer Motion) */}
+            <section className="timeline-section">
+                <div className="timeline-header">
+                    <span className="timeline-tagline">OUR JOURNEY</span>
+                    <h2 className="timeline-heading">Chronicles of JSE</h2>
+                </div>
 
-                    <div className="history-process-timeline">
-                        <div className="history-center-line"></div>
+                <div className="timeline-container">
+                    <LayoutGroup>
+                        {HISTORY_TIMELINE.map((item, index) => {
+                            const isActive = activeIndex === index;
+                            return (
+                                <motion.div
+                                    key={index}
+                                    layout
+                                    onClick={() => setActiveIndex(index)}
+                                    className={`timeline-card ${isActive ? "active" : "inactive"}`}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                                >
+                                    <motion.div layout className="timeline-card-bg">
+                                        <motion.img
+                                            layoutId={`img-${index}`}
+                                            src={item.image}
+                                            alt={item.title}
+                                            className="timeline-img"
+                                            initial={{ filter: "grayscale(100%)" }}
+                                            animate={{
+                                                filter: isActive ? "grayscale(0%)" : "grayscale(100%)",
+                                                scale: isActive ? 1.05 : 1
+                                            }}
+                                            transition={{ duration: 0.8 }}
+                                        />
+                                        <div className="timeline-overlay"></div>
+                                    </motion.div>
 
-                        {HISTORY_TIMELINE.map((item, index) => (
-                            <div key={index} className={`history-timeline-row ${index % 2 !== 0 ? 'row-right' : 'row-left'}`}>
-                                {/* Content Side */}
-                                <div className="history-content-side">
-                                    <div className="history-timeline-card">
-                                        <span className="history-year-badge">{item.year}</span>
-                                        <h3>{item.title}</h3>
-                                        {item.descPoints.map((point, i) => (
-                                            <p key={i}>{point}</p>
-                                        ))}
+                                    <div className="timeline-content-wrapper">
+                                        {/* Collapsed View: Just Year/Title */}
+                                        {!isActive && (
+                                            <motion.div
+                                                layout
+                                                className="timeline-collapsed-content"
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                exit={{ opacity: 0 }}
+                                            >
+                                                <span className="timeline-year-label">{item.year}</span>
+                                                {/* <span className="timeline-arrow-icon">→</span> */}
+                                            </motion.div>
+                                        )}
+
+                                        {/* Expanded View: Full Content */}
+                                        <AnimatePresence mode="wait">
+                                            {isActive && (
+                                                <motion.div
+                                                    layout
+                                                    className="timeline-expanded-content"
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    exit={{ opacity: 0, y: 10 }}
+                                                    transition={{ delay: 0.2, duration: 0.5 }}
+                                                >
+                                                    <div className="timeline-expanded-header">
+                                                        <span className="timeline-line"></span>
+                                                        <span className="timeline-year-expanded">{item.year}</span>
+                                                    </div>
+
+                                                    <h3 className="timeline-card-title">{item.title}</h3>
+                                                    <div className="timeline-card-desc">
+                                                        {item.descPoints.map((point, i) => (
+                                                            <p key={i}>{point}</p>
+                                                        ))}
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
                                     </div>
-                                </div>
-
-                                {/* Center Marker */}
-                                <div className="history-center-marker">
-                                    <div className="history-marker-dot"></div>
-                                </div>
-
-                                {/* Empty/Label Side */}
-                                <div className="history-empty-side">
-                                    {/* Optional: Add labels or years here if preferred, currently empty for layout balance */}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                                </motion.div>
+                            );
+                        })}
+                    </LayoutGroup>
                 </div>
             </section>
 
-            {/* BIM Adoption Graph Section (2009 vs 2012) - Legacy */}
-            <section className="history-section bim-stats-section">
-                <div className="history-container">
-                    <h2 className="bim-stats-heading">
-                        BIM Adoption Growth (2009 - 2012)
-                    </h2>
 
-                    {/* Graph Legend */}
-                    <div className="bim-legend">
-                        <div className="bim-legend-item">
-                            <span className="bim-legend-color color-grey"></span>
-                            <span>2009</span>
-                        </div>
-                        <div className="bim-legend-item">
-                            <span className="bim-legend-color color-red"></span>
-                            <span>2012</span>
-                        </div>
-                    </div>
-
-                    {/* Chart Wrapper (Y-Axis + Graph) */}
-                    <div className="bim-chart-wrapper">
-                        {/* Y-Axis */}
-                        <div className="bim-y-axis">
-                            <span>80%</span>
-                            <span>60%</span>
-                            <span>40%</span>
-                            <span>20%</span>
-                            <span>0%</span>
-                        </div>
-
-                        {/* Bars Container */}
-                        <div className="bim-graph-container">
-                            {/* Group 1: 50% vs 74% */}
-                            <div className="bim-bar-group">
-                                <div className="bim-bar bar-grey" style={{ height: '62.5%' }}>
-                                    <span className="bim-bar-val">50%</span>
-                                </div>
-                                <div className="bim-bar bar-red" style={{ height: '92.5%' }}>
-                                    <span className="bim-bar-val">74%</span>
-                                </div>
-                            </div>
-
-                            {/* Group 2: 42% vs 67% */}
-                            <div className="bim-bar-group">
-                                <div className="bim-bar bar-grey" style={{ height: '52.5%' }}>
-                                    <span className="bim-bar-val">42%</span>
-                                </div>
-                                <div className="bim-bar bar-red" style={{ height: '83.75%' }}>
-                                    <span className="bim-bar-val">67%</span>
-                                </div>
-                            </div>
-
-                            {/* Group 3: 58% vs 70% */}
-                            <div className="bim-bar-group">
-                                <div className="bim-bar bar-grey" style={{ height: '72.5%' }}>
-                                    <span className="bim-bar-val">58%</span>
-                                </div>
-                                <div className="bim-bar bar-red" style={{ height: '87.5%' }}>
-                                    <span className="bim-bar-val">70%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             <Footer />
         </div>

@@ -55,6 +55,12 @@ import { AuthProvider } from "./context/AuthContext";
 import Login from "./pages/admin/Login";
 import AdminLayout from "./components/admin/AdminLayout";
 import Dashboard from "./pages/admin/Dashboard";
+import InternshipApplications from "./pages/admin/InternshipApplications";
+import CareerApplications from "./pages/admin/CareerApplications";
+import JobsList from "./pages/admin/JobsList";
+import JobForm from "./pages/admin/JobForm";
+import ProjectsList from "./pages/admin/ProjectsList";
+import ProjectForm from "./pages/admin/ProjectForm";
 
 function App() {
   return (
@@ -66,6 +72,14 @@ function App() {
           <Route path="/admin/login" element={<Login />} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="jobs" element={<JobsList />} />
+            <Route path="jobs/new" element={<JobForm />} />
+            <Route path="jobs/edit/:id" element={<JobForm />} />
+            <Route path="projects" element={<ProjectsList />} />
+            <Route path="projects/new" element={<ProjectForm />} />
+            <Route path="projects/edit/:id" element={<ProjectForm />} />
+            <Route path="internships" element={<InternshipApplications />} />
+            <Route path="careers" element={<CareerApplications />} />
             {/* Redirect /admin to /admin/dashboard */}
             <Route index element={<Navigate to="/admin/dashboard" replace />} />
           </Route>

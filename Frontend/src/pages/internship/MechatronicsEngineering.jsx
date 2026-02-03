@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import api from '../../services/api';
 import '../../styles/Internship.css';
 import internImage from '../../assets/intern-civil/pexels-linkedin-1251861.webp';
 import highlightsImage from '../../assets/intern-civil/pexels-olly-3769021.webp';
@@ -60,6 +61,10 @@ const AnimatedNumber = ({ end, duration = 2000 }) => {
 
 const MechatronicsEngineering = () => {
   // Form State
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -79,11 +84,49 @@ const MechatronicsEngineering = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    alert("Application Submitted! (This is a frontend demo)");
-    // Backend connection would go here
+    setLoading(true);
+    setError('');
+    setSuccess(false);
+
+    try {
+      const data = new FormData();
+      data.append('name', formData.name);
+      data.append('email', formData.email);
+      data.append('mobile', formData.mobile);
+      data.append('message', formData.message);
+      data.append('internshipTitle', 'Mechatronics Engineering');
+
+      if (formData.resume) {
+        data.append('resume', formData.resume);
+      } else {
+        setError('Please upload your resume.');
+        setLoading(false);
+        return;
+      }
+
+      const response = await api.post('/intern-apply', data);
+
+      const result = response.data;
+
+      setSuccess(true);
+      setFormData({
+        name: '',
+        email: '',
+        mobile: '',
+        message: '',
+        resume: null
+      });
+      alert("Application Submitted Successfully!");
+
+    } catch (err) {
+      setError(err.message);
+      console.error(err);
+      alert(`Error: ${err.message}`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const scrollToForm = () => {

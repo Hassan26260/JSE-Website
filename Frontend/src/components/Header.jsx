@@ -118,12 +118,6 @@ const Header = () => {
                       onMouseEnter={handleDesignServicesMouseEnter}
                       onMouseLeave={handleDesignServicesMouseLeave}
                     >
-                      <Link to="/services/design/architectural-bim" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
-                        Architectural BIM
-                      </Link>
-                      <Link to="/services/design/steel-structure-detailing" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
-                        Steel Structure Detailing
-                      </Link>
                       <Link to="/services/design/mep-design" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
                         MEP Design
                       </Link>
@@ -144,6 +138,12 @@ const Header = () => {
                       </Link>
                       <Link to="/services/design/elv" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
                         Extra Low Voltage
+                      </Link>
+                      <Link to="/services/design/architectural-bim" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
+                        Architectural BIM
+                      </Link>
+                      <Link to="/services/design/steel-structure-detailing" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
+                        Steel Structure Detailing
                       </Link>
                     </div>
                   )}

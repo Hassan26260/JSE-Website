@@ -8,17 +8,209 @@
 
 
 /* Hero Section */
+/* Hero Section - Glass UI Redesign */
 .hero-section {
-  min-height: 85vh;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
-  /* background-size: cover; Will be covered by video */
   color: #ffffff;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: visible;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(105deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+  z-index: 1;
+}
+
+.hero-content-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 4rem;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Left Content */
+.hero-main-content {
+  max-width: 800px;
+  margin-top: -5vh;
+  /* Slight optical lift */
+}
+
+.main-hero-title {
+  font-family: "Delight", sans-serif;
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.hero-cta-btn-glass {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  /* Transparent */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hero-cta-btn-glass:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Right Glass Card - Floating */
+.hero-glass-card {
+  position: absolute;
+  bottom: 8rem;
+  right: 4rem;
+  /* Detached from edge */
+  width: 420px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.glass-card-content {
+  position: relative;
+  height: 140px;
+  /* Fixed height for content stability */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.glass-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.glass-icon {
+  color: #ffffff;
+  /* pure white icon */
+  margin-bottom: 1rem;
+  /* Icon glow effect */
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+}
+
+.glass-text {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1.35rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+/* Progress Bar */
+.glass-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.glass-progress-fill {
+  height: 100%;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .hero-glass-card {
+    right: 2rem;
+    bottom: 6rem;
+    width: 350px;
+  }
+
+  .main-hero-title {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content-wrapper {
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .hero-main-content {
+    margin-top: 0;
+    margin-bottom: 3rem;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+
+  .hero-glass-card {
+    position: relative;
+    /* Stack on mobile */
+    bottom: auto;
+    right: auto;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .main-hero-title {
+    font-size: 2.5rem;
+  }
 }
 
 .hero-video {
@@ -48,7 +240,7 @@
   text-align: left;
   /* Left align text */
   max-width: 1000px;
-  padding: 0 4rem;
+  padding: 0 4rem 0 2rem;
   /* Left padding */
   /* Visual adjustments for centering */
   margin-top: 5rem;
@@ -56,7 +248,7 @@
   /* Fine tune vertical center */
 }
 
-.main-hero-title {
+/* .main-hero-title {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 5rem;
   font-weight: 800;
@@ -65,7 +257,7 @@
   letter-spacing: 2px;
   line-height: 1.1;
   text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
+} */
 
 .main-hero-subtitle {
   font-family: "Lato", sans-serif;
@@ -388,8 +580,8 @@
 }
 
 .about-company-name {
-  font-family: system-ui, Segoe UI, Roboto, sans-serif;
-  font-size: 2.5rem;
+  font-family: 'delight', system-ui;
+  font-size: 3rem;
   font-weight: 800;
   color: #144AE0;
   margin: 0 0 1rem 0;
@@ -623,13 +815,13 @@
 }
 
 .solutions-title {
-  font-family: system-ui, Segoe UI, Roboto, sans-serif;
-  font-size: 2.5rem;
+  font-family: 'delight', system-ui;
+  font-size: 4rem;
   font-weight: 800;
   color: #144AE0;
   /* margin: 0 auto 1.5rem auto; */
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
+  /* margin-bottom: 1.5rem; */
+  /* line-height: 1.2; */
   max-width: 800px;
 }
 
@@ -639,7 +831,7 @@
   font-weight: 400;
   color: #666;
   /* margin: 0 auto 5rem auto; */
-  margin-bottom: 5rem;
+  /* margin-bottom: 5rem; */
   max-width: 700px;
 }
 
@@ -750,135 +942,307 @@
   padding: 0 2rem;
 }
 
-/* --- Home Bento Grid (Specific Rewrite) --- */
-.home-bento-grid {
+/* --- New Solutions Layout (4-Column) --- */
+.solutions-layout-4col {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 340px);
-  gap: 2rem;
-  margin-top: 5rem;
+  gap: 1.5rem;
+  margin-top: 4rem;
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
   padding: 0 2rem;
+  align-items: stretch;
 }
 
-.home-bento-card {
+.solution-card-new {
   position: relative;
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
-  height: 100%;
+  /* aspect-ratio: 4/5;  Removed fixed aspect ratio to let grid define height, or keep consistent? */
+  height: 400px;
+  /* Fixed height for uniformity */
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  background: #000;
-  /* Fallback */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-decoration: none;
 }
 
-.home-bento-card:hover {
+.solution-card-new:hover {
   transform: translateY(-8px);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* Mosaic Layout */
-.home-bento-card:nth-child(1) {
-  grid-column: 1 / span 2;
-  grid-row: 1;
-}
-
-.home-bento-card:nth-child(2) {
-  grid-column: 3;
-  grid-row: 1;
-}
-
-.home-bento-card:nth-child(3) {
-  grid-column: 4;
-  grid-row: 1;
-}
-
-.home-bento-card:nth-child(4) {
-  grid-column: 1;
-  grid-row: 2;
-}
-
-.home-bento-card:nth-child(5) {
-  grid-column: 2 / span 2;
-  grid-row: 2;
-}
-
-.home-bento-card:nth-child(6) {
-  grid-column: 4;
-  grid-row: 2;
-}
-
-.home-bento-card:nth-child(7) {
-  grid-column: 1 / span 2;
-  grid-row: 3;
-}
-
-.home-bento-card:nth-child(8) {
-  grid-column: 3 / span 2;
-  grid-row: 3;
-}
-
-/* Image */
-.home-bento-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  display: block;
-}
-
-.home-bento-card:hover .home-bento-img {
-  transform: scale(1.15);
-}
-
-/* Overlay */
-.home-bento-overlay {
+/* Background Image */
+.solution-card-bg {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.85) 100%);
-  z-index: 10;
-  transition: background 0.3s ease;
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transition: transform 0.8s ease;
 }
 
-.home-bento-card:hover .home-bento-overlay {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.95) 100%);
+.solution-card-new:hover .solution-card-bg {
+  transform: scale(1.1);
 }
 
-/* Content */
-.home-bento-content {
+/* Gradient Overlay */
+.solution-card-overlay {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  padding: 2rem 1.5rem;
-  z-index: 20;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%);
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+/* Content Area */
+.solution-card-content {
+  position: relative;
+  z-index: 3;
+  padding: 1.5rem;
   text-align: left;
 }
 
-.home-bento-title {
-  color: #ffffff;
-  font-family: "Lato", sans-serif;
-  font-size: 1.5rem;
-  font-weight: 800;
-  margin: 0 0 0.5rem 0;
-  /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); */
-  line-height: 1.2;
+/* Unified Grid Container */
+.solutions-grid-container {
+  display: grid;
+  gap: 1.5rem;
+  /* transition: all 0.5s; REMOVED to prevent conflict with Framer Motion */
+  margin-top: 2rem;
 }
 
-.home-bento-desc {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.95rem;
+/* State: Compact (4 Columns - Default) */
+.solutions-grid-container.compact {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* State: Expanded (3 Columns - "Explore More") */
+.solutions-grid-container.expanded {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Info Panel (Slot 4 in Compact View) */
+.solutions-info-panel {
+  position: relative;
+  height: 400px;
+  /* Lock height */
+  overflow: hidden;
+  border-radius: 20px;
+  background: transparent;
+  /* Or keep white */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Explore Button (Restored) */
+.solutions-explore-btn {
+  background-color: #0f172a;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  margin-top: 1.5rem;
+}
+
+.solutions-explore-btn:hover {
+  background-color: #144AE0;
+  transform: translateX(5px);
+}
+
+/* Arrow Icon - INVERTED STYLE (Requested) */
+/* Default: White BG, Red Icon */
+.card-arrow-icon {
+  position: absolute;
+  top: 20px !important;
+  right: 20px !important;
+  bottom: auto !important;
+  left: auto !important;
+  width: 45px;
+  height: 45px;
+  background-color: #ffffff;
+  /* White Default */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E93222;
+  /* Red Default */
+  transform: rotate(0deg);
+  transition: 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover: Red BG, White Icon */
+.solution-card-new:hover .card-arrow-icon {
+  background-color: #E93222;
+  /* Red Hover */
+  color: #ffffff;
+  /* White Hover */
+  transform: rotate(45deg) scale(1.1);
+}
+
+/* Title */
+.solution-card-title {
+  font-family: 'delight', system-ui;
+  font-size: 1.8rem;
+  /* Smaller for 4-col layout */
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.1;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Desc */
+.solution-card-desc {
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
   margin: 0;
-  line-height: 1.5;
-  font-weight: 500;
-  max-width: 95%;
+  line-height: 1.4;
+  opacity: 0.8;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Keyframes for New Cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+  /* Start hidden */
+}
+
+/* Responsive Grid */
+@media (max-width: 1200px) {
+
+  .solutions-grid-container.compact,
+  .solutions-grid-container.expanded {
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 Col on Tablet */
+  }
+}
+
+@media (max-width: 600px) {
+
+  .solutions-grid-container.compact,
+  .solutions-grid-container.expanded {
+    grid-template-columns: 1fr;
+    /* 1 Col on Mobile */
+  }
+}
+
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .solution-card-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .solutions-layout-4col {
+    grid-template-columns: repeat(2, 1fr);
+    /* 2x2 Grid */
+  }
+}
+
+@media (max-width: 600px) {
+  .solutions-layout-4col {
+    grid-template-columns: 1fr;
+    /* Stacked */
+  }
+
+  .solutions-right-panel {
+    padding: 2rem 0;
+  }
+
+  .solution-card-new {
+    height: 350px;
+  }
+}
+
+/* Fade Animation (General) */
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide Animations for Carousel */
+.slide-in-right {
+  animation: slideInRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Responsive */
@@ -953,35 +1317,33 @@
 }
 
 .stats-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 4rem;
-  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
   position: relative;
   z-index: 2;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .stat-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 180px;
+  text-align: center;
 }
 
 .stat-item h3 {
-  font-family: "Lato", sans-serif;
-  font-size: 4.5rem;
+  font-family: "Delight", sans-serif;
+  font-size: 6rem;
   font-weight: 800;
-  /* Extra bold */
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
-  /* Outline text effect initially or generic */
-  background: linear-gradient(to bottom, #ffffff 0%, #8FD14F 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  /* Gradient Text */
+  color: #144AE0;
+  background: none;
+  -webkit-text-stroke: 0;
+  -webkit-background-clip: unset;
+  background-clip: unset;
   margin: 0 0 0.5rem 0;
   line-height: 1;
 }
@@ -993,6 +1355,26 @@
   font-weight: 500;
   margin: 0;
   letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .stat-item h3 {
+    font-size: 4rem;
+  }
 }
 
 /* Standard Dash Header Utility */
@@ -1022,7 +1404,6 @@
 
 /* Force Left Alignment & Indentation for Content */
 .solutions-section,
-.stats-section,
 .business-divisions-section,
 .client-network-section,
 .reviews-section,
@@ -1033,7 +1414,6 @@
 /* Indent Titles and Descriptions to align with Tagline TEXT (not dash) */
 .solutions-title,
 .solutions-description,
-.stats-title,
 .stats-tagline+h2,
 /* Fallback */
 .section-title,
@@ -1046,6 +1426,96 @@
   margin-right: auto !important;
   max-width: 900px !important;
 }
+
+/* Stats Section specific styles */
+.stats-section {
+  padding: 8rem 0;
+  background: #071230;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-section::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 400px;
+  height: 400px;
+  background: repeating-radial-gradient(circle at 0 0,
+      transparent 0,
+      transparent 20px,
+      rgba(20, 74, 224, 0.15) 20px,
+      rgba(20, 74, 224, 0.15) 22px);
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 0 0 100% 0;
+}
+
+.stats-section::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 400px;
+  height: 400px;
+  background: repeating-radial-gradient(circle at 100% 100%,
+      transparent 0,
+      transparent 20px,
+      rgba(20, 74, 224, 0.15) 20px,
+      rgba(20, 74, 224, 0.15) 22px);
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 100% 0 0 0;
+}
+
+.stats-title-center {
+  font-family: "Delight", sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: white;
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: 0.05em;
+  display: block;
+  width: 100%;
+  padding-bottom: 3rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
+.stats-grid .stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: flex-start;
+}
+
+.stat-item p {
+  font-family: "Lato", sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  margin-top: 1rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+  width: 100%;
+}
+
 
 /* About Section Specifics */
 /* .about-company-name,
@@ -1285,16 +1755,28 @@
 }
 
 .reviews-title {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'delight', system-ui;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 500;
   color-scheme: light;
-  color: #1a1a1a;
+  color: #144AE0;
   background-color: #ffffff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 
+}
+
+.reviews-tagline h2 {
+  font-family: 'delight', system-ui;
+  line-height: 1.5;
+  font-weight: 500;
+  color-scheme: light;
+  color: #144AE0;
+  background-color: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 .reviews-tagline {
@@ -1496,6 +1978,12 @@
   padding: 0 2rem;
 }
 
+.container-stats {
+  max-width: 1500px;
+  margin: 0 auto;
+  /* padding: 0 2rem; */
+}
+
 /* Features Section */
 .features-section {
   padding: 6rem 0;
@@ -1550,6 +2038,268 @@
   color: #666;
   line-height: 1.6;
   font-size: 1rem;
+}
+
+/* --- Divisions Section (Formerly Solutions Card Style) --- */
+.business-divisions-section {
+  padding: 6rem 2rem;
+  background-color: #f8fafc;
+}
+
+.divisions-stack-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Ensure centering */
+  gap: 4rem;
+}
+
+.division-card {
+  position: relative;
+  height: 600px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+
+.division-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(20, 74, 224, 0.25);
+}
+
+.division-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.division-card:hover .division-bg-image {
+  transform: scale(1.1);
+}
+
+.division-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1) 100%);
+  transition: background 0.5s ease;
+}
+
+.division-card:hover .division-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.division-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2.5rem;
+  z-index: 2;
+  transform: translateY(20px);
+  transition: transform 0.5s ease;
+}
+
+.division-card:hover .division-content {
+  transform: translateY(0);
+}
+
+.division-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.division-desc {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.division-card:hover .division-desc {
+  opacity: 1;
+  max-height: 100px;
+  /* Expand text */
+}
+
+.division-arrow-icon {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E93222;
+  z-index: 10;
+  transition: all 0.4s ease;
+}
+
+.division-card:hover .division-arrow-icon {
+  background: #E93222;
+  color: #fff;
+  transform: rotate(45deg) scale(1.1);
+}
+
+
+/* --- Solutions List Section (New Style) --- */
+.solutions-list-section {
+  padding: 8rem 0;
+  background-color: #ffffff;
+}
+
+.solutions-list-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+.solutions-header-group {
+  max-width: 900px;
+  margin-bottom: 2rem;
+}
+
+.solutions-list-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.solution-list-item {
+  position: relative;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.solution-list-item:first-child {
+  border-top: 1px solid #e2e8f0;
+}
+
+.solution-list-text {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 3.5rem;
+  /* Large impact */
+  font-weight: 800;
+  color: #cbd5e1;
+  /* Active state is blue, default is muted slate */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.solution-list-item:hover .solution-list-text {
+  color: #144AE0;
+  transform: translateX(20px);
+}
+
+.solution-list-arrow {
+  font-size: 2rem;
+  color: #cbd5e1;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.solution-list-item:hover .solution-list-arrow {
+  opacity: 1;
+  color: #E93222;
+  transform: translateX(0);
+}
+
+/* Image Reveal on Hover */
+.solution-preview-reveal {
+  position: fixed;
+  /* Or absolute relative to section? Fixed works well for cursor follow or static side placement. Let's stick to Absolute right like Arch page. */
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%) perspective(1000px) rotateY(10deg);
+  width: 400px;
+  height: 500px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 10;
+}
+
+/* We need a specific wrapper implementation. 
+   Actually, the Arch page puts the image INSIDE the item. 
+   Let's do that for simplicity and reliability. */
+
+.solution-item-img-wrapper {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) translateX(50px) scale(0.9);
+  height: 140%;
+  /* Taller than the item to overlap */
+  width: 350px;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.solution-list-item:hover .solution-item-img-wrapper {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0) scale(1);
+  z-index: 10;
+}
+
+.solution-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+  .solution-list-text {
+    font-size: 2.5rem;
+  }
+
+  .solution-item-img-wrapper {
+    display: none;
+    /* Hide on tablet/mobile */
+  }
 }
 
 /* Services Preview Section */
@@ -1665,312 +2415,304 @@
   }
 }
 
-/* Reviews Section */
-.reviews-section {
+/* --- Client Reviews Section (V3 Infinite Scroll) --- */
+.client-reviews-section {
   padding: 8rem 0;
   background-color: #ffffff;
   overflow: hidden;
 }
 
-.reviews-header {
+.reviews-container {
+  max-width: 100%;
+  /* Full width for marquee */
+  margin: 0 auto;
+  padding: 0;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 4rem;
+  flex-direction: column;
   gap: 2rem;
 }
 
-/* ... existing styles ... */
-
-
-/* Portfolio Styles moved to Portfolio.css */
-
-
-.reviews-nav-controls {
-  display: flex;
-  gap: 1rem;
-  flex-shrink: 0;
+.reviews-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-.review-nav-btn {
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  border: 1px solid #eee;
-  background: #ffffff;
-  color: #f59e0b;
-  /* Amber */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+.reviews-tagline {
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #64748b;
+  margin-bottom: 1rem;
+  display: block;
 }
 
-.review-nav-btn:hover {
-  background: #f59e0b;
-  color: #ffffff;
-  border-color: #f59e0b;
-  transform: translateY(-2px);
+.reviews-title {
+  font-family: 'delight', system-ui;
+  font-size: 4rem;
+  font-weight: 800;
+  color: #144AE0;
+  margin-bottom: 1rem;
 }
 
-/* Carousel */
-.reviews-carousel-outer {
+/* Carousel Wrapper */
+.reviews-carousel-wrapper {
+  position: relative;
   width: 100%;
-  overflow: visible;
-  /* Let it bleed visually if possible, or hidden if strict */
-  /* To get "end of screen" effect safely with 1440px container, 'hidden' puts the cut-off AT the 1440px line. 
-     If the screen is wider (e.g. 1920px), there is whitespace. 
-     "End of screen" usually means viewport edge. 
-     But since we are inside .container (1440px centered), we can't easily hit viewport edge without breaking out.
-     However, with 1440px container and 400px cards: 400*3 + 40(gaps) = 1240. 
-     1440 - 1240 = 200px.
-     So the 4th card WILL be half-visible INSIDE the container. 
-     This satisfies "4th card in half" logic within the constraint of the layout.
-  */
   overflow: hidden;
-  padding: 10px;
-  /* buffer for shadows */
-  margin: -10px;
+  /* Hide overflow */
+  padding: 2rem 0;
+  /* fade edges */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .reviews-track {
   display: flex;
   gap: 2rem;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   width: max-content;
-  padding-right: 4rem;
-  /* Buffer */
+  /* Critical for infinite scroll */
+  padding: 0 1rem;
+  animation: scroll-left 50s linear infinite;
 }
 
-.review-card {
-  width: 400px;
-  flex-shrink: 0;
-  background: #111111;
-  /* Pitch black/dark theme */
-  padding: 2.5rem;
+.reviews-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+
+  /* Move half way (since data is doubled) */
+}
+
+/* Review Card (V3 Style) */
+.jse-review-card {
+  min-width: 450px;
+  max-width: 450px;
+  background: #F8F9FA;
+  /* Light Tint */
+  padding: 3rem;
   border-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 8px;
+  /* Subtle unique shape? Optional */
+  transition: all 0.3s ease;
+  cursor: default;
+  /* Pause on hover handling */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 320px;
-  border: 1px solid #222;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  position: relative;
+  border: 1px solid transparent;
+  flex-shrink: 0;
 }
 
-/* Quote Icon Decoration */
-.review-card::before {
-  content: '“';
-  position: absolute;
-  top: 1.5rem;
-  left: 2rem;
-  font-size: 5rem;
-  color: rgba(255, 255, 255, 0.1);
-  font-family: serif;
+.jse-review-card:hover {
+  background: #ffffff;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  /* Lift on hover */
+  transform: translateY(-5px);
+  border-color: #f1f5f9;
+}
+
+/* New Quote Icon inside card */
+.review-quote-icon {
+  font-size: 4rem;
   line-height: 1;
+  color: #144AE0;
+  /* Brand Blue */
+  margin-bottom: 1rem;
+  font-family: serif;
 }
 
-.review-quote {
+/* Text Colors */
+.review-text {
   font-family: "Lato", sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   line-height: 1.6;
-  color: #e5e5e5;
+  color: #1a1a1a;
   margin-bottom: 2rem;
-  margin-top: 2rem;
-  /* create space from icon */
-  position: relative;
-  z-index: 2;
+  font-weight: 500;
 }
 
 .review-footer {
   margin-top: auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid #e2e8f0;
   padding-top: 1.5rem;
 }
 
-.review-author {
-  font-family: "Lato", sans-serif;
-  font-size: 1.1rem;
+.review-name {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
   font-weight: 700;
-  color: #ffffff;
-  margin: 0;
+  color: #0f172a;
+  margin-bottom: 0.2rem;
 }
 
 .review-role {
   font-family: "Lato", sans-serif;
-  font-size: 0.9rem;
-  color: #9ca3af;
-  /* Grey muted */
-  margin: 0.25rem 0 0 0;
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
 }
 
-/* Highlight role style if needed or just keep grey */
-
-@media (max-width: 1024px) {
-  .reviews-header {
-    flex-direction: column;
-    align-items: flex-start;
+/* Responsive */
+@media (max-width: 768px) {
+  .reviews-title {
+    font-size: 2rem;
   }
 
-  .review-card {
-    width: 320px;
-    /* Smaller card on tablet */
+  .jse-review-card {
+    min-width: 320px;
+    padding: 2rem;
+  }
+
+  .reviews-track {
+    animation-duration: 40s;
+    /* Faster on mobile? Or consistent */
+  }
+}
+
+
+
+
+
+/* --- Geographical Achievements Video Section --- */
+/* --- Global Stats Section (Redesign) --- */
+.geo-stats-section {
+  padding: 4rem 2rem;
+  background-color: #ffffff;
+  /* Page background clean */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Floating Dark Container */
+/* Floating Dark Container */
+.geo-stats-container {
+  display: flex;
+  /* User requested Flex */
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6rem;
+  /* Constrained width */
+  max-width: 1500px;
+  /* Responsive width */
+  width: 90%;
+  padding: 5rem 4rem;
+  /* Deep black */
+  background-color: #000000;
+  /* Floating look */
+  border-radius: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  /* Center the card */
+  margin: 0 auto;
+}
+
+.geo-globe-wrapper {
+  position: relative;
+  width: 65%;
+  /* Increased from 55% */
+  margin-top: 3rem;
+  /* Flex width */
+  /* Increased height */
+  height: 550px;
+  border-radius: 24px;
+  overflow: hidden;
+  /* Removed Stroke as requested */
+  border: none;
+  box-shadow: none;
+  /* Blended Effect: Mask edges */
+  mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+}
+
+.geo-globe-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.geo-stats-content {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 6rem;
+  padding-left: 2rem;
+  justify-content: center;
+  /* Center vertical */
+}
+
+.geo-stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.geo-stat-number {
+  font-family: "Delight", sans-serif;
+  font-size: 6rem;
+  font-weight: 800;
+  color: #144AE0;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+  padding-bottom: 15px;
+}
+
+.geo-stat-label {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+
+  /* Lowered breakpoint */
+  .geo-stats-container {
+    grid-template-columns: 1fr;
+    padding: 3rem;
+    gap: 3rem;
+    width: 95%;
+  }
+
+  .geo-stats-content {
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1.5rem;
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .geo-stat-box {
+    align-items: center;
   }
 }
 
 @media (max-width: 600px) {
-  .reviews-track {
-    gap: 1rem;
-  }
-
-  .review-card {
-    width: 280px;
-    padding: 1.5rem;
-  }
-}
-
-/* Geographical Achievements Section */
-.geo-section {
-  padding: 8rem 0;
-  background: #071230;
-  color: #ffffff;
-  position: relative;
-  overflow: hidden;
-}
-
-.geo-header {
-  margin-bottom: 4rem;
-  max-width: 900px;
-}
-
-.geo-tagline {
-  font-family: "Lato", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.6);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.geo-tagline::before {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.6);
-}
-
-.geo-title {
-  font-family: system-ui, Segoe UI, Roboto, sans-serif;
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
-  /* margin-left: 3.5rem; */
-  /* Indent to match tagline text */
-}
-
-.geo-text {
-  font-family: "Lato", sans-serif;
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
-  max-width: 700px;
-  /* margin-left: 3.5rem; */
-  /* Indent */
-}
-
-.geo-content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10rem;
-}
-
-.geo-map-container {
-  flex: 2;
-  position: relative;
-}
-
-.geo-map {
-  width: 100%;
-  height: auto;
-  opacity: 0.9;
-  filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
-  /* Adds depth to map shape */
-}
-
-.geo-stats-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  text-align: left;
-}
-
-.geo-stat-item h3 {
-  font-family: "Lato", sans-serif;
-  font-size: 4rem;
-  font-weight: 700;
-  color: #fbbf24;
-  /* Amber/Yellow to match reference pop */
-  margin: 0;
-  line-height: 1;
-}
-
-.geo-stat-item p {
-  font-family: "Lato", sans-serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #ffffff;
-  margin: 0.5rem 0 0 0;
-}
-
-.geo-cta-btn {
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: #ffffff;
-  color: #1e293b;
-  font-weight: 700;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 0.9rem;
-  border-radius: 4px;
-  width: fit-content;
-  margin-top: 1rem;
-  transition: all 0.3s ease;
-}
-
-.geo-cta-btn:hover {
-  background: #f1f5f9;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 1024px) {
-  .geo-content {
+  .geo-stats-content {
     flex-direction: column;
-    text-align: center;
-  }
-
-  .geo-stats-container {
-    text-align: center;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .geo-stat-item h3 {
-    font-size: 3rem;
+    gap: 2.5rem;
   }
 }
+
+
+
+/* --- Old Geo Section Styles (Can be deprecated or kept for safe fallback) --- */
+
 
 @media (max-width: 600px) {
 
@@ -2247,6 +2989,204 @@
   pointer-events: none;
   border-radius: 100% 0 0 0;
 }
+
+.form-info-side,
+.form-input-side {
+  position: relative;
+  z-index: 1;
+}
+
+.form-info-side {
+  flex: 0.8;
+}
+
+.form-heading {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+
+.form-subtext {
+  font-size: 1rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.form-contact-details p {
+  font-size: 1rem;
+  color: #e2e8f0;
+  margin: 0.25rem 0;
+  font-weight: 500;
+}
+
+.form-email {
+  color: #60a5fa;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form-socials {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.social-circle {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #475569;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.social-circle:hover {
+  border-color: #60a5fa;
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.1);
+}
+
+.form-input-side {
+  flex: 1.2;
+}
+
+.internship-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-left: 0;
+}
+
+.form-input-line {
+  width: 100%;
+  padding: 0.75rem 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #475569;
+  background: transparent;
+  font-size: 1rem;
+  color: #ffffff;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.form-input-line:focus {
+  outline: none;
+  border-bottom-color: #60a5fa;
+}
+
+.form-submit-btn {
+  align-self: flex-start;
+  margin-top: 1rem;
+  background-color: #144AE0;
+  color: white;
+  font-weight: 700;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-submit-btn:hover {
+  background-color: #3b82f6;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .form-container {
+    flex-direction: column;
+    gap: 3rem;
+    padding: 2.5rem;
+  }
+
+  .form-info-side,
+  .form-input-side {
+    width: 100%;
+  }
+}
+
+/* Mobile Stats: 3/4 Split & Reduced Fonts */
+/* Mobile Stats: 3/4 Split & Reduced Fonts */
+@media (max-width: 768px) {
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem 0.5rem;
+    padding: 0 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .stat-item {
+    min-width: 0;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  /* Row 1: 3 Items (Span 4) */
+  .stat-item:nth-child(1),
+  .stat-item:nth-child(2),
+  .stat-item:nth-child(3) {
+    grid-column: span 4;
+    align-items: center;
+    gap: 1px;
+
+  }
+
+  /* Row 2: 4 Items (Span 3) */
+  .stat-item:nth-child(4),
+  .stat-item:nth-child(5),
+  .stat-item:nth-child(6),
+  .stat-item:nth-child(7) {
+    grid-column: span 3;
+    align-items: center;
+    gap: 1px;
+  }
+
+  .stat-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-item p {
+    font-size: 0.7rem;
+    line-height: 1.2;
+    padding: 0 0.1rem;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+
 
 .form-info-side,
 .form-input-side {

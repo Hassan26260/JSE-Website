@@ -1,21 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../styles/Career.css';
 import heroImage from '../assets/careers-page/pexels-yankrukov-7691728.webp';
+import CareerApplicationForm from './CareerApplicationForm';
+import api from '../services/api'; // Import API service
 
 // Life at JSE Images
 import lifeImg1 from '../assets/images-home/skyscraper.webp';
 import lifeImg2 from '../assets/images-home/architectural-bim.webp';
 import lifeImg3 from '../assets/images-home/bim-modelling.webp';
 import lifeImg4 from '../assets/images-home/hero-group-image.jpg';
-
-// Alumni Portfolio Images
-// Alumni Portfolio Images
-// import p1 from "../assets/portfolio.img/pexels-jgathisan0612-1580112.webp";
-// import p2 from "../assets/portfolio.img/pexels-jimbear-998499.webp";
-// import p3 from "../assets/portfolio.img/pexels-mantasink-1106476.webp";
-// import p4 from "../assets/portfolio.img/pexels-pixabay-210598.webp";
-// import p5 from "../assets/portfolio.img/pexels-pixabay-273209.webp";
-// import p6 from "../assets/portfolio.img/pexels-pixasquare-1123982.webp";
 
 // Real Projects Import
 import { ALL_REAL_PROJECTS } from '../data/realPortfolio';
@@ -25,78 +18,24 @@ const FEATURED_PROJECTS = ALL_REAL_PROJECTS.slice(0, 6).map(p => ({
   img: p.image
 }));
 
-const JOBS = [
-  {
-    id: 1,
-    title: "UI/UX & Product Designer",
-    type: "Full Time",
-    location: "London, UK",
-    salary: "$28k-35K",
-    desc: "Product design encompasses both UI/UX design but it also involves a broader understanding of the entire product.",
-    details: {
-      roleOverview: "We are looking for a creative UI/UX & Product Designer to join our team. You will be responsible for defining the user experience and visual design of our digital products.",
-      responsibilities: [
-        "Translate concepts into user flows, wireframes, mockups and prototypes that lead to intuitive user experiences.",
-        "Facilitate the client’s product vision by researching, conceiving, sketching, prototyping and user-testing experiences for digital products.",
-        "Design and deliver wireframes, user stories, user journeys, and mockups optimized for a wide range of devices and interfaces."
-      ],
-      qualifications: [
-        "Three or more years of UX design experience. Preference will be given to candidates who have experience designing complex solutions for complete digital environments.",
-        "Expertise in standard UX software such as Sketch, OmniGraffle, Axure, InVision, UXPin, Balsamiq, Framer, and the like is a must."
-      ],
-      experience: "3+ Years",
-      freshers: false
-    }
-  },
-  {
-    id: 2,
-    title: "Senior BIM Engineer",
-    type: "Full Time",
-    location: "Remote / Hybrid",
-    salary: "$45k-60K",
-    desc: "Lead complex BIM projects, ensuring accuracy and compliance with global standards using Revit and Navisworks.",
-    details: {
-      roleOverview: "As a Senior BIM Engineer, you will oversee the BIM coordination process, managing models and ensuring seamless collaboration across disciplines.",
-      responsibilities: [
-        "Manage and coordinate BIM models across architectural, structural, and MEP disciplines.",
-        "Conduct clash detection and resolution using Navisworks.",
-        "Ensure compliance with ISO 19650 and other relevant BIM standards."
-      ],
-      qualifications: [
-        "Bachelor's degree in Architecture or Civil Engineering.",
-        "Proficiency in Revit, Navisworks, and AutoCAD."
-      ],
-      experience: "5+ Years",
-      freshers: false
-    }
-  },
-  {
-    id: 3,
-    title: "Structural Design Engineer",
-    type: "Full Time",
-    location: "New York, USA",
-    salary: "$70k-85K",
-    desc: "Design and analyze structural components for high-rise buildings and industrial infrastructure projects.",
-    details: {
-      roleOverview: "Join our structural engineering team to design safe, sustainable, and innovative structures for large-scale commercial projects.",
-      responsibilities: [
-        "Perform structural analysis and design calculations.",
-        "Collaborate with architects and MEP engineers to integrate structural systems.",
-        "Prepare detailed structural drawings and specifications."
-      ],
-      qualifications: [
-        "Master's degree in Structural Engineering.",
-        "License as a Professional Engineer (PE) is preferred."
-      ],
-      experience: "4+ Years",
-      freshers: true
-    }
-  }
-];
-
 const Career = () => {
   const [selectedJob, setSelectedJob] = useState(null);
+  const [showApplyForm, setShowApplyForm] = useState(false);
+  const [jobs, setJobs] = useState([]); // State for jobs
   const imageRef = useRef(null);
+
+  // Fetch Jobs on Mount
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const { data } = await api.get('/jobs');
+        setJobs(data);
+      } catch (error) {
+        console.error("Failed to fetch jobs:", error);
+      }
+    };
+    fetchJobs();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -180,31 +119,37 @@ const Career = () => {
           </div>
 
           <div className="jobs-grid">
-            {JOBS.map((job) => (
-              <div key={job.id} className="job-card">
-                <div className="job-card-header">
-                  <h3 className="job-title">{job.title}</h3>
-                  <button
-                    className="job-cta-btn"
-                    onClick={() => setSelectedJob(job)}
-                    aria-label="View Job Details"
-                  >
-                    {/* Inline SVG for ArrowUpRight */}
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M7 17l9.2-9.2M17 17V7H7" />
-                    </svg>
-                  </button>
+            {jobs.length === 0 ? (
+              <p style={{ gridColumn: '1 / -1', textAlign: 'center', fontSize: '1.2rem', color: '#666' }}>
+                Current openings are being updated. Check back soon!
+              </p>
+            ) : (
+              jobs.map((job) => (
+                <div key={job._id} className="job-card" onClick={() => setSelectedJob(job)}>
+                  <div className="job-card-header">
+                    <h3 className="job-title">{job.title}</h3>
+                    <button
+                      className="job-cta-btn"
+                      onClick={(e) => { e.stopPropagation(); setSelectedJob(job); }}
+                      aria-label="View Job Details"
+                    >
+                      {/* Inline SVG for ArrowUpRight */}
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M7 17l9.2-9.2M17 17V7H7" />
+                      </svg>
+                    </button>
+                  </div>
+                  <p className="job-type">{job.type}</p>
+                  <p className="job-desc">{job.desc}</p>
+                  <div className="job-footer">
+                    <span className="job-location">
+                      {job.location}
+                    </span>
+                    <span className="job-salary">{job.salary}</span>
+                  </div>
                 </div>
-                <p className="job-type">{job.type}</p>
-                <p className="job-desc">{job.desc}</p>
-                <div className="job-footer">
-                  <span className="job-location">
-                    {job.location}
-                  </span>
-                  <span className="job-salary">{job.salary}</span>
-                </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </section>
@@ -494,9 +439,10 @@ const Career = () => {
       {/* Job Modal */}
       {
         selectedJob && (
-          <div className="job-modal-overlay" onClick={() => setSelectedJob(null)}>
+          <div className="job-modal-overlay" onClick={() => { setSelectedJob(null); setShowApplyForm(false); }}>
             <div className="job-modal-content" onClick={(e) => e.stopPropagation()}>
-              <button className="modal-close-btn" onClick={() => setSelectedJob(null)}>
+
+              <button className="modal-close-btn" onClick={() => { setSelectedJob(null); setShowApplyForm(false); }}>
                 {/* Inline SVG for X */}
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -504,50 +450,58 @@ const Career = () => {
                 </svg>
               </button>
 
-              <h2 className="modal-job-title">{selectedJob.title}</h2>
-              <div className="modal-meta">
-                <span className="modal-type">{selectedJob.type}</span>
-                <span className="modal-location">{selectedJob.location}</span>
-              </div>
+              {!showApplyForm ? (
+                // Job Details View
+                <>
+                  <h2 className="modal-job-title">{selectedJob.title}</h2>
+                  <div className="modal-meta">
+                    <span className="modal-type">{selectedJob.type}</span>
+                    <span className="modal-location">{selectedJob.location}</span>
+                  </div>
 
-              <div className="modal-scroll-area">
-                <div className="modal-section">
-                  <h4>Role Overview:</h4>
-                  <p>{selectedJob.details.roleOverview}</p>
-                </div>
+                  <div className="modal-scroll-area">
+                    <div className="modal-section">
+                      <h4>Role Overview:</h4>
+                      <p>{selectedJob.details.roleOverview}</p>
+                    </div>
 
-                <div className="modal-section">
-                  <h4>Key Responsibilities:</h4>
-                  <ul>
-                    {selectedJob.details.responsibilities.map((item, idx) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
+                    <div className="modal-section">
+                      <h4>Key Responsibilities:</h4>
+                      <ul>
+                        {selectedJob.details.responsibilities.map((item, idx) => (
+                          <li key={idx}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
 
-                <div className="modal-section">
-                  <h4>Qualifications & Skills:</h4>
-                  <ul>
-                    {selectedJob.details.qualifications.map((item, idx) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
+                    <div className="modal-section">
+                      <h4>Qualifications & Skills:</h4>
+                      <ul>
+                        {selectedJob.details.qualifications.map((item, idx) => (
+                          <li key={idx}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
 
-                <div className="modal-section">
-                  <h4>Experience Required:</h4>
-                  <p>{selectedJob.details.experience}</p>
-                </div>
+                    <div className="modal-section">
+                      <h4>Experience Required:</h4>
+                      <p>{selectedJob.details.experience}</p>
+                    </div>
 
-                <div className="modal-section">
-                  <h4>Freshers can also apply:</h4>
-                  <p>{selectedJob.details.freshers ? "Yes" : "No"}</p>
-                </div>
-              </div>
+                    <div className="modal-section">
+                      <h4>Freshers can also apply:</h4>
+                      <p>{selectedJob.details.freshers ? "Yes" : "No"}</p>
+                    </div>
+                  </div>
 
-              <div className="modal-footer">
-                <button className="apply-btn">Apply Now</button>
-              </div>
+                  <div className="modal-footer">
+                    <button className="apply-btn" onClick={() => setShowApplyForm(true)}>Apply Now</button>
+                  </div>
+                </>
+              ) : (
+                // Application Form View
+                <CareerApplicationForm job={selectedJob} onClose={() => { setSelectedJob(null); setShowApplyForm(false); }} />
+              )}
             </div>
           </div>
         )

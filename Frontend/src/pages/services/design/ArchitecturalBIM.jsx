@@ -28,72 +28,75 @@ import s7 from '../../../assets/images-home/electrical-system.webp';
 import s8 from '../../../assets/images-home/hero-group-image.jpg'; // Placeholder for ELV if no specific image
 
 const SERVICES_DATA = [
-  { title: "BIM consulting", img: s1, desc: "Strategic guidance for successful BIM adoption." },
-  { title: "Shop Drawing", img: s2, desc: "Precise drawings for fabrication and installation." },
-  { title: "Revit 3D Service", img: s3, desc: "Detailed 3D modeling using Autodesk Revit." },
-  { title: "Architectural BIM/VDC", img: s4, desc: "Virtual Design and Construction for better planning." },
-  { title: "Architectural 3D modeling", img: s5, desc: "High-fidelity 3D models for visualization." },
-  { title: "CAD drafting", img: s6, desc: "Accurate 2D drafting and documentation." },
-  { title: "Utility Modeling", img: s1, desc: "Comprehensive modeling of MEP and utility systems." },
-  { title: "Construction Documentation", img: s2, desc: "Complete sets of construction plans and details." },
-  { title: "BIM Clash Detection", img: s3, desc: "Identifying and resolving conflicts before construction." },
-  { title: "BIM Visualization", img: s4, desc: "Photorealistic renderings and walkthroughs." },
-  { title: "BIM Quantity Takeoffs", img: s5, desc: "Automated material quantity extraction." },
-  { title: "Collaboration and Coordination", img: s6, desc: "Streamlined team workflows and communication." }
+  { title: "BIM Consulting", img: s1, desc: "Strategic BIM planning, standards development, and workflow optimization for efficient project execution." },
+  { title: "Architectural Shop Drawings", img: s2, desc: "Highly detailed, contractor-ready drawings that translate design intent into precise fabrication and installation instructions." },
+  { title: "Revit 3D Modeling Services", img: s3, desc: "Intelligent Revit-based BIM models enabling real-time coordination, automated documentation, and multi-disciplinary integration." },
+  { title: "Architectural BIM & VDC", img: s4, desc: "Data-driven BIM and Virtual Design & Construction solutions that improve planning, coordination, and construction outcomes." },
+  { title: "Utility Modeling", img: s5, desc: "Comprehensive modeling of underground and above-ground utilities—water, power, gas, and telecom—integrated with GIS." },
+  { title: "Construction Documentation", img: s6, desc: "Accurate, data-rich BIM documentation including drawings, schedules, and specifications to reduce errors and rework." },
+  { title: "BIM Clash Detection & Coordination", img: s1, desc: "Advanced clash detection using tools like Revit and Navisworks, supported by structured reports (CSV, PDF, HTML)." },
+  { title: "BIM Visualization & Documentation", img: s2, desc: "High-quality BIM visualization that converts 2D concepts into intelligent, data-rich 3D models for better decision-making." },
+  { title: "BIM Quantity Take-Offs & 5D BIM", img: s3, desc: "Automated material quantity extraction for accurate cost estimation, budgeting, and construction planning." },
+  { title: "Collaboration & Coordination", img: s4, desc: "Structured documentation workflows that support real-time collaboration, accountability, and design approvals." },
+  { title: "Architectural 3D Modeling Services", img: s5, desc: "Photorealistic exterior and interior models, walkthroughs, animations, and floor plans that bridge concept and construction." },
+  { title: "CAD Drafting Services", img: s6, desc: "Precise 2D and 3D CAD drawings using AutoCAD and Revit, supporting architectural, engineering, and MEP workflows." }
 ];
 
-const ICONIC_PROJECTS = ARCH_PROJECTS.slice(0, 6).map(p => ({
-  title: p.title,
-  img: p.image
-}));
+const ICONIC_PROJECTS = [
+  { title: "Carlton House Terrace – London, UK", img: s1 },
+  { title: "Reem Hills Twin Villas & Townhouses", img: s2 },
+  { title: "Al-Nama General Hospital", img: s3 },
+  { title: "Al Ain Hospital – Abu Dhabi", img: s4 },
+  { title: "Sharjah International Airport Expansion (SIAEP)", img: s5 }
+];
 
 
 const CHOOSE_JSE_DATA = [
   {
-    title: "Innovative Solutions",
-    desc: "Our BIM architectural design engineers use the latest technology to create innovative and highly detailed 3D models that bring your vision to life."
+    title: "Innovative, Future-Ready",
+    desc: "BIM solutions that leverage the latest technology to create innovative, future-ready architectural designs."
   },
   {
     title: "Holistic Approach",
-    desc: "JSE integrate all aspects of architectural design, ensuring seamless coordination between different building systems for optimal functionality and aesthetics."
+    desc: "A multidisciplinary design approach ensuring seamless coordination between all building systems for optimal functionality."
   },
   {
     title: "Enhanced Visualization",
-    desc: "Our detailed BIM models provide a clear and comprehensive visualization of your project, allowing you to see the final product before construction begins."
+    desc: "Clear and comprehensive visualization of your project, providing technical clarity and allowing you to see the final product before construction."
   },
   {
-    title: "Cost Efficiency",
-    desc: "Our BIM solutions help you save time and money by optimizing design processes, reducing waste, and improving overall project efficiency."
+    title: "Reduced Costs",
+    desc: "Optimized workflows that save time and money by reducing waste and improving overall project efficiency."
   }
 ];
 
 const CHOOSE_JSE_DATA_2 = [
   {
-    title: "Client Collaboration",
-    desc: "JSE work closely with you throughout the design process, ensuring that your vision is fully realized and that you are involved every step of the way."
+    title: "Client-Centric Collaboration",
+    desc: "We work closely with you throughout the design process, ensuring your vision is fully realized and you are involved every step of the way."
   },
   {
-    title: "Regulatory Compliance",
-    desc: "Our designs adhere to all local and international building codes and standards, ensuring compliance and safety for your project."
+    title: "Full Compliance",
+    desc: "Our designs adhere to all local and international building codes and regulations, ensuring full regulatory compliance and safety."
   },
   {
-    title: "Quality Assurance",
-    desc: "JSE maintain rigorous quality control throughout the design process, ensuring that every aspect of your project meets the highest standards of excellence."
+    title: "Rigorous Quality Assurance",
+    desc: "We maintain strict quality control throughout the design process, ensuring every aspect meets the highest standards of excellence."
   },
   {
-    title: "Sustainable Designs",
-    desc: "We incorporate sustainable practices into our designs, helping you achieve energy efficiency and environmental sustainability."
+    title: "Sustainable Design",
+    desc: "We incorporate sustainable and energy-efficient practices into our designs to help you achieve environmental goals."
   }
 ];
 
 const BIM_TECH_DATA = [
   { name: 'Revit', abbr: 'Rv', bg: '#e6f7ff', img: revitLogo },
   { name: 'AutoCAD', abbr: 'AC', bg: '#fffbe6', img: autocadLogo },
-  { name: 'Navisworks', abbr: 'Nw', bg: '#f9f0ff', img: projectwiseLogo }, // ProjectWise placeholder for Navis
+  { name: 'Navisworks', abbr: 'Nw', bg: '#f9f0ff', img: projectwiseLogo },
   { name: 'Bentley', abbr: 'Be', bg: '#e6fffb', img: bentleyLogo },
-  { name: 'Civil 3D', abbr: 'C3D', bg: '#fff0f6', img: revitLogo }, // Revit placeholder
+  { name: 'Civil 3D', abbr: 'C3D', bg: '#fff0f6', img: revitLogo },
   { name: 'Tekla', abbr: 'Tk', bg: '#f0f5ff', img: microstationLogo },
-  { name: 'SketchUp', abbr: 'Sk', bg: '#f6ffed', img: bentleyLogo } // Bentley placeholder
+  { name: 'SketchUp', abbr: 'Sk', bg: '#f6ffed', img: bentleyLogo }
 ];
 
 const ADDITIONAL_SERVICES = [
@@ -101,7 +104,7 @@ const ADDITIONAL_SERVICES = [
   { title: "MEP Design", link: "/services/design/mep-design", img: s4 },
   { title: "Plumbing & Public Health", link: "/services/design/plumbing-public-health", img: s6 },
   { title: "HVAC Design", link: "/services/design/hvac-design", img: s5 },
-  { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 }, // Reuse MEP
+  { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 },
   { title: "BIM Modelling", link: "/services/design/bim-modelling", img: s3 },
   { title: "Electrical System Design", link: "/services/design/electrical-system-design", img: s7 },
   { title: "Extra Low Voltage", link: "/services/design/elv", img: s8 }
@@ -141,7 +144,10 @@ const ArchitecturalBIM = () => {
           <div className="arch-breadcrumbs">
             Services &gt; Design Services &gt; <span>Architectural BIM</span>
           </div>
-          <h1 className="arch-hero-title">Architectural BIM</h1>
+          <h1 className="arch-hero-title">Architectural BIM Services</h1>
+          <p className="arch-hero-subtitle" style={{ fontSize: '1rem', marginTop: '2rem', maxWidth: '800px', lineHeight: '1.6' }}>
+            JSE Engineering Pvt Ltd is a leading Architectural BIM Design Consultancy based in Chennai, India, with over a decade of proven expertise in delivering high-quality Building Information Modeling (BIM) solutions. Today, we support projects worldwide—confidently redefining industry benchmarks through innovation, precision, and future-ready BIM workflows.
+          </p>
         </div>
       </section >
 
@@ -149,45 +155,45 @@ const ArchitecturalBIM = () => {
       < section className="arch-pillars-section" >
         <div className="arch-pillars-container">
 
-          {/* Column 1: Visualization */}
+          {/* Column 1: Precision & Control */}
           <div className="arch-pillar-col">
             <div>
-              <h2 className="arch-pillar-title">Visualization</h2>
+              <h2 className="arch-pillar-title">Precision & Control</h2>
               <p className="arch-pillar-desc">
-                We transform architectural concepts into precise 3D BIM models, giving you a clear and detailed digital view of your project from the earliest design stages. This allows better understanding, review, and informed decision-making before construction begins.
+                At JSE Engineering, precision means that every BIM model element reflects real-world dimensions, specifications, and performance data. Our Architectural BIM workflow ensures technical accuracy and construction readiness at every stage.
               </p>
             </div>
             <span className="arch-pillar-num">01</span>
           </div>
 
-          {/* Column 2: Precision & Control */}
+          {/* Column 2: Collaborative Workflows */}
           <div className="arch-pillar-col">
             <div>
-              <h2 className="arch-pillar-title">Precision & Control</h2>
+              <h2 className="arch-pillar-title">Collaborative Workflows</h2>
               <p className="arch-pillar-desc">
-                Our Architectural BIM services ensure accuracy across every element of the design. By identifying conflicts and potential issues early, we significantly reduce rework, delays, and unexpected costs during execution.
+                Architectural BIM enables seamless collaboration between architects, engineers, consultants, and stakeholders. By integrating architectural intent, structural systems, and MEP coordination into a unified digital model, we ensure design consistency and informed decision-making.
               </p>
             </div>
             <span className="arch-pillar-num">02</span>
           </div>
 
-          {/* Column 3: Collaboration */}
+          {/* Column 3: Project Overview */}
           <div className="arch-pillar-col">
             <div>
-              <h2 className="arch-pillar-title">Collaboration</h2>
+              <h2 className="arch-pillar-title">Refined Project Overview</h2>
               <p className="arch-pillar-desc">
-                BIM enables seamless coordination between architects, engineers, and stakeholders. Structural systems, architectural intent, and aesthetic details are integrated into a unified model, ensuring consistency and clarity across the project lifecycle.
+                Effective BIM collaboration is the foundation of our construction workflows. By leveraging a centralized Common Data Environment (CDE), all stakeholders contribute to a federated, intelligent BIM model—ensuring design intent is preserved from concept to facility management.
               </p>
             </div>
             <span className="arch-pillar-num">03</span>
           </div>
 
-          {/* Column 4: Advanced BIM Solutions */}
+          {/* Column 4: Advanced Solutions */}
           <div className="arch-pillar-col">
             <div>
               <h2 className="arch-pillar-title">Advanced BIM Solutions</h2>
               <p className="arch-pillar-desc">
-                By leveraging cutting-edge BIM workflows, including Point Cloud to BIM, we enhance planning efficiency, optimize resources, and deliver high-quality outcomes. JSE Engineering provides a strong digital foundation for successful and future-ready projects.
+                With over 20 years of combined expertise in construction and technology, JSE Engineering delivers comprehensive BIM solutions. Our integration of hands-on field experience with advanced Virtual Design & Construction (VDC) methodologies ensures precision across every deliverable.
               </p>
             </div>
             <span className="arch-pillar-num">04</span>
@@ -196,27 +202,41 @@ const ArchitecturalBIM = () => {
         </div>
       </section >
 
-      {/* What is Architectural BIM Section */}
-      < section className="arch-what-section" >
-        <div className="arch-what-container">
-          {/* Text Side */}
-          <div className="arch-what-text">
-            <span className="arch-what-tagline">THE CONCEPT</span>
-            <h2 className="arch-what-title">What is Architectural BIM?</h2>
-            <p className="arch-what-desc">
-              Architectural BIM is a digital representation of the physical and functional characteristics of a building. It goes beyond traditional 2D drawings by creating a 3D model that integrates all aspects of the design process.
-            </p>
-            <p className="arch-what-desc">
-              This model becomes a shared resource for decision-making, providing accurate data throughout the building's lifecycle.
-            </p>
+      {/* Global Project Experience Section */}
+      <section className="arch-what-section">
+        <div className="arch-what-container" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '3rem' }}>
+
+          <div className="arch-what-text" style={{ width: '100%' }}>
+            <span className="arch-what-tagline">GLOBAL PROJECT EXPERIENCE</span>
+            <h2 className="arch-what-title">Architectural BIM Visualization</h2>
           </div>
-          {/* Image Side */}
-          <div className="arch-what-image-wrapper">
-            <div className="arch-image-back"></div>
-            <img src={whatIsImage} alt="What is Architectural BIM" className="arch-what-img"
-              loading="lazy"
-              decoding="async" />
+
+          {/* Project 1: Al Ain Hospital */}
+          <div className="arch-project-block" style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1fr) 1.5fr', gap: '2rem', alignItems: 'center' }}>
+            <div className="arch-image-wrapper">
+              <img src={ICONIC_PROJECTS[3].img} alt="Al Ain Hospital" className="arch-what-img" style={{ borderRadius: '12px', width: '100%', height: '300px', objectFit: 'cover' }} loading="lazy" />
+            </div>
+            <div>
+              <h3 className="arch-service-title" style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>Al Ain Hospital – Abu Dhabi</h3>
+              <p className="arch-what-desc">
+                The Al Ain Hospital project is one of the most significant healthcare developments in the UAE, designed to meet international medical standards. JSE Engineering supported the project through advanced Architectural BIM visualization, enhancing patient experience and departmental navigation using interactive digital applications integrated within the BIM environment.
+              </p>
+            </div>
           </div>
+
+          {/* Project 2: Carlton House Terrace */}
+          <div className="arch-project-block" style={{ display: 'grid', gridTemplateColumns: '1.5fr minmax(300px, 1fr)', gap: '2rem', alignItems: 'center' }}>
+            <div>
+              <h3 className="arch-service-title" style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>Carlton House Terrace – London</h3>
+              <p className="arch-what-desc">
+                Carlton House Terrace is an iconic architectural landmark located in the St James’s district of Westminster, London. The project features elegant white stucco terraces overlooking The Mall and St. James’s Park. Our BIM approach ensured heritage-sensitive modeling, precision detailing, and seamless coordination for this prestigious development.
+              </p>
+            </div>
+            <div className="arch-image-wrapper">
+              <img src={ICONIC_PROJECTS[0].img} alt="Carlton House Terrace" className="arch-what-img" style={{ borderRadius: '12px', width: '100%', height: '300px', objectFit: 'cover' }} loading="lazy" />
+            </div>
+          </div>
+
         </div>
       </section >
 
@@ -229,10 +249,9 @@ const ArchitecturalBIM = () => {
         <div className="arch-services-container">
           <div className="arch-services-header">
             <span className="arch-services-tagline">OUR EXPERTISE</span>
-            <h2 className="arch-services-title">Our Architectural BIM Services Include</h2>
+            <h2 className="arch-services-title">Architectural BIM Services We Offer</h2>
             <p className="arch-services-desc">
-              Transform your architectural projects with JSE's cutting-edge BIM solutions.
-              Our BIM architectural services encompass comprehensive solutions tailored to meet the needs of modern construction projects. We specialize in:
+              With JSE’s Architectural BIM services, you gain more than just a 3D model—you gain a strategic project tool that improves design accuracy, collaboration, and execution efficiency.
             </p>
           </div>
 
@@ -433,7 +452,7 @@ const ArchitecturalBIM = () => {
             <span className="arch-choose-tagline">WHY CHOOSE US</span>
             <h2 className="arch-choose-heading">Why Choose JSE for Architectural BIM Engineers?</h2>
             <p className="arch-choose-desc">
-              Choosing JSE’s BIM Architectural Design Engineers means gaining a strategic partner focused on precision, efficiency, and innovation. Our team leverages advanced BIM workflows to deliver accurate, data-rich architectural models that enhance visualization, improve coordination, and reduce design conflicts from the earliest stages.
+              Choosing JSE Engineering means partnering with a BIM team committed to precision, innovation, and efficiency.
             </p>
           </div>
 
@@ -465,7 +484,7 @@ const ArchitecturalBIM = () => {
           {/* Right Column: Text (Visually Right) */}
           <div className="arch-choose-left">
             <p className="arch-choose-desc">
-              By integrating technical expertise with practical project insight, we streamline decision-making, optimize resources, and minimize costly revisions. With JSE, you benefit from a collaborative, future-ready approach that ensures your architectural vision is executed seamlessly, on time, and to the highest quality standards.
+              Backed by a strong portfolio of iconic global projects, our Architectural BIM services empower architects, developers, consultants, and contractors to achieve greater design clarity, coordination efficiency, and construction accuracy from concept to completion.
             </p>
           </div>
         </div>
@@ -474,7 +493,7 @@ const ArchitecturalBIM = () => {
       {/* Technologies Section */}
       <section className="tech-section">
         <div className="tech-container">
-          <h2 className="tech-heading-center">Transform Your Vision with Architectural BIM Precision</h2>
+          <h2 className="tech-heading-center">BIM Technologies We Use</h2>
           <div className="tech-grid">
             {BIM_TECH_DATA.map((tech, index) => (
               <div key={index} className="tech-card">

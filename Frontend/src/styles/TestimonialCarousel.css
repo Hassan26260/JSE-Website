@@ -1,0 +1,210 @@
+@font-face {
+    font-family: 'delight';
+    src: url('../assets/fonts/delight-black.otf')
+}
+
+/* 3D Testimonial Carousel Container */
+.testimonial-3d-section {
+    padding: 6rem 0;
+    background-color: #f8f5f2;
+    /* Light Cream/Beige Background */
+    overflow: hidden;
+    position: relative;
+    perspective: 1200px;
+    /* Essential for 3D effect */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 800px;
+    margin: 0;
+}
+
+/* Heading Style */
+.testimonial-heading {
+    color: #1e293b;
+    /* Dark Text */
+    font-size: 5.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 4rem;
+    font-family: 'delight', system-ui;
+    z-index: 20;
+}
+
+/* Track Area */
+.testimonial-track {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+/* Base Card Style */
+.testimonial-card-3d {
+    position: absolute;
+    width: 350px;
+    height: 480px;
+    /* Slightly taller */
+    /* background is set inline */
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    /* Softer shadow */
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem;
+    box-sizing: border-box;
+    opacity: 0.6;
+    z-index: 1;
+    cursor: pointer;
+    border: none;
+    /* Remove default colors, set inline */
+    text-align: left;
+    justify-content: flex-start;
+}
+
+/* Center Active Card */
+.testimonial-card-3d.active {
+    opacity: 1;
+    z-index: 10;
+    transform: translateX(0) scale(1) rotateY(0deg);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    /* background set inline */
+}
+
+/* Left Card */
+.testimonial-card-3d.left {
+    transform: translateX(-110%) scale(0.85) rotateY(15deg);
+    /* Reduced rotation for cleaner look */
+    z-index: 5;
+    filter: brightness(0.9);
+    /* Slight dim */
+}
+
+/* Right Card */
+.testimonial-card-3d.right {
+    transform: translateX(110%) scale(0.85) rotateY(-15deg);
+    z-index: 5;
+    filter: brightness(0.9);
+}
+
+/* Far Left/Right (Hidden or further back) */
+.testimonial-card-3d.far-left,
+.testimonial-card-3d.far-right,
+.testimonial-card-3d.hidden {
+    transform: translateX(0) scale(0.5) translateZ(-200px);
+    /* Center back */
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Card Content Styling */
+.t-quote-icon {
+    font-size: 5rem;
+    /* color set inline */
+    margin-bottom: 0.5rem;
+    line-height: 0.6;
+    text-align: left;
+    font-family: serif;
+    margin-left: -5px;
+}
+
+.t-text {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    /* color set inline */
+}
+
+.t-author {
+    margin-top: auto;
+}
+
+.t-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    /* color set inline */
+    margin: 0;
+}
+
+.t-role {
+    font-size: 0.9rem;
+    /* color set inline */
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+.t-company {
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
+/* Navigation Buttons (Darker for light bg) */
+.t-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.3s ease;
+}
+
+.t-nav-btn:hover {
+    background: #144AE0;
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.t-prev {
+    left: 5%;
+}
+
+.t-next {
+    right: 5%;
+}
+
+/* Mobile Response */
+@media (max-width: 768px) {
+    .testimonial-heading {
+        font-size: 3rem;
+    }
+
+    .testimonial-card-3d {
+        width: 280px;
+        height: 400px;
+    }
+
+    .testimonial-card-3d.left,
+    .testimonial-card-3d.right {
+        opacity: 0;
+    }
+
+    .t-prev {
+        left: 10px;
+    }
+
+    .t-next {
+        right: 10px;
+    }
+}
