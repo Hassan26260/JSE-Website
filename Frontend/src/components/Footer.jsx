@@ -14,17 +14,6 @@ const Footer = () => {
                     <Link to="/">
                         <img src={logo} alt="JSE Engineering" className="footer-logo" loading="lazy" />
                     </Link>
-                    <p className="footer-desc">
-                        Transforming visions into reality with innovative engineering solutions.
-                        Building a sustainable future together.
-                    </p>
-                    <div className="footer-address" style={{ marginTop: '1.5rem', color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.6' }}>
-                        <p style={{ margin: 0 }}>4th Floor, Karuna Conquest IT Park,</p>
-                        <p style={{ margin: 0 }}>No. 7 MTH Road, Sai Nagar,</p>
-                        <p style={{ margin: 0 }}>Ambattur Industrial Estate,</p>
-                        <p style={{ margin: 0, fontWeight: '700', color: '#ffffff' }}>Chennai - 600058</p>
-                    </div>
-
                     {/* Socials */}
                     <div className="footer-socials">
                         {/* Facebook */}
@@ -123,16 +112,87 @@ const Footer = () => {
 
             </div>
 
+            {/* Address Grid Section */}
+            <div className="footer-addresses-section">
+                <div className="footer-addresses-container">
+                    {/* Block 1: Overseas (Dubai) */}
+                    <div className="footer-address-block">
+                        <h4 className="footer-address-title">Overseas</h4>
+                        <p className="footer-address-text">
+                            <strong>GREENCO ELECTRO MECHANICAL WORKS LLC</strong><br />
+                            PO BOX 81323 116, AL MULLA 1 BUILDING,<br />
+                            MATEENA ST, DEIRA, DUBAI<br />
+                            TEL : 00971-4-3920850<br />
+                            MOB : 00971-50-2389353<br />
+                            Email : <a href="mailto:greenco1@eim.ae">greenco1@eim.ae</a><br />
+                            <a href="http://www.greencomep.com" target="_blank" rel="noopener noreferrer">www.greencomep.com</a>
+                        </p>
+                    </div>
+
+                    {/* Block 2: Our Academy */}
+                    <div className="footer-address-block">
+                        <h4 className="footer-address-title">Our Academy</h4>
+                        <p className="footer-address-text">
+                            <a href="http://www.jseacademy.com" target="_blank" rel="noopener noreferrer">www.jseacademy.com</a><br />
+                            044 - 4261 1180<br />
+                            044 - 4261 2769
+                        </p>
+                    </div>
+
+                    {/* Block 3: TamilNadu (Chennai) */}
+                    <div className="footer-address-block">
+                        <h4 className="footer-address-title">TamilNadu (Head Office)</h4>
+                        <p className="footer-address-text">
+                            4th Floor, Karuna Conquest IT Park,<br />
+                            No. 7 MTH Road, Sai Nagar,<br />
+                            Ambattur Industrial Estate,<br />
+                            Chennai - 600058<br />
+                            <br />
+                            <strong>JSE ENGINEERING PVT LTD</strong><br />
+                            <a href="mailto:jobs@jseeng.in">jobs@jseeng.in</a><br />
+                            <a href="mailto:admin@jseeng.com">admin@jseeng.com</a>
+                        </p>
+                    </div>
+
+                    {/* Block 4: Visakhapatnam */}
+                    <div className="footer-address-block">
+                        <h4 className="footer-address-title">Andhra Pradesh</h4>
+                        <p className="footer-address-text">
+                            Pravilika Residency, 1st Floor,<br />
+                            Near Sri Krishna Vidya Mandar,<br />
+                            Central Library Road, Seethampeta,<br />
+                            Visakhapatnam - 530016
+                        </p>
+                    </div>
+
+                    {/* Block 5: Tirunelveli */}
+                    <div className="footer-address-block">
+                        <h4 className="footer-address-title">Tirunelveli</h4>
+                        <p className="footer-address-text">
+                            Nellai City Centre Building,<br />
+                            Thiruvanthapuram Road,<br />
+                            Near Palayamkottai Bus Stand,<br />
+                            Tirunelveli - 627002
+                        </p>
+                    </div>
+
+                    {/* Block 6: Trichy */}
+                    <div className="footer-address-block">
+                        <h4 className="footer-address-title">Trichy</h4>
+                        <p className="footer-address-text">
+                            1st Floor, Chintha Tower,<br />
+                            No. 8G, 7C, Williams Road,<br />
+                            Cantonment,<br />
+                            Tiruchirappalli - 620001
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             {/* Footer Bottom */}
             <div className="footer-bottom-container">
                 <div className="footer-bottom">
                     <p className="copyright">&copy; {new Date().getFullYear()} JSE Engineering. All rights reserved.</p>
-                    <div className="footer-legal-links">
-                        <Link to="/terms" className="legal-link">Terms of Service</Link>
-                        <Link to="/privacy-policy" className="legal-link">Privacy Policy</Link>
-                        <Link to="/cookies" className="legal-link">Cookie Policy</Link>
-                        <Link to="/sitemap" className="legal-link">Sitemap</Link>
-                    </div>
                 </div>
             </div>
         </footer>

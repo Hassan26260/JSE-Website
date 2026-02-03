@@ -48,8 +48,14 @@ import heroVideo from "../assets/images-home/hero-video.mp4";
 import geoStatsVideo from "../assets/images-home/131857-751353013_small.mp4"; // New Video for Geo Stats
 
 // Hero Images for Divisions
-import virtualTeamHero from "../assets/virtual-eng/pexels-fauxels-3184405.webp";
-import secondmentTeamHero from "../assets/secondament-img/pexels-fauxels-3184339.webp";
+// import virtualTeamHero from "../assets/virtual-eng/pexels-fauxels-3184405.webp"; // Replaced
+// import secondmentTeamHero from "../assets/secondament-img/pexels-fauxels-3184339.webp"; // Replaced
+
+// New Image Assets
+import aboutImage from "../assets/images-home/about.jpg";
+import designEngImage from "../assets/images-home/design engineering p.JPG";
+import virtualEngImage from "../assets/images-home/virtual.jpeg";
+import secondmentImage from "../assets/images-home/secondament.JPG";
 
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -108,8 +114,8 @@ const Home = () => {
 
   // Services Data
   const servicesData = [
-    { title: "Architectural BIM", desc: "Revolutionizing architecture with detailed and accurate BIM models.", link: "/services/design/architectural-bim", img: architecturalBim },
     { title: "MEP Design & Drafting", desc: "Integrated mechanical, electrical, and plumbing systems.", link: "/services/design/mep-design", img: mepDesign },
+    { title: "Architectural BIM", desc: "Revolutionizing architecture with detailed and accurate BIM models.", link: "/services/design/architectural-bim", img: architecturalBim },
     { title: "BIM Modelling", desc: "Precise and detailed BIM models.", link: "/services/design/bim-modelling", img: bimModelling },
     { title: "HVAC Design", desc: "Efficient and sustainable HVAC solutions.", link: "/services/design/hvac-design", img: hvacDesign },
     { title: "Plumbing & Public Health", desc: "Reliable and safe plumbing systems.", link: "/services/design/plumbing-public-health", img: plumbing },
@@ -181,19 +187,19 @@ const Home = () => {
     {
       title: "Design Engineering Projects",
       description: "JSE manpower service aids you get the right candidates with right professional background at convenient cost.",
-      image: architecturalBim,
+      image: designEngImage,
       link: "/services/design/architectural-bim"
     },
     {
       title: "Virtual Team for Hire",
       description: "Hire own remote offshore architect team for modular construction needs, ensuring cost-effective strategy.",
-      image: virtualTeamHero,
+      image: virtualEngImage,
       link: "/services/virtual-team"
     },
     {
       title: "Secondment Team",
       description: "Get on-demand access to our pool of experienced professionals for bespoke solutions, tailored to meet your project needs.",
-      image: secondmentTeamHero,
+      image: secondmentImage,
       link: "/services/secondment-team"
     }
   ];
@@ -243,11 +249,11 @@ const Home = () => {
 
 
   const reviews = [
-    { text: "The architectural BIM models provided by JSE were incredibly detailed and accurate.", author: "Ganesh S.", role: "Senior Architect" },
-    { text: "JSE transformed our complex design vision into reality with comprehensive BIM solutions.", author: "Sarah L.", role: "Project Manager" },
-    { text: "JSE’s Tekla detailing services were a game changer for our project.", author: "Krishna Rao", role: "Project Engineer" },
-    { text: "Firefighting design services ensured our high-rise project met all safety standards.", author: "Daniel H.", role: "Safety Officer" },
-    { text: "JSE’s MEP design services are top-notch. Precision and clear communication.", author: "Emily R.", role: "Operations Head" }
+    { text: "The team consistently exceeded expectations in their professionalism, meeting tight deadlines, and adapting to project changes. Their work quality and ability to incorporate feedback were outstanding. I am confident in our future collaborations and anticipate many successful projects.", author: "Ananthakrishnan", role: "APA Engineering" },
+    { text: "The team's dedication and problem-solving skills were instrumental in the 100% completion of the Digital Art Museum project. Their ownership of issues, both minor and major, led to the successful resolution of numerous clashes, culminating in the timely submission of the model.", author: "Paresh Yashwant Katkar", role: "BIM ManagerMEP, Buildings, Ramboll" },
+    { text: "The AVK Mall and T2 tender package was issued successfully due to the team's considerable efforts. Their hard work is much appreciated. I look forward to continued success with this team.", author: "Chijyoti Challamarad", role: "Principal Mechanical Engineer, Ramboll" },
+    { text: "The issuance of two major AVK assets for tender is a fantastic achievement. Congratulations to the entire team for their exceptional work on this significant milestone.", author: "Michael Rimmer", role: "Head of MEP, Middle East, Ramboll" },
+    { text: "The team's ability to excel under pressure, particularly when facing tight deadlines, demonstrates their strong work ethic and consistent high performance. I commend their dedication to delivering projects on time and to a high standard.", author: "Yashin Maharaj", role: "SSHIC MEPI Director" }
   ];
 
   // --- Infinite Carousel Logic ---
@@ -295,19 +301,15 @@ const Home = () => {
   const heroCarouselSlides = [
     {
       icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>,
-      text: "Turning design intent into build-ready reality."
+      text: "Making high-level design intent a constructible reality."
     },
     {
       icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>,
-      text: "Technical authority that de-risks complex construction."
+      text: "Providing the technical authority needed to de-risk construction in an increasingly complex industry."
     },
     {
       icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>,
-      text: "High-fidelity BIM that validates projects before build."
-    },
-    {
-      icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>,
-      text: "Engineering precision for confident project execution."
+      text: "Delivering validated, high-fidelity BIM solutions that ensure project viability before ground is broken"
     }
   ];
 
@@ -338,8 +340,18 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              Engineering-Led BIM.<br />Built Right.
+              Building a Personal Brand as Engineers
             </motion.h1>
+
+            <motion.p
+              className="hero-subtext"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+              style={{ fontSize: '1.2rem', color: '#e2e8f0', marginBottom: '2rem', maxWidth: '600px' }}
+            >
+              Shaping the Built Environment Through Engineering-LED BIM
+            </motion.p>
 
             <motion.div
               className="hero-cta-group"
@@ -434,13 +446,13 @@ const Home = () => {
               ref={aboutImageRef}
             >
               <img
-                src={heroGroupImage}
+                src={aboutImage}
                 alt="JSE Engineering Office"
                 className="about-image"
                 loading="lazy"
               />
               <div className="about-floating-badge">
-                <span className="badge-number">15+</span>
+                <span className="badge-number">20+</span>
                 <span className="badge-text">Years of<br />Excellence</span>
               </div>
             </div>
@@ -450,6 +462,7 @@ const Home = () => {
 
       <section className="client-marquee-section">
         <div className="container">
+          <h2 style={{ fontFamily: 'delight', color: '#144AE0', textAlign: 'center', fontSize: '4rem', marginBottom: '6rem', marginTop: '3rem' }}>Trusted by Industry Leaders</h2>
 
           {/* Marquee 1: Global Consultants (Label Left, Marquee Right) */}
           <div className="client-marquee-row consultant-row">
@@ -626,7 +639,7 @@ const Home = () => {
               </div>
               <div className="stat-item">
                 <h3><StatCounter end={20} suffix="+" start={statsStarted} /></h3>
-                <p>Countries</p>
+                <p>Global Countries</p>
               </div>
               <div className="stat-item">
                 <h3><StatCounter end={1000} suffix="+" start={statsStarted} /></h3>
@@ -667,6 +680,7 @@ const Home = () => {
 
       <section className="geo-stats-section">
         <div className="geo-stats-container">
+          <h2 style={{ fontFamily: 'delight', color: 'white', textAlign: 'center', fontSize: '5rem', width: '100%' }}>Global Engineering Presence</h2>
           {/* Left: Globe Video */}
           <motion.div
             className="geo-globe-wrapper"

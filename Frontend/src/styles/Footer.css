@@ -125,6 +125,60 @@
     padding-left: 4px;
 }
 
+/* --- Addresses Section (New) --- */
+.footer-addresses-section {
+    max-width: 1440px;
+    margin: 4rem auto 0;
+    /* Add margin top to separate from top links */
+    padding: 3rem 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-addresses-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 Columns */
+    gap: 3rem;
+}
+
+.footer-address-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.footer-address-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.footer-address-text {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.footer-address-text strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.footer-address-text a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-address-text a:hover {
+    color: #144AE0;
+}
+
+
 /* --- Bottom Bar --- */
 .footer-bottom-container {
     max-width: 1440px;
@@ -134,7 +188,8 @@
 }
 
 .footer-bottom {
-    margin-top: 5rem;
+    margin-top: 3rem;
+    /* Reduced from 5rem as addresses are now separate */
     padding-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
@@ -155,29 +210,18 @@
     /* Remove default p margin */
 }
 
-.footer-legal-links {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-}
-
-.legal-link {
-    color: #64748b;
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: color 0.2s ease;
-}
-
-.legal-link:hover {
-    color: #ffffff;
-}
-
 /* --- Responsive --- */
 @media (max-width: 1024px) {
     .footer-container {
         grid-template-columns: 1fr 1fr;
         /* 2x2 Layout */
         gap: 3rem 2rem;
+    }
+
+    .footer-addresses-container {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 Columns on Tablet */
+        gap: 2rem;
     }
 }
 
@@ -216,15 +260,17 @@
         /* Keep hover effect */
     }
 
+    /* Address Stack on Mobile */
+    .footer-addresses-container {
+        grid-template-columns: 1fr;
+        /* Stack vertically */
+        gap: 2rem;
+    }
+
     .footer-bottom {
         flex-direction: column;
         text-align: left;
         align-items: flex-start;
         gap: 1.5rem;
-    }
-
-    .footer-legal-links {
-        flex-wrap: wrap;
-        gap: 1rem;
     }
 }

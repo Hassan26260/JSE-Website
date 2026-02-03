@@ -18,6 +18,12 @@ import steelStructure from "../assets/images-home/Steel Structure.jpg";
 import heroGroupImage from "../assets/images-home/hero-group-image.jpg";
 import hvacDesign from "../assets/images-home/hvac-design.webp";
 
+// New History Asset Imports
+import img2006 from "../assets/History/2006.jpg.jpeg";
+import imgMDOld from "../assets/History/MD old.jpg.jpeg";
+import imgHis2 from "../assets/History/his 2.jpg.jpeg";
+import imgHistoryPic from "../assets/History/history pic.jpg.jpeg";
+
 const HISTORY_TIMELINE = [
     {
         year: "2005–2006",
@@ -25,7 +31,7 @@ const HISTORY_TIMELINE = [
         descPoints: [
             "JSE emerged with HVAC Design & Shop Drawings and Mechanical Design & 2D Shop Drawing Services, commencing operations in Dubai, UAE and Chennai, Tamil Nadu – India."
         ],
-        image: architecturalBim
+        image: img2006
     },
     {
         year: "2007–2008",
@@ -34,7 +40,7 @@ const HISTORY_TIMELINE = [
             "Expansion into Electrical Design & Drawings and MEP Supervision in Dubai.",
             "Initiated Shop Drawings for one of the major UAE landmark developments — the Nad Al Sheeba Racecourse & Car Park project."
         ],
-        image: skyscraper
+        image: imgMDOld
     },
     {
         year: "2009–2013",
@@ -43,7 +49,7 @@ const HISTORY_TIMELINE = [
             "Delivered High Standard Quality Shop Drawings for M/s. BK Gulf, one of the largest contractors in the UAE.",
             "Commenced MEP 3D BIM Department and strengthened BIM delivery capabilities across commercial and infrastructure projects."
         ],
-        image: mepDesign
+        image: imgHis2
     },
     {
         year: "2014–2018",
@@ -52,7 +58,7 @@ const HISTORY_TIMELINE = [
             "Established Architectural & Structural BIM Department, enabling integrated multi-discipline BIM delivery.",
             "Diversified further with the creation of the Steel Structure Department for modeling, detailing, and fabrication drawing support."
         ],
-        image: steelStructure
+        image: imgHistoryPic
     },
     {
         year: "2019–2025",
@@ -98,7 +104,7 @@ const History = () => {
     }, []);
 
     // --- Chronicles Carousel Logic (Framer Motion) ---
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [activeIndex, setActiveIndex] = useState(null);
     const x = useMotionValue(0);
 
     // Config
@@ -201,7 +207,7 @@ const History = () => {
             <section className="timeline-section">
                 <div className="timeline-header">
                     <span className="timeline-tagline">OUR JOURNEY</span>
-                    <h2 className="timeline-heading">Chronicles of JSE</h2>
+                    <h2 className="timeline-heading">The Chronicles of JSE</h2>
                 </div>
 
                 <div className="timeline-container">
