@@ -3,6 +3,7 @@ import api from '../../services/api';
 import '../../styles/Internship.css';
 import internImage from '../../assets/intern-civil/pexels-linkedin-1251861.webp';
 import highlightsImage from '../../assets/intern-civil/pexels-olly-3769021.webp';
+import StickyContact from '../../components/StickyContact';
 
 // Feature Images
 import img1 from '../../assets/images-home/skyscraper.webp';
@@ -129,11 +130,10 @@ const StructuralEnvironmentalEngineering = () => {
     }
   };
 
+  const stickyContactRef = useRef(null);
+
   const scrollToForm = () => {
-    const formSection = document.getElementById('contact-form');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    stickyContactRef.current?.open();
   };
 
   // Scroll to top on mount
@@ -386,7 +386,7 @@ const StructuralEnvironmentalEngineering = () => {
       </section>
 
       {/* Application Form Section */}
-      <section id="contact-form" className="internship-form-section">
+      <StickyContact ref={stickyContactRef}>
         <div className="form-container">
 
           {/* Left: Join Our Team Info */}
@@ -499,7 +499,7 @@ const StructuralEnvironmentalEngineering = () => {
           </div>
 
         </div>
-      </section>
+      </StickyContact>
 
     </div>
   );

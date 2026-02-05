@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import "../styles/Internship.css";
-import heroGroupImage from "../assets/images-home/hero-group-image.jpg";
-import eligibilityImage from "../assets/other/pexels-who0ne-31573267.jpg";
+import heroGroupImage from "../assets/images-home/internship/enlarging-img.JPG";
+import eligibilityImage from "../assets/images-home/internship/whocanjoin.JPG";
+import hiringImage from "../assets/images-home/internship/hiring.JPG";
 import careerDevImage from "../assets/other/pexels-sora-shimazaki-5926389.jpg";
+import StickyContact from '../components/StickyContact';
 
 const Internship = () => {
   const imageRef = useRef(null);
@@ -87,29 +89,9 @@ const Internship = () => {
       description: "Practical exposure to electrical system design, load calculation, and on-site electrical installations."
     },
     {
-      title: "Electronics & Communication Engineering (ECE)",
-      path: "/internship/electronics-communication-engineering",
-      description: "Hands-on training in Extra Low Voltage systems, BMS controls, and communication network design."
-    },
-    {
-      title: "Mechatronics Engineering",
-      path: "/internship/mechatronics-engineering",
-      description: "Interdisciplinary learning combining mechanical systems with electronics and intelligent controls."
-    },
-    {
       title: "Architectural (B.Arch)",
       path: "/internship/architectural",
       description: "Architectural BIM modeling, space planning, and visualization using advanced design software."
-    },
-    {
-      title: "Structural & Environmental Engineering",
-      path: "/internship/structural-environmental-engineering",
-      description: "Analysis and design of resilient structures focusing on sustainability and environmental impact."
-    },
-    {
-      title: "Electrical & Architectural",
-      path: "/internship/electrical-architectural",
-      description: "Integrated design training covering both electrical systems and architectural planning."
     },
     {
       title: "Other Departments",
@@ -321,7 +303,7 @@ const Internship = () => {
       {/* Recruitment Process Section */}
       <section className="who-can-join-section" style={{ padding: '6rem 2rem', marginTop: '2rem' }}>
         <div className="who-image-side">
-          <img src={eligibilityImage} alt="Recruitment Process" className="who-img" loading="lazy" />
+          <img src={hiringImage} alt="Recruitment Process" className="who-img" loading="lazy" />
         </div>
         <div className="who-content-side">
           <div className="dash-tagline">
@@ -502,7 +484,7 @@ const Internship = () => {
         </div>
       </section>
       {/* Application Form Section */}
-      <section className="internship-form-section">
+      <StickyContact>
         <div className="form-container">
 
           {/* Left: Join Our Team Info */}
@@ -685,7 +667,7 @@ const Internship = () => {
           </div>
 
         </div>
-      </section>
+      </StickyContact>
 
     </div>
   );

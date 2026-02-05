@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ArchitecturalBIM.css';
+import StickyContact from '../../../components/StickyContact';
 import heroImage from '../../../assets/images-home/architectural-bim.webp';
 
 import whatIsImage from '../../../assets/images-home/bim-modelling.webp';
@@ -26,20 +27,17 @@ import s6 from '../../../assets/images-home/plumbing.webp';
 import s7 from '../../../assets/images-home/electrical-system.webp';
 // Reusing s6 or s4 for pure firefighting if specific image not found, defaulting to s4 (MEP) for now or similar.
 import s8 from '../../../assets/images-home/hero-group-image.jpg'; // Placeholder for ELV if no specific image
+import virtualEngImage from "../../../assets/images-home/home-new-img/virtual-t.JPG";
+import secondmentImage from "../../../assets/images-home/secondament.JPG";
 
 const SERVICES_DATA = [
-  { title: "BIM consulting", img: s1, desc: "Strategic guidance for successful BIM adoption." },
-  { title: "Shop Drawing", img: s2, desc: "Precise drawings for fabrication and installation." },
-  { title: "Revit 3D Service", img: s3, desc: "Detailed 3D modeling using Autodesk Revit." },
-  { title: "Architectural BIM/VDC", img: s4, desc: "Virtual Design and Construction for better planning." },
-  { title: "Architectural 3D modeling", img: s5, desc: "High-fidelity 3D models for visualization." },
-  { title: "CAD drafting", img: s6, desc: "Accurate 2D drafting and documentation." },
-  { title: "Utility Modeling", img: s1, desc: "Comprehensive modeling of MEP and utility systems." },
-  { title: "Construction Documentation", img: s2, desc: "Complete sets of construction plans and details." },
-  { title: "BIM Clash Detection", img: s3, desc: "Identifying and resolving conflicts before construction." },
-  { title: "BIM Visualization", img: s4, desc: "Photorealistic renderings and walkthroughs." },
-  { title: "BIM Quantity Takeoffs", img: s5, desc: "Automated material quantity extraction." },
-  { title: "Collaboration and Coordination", img: s6, desc: "Streamlined team workflows and communication." }
+  { title: "Fire Engineering & System Design", img: s1, desc: "Comprehensive design of fire safety systems tailored to project needs." },
+  { title: "Fire Risk Assessment & Audits", img: s2, desc: "Evaluating fire risks and ensuring compliance with safety standards." },
+  { title: "Fire Protection Master Planning", img: s3, desc: "Strategic planning for long-term fire safety and protection." },
+  { title: "Fire Pump Design & Analysis", img: s5, desc: "Hydraulic analysis and pump selection for optimal performance." },
+  { title: "Fire Network & Distribution", img: s6, desc: "Efficient design of fire water networks and distribution systems." },
+  { title: "Hazard Analysis & Zone Planning", img: s1, desc: "Identifying hazards and planning safety zones effectively." },
+  { title: "Construction Design Support", img: s2, desc: "Multidisciplinary coordination and support during construction." }
 ];
 
 const ICONIC_PROJECTS = MEP_PROJECTS.slice(0, 6).map(p => ({
@@ -50,39 +48,39 @@ const ICONIC_PROJECTS = MEP_PROJECTS.slice(0, 6).map(p => ({
 
 const CHOOSE_JSE_DATA = [
   {
-    title: "Innovative Solutions",
-    desc: "Our BIM architectural design engineers use the latest technology to create innovative and highly detailed 3D models that bring your vision to life."
+    title: "Deep Regulatory Knowledge",
+    desc: "We combine deep understanding of local and international fire codes with real-world engineering experience to ensure full compliance."
   },
   {
-    title: "Holistic Approach",
-    desc: "JSE integrate all aspects of architectural design, ensuring seamless coordination between different building systems for optimal functionality and aesthetics."
+    title: "BIM-Enabled Workflows",
+    desc: "Our BIM-integrated approach ensures accurate coordination, improved constructibility, and significantly reduced on-site conflicts."
   },
   {
-    title: "Enhanced Visualization",
-    desc: "Our detailed BIM models provide a clear and comprehensive visualization of your project, allowing you to see the final product before construction begins."
+    title: "Clear Documentation",
+    desc: "We deliver precise, well-documented designs that contractors can execute with confidence, minimizing rework and delays."
   },
   {
-    title: "Cost Efficiency",
-    desc: "Our BIM solutions help you save time and money by optimizing design processes, reducing waste, and improving overall project efficiency."
+    title: "Safety-First Approach",
+    desc: "Our designs prioritize life safety and asset protection, ensuring robust performance under critical conditions."
   }
 ];
 
 const CHOOSE_JSE_DATA_2 = [
   {
-    title: "Client Collaboration",
-    desc: "JSE work closely with you throughout the design process, ensuring that your vision is fully realized and that you are involved every step of the way."
+    title: "Multidisciplinary Coordination",
+    desc: "We seamlessly coordinate fire protection systems with architectural, structural, and MEP disciplines for a unified building design."
   },
   {
-    title: "Regulatory Compliance",
-    desc: "Our designs adhere to all local and international building codes and standards, ensuring compliance and safety for your project."
+    title: "Cost-Effective Solutions",
+    desc: "Our optimized designs balance safety requirements with cost efficiency, ensuring value without compromising protection."
   },
   {
-    title: "Quality Assurance",
-    desc: "JSE maintain rigorous quality control throughout the design process, ensuring that every aspect of your project meets the highest standards of excellence."
+    title: "Future-Ready Systems",
+    desc: "We design adaptable systems that can evolve with changing building needs and regulatory standards."
   },
   {
-    title: "Sustainable Designs",
-    desc: "We incorporate sustainable practices into our designs, helping you achieve energy efficiency and environmental sustainability."
+    title: "Comprehensive Support",
+    desc: "From initial risk assessment to final construction support, we are with you at every step of project delivery."
   }
 ];
 
@@ -97,14 +95,16 @@ const BIM_TECH_DATA = [
 ];
 
 const ADDITIONAL_SERVICES = [
-  { title: "Steel Structure Detailing", link: "/services/design/steel-structure-detailing", img: s1 },
-  { title: "MEP Design", link: "/services/design/mep-design", img: s4 },
-  { title: "Plumbing & Public Health", link: "/services/design/plumbing-public-health", img: s6 },
+  { title: "Virtual Team for Hire", link: "/services/virtual-team", img: virtualEngImage },
   { title: "HVAC Design", link: "/services/design/hvac-design", img: s5 },
-  { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 }, // Reuse MEP
-  { title: "BIM Modelling", link: "/services/design/bim-modelling", img: s3 },
+  { title: "Plumbing & Public Health", link: "/services/design/plumbing-public-health", img: s6 },
+  { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 },
   { title: "Electrical System Design", link: "/services/design/electrical-system-design", img: s7 },
-  { title: "Extra Low Voltage", link: "/services/design/elv", img: s8 }
+  { title: "ELV (Extra Low Voltage)", link: "/services/design/elv", img: s4 },
+  { title: "Architectural BIM", link: "/services/design/architectural-bim", img: s2 },
+  { title: "Steel Structure Detailing", link: "/services/design/steel-structure-detailing", img: s5 },
+  { title: "Structural", link: "/services/design/structural", img: s3 },
+  { title: "Secondment Team", link: "/services/secondment-team", img: secondmentImage }
 ];
 
 const FirefightingDesign = () => {
@@ -139,81 +139,36 @@ const FirefightingDesign = () => {
         <div className="arch-hero-overlay"></div>
         <div className="arch-hero-content">
           <div className="arch-breadcrumbs">
-            Services &gt; Design Services &gt; <span>Firefighting Design</span>
+            Services &gt; Design Services &gt; <span>Fire Protection Design</span>
           </div>
-          <h1 className="arch-hero-title">Firefighting Design</h1>
+          <h1 className="arch-hero-title">Fire Protection Design Engineering Services</h1>
+          <p className="arch-hero-subtitle" style={{ color: 'white', maxWidth: '800px', margin: '20px 0', fontSize: '1.2rem' }}>
+            Code-Compliant Fire Protection Systems by JSE Engineering
+          </p>
         </div>
       </section >
 
-      {/* Core Pillars Section (4 Columns) */}
-      < section className="arch-pillars-section" >
-        <div className="arch-pillars-container">
-
-          {/* Column 1: Visualization */}
-          <div className="arch-pillar-col">
-            <div>
-              <h2 className="arch-pillar-title">Visualization</h2>
-              <p className="arch-pillar-desc">
-                We transform architectural concepts into precise 3D BIM models, giving you a clear and detailed digital view of your project from the earliest design stages. This allows better understanding, review, and informed decision-making before construction begins.
-              </p>
-            </div>
-            <span className="arch-pillar-num">01</span>
-          </div>
-
-          {/* Column 2: Precision & Control */}
-          <div className="arch-pillar-col">
-            <div>
-              <h2 className="arch-pillar-title">Precision & Control</h2>
-              <p className="arch-pillar-desc">
-                Our Architectural BIM services ensure accuracy across every element of the design. By identifying conflicts and potential issues early, we significantly reduce rework, delays, and unexpected costs during execution.
-              </p>
-            </div>
-            <span className="arch-pillar-num">02</span>
-          </div>
-
-          {/* Column 3: Collaboration */}
-          <div className="arch-pillar-col">
-            <div>
-              <h2 className="arch-pillar-title">Collaboration</h2>
-              <p className="arch-pillar-desc">
-                BIM enables seamless coordination between architects, engineers, and stakeholders. Structural systems, architectural intent, and aesthetic details are integrated into a unified model, ensuring consistency and clarity across the project lifecycle.
-              </p>
-            </div>
-            <span className="arch-pillar-num">03</span>
-          </div>
-
-          {/* Column 4: Advanced BIM Solutions */}
-          <div className="arch-pillar-col">
-            <div>
-              <h2 className="arch-pillar-title">Advanced BIM Solutions</h2>
-              <p className="arch-pillar-desc">
-                By leveraging cutting-edge BIM workflows, including Point Cloud to BIM, we enhance planning efficiency, optimize resources, and deliver high-quality outcomes. JSE Engineering provides a strong digital foundation for successful and future-ready projects.
-              </p>
-            </div>
-            <span className="arch-pillar-num">04</span>
-          </div>
-
-        </div>
-      </section >
-
-      {/* What is Architectural BIM Section */}
+      {/* What is Fire Protection (About) Section */}
       < section className="arch-what-section" >
         <div className="arch-what-container">
           {/* Text Side */}
           <div className="arch-what-text">
-            <span className="arch-what-tagline">THE CONCEPT</span>
-            <h2 className="arch-what-title">What is Firefighting Design?</h2>
+            <span className="arch-what-tagline">OUR EXPERTISE</span>
+            <h2 className="arch-what-title">Fire Protection Design Services</h2>
             <p className="arch-what-desc">
-              Architectural BIM is a digital representation of the physical and functional characteristics of a building. It goes beyond traditional 2D drawings by creating a 3D model that integrates all aspects of the design process.
+              JSE Engineering delivers specialized Fire Protection Design Engineering services that transform engineering intent into practical, constructible, and fully code-compliant solutions. Our approach is rooted in technical accuracy, regulatory expertise, and seamless coordination with architectural, structural, and MEP disciplines.
             </p>
             <p className="arch-what-desc">
-              This model becomes a shared resource for decision-making, providing accurate data throughout the building's lifecycle.
+              Fire safety is a critical component of modern building design. At JSE Engineering, we develop advanced fire protection systems designed to safeguard lives, protect assets, and ensure uninterrupted operations. We collaborate closely with consultants, contractors, and project stakeholders to deliver solutions that are efficient, coordinated, and ready for on-site execution.
+            </p>
+            <p className="arch-what-desc">
+              Our engineers evaluate each project’s unique fire risk profile and design systems that integrate smoothly with building layouts and other engineering services. From early-stage planning through construction-ready documentation, we support safe, compliant, and coordinated project delivery.
             </p>
           </div>
           {/* Image Side */}
           <div className="arch-what-image-wrapper">
             <div className="arch-image-back"></div>
-            <img src={whatIsImage} alt="What is Architectural BIM" className="arch-what-img"
+            <img src={whatIsImage} alt="Fire Protection Design" className="arch-what-img"
               loading="lazy"
               decoding="async" />
           </div>
@@ -229,10 +184,9 @@ const FirefightingDesign = () => {
         <div className="arch-services-container">
           <div className="arch-services-header">
             <span className="arch-services-tagline">OUR EXPERTISE</span>
-            <h2 className="arch-services-title">Our Firefighting Design Services Include</h2>
+            <h2 className="arch-services-title">Fire Protection Design Services Include</h2>
             <p className="arch-services-desc">
-              Transform your architectural projects with JSE's cutting-edge BIM solutions.
-              Our BIM architectural services encompass comprehensive solutions tailored to meet the needs of modern construction projects. We specialize in:
+              Delivering specialized solutions to ensure safety and compliance.
             </p>
           </div>
 
@@ -252,7 +206,8 @@ const FirefightingDesign = () => {
       </section>
 
       {/* Form Section */}
-      <section className="internship-form-section">
+      {/* Form Section */}
+      <StickyContact>
         <div className="form-container">
           {/* Left Side: Title & Info */}
           <div className="form-info-side">
@@ -327,7 +282,7 @@ const FirefightingDesign = () => {
             </form>
           </div>
         </div>
-      </section>
+      </StickyContact>
 
       {/* Understanding BIM Levels Of Development Section */}
       <section className="arch-lod-section">
@@ -431,9 +386,9 @@ const FirefightingDesign = () => {
           {/* Left Column: Text */}
           <div className="arch-choose-left">
             <span className="arch-choose-tagline">WHY CHOOSE US</span>
-            <h2 className="arch-choose-heading">Why Choose JSE for Firefighting Design Engineers?</h2>
+            <h2 className="arch-choose-heading">Why Choose JSE for Fire Protection Design?</h2>
             <p className="arch-choose-desc">
-              Choosing JSE’s BIM Architectural Design Engineers means gaining a strategic partner focused on precision, efficiency, and innovation. Our team leverages advanced BIM workflows to deliver accurate, data-rich architectural models that enhance visualization, improve coordination, and reduce design conflicts from the earliest stages.
+              JSE Engineering combines deep regulatory knowledge with real-world engineering experience. Our BIM-enabled workflows ensure accurate coordination, improved constructibility, and reduced on-site conflicts.
             </p>
           </div>
 
@@ -465,43 +420,27 @@ const FirefightingDesign = () => {
           {/* Right Column: Text (Visually Right) */}
           <div className="arch-choose-left">
             <p className="arch-choose-desc">
-              By integrating technical expertise with practical project insight, we streamline decision-making, optimize resources, and minimize costly revisions. With JSE, you benefit from a collaborative, future-ready approach that ensures your architectural vision is executed seamlessly, on time, and to the highest quality standards.
+              We deliver clear, well-documented fire protection designs that contractors can execute with confidence—minimizing rework and ensuring compliance with applicable safety codes and standards.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Technologies Section */}
-      <section className="tech-section">
-        <div className="tech-container">
-          <h2 className="tech-heading-center">Transform Your Vision with Architectural BIM Precision</h2>
-          <div className="tech-grid">
-            {BIM_TECH_DATA.map((tech, index) => (
-              <div key={index} className="tech-card">
-                <div className="tech-logo-wrapper" style={{ background: tech.bg }}>
-                  {tech.img ? (
-                    <img src={tech.img} alt={tech.name} className="tech-logo-img" loading="lazy" decoding="async" />
-                  ) : (
-                    <span className="tech-abbr">{tech.abbr}</span>
-                  )}
-                </div>
-                <p className="tech-name">{tech.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Technologies Section Removed */}
 
       {/* Additional Services Menu Section */}
-      <section className="arch-additional-section">
-        <div className="arch-additional-container">
-          <h2 className="arch-additional-heading">Additional Services You Can Benefit From</h2>
-          <div className="arch-service-list">
+      <section className="solutions-list-section">
+        <div className="solutions-list-container">
+          <div className="solutions-header-group">
+            <h2 className="solutions-title">Additional Services You Can Benefit From</h2>
+          </div>
+          <div className="solutions-list-wrapper">
             {ADDITIONAL_SERVICES.map((item, index) => (
-              <a key={index} href={item.link} className="arch-service-item">
-                <span className="arch-service-text">{item.title}</span>
-                <div className="arch-service-img-wrapper">
-                  <img src={item.img} alt={item.title} className="arch-service-hover-img" loading="lazy" decoding="async" />
+              <a key={index} href={item.link} className="solution-list-item">
+                <span className="solution-list-text">{item.title}</span>
+                <span className="solution-list-arrow">→</span>
+                <div className="solution-item-img-wrapper">
+                  <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
                 </div>
               </a>
             ))}

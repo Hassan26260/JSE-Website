@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Header from "../components/Header";
-import Footer from "../components/Footer";
+
 import "../styles/Page.css";
 import "./VisionMission.css";
 
@@ -179,7 +179,7 @@ const VisionMission = () => {
                 </div>
             </section>
 
-            <Footer />
+
         </div>
     );
 };

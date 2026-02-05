@@ -6,7 +6,8 @@
     background-color: #0f172a;
     /* Dark Slate to match Portfolio/Stats */
     color: #ffffff;
-    padding: 5rem 0 2rem;
+    padding: 3rem 0 1.5rem;
+    /* Reduced padding */
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -16,42 +17,39 @@
     margin: 0 auto;
     padding: 0 2rem;
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    /* Logo Area + 3 Menu Cols */
-    gap: 3rem;
+    grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+    /* Adjusted for wider industries col */
+    gap: 2rem;
+    /* Reduced gap */
 }
 
 /* --- Brand Column (Left) --- */
 .footer-brand {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    padding-right: 2rem;
+    gap: 1rem;
+    /* Reduced gap */
+    padding-right: 1rem;
+    /* Reduced padding */
 }
 
 .footer-logo {
-    height: 50px;
+    height: 40px;
+    /* Slightly smaller logo */
     width: auto;
     object-fit: contain;
 }
 
-.footer-desc {
-    color: #94a3b8;
-    /* Slate 400 */
-    font-size: 0.95rem;
-    line-height: 1.6;
-    max-width: 300px;
-}
-
 .footer-socials {
     display: flex;
-    gap: 1rem;
-    margin-top: 0.5rem;
+    gap: 0.8rem;
+    margin-top: 0.2rem;
 }
 
 .social-icon {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    /* Smaller icons */
+    height: 32px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     display: flex;
@@ -60,41 +58,75 @@
     color: #ffffff;
     text-decoration: none;
     transition: all 0.3s ease;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .social-icon:hover {
     background: #144AE0;
-    /* Brand Blue */
     transform: translateY(-2px);
+}
+
+/* New Brand Address Block */
+.footer-brand-address {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.brand-address-text,
+.brand-contact-text {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.brand-address-text strong,
+.brand-contact-text strong {
+    color: #fff;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.brand-contact-text a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.2s;
+    display: block;
+}
+
+.brand-contact-text a:hover {
+    color: #144AE0;
 }
 
 /* --- Menu Columns --- */
 .footer-col {
     display: flex;
     flex-direction: column;
-    /* gap: 2rem; */
 }
 
 .footer-group {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.8rem;
+    /* Reduced gap */
 }
 
 /* Force alignment for the second groups by ensuring first groups match height */
 @media (min-width: 1025px) {
     .footer-col .footer-group:first-child {
-        min-height: 160px;
-        /* Increased to ensure proper alignment of 'Discover JSE' and 'Industries' (now Resources) */
+        min-height: 140px;
+        /* Reduced height as content is tighter */
     }
 }
 
 .footer-heading {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
+    /* Smaller heading */
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -105,50 +137,57 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.5rem;
+    /* Reduced gap between links */
+}
+
+/* 2-Column Grid for Industries */
+.industries-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 1rem;
+    /* row-gap col-gap */
 }
 
 .footer-link {
     color: #94a3b8;
-    /* Slate 400 */
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
+    /* Smaller font */
     transition: color 0.2s ease;
     width: fit-content;
-    line-height: 1.5;
-    /* Ensure consistent spacing */
+    line-height: 1.4;
 }
 
 .footer-link:hover {
     color: #144AE0;
-    /* Brand Blue */
     padding-left: 4px;
 }
 
-/* --- Addresses Section (New) --- */
+/* --- Addresses Section --- */
 .footer-addresses-section {
     max-width: 1440px;
-    margin: 4rem auto 0;
-    /* Add margin top to separate from top links */
-    padding: 3rem 2rem 0;
+    margin: 2.5rem auto 0;
+    /* Reduced margin */
+    padding: 2rem 2rem 0;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footer-addresses-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* 3 Columns */
-    gap: 3rem;
+    gap: 2rem;
+    /* Reduced gap from 3rem */
 }
 
 .footer-address-block {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.5rem;
 }
 
 .footer-address-title {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 700;
     color: #ffffff;
     text-transform: uppercase;
@@ -158,8 +197,9 @@
 
 .footer-address-text {
     color: #94a3b8;
-    font-size: 0.9rem;
-    line-height: 1.6;
+    font-size: 0.85rem;
+    /* Consistent small font */
+    line-height: 1.5;
     margin: 0;
 }
 
@@ -188,89 +228,62 @@
 }
 
 .footer-bottom {
-    margin-top: 3rem;
-    /* Reduced from 5rem as addresses are now separate */
-    padding-top: 2rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
-    justify-content: space-between;
-    /* Copyright Left, Links Right */
+    justify-content: flex-start;
+    /* Left align everything */
     align-items: center;
-    /* Vertically Center */
-    flex-wrap: wrap;
-    gap: 1rem;
     width: 100%;
 }
 
 .copyright {
     color: #64748b;
-    /* Slate 500 */
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     margin: 0;
-    /* Remove default p margin */
 }
 
 /* --- Responsive --- */
 @media (max-width: 1024px) {
     .footer-container {
         grid-template-columns: 1fr 1fr;
-        /* 2x2 Layout */
-        gap: 3rem 2rem;
+        gap: 2.5rem 1.5rem;
+    }
+
+    .footer-col[style*="flex-grow"] {
+        grid-column: span 2;
+        /* Industries take full width on tablet */
     }
 
     .footer-addresses-container {
         grid-template-columns: repeat(2, 1fr);
-        /* 2 Columns on Tablet */
         gap: 2rem;
     }
 }
 
 @media (max-width: 640px) {
     .footer-container {
-        grid-template-columns: 1fr 1fr;
-        /* 2 Column Layout */
-        gap: 3rem 1.5rem;
-    }
-
-    .footer-brand {
-        grid-column: 1 / -1;
-        /* Brand spans full width */
-        padding-right: 0;
-        align-items: flex-start;
-        /* Left Align */
-        text-align: left;
-    }
-
-    .footer-col {
-        text-align: left;
-        align-items: flex-start;
-    }
-
-    .footer-heading {
-        font-size: 0.9rem;
-        /* Decreased font size */
-    }
-
-    .footer-group {
-        margin-bottom: 2rem;
-    }
-
-    .footer-link:hover {
-        padding-left: 4px;
-        /* Keep hover effect */
-    }
-
-    /* Address Stack on Mobile */
-    .footer-addresses-container {
         grid-template-columns: 1fr;
-        /* Stack vertically */
+        /* Single column */
         gap: 2rem;
     }
 
-    .footer-bottom {
-        flex-direction: column;
-        text-align: left;
-        align-items: flex-start;
+    .footer-col[style*="flex-grow"] {
+        grid-column: span 1;
+    }
+
+    .footer-brand {
+        padding-right: 0;
+    }
+
+    .industries-list {
+        grid-template-columns: 1fr;
+        /* Stack industries on mobile */
+    }
+
+    .footer-addresses-container {
+        grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 }

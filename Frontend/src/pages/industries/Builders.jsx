@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/Page.css';
 import './Builders.css';
+import StickyContact from '../../components/StickyContact';
 
 // Hero Image (Builders)
 import heroImage from '../../assets/industry/Builders/pexels-mikael-blomkvist-8961624.webp';
@@ -14,11 +15,7 @@ import h1 from '../../assets/images-home/skyscraper.webp';
 import h4 from '../../assets/images-home/architectural-bim.webp';
 import h6 from '../../assets/images-home/hero-group-image.jpg';
 
-// Tech Logos
-import revitLogo from '../../assets/virtual-eng/software logos/autodesk-revit-seeklogo.png';
-import autocadLogo from '../../assets/virtual-eng/software logos/autocad-seeklogo.png';
-import projectwiseLogo from '../../assets/virtual-eng/software logos/projectwise.webp';
-import bentleyLogo from '../../assets/virtual-eng/software logos/bentley.png';
+
 
 
 const BUSINESS_TYPES = [
@@ -132,13 +129,7 @@ const BUILDERS_WHY_CHOOSE = [
     }
 ];
 
-const BUILDERS_TECH_DATA = [
-    { name: 'Revit', abbr: 'Rv', bg: '#e6f7ff', img: revitLogo },
-    { name: 'Navisworks', abbr: 'Nw', bg: '#f9f0ff', img: projectwiseLogo },
-    { name: 'AutoCAD', abbr: 'AC', bg: '#fffbe6', img: autocadLogo },
-    { name: 'Dynamo', abbr: 'Dy', bg: '#fcffe6', img: revitLogo },
-    { name: 'BIM 360', abbr: 'B360', bg: '#e6fffb', img: bentleyLogo }
-];
+// BUILDERS_TECH_DATA removed
 
 const Builders = () => {
     useEffect(() => {
@@ -174,11 +165,10 @@ const Builders = () => {
         // Add submission logic here
     };
 
+    const stickyContactRef = React.useRef(null);
+
     const scrollToForm = () => {
-        const formSection = document.getElementById('contact-form');
-        if (formSection) {
-            formSection.scrollIntoView({ behavior: 'smooth' });
-        }
+        stickyContactRef.current?.open();
     };
 
     return (
@@ -332,33 +322,10 @@ const Builders = () => {
                 </div>
             </section>
 
-            {/* Innovative Software Tools Section */}
-            <section className="builders-tech-section">
-                <div className="builders-tech-container">
-                    <div className="builders-header-center">
-                        <span className="dash-tagline" style={{ justifyContent: 'center' }}>TECHNOLOGIES</span>
-                        <h2 className="builders-heading-blue" style={{ fontSize: '3rem', textAlign: 'center' }}>Innovative Software Tools We Use</h2>
-                    </div>
-
-                    <div className="builders-tech-grid">
-                        {BUILDERS_TECH_DATA.map((tech, index) => (
-                            <div key={index} className="builders-tech-card">
-                                <div className="builders-tech-logo-wrapper" style={{ background: tech.bg }}>
-                                    {tech.img ? (
-                                        <img src={tech.img} alt={tech.name} className="builders-tech-logo-img" />
-                                    ) : (
-                                        <span className="builders-tech-abbr">{tech.abbr}</span>
-                                    )}
-                                </div>
-                                <p className="builders-tech-name">{tech.name}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            {/* Innovative Software Tools Section Removed */}
 
             {/* Form Section */}
-            <section id="contact-form" className="builders-form-section">
+            <StickyContact ref={stickyContactRef}>
                 <div className="builders-form-container">
                     {/* Left Side: Title & Info */}
                     <div className="builders-form-info-side">
@@ -430,7 +397,7 @@ const Builders = () => {
                         </form>
                     </div>
                 </div>
-            </section>
+            </StickyContact>
 
         </div>
     );

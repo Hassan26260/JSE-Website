@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "../../styles/Page.css";
 import "./IndustrialInfrastructure.css";
+import StickyContact from '../../components/StickyContact';
 import heroImage from "../../assets/industry/healthcare/pexels-cristian-rojas-8460371.webp";
 // Placeholder image for the content section
 import contentImage from "../../assets/design-eng/pexels-karola-g-4491459.webp";
@@ -18,11 +19,7 @@ import h5 from '../../assets/images-home/hvac-design.webp';
 import h6 from '../../assets/images-home/hero-group-image.jpg';
 
 
-// Tech Logos for Innovative Software Tools
-import revitLogo from '../../assets/virtual-eng/software logos/autodesk-revit-seeklogo.png';
-import autocadLogo from '../../assets/virtual-eng/software logos/autocad-seeklogo.png';
-import bentleyLogo from '../../assets/virtual-eng/software logos/bentley.png';
-import projectwiseLogo from '../../assets/virtual-eng/software logos/projectwise.webp';
+
 
 
 const FACILITIES_DATA = [
@@ -137,13 +134,7 @@ const BUSINESS_TYPES = [
     }
 ];
 
-const HEALTHCARE_TECH_DATA = [
-    { name: 'Revit', abbr: 'Rv', bg: '#e6f7ff', img: revitLogo },
-    { name: 'Navisworks', abbr: 'Nw', bg: '#f9f0ff', img: projectwiseLogo },
-    { name: 'AutoCAD', abbr: 'AC', bg: '#fffbe6', img: autocadLogo },
-    { name: 'Dynamo', abbr: 'Dy', bg: '#fcffe6', img: revitLogo },
-    { name: 'BIM 360', abbr: 'B360', bg: '#e6fffb', img: bentleyLogo }
-];
+// HEALTHCARE_TECH_DATA removed
 
 const IndustrialInfrastructure = () => {
     // Carousel Logic
@@ -176,11 +167,10 @@ const IndustrialInfrastructure = () => {
         // Add submission logic here
     };
 
+    const stickyContactRef = useState(null);
+
     const scrollToForm = () => {
-        const formSection = document.getElementById('contact-form');
-        if (formSection) {
-            formSection.scrollIntoView({ behavior: 'smooth' });
-        }
+        stickyContactRef.current?.open();
     };
 
 
@@ -407,33 +397,10 @@ const IndustrialInfrastructure = () => {
                 </div>
             </section>
 
-            {/* Innovative Software Tools Section */}
-            <section className="industrial-tech-section">
-                <div className="industrial-tech-container">
-                    <div className="industrial-header-center">
-                        <span className="dash-tagline" style={{ justifyContent: 'center' }}>TECHNOLOGIES</span>
-                        <h2 className="business-heading" style={{ color: '#144AE0', fontSize: '3rem', textAlign: 'center' }}>Innovative Software Tools We Use</h2>
-                    </div>
-
-                    <div className="industrial-tech-grid">
-                        {HEALTHCARE_TECH_DATA.map((tech, index) => (
-                            <div key={index} className="industrial-tech-card">
-                                <div className="industrial-tech-logo-wrapper" style={{ background: tech.bg }}>
-                                    {tech.img ? (
-                                        <img src={tech.img} alt={tech.name} className="industrial-tech-logo-img" loading="lazy" decoding="async" />
-                                    ) : (
-                                        <span className="industrial-tech-abbr">{tech.abbr}</span>
-                                    )}
-                                </div>
-                                <p className="industrial-tech-name">{tech.name}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            {/* Innovative Software Tools Section Removed */}
 
             {/* Form Section */}
-            <section id="contact-form" className="industrial-form-section">
+            <StickyContact ref={stickyContactRef}>
                 <div className="industrial-form-container">
                     {/* Left Side: Title & Info */}
                     <div className="industrial-form-info-side">
@@ -505,7 +472,7 @@ const IndustrialInfrastructure = () => {
                         </form>
                     </div>
                 </div>
-            </section>
+            </StickyContact>
 
         </div>
     );

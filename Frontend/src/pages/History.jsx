@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence, LayoutGroup, useMotionValue, useTransform, animate } from 'framer-motion';
 import Header from "../components/Header";
-import Footer from "../components/Footer";
+
 import "../styles/Page.css";
 import "./History.css";
 
@@ -190,13 +190,16 @@ const History = () => {
                         <h2 className="history-heading">Managing Director</h2>
                         <div className="history-desc">
                             <p>
-                                Following the Footsteps of Mr. Gamearaj, his son <strong>Mr. John Suresh</strong> strongly believes in identifying business errors and fixing them with the latest BIM technology solutions.
+                                <strong>Mr. John Suresh, Managing Director</strong>
                             </p>
                             <p>
-                                With 3+ decades of modeling experience and a command of subject knowledge, Suresh is passionate about sharing his expertise through mentoring young engineers and motivating the team to explore new industrial challenges.
+                                Mr. John Suresh is an enthusiastic, grounded, and highly accomplished professional who places ethics at the core of everything he does. His unwavering commitment to ethical values has earned him a strong reputation and respect within the industry.
                             </p>
                             <p>
-                                Our journey, from start till this day, is marked by groundbreaking projects, industry accolades, and a relentless pursuit of quality.
+                                A postgraduate engineer with over 20 years of experience across the Middle East and India, he has successfully led and administered more than 1,000 projects. Despite his vast experience, he continues to learn and evolve every day, staying aligned with emerging technologies and industry best practices.
+                            </p>
+                            <p>
+                                Inspired by the vision and values of Mr. Gananraj, he went on to establish JSE Engineering Pvt. Ltd. with the ambition of building a globally recognized organization. Today, JSE Engineering stands tall, serving clients across 20+ countries worldwide. This remarkable growth and global presence have been made possible through the dedicated leadership, vision, and relentless efforts of Mr. John Suresh.
                             </p>
                         </div>
                     </div>
@@ -290,7 +293,7 @@ const History = () => {
 
 
 
-            <Footer />
+
         </div>
     );
 };

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import StickyContact from '../../components/StickyContact';
 import { Link } from 'react-router-dom';
 import "../../styles/Page.css";
 import "./Healthcare.css";
@@ -19,11 +20,7 @@ import h5 from '../../assets/images-home/hvac-design.webp';
 import h6 from '../../assets/images-home/hero-group-image.jpg';
 
 
-// Tech Logos for Innovative Software Tools
-import revitLogo from '../../assets/virtual-eng/software logos/autodesk-revit-seeklogo.png';
-import autocadLogo from '../../assets/virtual-eng/software logos/autocad-seeklogo.png';
-import bentleyLogo from '../../assets/virtual-eng/software logos/bentley.png';
-import projectwiseLogo from '../../assets/virtual-eng/software logos/projectwise.webp';
+
 
 
 const FACILITIES_DATA = [
@@ -146,13 +143,7 @@ const BUSINESS_TYPES = [
     }
 ];
 
-const HEALTHCARE_TECH_DATA = [
-    { name: 'Revit', abbr: 'Rv', bg: '#e6f7ff', img: revitLogo },
-    { name: 'Navisworks', abbr: 'Nw', bg: '#f9f0ff', img: projectwiseLogo },
-    { name: 'AutoCAD', abbr: 'AC', bg: '#fffbe6', img: autocadLogo },
-    { name: 'Dynamo', abbr: 'Dy', bg: '#fcffe6', img: revitLogo },
-    { name: 'BIM 360', abbr: 'B360', bg: '#e6fffb', img: bentleyLogo }
-];
+// HEALTHCARE_TECH_DATA removed
 
 const Healthcare = () => {
     // Carousel Logic
@@ -185,11 +176,10 @@ const Healthcare = () => {
         // Add submission logic here
     };
 
+    const stickyContactRef = useRef(null);
+
     const scrollToForm = () => {
-        const formSection = document.getElementById('contact-form');
-        if (formSection) {
-            formSection.scrollIntoView({ behavior: 'smooth' });
-        }
+        stickyContactRef.current?.open();
     };
 
 
@@ -415,33 +405,11 @@ const Healthcare = () => {
                 </div>
             </section>
 
-            {/* Innovative Software Tools Section */}
-            <section className="healthcare-tech-section">
-                <div className="healthcare-tech-container">
-                    <div className="healthcare-header-center">
-                        <span className="dash-tagline" style={{ justifyContent: 'center' }}>TECHNOLOGIES</span>
-                        <h2 className="business-heading" style={{ color: '#144AE0', fontSize: '3rem', textAlign: 'center' }}>Innovative Software Tools We Use</h2>
-                    </div>
-
-                    <div className="healthcare-tech-grid">
-                        {HEALTHCARE_TECH_DATA.map((tech, index) => (
-                            <div key={index} className="healthcare-tech-card">
-                                <div className="healthcare-tech-logo-wrapper" style={{ background: tech.bg }}>
-                                    {tech.img ? (
-                                        <img src={tech.img} alt={tech.name} className="healthcare-tech-logo-img" loading="lazy" />
-                                    ) : (
-                                        <span className="healthcare-tech-abbr">{tech.abbr}</span>
-                                    )}
-                                </div>
-                                <p className="healthcare-tech-name">{tech.name}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            {/* Innovative Software Tools Section Removed */}
 
             {/* Form Section */}
-            <section id="contact-form" className="healthcare-form-section">
+            {/* Form Section */}
+            <StickyContact ref={stickyContactRef}>
                 <div className="healthcare-form-container">
                     {/* Left Side: Title & Info */}
                     <div className="healthcare-form-info-side">
@@ -513,7 +481,7 @@ const Healthcare = () => {
                         </form>
                     </div>
                 </div>
-            </section>
+            </StickyContact>
 
         </div>
     );

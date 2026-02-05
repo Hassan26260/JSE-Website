@@ -58,6 +58,22 @@ const Footer = () => {
                             </svg>
                         </a>
                     </div>
+
+                    {/* Head Office Address (Moved Here) */}
+                    <div className="footer-brand-address">
+                        <p className="brand-address-text">
+                            <strong>TamilNadu (Head Office)</strong><br />
+                            4th Floor, Karuna Conquest IT Park,<br />
+                            No. 7 MTH Road, Sai Nagar,<br />
+                            Ambattur Industrial Estate,<br />
+                            Chennai - 600058
+                        </p>
+                        <p className="brand-contact-text">
+                            <strong>JSE ENGINEERING PVT LTD</strong><br />
+                            <a href="mailto:jobs@jseeng.in">jobs@jseeng.in</a><br />
+                            <a href="mailto:admin@jseeng.com">admin@jseeng.com</a>
+                        </p>
+                    </div>
                 </div>
 
                 {/* Column 1 */}
@@ -81,7 +97,6 @@ const Footer = () => {
 
                 {/* Column 2 */}
                 <div className="footer-col">
-
                     <div className="footer-group">
                         <h4 className="footer-heading">Resources</h4>
                         <ul className="footer-links">
@@ -93,10 +108,10 @@ const Footer = () => {
                 </div>
 
                 {/* Column 3 */}
-                <div className="footer-col">
+                <div className="footer-col" style={{ flexGrow: 1.5 }}> {/* Increase width for 2 columns */}
                     <div className="footer-group">
                         <h4 className="footer-heading">Industries / Sectors</h4>
-                        <ul className="footer-links">
+                        <ul className="footer-links industries-list">
                             <li><Link to="/industries/healthcare" className="footer-link">Healthcare</Link></li>
                             <li><Link to="/industries/architecture" className="footer-link">Architecture</Link></li>
                             <li><Link to="/industries/builders" className="footer-link">Builders</Link></li>
@@ -115,7 +130,7 @@ const Footer = () => {
             {/* Address Grid Section */}
             <div className="footer-addresses-section">
                 <div className="footer-addresses-container">
-                    {/* Block 1: Overseas (Dubai) */}
+                    {/* 1. Overseas (Dubai) */}
                     <div className="footer-address-block">
                         <h4 className="footer-address-title">Overseas</h4>
                         <p className="footer-address-text">
@@ -129,7 +144,19 @@ const Footer = () => {
                         </p>
                     </div>
 
-                    {/* Block 2: Our Academy */}
+                    {/* 2. Our Australia Office (New) */}
+                    <div className="footer-address-block">
+                        <h4 className="footer-address-title">Our Australia Office</h4>
+                        <p className="footer-address-text">
+                            <strong>JSE ENGINEERING PTY LTD</strong><br />
+                            2/22 John StreetBalwyn, Vic 3103, Australia<br />
+                            TEL : +61 0473562928<br />
+                            Email : <a href="mailto:justin@jseeng.in">justin@jseeng.in</a><br />
+                            Web : <a href="https://jseeng.com" target="_blank" rel="noopener noreferrer">jseeng.com</a>
+                        </p>
+                    </div>
+
+                    {/* 3. Our Academy */}
                     <div className="footer-address-block">
                         <h4 className="footer-address-title">Our Academy</h4>
                         <p className="footer-address-text">
@@ -139,22 +166,7 @@ const Footer = () => {
                         </p>
                     </div>
 
-                    {/* Block 3: TamilNadu (Chennai) */}
-                    <div className="footer-address-block">
-                        <h4 className="footer-address-title">TamilNadu (Head Office)</h4>
-                        <p className="footer-address-text">
-                            4th Floor, Karuna Conquest IT Park,<br />
-                            No. 7 MTH Road, Sai Nagar,<br />
-                            Ambattur Industrial Estate,<br />
-                            Chennai - 600058<br />
-                            <br />
-                            <strong>JSE ENGINEERING PVT LTD</strong><br />
-                            <a href="mailto:jobs@jseeng.in">jobs@jseeng.in</a><br />
-                            <a href="mailto:admin@jseeng.com">admin@jseeng.com</a>
-                        </p>
-                    </div>
-
-                    {/* Block 4: Visakhapatnam */}
+                    {/* 4. Visakhapatnam */}
                     <div className="footer-address-block">
                         <h4 className="footer-address-title">Andhra Pradesh</h4>
                         <p className="footer-address-text">
@@ -165,7 +177,7 @@ const Footer = () => {
                         </p>
                     </div>
 
-                    {/* Block 5: Tirunelveli */}
+                    {/* 5. Tirunelveli */}
                     <div className="footer-address-block">
                         <h4 className="footer-address-title">Tirunelveli</h4>
                         <p className="footer-address-text">
@@ -176,7 +188,7 @@ const Footer = () => {
                         </p>
                     </div>
 
-                    {/* Block 6: Trichy */}
+                    {/* 6. Trichy */}
                     <div className="footer-address-block">
                         <h4 className="footer-address-title">Trichy</h4>
                         <p className="footer-address-text">

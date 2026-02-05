@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import api from '../../services/api';
 import '../../styles/Internship.css';
-import internImage from '../../assets/intern-civil/pexels-linkedin-1251861.webp';
+import internImage from '../../assets/images-home/intern-dep/other-dep.jpg';
 import highlightsImage from '../../assets/intern-civil/pexels-olly-3769021.webp';
+import StickyContact from '../../components/StickyContact';
 
 // Feature Images
 import img1 from '../../assets/images-home/skyscraper.webp';
@@ -60,6 +62,27 @@ const AnimatedNumber = ({ end, duration = 2000 }) => {
 };
 
 const OtherInternships = () => {
+    // Accordion State
+    const [activeAccordion, setActiveAccordion] = useState(null);
+
+    const programDetails = [
+        {
+            title: "Internship Duration",
+            content: "A comprehensive 100-day journey designed to transform you from a student into a site-ready engineer. The curriculum is paced to ensure deep learning without overwhelming you."
+        },
+        {
+            title: "Program Scope",
+            content: "Hands-on experience with real-world MEP projects using industry-standard tools like AutoCAD and Revit. You will work on actual project simulations."
+        },
+        {
+            title: "Placement Guarantee",
+            content: "We don't just train you; we launch your career. 100% placement assistance with top firms upon successful completion of the program."
+        },
+        {
+            title: "Batch Schedule",
+            content: "Enrollment is currently OPEN. Flexible batch timings available to suit your academic schedule. Contact us to reserve your spot in the upcoming cohort."
+        }
+    ];
     // Form State
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
@@ -129,11 +152,10 @@ const OtherInternships = () => {
         }
     };
 
+    const stickyContactRef = useRef(null);
+
     const scrollToForm = () => {
-        const formSection = document.getElementById('contact-form');
-        if (formSection) {
-            formSection.scrollIntoView({ behavior: 'smooth' });
-        }
+        stickyContactRef.current?.open();
     };
 
     // Scroll to top on mount
@@ -224,60 +246,83 @@ const OtherInternships = () => {
 
             {/* Redesigned Program Highlights Section */}
             <section className="internship-highlights-section">
-                <div className="highlights-container">
+                <div className="highlights-container" style={{ justifyContent: 'center' }}>
 
-                    {/* Left: Image Side */}
-                    <div className="highlights-image-side">
-                        <div className="highlights-img-wrapper">
-                            <img src={highlightsImage} alt="Civil Engineering Student" className="highlights-img" loading="lazy" />
-                        </div>
-                    </div>
-
-                    {/* Right: Content Side */}
-                    <div className="highlights-content-side">
-                        {/* <div className="highlights-badge">PROGRAM HIGHLIGHTS</div> */}
-                        <h2 className="highlights-title">
-                            Internship Program & Duration
+                    {/* Single Column Content Side */}
+                    <div className="highlights-content-side" style={{ width: '100%', maxWidth: '1600px' }}>
+                        <h2 className="highlights-title" style={{ fontFamily: 'Delight', textAlign: 'center', fontSize: '4rem', marginBottom: '1.5rem', color: '#144AE0', width: '100%' }}>
+                            Program & Duration
                         </h2>
-                        <p className="highlights-desc">
-                            Look at our JSE's short work experience program and duration details before enrolling.
+                        <p className="highlights-desc" style={{ textAlign: 'center', margin: '0 auto 4rem auto', maxWidth: '800px', fontSize: '1.2rem', color: '#475569' }}>
+                            A structured pathway to professional excellence. Explore the key details of our Other Departments Internship below.
                         </p>
 
-                        {/* Program Details Section - 4 Separate Cards */}
-                        <div className="program-details-grid">
+                        {/* Accordion List */}
+                        <div className="internship-accordion-list" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                            {programDetails.map((item, index) => (
+                                <div
+                                    key={index}
+                                    className={`accordion-item ${activeAccordion === index ? 'active' : ''}`}
+                                    onClick={() => setActiveAccordion(index === activeAccordion ? null : index)}
+                                    style={{
+                                        background: activeAccordion === index ? '#071230' : '#ffffff',
+                                        boxShadow: '0 10px 25px rgba(0,0,0,0.05)',
+                                        borderRadius: '16px',
+                                        overflow: 'hidden',
+                                        cursor: 'pointer',
+                                        transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                                        border: activeAccordion === index ? 'none' : '1px solid #e2e8f0',
+                                        transform: activeAccordion === index ? 'scale(1.01)' : 'scale(1)'
+                                    }}
+                                >
+                                    {/* Header */}
+                                    <div className="accordion-header" style={{ padding: '2rem 3rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                        <h3 style={{
+                                            margin: 0,
+                                            fontSize: '1.5rem',
+                                            fontWeight: 700,
+                                            color: activeAccordion === index ? '#ffffff' : '#0f172a',
+                                            fontFamily: 'system-ui, sans-serif',
+                                            letterSpacing: '-0.02em'
+                                        }}>
+                                            {item.title}
+                                        </h3>
+                                        {/* Minimal Arrow Icon */}
+                                        <span style={{
+                                            color: activeAccordion === index ? '#ffffff' : '#144AE0',
+                                            fontSize: '2rem',
+                                            fontWeight: 300,
+                                            transition: 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            width: '32px',
+                                            height: '32px',
+                                            transform: activeAccordion === index ? 'rotate(180deg)' : 'rotate(0deg)'
+                                        }}>
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </span>
+                                    </div>
 
-                            {/* Card 1: Duration */}
-                            <div className="program-card">
-                                <span className="program-detail-label">Internship Duration</span>
-                                <div className="program-detail-content">
-                                    <AnimatedNumber end={100} />-day program
+                                    {/* Body */}
+                                    <AnimatePresence>
+                                        {activeAccordion === index && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: "auto", opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.4, ease: "easeInOut" }}
+                                            >
+                                                <div className="accordion-body" style={{ padding: '0 3rem 2.5rem 3rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.7', fontSize: '1.2rem', maxWidth: '90%' }}>
+                                                    {item.content}
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                 </div>
-                            </div>
-
-                            {/* Card 2: Program */}
-                            <div className="program-card">
-                                <span className="program-detail-label">Program</span>
-                                <div className="program-detail-content">
-                                    Hands-on MEP Projects in AutoCAD & Revit
-                                </div>
-                            </div>
-
-                            {/* Card 3: Placement */}
-                            <div className="program-card">
-                                <span className="program-detail-label">Placement Guarantee</span>
-                                <div className="program-detail-content">
-                                    <AnimatedNumber end={100} />% placement.
-                                </div>
-                            </div>
-
-                            {/* Card 4: Batch */}
-                            <div className="program-card">
-                                <span className="program-detail-label">Batch Schedule</span>
-                                <div className="program-detail-content">
-                                    Enrollment OPEN
-                                </div>
-                            </div>
-
+                            ))}
                         </div>
                     </div>
 
@@ -386,7 +431,7 @@ const OtherInternships = () => {
             </section>
 
             {/* Application Form Section */}
-            <section id="contact-form" className="internship-form-section">
+            <StickyContact ref={stickyContactRef}>
                 <div className="form-container">
 
                     {/* Left: Join Our Team Info */}
@@ -499,7 +544,7 @@ const OtherInternships = () => {
                     </div>
 
                 </div>
-            </section>
+            </StickyContact>
 
         </div>
     );

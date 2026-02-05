@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
 import "../../styles/Page.css";
 import "./VirtualTeam.css"; // Reuse Virtual Team styles
-import heroImage from '../../assets/secondament-img/pexels-fauxels-3184339.webp';
-import offerImage from '../../assets/secondament-img/about.jpg';
-import whyChooseImage from '../../assets/backup-img/pexels-jimbear-998499.jpg';
-import executeImage from '../../assets/backup-img/pexels-pixasquare-1123982.jpg';
+import StickyContact from '../../components/StickyContact';
+import heroImage from '../../assets/images-home/secondment/secondament-hero.JPG';
+import offerImage from '../../assets/images-home/secondment/what-we-offer.jpg';
+import whyChooseImage from '../../assets/images-home/secondment/why-choose.JPG';
+import executeImage from '../../assets/images-home/secondment/our-approach.jpg';
 import card2Img from '../../assets/backup-img/pexels-pixabay-273209.jpg';
 import card4Img from '../../assets/backup-img/pexels-jgathisan0612-1580112.jpg';
 import card7Img from '../../assets/backup-img/pexels-mantasink-1106476.jpg';
-import revitLogo from '../../assets/virtual-eng/software logos/autodesk-revit-seeklogo.png';
-import autocadLogo from '../../assets/virtual-eng/software logos/autocad-seeklogo.png';
-import bentleyLogo from '../../assets/virtual-eng/software logos/bentley.png';
-import microstationLogo from '../../assets/virtual-eng/software logos/microstation.webp';
-import projectwiseLogo from '../../assets/virtual-eng/software logos/projectwise.webp';
+
+// Standardized Images for Additional Services
+import s1 from '../../assets/images-home/skyscraper.webp';
+import s2 from '../../assets/images-home/architectural-bim.webp';
+import s3 from '../../assets/images-home/bim-modelling.webp';
+import s4 from '../../assets/images-home/mep-design.webp'; // Firefighting / MEP
+import s5 from '../../assets/images-home/hvac-design.webp'; // HVAC / Steel
+import s6 from '../../assets/images-home/plumbing.webp';
+import s7 from '../../assets/images-home/electrical-system.webp';
+import s8 from '../../assets/images-home/hero-group-image.jpg';
+import virtualEngImage from "../../assets/images-home/home-new-img/virtual-t.JPG";
+import secondmentImage from "../../assets/images-home/secondament.JPG";
+
 
 const PROCESS_STEPS = [
   {
@@ -121,22 +130,20 @@ const SECONDMENT_STEPS = [
   }
 ];
 
-const SECONDMENT_TECH_DATA = [
-  { name: 'Revit', abbr: 'Rv', bg: '#e6f7ff', img: revitLogo },
-  { name: 'AutoCAD', abbr: 'AC', bg: '#fffbe6', img: autocadLogo },
-  { name: 'Navisworks', abbr: 'Nw', bg: '#f9f0ff', img: projectwiseLogo },
-  { name: 'Bentley', abbr: 'Be', bg: '#e6fffb', img: bentleyLogo },
-  { name: 'Civil 3D', abbr: 'C3D', bg: '#fff0f6', img: revitLogo },
-  { name: 'Tekla', abbr: 'Tk', bg: '#f0f5ff', img: microstationLogo },
-  { name: '3ds Max', abbr: '3ds', bg: '#fff2e8', img: autocadLogo },
-  { name: 'Dynamo', abbr: 'Dy', bg: '#fcffe6', img: revitLogo },
-  { name: 'SketchUp', abbr: 'Sk', bg: '#f6ffed', img: bentleyLogo },
-  { name: 'Rhino', abbr: 'Rh', bg: '#fff7e6', img: microstationLogo },
-  { name: 'SolidWorks', abbr: 'SW', bg: '#fff1f0', img: projectwiseLogo },
-  { name: 'Catia', abbr: 'Ca', bg: '#f0f5ff', img: autocadLogo },
-  { name: 'Primavera', abbr: 'Pv', bg: '#fff0f6', img: bentleyLogo },
-  { name: 'Lumion', abbr: 'Lu', bg: '#e6ffec', img: microstationLogo },
-  { name: 'Etap', abbr: 'Et', bg: '#fff7e6', img: projectwiseLogo }
+// SECONDMENT_TECH_DATA removed
+
+// Additional Services Data (Standardized)
+const ADDITIONAL_SERVICES = [
+  { title: "Virtual Team for Hire", link: "/services/virtual-team", img: virtualEngImage },
+  { title: "HVAC Design", link: "/services/design/hvac-design", img: s5 },
+  { title: "Plumbing & Public Health", link: "/services/design/plumbing-public-health", img: s6 },
+  { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 },
+  { title: "Electrical System Design", link: "/services/design/electrical-system-design", img: s7 },
+  { title: "ELV (Extra Low Voltage)", link: "/services/design/elv", img: s4 },
+  { title: "Architectural BIM", link: "/services/design/architectural-bim", img: s2 },
+  { title: "Steel Structure Detailing", link: "/services/design/steel-structure-detailing", img: s5 },
+  { title: "Structural", link: "/services/design/structural", img: s3 },
+  { title: "Secondment Team", link: "/services/secondment-team", img: secondmentImage }
 ];
 
 const SecondmentTeam = () => {
@@ -157,11 +164,10 @@ const SecondmentTeam = () => {
     // Add submission logic here
   };
 
+  const stickyContactRef = useState(null);
+
   const scrollToForm = () => {
-    const formSection = document.getElementById('contact-form');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    stickyContactRef.current?.open();
   };
 
   return (
@@ -334,134 +340,32 @@ const SecondmentTeam = () => {
         </div>
       </section>
 
-      {/* Why We Are A Successful Secondment Partner (Bento Grid) */}
-      <section className="secondment-bento-section">
-        <div className="secondment-bento-container">
-          <div className="secondment-bento-header">
-            <span className="dash-tagline symmetric justify-content-center" style={{ justifyContent: 'center' }}>KEY SUCCESS FACTORS</span>
-            <h2 className="secondment-bento-heading">Why We Are A Successful Secondment Partner</h2>
+      <section className="solutions-list-section">
+        <div className="solutions-list-container">
+          <div className="solutions-header-group">
+            <h2 className="solutions-title">SOLUTIONS BEYOND SOFTWARE</h2>
+            <p className="solutions-description">
+              We go beyond standard software solutions, providing comprehensive engineering and BIM services tailored to your project's unique needs.
+            </p>
           </div>
-
-          <div className="secondment-bento-grid">
-            {/* 1. Provide Support (Blue, Span 2) */}
-            <div className="secondment-bento-card sb-blue sb-span-2-col">
-              <div className="sb-icon-box">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="M12 8v4" /><path d="M12 16h.01" /></svg>
-              </div>
-              <div>
-                <h3 className="sb-title">Provide Support When You Need</h3>
-                <p className="sb-desc">We adapt to project demands and integrate your home team with our required experts: engineers, project managers, consultants.</p>
-              </div>
-            </div>
-
-            {/* 2. Stay Connected Early (Photo) */}
-            <div className="secondment-bento-card sb-photo" style={{ backgroundImage: `url(${card2Img})` }}>
-              <div className="sb-icon-box">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
-              </div>
-              <div>
-                <h3 className="sb-title">Stay Connected Early On</h3>
-                <p className="sb-desc">Before your secondment officially begins, we encourage proactive communication with your new team members.</p>
-              </div>
-            </div>
-
-            {/* 3. Define Clear Objectives (Dark) */}
-            <div className="secondment-bento-card sb-dark">
-              <div className="sb-icon-box">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg>
-              </div>
-              <div>
-                <h3 className="sb-title">Define Clear Objectives</h3>
-                <p className="sb-desc">Let us know your specific goals and expectations so we can tailor our services to meet your needs effectively.</p>
-              </div>
-            </div>
-
-            {/* 4. Feel Free to Share (Photo) */}
-            <div className="secondment-bento-card sb-photo" style={{ backgroundImage: `url(${card4Img})` }}>
-              <div className="sb-icon-box">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
-              </div>
-              <div>
-                <h3 className="sb-title">Share Your Thoughts</h3>
-                <p className="sb-desc">We value open communication. Don’t hesitate to ask questions or express your opinions; your input is crucial.</p>
-              </div>
-            </div>
-
-            {/* 5. Maintain Communication (Blue) */}
-            <div className="secondment-bento-card sb-blue">
-              <div className="sb-icon-box">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
-              </div>
-              <div>
-                <h3 className="sb-title">Maintain Home Team Links</h3>
-                <p className="sb-desc">We facilitate ongoing interaction with your original team to keep you informed and ensure seamless collaboration.</p>
-              </div>
-            </div>
-
-            {/* 6. Continuous Feedback (Dark, Span 2) */}
-            <div className="secondment-bento-card sb-dark sb-span-2-col">
-              <div className="sb-icon-box">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" /></svg>
-              </div>
-              <div>
-                <h3 className="sb-title">Continuous Feedback</h3>
-                <p className="sb-desc">We actively seek your feedback throughout the secondment to make any necessary adjustments, ensuring we meet your standards.</p>
-              </div>
-            </div>
-
-            {/* 7. Understand Before Improving (Photo, Span 2) */}
-            <div className="secondment-bento-card sb-photo sb-span-2-col" style={{ backgroundImage: `url(${card7Img})` }}>
-              <div className="sb-icon-box">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><path d="M12 17h.01" /></svg>
-              </div>
-              <div>
-                <h3 className="sb-title">Understand Before Implementing</h3>
-                <p className="sb-desc">We emphasize understanding the dynamics of your new team before proposing or implementing any changes, and fostering a cooperative work environment.</p>
-              </div>
-            </div>
-
-            {/* 8. Stay Connected After (Blue, Span 2) */}
-            <div className="secondment-bento-card sb-blue sb-span-2-col">
-              <div className="sb-icon-box">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M12 5l7 7-7 7" /></svg>
-              </div>
-              <div>
-                <h3 className="sb-title">Stay Connected After</h3>
-                <p className="sb-desc">The relationship doesn’t end when the project does. We stay in touch to support your ongoing success and future collaboration opportunities.</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Advanced Technologies Section */}
-      <section className="tech-section">
-        <div className="tech-container">
-          <div className="virtual-why-header" style={{ marginBottom: '4rem', textAlign: 'center', alignItems: 'center' }}>
-            <span className="dash-tagline symmetric" style={{ justifyContent: 'center' }}>Technologies</span>
-            <h2 className="virtual-why-main-title">Advanced Technologies We Use</h2>
-          </div>
-
-          <div className="tech-grid" style={{ justifyContent: 'center', margin: '0 auto' }}>
-            {SECONDMENT_TECH_DATA.map((tech, index) => (
-              <div key={index} className="tech-card">
-                <div className="tech-logo-wrapper" style={{ background: tech.bg }}>
-                  {tech.img ? (
-                    <img src={tech.img} alt={tech.name} className="tech-logo-img" loading="lazy" decoding="async" />
-                  ) : (
-                    <span className="tech-abbr">{tech.abbr}</span>
-                  )}
+          <div className="solutions-list-wrapper">
+            {ADDITIONAL_SERVICES.map((item, index) => (
+              <a key={index} href={item.link} className="solution-list-item">
+                <span className="solution-list-text">{item.title}</span>
+                <span className="solution-list-arrow">→</span>
+                <div className="solution-item-img-wrapper">
+                  <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
                 </div>
-                <p className="tech-name">{tech.name}</p>
-              </div>
+              </a>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Advanced Technologies Section Removed */}
+
       {/* Form Section (Replicated from Virtual Team) */}
-      <section id="contact-form" className="internship-form-section">
+      <StickyContact ref={stickyContactRef}>
         <div className="form-container">
           {/* Left Side: Title & Info */}
           <div className="form-info-side">
@@ -542,7 +446,7 @@ const SecondmentTeam = () => {
             </form>
           </div>
         </div>
-      </section>
+      </StickyContact>
 
       {/* Previous Content - Preserved/Restructured */}
 

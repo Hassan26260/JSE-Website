@@ -62,7 +62,7 @@ const AnimatedNumber = ({ end, duration = 2000, suffix = "" }) => {
     return <span ref={ref}>{count}{suffix}</span>;
 };
 
-import Footer from "../components/Footer";
+
 import mapImage from "../assets/images-home/Map.png";
 import Header from "../components/Header";
 
@@ -228,10 +228,16 @@ const WhoWeAre = () => {
                         <h2 className="director-title">Managing Director Profile</h2>
                         <div className="director-text">
                             <p>
-                                <strong>Mr. John Suresh</strong> is a passionate leader with over 25 years of experience across the Middle East and India. Known for his unwavering commitment, innovative approach, and professionalism, he has managed to deliver massive projects and yet remains a life-long learner, always striving for excellence.
+                                <strong>Mr. John Suresh, Managing Director</strong>
                             </p>
                             <p>
-                                Following the legacy of Mr. Gananraj, he has elevated JSE Engineering to a global level, growing the company to over 500+ employees through his vision and dedication.
+                                Mr. John Suresh is an enthusiastic, grounded, and highly accomplished professional who places ethics at the core of everything he does. His unwavering commitment to ethical values has earned him a strong reputation and respect within the industry.
+                            </p>
+                            <p>
+                                A postgraduate engineer with over 20 years of experience across the Middle East and India, he has successfully led and administered more than 1,000 projects. Despite his vast experience, he continues to learn and evolve every day, staying aligned with emerging technologies and industry best practices.
+                            </p>
+                            <p>
+                                Inspired by the vision and values of Mr. Gananraj, he went on to establish JSE Engineering Pvt. Ltd. with the ambition of building a globally recognized organization. Today, JSE Engineering stands tall, serving clients across 20+ countries worldwide. This remarkable growth and global presence have been made possible through the dedicated leadership, vision, and relentless efforts of Mr. John Suresh.
                             </p>
                         </div>
                     </div>
@@ -378,7 +384,7 @@ const WhoWeAre = () => {
                 </div>
             </section>
 
-            <Footer />
+
         </div>
     );
 };

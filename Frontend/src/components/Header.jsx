@@ -7,7 +7,8 @@ const Header = () => {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [servicesDropdown, setServicesDropdown] = useState(false);
-  const [designServicesDropdown, setDesignServicesDropdown] = useState(false);
+  const [designServicesDropdown, setDesignServicesDropdown] = useState(false); // Restored
+  const [mepDropdown, setMepDropdown] = useState(false);
   const [internshipDropdown, setInternshipDropdown] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -37,6 +38,15 @@ const Header = () => {
 
   const handleDesignServicesMouseLeave = () => {
     setDesignServicesDropdown(false);
+    setMepDropdown(false);
+  };
+
+  const handleMepMouseEnter = () => {
+    setMepDropdown(true);
+  };
+
+  const handleMepMouseLeave = () => {
+    setMepDropdown(false);
   };
 
   const handleServicesMouseEnter = () => {
@@ -46,6 +56,7 @@ const Header = () => {
   const handleServicesMouseLeave = () => {
     setServicesDropdown(false);
     setDesignServicesDropdown(false);
+    setMepDropdown(false);
   };
 
   const handleInternshipMouseEnter = () => {
@@ -106,48 +117,50 @@ const Header = () => {
                 >
                   Virtual Team for Hire
                 </Link>
+
+                {/* MEP Design Dropdown */}
                 <div
                   className="dropdown-item has-submenu"
                   onMouseEnter={handleDesignServicesMouseEnter}
                   onMouseLeave={handleDesignServicesMouseLeave}
                 >
-                  <span>Design Services</span>
+                  <span>MEP Design</span>
                   {designServicesDropdown && (
                     <div
                       className="submenu"
                       onMouseEnter={handleDesignServicesMouseEnter}
                       onMouseLeave={handleDesignServicesMouseLeave}
                     >
-                      <Link to="/services/design/mep-design" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
-                        MEP Design
+                      <Link to="/services/design/hvac-design" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
+                        HVAC Design
                       </Link>
                       <Link to="/services/design/plumbing-public-health" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
                         Plumbing & Public Health
                       </Link>
-                      <Link to="/services/design/hvac-design" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
-                        HVAC Design
-                      </Link>
                       <Link to="/services/design/firefighting-design" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
                         Firefighting Design
-                      </Link>
-                      <Link to="/services/design/bim-modelling" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
-                        BIM Modelling
                       </Link>
                       <Link to="/services/design/electrical-system-design" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
                         Electrical System Design
                       </Link>
                       <Link to="/services/design/elv" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
-                        Extra Low Voltage
-                      </Link>
-                      <Link to="/services/design/architectural-bim" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
-                        Architectural BIM
-                      </Link>
-                      <Link to="/services/design/steel-structure-detailing" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
-                        Steel Structure Detailing
+                        ELV (Extra Low Voltage)
                       </Link>
                     </div>
                   )}
                 </div>
+
+                {/* Sibling Design Services */}
+                <Link to="/services/design/architectural-bim" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
+                  Architectural BIM
+                </Link>
+                <Link to="/services/design/steel-structure-detailing" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
+                  Steel Structure Detailing
+                </Link>
+                <Link to="/services/design/structural" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
+                  Structural
+                </Link>
+
                 <Link
                   to="/services/secondment-team"
                   className="dropdown-item"
@@ -177,29 +190,17 @@ const Header = () => {
                 onMouseEnter={handleInternshipMouseEnter}
                 onMouseLeave={handleInternshipMouseLeave}
               >
-                <Link to="/internship/civil-engineering" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
-                  Civil Engineering
-                </Link>
                 <Link to="/internship/mechanical-engineering" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
                   Mechanical Engineering
                 </Link>
                 <Link to="/internship/electrical-electronics-engineering" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
-                  Electrical & Electronics Engineering (EEE)
-                </Link>
-                <Link to="/internship/electronics-communication-engineering" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
-                  Electronics & Communication Engineering (ECE)
-                </Link>
-                <Link to="/internship/mechatronics-engineering" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
-                  Mechatronics Engineering
+                  Electrical (EEE)
                 </Link>
                 <Link to="/internship/architectural" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
-                  Architectural (B.Arch)
+                  Architectural
                 </Link>
-                <Link to="/internship/structural-environmental-engineering" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
-                  Structural & Environmental Engineering
-                </Link>
-                <Link to="/internship/electrical-architectural" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
-                  Electrical & Architectural
+                <Link to="/internship/civil-engineering" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
+                  Civil Engineering
                 </Link>
                 <Link to="/internship/other-internships" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
                   Other Departments
@@ -215,9 +216,9 @@ const Header = () => {
           <Link to="/#contact-form" className={`nav-link cta-button ${isActive("/contact") ? "active" : ""}`} onClick={() => setIsMobileMenuOpen(false)}>
             Contact Us
           </Link>
-        </nav>
-      </div>
-    </header>
+        </nav >
+      </div >
+    </header >
   );
 };
 

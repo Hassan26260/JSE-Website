@@ -2,6 +2,7 @@ import "../styles/Home.css";
 import "../styles/Benefits.css";
 import "../styles/ClientMarquee.css"; // New Marquee Styles
 import "../styles/TestimonialCarousel.css"; // New 3D Carousel Styles
+import StickyContact from '../components/StickyContact';
 import { motion, AnimatePresence } from "framer-motion";
 import heroBanner from "../assets/images-home/Herobanner.webp";
 import heroGroupImage from "../assets/images-home/hero-group-image.jpg";
@@ -52,9 +53,9 @@ import geoStatsVideo from "../assets/images-home/131857-751353013_small.mp4"; //
 // import secondmentTeamHero from "../assets/secondament-img/pexels-fauxels-3184339.webp"; // Replaced
 
 // New Image Assets
-import aboutImage from "../assets/images-home/about.jpg";
-import designEngImage from "../assets/images-home/design engineering p.JPG";
-import virtualEngImage from "../assets/images-home/virtual.jpeg";
+import aboutImage from "../assets/images-home/home-new-img/about-home-new.jpeg";
+import designEngImage from "../assets/images-home/home-new-img/design-eng.jpeg";
+import virtualEngImage from "../assets/images-home/home-new-img/virtual-t.JPG";
 import secondmentImage from "../assets/images-home/secondament.JPG";
 
 import { useState, useEffect, useRef } from "react";
@@ -112,39 +113,22 @@ const Home = () => {
   const statsRef = useRef(null);
   const location = useLocation();
 
-  // Services Data
+  // Services Data (Updated to match Menu Order)
   const servicesData = [
-    { title: "MEP Design & Drafting", desc: "Integrated mechanical, electrical, and plumbing systems.", link: "/services/design/mep-design", img: mepDesign },
-    { title: "Architectural BIM", desc: "Revolutionizing architecture with detailed and accurate BIM models.", link: "/services/design/architectural-bim", img: architecturalBim },
-    { title: "BIM Modelling", desc: "Precise and detailed BIM models.", link: "/services/design/bim-modelling", img: bimModelling },
+    { title: "Virtual Team for Hire", desc: "Hire own remote offshore architect team for modular construction needs.", link: "/services/virtual-team", img: virtualEngImage },
     { title: "HVAC Design", desc: "Efficient and sustainable HVAC solutions.", link: "/services/design/hvac-design", img: hvacDesign },
     { title: "Plumbing & Public Health", desc: "Reliable and safe plumbing systems.", link: "/services/design/plumbing-public-health", img: plumbing },
+    { title: "Firefighting Design", desc: "Comprehensive fire safety and suppression designs.", link: "/services/design/firefighting-design", img: mepDesign },
     { title: "Electrical System Design", desc: "Innovative electrical designs.", link: "/services/design/electrical-system-design", img: electricalSystem },
-    { title: "Extra Low Voltage Systems", desc: "Advanced Extra Low Voltage solutions.", link: "/services/design/elv", img: mepDesign }, // Using MEP as placeholder if ELV distinct img missing
-    { title: "Steel Structure", desc: "Accurate Tekla detailing.", link: "/services/design/steel-structure-detailing", img: hvacDesign } // Using HVAC as placeholder
+    { title: "ELV (Extra Low Voltage)", desc: "Advanced Extra Low Voltage solutions.", link: "/services/design/elv", img: mepDesign },
+    { title: "Architectural BIM", desc: "Revolutionizing architecture with detailed BIM models.", link: "/services/design/architectural-bim", img: architecturalBim },
+    { title: "Steel Structure Detailing", desc: "Accurate Tekla detailing and steel structures.", link: "/services/design/steel-structure-detailing", img: hvacDesign },
+    { title: "Structural", desc: "Advanced structural engineering and analysis.", link: "/services/design/structural", img: bimModelling },
+    { title: "Secondment Team", desc: "Get on-demand access to our pool of experienced professionals.", link: "/services/secondment-team", img: secondmentImage }
   ];
 
-  const featuredServices = servicesData.slice(0, 3);
-  const moreServices = servicesData.slice(3);
-
-  const [showMoreServices, setShowMoreServices] = useState(false);
-  const [currentMoreIndex, setCurrentMoreIndex] = useState(0);
+  // Carousel Logic Removed as per simplified list requirement, but keeping state if needed for future
   const [slideDirection, setSlideDirection] = useState('next');
-
-  // Auto-play Removed as per user request
-
-
-  const handleNextMore = (e) => {
-    e.stopPropagation();
-    setSlideDirection('next');
-    setCurrentMoreIndex((prev) => (prev + 1) % servicesData.length);
-  };
-
-  const handlePrevMore = (e) => {
-    e.stopPropagation();
-    setSlideDirection('prev');
-    setCurrentMoreIndex((prev) => (prev - 1 + servicesData.length) % servicesData.length);
-  };
 
   // Handle Hash Scroll (e.g. from Header Contact Us)
   useEffect(() => {
@@ -182,27 +166,7 @@ const Home = () => {
     console.log('Form submitted:', formData);
   };
 
-  // Business Divisions Data
-  const businessDivisions = [
-    {
-      title: "Design Engineering Projects",
-      description: "JSE manpower service aids you get the right candidates with right professional background at convenient cost.",
-      image: designEngImage,
-      link: "/services/design/architectural-bim"
-    },
-    {
-      title: "Virtual Team for Hire",
-      description: "Hire own remote offshore architect team for modular construction needs, ensuring cost-effective strategy.",
-      image: virtualEngImage,
-      link: "/services/virtual-team"
-    },
-    {
-      title: "Secondment Team",
-      description: "Get on-demand access to our pool of experienced professionals for bespoke solutions, tailored to meet your project needs.",
-      image: secondmentImage,
-      link: "/services/secondment-team"
-    }
-  ];
+
 
   // Stats Counting Logic
   useEffect(() => {
@@ -313,6 +277,8 @@ const Home = () => {
     }
   ];
 
+
+  // Auto-slide effect for Hero Carousel
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentHeroSlide((prev) => (prev + 1) % heroCarouselSlides.length);
@@ -717,40 +683,10 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="business-divisions-section">
-        <div className="divisions-stack-container">
-          {/* Header Text */}
-          <div className="divisions-header" style={{ maxWidth: '900px', margin: '0 auto 3rem auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            {/* <p className="dash-tagline" style={{ color: '#666' }}>Our Divisions</p> */}
-            <h2 className="section-title" style={{ fontFamily: "delight", fontWeight: "800", margin: '0', fontSize: '3rem', textAlign: 'center' }}>Our Business Divisions</h2>
-            {/* <p className="divisions-desc" style={{ marginTop: '1rem', color: '#64748b' }}>
-              By integrating technical expertise with practical project insight, we streamline decision-making.
-            </p> */}
-          </div>
-
-          {/* 3 Premium Cards */}
-          <div className="divisions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '3rem', width: '100%' }}>
-            {businessDivisions.map((division, index) => (
-              <Link key={index} to={division.link} className="division-card">
-                <img src={division.image} alt={division.title} className="division-bg-image" loading="lazy" />
-                <div className="division-overlay"></div>
-                <div className="division-content">
-                  <h3 className="division-title">{division.title}</h3>
-                  <p className="division-desc">{division.description}</p>
-                </div>
-                <div className="division-arrow-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
 
 
-
-      {/* Form Section */}
-      <section className="internship-form-section" id="contact-form">
+      {/* Sticky Contact Component */}
+      <StickyContact>
         <div className="form-container">
           {/* Left Side: Title & Info */}
           <div className="form-info-side">
@@ -825,7 +761,7 @@ const Home = () => {
             </form>
           </div>
         </div>
-      </section>
+      </StickyContact>
     </div >
   );
 };

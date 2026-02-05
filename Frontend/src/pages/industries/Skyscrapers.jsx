@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/Page.css'; // Shared page styles
 import './Skyscrapers.css';
+import StickyContact from '../../components/StickyContact';
 
 // Reuse content image similar to Healthcare (will use same image or specific if available)
 // Using h5 (hvac-design.webp) as a placeholder for content image if no specific one is requested, 
@@ -30,15 +31,9 @@ import constructionImg from '../../assets/images-home/skyscraper.webp';
 import developerImg from '../../assets/images-home/mep-design.webp';
 
 // Tech Logos
-import revitLogo from '../../assets/virtual-eng/software logos/autodesk-revit-seeklogo.png';
-import autocadLogo from '../../assets/virtual-eng/software logos/autocad-seeklogo.png';
-import projectwiseLogo from '../../assets/virtual-eng/software logos/projectwise.webp'; // Placeholder for Navisworks
 
-const ARCH_TECH_DATA = [
-    { name: 'Revit', abbr: 'Rv', bg: '#e6f7ff', img: revitLogo },
-    { name: 'Navisworks', abbr: 'Nw', bg: '#f9f0ff', img: projectwiseLogo },
-    { name: 'AutoCAD', abbr: 'AC', bg: '#fffbe6', img: autocadLogo }
-];
+
+// ARCH_TECH_DATA removed
 
 const ARCH_FACILITIES_DATA = [
     {
@@ -195,11 +190,10 @@ const Skyscrapers = () => {
         setFormData({ name: '', email: '', message: '' }); // Reset form
     };
 
+    const stickyContactRef = useState(null);
+
     const scrollToForm = () => {
-        const formSection = document.getElementById('contact-form');
-        if (formSection) {
-            formSection.scrollIntoView({ behavior: 'smooth' });
-        }
+        stickyContactRef.current?.open();
     };
 
     useEffect(() => {
@@ -402,33 +396,10 @@ const Skyscrapers = () => {
 
 
 
-            {/* Innovative Software Tools Section */}
-            <section className="skyscrapers-tech-section">
-                <div className="skyscrapers-tech-container">
-                    <div className="skyscrapers-header-center">
-                        <span className="dash-tagline" style={{ justifyContent: 'center' }}>TECHNOLOGIES</span>
-                        <h2 className="skyscrapers-heading-blue" style={{ fontSize: '3rem', textAlign: 'center' }}>Innovative Tools We Use</h2>
-                    </div>
-
-                    <div className="skyscrapers-tech-grid">
-                        {ARCH_TECH_DATA.map((tech, index) => (
-                            <div key={index} className="skyscrapers-tech-card">
-                                <div className="skyscrapers-tech-logo-wrapper" style={{ background: tech.bg }}>
-                                    {tech.img ? (
-                                        <img src={tech.img} alt={tech.name} className="skyscrapers-tech-logo-img" loading="lazy" decoding="async" />
-                                    ) : (
-                                        <span className="skyscrapers-tech-abbr">{tech.abbr}</span>
-                                    )}
-                                </div>
-                                <p className="skyscrapers-tech-name">{tech.name}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            {/* Innovative Software Tools Section Removed */}
 
             {/* Form Section */}
-            <section id="contact-form" className="skyscrapers-form-section">
+            <StickyContact ref={stickyContactRef}>
                 <div className="skyscrapers-form-container">
                     {/* Left Side: Title & Info */}
                     <div className="skyscrapers-form-info-side">
@@ -501,7 +472,8 @@ const Skyscrapers = () => {
                         </form>
                     </div>
                 </div>
-            </section>
+            </StickyContact>
+
         </div>
     );
 };

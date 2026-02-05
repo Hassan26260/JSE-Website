@@ -21,7 +21,8 @@ import MEPDesign from "./pages/services/design/MEPDesign";
 import PlumbingPublicHealth from "./pages/services/design/PlumbingPublicHealth";
 import HVACDesign from "./pages/services/design/HVACDesign";
 import FirefightingDesign from "./pages/services/design/FirefightingDesign";
-import BIMModelling from "./pages/services/design/BIMModelling";
+
+import Structural from "./pages/services/design/Structural";
 import ElectricalSystemDesign from "./pages/services/design/ElectricalSystemDesign";
 import ELV from "./pages/services/design/ELV";
 
@@ -119,7 +120,7 @@ function App() {
           <Route path="/services/design/plumbing-public-health" element={<MainLayout><PlumbingPublicHealth /></MainLayout>} />
           <Route path="/services/design/hvac-design" element={<MainLayout><HVACDesign /></MainLayout>} />
           <Route path="/services/design/firefighting-design" element={<MainLayout><FirefightingDesign /></MainLayout>} />
-          <Route path="/services/design/bim-modelling" element={<MainLayout><BIMModelling /></MainLayout>} />
+          <Route path="/services/design/structural" element={<MainLayout><Structural /></MainLayout>} />
           <Route path="/services/design/electrical-system-design" element={<MainLayout><ElectricalSystemDesign /></MainLayout>} />
           <Route path="/services/design/elv" element={<MainLayout><ELV /></MainLayout>} />
 

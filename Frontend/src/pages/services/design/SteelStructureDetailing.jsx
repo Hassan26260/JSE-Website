@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import StickyContact from '../../../components/StickyContact';
 import './ArchitecturalBIM.css';
 import heroImage from '../../../assets/images-home/architectural-bim.webp';
 
-import whatIsImage from '../../../assets/images-home/bim-modelling.webp';
+import whatIsImage from '../../../assets/images-home/steel structure/the-concept].png';
 
 // Portfolio Imports
 // Portfolio Imports
 import { STEEL_PROJECTS } from '../../../data/realPortfolio';
 
 
-// Tech Logos
-import revitLogo from '../../../assets/virtual-eng/software logos/autodesk-revit-seeklogo.png';
-import autocadLogo from '../../../assets/virtual-eng/software logos/autocad-seeklogo.png';
-import bentleyLogo from '../../../assets/virtual-eng/software logos/bentley.png';
-import microstationLogo from '../../../assets/virtual-eng/software logos/microstation.webp';
-import projectwiseLogo from '../../../assets/virtual-eng/software logos/projectwise.webp';
+// Tech Logos removed
 
 // Reuse images for services
 import s1 from '../../../assets/images-home/skyscraper.webp';
@@ -26,6 +22,8 @@ import s6 from '../../../assets/images-home/plumbing.webp';
 import s7 from '../../../assets/images-home/electrical-system.webp';
 // Reusing s6 or s4 for pure firefighting if specific image not found, defaulting to s4 (MEP) for now or similar.
 import s8 from '../../../assets/images-home/hero-group-image.jpg'; // Placeholder for ELV if no specific image
+import virtualEngImage from "../../../assets/images-home/home-new-img/virtual-t.JPG";
+import secondmentImage from "../../../assets/images-home/secondament.JPG";
 
 const SERVICES_DATA = [
   { title: "BIM consulting", img: s1, desc: "Strategic guidance for successful BIM adoption." },
@@ -86,25 +84,19 @@ const CHOOSE_JSE_DATA_2 = [
   }
 ];
 
-const BIM_TECH_DATA = [
-  { name: 'Revit', abbr: 'Rv', bg: '#e6f7ff', img: revitLogo },
-  { name: 'AutoCAD', abbr: 'AC', bg: '#fffbe6', img: autocadLogo },
-  { name: 'Navisworks', abbr: 'Nw', bg: '#f9f0ff', img: projectwiseLogo }, // ProjectWise placeholder for Navis
-  { name: 'Bentley', abbr: 'Be', bg: '#e6fffb', img: bentleyLogo },
-  { name: 'Civil 3D', abbr: 'C3D', bg: '#fff0f6', img: revitLogo }, // Revit placeholder
-  { name: 'Tekla', abbr: 'Tk', bg: '#f0f5ff', img: microstationLogo },
-  { name: 'SketchUp', abbr: 'Sk', bg: '#f6ffed', img: bentleyLogo } // Bentley placeholder
-];
+// BIM_TECH_DATA removed
 
 const ADDITIONAL_SERVICES = [
-  { title: "Steel Structure Detailing", link: "/services/design/steel-structure-detailing", img: s1 },
-  { title: "MEP Design", link: "/services/design/mep-design", img: s4 },
-  { title: "Plumbing & Public Health", link: "/services/design/plumbing-public-health", img: s6 },
+  { title: "Virtual Team for Hire", link: "/services/virtual-team", img: virtualEngImage },
   { title: "HVAC Design", link: "/services/design/hvac-design", img: s5 },
-  { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 }, // Reuse MEP
-  { title: "BIM Modelling", link: "/services/design/bim-modelling", img: s3 },
+  { title: "Plumbing & Public Health", link: "/services/design/plumbing-public-health", img: s6 },
+  { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 },
   { title: "Electrical System Design", link: "/services/design/electrical-system-design", img: s7 },
-  { title: "Extra Low Voltage", link: "/services/design/elv", img: s8 }
+  { title: "ELV (Extra Low Voltage)", link: "/services/design/elv", img: s4 },
+  { title: "Architectural BIM", link: "/services/design/architectural-bim", img: s2 },
+  { title: "Steel Structure Detailing", link: "/services/design/steel-structure-detailing", img: s5 },
+  { title: "Structural", link: "/services/design/structural", img: s3 },
+  { title: "Secondment Team", link: "/services/secondment-team", img: secondmentImage }
 ];
 
 const SteelStructureDetailing = () => {
@@ -126,6 +118,12 @@ const SteelStructureDetailing = () => {
     e.preventDefault();
     // Handle form submission logic here
     console.log('Form submitted:', formData);
+  };
+
+  const stickyContactRef = useRef(null);
+
+  const scrollToForm = () => {
+    stickyContactRef.current?.open();
   };
 
   useEffect(() => {
@@ -252,7 +250,7 @@ const SteelStructureDetailing = () => {
       </section>
 
       {/* Form Section */}
-      <section className="internship-form-section">
+      <StickyContact ref={stickyContactRef}>
         <div className="form-container">
           {/* Left Side: Title & Info */}
           <div className="form-info-side">
@@ -327,7 +325,7 @@ const SteelStructureDetailing = () => {
             </form>
           </div>
         </div>
-      </section>
+      </StickyContact>
 
       {/* Understanding BIM Levels Of Development Section */}
       <section className="arch-lod-section">
@@ -471,37 +469,21 @@ const SteelStructureDetailing = () => {
         </div>
       </section>
 
-      {/* Technologies Section */}
-      <section className="tech-section">
-        <div className="tech-container">
-          <h2 className="tech-heading-center">Transform Your Vision with Architectural BIM Precision</h2>
-          <div className="tech-grid">
-            {BIM_TECH_DATA.map((tech, index) => (
-              <div key={index} className="tech-card">
-                <div className="tech-logo-wrapper" style={{ background: tech.bg }}>
-                  {tech.img ? (
-                    <img src={tech.img} alt={tech.name} className="tech-logo-img" loading="lazy" decoding="async" />
-                  ) : (
-                    <span className="tech-abbr">{tech.abbr}</span>
-                  )}
-                </div>
-                <p className="tech-name">{tech.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Technologies Section Removed */}
 
       {/* Additional Services Menu Section */}
-      <section className="arch-additional-section">
-        <div className="arch-additional-container">
-          <h2 className="arch-additional-heading">Additional Services You Can Benefit From</h2>
-          <div className="arch-service-list">
+      <section className="solutions-list-section">
+        <div className="solutions-list-container">
+          <div className="solutions-header-group">
+            <h2 className="solutions-title">Additional Services You Can Benefit From</h2>
+          </div>
+          <div className="solutions-list-wrapper">
             {ADDITIONAL_SERVICES.map((item, index) => (
-              <a key={index} href={item.link} className="arch-service-item">
-                <span className="arch-service-text">{item.title}</span>
-                <div className="arch-service-img-wrapper">
-                  <img src={item.img} alt={item.title} className="arch-service-hover-img" loading="lazy" decoding="async" />
+              <a key={index} href={item.link} className="solution-list-item">
+                <span className="solution-list-text">{item.title}</span>
+                <span className="solution-list-arrow">→</span>
+                <div className="solution-item-img-wrapper">
+                  <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
                 </div>
               </a>
             ))}

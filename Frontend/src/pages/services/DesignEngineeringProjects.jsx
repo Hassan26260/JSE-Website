@@ -16,12 +16,7 @@ import pillar1 from "../../assets/images-home/skyscraper.webp";
 import pillar2 from "../../assets/images-home/architectural-bim.webp";
 import pillar3 from "../../assets/images-home/bim-modelling.webp";
 
-// Tech Logos
-import revitLogo from '../../assets/virtual-eng/software logos/autodesk-revit-seeklogo.png';
-import autocadLogo from '../../assets/virtual-eng/software logos/autocad-seeklogo.png';
-import bentleyLogo from '../../assets/virtual-eng/software logos/bentley.png';
-import microstationLogo from '../../assets/virtual-eng/software logos/microstation.webp';
-import projectwiseLogo from '../../assets/virtual-eng/software logos/projectwise.webp';
+
 
 const FEATURED_PROJECTS = ALL_REAL_PROJECTS.slice(0, 6).map(p => ({
     title: p.title,
@@ -47,23 +42,7 @@ const DESIGN_PILLARS = [
     }
 ];
 
-const ADVANCED_TECH_DATA = [
-    { name: 'Revit', abbr: 'Rv', bg: '#e6f7ff', img: revitLogo },
-    { name: 'AutoCAD', abbr: 'AC', bg: '#fffbe6', img: autocadLogo },
-    { name: 'Navisworks', abbr: 'Nw', bg: '#f9f0ff', img: projectwiseLogo },
-    { name: 'Bentley', abbr: 'Be', bg: '#e6fffb', img: bentleyLogo },
-    { name: 'Civil 3D', abbr: 'C3D', bg: '#fff0f6', img: revitLogo },
-    { name: 'Tekla', abbr: 'Tk', bg: '#f0f5ff', img: microstationLogo },
-    { name: '3ds Max', abbr: '3ds', bg: '#fff2e8', img: autocadLogo },
-    { name: 'Dynamo', abbr: 'Dy', bg: '#fcffe6', img: revitLogo },
-    { name: 'SketchUp', abbr: 'Sk', bg: '#f6ffed', img: bentleyLogo },
-    { name: 'Rhino', abbr: 'Rh', bg: '#fff7e6', img: microstationLogo },
-    { name: 'SolidWorks', abbr: 'SW', bg: '#fff1f0', img: projectwiseLogo },
-    { name: 'Catia', abbr: 'Ca', bg: '#f0f5ff', img: autocadLogo },
-    { name: 'Primavera', abbr: 'Pv', bg: '#fff0f6', img: bentleyLogo },
-    { name: 'Lumion', abbr: 'Lu', bg: '#e6ffec', img: microstationLogo },
-    { name: 'Etap', abbr: 'Et', bg: '#fff7e6', img: projectwiseLogo }
-];
+// ADVANCED_TECH_DATA removed
 
 const DesignEngineeringProjects = () => {
     const imageRef = useRef(null);
@@ -365,33 +344,7 @@ const DesignEngineeringProjects = () => {
                 </div>
             </section>
 
-            {/* Advanced Technologies Section */}
-            <section className="tech-section">
-                <div className="tech-container">
-                    <div className="virtual-why-header" style={{ marginBottom: '4rem', textAlign: 'center', alignItems: 'center' }}>
-                        <span className="dash-tagline symmetric" style={{ justifyContent: 'center' }}>Technologies</span>
-                        <h2 className="virtual-why-main-title">Advanced Technologies We Use</h2>
-                        <p className="design-desc-center" style={{ maxWidth: '800px', marginTop: '1rem' }}>
-                            Our professionals are experts in the latest BIM technologies ensuring your design engineering project benefits from cutting-edge design and modeling capabilities.
-                        </p>
-                    </div>
-
-                    <div className="tech-grid" style={{ justifyContent: 'center', margin: '0 auto' }}>
-                        {ADVANCED_TECH_DATA.map((tech, index) => (
-                            <div key={index} className="tech-card">
-                                <div className="tech-logo-wrapper" style={{ background: tech.bg }}>
-                                    {tech.img ? (
-                                        <img src={tech.img} alt={tech.name} className="tech-logo-img" loading="lazy" decoding="async" />
-                                    ) : (
-                                        <span className="tech-abbr">{tech.abbr}</span>
-                                    )}
-                                </div>
-                                <p className="tech-name">{tech.name}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            {/* Advanced Technologies Section Removed */}
 
             {/* Form Section */}
             <section id="contact-form" className="internship-form-section">

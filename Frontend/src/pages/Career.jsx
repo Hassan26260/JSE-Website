@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../styles/Career.css';
-import heroImage from '../assets/careers-page/pexels-yankrukov-7691728.webp';
+import heroImage from '../assets/images-home/career/enlarging-img (2).JPG';
 import CareerApplicationForm from './CareerApplicationForm';
 import api from '../services/api'; // Import API service
 
 // Life at JSE Images
-import lifeImg1 from '../assets/images-home/skyscraper.webp';
-import lifeImg2 from '../assets/images-home/architectural-bim.webp';
-import lifeImg3 from '../assets/images-home/bim-modelling.webp';
-import lifeImg4 from '../assets/images-home/hero-group-image.jpg';
+import lifeImg1 from '../assets/images-home/career/innovation&tech.jpg';
+import lifeImg2 from '../assets/images-home/career/growth&mentorship.JPG';
+import lifeImg3 from '../assets/images-home/career/global-impact.jpg';
+import lifeImg4 from '../assets/images-home/career/communtity&culture.jfif';
 
 // Real Projects Import
 import { ALL_REAL_PROJECTS } from '../data/realPortfolio';

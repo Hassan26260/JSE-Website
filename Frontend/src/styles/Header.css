@@ -259,6 +259,7 @@
   background: transparent;
 }
 
+/* Cursor for interactable items */
 .submenu-item {
   display: block;
   padding: 0.75rem 1.5rem;
@@ -266,11 +267,71 @@
   text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease;
   font-size: 0.95rem;
+  position: relative;
+  cursor: pointer;
 }
 
 .submenu-item:hover {
   background-color: #f5f5f5;
   color: #144AE0;
+}
+
+.submenu-item.has-submenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Arrow styling */
+.submenu-item.has-submenu::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 1.5rem;
+  /* Bigger arrow */
+  color: #999;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  line-height: 1;
+}
+
+.submenu-item.has-submenu.open::after {
+  transform: rotate(90deg);
+  /* Rotate down when open */
+  color: #144AE0;
+}
+
+/* Accordion Submenu Styles */
+.submenu .accordion-submenu {
+  position: static;
+  /* Flow with content */
+  box-shadow: none;
+  /* Remove shadow */
+  background-color: #f9f9f9;
+  /* Slightly darker bg for nesting */
+  min-width: 100%;
+  border-radius: 0;
+  padding: 0;
+  display: block;
+  /* Always block if rendered */
+  animation: slideDown 0.3s ease-out;
+}
+
+.submenu .accordion-submenu .submenu-item {
+  padding-left: 2.5rem;
+  /* Indent nested items */
+  font-size: 0.9rem;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Mobile responsiveness */

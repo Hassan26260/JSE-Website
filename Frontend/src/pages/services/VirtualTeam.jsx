@@ -2,36 +2,38 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "../../styles/Page.css";
 import "./VirtualTeam.css";
+import StickyContact from '../../components/StickyContact';
 import heroImage from "../../assets/virtual-eng/pexels-fauxels-3184405.webp";
-import conceptImage from "../../assets/other/Unlock the Secrets of Design Principles for Impactful Architectural Presentations _ Learn Architecture Online.jpg";
+import conceptImage from "../../assets/images-home/virtual-te/virtual-about.jpeg";
 
 // Specialization Images
-import archImg from "../../assets/images-home/architectural-bim.webp";
-import hvacImg from "../../assets/images-home/hvac-design.webp";
-import plumbImg from "../../assets/images-home/plumbing.webp";
-import mepImg from "../../assets/images-home/mep-design.webp";
-import elvImg from "../../assets/images-home/bim-modelling.webp"; // Placeholder for ELV
-import elecImg from "../../assets/images-home/electrical-system.webp";
-import steelImg from "../../assets/images-home/skyscraper.webp"; // Placeholder for Steel
-import fireImg from "../../assets/images-home/mep-design.webp"; // Placeholder for Fire
+// import archImg from "../../assets/images-home/architectural-bim.webp"; // Using s2
+// import hvacImg from "../../assets/images-home/hvac-design.webp"; // Using s5
+// import plumbImg from "../../assets/images-home/plumbing.webp"; // Using s6
+// import mepImg from "../../assets/images-home/mep-design.webp"; // Using s4 (Fire uses s4 too in other files, checking mapping)
+// import elvImg from "../../assets/images-home/bim-modelling.webp"; // Placeholder for ELV
+// import elecImg from "../../assets/images-home/electrical-system.webp"; // Using s7
+// import steelImg from "../../assets/images-home/skyscraper.webp"; // Placeholder for Steel, s1?
+// import fireImg from "../../assets/images-home/mep-design.webp"; // Placeholder for Fire
+
 import heroGroupImage from "../../assets/images-home/hero-group-image.jpg";
 
-// Software Logos
-import revitImg from "../../assets/virtual-eng/software logos/autodesk-revit-seeklogo.png";
-import cadImg from "../../assets/virtual-eng/software logos/autocad-seeklogo.png";
-import microImg from "../../assets/virtual-eng/software logos/microstation.webp";
-import pwImg from "../../assets/virtual-eng/software logos/projectwise.webp";
-import teklaImg from "../../assets/virtual-eng/software logos/bentley.png"; // Renamed file (detected as png)
+// Standardized Images for Additional Services
+import s1 from '../../assets/images-home/skyscraper.webp';
+import s2 from '../../assets/images-home/architectural-bim.webp';
+import s3 from '../../assets/images-home/bim-modelling.webp';
+import s4 from '../../assets/images-home/mep-design.webp'; // Firefighting / MEP
+import s5 from '../../assets/images-home/hvac-design.webp'; // HVAC / Steel
+import s6 from '../../assets/images-home/plumbing.webp';
+import s7 from '../../assets/images-home/electrical-system.webp';
+import s8 from '../../assets/images-home/hero-group-image.jpg';
+import virtualEngImage from "../../assets/images-home/home-new-img/virtual-t.JPG";
+import secondmentImage from "../../assets/images-home/secondament.JPG";
+
 
 
 // Technologies Data
-const TECHNOLOGIES_DATA = [
-  { name: "Revit", bg: "#e0f2fe", img: revitImg }, // Slight Blue
-  { name: "AutoCAD", bg: "#fee2e2", img: cadImg }, // Red (Light)
-  { name: "Bentley", bg: "#000000", img: teklaImg }, // Black
-  { name: "MicroStation", bg: "#ffffff", img: microImg }, // White
-  { name: "ProjectWise", bg: "#ffffff", img: pwImg } // White
-];
+// TECHNOLOGIES_DATA removed
 
 // Hardware Data with SVG Icons (Bento Style)
 const HARDWARE_DATA = [
@@ -86,16 +88,18 @@ const COMMUNICATION_DATA = [
   }
 ];
 
-// Specialization Cards Data
-const SPECIALIZATIONS = [
-  { title: "Architectural BIM", img: archImg, link: "/services/design/architectural-bim" },
-  { title: "HVAC Design", img: hvacImg, link: "/services/design/hvac-design" },
-  { title: "Plumbing & Public Health", img: plumbImg, link: "/services/design/plumbing-public-health" },
-  { title: "MEP Design", img: mepImg, link: "/services/design/mep-design" },
-  { title: "Extra Low Voltage", img: elvImg, link: "/services/design/elv" },
-  { title: "Electrical System Design", img: elecImg, link: "/services/design/electrical-system-design" },
-  { title: "Steel Structure Detailing", img: steelImg, link: "/services/design/steel-structure-detailing" },
-  { title: "Firefighting System Design", img: fireImg, link: "/services/design/firefighting-design" }
+// Additional Services Data (Standardized)
+const ADDITIONAL_SERVICES = [
+  { title: "Virtual Team for Hire", link: "/services/virtual-team", img: virtualEngImage },
+  { title: "HVAC Design", link: "/services/design/hvac-design", img: s5 },
+  { title: "Plumbing & Public Health", link: "/services/design/plumbing-public-health", img: s6 },
+  { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 },
+  { title: "Electrical System Design", link: "/services/design/electrical-system-design", img: s7 },
+  { title: "ELV (Extra Low Voltage)", link: "/services/design/elv", img: s4 },
+  { title: "Architectural BIM", link: "/services/design/architectural-bim", img: s2 },
+  { title: "Steel Structure Detailing", link: "/services/design/steel-structure-detailing", img: s5 },
+  { title: "Structural", link: "/services/design/structural", img: s3 },
+  { title: "Secondment Team", link: "/services/secondment-team", img: secondmentImage }
 ];
 
 // Why Choose Us Data
@@ -132,113 +136,9 @@ const PROCESS_STEPS = [
   }
 ];
 
-// Reviews Data (Replicated from Home.jsx)
-const REVIEWS_DATA = [
-  {
-    text: "The architectural BIM models for our resort provided by JSE were incredibly detailed and accurate. Their team’s expertise helped us avoid costly design revisions!",
-    author: "Ganesh S.",
-    role: "Senior Architect"
-  },
-  {
-    text: "JSE transformed our complex design vision into reality with their comprehensive BIM solutions. Their attention to detail and innovation exceeded our expectations!",
-    author: "Sarah L.",
-    role: "Project Manager"
-  },
-  {
-    text: "JSE’s Tekla detailing services were a game changer for our project. Their accuracy and attention to detail streamlined our entire construction process.",
-    author: "Krishna Rao.",
-    role: "Project Engineer"
-  },
-  {
-    text: "JSE’s firefighting design services ensured our high-rise project met all safety standards. Their expertise in compliance saved us time and future headaches.",
-    author: "Daniel H.",
-    role: "Safety Officer"
-  },
-  {
-    text: "We needed skilled BIM experts to support our in-house team, and JSE’s virtual team was the perfect fit. Their expertise and seamless collaboration made remote work feel local!",
-    author: "Ahmed M.",
-    role: "Engineering Lead"
-  },
-  {
-    text: "JSE’s MEP design services are top-notch. Their precision and clear communication helped streamline our stadium project, ensuring a flawless execution!",
-    author: "Emily R.",
-    role: "Operations Head"
-  }
-];
 
-const ClientLogoGrid = () => {
-  // Dynamically import all images from the client-logo directory
-  const modules = import.meta.glob('../../assets/client-logo/*.{png,jpg,jpeg,svg,PNG,JPG,svg}', { eager: true });
-  const logos = Object.values(modules).map((mod) => mod.default);
-
-  // Group logos into rows of 8, 7, 8, 7...
-  const rows = [];
-  let currentIndex = 0;
-  let rowSize = 8;
-
-  while (currentIndex < logos.length) {
-    rows.push(logos.slice(currentIndex, currentIndex + rowSize));
-    currentIndex += rowSize;
-    rowSize = rowSize === 8 ? 7 : 8; // Toggle between 8 and 7
-  }
-
-  return (
-    <div className="client-logo-rows">
-      {rows.map((row, rowIndex) => (
-        <div key={rowIndex} className={`logo-row count-${row.length}`}>
-          {row.map((logo, logoIndex) => (
-            <div key={`${rowIndex}-${logoIndex}`} className="client-logo-item">
-              <img
-                src={logo}
-                alt={`Client Logo ${rowIndex}-${logoIndex}`}
-                loading="lazy"
-                decoding="async"
-                width="150"
-                height="80"
-              />
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
-  );
-};
 
 const VirtualTeam = () => {
-  // Reviews Logic
-  const [currentReview, setCurrentReview] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(true);
-  const [visibleCards, setVisibleCards] = useState(3);
-
-  useEffect(() => {
-    const updateVisibleCards = () => {
-      if (window.innerWidth >= 1300) {
-        setVisibleCards(3);
-      } else if (window.innerWidth >= 850) {
-        setVisibleCards(2);
-      } else {
-        setVisibleCards(1);
-      }
-    };
-
-    updateVisibleCards();
-    window.addEventListener('resize', updateVisibleCards);
-    return () => window.removeEventListener('resize', updateVisibleCards);
-  }, []);
-
-  const nextReview = () => {
-    if (currentReview < REVIEWS_DATA.length - visibleCards) {
-      setIsTransitioning(true);
-      setCurrentReview((prev) => prev + 1);
-    }
-  };
-
-  const prevReview = () => {
-    if (currentReview > 0) {
-      setIsTransitioning(true);
-      setCurrentReview((prev) => prev - 1);
-    }
-  };
 
   const [formData, setFormData] = useState({
     name: '',
@@ -257,11 +157,10 @@ const VirtualTeam = () => {
     // Add submission logic here
   };
 
+  const stickyContactRef = useState(null);
+
   const scrollToForm = () => {
-    const formSection = document.getElementById('contact-form');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    stickyContactRef.current?.open();
   };
 
   return (
@@ -316,19 +215,24 @@ const VirtualTeam = () => {
       </section>
 
       {/* Specialization Section */}
-      <section className="virtual-spec-section">
-        <div className="virtual-spec-container">
-          <h2 className="virtual-spec-title">Our Areas Of Specialization</h2>
-          <div className="virtual-spec-grid">
-            {SPECIALIZATIONS.map((item, index) => (
-              <Link to={item.link} key={index} className="virtual-spec-card">
-                <div className="virtual-spec-img-wrapper">
-                  <img src={item.img} alt={item.title} className="virtual-spec-img" loading="lazy" decoding="async" />
+      {/* Solutions Beyond Software Section */}
+      <section className="solutions-list-section">
+        <div className="solutions-list-container">
+          <div className="solutions-header-group">
+            <h2 className="solutions-title">SOLUTIONS BEYOND SOFTWARE</h2>
+            <p className="solutions-description">
+              We go beyond standard software solutions, providing comprehensive engineering and BIM services tailored to your project's unique needs.
+            </p>
+          </div>
+          <div className="solutions-list-wrapper">
+            {ADDITIONAL_SERVICES.map((item, index) => (
+              <a key={index} href={item.link} className="solution-list-item">
+                <span className="solution-list-text">{item.title}</span>
+                <span className="solution-list-arrow">→</span>
+                <div className="solution-item-img-wrapper">
+                  <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
                 </div>
-                <div className="virtual-spec-content">
-                  <h3 className="virtual-spec-card-title">{item.title}</h3>
-                </div>
-              </Link>
+              </a>
             ))}
           </div>
         </div>
@@ -488,7 +392,7 @@ const VirtualTeam = () => {
       </section>
 
       {/* Form Section (Replicated from Internship) */}
-      <section id="contact-form" className="internship-form-section">
+      <StickyContact ref={stickyContactRef}>
         <div className="form-container">
           {/* Left Side: Title & Info */}
           <div className="form-info-side">
@@ -569,7 +473,7 @@ const VirtualTeam = () => {
             </form>
           </div>
         </div>
-      </section >
+      </StickyContact>
 
       {/* Advanced Technologies Section */}
       <section className="tech-section">
@@ -582,31 +486,7 @@ const VirtualTeam = () => {
             </p>
           </div>
 
-          {/* Software Row */}
-          <div className="tech-row">
-            <div className="tech-side-heading">
-              <h3>Software</h3>
-            </div>
-            <div className="tech-line-divider"></div>
-            <div className="tech-content-side">
-              <div className="tech-grid">
-                {TECHNOLOGIES_DATA.map((tech, index) => (
-                  <div key={index} className="tech-card">
-                    <div className="tech-logo-wrapper" style={{ background: tech.bg }}>
-                      {tech.img ? (
-                        <img src={tech.img} alt={tech.name} className="tech-logo-img" loading="lazy" decoding="async" />
-                      ) : (
-                        <span className="tech-abbr">{tech.abbr}</span>
-                      )}
-                    </div>
-                    <p className="tech-name">{tech.name}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="tech-separator"></div>
+          {/* Software Row Removed */}
 
           {/* Hardware Row */}
           <div className="tech-row">
@@ -654,71 +534,7 @@ const VirtualTeam = () => {
         </div>
       </section>
 
-      <section className="client-network-section">
-        <div className="tech-container">
-          <div className="virtual-why-header" style={{ marginBottom: '4rem' }}>
-            <span className="dash-tagline">Trusted By</span>
-            <h2 className="virtual-why-main-title">Our Valued Customers</h2>
-            <p className="tech-desc-left">Here are our customers, we aided in designing smart sustainable future</p>
-          </div>
-          <div className="client-logo-grid-wrapper">
-            <ClientLogoGrid />
-          </div>
-        </div>
-      </section>
 
-      {/* Reviews Section */}
-      <section className="reviews-section">
-        <div className="tech-container">
-          <div className="virtual-why-header virtual-header-row" style={{ marginBottom: '4rem' }}>
-            <div className="header-text-group" style={{ maxWidth: '700px' }}>
-              <span className="dash-tagline">Client Success</span>
-              <h2 className="virtual-why-main-title">What Our Clients Say</h2>
-              <p className="tech-desc-left">
-                Our clients' satisfaction is our top priority. Here’s what our clients say about their experiences with us.
-              </p>
-            </div>
-            <div className="reviews-nav-controls" style={{ paddingBottom: '1rem' }}>
-              <button
-                className="review-nav-btn prev-btn"
-                onClick={prevReview}
-                disabled={currentReview === 0}
-                style={{ opacity: currentReview === 0 ? 0.5 : 1, cursor: currentReview === 0 ? 'not-allowed' : 'pointer' }}
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
-              </button>
-              <button
-                className="review-nav-btn next-btn"
-                onClick={nextReview}
-                disabled={currentReview >= REVIEWS_DATA.length - visibleCards}
-                style={{ opacity: currentReview >= REVIEWS_DATA.length - visibleCards ? 0.5 : 1, cursor: currentReview >= REVIEWS_DATA.length - visibleCards ? 'not-allowed' : 'pointer' }}
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
-              </button>
-            </div>
-          </div>
-
-          <div className="reviews-carousel-outer">
-            <div
-              className="reviews-track"
-              style={{
-                transform: `translateX(calc(-1 * ${currentReview} * (400px + 2rem)))`,
-                transition: 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)'
-              }}
-            >
-              {REVIEWS_DATA.map((review, index) => (
-                <div key={index} className="review-card">
-                  <p className="review-quote">"{review.text}"</p>
-                  <div className="review-footer">
-                    <h4 className="review-author">{review.author}</h4>
-                    <p className="review-role">{review.role}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section >
 
 
     </div >
