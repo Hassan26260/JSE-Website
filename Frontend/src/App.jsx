@@ -44,12 +44,10 @@ import History from './pages/History';
 import CivilEngineering from "./pages/internship/CivilEngineering";
 import MechanicalEngineering from "./pages/internship/MechanicalEngineering";
 import ElectricalElectronicsEngineering from "./pages/internship/ElectricalElectronicsEngineering";
-import ElectronicsCommunicationEngineering from "./pages/internship/ElectronicsCommunicationEngineering";
+
 import MechatronicsEngineering from "./pages/internship/MechatronicsEngineering";
 import Architectural from "./pages/internship/Architectural";
-import StructuralEnvironmentalEngineering from "./pages/internship/StructuralEnvironmentalEngineering";
-import ElectricalArchitectural from "./pages/internship/ElectricalArchitectural";
-import OtherInternships from "./pages/internship/OtherInternships";
+
 
 // Admin Imports
 import { AuthProvider } from "./context/AuthContext";
@@ -128,12 +126,10 @@ function App() {
           <Route path="/internship/civil-engineering" element={<MainLayout><CivilEngineering /></MainLayout>} />
           <Route path="/internship/mechanical-engineering" element={<MainLayout><MechanicalEngineering /></MainLayout>} />
           <Route path="/internship/electrical-electronics-engineering" element={<MainLayout><ElectricalElectronicsEngineering /></MainLayout>} />
-          <Route path="/internship/electronics-communication-engineering" element={<MainLayout><ElectronicsCommunicationEngineering /></MainLayout>} />
+
           <Route path="/internship/mechatronics-engineering" element={<MainLayout><MechatronicsEngineering /></MainLayout>} />
           <Route path="/internship/architectural" element={<MainLayout><Architectural /></MainLayout>} />
-          <Route path="/internship/structural-environmental-engineering" element={<MainLayout><StructuralEnvironmentalEngineering /></MainLayout>} />
-          <Route path="/internship/electrical-architectural" element={<MainLayout><ElectricalArchitectural /></MainLayout>} />
-          <Route path="/internship/other-internships" element={<MainLayout><OtherInternships /></MainLayout>} />
+
         </Routes>
       </AuthProvider>
     </BrowserRouter>

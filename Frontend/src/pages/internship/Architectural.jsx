@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import api from '../../services/api';
 import '../../styles/Internship.css';
 import internImage from '../../assets/images-home/intern-dep/architectural-about.JPG';
-import highlightsImage from '../../assets/intern-civil/pexels-olly-3769021.webp';
 import StickyContact from '../../components/StickyContact';
 
 // Feature Images
@@ -14,53 +13,6 @@ import img4 from '../../assets/images-home/mep-design.webp';
 import img5 from '../../assets/images-home/hvac-design.webp';
 import img6 from '../../assets/images-home/plumbing.webp';
 
-// Simple Counting Component
-const AnimatedNumber = ({ end, duration = 2000 }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    let observer;
-    const currentRef = ref.current;
-
-    const startAnimation = () => {
-      let start = 0;
-      const endNum = parseInt(end, 10);
-      if (start === endNum) return;
-
-      const stepTime = Math.abs(Math.floor(duration / endNum));
-
-      const timer = setInterval(() => {
-        start += 1;
-        setCount(start);
-        if (start === endNum) clearInterval(timer);
-      }, stepTime);
-
-      // Cleanup interval on unmount or re-render effectively
-      return () => clearInterval(timer);
-    };
-
-    if (currentRef) {
-      observer = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting) {
-            startAnimation();
-            observer.disconnect(); // Run once
-          }
-        },
-        { threshold: 0.1 }
-      );
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (observer && currentRef) observer.unobserve(currentRef);
-    };
-  }, [end, duration]);
-
-  return <span ref={ref}>{count}</span>;
-};
-
 const Architectural = () => {
   // Accordion State
   const [activeAccordion, setActiveAccordion] = useState(null);
@@ -68,19 +20,19 @@ const Architectural = () => {
   const programDetails = [
     {
       title: "Internship Duration",
-      content: "A comprehensive 100-day journey designed to transform you from a student into a site-ready engineer. The curriculum is paced to ensure deep learning without overwhelming you."
+      content: "100 day program"
     },
     {
-      title: "Program Scope",
-      content: "Hands-on experience with real-world MEP projects using industry-standard tools like AutoCAD and Revit. You will work on actual project simulations."
+      title: "Program",
+      content: "BIM Modeling, Revit Architecture, Lumion & SketchUp"
     },
     {
       title: "Placement Guarantee",
-      content: "We don't just train you; we launch your career. 100% placement assistance with top firms upon successful completion of the program."
+      content: "100% placement support for candidates with no academic arrears."
     },
     {
       title: "Batch Schedule",
-      content: "Enrollment is currently OPEN. Flexible batch timings available to suit your academic schedule. Contact us to reserve your spot in the upcoming cohort."
+      content: "Enrollment OPEN"
     }
   ];
   // Form State
@@ -119,7 +71,7 @@ const Architectural = () => {
       data.append('email', formData.email);
       data.append('mobile', formData.mobile);
       data.append('message', formData.message);
-      data.append('internshipTitle', 'Architectural (B.Arch)');
+      data.append('internshipTitle', 'Architectural');
 
       if (formData.resume) {
         data.append('resume', formData.resume);
@@ -202,9 +154,12 @@ const Architectural = () => {
       <section className="internship-hero-section">
         <div className="internship-hero-content">
           <div className="internship-breadcrumbs">
-            internship &gt; <span>Architectural (B.Arch)</span>
+            internship &gt; <span>Architectural</span>
           </div>
-          <h1 className="internship-hero-title">Architectural (B.Arch)</h1>
+          <h1 className="internship-hero-title">Internship for Architectural Students</h1>
+          <p className="internship-hero-subtitle" style={{ color: '#fff', fontSize: '1.5rem', marginTop: '1rem', maxWidth: '800px' }}>
+            Design the future with expert mentorship and real-world projects.
+          </p>
         </div>
       </section>
 
@@ -214,13 +169,13 @@ const Architectural = () => {
 
           {/* Left: Text */}
           <div className="internship-text-side">
-            <h2 className="internship-heading">Build Your Civil Engineering Career the Smart Way</h2>
+            <h2 className="internship-heading">Master the Art of Architectural Design & BIM</h2>
             <div className="internship-desc">
               <p>
-                Join our Civil Engineering internship program to gain hands-on experience in structural analysis, design, and construction management. You will work alongside experienced engineers on real-world projects, applying theoretical knowledge to practical challenges.
+                Unlock your creative potential with JSE’s Architectural Internship program. This course is meticulously designed for students and fresh graduates who want to master the art of digital construction and design. From 3D visualization to BIM implementation, you will learn to bring architectural concepts to life using cutting-edge tools.
               </p>
               <p>
-                Our program focuses on developing core competencies in CAD software, site supervision, and project estimation. Whether you are interested in residential, commercial, or infrastructure projects, JSE allows you to explore diverse aspects of the industry.
+                At JSE Engineering, we don’t just teach software; we teach you how to think like an architect and execute like a pro. Get ready to work on international projects and build a portfolio that stands out globally. Outstanding performers may also get the chance to work on Global projects across the UK, US, and Middle East.
               </p>
             </div>
 
@@ -237,7 +192,7 @@ const Architectural = () => {
           {/* Right: Image */}
           <div className="internship-image-side">
             <div className="internship-image-wrapper">
-              <img src={internImage} alt="Civil Engineering Internship" className="internship-img" loading="lazy" />
+              <img src={internImage} alt="Architectural Internship" className="internship-img" loading="lazy" />
             </div>
           </div>
 
@@ -251,7 +206,7 @@ const Architectural = () => {
           {/* Single Column Content Side */}
           <div className="highlights-content-side" style={{ width: '100%', maxWidth: '1600px' }}>
             <h2 className="highlights-title" style={{ fontFamily: 'Delight', textAlign: 'center', fontSize: '4rem', marginBottom: '1.5rem', color: '#144AE0', width: '100%' }}>
-              Program & Duration
+              Architectural Internship Program & Duration
             </h2>
             <p className="highlights-desc" style={{ textAlign: 'center', margin: '0 auto 4rem auto', maxWidth: '800px', fontSize: '1.2rem', color: '#475569' }}>
               A structured pathway to professional excellence. Explore the key details of our Architectural Internship below.
@@ -341,7 +296,7 @@ const Architectural = () => {
             </h2>
             <div className="internship-desc" style={{ marginBottom: '2.5rem' }}>
               <p style={{ fontSize: '1.1rem', color: '#475569', lineHeight: '1.6' }}>
-                Grow your skills, gain real experience, and learn how JSE Engineering Internship works outside the classroom. Our comprehensive program is designed to bridge the gap between academic theory and industry reality.
+                Build your skills, get real-world exposure, and discover how Architectural Design truly works at JSE
               </p>
             </div>
             <button className="apply-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -438,7 +393,7 @@ const Architectural = () => {
           <div className="form-info-side">
             <h2 className="form-heading">Join Our Team</h2>
             <p className="form-subtext">
-              Ready to kickstart your career? Apply now for our Civil Engineering Internship Program.
+              Ready to kickstart your career? Apply now for our Architectural Internship Program.
             </p>
 
             <div className="form-contact-details">

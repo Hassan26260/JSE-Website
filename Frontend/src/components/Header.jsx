@@ -202,9 +202,6 @@ const Header = () => {
                 <Link to="/internship/civil-engineering" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
                   Civil Engineering
                 </Link>
-                <Link to="/internship/other-internships" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
-                  Other Departments
-                </Link>
               </div>
             )}
           </div>

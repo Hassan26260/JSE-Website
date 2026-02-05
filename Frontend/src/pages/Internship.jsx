@@ -84,20 +84,15 @@ const Internship = () => {
       description: "Experience in MEP services (HVAC & Firefighting) involving design, drafting, and coordination."
     },
     {
-      title: "Electrical & Electronics Engineering (EEE)",
+      title: "Electrical & Electronics Engineering",
       path: "/internship/electrical-electronics-engineering",
       description: "Practical exposure to electrical system design, load calculation, and on-site electrical installations."
     },
     {
-      title: "Architectural (B.Arch)",
+      title: "Architectural",
       path: "/internship/architectural",
       description: "Architectural BIM modeling, space planning, and visualization using advanced design software."
-    },
-    {
-      title: "Other Departments",
-      path: "/internship/other-internships",
-      description: "Flexible internship programs covering various other engineering and technical disciplines."
-    },
+    }
   ];
 
   const tools = [

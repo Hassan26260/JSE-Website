@@ -663,9 +663,9 @@ const Home = () => {
           {/* Right: Vertical Stats */}
           <div className="geo-stats-content">
             {[
-              { number: "66%", label: "Employee Owned" },
-              { number: "669+", label: "Active Projects" },
-              { number: "4,015+", label: "Global Deliveries" }
+              { number: "70%", label: "Employee Owned" },
+              { number: "700+", label: "Active Projects" },
+              { number: "4,000+", label: "Global Deliveries" }
             ].map((stat, index) => (
               <motion.div
                 key={index}

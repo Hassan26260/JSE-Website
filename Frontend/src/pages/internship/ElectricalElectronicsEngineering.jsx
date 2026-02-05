@@ -14,53 +14,6 @@ import img4 from '../../assets/images-home/mep-design.webp';
 import img5 from '../../assets/images-home/hvac-design.webp';
 import img6 from '../../assets/images-home/plumbing.webp';
 
-// Simple Counting Component
-const AnimatedNumber = ({ end, duration = 2000 }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    let observer;
-    const currentRef = ref.current;
-
-    const startAnimation = () => {
-      let start = 0;
-      const endNum = parseInt(end, 10);
-      if (start === endNum) return;
-
-      const stepTime = Math.abs(Math.floor(duration / endNum));
-
-      const timer = setInterval(() => {
-        start += 1;
-        setCount(start);
-        if (start === endNum) clearInterval(timer);
-      }, stepTime);
-
-      // Cleanup interval on unmount or re-render effectively
-      return () => clearInterval(timer);
-    };
-
-    if (currentRef) {
-      observer = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting) {
-            startAnimation();
-            observer.disconnect(); // Run once
-          }
-        },
-        { threshold: 0.1 }
-      );
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (observer && currentRef) observer.unobserve(currentRef);
-    };
-  }, [end, duration]);
-
-  return <span ref={ref}>{count}</span>;
-};
-
 const ElectricalElectronicsEngineering = () => {
   // Accordion State
   const [activeAccordion, setActiveAccordion] = useState(null);
@@ -72,7 +25,7 @@ const ElectricalElectronicsEngineering = () => {
     },
     {
       title: "Program Scope",
-      content: "Hands-on experience with real-world MEP projects using industry-standard tools like AutoCAD and Revit. You will work on actual project simulations."
+      content: "Hands-on experience with real-world MEP projects using industry-standard tools like AutoCAD, Revit, and Dialux. You will work on actual project simulations."
     },
     {
       title: "Placement Guarantee",
@@ -166,7 +119,7 @@ const ElectricalElectronicsEngineering = () => {
   const benefits = [
     {
       title: "Certified Training",
-      desc: "Receive industry-recognized certification upon completion, validating your skills in modern civil engineering tools and methodologies.",
+      desc: "Receive industry-recognized certification upon completion, validating your skills in modern electrical engineering tools and methodologies.",
       img: img1
     },
     {
@@ -181,7 +134,7 @@ const ElectricalElectronicsEngineering = () => {
     },
     {
       title: "Software Mastery",
-      desc: "Master industry-standard software like Tekla, AutoCAD, and Revit through intensive hands-on sessions and real-time problem solving.",
+      desc: "Master industry-standard software like Dialux, AutoCAD, and Revit through intensive hands-on sessions and real-time problem solving.",
       img: img4
     },
     {
@@ -202,9 +155,12 @@ const ElectricalElectronicsEngineering = () => {
       <section className="internship-hero-section">
         <div className="internship-hero-content">
           <div className="internship-breadcrumbs">
-            internship &gt; <span>Electrical & Electronics Engineering (EEE)</span>
+            internship &gt; <span>Electrical & Electronics Engineering</span>
           </div>
-          <h1 className="internship-hero-title">Electrical & Electronics Engineering (EEE)</h1>
+          <h1 className="internship-hero-title">Electrical & Electronics Engineering</h1>
+          <p className="internship-hero-subtitle" style={{ color: '#fff', fontSize: '1.5rem', marginTop: '1rem', maxWidth: '800px' }}>
+            Power up your career with hands-on electrical design and engineering experience.
+          </p>
         </div>
       </section>
 
@@ -214,13 +170,13 @@ const ElectricalElectronicsEngineering = () => {
 
           {/* Left: Text */}
           <div className="internship-text-side">
-            <h2 className="internship-heading">Build Your Civil Engineering Career the Smart Way</h2>
+            <h2 className="internship-heading">Launch your Electrical Career with confidence</h2>
             <div className="internship-desc">
               <p>
-                Join our Civil Engineering internship program to gain hands-on experience in structural analysis, design, and construction management. You will work alongside experienced engineers on real-world projects, applying theoretical knowledge to practical challenges.
+                Join our Electrical & Electronics Engineering internship program to gain hands-on experience in electrical system design, load calculation, and on-site installations. You will work alongside experienced engineers on real-world projects, applying theoretical knowledge to practical challenges.
               </p>
               <p>
-                Our program focuses on developing core competencies in CAD software, site supervision, and project estimation. Whether you are interested in residential, commercial, or infrastructure projects, JSE allows you to explore diverse aspects of the industry.
+                Our program focuses on developing core competencies in CAD software, Dialux lighting design, and MEP coordination. Whether you are interested in commercial, residential, or industrial projects, JSE allows you to explore diverse aspects of the industry.
               </p>
             </div>
 
@@ -237,7 +193,7 @@ const ElectricalElectronicsEngineering = () => {
           {/* Right: Image */}
           <div className="internship-image-side">
             <div className="internship-image-wrapper">
-              <img src={internImage} alt="Civil Engineering Internship" className="internship-img" loading="lazy" />
+              <img src={internImage} alt="Electrical Engineering Internship" className="internship-img" loading="lazy" />
             </div>
           </div>
 
@@ -251,7 +207,7 @@ const ElectricalElectronicsEngineering = () => {
           {/* Single Column Content Side */}
           <div className="highlights-content-side" style={{ width: '100%', maxWidth: '1600px' }}>
             <h2 className="highlights-title" style={{ fontFamily: 'Delight', textAlign: 'center', fontSize: '4rem', marginBottom: '1.5rem', color: '#144AE0', width: '100%' }}>
-              Program & Duration
+              Placement & Duration
             </h2>
             <p className="highlights-desc" style={{ textAlign: 'center', margin: '0 auto 4rem auto', maxWidth: '800px', fontSize: '1.2rem', color: '#475569' }}>
               A structured pathway to professional excellence. Explore the key details of our EEE Internship below.
@@ -341,7 +297,7 @@ const ElectricalElectronicsEngineering = () => {
             </h2>
             <div className="internship-desc" style={{ marginBottom: '2.5rem' }}>
               <p style={{ fontSize: '1.1rem', color: '#475569', lineHeight: '1.6' }}>
-                Grow your skills, gain real experience, and learn how JSE Engineering Internship works outside the classroom. Our comprehensive program is designed to bridge the gap between academic theory and industry reality.
+                Build your skills, get real-world exposure, and discover how Electrical Engineering truly works at JSE
               </p>
             </div>
             <button className="apply-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -438,7 +394,7 @@ const ElectricalElectronicsEngineering = () => {
           <div className="form-info-side">
             <h2 className="form-heading">Join Our Team</h2>
             <p className="form-subtext">
-              Ready to kickstart your career? Apply now for our Civil Engineering Internship Program.
+              Ready to kickstart your career? Apply now for our EEE Internship Program.
             </p>
 
             <div className="form-contact-details">
