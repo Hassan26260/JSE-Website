@@ -5,10 +5,30 @@ import heroGroupImage from "../assets/images-home/internship/enlarging-img.JPG";
 import eligibilityImage from "../assets/images-home/internship/whocanjoin.JPG";
 import hiringImage from "../assets/images-home/internship/hiring.JPG";
 import careerDevImage from "../assets/other/pexels-sora-shimazaki-5926389.jpg";
+import internVideo from "../assets/images-home/intern-video/1a5cf5c19e1af4f9770f31343bd39fb9_0_14766666.mp4"; // Import Video
 import StickyContact from '../components/StickyContact';
 
 const Internship = () => {
   const imageRef = useRef(null);
+  const videoRef = useRef(null);
+  const contactRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen);
+  };
 
   // Form State
   const [formData, setFormData] = useState({
@@ -119,9 +139,9 @@ const Internship = () => {
             Home &gt; <span>Internship</span>
           </div>
           <h1 className="internship-hero-title">Internship Opportunities</h1>
-          {/* <p style={{ color: '#cbd5e1', fontSize: '1.2rem', marginTop: '1rem', maxWidth: '600px' }}>
-            Shape your engineering career with hands-on experience. Choose from our specialized programs designed for industry readiness.
-          </p> */}
+          <button className="internship-cta-btn" onClick={() => contactRef.current.open()}>
+            Apply Now
+          </button>
         </div>
       </section>
 
@@ -168,94 +188,6 @@ const Internship = () => {
         </div>
         <div className="who-image-side">
           <img src={eligibilityImage} alt="Students collaborating" className="who-img" loading="lazy" />
-        </div>
-      </section>
-
-      <section className="internship-programs-section">
-        <div className="internship-grid" style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          gap: '2.5rem',
-          maxWidth: '1440px',
-          margin: '0 auto',
-          padding: '0 2rem'
-        }}>
-          {internships.map((internship, index) => (
-            <Link
-              key={index}
-              to={internship.path}
-              className="internship-card"
-              style={{
-                flex: '0 1 400px', /* Increased width from 350px */
-                background: '#ffffff',
-                padding: '2rem', /* Reduced padding */
-                borderRadius: '24px',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-                textDecoration: 'none',
-                color: '#1e293b',
-                border: 'none',
-                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                minHeight: '280px',
-                zIndex: 1
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-10px)';
-                e.currentTarget.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
-              }}
-            >
-              <div>
-                <h3 style={{
-                  fontSize: '1.6rem',
-                  fontWeight: '800',
-                  marginBottom: '1rem',
-                  color: '#0f172a',
-                  lineHeight: '1.2'
-                }}>
-                  {internship.title}
-                </h3>
-                <p style={{
-                  fontSize: '0.95rem', /* Reduced font size from 1rem */
-                  color: '#64748b',
-                  lineHeight: '1.6',
-                  marginBottom: '1.5rem' /* Reduced gap */
-                }}>
-                  {internship.description}
-                </p>
-              </div>
-
-              <button style={{
-                alignSelf: 'flex-start',
-                background: '#144AE0',
-                color: 'white',
-                border: 'none',
-                padding: '0.8rem 1.6rem', /* Slightly compact button */
-                fontSize: '0.95rem',
-                fontWeight: '700',
-                borderRadius: '50px',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                transition: 'background-color 0.2s ease',
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em'
-              }}>
-                Apply Now
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </button>
-            </Link>
-          ))}
         </div>
       </section>
 
@@ -314,6 +246,63 @@ const Internship = () => {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* Video Section */}
+      <section className="video-highlight-section">
+        <div className="video-wrapper">
+          <video
+            ref={videoRef}
+            src={internVideo}
+            className="internship-video"
+            muted
+            loop
+            playsInline
+            onClick={togglePlay} // Clicking video also toggles play
+          />
+
+          {/* Custom Controls Overlay */}
+          <div className={`video-overlay ${isPlaying ? 'playing' : ''}`}>
+            {/* Play Button */}
+            {!isPlaying && (
+              <button className="custom-play-btn" onClick={togglePlay} aria-label="Play Video">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </button>
+            )}
+          </div>
+
+          {/* Fullscreen Toggle (Always Visible or on Hover) */}
+          <button className="fullscreen-toggle-btn" onClick={toggleFullscreen} aria-label="Fullscreen">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Custom Fullscreen Modal Overlay */}
+        {isFullscreen && (
+          <div className="fullscreen-modal-overlay" onClick={toggleFullscreen}>
+            <div className="fullscreen-video-container" onClick={(e) => e.stopPropagation()}>
+              <video
+                src={internVideo}
+                className="fullscreen-video"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls={false} // Custom controls if needed, or browser default for fullscreen? User wanted "dark background", implying modal.
+              />
+              <button className="close-fullscreen-btn" onClick={toggleFullscreen}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Tools & Technologies Section */}
@@ -479,7 +468,7 @@ const Internship = () => {
         </div>
       </section>
       {/* Application Form Section */}
-      <StickyContact>
+      <StickyContact ref={contactRef}>
         <div className="form-container">
 
           {/* Left: Join Our Team Info */}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import StickyContact from '../../../components/StickyContact';
 import './ArchitecturalBIM.css';
-import heroImage from '../../../assets/images-home/architectural-bim.webp';
+import heroImage from '../../../assets/images-home/home-new-img/steel-detail.jfif';
 
 import whatIsImage from '../../../assets/images-home/steel structure/the-concept].png';
 
@@ -12,32 +12,31 @@ import { STEEL_PROJECTS } from '../../../data/realPortfolio';
 
 // Tech Logos removed
 
-// Reuse images for services
+// Standardized Images for Additional Services (Matching Home.jsx)
+import mepImg from '../../../assets/images-home/mep-design.webp';
+import archImg from '../../../assets/images-home/architectural-bim.webp';
+import structImg from '../../../assets/images-home/bim-modelling.webp';
+import steelImg from '../../../assets/images-home/hvac-design.webp'; // Matching Home.jsx mapping
+import infraImg from '../../../assets/images-home/home-new-img/infrastructural.webp'; // Matching Home.jsx mapping
+import virtualEngImage from "../../../assets/images-home/home-new-img/virtual-t.JPG";
+import secondmentImage from "../../../assets/images-home/secondament.JPG";
+
+// Reusing existing images for services
 import s1 from '../../../assets/images-home/skyscraper.webp';
 import s2 from '../../../assets/images-home/architectural-bim.webp';
 import s3 from '../../../assets/images-home/bim-modelling.webp';
 import s4 from '../../../assets/images-home/mep-design.webp';
 import s5 from '../../../assets/images-home/hvac-design.webp';
 import s6 from '../../../assets/images-home/plumbing.webp';
-import s7 from '../../../assets/images-home/electrical-system.webp';
-// Reusing s6 or s4 for pure firefighting if specific image not found, defaulting to s4 (MEP) for now or similar.
-import s8 from '../../../assets/images-home/hero-group-image.jpg'; // Placeholder for ELV if no specific image
-import virtualEngImage from "../../../assets/images-home/home-new-img/virtual-t.JPG";
-import secondmentImage from "../../../assets/images-home/secondament.JPG";
 
 const SERVICES_DATA = [
-  { title: "BIM consulting", img: s1, desc: "Strategic guidance for successful BIM adoption." },
-  { title: "Shop Drawing", img: s2, desc: "Precise drawings for fabrication and installation." },
-  { title: "Revit 3D Service", img: s3, desc: "Detailed 3D modeling using Autodesk Revit." },
-  { title: "Architectural BIM/VDC", img: s4, desc: "Virtual Design and Construction for better planning." },
-  { title: "Architectural 3D modeling", img: s5, desc: "High-fidelity 3D models for visualization." },
-  { title: "CAD drafting", img: s6, desc: "Accurate 2D drafting and documentation." },
-  { title: "Utility Modeling", img: s1, desc: "Comprehensive modeling of MEP and utility systems." },
-  { title: "Construction Documentation", img: s2, desc: "Complete sets of construction plans and details." },
-  { title: "BIM Clash Detection", img: s3, desc: "Identifying and resolving conflicts before construction." },
-  { title: "BIM Visualization", img: s4, desc: "Photorealistic renderings and walkthroughs." },
-  { title: "BIM Quantity Takeoffs", img: s5, desc: "Automated material quantity extraction." },
-  { title: "Collaboration and Coordination", img: s6, desc: "Streamlined team workflows and communication." }
+  { title: "Steel Detailing", img: s1, desc: "Comprehensive steel detailing services ensuring every bolt, weld, and connection is clearly defined." },
+  { title: "Precast Detailing", img: s2, desc: "Specialized Precast Detailing services, ensuring precise alignment from design through installation." },
+  { title: "2D Drafting", img: s3, desc: "High-precision 2D drafting services delivering clear, construction-ready drawings for successful project execution." },
+  { title: "3D Modeling", img: s4, desc: "Detailed 3D steel structural modeling, transforming concepts into accurate visual and data-rich models." },
+  { title: "Rebar Detailing", img: s5, desc: "Accurate Rebar Detailing services that ensure structural integrity, safety, and compliance with design intent." },
+  { title: "Shop Drawings", img: s6, desc: "Clear and precise Shop Drawings that translate steel designs into actionable construction documentation." },
+  { title: "Construction Documentation", img: s1, desc: "Comprehensive Construction Documentation supporting projects from initial design through final construction." }
 ];
 
 const ICONIC_PROJECTS = STEEL_PROJECTS.slice(0, 6).map(p => ({
@@ -48,55 +47,53 @@ const ICONIC_PROJECTS = STEEL_PROJECTS.slice(0, 6).map(p => ({
 
 const CHOOSE_JSE_DATA = [
   {
-    title: "Innovative Solutions",
-    desc: "Our BIM architectural design engineers use the latest technology to create innovative and highly detailed 3D models that bring your vision to life."
+    title: "Expert Precision",
+    desc: "Highly accurate and detailed steel designs ensuring flawless execution."
   },
   {
-    title: "Holistic Approach",
-    desc: "JSE integrate all aspects of architectural design, ensuring seamless coordination between different building systems for optimal functionality and aesthetics."
+    title: "Tailored Solutions",
+    desc: "Customized engineering services aligned to your project’s specific requirements."
   },
   {
-    title: "Enhanced Visualization",
-    desc: "Our detailed BIM models provide a clear and comprehensive visualization of your project, allowing you to see the final product before construction begins."
+    title: "Innovative Approach",
+    desc: "Use of the latest technologies in Structural BIM, 3D Modeling, and VDC."
   },
   {
-    title: "Cost Efficiency",
-    desc: "Our BIM solutions help you save time and money by optimizing design processes, reducing waste, and improving overall project efficiency."
+    title: "Comprehensive Services",
+    desc: "End-to-end steel structural engineering services—from Rebar Detailing to BIM Coordination."
   }
 ];
 
 const CHOOSE_JSE_DATA_2 = [
   {
-    title: "Client Collaboration",
-    desc: "JSE work closely with you throughout the design process, ensuring that your vision is fully realized and that you are involved every step of the way."
+    title: "Client-Centric",
+    desc: "A collaborative approach focused on meeting and exceeding client expectations."
   },
   {
-    title: "Regulatory Compliance",
-    desc: "Our designs adhere to all local and international building codes and standards, ensuring compliance and safety for your project."
+    title: "Timely Delivery",
+    desc: "Efficient workflows ensuring on-time delivery without compromising quality."
+  },
+  {
+    title: "Cost-Effective",
+    desc: "Value-driven services delivering high-quality outcomes at competitive costs."
   },
   {
     title: "Quality Assurance",
-    desc: "JSE maintain rigorous quality control throughout the design process, ensuring that every aspect of your project meets the highest standards of excellence."
-  },
-  {
-    title: "Sustainable Designs",
-    desc: "We incorporate sustainable practices into our designs, helping you achieve energy efficiency and environmental sustainability."
+    desc: "Strict adherence to industry standards and best practices across all deliverables."
   }
 ];
 
 // BIM_TECH_DATA removed
 
+// Additional Services Data (Standardized to Home.jsx Solutions)
 const ADDITIONAL_SERVICES = [
-  { title: "Virtual Team for Hire", link: "/services/virtual-team", img: virtualEngImage },
-  { title: "HVAC Design", link: "/services/design/hvac-design", img: s5 },
-  { title: "Plumbing & Public Health", link: "/services/design/plumbing-public-health", img: s6 },
-  { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 },
-  { title: "Electrical System Design", link: "/services/design/electrical-system-design", img: s7 },
-  { title: "ELV (Extra Low Voltage)", link: "/services/design/elv", img: s4 },
-  { title: "Architectural BIM", link: "/services/design/architectural-bim", img: s2 },
-  { title: "Steel Structure Detailing", link: "/services/design/steel-structure-detailing", img: s5 },
-  { title: "Structural", link: "/services/design/structural", img: s3 },
-  { title: "Secondment Team", link: "/services/secondment-team", img: secondmentImage }
+  { title: "MEP Engineering", desc: "Comprehensive MEP solutions including HVAC, Electrical, and Firefighting.", link: "/services/design/mep-design", img: mepImg },
+  { title: "Architectural BIM", desc: "Revolutionizing architecture with detailed BIM models.", link: "/services/design/architectural-bim", img: archImg },
+  { title: "Structural Engineering", desc: "Advanced structural engineering and analysis.", link: "/services/design/structural", img: structImg },
+  { title: "Steel Structure Detailing", desc: "Accurate Tekla detailing and steel structures.", link: "/services/design/steel-structure-detailing", img: steelImg },
+  { title: "Infrastructural Services", desc: "Robust infrastructure solutions for modern communities.", link: "/services/infrastructural-services", img: infraImg },
+  { title: "Virtual Team for Hire", desc: "Hire own remote offshore architect team for modular construction needs.", link: "/services/virtual-team", img: virtualEngImage },
+  { title: "Secondment Team", desc: "Get on-demand access to our pool of experienced professionals.", link: "/services/secondment-team", img: secondmentImage }
 ];
 
 const SteelStructureDetailing = () => {
@@ -133,15 +130,27 @@ const SteelStructureDetailing = () => {
   return (
     <div className="arch-bim-page">
       {/* Hero Section */}
-      <section className="arch-hero-section">
-        <div className="arch-hero-overlay"></div>
-        <div className="arch-hero-content">
-          <div className="arch-breadcrumbs">
-            Services &gt; Design Services &gt; <span>Steel Structure Detailing</span>
-          </div>
-          <h1 className="arch-hero-title">Steel Structure Detailing</h1>
+      {/* New Split Hero Section */}
+      <div className="service-hero-split">
+        <div className="hero-text-content">
+          <span className="hero-small-label">Design Services</span>
+          <h1 className="hero-title-split">Steel Structure Detailing</h1>
+          <p className="hero-desc-split">
+            We manage complex steel structural engineering projects involving: Steel structure design and detailing, Fabrication- and erection-ready documentation.
+          </p>
+          <button onClick={scrollToForm} className="hero-cta-btn">
+            HIRE US
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
         </div>
-      </section >
+        <div className="hero-image-content">
+          <div className="hero-diagonal-bar"></div>
+          <img src={heroImage} alt="Steel Structure Detailing" className="hero-img-split" loading="eager" />
+        </div>
+      </div>
 
       {/* Core Pillars Section (4 Columns) */}
       < section className="arch-pillars-section" >
@@ -194,24 +203,23 @@ const SteelStructureDetailing = () => {
         </div>
       </section >
 
-      {/* What is Architectural BIM Section */}
+      {/* Steel Structure Detailing Capabilities Section */}
       < section className="arch-what-section" >
         <div className="arch-what-container">
           {/* Text Side */}
           <div className="arch-what-text">
-            <span className="arch-what-tagline">THE CONCEPT</span>
-            <h2 className="arch-what-title">What is Steel Structure Detailing?</h2>
+            <span className="arch-what-tagline">OUR CAPABILITIES</span>
+            <h2 className="arch-what-title">Steel Structure Detailing Capabilities</h2>
+            <h3 className="arch-what-subtitle" style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1f2937', marginTop: '1rem' }}>Tekla Steel Structure</h3>
             <p className="arch-what-desc">
-              Architectural BIM is a digital representation of the physical and functional characteristics of a building. It goes beyond traditional 2D drawings by creating a 3D model that integrates all aspects of the design process.
-            </p>
-            <p className="arch-what-desc">
-              This model becomes a shared resource for decision-making, providing accurate data throughout the building's lifecycle.
+              Advanced steel modeling using Tekla Structures, enabling seamless delivery from concept to
+              fabrication with high accuracy and speed for large and complex construction projects.
             </p>
           </div>
           {/* Image Side */}
           <div className="arch-what-image-wrapper">
             <div className="arch-image-back"></div>
-            <img src={whatIsImage} alt="What is Architectural BIM" className="arch-what-img"
+            <img src={whatIsImage} alt="Steel Structure Detailing" className="arch-what-img"
               loading="lazy"
               decoding="async" />
           </div>
@@ -469,7 +477,8 @@ const SteelStructureDetailing = () => {
         </div>
       </section>
 
-      {/* Technologies Section Removed */}
+      {/* Advanced BIM Technologies Section */}
+
 
       {/* Additional Services Menu Section */}
       <section className="solutions-list-section">

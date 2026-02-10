@@ -124,18 +124,27 @@ const ELV = () => {
   return (
     <div className="arch-bim-page">
       {/* Hero Section */}
-      <section className="arch-hero-section">
-        <div className="arch-hero-overlay"></div>
-        <div className="arch-hero-content">
-          <div className="arch-breadcrumbs">
-            Services &gt; Design Services &gt; <span>Extra Low Voltage</span>
-          </div>
-          <h1 className="arch-hero-title">ELV Engineering BIM MEP Services</h1>
-          <p className="arch-hero-subtitle" style={{ fontSize: '1.2rem', marginTop: '1rem', maxWidth: '800px', lineHeight: '1.6' }}>
+      {/* New Split Hero Section */}
+      <div className="service-hero-split">
+        <div className="hero-text-content">
+          <span className="hero-small-label">Design Services</span>
+          <h1 className="hero-title-split">ELV Engineering</h1>
+          <p className="hero-desc-split">
             Elevate Building Intelligence with Advanced ELV Engineering Solutions.
           </p>
+          <button onClick={scrollToForm} className="hero-cta-btn">
+            HIRE US
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
         </div>
-      </section >
+        <div className="hero-image-content">
+          <div className="hero-diagonal-bar"></div>
+          <img src={s4} alt="ELV Engineering" className="hero-img-split" loading="eager" />
+        </div>
+      </div>
 
       {/* Intro / About Section (Replaces Pillars) */}
       <section className="arch-what-section" style={{ padding: '6rem 2rem' }}>

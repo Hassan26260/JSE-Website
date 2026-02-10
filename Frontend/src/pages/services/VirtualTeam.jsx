@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import "../../styles/Page.css";
 import "./VirtualTeam.css";
 import StickyContact from '../../components/StickyContact';
-import heroImage from "../../assets/virtual-eng/pexels-fauxels-3184405.webp";
+import heroImage from '../../assets/images-home/home-new-img/virtual-team.jpg';
 import conceptImage from "../../assets/images-home/virtual-te/virtual-about.jpeg";
 
 // Specialization Images
@@ -18,88 +18,24 @@ import conceptImage from "../../assets/images-home/virtual-te/virtual-about.jpeg
 
 import heroGroupImage from "../../assets/images-home/hero-group-image.jpg";
 
-// Standardized Images for Additional Services
-import s1 from '../../assets/images-home/skyscraper.webp';
-import s2 from '../../assets/images-home/architectural-bim.webp';
-import s3 from '../../assets/images-home/bim-modelling.webp';
-import s4 from '../../assets/images-home/mep-design.webp'; // Firefighting / MEP
-import s5 from '../../assets/images-home/hvac-design.webp'; // HVAC / Steel
-import s6 from '../../assets/images-home/plumbing.webp';
-import s7 from '../../assets/images-home/electrical-system.webp';
-import s8 from '../../assets/images-home/hero-group-image.jpg';
-import virtualEngImage from "../../assets/images-home/home-new-img/virtual-t.JPG";
+// Standardized Images for Additional Services (Matching Home.jsx)
+import mepImg from '../../assets/images-home/mep-design.webp';
+import archImg from '../../assets/images-home/architectural-bim.webp';
+import structImg from '../../assets/images-home/bim-modelling.webp';
+import steelImg from '../../assets/images-home/hvac-design.webp'; // Matching Home.jsx mapping
+import infraImg from '../../assets/images-home/home-new-img/infrastructural.webp'; // Matching Home.jsx mapping
+import virtualEngImage from "../../assets/images-home/home-new-img/virtual-t.JPG"; // Retained for ADDITIONAL_SERVICES
 import secondmentImage from "../../assets/images-home/secondament.JPG";
 
-
-
-// Technologies Data
-// TECHNOLOGIES_DATA removed
-
-// Hardware Data with SVG Icons (Bento Style)
-const HARDWARE_DATA = [
-  {
-    name: "Workstations",
-    desc: "High-Performance i9/Xeon Processors with RTX Graphics",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-  },
-  {
-    name: "Render Farms",
-    desc: "Dedicated servers for high-speed rendering",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
-  },
-  {
-    name: "Cloud Servers",
-    desc: "Secure cloud storage for real-time collaboration",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
-  },
-  {
-    name: "NAS Storage",
-    desc: "Redundant local backups ensuring data safety",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
-  },
-  {
-    name: "VR Headsets",
-    desc: "Meta Quest & HTC Vive for immersive walkthroughs",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 16.1A5 5 0 0 1 5.9 2h12.2A5 5 0 0 1 22 16.1V22h-5.9l-2.1-3h-4l-2.1 3H2v-5.9z"></path></svg>
-  },
-  {
-    name: "Laser Scanners",
-    desc: "Precise site surveying tools",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
-  },
-  {
-    name: "Site Tablets",
-    desc: "iPad Pro & Surface for on-site coordination",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-  }
-];
-
-// Communication Data
-const COMMUNICATION_DATA = [
-  {
-    name: "Microsoft Teams",
-    desc: "Unified communication and collaboration platform",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-  },
-  {
-    name: "Google Meet",
-    desc: "Secure video conferencing for seamless meetings",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
-  }
-];
-
-// Additional Services Data (Standardized)
+// Additional Services Data (Standardized to Home.jsx Solutions)
 const ADDITIONAL_SERVICES = [
-  { title: "Virtual Team for Hire", link: "/services/virtual-team", img: virtualEngImage },
-  { title: "HVAC Design", link: "/services/design/hvac-design", img: s5 },
-  { title: "Plumbing & Public Health", link: "/services/design/plumbing-public-health", img: s6 },
-  { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 },
-  { title: "Electrical System Design", link: "/services/design/electrical-system-design", img: s7 },
-  { title: "ELV (Extra Low Voltage)", link: "/services/design/elv", img: s4 },
-  { title: "Architectural BIM", link: "/services/design/architectural-bim", img: s2 },
-  { title: "Steel Structure Detailing", link: "/services/design/steel-structure-detailing", img: s5 },
-  { title: "Structural", link: "/services/design/structural", img: s3 },
-  { title: "Secondment Team", link: "/services/secondment-team", img: secondmentImage }
+  { title: "MEP Engineering", desc: "Comprehensive MEP solutions including HVAC, Electrical, and Firefighting.", link: "/services/design/mep-design", img: mepImg },
+  { title: "Architectural BIM", desc: "Revolutionizing architecture with detailed BIM models.", link: "/services/design/architectural-bim", img: archImg },
+  { title: "Structural Engineering", desc: "Advanced structural engineering and analysis.", link: "/services/design/structural", img: structImg },
+  { title: "Steel Structure Detailing", desc: "Accurate Tekla detailing and steel structures.", link: "/services/design/steel-structure-detailing", img: steelImg },
+  { title: "Infrastructural Services", desc: "Robust infrastructure solutions for modern communities.", link: "/services/infrastructural-services", img: infraImg },
+  { title: "Virtual Team for Hire", desc: "Hire own remote offshore architect team for modular construction needs.", link: "/services/virtual-team", img: virtualEngImage },
+  { title: "Secondment Team", desc: "Get on-demand access to our pool of experienced professionals.", link: "/services/secondment-team", img: secondmentImage }
 ];
 
 // Why Choose Us Data
@@ -127,12 +63,44 @@ const PROCESS_STEPS = [
     desc: "We set up all the necessary tools for seamless communication and collaboration. Our virtual team integrates with your existing workflow, providing regular updates and maintaining open channels for feedback."
   },
   {
-    title: "4. Ongoing Support and Project Management",
-    desc: "Our team remains fully engaged throughout the project, ensuring that all tasks are completed to your satisfaction. We manage timelines, deliverables, and quality control."
-  },
-  {
     title: "5. Completion Of Contract",
     desc: "Upon project completion, we conduct a thorough review to ensure all objectives are met. You can close or continue our weekly/monthly/yearly contract based on demands."
+  }
+];
+
+const HARDWARE_DATA = [
+  {
+    name: "High-Performance Workstations",
+    desc: "Equipped with the latest processors and GPUs for seamless BIM modeling and rendering.",
+    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+  },
+  {
+    name: "Dual-Monitor Setup",
+    desc: "Enhanced productivity with extended display estates for multitasking and reference.",
+    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="9" height="14" rx="2" ry="2"></rect><rect x="13" y="3" width="9" height="14" rx="2" ry="2"></rect><line x1="6" y1="21" x2="18" y2="21"></line><line x1="6" y1="17" x2="6" y2="21"></line><line x1="18" y1="17" x2="18" y2="21"></line></svg>
+  },
+  {
+    name: "Secure Network Infrastructure",
+    desc: "Enterprise-grade security and high-speed connectivity for reliable data transfer.",
+    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+  }
+];
+
+const COMMUNICATION_DATA = [
+  {
+    name: "Microsoft Teams",
+    desc: "For seamless collaboration, meetings, and file sharing within the project ecosystem.",
+    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+  },
+  {
+    name: "Slack",
+    desc: "Instant messaging and channel-based communication for agile team coordination.",
+    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.08 9C24.35 6.73 21.08 2 17.5 4.5l-2.08-2A2.94 2.94 0 0 0 11 4.29L12.5 9l-4.5-4.5A2.94 2.94 0 0 0 3.71 8l4.29 4.29L4.5 16.5c-2.5 3.58 2.23 6.85 4.5 4.58l2-2.08a2.94 2.94 0 0 0 3.71.21L11.5 15l4.5 4.5a2.94 2.94 0 0 0 4.29-4.21L16 11l4.29-4.29z"></path></svg>
+  },
+  {
+    name: "Zoom",
+    desc: "High-quality video conferencing for face-to-face virtual meetings and presentations.",
+    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
   }
 ];
 
@@ -157,7 +125,7 @@ const VirtualTeam = () => {
     // Add submission logic here
   };
 
-  const stickyContactRef = useState(null);
+  const stickyContactRef = useRef(null);
 
   const scrollToForm = () => {
     stickyContactRef.current?.open();
@@ -166,16 +134,34 @@ const VirtualTeam = () => {
   return (
     <div className="virtual-team-page" >
       {/* Hero Section */}
-      <section className="virtual-hero-section" style={{ backgroundImage: `url(${heroImage})` }}>
-        <div className="virtual-hero-overlay"></div>
-        <div className="virtual-hero-content">
-          <h1 className="virtual-hero-title">Virtual Engineers</h1>
-          <p className="virtual-hero-desc">
-            JSE's Engineer & Architect Virtual Assistant service bridges any geographical distance to work on projects on a remote basis
+      {/* New Split Hero Section */}
+      <div className="service-hero-split">
+        {/* Left Text Side */}
+        <div className="hero-text-content">
+          <span className="hero-small-label">GROWTH YOUR BUSINESS</span>
+          <h1 className="hero-title-split">
+            Virtual Team
+          </h1>
+          <p className="hero-desc-split">
+            Get professional & reliable research oriented solutions for Data Science and Machine Learning business needs. Enjoy stress free decision making!
           </p>
-          <button onClick={scrollToForm} className="virtual-hero-cta" style={{ cursor: 'pointer', border: 'none', font: 'inherit' }}>Hire Us</button>
+          <button onClick={scrollToForm} className="hero-cta-btn">
+            GET STARTED
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
         </div>
-      </section>
+
+        {/* Right Image Side */}
+        <div className="hero-image-content">
+          <div className="hero-diagonal-bar"></div>
+          <div className="hero-diagonal-mask">
+            <img src={heroImage} alt="Virtual Team" className="hero-img-split" loading="eager" />
+          </div>
+        </div>
+      </div>
 
       <section className="virtual-intro-section">
         <div className="virtual-intro-container">

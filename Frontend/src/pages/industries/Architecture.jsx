@@ -103,21 +103,47 @@ const OFFER_DATA = [
     }
 ];
 
+// Additional imports for the full service list
+import mepImg from '../../assets/images-home/mep-design.webp';
+import structImg from '../../assets/images-home/bim-modelling.webp';
+import steelImg from '../../assets/images-home/hvac-design.webp'; // Placeholder/reused
+import infraImg from '../../assets/images-home/electrical-system.webp'; // Placeholder/reused
+
 const ARCH_BUSINESS_TYPES = [
     {
-        title: "Design Engineering Projects",
-        desc: "From initial concept through to final construction, JSE provide full-scale project management tailored to healthcare facilities.",
-        img: commercialImg
+        title: "MEP Engineering",
+        desc: "Comprehensive MEP solutions including HVAC, Electrical, and Firefighting.",
+        img: mepImg
+    },
+    {
+        title: "Architectural BIM",
+        desc: "Revolutionizing architecture with detailed BIM models.",
+        img: residentialImg
+    },
+    {
+        title: "Structural Engineering",
+        desc: "Advanced structural engineering and analysis.",
+        img: structImg
+    },
+    {
+        title: "Steel Structure Detailing",
+        desc: "Accurate Tekla detailing and steel structures.",
+        img: steelImg
+    },
+    {
+        title: "Infrastructural Services",
+        desc: "Robust infrastructure solutions for modern communities.",
+        img: infraImg
     },
     {
         title: "Virtual Team for Hire",
-        desc: "Engage our expert team remotely to complement your existing staff, bringing specialized knowledge to your project without geographical limitations.",
+        desc: "Hire own remote offshore architect team for modular construction needs.",
         img: partnerImage
     },
     {
-        title: "Secondment Team Services",
-        desc: "Deploy highly skilled engineers and architects on-site to work directly with your team, ensuring your project benefits from hands-on expertise.",
-        img: residentialImg
+        title: "Secondment Team",
+        desc: "Get on-demand access to our pool of experienced professionals.",
+        img: residentialImg // Reusing
     }
 ];
 

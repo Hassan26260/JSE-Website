@@ -127,19 +127,39 @@ const COMPREHENSIVE_SERVICES = [
 
 const BUSINESS_TYPES = [
     {
-        title: "Design Engineering Projects",
-        desc: "From initial concept through to final construction, JSE provide full-scale project management tailored to healthcare facilities.",
+        title: "MEP Engineering",
+        desc: "Comprehensive MEP solutions including HVAC, Electrical, and Firefighting.",
+        img: h3
+    },
+    {
+        title: "Architectural BIM",
+        desc: "Revolutionizing architecture with detailed BIM models.",
+        img: h4
+    },
+    {
+        title: "Structural Engineering",
+        desc: "Advanced structural engineering and analysis.",
+        img: h2
+    },
+    {
+        title: "Steel Structure Detailing",
+        desc: "Accurate Tekla detailing and steel structures.",
+        img: h5
+    },
+    {
+        title: "Infrastructural Services",
+        desc: "Robust infrastructure solutions for modern communities.",
         img: h1
     },
     {
         title: "Virtual Team for Hire",
-        desc: "Engage our expert team remotely to complement your existing staff, bringing specialized knowledge to your project without geographical limitations.",
+        desc: "Hire own remote offshore architect team for modular construction needs.",
         img: h6
     },
     {
-        title: "Secondment Team Services",
-        desc: "Deploy highly skilled engineers and architects on-site to work directly with your team, ensuring your project benefits from hands-on expertise.",
-        img: h4
+        title: "Secondment Team",
+        desc: "Get on-demand access to our pool of experienced professionals.",
+        img: h4 // Reusing h4 or a generic image
     }
 ];
 
@@ -285,35 +305,7 @@ const Healthcare = () => {
             </section>
 
 
-            {/* Comprehensive Design Services - Bento Grid (New - Adapted from Secondment) */}
-            <section className="healthcare-bento-section">
-                <div className="healthcare-bento-container">
-                    <div className="healthcare-bento-header">
-                        <span className="dash-tagline" style={{ justifyContent: 'center' }}>OUR CAPABILITIES</span>
-                        <h2 className="healthcare-bento-heading">Comprehensive Design Engineering Services for Healthcare</h2>
-                    </div>
 
-                    <div className="healthcare-bento-grid">
-                        {COMPREHENSIVE_SERVICES.map((item, index) => (
-                            <Link
-                                to={item.link}
-                                key={index}
-                                className={`healthcare-bento-card hb-${item.type} ${item.span === 'col-2' ? 'hb-span-2-col' : ''}`}
-                                style={item.type === 'photo' ? { backgroundImage: `url(${item.img})` } : {}}
-                            >
-                                <div className="hb-icon-box">
-                                    {/* Generic Icon Structure - Replacing with simple check or relevant SVG if needed, using simple box for now */}
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                </div>
-                                <div>
-                                    <h3 className="hb-title">{item.title}</h3>
-                                    <p className="hb-desc">{item.desc}</p>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-            </section>
             {/* Business Types Carousel Section (New) */}
             {/* Business Types Split Carousel (Redesign) */}
             <section className="healthcare-business-section">

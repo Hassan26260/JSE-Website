@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "../../styles/Page.css";
 import "./VirtualTeam.css"; // Reuse Virtual Team styles
 import StickyContact from '../../components/StickyContact';
-import heroImage from '../../assets/images-home/secondment/secondament-hero.JPG';
+import heroImage from '../../assets/images-home/home-new-img/secondment.jpg.jpeg';
 import offerImage from '../../assets/images-home/secondment/what-we-offer.jpg';
 import whyChooseImage from '../../assets/images-home/secondment/why-choose.JPG';
 import executeImage from '../../assets/images-home/secondment/our-approach.jpg';
@@ -10,140 +10,70 @@ import card2Img from '../../assets/backup-img/pexels-pixabay-273209.jpg';
 import card4Img from '../../assets/backup-img/pexels-jgathisan0612-1580112.jpg';
 import card7Img from '../../assets/backup-img/pexels-mantasink-1106476.jpg';
 
-// Standardized Images for Additional Services
-import s1 from '../../assets/images-home/skyscraper.webp';
-import s2 from '../../assets/images-home/architectural-bim.webp';
-import s3 from '../../assets/images-home/bim-modelling.webp';
-import s4 from '../../assets/images-home/mep-design.webp'; // Firefighting / MEP
-import s5 from '../../assets/images-home/hvac-design.webp'; // HVAC / Steel
-import s6 from '../../assets/images-home/plumbing.webp';
-import s7 from '../../assets/images-home/electrical-system.webp';
-import s8 from '../../assets/images-home/hero-group-image.jpg';
+// Standardized Images for Additional Services (Matching Home.jsx)
+import mepImg from '../../assets/images-home/mep-design.webp';
+import archImg from '../../assets/images-home/architectural-bim.webp';
+import structImg from '../../assets/images-home/bim-modelling.webp';
+import steelImg from '../../assets/images-home/hvac-design.webp'; // Matching Home.jsx mapping
+import infraImg from '../../assets/images-home/home-new-img/infrastructural.webp'; // Matching Home.jsx mapping
 import virtualEngImage from "../../assets/images-home/home-new-img/virtual-t.JPG";
 import secondmentImage from "../../assets/images-home/secondament.JPG";
 
+// Additional Services Data (Standardized to Home.jsx Solutions)
+const ADDITIONAL_SERVICES = [
+  { title: "MEP Engineering", desc: "Comprehensive MEP solutions including HVAC, Electrical, and Firefighting.", link: "/services/design/mep-design", img: mepImg },
+  { title: "Architectural BIM", desc: "Revolutionizing architecture with detailed BIM models.", link: "/services/design/architectural-bim", img: archImg },
+  { title: "Structural Engineering", desc: "Advanced structural engineering and analysis.", link: "/services/design/structural", img: structImg },
+  { title: "Steel Structure Detailing", desc: "Accurate Tekla detailing and steel structures.", link: "/services/design/steel-structure-detailing", img: steelImg },
+  { title: "Infrastructural Services", desc: "Robust infrastructure solutions for modern communities.", link: "/services/infrastructural-services", img: infraImg },
+  { title: "Virtual Team for Hire", desc: "Hire own remote offshore architect team for modular construction needs.", link: "/services/virtual-team", img: virtualEngImage },
+  { title: "Secondment Team", desc: "Get on-demand access to our pool of experienced professionals.", link: "/services/secondment-team", img: secondmentImage }
+];
 
 const PROCESS_STEPS = [
   {
-    title: "1. BIM Consultation",
-    desc: ["Service Requirements", "Service Design", "Service Interface Specification"]
+    title: "1. Requirement Analysis",
+    desc: "We work with you to understand your specific project needs, technical requirements, and team culture to identify the perfect fit."
   },
   {
-    title: "2. Service Candidate Identification",
-    desc: ["Interview", "Selection"]
+    title: "2. Candidate Selection",
+    desc: "Our team screens and selects highly qualified professionals from our pool of engineers, architects, and BIM specialists."
   },
   {
-    title: "3. Onboarding",
-    desc: ["Staffing/Secondment Service", "Digital Solutions", "Design Engineering"]
+    title: "3. Onboarding & Deployment",
+    desc: "Selected candidates are briefed and deployed to your location or project, ready to integrate into your workflow immediately."
   },
   {
-    title: "4. Service and Deployment",
-    desc: ["Project Management", "Service Deployment"]
+    title: "4. Ongoing Support",
+    desc: "We handle all administrative and HR-related tasks, ensuring smooth operations while you focus on project delivery."
   },
   {
-    title: "5. Support",
-    desc: ["Construction Services", "Facility Audits", "Design Build/Drafting"]
-  },
-  {
-    title: "6. Validated & Deployed Service",
-    desc: ["Final Service Validation", "Post-Deployment Support"]
+    title: "5. Completion & Feedback",
+    desc: "Upon assignment completion, we gather feedback to ensure satisfaction and continuous improvement of our services."
   }
 ];
 
 const SECONDMENT_STEPS = [
   {
-    title: "1. Contact JSE's Representative",
-    desc: "Reach out to discuss your project needs.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-      </svg>
-    )
+    title: "1. Define Your Needs",
+    desc: "Tell us about your project scope, duration, and the specific skills required.",
+    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
   },
   {
-    title: "2. Define Secondment Dates & Design Requirements",
-    desc: "Align on timeline and technical scope.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-        <line x1="16" y1="2" x2="16" y2="6"></line>
-        <line x1="8" y1="2" x2="8" y2="6"></line>
-        <line x1="3" y1="10" x2="21" y2="10"></line>
-        <path d="M9 16l2 2 4-4"></path>
-      </svg>
-    )
+    title: "2. Review Profiles",
+    desc: "We present you with a shortlist of qualified candidates for your review.",
+    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
   },
   {
-    title: "3. Specify Your Staffing Needs",
-    desc: "Identify roles, skills, and experience levels.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-        <circle cx="9" cy="7" r="4"></circle>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-      </svg>
-    )
+    title: "3. Interview & Select",
+    desc: "Conduct interviews with the candidates to ensure they meet your expectations.",
+    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
   },
   {
-    title: "4. Schedule Talent Interviews",
-    desc: "Meet potential candidates for your team.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="23 7 16 12 23 17 23 7"></polygon>
-        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-      </svg>
-    )
-  },
-  {
-    title: "5. Review & Sign Supporting Documents",
-    desc: "Finalize contracts and agreements.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-        <polyline points="14 2 14 8 20 8"></polyline>
-        <line x1="16" y1="13" x2="8" y2="13"></line>
-        <line x1="16" y1="17" x2="8" y2="17"></line>
-        <polyline points="10 9 9 9 8 9"></polyline>
-      </svg>
-    )
-  },
-  {
-    title: "6. Oversee Talent Onboarding Process",
-    desc: "Integrate the team into your workflow.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-        <circle cx="8.5" cy="7" r="4"></circle>
-        <polyline points="17 11 19 13 23 9"></polyline>
-      </svg>
-    )
-  },
-  {
-    title: "7. Enjoy Our Secondment Services",
-    desc: "Focus on your project success.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-      </svg>
-    )
+    title: "4. Start Work",
+    desc: "The selected professionals join your team and start contributing immediately.",
+    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
   }
-];
-
-// SECONDMENT_TECH_DATA removed
-
-// Additional Services Data (Standardized)
-const ADDITIONAL_SERVICES = [
-  { title: "Virtual Team for Hire", link: "/services/virtual-team", img: virtualEngImage },
-  { title: "HVAC Design", link: "/services/design/hvac-design", img: s5 },
-  { title: "Plumbing & Public Health", link: "/services/design/plumbing-public-health", img: s6 },
-  { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 },
-  { title: "Electrical System Design", link: "/services/design/electrical-system-design", img: s7 },
-  { title: "ELV (Extra Low Voltage)", link: "/services/design/elv", img: s4 },
-  { title: "Architectural BIM", link: "/services/design/architectural-bim", img: s2 },
-  { title: "Steel Structure Detailing", link: "/services/design/steel-structure-detailing", img: s5 },
-  { title: "Structural", link: "/services/design/structural", img: s3 },
-  { title: "Secondment Team", link: "/services/secondment-team", img: secondmentImage }
 ];
 
 const SecondmentTeam = () => {
@@ -173,16 +103,34 @@ const SecondmentTeam = () => {
   return (
     <div className="virtual-team-page">
       {/* Hero Section */}
-      <section className="virtual-hero-section" style={{ backgroundImage: `url(${heroImage})` }}>
-        <div className="virtual-hero-overlay"></div>
-        <div className="virtual-hero-content">
-          <h1 className="virtual-hero-title">Secondment Team</h1>
-          <p className="virtual-hero-desc">
-            Temporary engineering professionals to support your project needs
+      {/* New Split Hero Section */}
+      <div className="service-hero-split">
+        {/* Left Text Side */}
+        <div className="hero-text-content">
+          <span className="hero-small-label">Flexible Staffing</span>
+          <h1 className="hero-title-split">
+            Secondment<br />Team
+          </h1>
+          <p className="hero-desc-split">
+            Temporary engineering professionals to support your project needs. Strengthen your projects with skilled engineering talent.
           </p>
-          <button onClick={scrollToForm} className="virtual-hero-cta" style={{ cursor: 'pointer', border: 'none', font: 'inherit' }}>Hire Us</button>
+          <button onClick={scrollToForm} className="hero-cta-btn">
+            GET STARTED
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
         </div>
-      </section>
+
+        {/* Right Image Side */}
+        <div className="hero-image-content">
+          <div className="hero-diagonal-bar"></div>
+          <div className="hero-diagonal-mask">
+            <img src={heroImage} alt="Secondment Team" className="hero-img-split" loading="eager" />
+          </div>
+        </div>
+      </div>
 
       {/* Intro Section (2 Column) */}
       <section className="virtual-intro-section">

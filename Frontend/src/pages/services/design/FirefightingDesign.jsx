@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './ArchitecturalBIM.css';
 import StickyContact from '../../../components/StickyContact';
 import heroImage from '../../../assets/images-home/architectural-bim.webp';
@@ -132,21 +132,36 @@ const FirefightingDesign = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const stickyContactRef = useRef(null);
+
+  const scrollToForm = () => {
+    stickyContactRef.current?.open();
+  };
+
   return (
     <div className="arch-bim-page">
       {/* Hero Section */}
-      <section className="arch-hero-section">
-        <div className="arch-hero-overlay"></div>
-        <div className="arch-hero-content">
-          <div className="arch-breadcrumbs">
-            Services &gt; Design Services &gt; <span>Fire Protection Design</span>
-          </div>
-          <h1 className="arch-hero-title">Fire Protection Design Engineering Services</h1>
-          <p className="arch-hero-subtitle" style={{ color: 'white', maxWidth: '800px', margin: '20px 0', fontSize: '1.2rem' }}>
-            Code-Compliant Fire Protection Systems by JSE Engineering
+      {/* New Split Hero Section */}
+      <div className="service-hero-split">
+        <div className="hero-text-content">
+          <span className="hero-small-label">Design Services</span>
+          <h1 className="hero-title-split">Fire Protection Design</h1>
+          <p className="hero-desc-split">
+            Code-Compliant Fire Protection Systems by JSE Engineering. Ensuring safety and compliance with expert design solutions.
           </p>
+          <button onClick={scrollToForm} className="hero-cta-btn">
+            HIRE US
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
         </div>
-      </section >
+        <div className="hero-image-content">
+          <div className="hero-diagonal-bar"></div>
+          <img src={s4} alt="Fire Protection Design" className="hero-img-split" loading="eager" />
+        </div>
+      </div>
 
       {/* What is Fire Protection (About) Section */}
       < section className="arch-what-section" >

@@ -106,17 +106,27 @@ const DesignEngineeringProjects = () => {
     return (
         <div className="design-projects-page">
             {/* Hero Section */}
-            <section className="design-hero-section" style={{ backgroundImage: `url(${heroImage})` }}>
-                <div className="design-hero-overlay"></div>
-                <div className="design-hero-content">
-                    <h1 className="design-hero-title">Design Engineering Projects</h1>
-                    <p className="design-hero-desc">
+            {/* New Split Hero Section */}
+            <div className="service-hero-split">
+                <div className="hero-text-content">
+                    <span className="hero-small-label">Design Engineering</span>
+                    <h1 className="hero-title-split">Design Engineering Projects</h1>
+                    <p className="hero-desc-split">
                         Expert engineering solutions tailored to your project needs. From concept to completion, we deliver excellence in design and implementation.
-                        {/* Placeholder text, can be updated later based on user feedback */}
                     </p>
-                    <button onClick={scrollToForm} className="design-hero-cta" style={{ cursor: 'pointer', border: 'none', font: 'inherit' }}>Hire Us</button>
+                    <button onClick={scrollToForm} className="hero-cta-btn">
+                        HIRE US
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
                 </div>
-            </section>
+                <div className="hero-image-content">
+                    <div className="hero-diagonal-bar"></div>
+                    <img src={heroImage} alt="Design Engineering Projects" className="hero-img-split" loading="eager" />
+                </div>
+            </div>
 
 
 

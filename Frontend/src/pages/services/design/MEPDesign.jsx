@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import StickyContact from '../../../components/StickyContact';
 import './ArchitecturalBIM.css';
-import heroImage from '../../../assets/images-home/architectural-bim.webp';
+
 
 import whatIsImage from '../../../assets/images-home/bim-modelling.webp';
 
@@ -12,18 +12,24 @@ import { MEP_PROJECTS } from '../../../data/realPortfolio';
 
 // Tech Logos removed
 
-// Reuse images for services
+// Standardized Images for Additional Services (Matching Home.jsx)
+import mepImg from '../../../assets/images-home/mep-design.webp';
+import heroImage from '../../../assets/images-home/home-new-img/MEP.png';
+import archImg from '../../../assets/images-home/architectural-bim.webp';
+import structImg from '../../../assets/images-home/bim-modelling.webp';
+import steelImg from '../../../assets/images-home/hvac-design.webp'; // Matching Home.jsx mapping
+import infraImg from '../../../assets/images-home/home-new-img/infrastructural.webp'; // Matching Home.jsx mapping
+import virtualEngImage from "../../../assets/images-home/home-new-img/virtual-t.JPG";
+import secondmentImage from "../../../assets/images-home/secondament.JPG";
+
+
+// Reusing existing images for services
 import s1 from '../../../assets/images-home/skyscraper.webp';
 import s2 from '../../../assets/images-home/architectural-bim.webp';
 import s3 from '../../../assets/images-home/bim-modelling.webp';
 import s4 from '../../../assets/images-home/mep-design.webp';
 import s5 from '../../../assets/images-home/hvac-design.webp';
 import s6 from '../../../assets/images-home/plumbing.webp';
-import s7 from '../../../assets/images-home/electrical-system.webp';
-// Reusing s6 or s4 for pure firefighting if specific image not found, defaulting to s4 (MEP) for now or similar.
-import s8 from '../../../assets/images-home/hero-group-image.jpg'; // Placeholder for ELV if no specific image
-import virtualEngImage from "../../../assets/images-home/home-new-img/virtual-t.JPG";
-import secondmentImage from "../../../assets/images-home/secondament.JPG";
 
 const SERVICES_DATA = [
   { title: "BIM consulting", img: s1, desc: "Strategic guidance for successful BIM adoption." },
@@ -86,17 +92,15 @@ const CHOOSE_JSE_DATA_2 = [
 
 // BIM_TECH_DATA removed
 
+// Additional Services Data (Standardized to Home.jsx Solutions)
 const ADDITIONAL_SERVICES = [
-  { title: "Virtual Team for Hire", link: "/services/virtual-team", img: virtualEngImage },
-  { title: "HVAC Design", link: "/services/design/hvac-design", img: s5 },
-  { title: "Plumbing & Public Health", link: "/services/design/plumbing-public-health", img: s6 },
-  { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 },
-  { title: "Electrical System Design", link: "/services/design/electrical-system-design", img: s7 },
-  { title: "ELV (Extra Low Voltage)", link: "/services/design/elv", img: s4 },
-  { title: "Architectural BIM", link: "/services/design/architectural-bim", img: s2 },
-  { title: "Steel Structure Detailing", link: "/services/design/steel-structure-detailing", img: s5 },
-  { title: "Structural", link: "/services/design/structural", img: s3 },
-  { title: "Secondment Team", link: "/services/secondment-team", img: secondmentImage }
+  { title: "MEP Engineering", desc: "Comprehensive MEP solutions including HVAC, Electrical, and Firefighting.", link: "/services/design/mep-design", img: mepImg },
+  { title: "Architectural BIM", desc: "Revolutionizing architecture with detailed BIM models.", link: "/services/design/architectural-bim", img: archImg },
+  { title: "Structural Engineering", desc: "Advanced structural engineering and analysis.", link: "/services/design/structural", img: structImg },
+  { title: "Steel Structure Detailing", desc: "Accurate Tekla detailing and steel structures.", link: "/services/design/steel-structure-detailing", img: steelImg },
+  { title: "Infrastructural Services", desc: "Robust infrastructure solutions for modern communities.", link: "/services/infrastructural-services", img: infraImg },
+  { title: "Virtual Team for Hire", desc: "Hire own remote offshore architect team for modular construction needs.", link: "/services/virtual-team", img: virtualEngImage },
+  { title: "Secondment Team", desc: "Get on-demand access to our pool of experienced professionals.", link: "/services/secondment-team", img: secondmentImage }
 ];
 
 const MEPDesign = () => {
@@ -132,16 +136,27 @@ const MEPDesign = () => {
 
   return (
     <div className="arch-bim-page">
-      {/* Hero Section */}
-      <section className="arch-hero-section">
-        <div className="arch-hero-overlay"></div>
-        <div className="arch-hero-content">
-          <div className="arch-breadcrumbs">
-            Services &gt; Design Services &gt; <span>MEP Design</span>
-          </div>
-          <h1 className="arch-hero-title">MEP Design</h1>
+      {/* New Split Hero Section */}
+      <div className="service-hero-split">
+        <div className="hero-text-content">
+          <span className="hero-small-label">Design Services</span>
+          <h1 className="hero-title-split">MEP Design</h1>
+          <p className="hero-desc-split">
+            Integrated MEP Design services ensuring seamless coordination of Mechanical, Electrical, and Plumbing systems for optimal building performance.
+          </p>
+          <button onClick={scrollToForm} className="hero-cta-btn">
+            HIRE US
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
         </div>
-      </section >
+        <div className="hero-image-content">
+          <div className="hero-diagonal-bar"></div>
+          <img src={heroImage} alt="MEP Design" className="hero-img-split" loading="eager" />
+        </div>
+      </div>
 
       {/* Core Pillars Section (4 Columns) */}
       < section className="arch-pillars-section" >

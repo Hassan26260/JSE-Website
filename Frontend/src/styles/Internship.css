@@ -59,6 +59,31 @@
     letter-spacing: -0.02em;
 }
 
+.internship-cta-btn {
+    display: inline-block;
+    background-color: #144AE0;
+    /* Brand Blue */
+    color: #ffffff;
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 99px;
+    /* Rounded pill shape */
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+    text-decoration: none;
+    box-shadow: 0 10px 20px rgba(20, 74, 224, 0.3);
+}
+
+.internship-cta-btn:hover {
+    background-color: #ffffff;
+    color: #144AE0;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(20, 74, 224, 0.4);
+}
+
 .section-title-m {
     font-family: system-ui, Segoe UI, Roboto, sans-serif;
     font-size: 2.5rem;
@@ -1573,5 +1598,209 @@
 
     .span-2-col {
         grid-column: span 1;
+    }
+}
+
+/* --- Video Highlight Section --- */
+.video-highlight-section {
+    padding: 2rem 2rem 6rem;
+    /* Padding bottom for spacing */
+    background-color: #f8fafc;
+    /* Match previous section bg */
+    display: flex;
+    justify-content: center;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    /* Constrain width */
+    aspect-ratio: 16 / 9;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    background: #000;
+}
+
+.internship-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Overlay for Controls */
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    /* Slight dark tint initially */
+    transition: background 0.3s ease, opacity 0.3s ease;
+}
+
+.video-overlay.playing {
+    background: transparent;
+    opacity: 0;
+    /* Hide overlay when playing */
+    pointer-events: none;
+    /* Let clicks pass through to video/other controls */
+}
+
+/* Custom Play Button */
+.custom-play-btn {
+    width: 80px;
+    height: 80px;
+    background-color: #144AE0;
+    /* Brand Blue */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    box-shadow: 0 0 0 0 rgba(20, 74, 224, 0.7);
+    animation: pulse-blue 2s infinite;
+    z-index: 10;
+}
+
+.custom-play-btn svg {
+    margin-left: 4px;
+    /* Optical center for triangle */
+    width: 32px;
+    height: 32px;
+}
+
+.custom-play-btn:hover {
+    transform: scale(1.1);
+}
+
+@keyframes pulse-blue {
+    0% {
+        box-shadow: 0 0 0 0 rgba(20, 74, 224, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 20px rgba(20, 74, 224, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(20, 74, 224, 0);
+    }
+}
+
+/* Fullscreen Toggle Button */
+.fullscreen-toggle-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.video-wrapper:hover .fullscreen-toggle-btn,
+.video-overlay:not(.playing)~.fullscreen-toggle-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fullscreen-toggle-btn:hover {
+    background: #144AE0;
+}
+
+/* --- Fullscreen Modal Overlay --- */
+.fullscreen-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+    padding: 2rem;
+}
+
+.fullscreen-video-container {
+    position: relative;
+    width: 100%;
+    max-width: 90vw;
+    max-height: 90vh;
+    aspect-ratio: 16 / 9;
+}
+
+.fullscreen-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.close-fullscreen-btn {
+    position: absolute;
+    top: -50px;
+    right: -10px;
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+}
+
+.close-fullscreen-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .video-wrapper {
+        border-radius: 16px;
+    }
+
+    .custom-play-btn {
+        width: 60px;
+        height: 60px;
+    }
+
+    .custom-play-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .fullscreen-toggle-btn {
+        opacity: 1;
+        /* Always show on mobile */
+        transform: translateY(0);
+        bottom: 15px;
+        right: 15px;
     }
 }

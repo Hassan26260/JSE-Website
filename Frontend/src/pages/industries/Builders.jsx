@@ -12,22 +12,58 @@ import contentImg2 from '../../assets/images-home/bim-modelling.webp';
 
 // Placeholder Images for Carousel (Reusing assets)
 import h1 from '../../assets/images-home/skyscraper.webp';
+import h2 from '../../assets/images-home/bim-modelling.webp';
+import h3 from '../../assets/images-home/mep-design.webp';
 import h4 from '../../assets/images-home/architectural-bim.webp';
+import h5 from '../../assets/images-home/hvac-design.webp';
 import h6 from '../../assets/images-home/hero-group-image.jpg';
 
 
 
 
+// Additional imports for the full service list
+import mepImg from '../../assets/images-home/mep-design.webp'; // Reused
+import archImg from '../../assets/images-home/architectural-bim.webp'; // Reused
+import structImg from '../../assets/images-home/bim-modelling.webp'; // Reused
+import steelImg from '../../assets/images-home/hvac-design.webp'; // Reused
+import infraImg from '../../assets/images-home/electrical-system.webp'; // Reused
+import virtualImg from '../../assets/images-home/hero-group-image.jpg'; // Reused
+
 const BUSINESS_TYPES = [
     {
-        title: "Design Engineering Projects",
-        desc: "From initial concept through to final construction, JSE provide full-scale project management tailored to healthcare facilities.",
-        img: h1
+        title: "MEP Engineering",
+        desc: "Comprehensive MEP solutions including HVAC, Electrical, and Firefighting.",
+        img: mepImg
+    },
+    {
+        title: "Architectural BIM",
+        desc: "Revolutionizing architecture with detailed BIM models.",
+        img: archImg
+    },
+    {
+        title: "Structural Engineering",
+        desc: "Advanced structural engineering and analysis.",
+        img: structImg
+    },
+    {
+        title: "Steel Structure Detailing",
+        desc: "Accurate Tekla detailing and steel structures.",
+        img: steelImg
+    },
+    {
+        title: "Infrastructural Services",
+        desc: "Robust infrastructure solutions for modern communities.",
+        img: infraImg
     },
     {
         title: "Virtual Team for Hire",
-        desc: "Engage our expert team remotely to complement your existing staff, bringing specialized knowledge to your project without geographical limitations.",
-        img: h6
+        desc: "Hire own remote offshore architect team for modular construction needs.",
+        img: virtualImg
+    },
+    {
+        title: "Secondment Team",
+        desc: "Get on-demand access to our pool of experienced professionals.",
+        img: h2 // Reusing h2 (bim-modelling)
     }
 ];
 // Grid Structure: 4 columns
@@ -231,33 +267,7 @@ const Builders = () => {
                 </div>
             </section>
 
-            {/* Bento Grid Services Section (New) */}
-            <section className="builders-bento-section">
-                <div className="builders-bento-container">
-                    <div className="builders-header-center">
-                        <span className="dash-tagline" style={{ justifyContent: 'center' }}>OUR CAPABILITIES</span>
-                        <h2 className="builders-heading-blue" style={{ fontSize: '3rem', textAlign: 'center' }}>Our BIM Services for Builders</h2>
-                    </div>
 
-                    <div className="builders-bento-grid">
-                        {BUILDERS_SERVICES.map((item, index) => (
-                            <div
-                                key={index}
-                                className={`builders-bento-card hb-${item.type} ${item.span === 'col-2' ? 'hb-span-2-col' : ''}`}
-                                style={item.type === 'photo' ? { backgroundImage: `url(${item.img})` } : {}}
-                            >
-                                <div className="hb-icon-box">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                </div>
-                                <div>
-                                    <h3 className="hb-title">{item.title}</h3>
-                                    <p className="hb-desc">{item.desc}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
             {/* Business Types Split Carousel (Redesign) */}
             <section className="builders-business-section">

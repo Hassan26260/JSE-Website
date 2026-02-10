@@ -13,6 +13,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import VirtualTeam from "./pages/services/VirtualTeam";
 import SecondmentTeam from "./pages/services/SecondmentTeam";
 import DesignEngineeringProjects from "./pages/services/DesignEngineeringProjects";
+import InfrastructuralServices from "./pages/services/InfrastructuralServices";
 
 // Design service pages
 import ArchitecturalBIM from "./pages/services/design/ArchitecturalBIM";
@@ -47,6 +48,7 @@ import ElectricalElectronicsEngineering from "./pages/internship/ElectricalElect
 
 import MechatronicsEngineering from "./pages/internship/MechatronicsEngineering";
 import Architectural from "./pages/internship/Architectural";
+import Diploma from "./pages/internship/Diploma";
 
 
 // Admin Imports
@@ -96,6 +98,7 @@ function App() {
           <Route path="/services/virtual-team" element={<MainLayout><VirtualTeam /></MainLayout>} />
           <Route path="/services/secondment-team" element={<MainLayout><SecondmentTeam /></MainLayout>} />
           <Route path="/services/design" element={<MainLayout><DesignEngineeringProjects /></MainLayout>} />
+          <Route path="/services/infrastructural-services" element={<MainLayout><InfrastructuralServices /></MainLayout>} />
 
           {/* Industry routes */}
           <Route path="/industries/healthcare" element={<MainLayout><Healthcare /></MainLayout>} />
@@ -129,6 +132,7 @@ function App() {
 
           <Route path="/internship/mechatronics-engineering" element={<MainLayout><MechatronicsEngineering /></MainLayout>} />
           <Route path="/internship/architectural" element={<MainLayout><Architectural /></MainLayout>} />
+          <Route path="/internship/diploma" element={<MainLayout><Diploma /></MainLayout>} />
 
         </Routes>
       </AuthProvider>

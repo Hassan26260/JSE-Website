@@ -1,12 +1,21 @@
 import React, { useEffect, useState, useRef } from 'react';
 import StickyContact from '../../../components/StickyContact';
 import './ArchitecturalBIM.css'; // Reusing existing styles
-import heroImage from '../../../assets/images-home/architectural-bim.webp'; // Keeping same hero for now or generic
+import heroImage from '../../../assets/images-home/home-new-img/structural-eng.jpg';
 
 import whatIsImage from '../../../assets/images-home/bim-modelling.webp';
 
 // Portfolio Imports
 import { MEP_PROJECTS } from '../../../data/realPortfolio';
+
+// Standardized Images for Additional Services (Matching Home.jsx)
+import mepImg from '../../../assets/images-home/mep-design.webp';
+import archImg from '../../../assets/images-home/architectural-bim.webp';
+import structImg from '../../../assets/images-home/bim-modelling.webp';
+import steelImg from '../../../assets/images-home/hvac-design.webp'; // Matching Home.jsx mapping
+import infraImg from '../../../assets/images-home/home-new-img/infrastructural.webp'; // Matching Home.jsx mapping
+import virtualEngImage from "../../../assets/images-home/home-new-img/virtual-t.JPG";
+import secondmentImage from "../../../assets/images-home/secondament.JPG";
 
 // Reuse images for services
 import s1 from '../../../assets/images-home/skyscraper.webp';
@@ -15,24 +24,18 @@ import s3 from '../../../assets/images-home/bim-modelling.webp';
 import s4 from '../../../assets/images-home/mep-design.webp';
 import s5 from '../../../assets/images-home/hvac-design.webp';
 import s6 from '../../../assets/images-home/plumbing.webp';
-import s7 from '../../../assets/images-home/electrical-system.webp';
-import s8 from '../../../assets/images-home/hero-group-image.jpg';
-import virtualEngImage from "../../../assets/images-home/home-new-img/virtual-t.JPG";
-import secondmentImage from "../../../assets/images-home/secondament.JPG";
 
 const SERVICES_DATA = [
-    { title: "Structural Analysis", img: s1, desc: "Comprehensive analysis of structural integrity and load-bearing capacities." },
-    { title: "Steel Detailing", img: s2, desc: "Precise shop drawings for steel fabrication and erection." },
-    { title: "Revit Structure", img: s3, desc: "Detailed 3D structural modeling using Autodesk Revit." },
-    { title: "Structural BIM/VDC", img: s4, desc: "Virtual Design and Construction for optimized structural planning." },
-    { title: "3D Modeling", img: s5, desc: "High-fidelity 3D models for visualization and coordination." },
-    { title: "CAD Drafting", img: s6, desc: "Accurate 2D structural drafting and documentation." },
-    { title: "Reinforcement Detailing", img: s1, desc: "Detailed rebar shop drawings and schedules." },
-    { title: "Construction Documentation", img: s2, desc: "Complete sets of structural plans and details." },
-    { title: "Clash Detection", img: s3, desc: "Identifying and resolving structural conflicts with other disciplines." },
-    { title: "Structural Visualization", img: s4, desc: "Photorealistic renderings of structural components." },
-    { title: "Quantity Takeoffs", img: s5, desc: "Automated structural material quantity extraction." },
-    { title: "Coordination", img: s6, desc: "Streamlined workflow between architects and structural engineers." }
+    { title: "RCC Design", img: s1, desc: "Reinforced Cement Concrete (RCC) – Structural Design and Detailed Engineering" },
+    { title: "Composite Systems", img: s2, desc: "Composite Structural Systems – Analysis, Design, and Detailing" },
+    { title: "Analysis & Design", img: s3, desc: "Structural Analysis & Design using STAAD.Pro, ETABS, and SAFE" },
+    { title: "Structural Optimization", img: s4, desc: "Design Review, Value Engineering, and Structural Optimization" },
+    { title: "Structural BIM", img: s5, desc: "Structural BIM Modeling and Multi-disciplinary Coordination" },
+    { title: "Clash Detection", img: s6, desc: "Clash Detection & Resolution and Construction Sequencing Support" },
+    { title: "Design Calculations", img: s1, desc: "Structural Analysis and Design Calculations typically strictly following codes." },
+    { title: "Construction Drawings", img: s2, desc: "Structural Design and Construction Drawings issued at appropriate stages (IFA / IFC)." },
+    { title: "Quantity Take-Offs", img: s3, desc: "Quantity Take-Offs (QTOs) to assist in cost estimation, procurement, and planning." },
+    { title: "As-Built Documentation", img: s4, desc: "As-Built Structural Documentation reflecting final constructed conditions." }
 ];
 
 const ICONIC_PROJECTS = MEP_PROJECTS.slice(0, 6).map(p => ({
@@ -43,53 +46,51 @@ const ICONIC_PROJECTS = MEP_PROJECTS.slice(0, 6).map(p => ({
 
 const CHOOSE_JSE_DATA = [
     {
-        title: "Innovative Engineering",
-        desc: "Our structural engineers use the latest technology to create innovative and highly detailed models that ensure stability and safety."
+        title: "Experienced Engineers",
+        desc: "Experienced structural engineers delivering high-performance solutions."
     },
     {
-        title: "Integrated Design",
-        desc: "JSE integrates structural design with architectural and MEP systems, ensuring seamless coordination for optimal building performance."
+        title: "Integrated Workflows",
+        desc: "Integrated multi-discipline workflows for seamless project execution."
     },
     {
-        title: "Advanced Visualization",
-        desc: "Our detailed BIM models provide a clear visualization of the structural framework, allowing for better planning and execution."
+        title: "Coordination-Driven",
+        desc: "Strong coordination-driven delivery minimizing site conflicts."
     },
     {
-        title: "Cost Optimization",
-        desc: "Our structural solutions help optimize material usage and reduce waste, improving overall project cost-efficiency."
+        title: "Reliable Support",
+        desc: "Reliable support from design to execution stages."
     }
 ];
 
 const CHOOSE_JSE_DATA_2 = [
     {
-        title: "Collaborative Approach",
-        desc: "JSE works closely with architects and contractors throughout the design process to ensure the structural vision is fully realized."
+        title: "Design Coordination",
+        desc: "Design coordination with Architecture & MEP for unified building systems."
     },
     {
         title: "Code Compliance",
-        desc: "Our designs adhere to all local and international building codes and standards, ensuring structural safety and compliance."
+        desc: "Strict compliance with applicable structural codes and standards."
     },
     {
-        title: "Quality Assurance",
-        desc: "We maintain rigorous quality control throughout the structural design process, meeting the highest standards of safety and excellence."
+        title: "Buildability Focus",
+        desc: "Focus on buildability and execution efficiency to ensure constructability."
     },
     {
-        title: "Sustainable Structures",
-        desc: "We incorporate sustainable practices into our structural designs, promoting material efficiency and environmental responsibility."
+        title: "Construction Support",
+        desc: "Comprehensive support through all construction stages."
     }
 ];
 
+// Additional Services Data (Standardized to Home.jsx Solutions)
 const ADDITIONAL_SERVICES = [
-    { title: "Virtual Team for Hire", link: "/services/virtual-team", img: virtualEngImage },
-    { title: "HVAC Design", link: "/services/design/hvac-design", img: s5 },
-    { title: "Plumbing & Public Health", link: "/services/design/plumbing-public-health", img: s6 },
-    { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 },
-    { title: "Electrical System Design", link: "/services/design/electrical-system-design", img: s7 },
-    { title: "ELV (Extra Low Voltage)", link: "/services/design/elv", img: s4 },
-    { title: "Architectural BIM", link: "/services/design/architectural-bim", img: s2 },
-    { title: "Steel Structure Detailing", link: "/services/design/steel-structure-detailing", img: s5 },
-    { title: "Structural", link: "/services/design/structural", img: s3 },
-    { title: "Secondment Team", link: "/services/secondment-team", img: secondmentImage }
+    { title: "MEP Engineering", desc: "Comprehensive MEP solutions including HVAC, Electrical, and Firefighting.", link: "/services/design/mep-design", img: mepImg },
+    { title: "Architectural BIM", desc: "Revolutionizing architecture with detailed BIM models.", link: "/services/design/architectural-bim", img: archImg },
+    { title: "Structural Engineering", desc: "Advanced structural engineering and analysis.", link: "/services/design/structural", img: structImg },
+    { title: "Steel Structure Detailing", desc: "Accurate Tekla detailing and steel structures.", link: "/services/design/steel-structure-detailing", img: steelImg },
+    { title: "Infrastructural Services", desc: "Robust infrastructure solutions for modern communities.", link: "/services/infrastructural-services", img: infraImg },
+    { title: "Virtual Team for Hire", desc: "Hire own remote offshore architect team for modular construction needs.", link: "/services/virtual-team", img: virtualEngImage },
+    { title: "Secondment Team", desc: "Get on-demand access to our pool of experienced professionals.", link: "/services/secondment-team", img: secondmentImage }
 ];
 
 const Structural = () => {
@@ -125,16 +126,28 @@ const Structural = () => {
 
     return (
         <div className="arch-bim-page">
-            {/* Hero Section */}
-            <section className="arch-hero-section">
-                <div className="arch-hero-overlay"></div>
-                <div className="arch-hero-content">
-                    <div className="arch-breadcrumbs">
-                        Services &gt; Design Services &gt; <span>Structural</span>
-                    </div>
-                    <h1 className="arch-hero-title">Structural</h1>
+            {/* New Split Hero Section */}
+            <div className="service-hero-split">
+                <div className="hero-text-content">
+                    <span className="hero-small-label">Design Services</span>
+                    <h1 className="hero-title-split">Structural Engineering</h1>
+                    <p className="hero-desc-split">
+                        At JSE Engineering, we provide high-performance structural engineering solutions that turn
+                        complex design ideas into efficient, economical, and resilient structures.
+                    </p>
+                    <button onClick={scrollToForm} className="hero-cta-btn">
+                        HIRE US
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
                 </div>
-            </section >
+                <div className="hero-image-content">
+                    <div className="hero-diagonal-bar"></div>
+                    <img src={heroImage} alt="Structural Engineering" className="hero-img-split" loading="eager" />
+                </div>
+            </div>
 
             {/* Core Pillars Section (4 Columns) */}
             < section className="arch-pillars-section" >
@@ -192,14 +205,25 @@ const Structural = () => {
                 <div className="arch-what-container">
                     {/* Text Side */}
                     <div className="arch-what-text">
-                        <span className="arch-what-tagline">THE CONCEPT</span>
-                        <h2 className="arch-what-title">What is Structural BIM?</h2>
+                        <span className="arch-what-tagline">SECTORS WE SERVE</span>
+                        <h2 className="arch-what-title">Industry Sectors</h2>
                         <p className="arch-what-desc">
-                            Structural BIM is a digital representation of the physical and functional characteristics of a building's structure. It goes beyond traditional 2D drawings by creating a 3D model that integrates all structural elements.
+                            We provide high-quality engineering expertise that enhances structural performance, ensuring economic and code-compliant design. Our structural engineering solutions span across diverse industries:
                         </p>
-                        <p className="arch-what-desc">
-                            This model becomes a shared resource for decision-making, providing accurate data on load bearings, materials, and geometry throughout the building's lifecycle.
-                        </p>
+                        <ul className="arch-what-list" style={{ listStyle: 'none', padding: 0, marginTop: '1rem' }}>
+                            <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                                <span style={{ color: '#144AE0', marginRight: '0.5rem', fontWeight: 'bold' }}>•</span> Commercial & Office Buildings
+                            </li>
+                            <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                                <span style={{ color: '#144AE0', marginRight: '0.5rem', fontWeight: 'bold' }}>•</span> Residential Apartments
+                            </li>
+                            <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                                <span style={{ color: '#144AE0', marginRight: '0.5rem', fontWeight: 'bold' }}>•</span> Healthcare & Educational Facilities
+                            </li>
+                            <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                                <span style={{ color: '#144AE0', marginRight: '0.5rem', fontWeight: 'bold' }}>•</span> Industrial & Infrastructure Structures
+                            </li>
+                        </ul>
                     </div>
                     {/* Image Side */}
                     <div className="arch-what-image-wrapper">

@@ -59,21 +59,6 @@ const Footer = () => {
                         </a>
                     </div>
 
-                    {/* Head Office Address (Moved Here) */}
-                    <div className="footer-brand-address">
-                        <p className="brand-address-text">
-                            <strong>TamilNadu (Head Office)</strong><br />
-                            4th Floor, Karuna Conquest IT Park,<br />
-                            No. 7 MTH Road, Sai Nagar,<br />
-                            Ambattur Industrial Estate,<br />
-                            Chennai - 600058
-                        </p>
-                        <p className="brand-contact-text">
-                            <strong>JSE ENGINEERING PVT LTD</strong><br />
-                            <a href="mailto:jobs@jseeng.in">jobs@jseeng.in</a><br />
-                            <a href="mailto:admin@jseeng.com">admin@jseeng.com</a>
-                        </p>
-                    </div>
                 </div>
 
                 {/* Column 1 */}
@@ -127,77 +112,90 @@ const Footer = () => {
 
             </div>
 
-            {/* Address Grid Section */}
+            {/* Address Grid Section (Single Row) */}
             <div className="footer-addresses-section">
-                <div className="footer-addresses-container">
-                    {/* 1. Overseas (Dubai) */}
-                    <div className="footer-address-block">
-                        <h4 className="footer-address-title">Overseas</h4>
-                        <p className="footer-address-text">
-                            <strong>GREENCO ELECTRO MECHANICAL WORKS LLC</strong><br />
-                            PO BOX 81323 116, AL MULLA 1 BUILDING,<br />
-                            MATEENA ST, DEIRA, DUBAI<br />
-                            TEL : 00971-4-3920850<br />
-                            MOB : 00971-50-2389353<br />
-                            Email : <a href="mailto:greenco1@eim.ae">greenco1@eim.ae</a><br />
-                            <a href="http://www.greencomep.com" target="_blank" rel="noopener noreferrer">www.greencomep.com</a>
-                        </p>
+
+                {/* Unified Address Grid - 6 Columns */}
+                <div className="footer-addresses-grid compact-grid">
+
+                    {/* India Group */}
+                    <div className="address-group-wrapper india-wrapper">
+                        <div className="footer-region-label">India</div>
+
+                        {/* 1. Chennai */}
+                        <div className="footer-address-block">
+                            <h4 className="footer-address-title">Chennai</h4>
+                            <p className="footer-address-text">
+                                4th Floor, Karuna Conquest IT Park,<br />
+                                Ambattur Industrial Estate,<br />
+                                ph - 044 - 4261 1180<br />
+                                Tamil Nadu,<br />
+                                Chennai - 600058
+                            </p>
+                        </div>
+                        {/* 2. Tirunelveli */}
+                        <div className="footer-address-block">
+                            <h4 className="footer-address-title">Tirunelveli</h4>
+                            <p className="footer-address-text">
+                                Nellai City Centre Building,<br />
+                                Thiruvanthapuram Road,<br />
+                                Tamil Nadu,<br />
+                                Tirunelveli - 627002
+                            </p>
+                        </div>
+                        {/* 3. Trichy */}
+                        <div className="footer-address-block">
+                            <h4 className="footer-address-title">Trichy</h4>
+                            <p className="footer-address-text">
+                                1st Floor, Chintha Tower,<br />
+                                Cantonment,<br />
+                                Tamil Nadu,<br />
+                                Tiruchirappalli - 620001
+                            </p>
+                        </div>
+                        {/* 4. Visakhapatnam */}
+                        <div className="footer-address-block">
+                            <h4 className="footer-address-title">Visakhapatnam</h4>
+                            <p className="footer-address-text">
+                                Pravilika Residency, 1st Floor,<br />
+                                Central Library Road, Seethampeta,<br />
+                                Andhra Pradesh,<br />
+                                Visakhapatnam - 530016
+                            </p>
+                        </div>
                     </div>
 
-                    {/* 2. Our Australia Office (New) */}
-                    <div className="footer-address-block">
-                        <h4 className="footer-address-title">Our Australia Office</h4>
-                        <p className="footer-address-text">
-                            <strong>JSE ENGINEERING PTY LTD</strong><br />
-                            2/22 John StreetBalwyn, Vic 3103, Australia<br />
-                            TEL : +61 0473562928<br />
-                            Email : <a href="mailto:justin@jseeng.in">justin@jseeng.in</a><br />
-                            Web : <a href="https://jseeng.com" target="_blank" rel="noopener noreferrer">jseeng.com</a>
-                        </p>
+                    {/* Separator / Spacer */}
+                    <div className="address-group-divider"></div>
+
+                    {/* Overseas Group */}
+                    <div className="address-group-wrapper overseas-wrapper">
+                        <div className="footer-region-label">Overseas</div>
+
+                        {/* 5. Dubai */}
+                        <div className="footer-address-block">
+                            <h4 className="footer-address-title">Dubai</h4>
+                            <p className="footer-address-text">
+                                GREENCO ELECTRO MECHANICAL WORKS LLC<br />
+                                MATEENA ST, DEIRA, DUBAI<br />
+                                TEL : 00971-4-3920850<br />
+                                MOB : 00971-50-2389353<br />
+                                Email : <a href="mailto:greenco1@eim.ae">greenco1@eim.ae</a><br />
+                                <a href="http://www.greencomep.com" target="_blank" rel="noopener noreferrer">www.greencomep.com</a>
+                            </p>
+                        </div>
+                        {/* 6. Australia */}
+                        <div className="footer-address-block">
+                            <h4 className="footer-address-title">Australia</h4>
+                            <p className="footer-address-text">
+                                2/22 John Street, Balwyn,<br />
+                                Vic 3103, Australia<br />
+                                TEL : +61 0473562928<br />
+                                Email : <a href="mailto:justin@jseeng.in">justin@jseeng.in</a>
+                            </p>
+                        </div>
                     </div>
 
-                    {/* 3. Our Academy */}
-                    <div className="footer-address-block">
-                        <h4 className="footer-address-title">Our Academy</h4>
-                        <p className="footer-address-text">
-                            <a href="http://www.jseacademy.com" target="_blank" rel="noopener noreferrer">www.jseacademy.com</a><br />
-                            044 - 4261 1180<br />
-                            044 - 4261 2769
-                        </p>
-                    </div>
-
-                    {/* 4. Visakhapatnam */}
-                    <div className="footer-address-block">
-                        <h4 className="footer-address-title">Andhra Pradesh</h4>
-                        <p className="footer-address-text">
-                            Pravilika Residency, 1st Floor,<br />
-                            Near Sri Krishna Vidya Mandar,<br />
-                            Central Library Road, Seethampeta,<br />
-                            Visakhapatnam - 530016
-                        </p>
-                    </div>
-
-                    {/* 5. Tirunelveli */}
-                    <div className="footer-address-block">
-                        <h4 className="footer-address-title">Tirunelveli</h4>
-                        <p className="footer-address-text">
-                            Nellai City Centre Building,<br />
-                            Thiruvanthapuram Road,<br />
-                            Near Palayamkottai Bus Stand,<br />
-                            Tirunelveli - 627002
-                        </p>
-                    </div>
-
-                    {/* 6. Trichy */}
-                    <div className="footer-address-block">
-                        <h4 className="footer-address-title">Trichy</h4>
-                        <p className="footer-address-text">
-                            1st Floor, Chintha Tower,<br />
-                            No. 8G, 7C, Williams Road,<br />
-                            Cantonment,<br />
-                            Tiruchirappalli - 620001
-                        </p>
-                    </div>
                 </div>
             </div>
 

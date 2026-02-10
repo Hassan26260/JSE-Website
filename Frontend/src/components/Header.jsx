@@ -76,7 +76,7 @@ const Header = () => {
             alt="JSE Engineering Logo"
             className="logo-image"
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
             width="180"
             height="60"
           />
@@ -110,55 +110,29 @@ const Header = () => {
                 onMouseEnter={handleServicesMouseEnter}
                 onMouseLeave={handleServicesMouseLeave}
               >
-                <Link
-                  to="/services/virtual-team"
-                  className="dropdown-item"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Virtual Team for Hire
+                {/* MEP Engineering - Direct Link */}
+                <Link to="/services/design/mep-design" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
+                  MEP Engineering
                 </Link>
 
-                {/* MEP Design Dropdown */}
-                <div
-                  className="dropdown-item has-submenu"
-                  onMouseEnter={handleDesignServicesMouseEnter}
-                  onMouseLeave={handleDesignServicesMouseLeave}
-                >
-                  <span>MEP Design</span>
-                  {designServicesDropdown && (
-                    <div
-                      className="submenu"
-                      onMouseEnter={handleDesignServicesMouseEnter}
-                      onMouseLeave={handleDesignServicesMouseLeave}
-                    >
-                      <Link to="/services/design/hvac-design" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
-                        HVAC Design
-                      </Link>
-                      <Link to="/services/design/plumbing-public-health" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
-                        Plumbing & Public Health
-                      </Link>
-                      <Link to="/services/design/firefighting-design" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
-                        Firefighting Design
-                      </Link>
-                      <Link to="/services/design/electrical-system-design" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
-                        Electrical System Design
-                      </Link>
-                      <Link to="/services/design/elv" className="submenu-item" onClick={() => setIsMobileMenuOpen(false)}>
-                        ELV (Extra Low Voltage)
-                      </Link>
-                    </div>
-                  )}
-                </div>
-
-                {/* Sibling Design Services */}
                 <Link to="/services/design/architectural-bim" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
                   Architectural BIM
                 </Link>
+
+                <Link to="/services/design/structural" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
+                  Structural Engineering
+                </Link>
+
                 <Link to="/services/design/steel-structure-detailing" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
                   Steel Structure Detailing
                 </Link>
-                <Link to="/services/design/structural" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
-                  Structural
+
+                <Link to="/services/infrastructural-services" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
+                  Infrastructural services
+                </Link>
+
+                <Link to="/services/virtual-team" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
+                  Virtual Team for Hire
                 </Link>
 
                 <Link
@@ -190,17 +164,11 @@ const Header = () => {
                 onMouseEnter={handleInternshipMouseEnter}
                 onMouseLeave={handleInternshipMouseLeave}
               >
-                <Link to="/internship/mechanical-engineering" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
-                  Mechanical Engineering
+                <Link to="/internship" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
+                  Engineering
                 </Link>
-                <Link to="/internship/electrical-electronics-engineering" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
-                  Electrical (EEE)
-                </Link>
-                <Link to="/internship/architectural" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
-                  Architectural
-                </Link>
-                <Link to="/internship/civil-engineering" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
-                  Civil Engineering
+                <Link to="/internship/diploma" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
+                  Diploma
                 </Link>
               </div>
             )}

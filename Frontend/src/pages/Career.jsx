@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import '../styles/Career.css';
 import heroImage from '../assets/images-home/career/enlarging-img (2).JPG';
 import CareerApplicationForm from './CareerApplicationForm';
-import api from '../services/api'; // Import API service
+// import api from '../services/api'; // API disabled
+import { DUMMY_JOBS } from '../data/dummyData';
 
 // Life at JSE Images
 import lifeImg1 from '../assets/images-home/career/innovation&tech.jpg';
@@ -26,15 +27,16 @@ const Career = () => {
 
   // Fetch Jobs on Mount
   useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const { data } = await api.get('/jobs');
-        setJobs(data);
-      } catch (error) {
-        console.error("Failed to fetch jobs:", error);
-      }
-    };
-    fetchJobs();
+    // const fetchJobs = async () => {
+    //   try {
+    //     const { data } = await api.get('/jobs');
+    //     setJobs(data);
+    //   } catch (error) {
+    //     console.error("Failed to fetch jobs:", error);
+    //   }
+    // };
+    // fetchJobs();
+    setJobs(DUMMY_JOBS);
   }, []);
 
   useEffect(() => {

@@ -1,7 +1,9 @@
 import React, { useState, useMemo, useEffect } from "react";
 import "../styles/Home.css";
 import "../styles/Portfolio.css";
-import api from "../services/api";
+// import api from "../services/api"; // API Disabled for now
+// import { DUMMY_PROJECTS } from "../data/dummyData"; // Switched to Real Static Data
+import { ALL_REAL_PROJECTS } from "../data/realPortfolio";
 
 const Portfolio = () => {
   // State for Multi-Select Filters
@@ -21,10 +23,22 @@ const Portfolio = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    fetchProjects();
+    // fetchProjects();
+    // Using Real Static Data (FileSystem based)
+    setAllProjects(ALL_REAL_PROJECTS);
+    setLoading(false);
   }, []);
 
+  /*
   const fetchProjects = async () => {
+// ...
+// ...
+        {loading ? (<p>Loading Projects...</p>) : (
+          <div className="portfolio-grid">
+            {contentToRender.map((item) => (
+              <div
+                key={item.id || item._id}
+                className="portfolio-card"
     try {
       const { data } = await api.get('/projects');
       setAllProjects(data);
@@ -34,6 +48,7 @@ const Portfolio = () => {
       setLoading(false);
     }
   };
+  */
 
   const filterOptions = [
     "MEP",
@@ -48,11 +63,19 @@ const Portfolio = () => {
     "MALAYSIA"
   ];
 
+  /*
   const getImageUrl = (path) => {
     if (!path) return '';
     if (path.startsWith('http')) return path;
     return `http://localhost:5000${path}`;
   };
+  */
+
+  // Updated query for Dummy Data (Direct Import Support)
+  const getImageUrl = (path) => {
+    return path;
+  };
+
 
   // -- Event Handlers --
 

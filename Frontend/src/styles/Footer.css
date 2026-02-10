@@ -109,24 +109,26 @@
 .footer-group {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
-    /* Reduced gap */
+    gap: 0.35rem;
+    /* Further reduced from 0.5rem */
 }
 
 /* Force alignment for the second groups by ensuring first groups match height */
 @media (min-width: 1025px) {
     .footer-col .footer-group:first-child {
-        min-height: 140px;
-        /* Reduced height as content is tighter */
+        min-height: 50px;
+        /* Drastically reduced from 110px */
+        margin-bottom: 2rem;
+        /* Reduced from 0.75rem */
     }
 }
 
 .footer-heading {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     /* Smaller heading */
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.1rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -137,81 +139,106 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    /* Reduced gap between links */
+    gap: 0.25rem;
+    /* Further reduced from 0.35rem */
 }
 
 /* 2-Column Grid for Industries */
 .industries-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.5rem 1rem;
-    /* row-gap col-gap */
+    gap: 0.25rem 0.75rem;
+    /* Tighter row/col gaps */
 }
 
 .footer-link {
     color: #94a3b8;
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     /* Smaller font */
     transition: color 0.2s ease;
     width: fit-content;
-    line-height: 1.4;
+    line-height: 1.3;
 }
 
 .footer-link:hover {
     color: #144AE0;
-    padding-left: 4px;
+    padding-left: 2px;
+    /* Smaller hover shift */
 }
 
-/* --- Addresses Section --- */
+/* --- Addresses Section (Single Compact Row) --- */
 .footer-addresses-section {
     max-width: 1440px;
-    margin: 2.5rem auto 0;
-    /* Reduced margin */
-    padding: 2rem 2rem 0;
+    margin: 0.5rem auto 0;
+    /* Further reduced top margin from 1.5rem to 0.5rem */
+    padding: 1rem 2rem 0;
+    /* Reduced content padding */
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.footer-addresses-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+.footer-addresses-grid.compact-grid {
+    display: flex;
+    justify-content: space-between;
     gap: 2rem;
-    /* Reduced gap from 3rem */
+    flex-wrap: wrap;
+    /* Allow wrap on very small screens */
 }
 
+/* Group Wrappers */
+.address-group-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    position: relative;
+    padding-top: 1.25rem;
+    /* Make space for label */
+}
+
+.footer-region-label {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #144AE0;
+    letter-spacing: 0.1em;
+}
+
+.address-group-divider {
+    width: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 0 0.5rem;
+}
+
+/* Address Blocks */
 .footer-address-block {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.2rem;
+    min-width: 140px;
+    /* Ensure columns don't squish too much */
 }
 
 .footer-address-title {
-    font-size: 0.95rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    color: #cbd5e1;
     margin: 0;
+    text-transform: capitalize;
 }
 
 .footer-address-text {
     color: #94a3b8;
-    font-size: 0.85rem;
-    /* Consistent small font */
-    line-height: 1.5;
+    font-size: 0.75rem;
+    /* Very compact font */
+    line-height: 1.3;
     margin: 0;
-}
-
-.footer-address-text strong {
-    color: #fff;
-    font-weight: 600;
 }
 
 .footer-address-text a {
     color: #94a3b8;
     text-decoration: none;
-    transition: color 0.2s ease;
 }
 
 .footer-address-text a:hover {
