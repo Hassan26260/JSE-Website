@@ -4,14 +4,36 @@
 
 /* --- Hero Section --- */
 /* --- Hero Section --- */
+/* --- Hero Section --- */
 .career-hero {
     position: relative;
-    padding: 10rem 0 5.5rem;
+    padding: 10rem 0 6rem;
     background: #071230;
-    /* Match Internship/Stats/Portfolio */
     color: #ffffff;
-    /* text-align: left; */
     overflow: hidden;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
 }
 
 .career-hero-content {
@@ -19,37 +41,77 @@
     z-index: 3;
     width: 100%;
     max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 2rem;
+    margin: 0 0 0 100px;
+    padding: 3rem 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
 .career-breadcrumbs {
-    font-size: 0.9rem;
-    color: #94a3b8;
-    /* Slate 400 */
-    /* text-transform: uppercase; */
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
     letter-spacing: 0.05em;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     font-weight: 500;
 }
 
 .career-breadcrumbs span {
     color: #ffffff;
-    /* Active/Current Page White */
     font-weight: 700;
 }
 
 .career-title {
     font-family: system-ui, Segoe UI, Roboto, sans-serif;
-    font-size: 3.5rem;
-    /* Adjusted size */
+    font-size: 5rem;
     font-weight: 800;
     color: #ffffff;
     margin: 0;
     line-height: 1.1;
+}
+
+/* Button Styles */
+.career-cta-btn {
+    display: inline-block;
+    background-color: #144AE0;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 99px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 10px 20px rgba(20, 74, 224, 0.3);
+}
+
+.career-cta-btn:hover {
+    background-color: #ffffff;
+    color: #144AE0;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(20, 74, 224, 0.4);
+}
+
+.career-secondary-btn {
+    display: inline-block;
+    background-color: transparent;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    border: 2px solid #144AE0;
+    border-radius: 99px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.career-secondary-btn:hover {
+    background-color: #144AE0;
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(20, 74, 224, 0.3);
 }
 
 /* --- Intro Section --- */

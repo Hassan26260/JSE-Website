@@ -50,8 +50,8 @@ import geoStatsVideo from "../assets/images-home/131857-751353013_small.mp4"; //
 
 // New Image Assets for Services (Solutions Beyond Software)
 import mepImg from "../assets/images-home/home-new-img/MEP.png";
-import bimImg from "../assets/images-home/home-new-img/BIM.png";
-import structImg from "../assets/images-home/home-new-img/structural-eng.jpg";
+import bimImg from "../assets/images-home/home-new-img/BIM.webp";
+import structImg from "../assets/images-home/home-new-img/structural-eng.webp";
 import steelImg from "../assets/images-home/home-new-img/steel-detail.jfif";
 import infraImg from "../assets/images-home/home-new-img/infrastructural.webp";
 import virtualEngImage from "../assets/images-home/home-new-img/virtual-team.jpg";
@@ -125,6 +125,63 @@ const Home = () => {
     { title: "Virtual Team for Hire", desc: "Hire own remote offshore architect team for modular construction needs.", link: "/services/virtual-team", img: virtualEngImage },
     { title: "Secondment Team", desc: "Get on-demand access to our pool of experienced professionals.", link: "/services/secondment-team", img: secondmentImage }
   ];
+
+  // Hero Carousel Slides Data (Restored)
+  const heroCarouselSlides = [
+    {
+      icon: (
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M2 22h20M4 22V7l8-4 8 4v15M6 22V9m12 13V9" />
+          <path d="M9 22v-3a3 3 0 0 1 6 0v3" />
+        </svg>
+      ),
+      text: "Turning design intent into build-ready reality."
+    },
+    {
+      icon: (
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <path d="M9 12l2 2 4-4" />
+        </svg>
+      ),
+      text: "Technical authority that de-risks complex construction."
+    },
+    {
+      icon: (
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+          <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
+          <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
+          <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+          <line x1="12" y1="22.08" x2="12" y2="12"></line>
+        </svg>
+      ),
+      text: "High-fidelity BIM that validates projects before build."
+    },
+    {
+      icon: (
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="22" y1="12" x2="18" y2="12"></line>
+          <line x1="6" y1="12" x2="2" y2="12"></line>
+          <line x1="12" y1="6" x2="12" y2="2"></line>
+          <line x1="12" y1="22" x2="12" y2="18"></line>
+        </svg>
+      ),
+      text: "Engineering precision for confident project execution."
+    }
+  ];
+
+  const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+
+  // Auto-slide effect for Hero Carousel
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentHeroSlide((prev) => (prev + 1) % heroCarouselSlides.length);
+    }, 4000); // 4 seconds per slide
+    return () => clearInterval(timer);
+  }, []);
 
   // Carousel Logic Removed as per simplified list requirement, but keeping state if needed for future
   const [slideDirection, setSlideDirection] = useState('next');
@@ -220,11 +277,11 @@ const Home = () => {
 
   // Reviews Logic
   const reviews = [
-    { text: "JSE Engineering provided exceptional BIM services for our high-rise project. Their attention to detail and commitment to quality is unmatched.", author: "John Doe", role: "Project Manager, Global Construct" },
-    { text: "The team at JSE is highly professional and knowledgeable. Their Secondment services helped us scale our workforce efficiently during peak times.", author: "Jane Smith", role: "Director, Urban Architects" },
-    { text: "We rely on JSE for all our detailed steel structure drawings. They always deliver on time and with high accuracy.", author: "Ahmed Al-Farsi", role: "Technical Lead, SteelWorks Co." },
-    { text: "Their MEP coordination saved us significant time and money on site. Highly recommended for complex engineering projects.", author: "Sarah Johnson", role: "Operations Head, BuildTech" },
-    { text: "Excellent support and communication throughout the project lifecycle. A partner we can trust.", author: "Michael Brown", role: "CEO, Brown & Associates" }
+    { text: "The team consistently exceeded expectations in their professionalism, meeting tight deadlines, and adapting to project changes. Their work quality and ability to incorporate feedback were outstanding. I am confident in our future collaborations and anticipate many successful projects.", author: "Ananthakrishnan", role: "APA Engineering" },
+    { text: "The team's dedication and problem-solving skills were instrumental in the 100% completion of the Digital Art Museum project. Their ownership of issues, both minor and major, led to the successful resolution of numerous clashes, culminating in the timely submission of the model.", author: "Paresh Yashwant Katkar", role: "BIM ManagerMEP, Buildings, Ramboll" },
+    { text: "The AVK Mall and T2 tender package was issued successfully due to the team's considerable efforts. Their hard work is much appreciated. I look forward to continued success with this team.", author: "Chijyoti Challamarad", role: "Principal Mechanical Engineer, Ramboll" },
+    { text: "The issuance of two major AVK assets for tender is a fantastic achievement. Congratulations to the entire team for their exceptional work on this significant milestone.", author: "Michael Rimmer", role: "Head of MEP, Middle East, Ramboll" },
+    { text: "The team's ability to excel under pressure, particularly when facing tight deadlines, demonstrates their strong work ethic and consistent high performance. I commend their dedication to delivering projects on time and to a high standard.", author: "Yashin Maharaj", role: "SSHIC MEPI Director" }
   ];
 
   // --- Infinite Carousel Logic ---
@@ -356,6 +413,45 @@ const Home = () => {
               <Link to="/portfolio" className="hero-cta-btn-glass">View Our Global Projects</Link>
             </motion.div>
           </div>
+
+          {/* Right: Glass Carousel Card (Restored) */}
+          <motion.div
+            className="hero-glass-card"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          >
+            <div className="glass-card-content">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentHeroSlide}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.5 }}
+                  className="glass-slide"
+                >
+                  <div className="glass-icon">
+                    {heroCarouselSlides[currentHeroSlide].icon}
+                  </div>
+                  <p className="glass-text">
+                    {heroCarouselSlides[currentHeroSlide].text}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Progress Indicator */}
+              <div className="glass-progress-bar">
+                <motion.div
+                  className="glass-progress-fill"
+                  key={currentHeroSlide}
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 4, ease: "linear" }}
+                />
+              </div>
+            </div>
+          </motion.div>
         </div>
 
 

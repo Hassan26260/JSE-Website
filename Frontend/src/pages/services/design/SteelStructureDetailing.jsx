@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import StickyContact from '../../../components/StickyContact';
 import './ArchitecturalBIM.css';
 import heroImage from '../../../assets/images-home/home-new-img/steel-detail.jfif';
@@ -6,20 +8,17 @@ import heroImage from '../../../assets/images-home/home-new-img/steel-detail.jfi
 import whatIsImage from '../../../assets/images-home/steel structure/the-concept].png';
 
 // Portfolio Imports
-// Portfolio Imports
 import { STEEL_PROJECTS } from '../../../data/realPortfolio';
 
 
-// Tech Logos removed
-
 // Standardized Images for Additional Services (Matching Home.jsx)
-import mepImg from '../../../assets/images-home/mep-design.webp';
-import archImg from '../../../assets/images-home/architectural-bim.webp';
-import structImg from '../../../assets/images-home/bim-modelling.webp';
-import steelImg from '../../../assets/images-home/hvac-design.webp'; // Matching Home.jsx mapping
-import infraImg from '../../../assets/images-home/home-new-img/infrastructural.webp'; // Matching Home.jsx mapping
-import virtualEngImage from "../../../assets/images-home/home-new-img/virtual-t.JPG";
-import secondmentImage from "../../../assets/images-home/secondament.JPG";
+import mepImg from '../../../assets/images-home/home-new-img/MEP.png';
+import archImg from '../../../assets/images-home/home-new-img/BIM.webp';
+import structImg from '../../../assets/images-home/home-new-img/structural-eng.webp';
+import steelImg from '../../../assets/images-home/home-new-img/steel-detail.jfif';
+import infraImg from '../../../assets/images-home/home-new-img/infrastructural.webp';
+import virtualEngImage from '../../../assets/images-home/home-new-img/virtual-team.jpg';
+import secondmentImage from '../../../assets/images-home/home-new-img/secondment.jpg.jpeg';
 
 // Reusing existing images for services
 import s1 from '../../../assets/images-home/skyscraper.webp';
@@ -30,8 +29,8 @@ import s5 from '../../../assets/images-home/hvac-design.webp';
 import s6 from '../../../assets/images-home/plumbing.webp';
 
 const SERVICES_DATA = [
-  { title: "Steel Detailing", img: s1, desc: "Comprehensive steel detailing services ensuring every bolt, weld, and connection is clearly defined." },
-  { title: "Precast Detailing", img: s2, desc: "Specialized Precast Detailing services, ensuring precise alignment from design through installation." },
+  { title: "Steel Detailing", img: s1, desc: "Comprehensive steel detailing services ensuring every bolt, weld, and connection is clearly defined and accurately documented." },
+  { title: "Precast Detailing", img: s2, desc: "Specialized Precast Detailing services, ensuring precise alignment from design through installation for precast structural components." },
   { title: "2D Drafting", img: s3, desc: "High-precision 2D drafting services delivering clear, construction-ready drawings for successful project execution." },
   { title: "3D Modeling", img: s4, desc: "Detailed 3D steel structural modeling, transforming concepts into accurate visual and data-rich models." },
   { title: "Rebar Detailing", img: s5, desc: "Accurate Rebar Detailing services that ensure structural integrity, safety, and compliance with design intent." },
@@ -56,17 +55,17 @@ const CHOOSE_JSE_DATA = [
   },
   {
     title: "Innovative Approach",
-    desc: "Use of the latest technologies in Structural BIM, 3D Modeling, and VDC."
+    desc: "Use of the latest technologies in Structural BIM, 3D Modeling, and VDC to enhance efficiency and quality."
   },
   {
     title: "Comprehensive Services",
-    desc: "End-to-end steel structural engineering services—from Rebar Detailing to BIM Coordination."
+    desc: "End-to-end steel structural engineering services—from Rebar Detailing to BIM Coordination—under one roof."
   }
 ];
 
 const CHOOSE_JSE_DATA_2 = [
   {
-    title: "Client-Centric",
+    title: "Client-Centric Partnership",
     desc: "A collaborative approach focused on meeting and exceeding client expectations."
   },
   {
@@ -74,7 +73,7 @@ const CHOOSE_JSE_DATA_2 = [
     desc: "Efficient workflows ensuring on-time delivery without compromising quality."
   },
   {
-    title: "Cost-Effective",
+    title: "Cost-Effective Solutions",
     desc: "Value-driven services delivering high-quality outcomes at competitive costs."
   },
   {
@@ -82,8 +81,6 @@ const CHOOSE_JSE_DATA_2 = [
     desc: "Strict adherence to industry standards and best practices across all deliverables."
   }
 ];
-
-// BIM_TECH_DATA removed
 
 // Additional Services Data (Standardized to Home.jsx Solutions)
 const ADDITIONAL_SERVICES = [
@@ -123,20 +120,36 @@ const SteelStructureDetailing = () => {
     stickyContactRef.current?.open();
   };
 
+  // Animation Variants (Staggered)
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemFadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="arch-bim-page">
-      {/* Hero Section */}
       {/* New Split Hero Section */}
       <div className="service-hero-split">
         <div className="hero-text-content">
           <span className="hero-small-label">Design Services</span>
           <h1 className="hero-title-split">Steel Structure Detailing</h1>
           <p className="hero-desc-split">
-            We manage complex steel structural engineering projects involving: Steel structure design and detailing, Fabrication- and erection-ready documentation.
+            We manage complex steel projects, delivering precise design, detailing, and fabrication-ready documentation with full coordination and constructability.
           </p>
           <button onClick={scrollToForm} className="hero-cta-btn">
             HIRE US
@@ -152,93 +165,38 @@ const SteelStructureDetailing = () => {
         </div>
       </div>
 
-      {/* Core Pillars Section (4 Columns) */}
-      < section className="arch-pillars-section" >
-        <div className="arch-pillars-container">
-
-          {/* Column 1: Visualization */}
-          <div className="arch-pillar-col">
-            <div>
-              <h2 className="arch-pillar-title">Visualization</h2>
-              <p className="arch-pillar-desc">
-                We transform architectural concepts into precise 3D BIM models, giving you a clear and detailed digital view of your project from the earliest design stages. This allows better understanding, review, and informed decision-making before construction begins.
-              </p>
-            </div>
-            <span className="arch-pillar-num">01</span>
-          </div>
-
-          {/* Column 2: Precision & Control */}
-          <div className="arch-pillar-col">
-            <div>
-              <h2 className="arch-pillar-title">Precision & Control</h2>
-              <p className="arch-pillar-desc">
-                Our Architectural BIM services ensure accuracy across every element of the design. By identifying conflicts and potential issues early, we significantly reduce rework, delays, and unexpected costs during execution.
-              </p>
-            </div>
-            <span className="arch-pillar-num">02</span>
-          </div>
-
-          {/* Column 3: Collaboration */}
-          <div className="arch-pillar-col">
-            <div>
-              <h2 className="arch-pillar-title">Collaboration</h2>
-              <p className="arch-pillar-desc">
-                BIM enables seamless coordination between architects, engineers, and stakeholders. Structural systems, architectural intent, and aesthetic details are integrated into a unified model, ensuring consistency and clarity across the project lifecycle.
-              </p>
-            </div>
-            <span className="arch-pillar-num">03</span>
-          </div>
-
-          {/* Column 4: Advanced BIM Solutions */}
-          <div className="arch-pillar-col">
-            <div>
-              <h2 className="arch-pillar-title">Advanced BIM Solutions</h2>
-              <p className="arch-pillar-desc">
-                By leveraging cutting-edge BIM workflows, including Point Cloud to BIM, we enhance planning efficiency, optimize resources, and deliver high-quality outcomes. JSE Engineering provides a strong digital foundation for successful and future-ready projects.
-              </p>
-            </div>
-            <span className="arch-pillar-num">04</span>
-          </div>
-
-        </div>
-      </section >
-
-      {/* Steel Structure Detailing Capabilities Section */}
-      < section className="arch-what-section" >
+      {/* Steel Structure Detailing Capabilities + Tekla Highlight */}
+      <section className="arch-what-section" style={{ padding: '6rem 2rem' }}>
         <div className="arch-what-container">
           {/* Text Side */}
           <div className="arch-what-text">
             <span className="arch-what-tagline">OUR CAPABILITIES</span>
             <h2 className="arch-what-title">Steel Structure Detailing Capabilities</h2>
-            <h3 className="arch-what-subtitle" style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1f2937', marginTop: '1rem' }}>Tekla Steel Structure</h3>
-            <p className="arch-what-desc">
-              Advanced steel modeling using Tekla Structures, enabling seamless delivery from concept to
-              fabrication with high accuracy and speed for large and complex construction projects.
-            </p>
+            <div className="arch-what-highlight-box" style={{ marginTop: '2rem', padding: '1.5rem', background: '#f8f9fa', borderLeft: '4px solid #144AE0', borderRadius: '4px' }}>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '0.5rem', fontFamily: 'Montserrat, sans-serif' }}>Tekla Steel Structure</h3>
+              <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.6', color: '#555' }}>
+                Advanced steel modeling using Tekla Structures, enabling seamless delivery from concept to fabrication with high accuracy and speed for large and complex construction projects.
+              </p>
+            </div>
           </div>
           {/* Image Side */}
           <div className="arch-what-image-wrapper">
             <div className="arch-image-back"></div>
-            <img src={whatIsImage} alt="Steel Structure Detailing" className="arch-what-img"
+            <img src={whatIsImage} alt="Steel Structure Capabilities" className="arch-what-img"
               loading="lazy"
               decoding="async" />
           </div>
         </div>
-      </section >
-
-
-
-
+      </section>
 
 
       <section className="arch-services-section">
         <div className="arch-services-container">
           <div className="arch-services-header">
             <span className="arch-services-tagline">OUR EXPERTISE</span>
-            <h2 className="arch-services-title">Our Steel Structure Detailing Services Include</h2>
+            <h2 className="arch-services-title">What JSE’s Steel Structure Detailing Services Offer</h2>
             <p className="arch-services-desc">
-              Transform your architectural projects with JSE's cutting-edge BIM solutions.
-              Our BIM architectural services encompass comprehensive solutions tailored to meet the needs of modern construction projects. We specialize in:
+              Transform your projects with JSE's cutting-edge Steel Detailing solutions.
             </p>
           </div>
 
@@ -264,7 +222,7 @@ const SteelStructureDetailing = () => {
           <div className="form-info-side">
             <h2 className="form-heading">Start Your Project</h2>
             <p className="form-subtext">
-              Ready to optimize your workflow with JSE's Steel Structure Detailing services? Fill out the details and we'll get in touch with you shortly.
+              Ready to optimize your workflow with JSE's Steel Detailing services? Fill out the details and we'll get in touch with you shortly.
             </p>
 
             <div className="form-contact-details">
@@ -335,57 +293,7 @@ const SteelStructureDetailing = () => {
         </div>
       </StickyContact>
 
-      {/* Understanding BIM Levels Of Development Section */}
-      <section className="arch-lod-section">
-        <div className="arch-lod-container">
-          <div className="arch-lod-header">
-            <span className="arch-lod-tagline">BIM MATURITY</span>
-            <h2 className="arch-lod-heading">Understanding BIM Levels Of Development</h2>
-            <p className="arch-lod-intro">
-              Dive into the critical stages of BIM modeling with JSE, where LOD 100, 200, 300, 350, 400, and 500 guide our precision in design, fabrication, and as-built accuracy, ensuring your project’s success from conception to completion.
-            </p>
-          </div>
 
-          <div className="arch-lod-grid">
-            {/* Column 1: LOD 300 */}
-            <div className="arch-lod-item">
-              <div className="arch-lod-icon-box">
-                {/* Cube Icon */}
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-              </div>
-              <h3 className="arch-lod-title">LOD 300</h3>
-              <p className="arch-lod-desc">
-                Represents a design-level model with accurate geometry and specific dimensions for components, suitable for coordinating and constructing elements.
-              </p>
-            </div>
-
-            {/* Column 2: LOD 400 */}
-            <div className="arch-lod-item">
-              <div className="arch-lod-icon-box">
-                {/* Layers/Construction Icon */}
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-              </div>
-              <h3 className="arch-lod-title">LOD 400</h3>
-              <p className="arch-lod-desc">
-                A fabrication-ready model with detailed geometry and information, enabling precise assembly, installation, and construction of components.
-              </p>
-            </div>
-
-            {/* Column 3: LOD 500 */}
-            <div className="arch-lod-item">
-              <div className="arch-lod-icon-box">
-                {/* Checked Building/As-Built Icon */}
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-              </div>
-              <h3 className="arch-lod-title">LOD 500</h3>
-              <p className="arch-lod-desc">
-                The as-built model reflecting the final, field-verified condition of the building, including all relevant specifications and documentation for facility management.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
 
       {/* Worldwide Iconic Projects Section */}
       <section className="iconic-projects-section">
@@ -437,9 +345,9 @@ const SteelStructureDetailing = () => {
           {/* Left Column: Text */}
           <div className="arch-choose-left">
             <span className="arch-choose-tagline">WHY CHOOSE US</span>
-            <h2 className="arch-choose-heading">Why Choose JSE for Steel Structure Detailing Engineers?</h2>
+            <h2 className="arch-choose-heading">Why Choose JSE’s Steel Structural Engineers</h2>
             <p className="arch-choose-desc">
-              Choosing JSE’s BIM Architectural Design Engineers means gaining a strategic partner focused on precision, efficiency, and innovation. Our team leverages advanced BIM workflows to deliver accurate, data-rich architectural models that enhance visualization, improve coordination, and reduce design conflicts from the earliest stages.
+              Choosing JSE Engineering means partnering with a team committed to precision, innovation, and efficiency.
             </p>
           </div>
 
@@ -471,37 +379,46 @@ const SteelStructureDetailing = () => {
           {/* Right Column: Text (Visually Right) */}
           <div className="arch-choose-left">
             <p className="arch-choose-desc">
-              By integrating technical expertise with practical project insight, we streamline decision-making, optimize resources, and minimize costly revisions. With JSE, you benefit from a collaborative, future-ready approach that ensures your architectural vision is executed seamlessly, on time, and to the highest quality standards.
+              Backed by a strong portfolio of iconic global projects, our Steel Detailing services empower fabricators, contractors, and engineers to achieve greater constructability, coordination efficiency, and installation accuracy from design to erection.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Advanced BIM Technologies Section */}
-
-
       {/* Additional Services Menu Section */}
       <section className="solutions-list-section">
-        <div className="solutions-list-container">
+        <motion.div
+          className="solutions-list-container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+        >
           <div className="solutions-header-group">
             <h2 className="solutions-title">Additional Services You Can Benefit From</h2>
           </div>
           <div className="solutions-list-wrapper">
             {ADDITIONAL_SERVICES.map((item, index) => (
-              <a key={index} href={item.link} className="solution-list-item">
-                <span className="solution-list-text">{item.title}</span>
-                <span className="solution-list-arrow">→</span>
-                <div className="solution-item-img-wrapper">
-                  <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
-                </div>
-              </a>
+              <motion.div
+                key={index}
+                variants={itemFadeUp}
+                className="solution-item-motion-wrapper"
+              >
+                <Link to={item.link} className="solution-list-item">
+                  <span className="solution-list-text">{item.title}</span>
+                  <span className="solution-list-arrow">→</span>
+                  <div className="solution-item-img-wrapper">
+                    <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
+                  </div>
+                </Link>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
-    </div >
+    </div>
   );
-}; // End of Component
+};
 
 export default SteelStructureDetailing;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import "../../styles/Page.css";
 import "./VirtualTeam.css";
@@ -6,26 +7,16 @@ import StickyContact from '../../components/StickyContact';
 import heroImage from '../../assets/images-home/home-new-img/virtual-team.jpg';
 import conceptImage from "../../assets/images-home/virtual-te/virtual-about.jpeg";
 
-// Specialization Images
-// import archImg from "../../assets/images-home/architectural-bim.webp"; // Using s2
-// import hvacImg from "../../assets/images-home/hvac-design.webp"; // Using s5
-// import plumbImg from "../../assets/images-home/plumbing.webp"; // Using s6
-// import mepImg from "../../assets/images-home/mep-design.webp"; // Using s4 (Fire uses s4 too in other files, checking mapping)
-// import elvImg from "../../assets/images-home/bim-modelling.webp"; // Placeholder for ELV
-// import elecImg from "../../assets/images-home/electrical-system.webp"; // Using s7
-// import steelImg from "../../assets/images-home/skyscraper.webp"; // Placeholder for Steel, s1?
-// import fireImg from "../../assets/images-home/mep-design.webp"; // Placeholder for Fire
-
 import heroGroupImage from "../../assets/images-home/hero-group-image.jpg";
 
 // Standardized Images for Additional Services (Matching Home.jsx)
-import mepImg from '../../assets/images-home/mep-design.webp';
-import archImg from '../../assets/images-home/architectural-bim.webp';
-import structImg from '../../assets/images-home/bim-modelling.webp';
-import steelImg from '../../assets/images-home/hvac-design.webp'; // Matching Home.jsx mapping
-import infraImg from '../../assets/images-home/home-new-img/infrastructural.webp'; // Matching Home.jsx mapping
-import virtualEngImage from "../../assets/images-home/home-new-img/virtual-t.JPG"; // Retained for ADDITIONAL_SERVICES
-import secondmentImage from "../../assets/images-home/secondament.JPG";
+import mepImg from '../../assets/images-home/home-new-img/MEP.png';
+import archImg from '../../assets/images-home/home-new-img/BIM.webp';
+import structImg from '../../assets/images-home/home-new-img/structural-eng.webp';
+import steelImg from '../../assets/images-home/home-new-img/steel-detail.jfif';
+import infraImg from '../../assets/images-home/home-new-img/infrastructural.webp';
+import virtualEngImage from "../../assets/images-home/home-new-img/virtual-t.JPG";
+import secondmentImage from "../../assets/images-home/home-new-img/secondment.jpg.jpeg";
 
 // Additional Services Data (Standardized to Home.jsx Solutions)
 const ADDITIONAL_SERVICES = [
@@ -131,6 +122,27 @@ const VirtualTeam = () => {
     stickyContactRef.current?.open();
   };
 
+  // Animation Variants (Staggered)
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemFadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="virtual-team-page" >
       {/* Hero Section */}
@@ -189,9 +201,6 @@ const VirtualTeam = () => {
             <p className="virtual-what-desc">
               Our dedicated virtual teams integrate effortlessly with your projects, ensuring efficiency, adaptability, and high-quality outcomes—without the limitations of traditional staffing models.
             </p>
-            {/* <p className="virtual-what-desc">
-              Our commitment is to deliver top-quality results with efficiency and adaptability, empowering you to achieve your goals without the constraints of traditional staffing models. Join us in redefining project management with our cutting-edge virtual team services.
-            </p> */}
           </div>
           <div className="virtual-what-image-wrapper">
             <div className="virtual-image-back"></div>
@@ -200,184 +209,66 @@ const VirtualTeam = () => {
         </div>
       </section>
 
-      {/* Specialization Section */}
-      {/* Solutions Beyond Software Section */}
-      <section className="solutions-list-section">
-        <div className="solutions-list-container">
-          <div className="solutions-header-group">
-            <h2 className="solutions-title">SOLUTIONS BEYOND SOFTWARE</h2>
-            <p className="solutions-description">
-              We go beyond standard software solutions, providing comprehensive engineering and BIM services tailored to your project's unique needs.
+      {/* Why Choose Us Section */}
+      <section className="virtual-why-section">
+        <div className="virtual-why-container">
+          <div className="virtual-why-header">
+            <span className="dash-tagline">BENEFITS</span>
+            <h2 className="virtual-why-main-title">Why Choose Our Virtual Team?</h2>
+            <p className="virtual-why-desc">
+              Experience the advantages of a flexible, scalable, and expert workforce designed to meet your specific project needs.
             </p>
           </div>
-          <div className="solutions-list-wrapper">
-            {ADDITIONAL_SERVICES.map((item, index) => (
-              <a key={index} href={item.link} className="solution-list-item">
-                <span className="solution-list-text">{item.title}</span>
-                <span className="solution-list-arrow">→</span>
-                <div className="solution-item-img-wrapper">
-                  <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
+          <div className="virtual-why-grid">
+            {WHY_CHOOSE_DATA.map((item, index) => (
+              <div key={index} className="virtual-why-card">
+                <div className="virtual-why-card-icon">
+                  <span className="check-icon">✓</span>
                 </div>
-              </a>
+                <h3 className="virtual-why-card-title">{item.title}</h3>
+                <p className="virtual-why-card-content">{item.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* What We Offer Section */}
-      <section className="virtual-offer-section">
-        <div className="virtual-offer-container">
-          <div className="virtual-offer-image-wrapper">
-            <div className="virtual-offer-image-back"></div>
-            <img src={heroGroupImage} alt="What We Offer" className="virtual-offer-img" loading="lazy" decoding="async" />
-          </div>
-          <div className="virtual-offer-text">
-            <span className="dash-tagline">OUR SERVICE</span>
-            <h2 className="virtual-offer-title">What We Offer</h2>
-            <p className="virtual-offer-desc">
-              At JSE Engineering, we offer a "Virtual Team For Hire" service that connects you with top-tier engineers and architects ready to work on your projects remotely.
-            </p>
-            <p className="virtual-offer-desc">
-              Our virtual team is equipped to handle all aspects of your project, ensuring that distance is never a barrier to success. Whether you need specialized skills or a fully managed team, JSE provides the expertise you need to get the job done, no matter where you are.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* How We Work Section (Timeline) */}
+      {/* Process Section */}
       <section className="virtual-process-section">
         <div className="virtual-process-container">
-          <h2 className="virtual-process-heading">How We Work</h2>
+          <h2 className="virtual-process-heading">Our Engagement Process</h2>
           <div className="virtual-process-timeline">
+            {/* Center Line */}
             <div className="timeline-center-line"></div>
 
             {PROCESS_STEPS.map((step, index) => (
-              <div key={index} className={`timeline-row ${index % 2 === 0 ? 'row-left' : 'row-right'} `}>
-                {/* Content Side */}
+              <div key={index} className={`timeline-row ${index % 2 === 0 ? 'row-left' : 'row-right'}`}>
+                {/* Content */}
                 <div className="timeline-content-side">
                   <div className="timeline-card">
                     <div className="timeline-icon-box">
-                      {/* 1. Consultation (Clipboard) */}
-                      {index === 0 && (
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-                          <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
-                        </svg>
-                      )}
-                      {/* 2. Select Team (Users) */}
-                      {index === 1 && (
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                          <circle cx="9" cy="7" r="4"></circle>
-                          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                      )}
-                      {/* 3. Kick-off (Rocket) */}
-                      {index === 2 && (
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
-                          <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
-                          <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
-                          <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
-                        </svg>
-                      )}
-                      {/* 4. Support (Gauge/Settings) */}
-                      {index === 3 && (
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="12" cy="12" r="3"></circle>
-                          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                        </svg>
-                      )}
-                      {/* 5. Completion (Check Circle) */}
-                      {index === 4 && (
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#144AE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
-                      )}
+                      {/* Simple Circle Icon based on index */}
+                      <div style={{
+                        width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        fontWeight: 'bold', fontSize: '1.2rem', color: '#144AE0', border: '2px solid #144AE0', borderRadius: '50%'
+                      }}>
+                        {index + 1}
+                      </div>
                     </div>
-                    <h3>{step.title.replace(/^\d+\.\s*/, '')}</h3>
+                    <h3>{step.title}</h3>
                     <p>{step.desc}</p>
                   </div>
                 </div>
-
-                {/* Center Marker */}
-                <div className="timeline-center-marker">
-                  <div className="marker-dot"></div>
-                </div>
-
-                {/* Empty/Label Side */}
-                <div className="timeline-empty-side">
-                  <span className="timeline-step-label">STEP 0{index + 1}</span>
-                </div>
+                {/* Empty Space for alignment */}
+                <div className="timeline-empty-side"></div>
               </div>
             ))}
+
           </div>
         </div>
       </section>
 
-      <section className="virtual-why-section">
-        <div className="virtual-why-container">
-          {/* Section Header */}
-          <div className="virtual-why-header">
-            <span className="dash-tagline">Why Choose</span>
-            <h2 className="virtual-why-main-title">JSE Virtual Workforce</h2>
-          </div>
-
-          {/* Row 1: Text Left, Cards Right */}
-          <div className="why-row-split">
-            <div className="why-text-side">
-              <h3 className="why-big-text">Efficiency & Speed</h3>
-            </div>
-            <div className="why-cards-side">
-              <div className="why-pyramid-grid">
-                {/* Top 2 Cards */}
-                <div className="why-card">
-                  <h4>{WHY_CHOOSE_DATA[0].title}</h4>
-                  <p>{WHY_CHOOSE_DATA[0].desc}</p>
-                </div>
-                <div className="why-card">
-                  <h4>{WHY_CHOOSE_DATA[1].title}</h4>
-                  <p>{WHY_CHOOSE_DATA[1].desc}</p>
-                </div>
-                {/* Bottom Center Card */}
-                <div className="why-card card-center">
-                  <h4>{WHY_CHOOSE_DATA[2].title}</h4>
-                  <p>{WHY_CHOOSE_DATA[2].desc}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Row 2: Cards Left, Text Right */}
-          <div className="why-row-split split-reverse">
-            <div className="why-cards-side">
-              <div className="why-pyramid-grid">
-                {/* Top 2 Cards */}
-                <div className="why-card">
-                  <h4>{WHY_CHOOSE_DATA[3].title}</h4>
-                  <p>{WHY_CHOOSE_DATA[3].desc}</p>
-                </div>
-                <div className="why-card">
-                  <h4>{WHY_CHOOSE_DATA[4].title}</h4>
-                  <p>{WHY_CHOOSE_DATA[4].desc}</p>
-                </div>
-                {/* Bottom Center Card */}
-                <div className="why-card card-center">
-                  <h4>{WHY_CHOOSE_DATA[5].title}</h4>
-                  <p>{WHY_CHOOSE_DATA[5].desc}</p>
-                </div>
-              </div>
-            </div>
-            <div className="why-text-side">
-              <h3 className="why-big-text">Borderless Growth</h3>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Form Section (Replicated from Internship) */}
+      {/* Sticky Contact Form */}
       <StickyContact ref={stickyContactRef}>
         <div className="form-container">
           {/* Left Side: Title & Info */}
@@ -472,8 +363,6 @@ const VirtualTeam = () => {
             </p>
           </div>
 
-          {/* Software Row Removed */}
-
           {/* Hardware Row */}
           <div className="tech-row">
             <div className="tech-side-heading">
@@ -520,13 +409,40 @@ const VirtualTeam = () => {
         </div>
       </section>
 
-
-
+      {/* Additional Services Menu Section */}
+      <section className="solutions-list-section">
+        <motion.div
+          className="solutions-list-container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+        >
+          <div className="solutions-header-group">
+            <h2 className="solutions-title">Additional Services You Can Benefit From</h2>
+          </div>
+          <div className="solutions-list-wrapper">
+            {ADDITIONAL_SERVICES.map((item, index) => (
+              <motion.div
+                key={index}
+                variants={itemFadeUp}
+                className="solution-item-motion-wrapper"
+              >
+                <Link to={item.link} className="solution-list-item">
+                  <span className="solution-list-text">{item.title}</span>
+                  <span className="solution-list-arrow">→</span>
+                  <div className="solution-item-img-wrapper">
+                    <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
 
     </div >
   );
 };
 
 export default VirtualTeam;
-
-

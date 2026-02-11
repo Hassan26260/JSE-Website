@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import "../../styles/Page.css";
 import "./VirtualTeam.css"; // Reuse Virtual Team styles
 import StickyContact from '../../components/StickyContact';
 import heroImage from '../../assets/images-home/home-new-img/secondment.jpg.jpeg';
 import offerImage from '../../assets/images-home/secondment/what-we-offer.jpg';
-import whyChooseImage from '../../assets/images-home/secondment/why-choose.JPG';
-import executeImage from '../../assets/images-home/secondment/our-approach.jpg';
-import card2Img from '../../assets/backup-img/pexels-pixabay-273209.jpg';
-import card4Img from '../../assets/backup-img/pexels-jgathisan0612-1580112.jpg';
-import card7Img from '../../assets/backup-img/pexels-mantasink-1106476.jpg';
+
+import heroGroupImage from "../../assets/images-home/hero-group-image.jpg";
 
 // Standardized Images for Additional Services (Matching Home.jsx)
-import mepImg from '../../assets/images-home/mep-design.webp';
-import archImg from '../../assets/images-home/architectural-bim.webp';
-import structImg from '../../assets/images-home/bim-modelling.webp';
-import steelImg from '../../assets/images-home/hvac-design.webp'; // Matching Home.jsx mapping
-import infraImg from '../../assets/images-home/home-new-img/infrastructural.webp'; // Matching Home.jsx mapping
+import mepImg from '../../assets/images-home/home-new-img/MEP.png';
+import archImg from '../../assets/images-home/home-new-img/BIM.webp';
+import structImg from '../../assets/images-home/home-new-img/structural-eng.webp';
+import steelImg from '../../assets/images-home/home-new-img/steel-detail.jfif';
+import infraImg from '../../assets/images-home/home-new-img/infrastructural.webp';
 import virtualEngImage from "../../assets/images-home/home-new-img/virtual-t.JPG";
-import secondmentImage from "../../assets/images-home/secondament.JPG";
+import secondmentImage from "../../assets/images-home/home-new-img/secondment.jpg.jpeg";
 
 // Additional Services Data (Standardized to Home.jsx Solutions)
 const ADDITIONAL_SERVICES = [
@@ -53,29 +52,6 @@ const PROCESS_STEPS = [
   }
 ];
 
-const SECONDMENT_STEPS = [
-  {
-    title: "1. Define Your Needs",
-    desc: "Tell us about your project scope, duration, and the specific skills required.",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-  },
-  {
-    title: "2. Review Profiles",
-    desc: "We present you with a shortlist of qualified candidates for your review.",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-  },
-  {
-    title: "3. Interview & Select",
-    desc: "Conduct interviews with the candidates to ensure they meet your expectations.",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-  },
-  {
-    title: "4. Start Work",
-    desc: "The selected professionals join your team and start contributing immediately.",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-  }
-];
-
 const SecondmentTeam = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -94,11 +70,32 @@ const SecondmentTeam = () => {
     // Add submission logic here
   };
 
-  const stickyContactRef = useState(null);
+  const stickyContactRef = useRef(null);
 
   const scrollToForm = () => {
     stickyContactRef.current?.open();
   };
+
+  // Animation Variants (Staggered)
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemFadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="virtual-team-page">
@@ -199,118 +196,14 @@ const SecondmentTeam = () => {
                     )}
                   </div>
                 </div>
-
-                {/* Center Marker */}
-                <div className="timeline-center-marker">
-                  <div className="marker-dot"></div>
-                </div>
-
-                {/* Empty/Label Side */}
-                <div className="timeline-empty-side">
-                  <span className="timeline-step-label">STEP 0{index + 1}</span>
-                </div>
+                {/* Empty Space */}
+                <div className="timeline-empty-side"></div>
               </div>
             ))}
+
           </div>
         </div>
       </section>
-
-      {/* Why Choose JSE Section (Replicating VE What We Offer) */}
-      <section className="virtual-offer-section">
-        <div className="virtual-offer-container">
-          <div className="virtual-offer-image-wrapper">
-            <div className="virtual-offer-image-back"></div>
-            <img src={whyChooseImage} alt="Why Choose JSE" className="virtual-offer-img" loading="lazy" decoding="async" />
-          </div>
-          <div className="virtual-offer-text">
-            <span className="dash-tagline">WHY CHOOSE US</span>
-            <h2 className="virtual-offer-title">Why Choose JSE</h2>
-            <p className="virtual-offer-desc">
-              JSE Engineering understands the complexities of project-based work and the importance of having the right expertise at the right time. Our Secondment Team Services allow you to quickly augment your team with specialized talent without the lengthy recruitment process.
-            </p>
-            <p className="virtual-offer-desc">
-              By leveraging our deep pool of experienced professionals to your location, we can ensure that your projects are executed with precision and efficiency, backed by the most advanced BIM tools in the industry.
-            </p>
-            <p className="virtual-offer-desc">
-              In basis of our logistic architect service, the builder or real estate client handle the comfort of their contract talents including visas, travel, accommodation, and meals, allowing experts to focus entirely on delivering high-quality work.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* What Should I Do If I Want JSE Secondment Section (Workflow) */}
-      <section className="workflow-section">
-        <div className="workflow-container">
-          <div className="virtual-why-header" style={{ marginBottom: '4rem' }}>
-            <span className="dash-tagline">THE PROCESS</span>
-            <h2 className="virtual-why-main-title">What Should I Do If I Want JSE Secondment?</h2>
-          </div>
-          <div className="workflow-grid">
-            {SECONDMENT_STEPS.map((step, index) => (
-              <div key={index} className="workflow-card">
-                <div className="workflow-card-inner">
-                  <div className="workflow-icon-box">
-                    {step.icon}
-                  </div>
-                  <h3>{step.title.replace(/^\d+\.\s*/, '')}</h3>
-                  <p>{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How We Execute Section */}
-      <section className="virtual-what-section">
-        <div className="virtual-what-container">
-          <div className="virtual-what-text">
-            <span className="dash-tagline">OUR APPROACH</span>
-            <h2 className="virtual-what-title">How We Execute</h2>
-            <p className="virtual-what-desc">
-              Our process begins with a thorough understanding of your project requirements. We help you identify the specific skills and experience needed, then present you with a curated selection of professionals proficient in essential BIM software like Autodesk Revit for architectural modelling, Navisworks for project review, and AutoCAD for detailed design work.
-            </p>
-            <p className="virtual-what-desc">
-              After you select your team members via virtual interviews, we coordinate their deployment to your project site, ensuring they are fully integrated and productive from day one. With JSE’s Secondment Team Services, you gain the expertise you need, exactly when you need it, with the assurance of top-tier BIM support.
-            </p>
-          </div>
-          <div className="virtual-what-image-wrapper">
-            <div className="virtual-image-back"></div>
-            <img
-              src={executeImage}
-              alt="How We Execute"
-              className="virtual-what-img"
-              style={{ maxHeight: '450px', objectFit: 'cover' }}
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section className="solutions-list-section">
-        <div className="solutions-list-container">
-          <div className="solutions-header-group">
-            <h2 className="solutions-title">SOLUTIONS BEYOND SOFTWARE</h2>
-            <p className="solutions-description">
-              We go beyond standard software solutions, providing comprehensive engineering and BIM services tailored to your project's unique needs.
-            </p>
-          </div>
-          <div className="solutions-list-wrapper">
-            {ADDITIONAL_SERVICES.map((item, index) => (
-              <a key={index} href={item.link} className="solution-list-item">
-                <span className="solution-list-text">{item.title}</span>
-                <span className="solution-list-arrow">→</span>
-                <div className="solution-item-img-wrapper">
-                  <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Advanced Technologies Section Removed */}
 
       {/* Form Section (Replicated from Virtual Team) */}
       <StickyContact ref={stickyContactRef}>
@@ -396,7 +289,37 @@ const SecondmentTeam = () => {
         </div>
       </StickyContact>
 
-      {/* Previous Content - Preserved/Restructured */}
+      {/* Additional Services Menu Section */}
+      <section className="solutions-list-section">
+        <motion.div
+          className="solutions-list-container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+        >
+          <div className="solutions-header-group">
+            <h2 className="solutions-title">Additional Services You Can Benefit From</h2>
+          </div>
+          <div className="solutions-list-wrapper">
+            {ADDITIONAL_SERVICES.map((item, index) => (
+              <motion.div
+                key={index}
+                variants={itemFadeUp}
+                className="solution-item-motion-wrapper"
+              >
+                <Link to={item.link} className="solution-list-item">
+                  <span className="solution-list-text">{item.title}</span>
+                  <span className="solution-list-arrow">→</span>
+                  <div className="solution-item-img-wrapper">
+                    <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
 
     </div>
   );

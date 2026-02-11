@@ -614,11 +614,12 @@
 }
 
 .arch-services-title {
-    font-size: 2.5rem;
+    font-size: 4rem;
     font-weight: 800;
     color: #144AE0;
     /* Changed to Blue */
-    margin-bottom: 1.5rem;
+    margin-bottom: 5rem;
+    align-items: center;
 }
 
 .arch-services-desc {
@@ -1105,14 +1106,205 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-    .iconic-card {
-        width: 260px;
-        height: 380px;
+/* --- New Split Hero Section (Redesign) - Ported from DesignEngineeringProjects.css --- */
+/* Font path adjusted for /services/design/ folder */
+@font-face {
+    font-family: 'Delight';
+    src: url('../../../assets/fonts/delight-black.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+.service-hero-split {
+    min-height: 85vh;
+    /* Full screen feel */
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    overflow: hidden;
+    background-color: #0f172a;
+    /* Dark Blue Theme */
+    margin-top: 50px;
+    /* Clear fixed header */
+    padding-top: 2rem;
+}
+
+/* Left Content Side */
+.hero-text-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 4rem 0 6rem;
+    /* Left padding for alignment */
+    position: relative;
+    z-index: 2;
+}
+
+/* Tech Background Pattern for Left Side - White with low opacity */
+.hero-text-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    z-index: -1;
+    pointer-events: none;
+}
+
+.hero-small-label {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #94a3b8;
+    /* Slate 400 */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.hero-title-split {
+    font-family: 'Delight', system-ui, sans-serif;
+    /* Custom Font */
+    font-size: 3.5rem;
+    /* Reduced from 5rem to fit 2 lines */
+    line-height: 1.1;
+    color: #ffffff;
+    /* White text */
+    margin: 0 0 1.5rem 0;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+}
+
+.hero-desc-split {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    /* Slate 300 */
+    max-width: 500px;
+    margin-bottom: 3rem;
+}
+
+/* CTA Button */
+.hero-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: #144AE0;
+    /* Vibrant Brand Blue */
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    /* Rounded rect */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(20, 74, 224, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-cta-btn:hover {
+    background-color: #0052a3;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(20, 74, 224, 0.6);
+}
+
+/* Right Image Side - Seamless Blend Layout */
+.hero-image-content {
+    flex: 1.2;
+    /* Slightly wider */
+    position: relative;
+    height: 100%;
+    min-height: 85vh;
+    overflow: hidden;
+    /* Gradient Mask for Seamless Fade */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);
+    mask-image: linear-gradient(to right, transparent 0%, black 20%);
+}
+
+.hero-img-split {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.05);
+    /* Slight zoom for impact */
+    filter: brightness(0.8) contrast(1.1);
+    /* Darker mood */
+}
+
+/* Tech Overlay on Image */
+.hero-image-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 70% 50%, transparent 0%, rgba(15, 23, 42, 0.6) 100%);
+    pointer-events: none;
+}
+
+/* Diagonal Decorative Line (Subtle) */
+.hero-diagonal-bar {
+    position: absolute;
+    top: -50%;
+    left: 0;
+    width: 2px;
+    height: 200%;
+    background: linear-gradient(to bottom, transparent, #144AE0, transparent);
+    transform: rotate(15deg);
+    box-shadow: 0 0 15px #144AE0;
+    opacity: 0.5;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .service-hero-split {
+        flex-direction: column;
+        min-height: auto;
+        margin-top: 80px;
+        /* Adjust for mobile header */
+        padding-top: 0;
     }
 
-    .iconic-heading {
-        font-size: 2rem;
+    .hero-text-content {
+        padding: 6rem 2rem 4rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-title-split {
+        font-size: 3.5rem;
+    }
+
+    .hero-image-content {
+        height: 500px;
+        min-height: auto;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
+        mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
+    }
+
+    .hero-diagonal-bar {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-title-split {
+        font-size: 2.5rem;
     }
 }
 
@@ -1573,6 +1765,9 @@
 }
 
 .hero-img-split {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1645,5 +1840,132 @@
 @media (max-width: 640px) {
     .hero-title-split {
         font-size: 2.5rem;
+    }
+}
+
+/* Global Project Experience Carousel */
+.arch-project-carousel-section {
+    padding: 80px 5%;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.arch-project-carousel-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.arch-carousel-wrapper {
+    position: relative;
+    margin-top: 50px;
+    min-height: 500px;
+    /* Ensure space for content */
+}
+
+.arch-carousel-slide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    width: 100%;
+}
+
+/* Left Text Side */
+.arch-carousel-text-content {
+    flex: 1;
+    max-width: 500px;
+    z-index: 2;
+}
+
+.arch-carousel-project-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-family: 'Delight', sans-serif;
+}
+
+.arch-carousel-project-desc {
+    font-size: 1.05rem;
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* Right Image Side */
+.arch-carousel-image-wrapper {
+    flex: 1.2;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    height: 450px;
+    position: relative;
+}
+
+.arch-carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.arch-carousel-image-wrapper:hover .arch-carousel-image {
+    transform: scale(1.03);
+}
+
+/* Navigation Buttons */
+.arch-carousel-controls {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.arch-carousel-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #144AE0;
+    background: transparent;
+    color: #144AE0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.arch-carousel-btn:hover {
+    background: #144AE0;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(20, 74, 224, 0.3);
+}
+
+.arch-carousel-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .arch-carousel-slide {
+        flex-direction: column-reverse;
+        /* Image on top, text on bottom */
+        gap: 30px;
+    }
+
+    .arch-carousel-text-content {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .arch-carousel-image-wrapper {
+        width: 100%;
+        height: 350px;
+    }
+
+    .arch-carousel-controls {
+        justify-content: flex-start;
     }
 }

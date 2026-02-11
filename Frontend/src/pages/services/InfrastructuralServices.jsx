@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import "../../styles/Page.css";
 import "./DesignEngineeringProjects.css";
 // Reuse hero image for now, user can update later
@@ -6,15 +8,14 @@ import "./DesignEngineeringProjects.css";
 
 // Placeholder data or reuse existing constants if available
 // Standardized Images for Additional Services (Matching Home.jsx)
-import mepImg from '../../assets/images-home/mep-design.webp';
-import archImg from '../../assets/images-home/architectural-bim.webp';
-import structImg from '../../assets/images-home/bim-modelling.webp';
-import steelImg from '../../assets/images-home/hvac-design.webp'; // Matching Home.jsx mapping
-import heroImage from '../../assets/images-home/home-new-img/infrastructural.webp'; // Matching Home.jsx mapping // New heroImage import, replaced infraImg
-import virtualEngImage from "../../assets/images-home/home-new-img/virtual-t.JPG";
-import secondmentImage from "../../assets/images-home/secondament.JPG";
-
-const infraImg = heroImage;
+import mepImg from '../../assets/images-home/home-new-img/MEP.png';
+import archImg from '../../assets/images-home/home-new-img/BIM.webp';
+import structImg from '../../assets/images-home/home-new-img/structural-eng.webp';
+import steelImg from '../../assets/images-home/home-new-img/steel-detail.jfif';
+import heroImage from '../../assets/images-home/home-new-img/infrastructural.webp'; // Matching Home.jsx mapping
+import infraImg from '../../assets/images-home/home-new-img/infrastructural.webp';
+import virtualEngImage from '../../assets/images-home/home-new-img/virtual-team.jpg';
+import secondmentImage from '../../assets/images-home/home-new-img/secondment.jpg.jpeg';
 
 // Additional Services Data (Standardized to Home.jsx Solutions)
 const ADDITIONAL_SERVICES = [
@@ -53,13 +54,34 @@ const InfrastructuralServices = () => {
         }
     };
 
+    // Animation Variants (Staggered)
+    const staggerContainer = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.1
+            }
+        }
+    };
+
+    const itemFadeUp = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+    };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className="design-projects-page">
             {/* Hero Section */}
             <div className="service-hero-split">
                 <div className="hero-text-content">
                     <span className="hero-small-label">Infrastructural Services</span>
-                    <h1 className="hero-title-split">Building the Foundation of Tomorrow</h1>
+                    <h1 className="hero-title-split">Infrastructural Services</h1>
                     <p className="hero-desc-split">
                         Delivering robust and sustainable infrastructure solutions. From transportation networks to utility systems, we engineer the backbone of modern communities.
                     </p>
@@ -115,22 +137,34 @@ const InfrastructuralServices = () => {
 
             {/* Additional Services Menu Section */}
             <section className="solutions-list-section">
-                <div className="solutions-list-container">
+                <motion.div
+                    className="solutions-list-container"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    variants={staggerContainer}
+                >
                     <div className="solutions-header-group">
                         <h2 className="solutions-title">Additional Services You Can Benefit From</h2>
                     </div>
                     <div className="solutions-list-wrapper">
                         {ADDITIONAL_SERVICES.map((item, index) => (
-                            <a key={index} href={item.link} className="solution-list-item">
-                                <span className="solution-list-text">{item.title}</span>
-                                <span className="solution-list-arrow">→</span>
-                                <div className="solution-item-img-wrapper">
-                                    <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
-                                </div>
-                            </a>
+                            <motion.div
+                                key={index}
+                                variants={itemFadeUp}
+                                className="solution-item-motion-wrapper"
+                            >
+                                <Link to={item.link} className="solution-list-item">
+                                    <span className="solution-list-text">{item.title}</span>
+                                    <span className="solution-list-arrow">→</span>
+                                    <div className="solution-item-img-wrapper">
+                                        <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
+                                    </div>
+                                </Link>
+                            </motion.div>
                         ))}
                     </div>
-                </div>
+                </motion.div>
             </section>
         </div>
     );

@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { motion } from "framer-motion";
 import '../styles/Career.css';
 import heroImage from '../assets/images-home/career/enlarging-img (2).JPG';
+import internVideo from "../assets/careers-page/WhatsApp Video 2026-02-11 at 16.58.18.mp4"; // New Video
 import CareerApplicationForm from './CareerApplicationForm';
 // import api from '../services/api'; // API disabled
 import { DUMMY_JOBS } from '../data/dummyData';
@@ -72,18 +74,77 @@ const Career = () => {
   return (
     <div className="career-page">
       {/* Hero Section */}
+      {/* Hero Section */}
       <section className="career-hero">
+        <video
+          className="hero-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src={internVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="hero-overlay"></div>
+
         <div className="career-hero-content">
-          <div className="career-breadcrumbs">
-            Home &gt; <span>Careers</span>
-          </div>
-          <h1 className="career-title">Careers</h1>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="career-breadcrumbs">
+              Home &gt; <span>Careers</span>
+            </div>
+            <h1 className="career-title" style={{ fontFamily: 'delight', fontWeight: 'bold', fontSize: '5rem' }}>Careers at JSE</h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              style={{ fontSize: '1.5rem', marginTop: '1rem', maxWidth: '600px' }}
+            >
+              Shape the Future with Us
+            </motion.p>
+
+            <motion.div
+              className="hero-cta-group"
+              style={{ display: 'flex', gap: '1.5rem', marginTop: '2.5rem' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            >
+              <button
+                className="career-cta-btn"
+                onClick={() => document.getElementById('jobs-section').scrollIntoView({ behavior: 'smooth' })}
+              >
+                View Openings
+              </button>
+
+              <a
+                href="#career-intro"
+                className="career-secondary-btn"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('career-intro').scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Explore
+              </a>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Intro Section */}
-      <section className="career-intro">
-        <div className="career-intro-container">
+      <section className="career-intro" id="career-intro">
+        <motion.div
+          className="career-intro-container"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+        >
           {/* Left Column: Big Headline */}
           <div className="intro-left">
             <h2 className="intro-headline">
@@ -99,7 +160,7 @@ const Career = () => {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Expanding Image Section */}
@@ -113,7 +174,7 @@ const Career = () => {
       </section>
 
       {/* Jobs Section */}
-      <section className="career-jobs-section">
+      <section className="career-jobs-section" id="jobs-section">
         <div className="jobs-container">
           <div className="jobs-header">
             <p className="career-dash-heading">Our Jobs</p>
@@ -159,13 +220,25 @@ const Career = () => {
       {/* Life at JSE Section (4-Row Alternating) */}
       <section className="life-at-jse-section">
         <div className="life-container">
-          <div className="life-header">
+          <motion.div
+            className="life-header"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
             <p className="career-dash-heading">Company Culture</p>
             <h2 className="community-title">Life at JSE Engineering</h2>
-          </div>
+          </motion.div>
 
           {/* Row 1: Text Left + Image Right */}
-          <div className="life-row">
+          <motion.div
+            className="life-row"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
             <div className="life-text-card">
               <h3 className="life-title">Innovation & Technology</h3>
               <p className="life-desc">
@@ -175,10 +248,16 @@ const Career = () => {
             <div className="life-image-wrapper">
               <img src={lifeImg1} alt="Innovation" className="life-img" />
             </div>
-          </div>
+          </motion.div>
 
           {/* Row 2: Image Left + Text Right */}
-          <div className="life-row reverse">
+          <motion.div
+            className="life-row reverse"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+          >
             <div className="life-text-card">
               <h3 className="life-title">Growth & Mentorship</h3>
               <p className="life-desc">
@@ -188,10 +267,16 @@ const Career = () => {
             <div className="life-image-wrapper">
               <img src={lifeImg2} alt="Mentorship" className="life-img" />
             </div>
-          </div>
+          </motion.div>
 
           {/* Row 3: Text Left + Image Right */}
-          <div className="life-row">
+          <motion.div
+            className="life-row"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+          >
             <div className="life-text-card">
               <h3 className="life-title">Global Impact</h3>
               <p className="life-desc">
@@ -201,10 +286,16 @@ const Career = () => {
             <div className="life-image-wrapper">
               <img src={lifeImg3} alt="Global Impact" className="life-img" />
             </div>
-          </div>
+          </motion.div>
 
           {/* Row 4: Image Left + Text Right */}
-          <div className="life-row reverse">
+          <motion.div
+            className="life-row reverse"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+          >
             <div className="life-text-card">
               <h3 className="life-title">Community & Culture</h3>
               <p className="life-desc">
@@ -214,7 +305,7 @@ const Career = () => {
             <div className="life-image-wrapper">
               <img src={lifeImg4} alt="Company Culture" className="life-img" />
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </section>
@@ -223,17 +314,29 @@ const Career = () => {
       {/* What We JSE-ians Do Section (3-Column Cards) */}
       <section className="jse-values-section">
         <div className="jse-values-container">
-          <div className="jse-values-header">
+          <motion.div
+            className="jse-values-header"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
             <p className="career-dash-heading">Our Values</p>
             <h2 className="community-title">
               What We JSE-ians Do
             </h2>
-          </div>
+          </motion.div>
 
           <div className="jse-values-grid">
 
             {/* Card 1: Target - Possibilities */}
-            <div className="jse-value-card">
+            <motion.div
+              className="jse-value-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+            >
               <div className="jse-value-icon">
                 {/* Target Icon */}
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -246,10 +349,16 @@ const Career = () => {
               <p className="jse-value-desc">
                 We discover better challenging possibilities every day.
               </p>
-            </div>
+            </motion.div>
 
             {/* Card 2: Thumbs Up - Teamwork */}
-            <div className="jse-value-card">
+            <motion.div
+              className="jse-value-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
+            >
               <div className="jse-value-icon">
                 {/* Thumbs Up Icon */}
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -260,10 +369,16 @@ const Career = () => {
               <p className="jse-value-desc">
                 We spark creativity through teamwork and trust.
               </p>
-            </div>
+            </motion.div>
 
             {/* Card 3: Power - Impact */}
-            <div className="jse-value-card">
+            <motion.div
+              className="jse-value-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.4, ease: "easeOut" }}
+            >
               <div className="jse-value-icon">
                 {/* Power Icon */}
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -275,7 +390,7 @@ const Career = () => {
               <p className="jse-value-desc">
                 We turn ideas into impactful engineering solutions.
               </p>
-            </div>
+            </motion.div>
 
           </div>
         </div>

@@ -1,26 +1,23 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import StickyContact from '../../../components/StickyContact';
 import './ArchitecturalBIM.css';
 
+import whatIsImage from '../../../assets/MEP/Picture13.png';
 
-import whatIsImage from '../../../assets/images-home/bim-modelling.webp';
-
-// Portfolio Imports
 // Portfolio Imports
 import { MEP_PROJECTS } from '../../../data/realPortfolio';
 
-
-// Tech Logos removed
-
 // Standardized Images for Additional Services (Matching Home.jsx)
-import mepImg from '../../../assets/images-home/mep-design.webp';
+import mepImg from '../../../assets/images-home/home-new-img/MEP.png';
 import heroImage from '../../../assets/images-home/home-new-img/MEP.png';
-import archImg from '../../../assets/images-home/architectural-bim.webp';
-import structImg from '../../../assets/images-home/bim-modelling.webp';
-import steelImg from '../../../assets/images-home/hvac-design.webp'; // Matching Home.jsx mapping
-import infraImg from '../../../assets/images-home/home-new-img/infrastructural.webp'; // Matching Home.jsx mapping
-import virtualEngImage from "../../../assets/images-home/home-new-img/virtual-t.JPG";
-import secondmentImage from "../../../assets/images-home/secondament.JPG";
+import archImg from '../../../assets/images-home/home-new-img/BIM.webp';
+import structImg from '../../../assets/images-home/home-new-img/structural-eng.webp';
+import steelImg from '../../../assets/images-home/home-new-img/steel-detail.jfif';
+import infraImg from '../../../assets/images-home/home-new-img/infrastructural.webp';
+import virtualEngImage from '../../../assets/images-home/home-new-img/virtual-team.jpg';
+import secondmentImage from '../../../assets/images-home/home-new-img/secondment.jpg.jpeg';
 
 
 // Reusing existing images for services
@@ -90,8 +87,6 @@ const CHOOSE_JSE_DATA_2 = [
   }
 ];
 
-// BIM_TECH_DATA removed
-
 // Additional Services Data (Standardized to Home.jsx Solutions)
 const ADDITIONAL_SERVICES = [
   { title: "MEP Engineering", desc: "Comprehensive MEP solutions including HVAC, Electrical, and Firefighting.", link: "/services/design/mep-design", img: mepImg },
@@ -130,6 +125,23 @@ const MEPDesign = () => {
     stickyContactRef.current?.open();
   };
 
+  // Animation Variants (Staggered)
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemFadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -159,7 +171,7 @@ const MEPDesign = () => {
       </div>
 
       {/* Core Pillars Section (4 Columns) */}
-      < section className="arch-pillars-section" >
+      <section className="arch-pillars-section">
         <div className="arch-pillars-container">
 
           {/* Column 1: Visualization */}
@@ -207,17 +219,17 @@ const MEPDesign = () => {
           </div>
 
         </div>
-      </section >
+      </section>
 
-      {/* What is Architectural BIM Section */}
-      < section className="arch-what-section" >
+      {/* What is MEP Design Section */}
+      <section className="arch-what-section">
         <div className="arch-what-container">
           {/* Text Side */}
           <div className="arch-what-text">
             <span className="arch-what-tagline">THE CONCEPT</span>
             <h2 className="arch-what-title">What is MEP Design?</h2>
             <p className="arch-what-desc">
-              Architectural BIM is a digital representation of the physical and functional characteristics of a building. It goes beyond traditional 2D drawings by creating a 3D model that integrates all aspects of the design process.
+              MEP Design is a digital representation of the physical and functional characteristics of a building's mechanical, electrical, and plumbing systems. It goes beyond traditional 2D drawings by creating a 3D model that integrates all aspects of the design process.
             </p>
             <p className="arch-what-desc">
               This model becomes a shared resource for decision-making, providing accurate data throughout the building's lifecycle.
@@ -226,16 +238,12 @@ const MEPDesign = () => {
           {/* Image Side */}
           <div className="arch-what-image-wrapper">
             <div className="arch-image-back"></div>
-            <img src={whatIsImage} alt="What is Architectural BIM" className="arch-what-img"
+            <img src={whatIsImage} alt="What is MEP Design" className="arch-what-img"
               loading="lazy"
               decoding="async" />
           </div>
         </div>
-      </section >
-
-
-
-
+      </section>
 
 
       <section className="arch-services-section">
@@ -484,29 +492,39 @@ const MEPDesign = () => {
         </div>
       </section>
 
-      {/* Technologies Section Removed */}
-
       {/* Additional Services Menu Section */}
       <section className="solutions-list-section">
-        <div className="solutions-list-container">
+        <motion.div
+          className="solutions-list-container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+        >
           <div className="solutions-header-group">
             <h2 className="solutions-title">Additional Services You Can Benefit From</h2>
           </div>
           <div className="solutions-list-wrapper">
             {ADDITIONAL_SERVICES.map((item, index) => (
-              <a key={index} href={item.link} className="solution-list-item">
-                <span className="solution-list-text">{item.title}</span>
-                <span className="solution-list-arrow">→</span>
-                <div className="solution-item-img-wrapper">
-                  <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
-                </div>
-              </a>
+              <motion.div
+                key={index}
+                variants={itemFadeUp}
+                className="solution-item-motion-wrapper"
+              >
+                <Link to={item.link} className="solution-list-item">
+                  <span className="solution-list-text">{item.title}</span>
+                  <span className="solution-list-arrow">→</span>
+                  <div className="solution-item-img-wrapper">
+                    <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
+                  </div>
+                </Link>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
-    </div >
+    </div>
   );
 }; // End of Component
 

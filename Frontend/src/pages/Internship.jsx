@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import "../styles/Internship.css";
 import heroGroupImage from "../assets/images-home/internship/enlarging-img.JPG";
 import eligibilityImage from "../assets/images-home/internship/whocanjoin.JPG";
@@ -133,20 +134,70 @@ const Internship = () => {
   return (
     <div className="internship-page">
       {/* Dark Hero Section matching other pages */}
+      {/* Video Hero Section */}
       <section className="internship-hero-section">
+        <video
+          className="hero-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src={internVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="hero-overlay"></div>
+
         <div className="internship-hero-content">
-          <div className="internship-breadcrumbs">
-            Home &gt; <span>Internship</span>
-          </div>
-          <h1 className="internship-hero-title">Internship Opportunities</h1>
-          <button className="internship-cta-btn" onClick={() => contactRef.current.open()}>
-            Apply Now
-          </button>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="internship-breadcrumbs">
+              Home &gt; <span>Internship</span>
+            </div>
+            <h1 className="internship-hero-title" style={{ fontFamily: 'delight', fontWeight: 'bold', fontSize: '5rem' }}>Internship Programs</h1> {/* Increased Font Size */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              style={{ fontSize: '1.5rem', marginTop: '1rem', maxWidth: '600px' }}
+            >
+              Building the Future of Engineering
+            </motion.p>
+
+            <motion.div
+              className="hero-cta-group"
+              style={{ display: 'flex', gap: '1.5rem', marginTop: '2.5rem' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            >
+              <button
+                className="internship-cta-btn"
+                onClick={() => contactRef.current.open()}
+              >
+                Apply Now
+              </button>
+
+              <a
+                href="#explore"
+                className="internship-secondary-btn"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('explore').scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Explore
+              </a>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Intro Text Section */}
-      <section className="internship-intro">
+      <section className="internship-intro" id="explore">
         <div className="intro-heading-side">
           <h2><span className="blue">Intern</span> <br />@JSE Engineering Pvt Ltd</h2>
         </div>

@@ -1,21 +1,23 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import StickyContact from '../../../components/StickyContact';
 import './ArchitecturalBIM.css'; // Reusing existing styles
-import heroImage from '../../../assets/images-home/home-new-img/structural-eng.jpg';
+import heroImage from '../../../assets/images-home/home-new-img/structural-eng.webp';
 
-import whatIsImage from '../../../assets/images-home/bim-modelling.webp';
+import whatIsImage from '../../../assets/structural/sectors-we-serve.jpg';
 
 // Portfolio Imports
 import { MEP_PROJECTS } from '../../../data/realPortfolio';
 
 // Standardized Images for Additional Services (Matching Home.jsx)
-import mepImg from '../../../assets/images-home/mep-design.webp';
-import archImg from '../../../assets/images-home/architectural-bim.webp';
-import structImg from '../../../assets/images-home/bim-modelling.webp';
-import steelImg from '../../../assets/images-home/hvac-design.webp'; // Matching Home.jsx mapping
-import infraImg from '../../../assets/images-home/home-new-img/infrastructural.webp'; // Matching Home.jsx mapping
-import virtualEngImage from "../../../assets/images-home/home-new-img/virtual-t.JPG";
-import secondmentImage from "../../../assets/images-home/secondament.JPG";
+import mepImg from '../../../assets/images-home/home-new-img/MEP.png';
+import archImg from '../../../assets/images-home/home-new-img/BIM.webp';
+import structImg from '../../../assets/images-home/home-new-img/structural-eng.webp';
+import steelImg from '../../../assets/images-home/home-new-img/steel-detail.jfif';
+import infraImg from '../../../assets/images-home/home-new-img/infrastructural.webp';
+import virtualEngImage from '../../../assets/images-home/home-new-img/virtual-team.jpg';
+import secondmentImage from '../../../assets/images-home/home-new-img/secondment.jpg.jpeg';
 
 // Reuse images for services
 import s1 from '../../../assets/images-home/skyscraper.webp';
@@ -29,13 +31,15 @@ const SERVICES_DATA = [
     { title: "RCC Design", img: s1, desc: "Reinforced Cement Concrete (RCC) – Structural Design and Detailed Engineering" },
     { title: "Composite Systems", img: s2, desc: "Composite Structural Systems – Analysis, Design, and Detailing" },
     { title: "Analysis & Design", img: s3, desc: "Structural Analysis & Design using STAAD.Pro, ETABS, and SAFE" },
-    { title: "Structural Optimization", img: s4, desc: "Design Review, Value Engineering, and Structural Optimization" },
-    { title: "Structural BIM", img: s5, desc: "Structural BIM Modeling and Multi-disciplinary Coordination" },
-    { title: "Clash Detection", img: s6, desc: "Clash Detection & Resolution and Construction Sequencing Support" },
-    { title: "Design Calculations", img: s1, desc: "Structural Analysis and Design Calculations typically strictly following codes." },
-    { title: "Construction Drawings", img: s2, desc: "Structural Design and Construction Drawings issued at appropriate stages (IFA / IFC)." },
-    { title: "Quantity Take-Offs", img: s3, desc: "Quantity Take-Offs (QTOs) to assist in cost estimation, procurement, and planning." },
-    { title: "As-Built Documentation", img: s4, desc: "As-Built Structural Documentation reflecting final constructed conditions." }
+    { title: "Structural Optimization", img: s4, desc: "Design Review, Value Engineering, and Structural Optimization to enhance constructability and cost efficiency" },
+    { title: "Structural BIM Modeling", img: s5, desc: "Advanced Structural BIM customization and modeling." },
+    { title: "Multi-disciplinary Coordination", img: s6, desc: "Integrated coordination with Architecture & MEP systems." },
+    { title: "Clash Detection", img: s1, desc: "Clash Detection & Resolution minimizing site conflicts." },
+    { title: "Construction Sequencing", img: s2, desc: "Construction Sequencing Support for efficient execution." },
+    { title: "Design Calculations", img: s3, desc: "Structural Analysis and Design Calculations in accordance with applicable codes and standards." },
+    { title: "Construction Drawings", img: s4, desc: "Structural Design and Construction Drawings issued at appropriate stages (IFA / IFC)." },
+    { title: "Quantity Take-Offs", img: s5, desc: "Quantity Take-Offs (QTOs) to assist in cost estimation, procurement, and planning." },
+    { title: "As-Built Documentation", img: s6, desc: "As-Built Structural Documentation reflecting final constructed conditions for record and handover." }
 ];
 
 const ICONIC_PROJECTS = MEP_PROJECTS.slice(0, 6).map(p => ({
@@ -120,20 +124,36 @@ const Structural = () => {
         stickyContactRef.current?.open();
     };
 
+    // Animation Variants (Staggered)
+    const staggerContainer = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.1
+            }
+        }
+    };
+
+    const itemFadeUp = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+    };
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
     return (
         <div className="arch-bim-page">
-            {/* New Split Hero Section */}
+            {/* Split Hero Section */}
             <div className="service-hero-split">
                 <div className="hero-text-content">
                     <span className="hero-small-label">Design Services</span>
                     <h1 className="hero-title-split">Structural Engineering</h1>
                     <p className="hero-desc-split">
-                        At JSE Engineering, we provide high-performance structural engineering solutions that turn
-                        complex design ideas into efficient, economical, and resilient structures.
+                        JSE Engineering delivers efficient, resilient structural solutions with precision from concept to construction.
                     </p>
                     <button onClick={scrollToForm} className="hero-cta-btn">
                         HIRE US
@@ -149,66 +169,17 @@ const Structural = () => {
                 </div>
             </div>
 
-            {/* Core Pillars Section (4 Columns) */}
-            < section className="arch-pillars-section" >
-                <div className="arch-pillars-container">
 
-                    {/* Column 1: Visualization */}
-                    <div className="arch-pillar-col">
-                        <div>
-                            <h2 className="arch-pillar-title">Visualization</h2>
-                            <p className="arch-pillar-desc">
-                                We transform structural concepts into precise 3D BIM models, giving you a clear and detailed digital view of your project's framework. This allows better understanding, review, and informed decision-making before construction begins.
-                            </p>
-                        </div>
-                        <span className="arch-pillar-num">01</span>
-                    </div>
-
-                    {/* Column 2: Precision & Control */}
-                    <div className="arch-pillar-col">
-                        <div>
-                            <h2 className="arch-pillar-title">Precision & Control</h2>
-                            <p className="arch-pillar-desc">
-                                Our Structural BIM services ensure accuracy across every element of the design. By identifying conflicts and potential issues early, we significantly reduce rework, delays, and unexpected costs during execution.
-                            </p>
-                        </div>
-                        <span className="arch-pillar-num">02</span>
-                    </div>
-
-                    {/* Column 3: Collaboration */}
-                    <div className="arch-pillar-col">
-                        <div>
-                            <h2 className="arch-pillar-title">Collaboration</h2>
-                            <p className="arch-pillar-desc">
-                                BIM enables seamless coordination between structural engineers, architects, and stakeholders. Structural systems are integrated into a unified model, ensuring consistency and clarity across the project lifecycle.
-                            </p>
-                        </div>
-                        <span className="arch-pillar-num">03</span>
-                    </div>
-
-                    {/* Column 4: Advanced BIM Solutions */}
-                    <div className="arch-pillar-col">
-                        <div>
-                            <h2 className="arch-pillar-title">Advanced Solutions</h2>
-                            <p className="arch-pillar-desc">
-                                By leveraging cutting-edge BIM workflows, we enhance structural planning efficiency, optimize material resources, and deliver high-quality outcomes. JSE Engineering provides a strong digital foundation for successful projects.
-                            </p>
-                        </div>
-                        <span className="arch-pillar-num">04</span>
-                    </div>
-
-                </div>
-            </section >
 
             {/* What is Section */}
-            < section className="arch-what-section" >
+            <section className="arch-what-section">
                 <div className="arch-what-container">
                     {/* Text Side */}
                     <div className="arch-what-text">
                         <span className="arch-what-tagline">SECTORS WE SERVE</span>
                         <h2 className="arch-what-title">Industry Sectors</h2>
                         <p className="arch-what-desc">
-                            We provide high-quality engineering expertise that enhances structural performance, ensuring economic and code-compliant design. Our structural engineering solutions span across diverse industries:
+                            We provide high-quality engineering expertise that enhances structural performance, ensures economic and code-compliant design, and delivers solutions that are robust, efficient, and fully constructible for successful project execution.
                         </p>
                         <ul className="arch-what-list" style={{ listStyle: 'none', padding: 0, marginTop: '1rem' }}>
                             <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
@@ -221,7 +192,7 @@ const Structural = () => {
                                 <span style={{ color: '#144AE0', marginRight: '0.5rem', fontWeight: 'bold' }}>•</span> Healthcare & Educational Facilities
                             </li>
                             <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
-                                <span style={{ color: '#144AE0', marginRight: '0.5rem', fontWeight: 'bold' }}>•</span> Industrial & Infrastructure Structures
+                                <span style={{ color: '#144AE0', marginRight: '0.5rem', fontWeight: 'bold' }}>•</span> Industrial & Infrastructure structures
                             </li>
                         </ul>
                     </div>
@@ -233,16 +204,16 @@ const Structural = () => {
                             decoding="async" />
                     </div>
                 </div>
-            </section >
+            </section>
 
+            {/* Specialized Structural Engineering Capabilities Section */}
             <section className="arch-services-section">
                 <div className="arch-services-container">
                     <div className="arch-services-header">
                         <span className="arch-services-tagline">OUR EXPERTISE</span>
-                        <h2 className="arch-services-title">Our Structural Services Include</h2>
-                        <p className="arch-services-desc">
-                            Transform your projects with JSE's cutting-edge Structural BIM solutions.
-                            Our services encompass comprehensive solutions tailored to meet the needs of modern construction projects. We specialize in:
+                        <h2 className="arch-services-title">Specialized Structural Engineering Capabilities</h2>
+                        <p className="arch-services-desc" style={{ maxWidth: '900px', margin: '0 auto 3rem auto' }}>
+                            Our coordinated approach minimizes site conflicts and design ambiguities before construction begins. Our services are delivered with a strong focus on constructability, coordination with contractors and project stakeholders, and compliance with statutory and contractual requirements.
                         </p>
                     </div>
 
@@ -261,141 +232,11 @@ const Structural = () => {
                 </div>
             </section>
 
-            {/* Form Section */}
-            <StickyContact ref={stickyContactRef}>
-                <div className="form-container">
-                    {/* Left Side: Title & Info */}
-                    <div className="form-info-side">
-                        <h2 className="form-heading">Start Your Project</h2>
-                        <p className="form-subtext">
-                            Ready to optimize your workflow with JSE's Structural services? Fill out the details and we'll get in touch with you shortly.
-                        </p>
-
-                        <div className="form-contact-details">
-                            <p className="form-email">info@jseengineering.com</p>
-                        </div>
-
-                        <div className="form-socials">
-                            <div className="social-circle">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                </svg>
-                            </div>
-                            <div className="social-circle">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-                                </svg>
-                            </div>
-                            <div className="social-circle">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Right Side: Form */}
-                    <div className="form-input-side">
-                        <form onSubmit={handleSubmit} className="internship-form">
-                            <div className="form-group">
-                                <label>Your Name*</label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleInputChange}
-                                    required
-                                    className="form-input-line"
-                                />
-                            </div>
-
-                            <div className="form-group">
-                                <label>Your Mail ID*</label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleInputChange}
-                                    required
-                                    className="form-input-line"
-                                />
-                            </div>
-
-                            <div className="form-group">
-                                <label>Message*</label>
-                                <textarea
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleInputChange}
-                                    rows="4"
-                                    required
-                                    className="form-input-line"
-                                ></textarea>
-                            </div>
-
-                            <button type="submit" className="form-submit-btn">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </StickyContact>
-
-            {/* Understanding BIM Levels Of Development Section */}
-            <section className="arch-lod-section">
-                <div className="arch-lod-container">
-                    <div className="arch-lod-header">
-                        <span className="arch-lod-tagline">BIM MATURITY</span>
-                        <h2 className="arch-lod-heading">Understanding BIM Levels Of Development</h2>
-                        <p className="arch-lod-intro">
-                            Dive into the critical stages of BIM modeling with JSE, where LOD 100, 200, 300, 350, 400, and 500 guide our precision in design, fabrication, and as-built accuracy, ensuring your project’s success from conception to completion.
-                        </p>
-                    </div>
-
-                    <div className="arch-lod-grid">
-                        {/* Column 1: LOD 300 */}
-                        <div className="arch-lod-item">
-                            <div className="arch-lod-icon-box">
-                                {/* Cube Icon */}
-                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                            </div>
-                            <h3 className="arch-lod-title">LOD 300</h3>
-                            <p className="arch-lod-desc">
-                                Represents a design-level model with accurate geometry and specific dimensions for components, suitable for coordinating and constructing elements.
-                            </p>
-                        </div>
-
-                        {/* Column 2: LOD 400 */}
-                        <div className="arch-lod-item">
-                            <div className="arch-lod-icon-box">
-                                {/* Layers/Construction Icon */}
-                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                            </div>
-                            <h3 className="arch-lod-title">LOD 400</h3>
-                            <p className="arch-lod-desc">
-                                A fabrication-ready model with detailed geometry and information, enabling precise assembly, installation, and construction of components.
-                            </p>
-                        </div>
-
-                        {/* Column 3: LOD 500 */}
-                        <div className="arch-lod-item">
-                            <div className="arch-lod-icon-box">
-                                {/* Checked Building/As-Built Icon */}
-                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                            </div>
-                            <h3 className="arch-lod-title">LOD 500</h3>
-                            <p className="arch-lod-desc">
-                                The as-built model reflecting the final, field-verified condition of the building, including all relevant specifications and documentation for facility management.
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            {/* Worldwide Iconic Projects Section */}
+            {/* Worldwide Iconic Projects Marquee */}
             <section className="iconic-projects-section">
                 <div className="iconic-container">
                     <div className="iconic-header">
-                        <span className="iconic-tagline">BIM projects</span>
+                        <span className="iconic-tagline">Structural Projects</span>
                         <h2 className="iconic-heading">Worldwide Iconic Projects</h2>
                     </div>
                 </div>
@@ -441,7 +282,7 @@ const Structural = () => {
                     {/* Left Column: Text */}
                     <div className="arch-choose-left">
                         <span className="arch-choose-tagline">WHY CHOOSE US</span>
-                        <h2 className="arch-choose-heading">Why Choose JSE for Structural Engineers?</h2>
+                        <h2 className="arch-choose-heading">Why JSE for Structural Engineering?</h2>
                         <p className="arch-choose-desc">
                             Choosing JSE’s Structural Design Engineers means gaining a strategic partner focused on precision, safety, and efficiency. Our team leverages advanced BIM workflows to deliver accurate, data-rich structural models that enhance coordination and reduce risks.
                         </p>
@@ -459,7 +300,7 @@ const Structural = () => {
                 </div>
             </section>
 
-            {/* Why Choose JSE Section (Part 2 - Reversed) */}
+            {/* Engineering Approach Section (Part 2 - Reversed) */}
             <section className="arch-choose-section">
                 <div className="arch-choose-container">
                     {/* Left Column: Cards Grid (Visually Left) */}
@@ -474,6 +315,8 @@ const Structural = () => {
 
                     {/* Right Column: Text (Visually Right) */}
                     <div className="arch-choose-left">
+                        <span className="arch-choose-tagline">OUR METHODOLOGY</span>
+                        <h2 className="arch-choose-heading">Engineering Approach</h2>
                         <p className="arch-choose-desc">
                             By integrating structural expertise with architectural insight, we ensure safe, buildable, and optimized designs. With JSE, you benefit from a collaborative approach that guarantees your structural vision is realized to the highest standards.
                         </p>
@@ -481,27 +324,38 @@ const Structural = () => {
                 </div>
             </section>
 
-            {/* Additional Services Menu Section */}
+            {/* Additional Services Menu Section (Updated to match Home.jsx) */}
             <section className="solutions-list-section">
-                <div className="solutions-list-container">
+                <motion.div
+                    className="solutions-list-container"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    variants={staggerContainer}
+                >
                     <div className="solutions-header-group">
                         <h2 className="solutions-title">Additional Services You Can Benefit From</h2>
                     </div>
                     <div className="solutions-list-wrapper">
                         {ADDITIONAL_SERVICES.map((item, index) => (
-                            <a key={index} href={item.link} className="solution-list-item">
-                                <span className="solution-list-text">{item.title}</span>
-                                <span className="solution-list-arrow">→</span>
-                                <div className="solution-item-img-wrapper">
-                                    <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
-                                </div>
-                            </a>
+                            <motion.div
+                                key={index}
+                                variants={itemFadeUp}
+                                className="solution-item-motion-wrapper"
+                            >
+                                <Link to={item.link} className="solution-list-item">
+                                    <span className="solution-list-text">{item.title}</span>
+                                    <span className="solution-list-arrow">→</span>
+                                    <div className="solution-item-img-wrapper">
+                                        <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
+                                    </div>
+                                </Link>
+                            </motion.div>
                         ))}
                     </div>
-                </div>
+                </motion.div>
             </section>
-
-        </div >
+        </div>
     );
 };
 

@@ -1,16 +1,23 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import StickyContact from '../../../components/StickyContact';
 import './ArchitecturalBIM.css';
-import heroImage from '../../../assets/images-home/architectural-bim.webp';
 
 import whatIsImage from '../../../assets/images-home/bim-modelling.webp';
 
 // Portfolio Imports
-// Portfolio Imports
 import { MEP_PROJECTS } from '../../../data/realPortfolio';
 
 
-// Tech Logos removed
+// Standardized Images for Additional Services (Matching Home.jsx)
+import mepImg from '../../../assets/images-home/home-new-img/MEP.png';
+import archImg from '../../../assets/images-home/home-new-img/BIM.webp';
+import structImg from '../../../assets/images-home/home-new-img/structural-eng.webp';
+import steelImg from '../../../assets/images-home/home-new-img/steel-detail.jfif';
+import infraImg from '../../../assets/images-home/home-new-img/infrastructural.webp';
+import virtualEngImage from '../../../assets/images-home/home-new-img/virtual-team.jpg';
+import secondmentImage from '../../../assets/images-home/home-new-img/secondment.jpg.jpeg';
 
 // Reuse images for services
 import s1 from '../../../assets/images-home/skyscraper.webp';
@@ -20,24 +27,22 @@ import s4 from '../../../assets/images-home/mep-design.webp';
 import s5 from '../../../assets/images-home/hvac-design.webp';
 import s6 from '../../../assets/images-home/plumbing.webp';
 import s7 from '../../../assets/images-home/electrical-system.webp';
-// Reusing s6 or s4 for pure firefighting if specific image not found, defaulting to s4 (MEP) for now or similar.
 import s8 from '../../../assets/images-home/hero-group-image.jpg'; // Placeholder for ELV if no specific image
-import virtualEngImage from "../../../assets/images-home/home-new-img/virtual-t.JPG";
-import secondmentImage from "../../../assets/images-home/secondament.JPG";
+
 
 const SERVICES_DATA = [
-  { title: "BIM consulting", img: s1, desc: "Strategic guidance for successful BIM adoption." },
-  { title: "Shop Drawing", img: s2, desc: "Precise drawings for fabrication and installation." },
-  { title: "Revit 3D Service", img: s3, desc: "Detailed 3D modeling using Autodesk Revit." },
-  { title: "Architectural BIM/VDC", img: s4, desc: "Virtual Design and Construction for better planning." },
-  { title: "Architectural 3D modeling", img: s5, desc: "High-fidelity 3D models for visualization." },
-  { title: "CAD drafting", img: s6, desc: "Accurate 2D drafting and documentation." },
-  { title: "Utility Modeling", img: s1, desc: "Comprehensive modeling of MEP and utility systems." },
-  { title: "Construction Documentation", img: s2, desc: "Complete sets of construction plans and details." },
-  { title: "BIM Clash Detection", img: s3, desc: "Identifying and resolving conflicts before construction." },
-  { title: "BIM Visualization", img: s4, desc: "Photorealistic renderings and walkthroughs." },
-  { title: "BIM Quantity Takeoffs", img: s5, desc: "Automated material quantity extraction." },
-  { title: "Collaboration and Coordination", img: s6, desc: "Streamlined team workflows and communication." }
+  { title: "BIM consulting", img: s1, desc: "Strategic guidance for successful BIM adoption in HVAC projects." },
+  { title: "Shop Drawing", img: s2, desc: "Precise HVAC shop drawings for fabrication and installation." },
+  { title: "Revit 3D Service", img: s3, desc: "Detailed 3D HVAC modeling using Autodesk Revit for accurate coordination." },
+  { title: "HVAC BIM/VDC", img: s4, desc: "Virtual Design and Construction for better HVAC planning and execution." },
+  { title: "HVAC 3D modeling", img: s5, desc: "High-fidelity 3D models for visualization and clash detection." },
+  { title: "CAD drafting", img: s6, desc: "Accurate 2D drafting and documentation for HVAC systems." },
+  { title: "Utility Modeling", img: s1, desc: "Comprehensive modeling of MEP and utility systems including HVAC." },
+  { title: "Construction Documentation", img: s2, desc: "Complete sets of HVAC construction plans and details." },
+  { title: "BIM Clash Detection", img: s3, desc: "Identifying and resolving HVAC conflicts before construction." },
+  { title: "BIM Visualization", img: s4, desc: "Photorealistic renderings and walkthroughs of HVAC designs." },
+  { title: "BIM Quantity Takeoffs", img: s5, desc: "Automated material quantity extraction for HVAC components." },
+  { title: "Collaboration and Coordination", img: s6, desc: "Streamlined team workflows and communication for MEP projects." }
 ];
 
 const ICONIC_PROJECTS = MEP_PROJECTS.slice(0, 6).map(p => ({
@@ -49,11 +54,11 @@ const ICONIC_PROJECTS = MEP_PROJECTS.slice(0, 6).map(p => ({
 const CHOOSE_JSE_DATA = [
   {
     title: "Innovative Solutions",
-    desc: "Our BIM architectural design engineers use the latest technology to create innovative and highly detailed 3D models that bring your vision to life."
+    desc: "Our HVAC design engineers use the latest technology to create innovative and highly detailed 3D models that bring your vision to life."
   },
   {
     title: "Holistic Approach",
-    desc: "JSE integrate all aspects of architectural design, ensuring seamless coordination between different building systems for optimal functionality and aesthetics."
+    desc: "JSE integrate all aspects of HVAC design, ensuring seamless coordination between different building systems for optimal functionality and aesthetics."
   },
   {
     title: "Enhanced Visualization",
@@ -84,19 +89,15 @@ const CHOOSE_JSE_DATA_2 = [
   }
 ];
 
-// BIM_TECH_DATA removed
-
+// Additional Services Data (Standardized to Home.jsx Solutions)
 const ADDITIONAL_SERVICES = [
-  { title: "Virtual Team for Hire", link: "/services/virtual-team", img: virtualEngImage },
-  { title: "HVAC Design", link: "/services/design/hvac-design", img: s5 },
-  { title: "Plumbing & Public Health", link: "/services/design/plumbing-public-health", img: s6 },
-  { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 },
-  { title: "Electrical System Design", link: "/services/design/electrical-system-design", img: s7 },
-  { title: "ELV (Extra Low Voltage)", link: "/services/design/elv", img: s4 },
-  { title: "Architectural BIM", link: "/services/design/architectural-bim", img: s2 },
-  { title: "Steel Structure Detailing", link: "/services/design/steel-structure-detailing", img: s5 },
-  { title: "Structural", link: "/services/design/structural", img: s3 },
-  { title: "Secondment Team", link: "/services/secondment-team", img: secondmentImage }
+  { title: "MEP Engineering", desc: "Comprehensive MEP solutions including HVAC, Electrical, and Firefighting.", link: "/services/design/mep-design", img: mepImg },
+  { title: "Architectural BIM", desc: "Revolutionizing architecture with detailed BIM models.", link: "/services/design/architectural-bim", img: archImg },
+  { title: "Structural Engineering", desc: "Advanced structural engineering and analysis.", link: "/services/design/structural", img: structImg },
+  { title: "Steel Structure Detailing", desc: "Accurate Tekla detailing and steel structures.", link: "/services/design/steel-structure-detailing", img: steelImg },
+  { title: "Infrastructural Services", desc: "Robust infrastructure solutions for modern communities.", link: "/services/infrastructural-services", img: infraImg },
+  { title: "Virtual Team for Hire", desc: "Hire own remote offshore architect team for modular construction needs.", link: "/services/virtual-team", img: virtualEngImage },
+  { title: "Secondment Team", desc: "Get on-demand access to our pool of experienced professionals.", link: "/services/secondment-team", img: secondmentImage }
 ];
 
 const HVACDesign = () => {
@@ -124,6 +125,23 @@ const HVACDesign = () => {
 
   const scrollToForm = () => {
     stickyContactRef.current?.open();
+  };
+
+  // Animation Variants (Staggered)
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemFadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
   };
 
   useEffect(() => {
@@ -163,7 +181,7 @@ const HVACDesign = () => {
             <div>
               <h2 className="arch-pillar-title">Visualization</h2>
               <p className="arch-pillar-desc">
-                We transform architectural concepts into precise 3D BIM models, giving you a clear and detailed digital view of your project from the earliest design stages. This allows better understanding, review, and informed decision-making before construction begins.
+                We transform HVAC concepts into precise 3D BIM models, giving you a clear and detailed digital view of your project from the earliest design stages. This allows better understanding, review, and informed decision-making before construction begins.
               </p>
             </div>
             <span className="arch-pillar-num">01</span>
@@ -174,7 +192,7 @@ const HVACDesign = () => {
             <div>
               <h2 className="arch-pillar-title">Precision & Control</h2>
               <p className="arch-pillar-desc">
-                Our Architectural BIM services ensure accuracy across every element of the design. By identifying conflicts and potential issues early, we significantly reduce rework, delays, and unexpected costs during execution.
+                Our HVAC BIM services ensure accuracy across every element of the design. By identifying conflicts and potential issues early, we significantly reduce rework, delays, and unexpected costs during execution.
               </p>
             </div>
             <span className="arch-pillar-num">02</span>
@@ -185,7 +203,7 @@ const HVACDesign = () => {
             <div>
               <h2 className="arch-pillar-title">Collaboration</h2>
               <p className="arch-pillar-desc">
-                BIM enables seamless coordination between architects, engineers, and stakeholders. Structural systems, architectural intent, and aesthetic details are integrated into a unified model, ensuring consistency and clarity across the project lifecycle.
+                BIM enables seamless coordination between architects, engineers, and stakeholders. HVAC systems, architectural intent, and structural details are integrated into a unified model, ensuring consistency and clarity across the project lifecycle.
               </p>
             </div>
             <span className="arch-pillar-num">03</span>
@@ -194,7 +212,7 @@ const HVACDesign = () => {
           {/* Column 4: Advanced BIM Solutions */}
           <div className="arch-pillar-col">
             <div>
-              <h2 className="arch-pillar-title">Advanced BIM Solutions</h2>
+              <h2 className="arch-pillar-title">Advanced Solutions</h2>
               <p className="arch-pillar-desc">
                 By leveraging cutting-edge BIM workflows, including Point Cloud to BIM, we enhance planning efficiency, optimize resources, and deliver high-quality outcomes. JSE Engineering provides a strong digital foundation for successful and future-ready projects.
               </p>
@@ -205,7 +223,7 @@ const HVACDesign = () => {
         </div>
       </section >
 
-      {/* What is Architectural BIM Section */}
+      {/* What is HVAC Design Section */}
       < section className="arch-what-section" >
         <div className="arch-what-container">
           {/* Text Side */}
@@ -213,26 +231,21 @@ const HVACDesign = () => {
             <span className="arch-what-tagline">THE CONCEPT</span>
             <h2 className="arch-what-title">What is HVAC Design?</h2>
             <p className="arch-what-desc">
-              Architectural BIM is a digital representation of the physical and functional characteristics of a building. It goes beyond traditional 2D drawings by creating a 3D model that integrates all aspects of the design process.
+              HVAC Design involves the detailed planning and modeling of Heating, Ventilation, and Air Conditioning systems. It goes beyond traditional 2D drawings by creating a 3D model that integrates all aspects of the design process.
             </p>
             <p className="arch-what-desc">
-              This model becomes a shared resource for decision-making, providing accurate data throughout the building's lifecycle.
+              This model becomes a shared resource for decision-making, ensuring optimal climate control, energy efficiency, and occupant comfort throughout the building's lifecycle.
             </p>
           </div>
           {/* Image Side */}
           <div className="arch-what-image-wrapper">
             <div className="arch-image-back"></div>
-            <img src={whatIsImage} alt="What is Architectural BIM" className="arch-what-img"
+            <img src={whatIsImage} alt="What is HVAC Design" className="arch-what-img"
               loading="lazy"
               decoding="async" />
           </div>
         </div>
       </section >
-
-
-
-
-
 
       <section className="arch-services-section">
         <div className="arch-services-container">
@@ -240,8 +253,8 @@ const HVACDesign = () => {
             <span className="arch-services-tagline">OUR EXPERTISE</span>
             <h2 className="arch-services-title">Our HVAC Design Services Include</h2>
             <p className="arch-services-desc">
-              Transform your architectural projects with JSE's cutting-edge BIM solutions.
-              Our BIM architectural services encompass comprehensive solutions tailored to meet the needs of modern construction projects. We specialize in:
+              Transform your projects with JSE's cutting-edge HVAC solutions.
+              Our BIM services encompass comprehensive solutions tailored to meet the needs of modern construction projects. We specialize in:
             </p>
           </div>
 
@@ -440,9 +453,9 @@ const HVACDesign = () => {
           {/* Left Column: Text */}
           <div className="arch-choose-left">
             <span className="arch-choose-tagline">WHY CHOOSE US</span>
-            <h2 className="arch-choose-heading">Why Choose JSE for HVAC Design Engineers?</h2>
+            <h2 className="arch-choose-heading">Why Choose JSE for HVAC Design?</h2>
             <p className="arch-choose-desc">
-              Choosing JSE’s BIM Architectural Design Engineers means gaining a strategic partner focused on precision, efficiency, and innovation. Our team leverages advanced BIM workflows to deliver accurate, data-rich architectural models that enhance visualization, improve coordination, and reduce design conflicts from the earliest stages.
+              Choosing JSE’s HVAC Design Engineers means gaining a strategic partner focused on precision, efficiency, and innovation. Our team leverages advanced BIM workflows to deliver accurate, data-rich HVAC models that enhance visualization, improve coordination, and reduce design conflicts from the earliest stages.
             </p>
           </div>
 
@@ -480,30 +493,40 @@ const HVACDesign = () => {
         </div>
       </section>
 
-      {/* Technologies Section Removed */}
-
       {/* Additional Services Menu Section */}
       <section className="solutions-list-section">
-        <div className="solutions-list-container">
+        <motion.div
+          className="solutions-list-container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+        >
           <div className="solutions-header-group">
             <h2 className="solutions-title">Additional Services You Can Benefit From</h2>
           </div>
           <div className="solutions-list-wrapper">
             {ADDITIONAL_SERVICES.map((item, index) => (
-              <a key={index} href={item.link} className="solution-list-item">
-                <span className="solution-list-text">{item.title}</span>
-                <span className="solution-list-arrow">→</span>
-                <div className="solution-item-img-wrapper">
-                  <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
-                </div>
-              </a>
+              <motion.div
+                key={index}
+                variants={itemFadeUp}
+                className="solution-item-motion-wrapper"
+              >
+                <Link to={item.link} className="solution-list-item">
+                  <span className="solution-list-text">{item.title}</span>
+                  <span className="solution-list-arrow">→</span>
+                  <div className="solution-item-img-wrapper">
+                    <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
+                  </div>
+                </Link>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
-    </div >
+    </div>
   );
-}; // End of Component
+};
 
 export default HVACDesign;

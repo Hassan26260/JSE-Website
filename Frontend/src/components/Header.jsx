@@ -9,7 +9,7 @@ const Header = () => {
   const [servicesDropdown, setServicesDropdown] = useState(false);
   const [designServicesDropdown, setDesignServicesDropdown] = useState(false); // Restored
   const [mepDropdown, setMepDropdown] = useState(false);
-  const [internshipDropdown, setInternshipDropdown] = useState(false);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -59,16 +59,13 @@ const Header = () => {
     setMepDropdown(false);
   };
 
-  const handleInternshipMouseEnter = () => {
-    setInternshipDropdown(true);
-  };
 
-  const handleInternshipMouseLeave = () => {
-    setInternshipDropdown(false);
-  };
+
+  // Pages that start with transparent header
+  const isTransparentPage = location.pathname === "/" || location.pathname === "/internship" || location.pathname === "/career";
 
   return (
-    <header className={`header ${isScrolled || location.pathname !== "/" ? "scrolled" : ""}`}>
+    <header className={`header ${isScrolled || !isTransparentPage ? "scrolled" : ""}`}>
       <div className="header-container">
         <Link to="/" className="logo">
           <img
@@ -150,29 +147,9 @@ const Header = () => {
             Portfolio
           </Link>
 
-          <div
-            className={`nav-link dropdown ${isActive("/internship") ? "active" : ""}`}
-            onMouseEnter={handleInternshipMouseEnter}
-            onMouseLeave={handleInternshipMouseLeave}
-          >
-            <Link to="/internship" className="nav-link-text" style={{ color: 'inherit', textDecoration: 'none' }} onClick={() => setIsMobileMenuOpen(false)}>
-              Internship
-            </Link>
-            {internshipDropdown && (
-              <div
-                className="dropdown-menu"
-                onMouseEnter={handleInternshipMouseEnter}
-                onMouseLeave={handleInternshipMouseLeave}
-              >
-                <Link to="/internship" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
-                  Engineering
-                </Link>
-                <Link to="/internship/diploma" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
-                  Diploma
-                </Link>
-              </div>
-            )}
-          </div>
+          <Link to="/internship" className={`nav-link ${isActive("/internship") ? "active" : ""}`} onClick={() => setIsMobileMenuOpen(false)}>
+            Internship
+          </Link>
 
           <Link to="/career" className={`nav-link ${isActive("/career") ? "active" : ""}`} onClick={() => setIsMobileMenuOpen(false)}>
             Career

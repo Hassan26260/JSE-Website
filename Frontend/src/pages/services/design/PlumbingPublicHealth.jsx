@@ -1,20 +1,23 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import StickyContact from '../../../components/StickyContact';
 import './ArchitecturalBIM.css';
-import heroImage from '../../../assets/images-home/architectural-bim.webp';
 
 import whatIsImage from '../../../assets/images-home/bim-modelling.webp';
 
 // Portfolio Imports
-// Portfolio Imports
 import { MEP_PROJECTS } from '../../../data/realPortfolio';
 
 
-// Tech Logos
-import revitLogo from '../../../assets/virtual-eng/software logos/autodesk-revit-seeklogo.png';
-import autocadLogo from '../../../assets/virtual-eng/software logos/autocad-seeklogo.png';
-import bentleyLogo from '../../../assets/virtual-eng/software logos/bentley.png';
-import microstationLogo from '../../../assets/virtual-eng/software logos/microstation.webp';
-import projectwiseLogo from '../../../assets/virtual-eng/software logos/projectwise.webp';
+// Standardized Images for Additional Services (Matching Home.jsx)
+import mepImg from '../../../assets/images-home/home-new-img/MEP.png';
+import archImg from '../../../assets/images-home/home-new-img/BIM.webp';
+import structImg from '../../../assets/images-home/home-new-img/structural-eng.webp';
+import steelImg from '../../../assets/images-home/home-new-img/steel-detail.jfif';
+import infraImg from '../../../assets/images-home/home-new-img/infrastructural.webp';
+import virtualEngImage from '../../../assets/images-home/home-new-img/virtual-team.jpg';
+import secondmentImage from '../../../assets/images-home/home-new-img/secondment.jpg.jpeg';
 
 // Reuse images for services
 import s1 from '../../../assets/images-home/skyscraper.webp';
@@ -24,10 +27,8 @@ import s4 from '../../../assets/images-home/mep-design.webp';
 import s5 from '../../../assets/images-home/hvac-design.webp';
 import s6 from '../../../assets/images-home/plumbing.webp';
 import s7 from '../../../assets/images-home/electrical-system.webp';
-// Reusing s6 or s4 for pure firefighting if specific image not found, defaulting to s4 (MEP) for now or similar.
 import s8 from '../../../assets/images-home/hero-group-image.jpg'; // Placeholder for ELV if no specific image
-import virtualEngImage from "../../../assets/images-home/home-new-img/virtual-t.JPG";
-import secondmentImage from "../../../assets/images-home/secondament.JPG";
+
 
 const SERVICES_DATA = [
   { title: "Plumbing Engineering & System Design", img: s1, desc: "Complete design of efficient and reliable plumbing systems." },
@@ -84,27 +85,15 @@ const CHOOSE_JSE_DATA_2 = [
   }
 ];
 
-const BIM_TECH_DATA = [
-  { name: 'Revit', abbr: 'Rv', bg: '#e6f7ff', img: revitLogo },
-  { name: 'AutoCAD', abbr: 'AC', bg: '#fffbe6', img: autocadLogo },
-  { name: 'Navisworks', abbr: 'Nw', bg: '#f9f0ff', img: projectwiseLogo }, // ProjectWise placeholder for Navis
-  { name: 'Bentley', abbr: 'Be', bg: '#e6fffb', img: bentleyLogo },
-  { name: 'Civil 3D', abbr: 'C3D', bg: '#fff0f6', img: revitLogo }, // Revit placeholder
-  { name: 'Tekla', abbr: 'Tk', bg: '#f0f5ff', img: microstationLogo },
-  { name: 'SketchUp', abbr: 'Sk', bg: '#f6ffed', img: bentleyLogo } // Bentley placeholder
-];
-
+// Additional Services Data (Standardized to Home.jsx Solutions)
 const ADDITIONAL_SERVICES = [
-  { title: "Virtual Team for Hire", link: "/services/virtual-team", img: virtualEngImage },
-  { title: "HVAC Design", link: "/services/design/hvac-design", img: s5 },
-  { title: "Plumbing & Public Health", link: "/services/design/plumbing-public-health", img: s6 },
-  { title: "Firefighting Design", link: "/services/design/firefighting-design", img: s4 },
-  { title: "Electrical System Design", link: "/services/design/electrical-system-design", img: s7 },
-  { title: "ELV (Extra Low Voltage)", link: "/services/design/elv", img: s4 },
-  { title: "Architectural BIM", link: "/services/design/architectural-bim", img: s2 },
-  { title: "Steel Structure Detailing", link: "/services/design/steel-structure-detailing", img: s5 },
-  { title: "Structural", link: "/services/design/structural", img: s3 },
-  { title: "Secondment Team", link: "/services/secondment-team", img: secondmentImage }
+  { title: "MEP Engineering", desc: "Comprehensive MEP solutions including HVAC, Electrical, and Firefighting.", link: "/services/design/mep-design", img: mepImg },
+  { title: "Architectural BIM", desc: "Revolutionizing architecture with detailed BIM models.", link: "/services/design/architectural-bim", img: archImg },
+  { title: "Structural Engineering", desc: "Advanced structural engineering and analysis.", link: "/services/design/structural", img: structImg },
+  { title: "Steel Structure Detailing", desc: "Accurate Tekla detailing and steel structures.", link: "/services/design/steel-structure-detailing", img: steelImg },
+  { title: "Infrastructural Services", desc: "Robust infrastructure solutions for modern communities.", link: "/services/infrastructural-services", img: infraImg },
+  { title: "Virtual Team for Hire", desc: "Hire own remote offshore architect team for modular construction needs.", link: "/services/virtual-team", img: virtualEngImage },
+  { title: "Secondment Team", desc: "Get on-demand access to our pool of experienced professionals.", link: "/services/secondment-team", img: secondmentImage }
 ];
 
 const PlumbingPublicHealth = () => {
@@ -128,15 +117,32 @@ const PlumbingPublicHealth = () => {
     console.log('Form submitted:', formData);
   };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const stickyContactRef = useRef(null);
 
   const scrollToForm = () => {
     stickyContactRef.current?.open();
   };
+
+  // Animation Variants (Staggered)
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemFadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="arch-bim-page">
@@ -189,18 +195,13 @@ const PlumbingPublicHealth = () => {
         </div>
       </section >
 
-
-
-
-
-
       <section className="arch-services-section">
         <div className="arch-services-container">
           <div className="arch-services-header">
             <span className="arch-services-tagline">OUR EXPERTISE</span>
             <h2 className="arch-services-title">Public Health Design Services Include</h2>
             <p className="arch-services-desc">
-              Transforming projects with reliable, compliant, and sustainable plumbing solutions.
+              Delivering specialized solutions to ensure safety and compliance.
             </p>
           </div>
 
@@ -220,7 +221,7 @@ const PlumbingPublicHealth = () => {
       </section>
 
       {/* Form Section */}
-      <section className="internship-form-section">
+      <StickyContact ref={stickyContactRef}>
         <div className="form-container">
           {/* Left Side: Title & Info */}
           <div className="form-info-side">
@@ -295,59 +296,7 @@ const PlumbingPublicHealth = () => {
             </form>
           </div>
         </div>
-      </section>
-
-      {/* Understanding BIM Levels Of Development Section */}
-      <section className="arch-lod-section">
-        <div className="arch-lod-container">
-          <div className="arch-lod-header">
-            <span className="arch-lod-tagline">BIM MATURITY</span>
-            <h2 className="arch-lod-heading">Understanding BIM Levels Of Development</h2>
-            <p className="arch-lod-intro">
-              Dive into the critical stages of BIM modeling with JSE, where LOD 100, 200, 300, 350, 400, and 500 guide our precision in design, fabrication, and as-built accuracy, ensuring your project’s success from conception to completion.
-            </p>
-          </div>
-
-          <div className="arch-lod-grid">
-            {/* Column 1: LOD 300 */}
-            <div className="arch-lod-item">
-              <div className="arch-lod-icon-box">
-                {/* Cube Icon */}
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-              </div>
-              <h3 className="arch-lod-title">LOD 300</h3>
-              <p className="arch-lod-desc">
-                Represents a design-level model with accurate geometry and specific dimensions for components, suitable for coordinating and constructing elements.
-              </p>
-            </div>
-
-            {/* Column 2: LOD 400 */}
-            <div className="arch-lod-item">
-              <div className="arch-lod-icon-box">
-                {/* Layers/Construction Icon */}
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-              </div>
-              <h3 className="arch-lod-title">LOD 400</h3>
-              <p className="arch-lod-desc">
-                A fabrication-ready model with detailed geometry and information, enabling precise assembly, installation, and construction of components.
-              </p>
-            </div>
-
-            {/* Column 3: LOD 500 */}
-            <div className="arch-lod-item">
-              <div className="arch-lod-icon-box">
-                {/* Checked Building/As-Built Icon */}
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-              </div>
-              <h3 className="arch-lod-title">LOD 500</h3>
-              <p className="arch-lod-desc">
-                The as-built model reflecting the final, field-verified condition of the building, including all relevant specifications and documentation for facility management.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      </StickyContact>
 
       {/* Worldwide Iconic Projects Section */}
       <section className="iconic-projects-section">
@@ -439,30 +388,40 @@ const PlumbingPublicHealth = () => {
         </div>
       </section>
 
-      {/* Technologies Section Removed */}
-
       {/* Additional Services Menu Section */}
       <section className="solutions-list-section">
-        <div className="solutions-list-container">
+        <motion.div
+          className="solutions-list-container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+        >
           <div className="solutions-header-group">
             <h2 className="solutions-title">Additional Services You Can Benefit From</h2>
           </div>
           <div className="solutions-list-wrapper">
             {ADDITIONAL_SERVICES.map((item, index) => (
-              <a key={index} href={item.link} className="solution-list-item">
-                <span className="solution-list-text">{item.title}</span>
-                <span className="solution-list-arrow">→</span>
-                <div className="solution-item-img-wrapper">
-                  <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
-                </div>
-              </a>
+              <motion.div
+                key={index}
+                variants={itemFadeUp}
+                className="solution-item-motion-wrapper"
+              >
+                <Link to={item.link} className="solution-list-item">
+                  <span className="solution-list-text">{item.title}</span>
+                  <span className="solution-list-arrow">→</span>
+                  <div className="solution-item-img-wrapper">
+                    <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
+                  </div>
+                </Link>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
-    </div >
+    </div>
   );
-}; // End of Component
+};
 
 export default PlumbingPublicHealth;

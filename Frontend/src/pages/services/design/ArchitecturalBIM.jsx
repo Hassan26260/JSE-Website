@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import StickyContact from '../../../components/StickyContact';
 import './ArchitecturalBIM.css';
-import heroImage from '../../../assets/images-home/home-new-img/BIM.png';
+import heroImage from '../../../assets/images-home/home-new-img/BIM.webp';
 
-import whatIsImage from '../../../assets/other/Construction Company Plans A Sketch Of New Building Photo And Picture For Free Download - Pngtree.jpg';
+import whatIsImage from '../../../assets/Architectural-bim/concept.webp';
 
-// Portfolio Imports
 // Portfolio Imports
 import { ARCH_PROJECTS } from '../../../data/realPortfolio';
 
@@ -23,30 +23,43 @@ import s6 from '../../../assets/images-home/plumbing.webp';
 import s7 from '../../../assets/images-home/electrical-system.webp';
 // Reusing s6 or s4 for pure firefighting if specific image not found, defaulting to s4 (MEP) for now or similar.
 import s8 from '../../../assets/images-home/hero-group-image.jpg'; // Placeholder for ELV if no specific image
-import virtualEngImage from "../../../assets/images-home/home-new-img/virtual-t.JPG";
-import secondmentImage from "../../../assets/images-home/secondament.JPG";
 
 // Standardized Images for Additional Services (Matching Home.jsx)
-import mepImg from '../../../assets/images-home/mep-design.webp';
-import archImg from '../../../assets/images-home/architectural-bim.webp';
-import structImg from '../../../assets/images-home/bim-modelling.webp';
-import steelImg from '../../../assets/images-home/hvac-design.webp'; // Matching Home.jsx mapping
-import infraImg from '../../../assets/images-home/home-new-img/infrastructural.webp'; // Matching Home.jsx mapping
+import mepImg from '../../../assets/images-home/home-new-img/MEP.png';
+import archImg from '../../../assets/images-home/home-new-img/BIM.webp';
+import structImg from '../../../assets/images-home/home-new-img/structural-eng.webp';
+import steelImg from '../../../assets/images-home/home-new-img/steel-detail.jfif';
+import infraImg from '../../../assets/images-home/home-new-img/infrastructural.webp';
+import virtualEngImage from '../../../assets/images-home/home-new-img/virtual-team.jpg';
+import secondmentImage from '../../../assets/images-home/home-new-img/secondment.jpg.jpeg';
 
+// Expertise Images
+import bimConsultingImg from '../../../assets/Architectural-bim/OUR EXPERTISE/BIM Consulting.png';
+import shopDrawingImg from '../../../assets/Architectural-bim/OUR EXPERTISE/Shop Drawing.png';
+import revit3DImg from '../../../assets/Architectural-bim/OUR EXPERTISE/Revit 3D Service.png';
+import archBimVdcImg from '../../../assets/Architectural-bim/OUR EXPERTISE/Architectural BIMVDC.png';
+import utilityModelingImg from '../../../assets/Architectural-bim/OUR EXPERTISE/Utility Modeling.png';
+import constDocImg from '../../../assets/Architectural-bim/OUR EXPERTISE/Construction Documentation.png';
+import clashDetectImg from '../../../assets/Architectural-bim/OUR EXPERTISE/BIM Clash Detection Documentation.png';
+import bimVisImg from '../../../assets/Architectural-bim/OUR EXPERTISE/BIM Visualization & Documentation.png';
+import bimQtoImg from '../../../assets/Architectural-bim/OUR EXPERTISE/BIM Quantity Takeoffs.png';
+import collabCoordImg from '../../../assets/Architectural-bim/OUR EXPERTISE/Collaboration and Coordination Documentation.png';
+import arch3DImg from '../../../assets/Architectural-bim/OUR EXPERTISE/Architectural 3D Modeling Services.png';
+import cadDraftingImg from '../../../assets/Architectural-bim/OUR EXPERTISE/CAD Drafting Services.png';
 
 const SERVICES_DATA = [
-  { title: "BIM Consulting", img: s1, desc: "Strategic BIM planning, standards development, and workflow optimization for efficient project execution." },
-  { title: "Architectural Shop Drawings", img: s2, desc: "Highly detailed, contractor-ready drawings that translate design intent into precise fabrication and installation instructions." },
-  { title: "Revit 3D Modeling Services", img: s3, desc: "Intelligent Revit-based BIM models enabling real-time coordination, automated documentation, and multi-disciplinary integration." },
-  { title: "Architectural BIM & VDC", img: s4, desc: "Data-driven BIM and Virtual Design & Construction solutions that improve planning, coordination, and construction outcomes." },
-  { title: "Utility Modeling", img: s5, desc: "Comprehensive modeling of underground and above-ground utilities—water, power, gas, and telecom—integrated with GIS." },
-  { title: "Construction Documentation", img: s6, desc: "Accurate, data-rich BIM documentation including drawings, schedules, and specifications to reduce errors and rework." },
-  { title: "BIM Clash Detection & Coordination", img: s1, desc: "Advanced clash detection using tools like Revit and Navisworks, supported by structured reports (CSV, PDF, HTML)." },
-  { title: "BIM Visualization & Documentation", img: s2, desc: "High-quality BIM visualization that converts 2D concepts into intelligent, data-rich 3D models for better decision-making." },
-  { title: "BIM Quantity Take-Offs & 5D BIM", img: s3, desc: "Automated material quantity extraction for accurate cost estimation, budgeting, and construction planning." },
-  { title: "Collaboration & Coordination", img: s4, desc: "Structured documentation workflows that support real-time collaboration, accountability, and design approvals." },
-  { title: "Architectural 3D Modeling Services", img: s5, desc: "Photorealistic exterior and interior models, walkthroughs, animations, and floor plans that bridge concept and construction." },
-  { title: "CAD Drafting Services", img: s6, desc: "Precise 2D and 3D CAD drawings using AutoCAD and Revit, supporting architectural, engineering, and MEP workflows." }
+  { title: "BIM Consulting", img: bimConsultingImg, desc: "Strategic BIM planning, standards development, and workflow optimization for efficient project execution." },
+  { title: "Architectural Shop Drawings", img: shopDrawingImg, desc: "Highly detailed, contractor-ready drawings that translate design intent into precise fabrication and installation instructions." },
+  { title: "Revit 3D Modeling Services", img: revit3DImg, desc: "Intelligent Revit-based BIM models enabling real-time coordination, automated documentation, and multi-disciplinary integration." },
+  { title: "Architectural BIM & VDC", img: archBimVdcImg, desc: "Data-driven BIM and Virtual Design & Construction solutions that improve planning, coordination, and construction outcomes." },
+  { title: "Utility Modeling", img: utilityModelingImg, desc: "Comprehensive modeling of underground and above-ground utilities—water, power, gas, and telecom—integrated with GIS." },
+  { title: "Construction Documentation", img: constDocImg, desc: "Accurate, data-rich BIM documentation including drawings, schedules, and specifications to reduce errors and rework." },
+  { title: "BIM Clash Detection & Coordination", img: clashDetectImg, desc: "Advanced clash detection using tools like Revit and Navisworks, supported by structured reports (CSV, PDF, HTML)." },
+  { title: "BIM Visualization & Documentation", img: bimVisImg, desc: "High-quality BIM visualization that converts 2D concepts into intelligent, data-rich 3D models for better decision-making." },
+  { title: "BIM Quantity Take-Offs & 5D BIM", img: bimQtoImg, desc: "Automated material quantity extraction for accurate cost estimation, budgeting, and construction planning." },
+  { title: "Collaboration & Coordination", img: collabCoordImg, desc: "Structured documentation workflows that support real-time collaboration, accountability, and design approvals." },
+  { title: "Architectural 3D Modeling Services", img: arch3DImg, desc: "Photorealistic exterior and interior models, walkthroughs, animations, and floor plans that bridge concept and construction." },
+  { title: "CAD Drafting Services", img: cadDraftingImg, desc: "Precise 2D and 3D CAD drawings using AutoCAD and Revit, supporting architectural, engineering, and MEP workflows." }
 ];
 
 const ICONIC_PROJECTS = [
@@ -109,42 +122,55 @@ const ADDITIONAL_SERVICES = [
   { title: "Secondment Team", desc: "Get on-demand access to our pool of experienced professionals.", link: "/services/secondment-team", img: secondmentImage }
 ];
 
+// Project Images
+import alAinImg from '../../../assets/Architectural-bim/sunset.jpg';
+import carltonImg from '../../../assets/Architectural-bim/cartton.webp';
+
+const PROJECT_EXPERIENCE = [
+  {
+    title: "Carlton House Terrace – London, UK",
+    desc: "Carlton House Terrace is an iconic architectural landmark located in the St James’s district of Westminster, London. The project features elegant white stucco terraces overlooking The Mall and St. James’s Park. Our BIM approach ensured heritage-sensitive modeling, precision detailing, and seamless coordination for this prestigious development.",
+    img: carltonImg
+  },
+  {
+    title: "Al Ain Hospital – Abu Dhabi, UAE",
+    desc: "The Al Ain Hospital project is one of the most significant healthcare developments in the UAE, designed to meet international medical standards. JSE Engineering supported the project through advanced Architectural BIM visualization, enhancing patient experience and departmental navigation using interactive digital applications integrated within the BIM environment.",
+    img: alAinImg
+  }
+];
+
 const ArchitecturalBIM = () => {
-  // Carousel State
-  const [currentProject, setCurrentProject] = useState(0);
+  const contactRef = useRef(null);
 
-  const nextProject = () => {
-    setCurrentProject((prev) => (prev + 1) % ICONIC_PROJECTS.length);
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+
+  const handleNextProject = () => {
+    setCurrentProjectIndex((prev) => (prev + 1) % PROJECT_EXPERIENCE.length);
   };
 
-  const prevProject = () => {
-    setCurrentProject((prev) => (prev - 1 + ICONIC_PROJECTS.length) % ICONIC_PROJECTS.length);
+  const handlePrevProject = () => {
+    setCurrentProjectIndex((prev) => (prev - 1 + PROJECT_EXPERIENCE.length) % PROJECT_EXPERIENCE.length);
   };
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
-  };
-
-  const stickyContactRef = useRef(null);
 
   const scrollToForm = () => {
-    stickyContactRef.current?.open();
+    contactRef.current?.open();
+  };
+
+  // Animation Variants (Staggered)
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemFadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
   };
 
   useEffect(() => {
@@ -153,14 +179,13 @@ const ArchitecturalBIM = () => {
 
   return (
     <div className="arch-bim-page">
-      {/* Hero Section */}
       {/* New Split Hero Section */}
       <div className="service-hero-split">
         <div className="hero-text-content">
           <span className="hero-small-label">Design Services</span>
-          <h1 className="hero-title-split">Architectural BIM Services</h1>
+          <h1 className="hero-title-split">Architectural BIM</h1>
           <p className="hero-desc-split">
-            JSE Engineering Pvt Ltd is a leading Architectural BIM Design Consultancy, delivering high-quality BIM solutions worldwide. We redefine industry benchmarks through innovation, precision, and future-ready workflows.
+            Comprehensive Architectural BIM services that bridge the gap between design and construction, ensuring accuracy, efficiency, and innovative realization of your vision.
           </p>
           <button onClick={scrollToForm} className="hero-cta-btn">
             HIRE US
@@ -172,151 +197,94 @@ const ArchitecturalBIM = () => {
         </div>
         <div className="hero-image-content">
           <div className="hero-diagonal-bar"></div>
-          <img src={heroImage} alt="Architectural BIM Services" className="hero-img-split" loading="eager" />
+          <img src={heroImage} alt="Architectural BIM" className="hero-img-split" loading="eager" />
         </div>
       </div>
 
       {/* Core Pillars Section (4 Columns) */}
-      < section className="arch-pillars-section" >
+      <section className="arch-pillars-section">
         <div className="arch-pillars-container">
 
-          {/* Column 1: Precision & Control */}
+          {/* Column 1: Visualization */}
           <div className="arch-pillar-col">
             <div>
-              <h2 className="arch-pillar-title">Precision & Control</h2>
+              <h2 className="arch-pillar-title">Visualization</h2>
               <p className="arch-pillar-desc">
-                At JSE Engineering, precision means that every BIM model element reflects real-world dimensions, specifications, and performance data. Our Architectural BIM workflow ensures technical accuracy and construction readiness at every stage.
+                We transform architectural concepts into precise 3D BIM models, giving you a clear and detailed digital view of your project from the earliest design stages. This allows better understanding, review, and informed decision-making before construction begins.
               </p>
             </div>
             <span className="arch-pillar-num">01</span>
           </div>
 
-          {/* Column 2: Collaborative Workflows */}
+          {/* Column 2: Precision & Control */}
           <div className="arch-pillar-col">
             <div>
-              <h2 className="arch-pillar-title">Collaborative Workflows</h2>
+              <h2 className="arch-pillar-title">Precision & Control</h2>
               <p className="arch-pillar-desc">
-                Architectural BIM enables seamless collaboration between architects, engineers, consultants, and stakeholders. By integrating architectural intent, structural systems, and MEP coordination into a unified digital model, we ensure design consistency and informed decision-making.
+                Our Architectural BIM services ensure accuracy across every element of the design. By identifying conflicts and potential issues early, we significantly reduce rework, delays, and unexpected costs during execution.
               </p>
             </div>
             <span className="arch-pillar-num">02</span>
           </div>
 
-          {/* Column 3: Project Overview */}
+          {/* Column 3: Collaboration */}
           <div className="arch-pillar-col">
             <div>
-              <h2 className="arch-pillar-title">Refined Project Overview</h2>
+              <h2 className="arch-pillar-title">Collaboration</h2>
               <p className="arch-pillar-desc">
-                Effective BIM collaboration is the foundation of our construction workflows. By leveraging a centralized Common Data Environment (CDE), all stakeholders contribute to a federated, intelligent BIM model—ensuring design intent is preserved from concept to facility management.
+                BIM enables seamless coordination between architects, engineers, and stakeholders. Structural systems, architectural intent, and aesthetic details are integrated into a unified model, ensuring consistency and clarity across the project lifecycle.
               </p>
             </div>
             <span className="arch-pillar-num">03</span>
           </div>
 
-          {/* Column 4: Advanced Solutions */}
+          {/* Column 4: Advanced BIM Solutions */}
           <div className="arch-pillar-col">
             <div>
               <h2 className="arch-pillar-title">Advanced BIM Solutions</h2>
               <p className="arch-pillar-desc">
-                With over 20 years of combined expertise in construction and technology, JSE Engineering delivers comprehensive BIM solutions. Our integration of hands-on field experience with advanced Virtual Design & Construction (VDC) methodologies ensures precision across every deliverable.
+                By leveraging cutting-edge BIM workflows, including Point Cloud to BIM, we enhance planning efficiency, optimize resources, and deliver high-quality outcomes. JSE Engineering provides a strong digital foundation for successful and future-ready projects.
               </p>
             </div>
             <span className="arch-pillar-num">04</span>
           </div>
 
         </div>
-      </section >
+      </section>
 
-      {/* Global Project Experience Section - Carousel Redesign */}
+      {/* What is Architectural BIM Section */}
       <section className="arch-what-section">
-        <div className="arch-what-container" style={{ display: 'block' }}>
-
-          {/* Centered Heading */}
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 className="arch-what-title" style={{ fontFamily: 'delight', fontSize: '3.5rem', color: '#144AE0', textAlign: 'center' }}>
-              GLOBAL PROJECT EXPERIENCE
-            </h2>
+        <div className="arch-what-container">
+          {/* Text Side */}
+          <div className="arch-what-text">
+            <span className="arch-what-tagline">THE CONCEPT</span>
+            <h2 className="arch-what-title">What is Architectural BIM?</h2>
+            <p className="arch-what-desc">
+              Architectural BIM is a digital representation of the physical and functional characteristics of a building. It goes beyond traditional 2D drawings by creating a 3D model that integrates all aspects of the design process.
+            </p>
+            <p className="arch-what-desc">
+              This model becomes a shared resource for decision-making, providing accurate data throughout the building's lifecycle.
+            </p>
           </div>
-
-          {/* Carousel Grid */}
-          <div className="arch-carousel-wrapper" style={{ minHeight: '400px', position: 'relative' }}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentProject}
-                className="arch-carousel-grid"
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}
-              >
-                {/* Left: Text Content */}
-                <div className="arch-carousel-content">
-                  <h3 className="arch-service-title" style={{ fontSize: '2rem', marginBottom: '1.5rem', color: '#0f172a' }}>
-                    {ICONIC_PROJECTS[currentProject].title}
-                  </h3>
-                  <p className="arch-what-desc" style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#475569' }}>
-                    {/* Description Mapping based on project index/title since ICONIC_PROJECTS only has title/img. 
-                        In a real scenario, descriptions should be in the data array. 
-                        Using the static text from previous code for the 2 known projects, and generic for others. */}
-                    {currentProject === 3 ? (
-                      "The Al Ain Hospital project is one of the most significant healthcare developments in the UAE, designed to meet international medical standards. JSE Engineering supported the project through advanced Architectural BIM visualization, enhancing patient experience and departmental navigation using interactive digital applications integrated within the BIM environment."
-                    ) : currentProject === 0 ? (
-                      "Carlton House Terrace is an iconic architectural landmark located in the St James’s district of Westminster, London. The project features elegant white stucco terraces overlooking The Mall and St. James’s Park. Our BIM approach ensured heritage-sensitive modeling, precision detailing, and seamless coordination for this prestigious development."
-                    ) : (
-                      `JSE Engineering delivered comprehensive BIM solutions for the ${ICONIC_PROJECTS[currentProject].title}, ensuring precision in coordination, clash detection, and construction documentation to meet global standards.`
-                    )}
-                  </p>
-                </div>
-
-                {/* Right: Image */}
-                <div className="arch-carousel-image">
-                  <img
-                    src={ICONIC_PROJECTS[currentProject].img}
-                    alt={ICONIC_PROJECTS[currentProject].title}
-                    style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}
-                  />
-                </div>
-              </motion.div>
-            </AnimatePresence>
+          {/* Image Side */}
+          <div className="arch-what-image-wrapper">
+            <div className="arch-image-back"></div>
+            <img src={whatIsImage} alt="What is Architectural BIM" className="arch-what-img"
+              loading="lazy"
+              decoding="async" />
           </div>
-
-          {/* Divider Line */}
-          <div className="arch-carousel-divider" style={{ width: '100%', height: '1px', backgroundColor: '#144AE0', marginTop: '3rem', opacity: 0.3 }}></div>
-
-          {/* Navigation Arrows */}
-          <div className="arch-carousel-controls" style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
-            <button
-              onClick={prevProject}
-              className="arch-nav-btn"
-              style={{ background: 'transparent', border: '1px solid #144AE0', borderRadius: '50%', width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#144AE0', transition: 'all 0.3s ease' }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
-            </button>
-            <button
-              onClick={nextProject}
-              className="arch-nav-btn"
-              style={{ background: 'transparent', border: '1px solid #144AE0', borderRadius: '50%', width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#144AE0', transition: 'all 0.3s ease' }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-            </button>
-          </div>
-
         </div>
-      </section >
-
-
-
-
+      </section>
 
 
       <section className="arch-services-section">
         <div className="arch-services-container">
           <div className="arch-services-header">
             <span className="arch-services-tagline">OUR EXPERTISE</span>
-            <h2 className="arch-services-title">Architectural BIM Services We Offer</h2>
+            <h2 className="arch-services-title">Our Architectural BIM Services Include</h2>
             <p className="arch-services-desc">
-              With JSE’s Architectural BIM services, you gain more than just a 3D model—you gain a strategic project tool that improves design accuracy, collaboration, and execution efficiency.
+              Transform your architectural projects with JSE's cutting-edge BIM solutions.
+              Our BIM architectural services encompass comprehensive solutions tailored to meet the needs of modern construction projects. We specialize in:
             </p>
           </div>
 
@@ -336,7 +304,7 @@ const ArchitecturalBIM = () => {
       </section>
 
       {/* Form Section */}
-      <StickyContact ref={stickyContactRef}>
+      <StickyContact ref={contactRef}>
         <div className="form-container">
           {/* Left Side: Title & Info */}
           <div className="form-info-side">
@@ -370,97 +338,83 @@ const ArchitecturalBIM = () => {
 
           {/* Right Side: Form */}
           <div className="form-input-side">
-            <form onSubmit={handleSubmit} className="internship-form">
+            <form className="internship-form" onSubmit={(e) => e.preventDefault()}>
               <div className="form-group">
                 <label>Your Name*</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input-line"
-                />
+                <input type="text" required className="form-input-line" />
               </div>
-
               <div className="form-group">
                 <label>Your Mail ID*</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input-line"
-                />
+                <input type="email" required className="form-input-line" />
               </div>
-
               <div className="form-group">
                 <label>Message*</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows="4"
-                  required
-                  className="form-input-line"
-                ></textarea>
+                <textarea rows="4" required className="form-input-line"></textarea>
               </div>
-
               <button type="submit" className="form-submit-btn">Submit</button>
             </form>
           </div>
         </div>
       </StickyContact>
 
-      {/* Understanding BIM Levels Of Development Section */}
-      <section className="arch-lod-section">
-        <div className="arch-lod-container">
-          <div className="arch-lod-header">
-            <span className="arch-lod-tagline">BIM MATURITY</span>
-            <h2 className="arch-lod-heading">Understanding BIM Levels Of Development</h2>
-            <p className="arch-lod-intro">
-              Dive into the critical stages of BIM modeling with JSE, where LOD 100, 200, 300, 350, 400, and 500 guide our precision in design, fabrication, and as-built accuracy, ensuring your project’s success from conception to completion.
-            </p>
+
+
+      {/* Global Project Experience Section - Carousel */}
+      <section className="arch-project-carousel-section">
+        <div className="arch-project-carousel-container">
+          <div className="arch-services-header">
+
+            <h2 className="arch-services-title" style={{ fontFamily: 'Delight, sans-serif' }}>Global Project Experience</h2>
           </div>
 
-          <div className="arch-lod-grid">
-            {/* Column 1: LOD 300 */}
-            <div className="arch-lod-item">
-              <div className="arch-lod-icon-box">
-                {/* Cube Icon */}
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-              </div>
-              <h3 className="arch-lod-title">LOD 300</h3>
-              <p className="arch-lod-desc">
-                Represents a design-level model with accurate geometry and specific dimensions for components, suitable for coordinating and constructing elements.
-              </p>
-            </div>
+          <div className="arch-carousel-wrapper">
+            <AnimatePresence mode='wait'>
+              <motion.div
+                key={currentProjectIndex}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="arch-carousel-slide"
+              >
+                {/* Left: Text Content */}
+                <div className="arch-carousel-text-content">
+                  <h3 className="arch-carousel-project-title">
+                    {PROJECT_EXPERIENCE[currentProjectIndex].title}
+                  </h3>
+                  <p className="arch-carousel-project-desc">
+                    {PROJECT_EXPERIENCE[currentProjectIndex].desc}
+                  </p>
+                </div>
 
-            {/* Column 2: LOD 400 */}
-            <div className="arch-lod-item">
-              <div className="arch-lod-icon-box">
-                {/* Layers/Construction Icon */}
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-              </div>
-              <h3 className="arch-lod-title">LOD 400</h3>
-              <p className="arch-lod-desc">
-                A fabrication-ready model with detailed geometry and information, enabling precise assembly, installation, and construction of components.
-              </p>
-            </div>
+                {/* Right: Image */}
+                <div className="arch-carousel-image-wrapper">
+                  <img
+                    src={PROJECT_EXPERIENCE[currentProjectIndex].img}
+                    alt={PROJECT_EXPERIENCE[currentProjectIndex].title}
+                    className="arch-carousel-image"
+                  />
+                </div>
+              </motion.div>
+            </AnimatePresence>
 
-            {/* Column 3: LOD 500 */}
-            <div className="arch-lod-item">
-              <div className="arch-lod-icon-box">
-                {/* Checked Building/As-Built Icon */}
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-              </div>
-              <h3 className="arch-lod-title">LOD 500</h3>
-              <p className="arch-lod-desc">
-                The as-built model reflecting the final, field-verified condition of the building, including all relevant specifications and documentation for facility management.
-              </p>
+            {/* Navigation Buttons (Bottom Left) */}
+            <div className="arch-carousel-controls">
+              <button
+                className="arch-carousel-btn prev-btn"
+                onClick={handlePrevProject}
+                aria-label="Previous Project"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
+              </button>
+              <button
+                className="arch-carousel-btn next-btn"
+                onClick={handleNextProject}
+                aria-label="Next Project"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              </button>
             </div>
-
           </div>
         </div>
       </section>
@@ -555,30 +509,40 @@ const ArchitecturalBIM = () => {
         </div>
       </section>
 
-      {/* Technologies Section Removed */}
-
       {/* Additional Services Menu Section */}
       <section className="solutions-list-section">
-        <div className="solutions-list-container">
+        <motion.div
+          className="solutions-list-container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+        >
           <div className="solutions-header-group">
             <h2 className="solutions-title">Additional Services You Can Benefit From</h2>
           </div>
           <div className="solutions-list-wrapper">
             {ADDITIONAL_SERVICES.map((item, index) => (
-              <a key={index} href={item.link} className="solution-list-item">
-                <span className="solution-list-text">{item.title}</span>
-                <span className="solution-list-arrow">→</span>
-                <div className="solution-item-img-wrapper">
-                  <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
-                </div>
-              </a>
+              <motion.div
+                key={index}
+                variants={itemFadeUp}
+                className="solution-item-motion-wrapper"
+              >
+                <Link to={item.link} className="solution-list-item">
+                  <span className="solution-list-text">{item.title}</span>
+                  <span className="solution-list-arrow">→</span>
+                  <div className="solution-item-img-wrapper">
+                    <img src={item.img} alt={item.title} className="solution-item-img" loading="lazy" />
+                  </div>
+                </Link>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
-    </div >
+    </div>
   );
-}; // End of Component
+};
 
 export default ArchitecturalBIM;
