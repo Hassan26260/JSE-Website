@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './ArchitecturalBIM.css';
-import StickyContact from '../../components/StickyContact';
+import StickyContact from '../../../components/StickyContact';
 
 // Standardized Images for Additional Services (Matching Home.jsx)
 import mepImg from '../../../assets/images-home/home-new-img/MEP.png';
