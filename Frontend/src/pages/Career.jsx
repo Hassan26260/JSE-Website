@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from "framer-motion";
 import '../styles/Career.css';
-import heroImage from '../assets/images-home/career/enlarging-img (2).JPG';
+import heroImage from '../assets/replacement/career.jpg'; // New Image
 import internVideo from "../assets/careers-page/WhatsApp Video 2026-02-11 at 16.58.18.mp4"; // New Video
 import CareerApplicationForm from './CareerApplicationForm';
 // import api from '../services/api'; // API disabled
@@ -9,7 +9,7 @@ import { DUMMY_JOBS } from '../data/dummyData';
 
 // Life at JSE Images
 import lifeImg1 from '../assets/images-home/career/innovation&tech.jpg';
-import lifeImg2 from '../assets/images-home/career/growth&mentorship.JPG';
+import lifeImg2 from '../assets/images-home/career/growth&mentorship.jpeg';
 import lifeImg3 from '../assets/images-home/career/global-impact.jpg';
 import lifeImg4 from '../assets/images-home/career/communtity&culture.jfif';
 
@@ -115,7 +115,7 @@ const Career = () => {
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             >
               <button
-                className="career-cta-btn"
+                className="hero-cta-btn-glass"
                 onClick={() => document.getElementById('jobs-section').scrollIntoView({ behavior: 'smooth' })}
               >
                 View Openings
@@ -123,7 +123,7 @@ const Career = () => {
 
               <a
                 href="#career-intro"
-                className="career-secondary-btn"
+                className="hero-cta-btn-glass"
                 onClick={(e) => {
                   e.preventDefault();
                   document.getElementById('career-intro').scrollIntoView({ behavior: 'smooth' });

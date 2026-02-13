@@ -3,16 +3,14 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import "../../styles/Page.css";
 import "./DesignEngineeringProjects.css";
-// Reuse hero image for now, user can update later
+import StickyContact from '../../components/StickyContact';
 
-
-// Placeholder data or reuse existing constants if available
 // Standardized Images for Additional Services (Matching Home.jsx)
 import mepImg from '../../assets/images-home/home-new-img/MEP.png';
 import archImg from '../../assets/images-home/home-new-img/BIM.webp';
 import structImg from '../../assets/images-home/home-new-img/structural-eng.webp';
 import steelImg from '../../assets/images-home/home-new-img/steel-detail.jfif';
-import heroImage from '../../assets/images-home/home-new-img/infrastructural.webp'; // Matching Home.jsx mapping
+import heroImage from '../../assets/images-home/home-new-img/infrastructural.webp';
 import infraImg from '../../assets/images-home/home-new-img/infrastructural.webp';
 import virtualEngImage from '../../assets/images-home/home-new-img/virtual-team.jpg';
 import secondmentImage from '../../assets/images-home/home-new-img/secondment.jpg.jpeg';
@@ -28,33 +26,130 @@ const ADDITIONAL_SERVICES = [
     { title: "Secondment Team", desc: "Get on-demand access to our pool of experienced professionals.", link: "/services/secondment-team", img: secondmentImage }
 ];
 
-const INFRA_PILLARS = [
+const CORE_SERVICES = [
     {
-        title: "Roads & Highways",
-        desc: "Comprehensive design and planning for urban and rural road networks, ensuring durability and safety.",
-        img: heroImage // Placeholder
+        title: "Sewage Collection & Conveyance Networks",
+        desc: "Engineering of gravity sewer systems, rising mains (force mains), manholes, lift stations, and network profiling using hydraulic design principles. Our layouts are optimized for self-cleansing velocities, invert-level coordination, and maintenance access.",
+        scope: [
+            "Sewer alignment & longitudinal profiles",
+            "Hydraulic capacity checks",
+            "Manhole spacing & detailing",
+            "BIM-integrated underground utility coordination"
+        ]
     },
     {
-        title: "Utility Networks",
-        desc: "Efficient planning of water, sewage, and drainage systems to support sustainable development.",
-        img: heroImage // Placeholder
+        title: "Stormwater Drainage & Surface Water Management",
+        desc: "Design of stormwater conveyance systems, including catch basins, trunk drains, culverts, and outfalls, supported by runoff analysis and hydraulic modeling to mitigate flooding and ensure regulatory compliance.",
+        scope: [
+            "Drainage network sizing",
+            "Surface runoff routing",
+            "Flood mitigation planning",
+            "Integration with site grading models"
+        ]
     },
     {
-        title: "Urban Planning",
-        desc: "Integrated infrastructure solutions for smart cities and large-scale utility distributions.",
-        img: heroImage // Placeholder
+        title: "Pressurized Potable & Non-Potable Water Networks",
+        desc: "Design of pressurized water distribution systems with looped networks, pressure zoning, and pump interface coordination to ensure reliable supply across varying demand zones.",
+        scope: [
+            "Pipe sizing & pressure drop analysis",
+            "Zoning strategies for high-rise / campus layouts",
+            "Valve chamber & network segmentation",
+            "Utility corridor integration"
+        ]
+    },
+    {
+        title: "Chilled Water Distribution Networks (District Cooling)",
+        desc: "Engineering closed-loop chilled water piping networks for campuses, healthcare, IT parks, and commercial developments, ensuring thermal efficiency, redundancy, and future expandability.",
+        scope: [
+            "Primary–secondary chilled water network planning",
+            "Pipe routing & corridor coordination",
+            "Thermal loss considerations",
+            "BIM-based clash-free routing"
+        ]
+    },
+    {
+        title: "LV Electrical Utility Routing & Distribution Planning",
+        desc: "Planning and coordination of low-voltage electrical networks, including duct banks, cable trenches, service corridors, and equipment interface zones for integrated power distribution.",
+        scope: [
+            "LV cable routing layouts",
+            "Duct bank & trench coordination",
+            "Utility corridor zoning",
+            "Clash detection with wet utilities"
+        ]
+    },
+    {
+        title: "Electrical Distribution Infrastructure",
+        desc: "Design of internal power distribution networks, including feeder routing, substation interface planning, and utility network coordination for large-scale developments.",
+        scope: [
+            "Electrical utility network planning",
+            "Distribution corridor engineering",
+            "Multi-discipline BIM coordination",
+            "Constructability-driven layouts"
+        ]
+    },
+    {
+        title: "Telecommunications Networks",
+        desc: "Design of telecom ducting systems, fiber-optic pathways, handholes, and service corridors to support digital infrastructure, smart campuses, and future ICT scalability.",
+        scope: [
+            "Fiber duct routing",
+            "Handhole & chamber layouts",
+            "Smart infrastructure readiness",
+            "Integration with utility corridors"
+        ]
     }
 ];
 
+const DIGITAL_PLATFORMS = [
+    {
+        title: "Autodesk Civil 3D",
+        desc: "Utility networks, longitudinal profiles, surface models, and corridor-based infrastructure planning."
+    },
+    {
+        title: "Autodesk Revit (BIM)",
+        desc: "3D utility coordination, multi-discipline clash detection, and construction-ready BIM outputs."
+    }
+];
+
+const WHY_JSE = [
+    "BIM-driven multi-utility coordination",
+    "Reduced clashes through 3D utility modeling",
+    "Design optimized for constructability & lifecycle maintenance",
+    "Integrated civil–MEP–utility workflows",
+    "Scalable solutions for campuses, industrial parks & urban developments",
+    "Clear deliverables aligned to construction and as-built stages"
+];
+
+const DELIVERABLES = [
+    "Utility layout plans & longitudinal profiles",
+    "Coordinated 3D BIM utility models",
+    "Quantity take-offs & BOQs",
+    "Construction-stage drawings",
+    "As-built documentation"
+];
+
 const InfrastructuralServices = () => {
+    const stickyContactRef = useRef(null);
     const scrollToForm = () => {
-        const formSection = document.getElementById('contact-form');
-        if (formSection) {
-            formSection.scrollIntoView({ behavior: 'smooth' });
-        }
+        stickyContactRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
-    // Animation Variants (Staggered)
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Form Submitted", formData);
+    };
+
+    // Animation Variants
     const staggerContainer = {
         hidden: { opacity: 0 },
         visible: {
@@ -80,13 +175,13 @@ const InfrastructuralServices = () => {
             {/* Hero Section */}
             <div className="service-hero-split">
                 <div className="hero-text-content">
-                    <span className="hero-small-label">Infrastructural Services</span>
-                    <h1 className="hero-title-split">Infrastructural Services</h1>
+                    <span className="hero-small-label">Infrastructure Engineering</span>
+                    <h1 className="hero-title-split">Infrastructure Engineering</h1>
                     <p className="hero-desc-split">
-                        Delivering robust and sustainable infrastructure solutions. From transportation networks to utility systems, we engineer the backbone of modern communities.
+                        Digitally Engineered Utility Systems for Scalable Developments
                     </p>
                     <button onClick={scrollToForm} className="hero-cta-btn">
-                        HIRE US
+                        Request a Consultation
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
@@ -95,7 +190,7 @@ const InfrastructuralServices = () => {
                 </div>
                 <div className="hero-image-content">
                     <div className="hero-diagonal-bar"></div>
-                    <img src={heroImage} alt="Infrastructural Services" className="hero-img-split" loading="eager" />
+                    <img src={heroImage} alt="Infrastructure Engineering" className="hero-img-split" loading="eager" />
                 </div>
             </div>
 
@@ -103,37 +198,176 @@ const InfrastructuralServices = () => {
             <section className="design-intro-section">
                 <div className="design-intro-container">
                     <div className="design-intro-left">
-                        <h2>Robust Infrastructure,<br />Sustainable Future</h2>
+                        <h2>Digitally Engineered Utility Systems for Scalable Developments</h2>
                     </div>
                     <div className="design-intro-right">
-                        <p>We provide comprehensive infrastructural engineering services, ensuring seamless connectivity and reliable utility systems for projects of all scales.</p>
+                        <p>
+                            JSE Engineering Pvt. Ltd. delivers multi-utility infrastructure planning, detailed engineering, and BIM-based coordination for urban developments, industrial parks, campuses, and large-format projects. Our infrastructure designs are optimized for hydraulic performance, electrical safety, constructability, and lifecycle operations, ensuring seamless integration across civil, MEP, and digital networks.
+                        </p>
                     </div>
                 </div>
             </section>
 
-            {/* Pillars Section */}
+            {/* Core Services Section */}
             <section className="design-why-section">
                 <div className="design-header-center">
-                    <span className="dash-tagline">OUR EXPERTISE</span>
-                    <h2 className="design-heading-blue">Infrastructural Excellence</h2>
-                    <p className="design-desc-center">
-                        Our specialized teams deliver end-to-end infrastructure solutions designed for longevity and efficiency.
-                    </p>
+                    <span className="dash-tagline">OUR SERVICES</span>
+                    <h2 className="design-heading-blue">Core Infrastructure Services</h2>
                 </div>
 
-                <div className="design-why-grid">
-                    {INFRA_PILLARS.map((pillar, index) => (
+                <div className="design-why-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))' }}>
+                    {CORE_SERVICES.map((service, index) => (
                         <div key={index} className="design-why-card">
-                            <div className="design-icon-circle">
-                                {/* Generic Icon Placeholder */}
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l8-4 8 4v14"></path></svg>
+                            <h4 className="design-card-title">{service.title}</h4>
+                            <p className="design-card-desc">{service.desc}</p>
+                            <div className="design-card-scope" style={{ marginTop: '1rem' }}>
+                                <strong style={{ color: '#aaa', display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Scope Includes:</strong>
+                                <ul style={{ paddingLeft: '1.2rem', margin: 0, color: '#e0e0e0' }}>
+                                    {service.scope.map((item, i) => (
+                                        <li key={i} style={{ marginBottom: '0.3rem', fontSize: '0.9rem' }}>{item}</li>
+                                    ))}
+                                </ul>
                             </div>
-                            <h4 className="design-card-title">{pillar.title}</h4>
-                            <p className="design-card-desc">{pillar.desc}</p>
                         </div>
                     ))}
                 </div>
             </section>
+
+            {/* Digital Delivery & Design Platforms */}
+            <section className="arch-services-section" style={{ backgroundColor: '#0f172a' }}>
+                <div className="arch-services-container">
+                    <div className="arch-services-header">
+                        <h2 className="arch-services-title">Digital Delivery & Design Platforms</h2>
+                        <p className="arch-services-desc">
+                            We adopt a model-first delivery approach for accuracy, coordination, and constructability:
+                        </p>
+                    </div>
+                    <div className="service-expert-grid">
+                        {DIGITAL_PLATFORMS.map((platform, index) => (
+                            <div key={index} className="service-expert-card" style={{ minHeight: 'auto' }}>
+                                <div className="service-expert-content">
+                                    <h3 className="service-expert-title">{platform.title}</h3>
+                                    <p className="service-expert-desc">{platform.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Why JSE & Deliverables Split Section */}
+            <section className="virtual-process-section" style={{ backgroundColor: '#0B1221' }}>
+                <div className="virtual-process-container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'start' }}>
+
+                    {/* Why JSE */}
+                    <div>
+                        <h2 className="virtual-process-heading" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Why JSE for Infrastructure Engineering?</h2>
+                        <ul className="process-list" style={{ listStyle: 'none', padding: 0 }}>
+                            {WHY_JSE.map((item, index) => (
+                                <li key={index} style={{ marginBottom: '1rem', display: 'flex', alignItems: 'start', gap: '0.8rem', color: '#cbd5e1' }}>
+                                    <span style={{ color: '#144AE0', fontWeight: 'bold' }}>✓</span>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Deliverables */}
+                    <div>
+                        <h2 className="virtual-process-heading" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Deliverables</h2>
+                        <div className="hardware-card" style={{ flexDirection: 'column', alignItems: 'flex-start', padding: '2rem' }}>
+                            <ul className="process-list" style={{ listStyle: 'none', padding: 0 }}>
+                                {DELIVERABLES.map((item, index) => (
+                                    <li key={index} style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.8rem', color: '#fff' }}>
+                                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#144AE0' }}></span>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            {/* Sticky Contact Form */}
+            <StickyContact ref={stickyContactRef}>
+                <div className="form-container">
+                    {/* Left Side: Title & Info */}
+                    <div className="form-info-side">
+                        <h2 className="form-heading">Let’s Engineer Resilient Infrastructure</h2>
+                        <p className="form-subtext">
+                            Planning a greenfield development, campus, or industrial project?
+                            Partner with JSE Engineering Pvt. Ltd. for digitally coordinated, future-ready infrastructure networks.
+                        </p>
+
+                        <div className="form-contact-details">
+                            <p className="form-email">info@jseengineering.com</p>
+                        </div>
+
+                        <div className="form-socials">
+                            <div className="social-circle">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                            </div>
+                            <div className="social-circle">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                                </svg>
+                            </div>
+                            <div className="social-circle">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Side: Form */}
+                    <div className="form-input-side">
+                        <form onSubmit={handleSubmit} className="internship-form">
+                            <div className="form-group">
+                                <label>Your Name*</label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleInputChange}
+                                    required
+                                    className="form-input-line"
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Your Mail ID*</label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
+                                    required
+                                    className="form-input-line"
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Message*</label>
+                                <textarea
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleInputChange}
+                                    rows="4"
+                                    required
+                                    className="form-input-line"
+                                ></textarea>
+                            </div>
+
+                            <button type="submit" className="form-submit-btn">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </StickyContact>
 
             {/* Additional Services Menu Section */}
             <section className="solutions-list-section">

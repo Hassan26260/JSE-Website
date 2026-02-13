@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/Page.css'; // Shared page styles
 import './Skyscrapers.css';
-import StickyContact from '../../components/StickyContact';
+// StickyContact import removed
 
 // Reuse content image similar to Healthcare (will use same image or specific if available)
 // Using h5 (hvac-design.webp) as a placeholder for content image if no specific one is requested, 
@@ -213,10 +213,10 @@ const Skyscrapers = () => {
         setFormData({ name: '', email: '', message: '' }); // Reset form
     };
 
-    const stickyContactRef = useState(null);
+    const formRef = useState(null);
 
     const scrollToForm = () => {
-        stickyContactRef.current?.open();
+        formRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
     useEffect(() => {
@@ -422,80 +422,79 @@ const Skyscrapers = () => {
             {/* Innovative Software Tools Section Removed */}
 
             {/* Form Section */}
-            <StickyContact ref={stickyContactRef}>
-                <div className="skyscrapers-form-container">
-                    {/* Left Side: Title & Info */}
-                    <div className="skyscrapers-form-info-side">
-                        <h2 className="skyscrapers-form-heading">Start Your Project</h2>
-                        <p className="skyscrapers-form-subtext">
-                            Ready to transform your architectural vision with our BIM expertise? Contact us today to discuss your project needs.
-                        </p>
+            {/* Form Section */}
+            <div className="skyscrapers-form-container" ref={formRef}>
+                {/* Left Side: Title & Info */}
+                <div className="skyscrapers-form-info-side">
+                    <h2 className="skyscrapers-form-heading">Start Your Project</h2>
+                    <p className="skyscrapers-form-subtext">
+                        Ready to transform your architectural vision with our BIM expertise? Contact us today to discuss your project needs.
+                    </p>
 
-                        <div className="skyscrapers-form-contact-details">
-                            <p className="skyscrapers-form-email">info@jseengineering.com</p>
-                        </div>
-
-                        {/* Social Icons (Reused SVG paths) */}
-                        <div className="skyscrapers-form-socials">
-                            <div className="skyscrapers-social-circle">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                </svg>
-                            </div>
-                            <div className="skyscrapers-social-circle">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-                                </svg>
-                            </div>
-                            <div className="skyscrapers-social-circle">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                                </svg>
-                            </div>
-                        </div>
+                    <div className="skyscrapers-form-contact-details">
+                        <p className="skyscrapers-form-email">info@jseengineering.com</p>
                     </div>
 
-                    {/* Right Side: Form */}
-                    <div className="skyscrapers-form-input-side">
-                        <form onSubmit={handleSubmit} className="skyscrapers-form">
-                            <div className="skyscrapers-form-group">
-                                <label>Your Name*</label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleInputChange}
-                                    required
-                                    className="skyscrapers-form-input-line"
-                                />
-                            </div>
-                            <div className="skyscrapers-form-group">
-                                <label>Your Mail ID*</label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleInputChange}
-                                    required
-                                    className="skyscrapers-form-input-line"
-                                />
-                            </div>
-                            <div className="skyscrapers-form-group">
-                                <label>Message*</label>
-                                <textarea
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleInputChange}
-                                    rows="4"
-                                    required
-                                    className="skyscrapers-form-input-line"
-                                ></textarea>
-                            </div>
-                            <button type="submit" className="skyscrapers-form-submit-btn">Submit</button>
-                        </form>
+                    {/* Social Icons (Reused SVG paths) */}
+                    <div className="skyscrapers-form-socials">
+                        <div className="skyscrapers-social-circle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                        </div>
+                        <div className="skyscrapers-social-circle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                            </svg>
+                        </div>
+                        <div className="skyscrapers-social-circle">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                        </div>
                     </div>
                 </div>
-            </StickyContact>
+
+                {/* Right Side: Form */}
+                <div className="skyscrapers-form-input-side">
+                    <form onSubmit={handleSubmit} className="skyscrapers-form">
+                        <div className="skyscrapers-form-group">
+                            <label>Your Name*</label>
+                            <input
+                                type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleInputChange}
+                                required
+                                className="skyscrapers-form-input-line"
+                            />
+                        </div>
+                        <div className="skyscrapers-form-group">
+                            <label>Your Mail ID*</label>
+                            <input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                                required
+                                className="skyscrapers-form-input-line"
+                            />
+                        </div>
+                        <div className="skyscrapers-form-group">
+                            <label>Message*</label>
+                            <textarea
+                                name="message"
+                                value={formData.message}
+                                onChange={handleInputChange}
+                                rows="4"
+                                required
+                                className="skyscrapers-form-input-line"
+                            ></textarea>
+                        </div>
+                        <button type="submit" className="skyscrapers-form-submit-btn">Submit</button>
+                    </form>
+                </div>
+            </div>
 
         </div>
     );

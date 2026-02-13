@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/Logo/LOGO.png';
+import threadsLogo from '../assets/Logo/threads.png';
 
 import '../styles/Footer.css';
 
@@ -61,10 +62,7 @@ const Footer = () => {
 
                         {/* Threads */}
                         <a href="https://www.threads.net/@jse_engineering_pvt.ltd" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Threads">
-                            {/* Updated Threads Icon (resembling @ symbol loop) */}
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12.0006 2.05371C6.49508 2.05371 2.04419 6.51656 2.04419 12.0101C2.04419 17.5036 6.49508 21.9665 12.0006 21.9665C16.9295 21.9665 20.9419 18.423 21.8028 13.7388H19.7404C18.9621 17.3195 15.7725 20.0076 12.0006 20.0076C7.57946 20.0076 3.99593 16.4241 3.99593 12.0101C3.99593 7.59616 7.57946 4.01263 12.0006 4.01263C16.3242 4.01263 19.8298 7.42441 19.9922 11.7247C20.0601 13.4398 19.4533 14.8864 18.2721 15.8285C17.0622 16.7915 15.3529 17.0987 13.916 16.5982C13.5186 17.4398 12.7303 17.9715 11.7584 17.9715C10.2223 17.9715 8.94829 16.7323 8.94829 15.1962C8.94829 13.6601 10.2223 12.4209 11.7584 12.4209C12.551 12.4209 13.2507 12.77 13.7299 13.3199C13.8043 12.1691 14.0722 10.9754 14.5456 9.87321C14.7351 9.42971 14.9624 9.02293 15.2285 8.65751C15.8291 7.82869 16.6346 7.39804 17.3917 7.39804C18.7309 7.39804 19.6738 8.09339 20.1983 9.29462C21.0505 11.2384 20.9169 14.2882 19.4891 16.666L21.2042 17.6534C22.6806 15.084 23.1818 11.6961 22.0305 9.05269C21.2588 7.28854 19.7645 5.92209 17.3917 5.92209C16.0371 5.92209 14.717 6.4712 13.626 7.64333C12.4988 6.44781 10.5981 5.51343 8.52875 5.51343C4.94522 5.51343 2.04419 8.41446 2.04419 12.0101C2.04419 15.6058 4.94522 18.5068 8.52875 18.5068C10.7485 18.5068 12.6395 17.3971 13.7668 15.7009C15.6578 16.4892 17.8776 16.0354 19.5103 14.7381C21.143 13.4408 22.0628 11.4589 21.9564 9.01166C21.7374 3.79261 17.3917 0.0537109 12.0006 0.0537109V2.05371ZM11.7584 14.3801C11.3093 14.3801 10.9419 14.0127 10.9419 13.5636C10.9419 13.1145 11.3093 12.7471 11.7584 12.7471C12.2075 12.7471 12.5749 13.1145 12.5749 13.5636C12.5749 14.0127 12.2075 14.3801 11.7584 14.3801Z" />
-                            </svg>
+                            <img src={threadsLogo} alt="Threads" style={{ width: '20px', height: '20px', objectFit: 'contain', filter: 'invert(1)' }} />
                         </a>
 
                         {/* YouTube */}
@@ -79,12 +77,7 @@ const Footer = () => {
 
                 {/* Column 1 */}
                 <div className="footer-col">
-                    <div className="footer-group">
-                        <h4 className="footer-heading">Business Types</h4>
-                        <ul className="footer-links">
-                            <li><Link to="/services/design" className="footer-link">Design Engineering Projects</Link></li>
-                        </ul>
-                    </div>
+
 
                     <div className="footer-group">
                         <h4 className="footer-heading">Discover JSE</h4>
@@ -144,12 +137,7 @@ const Footer = () => {
                             <p className="footer-address-text">
                                 4th Floor, Karuna Conquest IT Park,<br />
                                 Ambattur Industrial Estate,<br />
-                                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '3px' }}>
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z" />
-                                    </svg>
-                                    044 - 4261 1180
-                                </span><br />
+
                                 Chennai - 600058,<br />
                                 Tamil Nadu
                             </p>

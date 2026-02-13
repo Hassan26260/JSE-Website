@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import StickyContact from '../../../components/StickyContact';
+
 import './ArchitecturalBIM.css'; // Reusing existing styles
 import heroImage from '../../../assets/images-home/home-new-img/structural-eng.webp';
 
@@ -27,19 +27,27 @@ import s4 from '../../../assets/images-home/mep-design.webp';
 import s5 from '../../../assets/images-home/hvac-design.webp';
 import s6 from '../../../assets/images-home/plumbing.webp';
 
+import '../../../styles/ServiceExpertise.css';
+
+const getIcon = (index) => {
+    const icons = [
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>, // Layers
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>, // Wrench
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>, // Monitor
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>, // Shield
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>, // Zap
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> // Cube
+    ];
+    return icons[index % icons.length];
+};
+
 const SERVICES_DATA = [
-    { title: "RCC Design", img: s1, desc: "Reinforced Cement Concrete (RCC) – Structural Design and Detailed Engineering" },
+    { title: "RCC Design", img: s1, desc: "Reinforced Cement Concrete (RCC) Structural Design and Detailed Engineering" },
     { title: "Composite Systems", img: s2, desc: "Composite Structural Systems – Analysis, Design, and Detailing" },
     { title: "Analysis & Design", img: s3, desc: "Structural Analysis & Design using STAAD.Pro, ETABS, and SAFE" },
-    { title: "Structural Optimization", img: s4, desc: "Design Review, Value Engineering, and Structural Optimization to enhance constructability and cost efficiency" },
-    { title: "Structural BIM Modeling", img: s5, desc: "Advanced Structural BIM customization and modeling." },
-    { title: "Multi-disciplinary Coordination", img: s6, desc: "Integrated coordination with Architecture & MEP systems." },
-    { title: "Clash Detection", img: s1, desc: "Clash Detection & Resolution minimizing site conflicts." },
-    { title: "Construction Sequencing", img: s2, desc: "Construction Sequencing Support for efficient execution." },
-    { title: "Design Calculations", img: s3, desc: "Structural Analysis and Design Calculations in accordance with applicable codes and standards." },
-    { title: "Construction Drawings", img: s4, desc: "Structural Design and Construction Drawings issued at appropriate stages (IFA / IFC)." },
-    { title: "Quantity Take-Offs", img: s5, desc: "Quantity Take-Offs (QTOs) to assist in cost estimation, procurement, and planning." },
-    { title: "As-Built Documentation", img: s6, desc: "As-Built Structural Documentation reflecting final constructed conditions for record and handover." }
+    { title: "Structural Optimization", img: s4, desc: "Design Review, Value Engineering, and Structural Optimization" },
+    { title: "Structural BIM Modeling", img: s5, desc: "BIM-enabled workflows for coordination, clash detection, and sequencing." },
+    { title: "Construction Documentation", img: s6, desc: "Calculations, Drawings (IFA/IFC), QTOs, and As-Built Documentation." },
 ];
 
 const ICONIC_PROJECTS = MEP_PROJECTS.slice(0, 6).map(p => ({
@@ -51,38 +59,38 @@ const ICONIC_PROJECTS = MEP_PROJECTS.slice(0, 6).map(p => ({
 const CHOOSE_JSE_DATA = [
     {
         title: "Experienced Engineers",
-        desc: "Experienced structural engineers delivering high-performance solutions."
+        desc: "A team of structural experts delivering performance-driven design."
     },
     {
         title: "Integrated Workflows",
-        desc: "Integrated multi-discipline workflows for seamless project execution."
+        desc: "Seamless coordination with Architectural & MEP teams using BIM."
     },
     {
-        title: "Coordination-Driven",
-        desc: "Strong coordination-driven delivery minimizing site conflicts."
+        title: "Code Compliance",
+        desc: "Strict adherence to structural codes, safety, and durability standards."
     },
     {
-        title: "Reliable Support",
-        desc: "Reliable support from design to execution stages."
+        title: "Constructability Focus",
+        desc: "Designs optimized for efficient execution and long-term reliability."
     }
 ];
 
 const CHOOSE_JSE_DATA_2 = [
     {
-        title: "Design Coordination",
-        desc: "Design coordination with Architecture & MEP for unified building systems."
+        title: "Reliable Support",
+        desc: "Continuous engagement from initial design concept to final handover."
     },
     {
-        title: "Code Compliance",
-        desc: "Strict compliance with applicable structural codes and standards."
+        title: "Advanced Technology",
+        desc: "Leveraging STAAD.Pro, ETABS, and SAFE for precision analysis."
     },
     {
-        title: "Buildability Focus",
-        desc: "Focus on buildability and execution efficiency to ensure constructability."
+        title: "Cost Efficiency",
+        desc: "Value engineering to reduce material waste and optimize costs."
     },
     {
-        title: "Construction Support",
-        desc: "Comprehensive support through all construction stages."
+        title: "Global Standards",
+        desc: "Delivering solutions aligned with international construction best practices."
     }
 ];
 
@@ -153,7 +161,7 @@ const Structural = () => {
                     <span className="hero-small-label">Design Services</span>
                     <h1 className="hero-title-split">Structural Engineering</h1>
                     <p className="hero-desc-split">
-                        JSE Engineering delivers efficient, resilient structural solutions with precision from concept to construction.
+                        High-Performance Structural Engineering Solutions. We transform complex design concepts into efficient, economical, and resilient structures.
                     </p>
                     <button onClick={scrollToForm} className="hero-cta-btn">
                         HIRE US
@@ -217,15 +225,20 @@ const Structural = () => {
                         </p>
                     </div>
 
-                    <div className="arch-services-grid">
+                    <div className="service-expert-grid">
                         {SERVICES_DATA.map((service, index) => (
-                            <div key={index} className="arch-service-card">
-                                <div className="arch-card-bg" style={{ backgroundImage: `url(${service.img})` }}></div>
-                                <div className="arch-card-overlay"></div>
-                                <div className="arch-card-content">
-                                    <h3 className="arch-service-title">{service.title}</h3>
-                                    <p className="arch-service-card-desc">{service.desc}</p>
+                            <div key={index} className="service-expert-card">
+                                {/* Icon */}
+                                <div className={`service-expert-icon icon-color-${(index % 6) + 1}`}>
+                                    {getIcon(index)}
                                 </div>
+                                {/* Content */}
+                                <div className="service-expert-content">
+                                    <h3 className="service-expert-title">{service.title}</h3>
+                                    <p className="service-expert-desc">{service.desc}</p>
+                                </div>
+                                {/* Pattern */}
+                                <div className={`service-expert-pattern pattern-${(index % 6) + 1}`}></div>
                             </div>
                         ))}
                     </div>

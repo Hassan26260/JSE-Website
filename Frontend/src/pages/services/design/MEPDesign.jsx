@@ -1,13 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import StickyContact from '../../../components/StickyContact';
 import './ArchitecturalBIM.css';
-
-import whatIsImage from '../../../assets/MEP/Picture13.png';
-
-// Portfolio Imports
-import { MEP_PROJECTS } from '../../../data/realPortfolio';
+import StickyContact from '../../components/StickyContact';
 
 // Standardized Images for Additional Services (Matching Home.jsx)
 import mepImg from '../../../assets/images-home/home-new-img/MEP.png';
@@ -19,75 +14,7 @@ import infraImg from '../../../assets/images-home/home-new-img/infrastructural.w
 import virtualEngImage from '../../../assets/images-home/home-new-img/virtual-team.jpg';
 import secondmentImage from '../../../assets/images-home/home-new-img/secondment.jpg.jpeg';
 
-
-// Reusing existing images for services
-import s1 from '../../../assets/images-home/skyscraper.webp';
-import s2 from '../../../assets/images-home/architectural-bim.webp';
-import s3 from '../../../assets/images-home/bim-modelling.webp';
-import s4 from '../../../assets/images-home/mep-design.webp';
-import s5 from '../../../assets/images-home/hvac-design.webp';
-import s6 from '../../../assets/images-home/plumbing.webp';
-
-const SERVICES_DATA = [
-  { title: "BIM consulting", img: s1, desc: "Strategic guidance for successful BIM adoption." },
-  { title: "Shop Drawing", img: s2, desc: "Precise drawings for fabrication and installation." },
-  { title: "Revit 3D Service", img: s3, desc: "Detailed 3D modeling using Autodesk Revit." },
-  { title: "Architectural BIM/VDC", img: s4, desc: "Virtual Design and Construction for better planning." },
-  { title: "Architectural 3D modeling", img: s5, desc: "High-fidelity 3D models for visualization." },
-  { title: "CAD drafting", img: s6, desc: "Accurate 2D drafting and documentation." },
-  { title: "Utility Modeling", img: s1, desc: "Comprehensive modeling of MEP and utility systems." },
-  { title: "Construction Documentation", img: s2, desc: "Complete sets of construction plans and details." },
-  { title: "BIM Clash Detection", img: s3, desc: "Identifying and resolving conflicts before construction." },
-  { title: "BIM Visualization", img: s4, desc: "Photorealistic renderings and walkthroughs." },
-  { title: "BIM Quantity Takeoffs", img: s5, desc: "Automated material quantity extraction." },
-  { title: "Collaboration and Coordination", img: s6, desc: "Streamlined team workflows and communication." }
-];
-
-const ICONIC_PROJECTS = MEP_PROJECTS.slice(0, 6).map(p => ({
-  title: p.title,
-  img: p.image
-}));
-
-
-const CHOOSE_JSE_DATA = [
-  {
-    title: "Innovative Solutions",
-    desc: "Our BIM architectural design engineers use the latest technology to create innovative and highly detailed 3D models that bring your vision to life."
-  },
-  {
-    title: "Holistic Approach",
-    desc: "JSE integrate all aspects of architectural design, ensuring seamless coordination between different building systems for optimal functionality and aesthetics."
-  },
-  {
-    title: "Enhanced Visualization",
-    desc: "Our detailed BIM models provide a clear and comprehensive visualization of your project, allowing you to see the final product before construction begins."
-  },
-  {
-    title: "Cost Efficiency",
-    desc: "Our BIM solutions help you save time and money by optimizing design processes, reducing waste, and improving overall project efficiency."
-  }
-];
-
-const CHOOSE_JSE_DATA_2 = [
-  {
-    title: "Client Collaboration",
-    desc: "JSE work closely with you throughout the design process, ensuring that your vision is fully realized and that you are involved every step of the way."
-  },
-  {
-    title: "Regulatory Compliance",
-    desc: "Our designs adhere to all local and international building codes and standards, ensuring compliance and safety for your project."
-  },
-  {
-    title: "Quality Assurance",
-    desc: "JSE maintain rigorous quality control throughout the design process, ensuring that every aspect of your project meets the highest standards of excellence."
-  },
-  {
-    title: "Sustainable Designs",
-    desc: "We incorporate sustainable practices into our designs, helping you achieve energy efficiency and environmental sustainability."
-  }
-];
-
-// Additional Services Data (Standardized to Home.jsx Solutions)
+// Additional Services Data
 const ADDITIONAL_SERVICES = [
   { title: "MEP Engineering", desc: "Comprehensive MEP solutions including HVAC, Electrical, and Firefighting.", link: "/services/design/mep-design", img: mepImg },
   { title: "Architectural BIM", desc: "Revolutionizing architecture with detailed BIM models.", link: "/services/design/architectural-bim", img: archImg },
@@ -96,6 +23,86 @@ const ADDITIONAL_SERVICES = [
   { title: "Infrastructural Services", desc: "Robust infrastructure solutions for modern communities.", link: "/services/infrastructural-services", img: infraImg },
   { title: "Virtual Team for Hire", desc: "Hire own remote offshore architect team for modular construction needs.", link: "/services/virtual-team", img: virtualEngImage },
   { title: "Secondment Team", desc: "Get on-demand access to our pool of experienced professionals.", link: "/services/secondment-team", img: secondmentImage }
+];
+
+// Content Data
+const ENG_SCOPE = [
+  "HVAC system design and sizing",
+  "Electrical power distribution, lighting, and ELV systems",
+  "Public Health and Plumbing engineering",
+  "Fire Protection system design",
+  "Interdisciplinary coordination with architectural and structural teams",
+  "Design development aligned with authority submission and approval requirements"
+];
+
+const LOD_SCOPE = [
+  {
+    title: "LOD 300 Scope",
+    items: [
+      "Discipline-specific BIM models developed to LOD 300",
+      "Accurate spatial layouts, routing, and system coordination",
+      "Design-stage clash detection and resolution",
+      "Models suitable for design coordination, authority approvals, and consultant reviews"
+    ]
+  },
+  {
+    title: "LOD 400 Scope and extraction of Shop Drawings",
+    items: [
+      "High-detail LOD 400 BIM models for construction execution",
+      "Fabrication- and installation-level detailing",
+      "Extraction of coordinated MEP Shop Drawings",
+      "Trade coordination and constructability validation",
+      "Supports site installation and contractor workflows"
+    ]
+  },
+  {
+    title: "LOD 500 Scope and extraction of As built Drawings",
+    items: [
+      "Verified LOD 500 as-built BIM models",
+      "Models updated based on site redlines and final installations",
+      "Extraction of As-Built Drawings",
+      "Asset-ready models suitable for operations, maintenance, and FM integration"
+    ]
+  },
+  {
+    title: "Quantity Take-Offs & Bills of Quantities (BOQs)",
+    items: [
+      "Accurate quantity extraction directly from BIM models",
+      "Discipline-wise BOQs aligned with drawings and specifications",
+      "Supports cost planning, tendering, procurement, and cost control",
+      "Reduces commercial risk associated with manual take-offs"
+    ]
+  }
+];
+
+const VALUE_ENG_ITEMS = [
+  "Optimize system selection, routing, and layouts",
+  "Reduce material and installation costs",
+  "Improve energy efficiency and operational performance",
+  "Maintain compliance with codes, standards, and design intent"
+];
+
+const ENG_CALC_ITEMS = [
+  "HVAC heat load, ventilation, and energy calculations",
+  "Electrical load, lighting, and short-circuit calculations",
+  "Plumbing and pump sizing calculations",
+  "Fire protection hydraulic calculations"
+];
+
+const STUDIO_TEAM_FEATURES = [
+  "Dedicated MEP engineers and BIM specialists",
+  "Alignment with client standards, workflows, and QA/QC processes",
+  "Direct coordination with PMC, consultant, and contractor teams",
+  "Flexible scaling based on project pipeline and programme demands",
+  "Transparent reporting and delivery accountability"
+];
+
+const WHY_CHOOSE_JSE = [
+  "Strong engineering-first approach supported by BIM execution",
+  "Proven experience across LOD 300 to LOD 500 scopes",
+  "Deep understanding of regional constructability and coordination challenges",
+  "Familiarity with project environments",
+  "Reliable long-term delivery partner for complex, multi-project portfolios"
 ];
 
 const MEPDesign = () => {
@@ -115,14 +122,13 @@ const MEPDesign = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log('Form submitted:', formData);
   };
 
   const stickyContactRef = useRef(null);
 
   const scrollToForm = () => {
-    stickyContactRef.current?.open();
+    stickyContactRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   // Animation Variants (Staggered)
@@ -148,13 +154,13 @@ const MEPDesign = () => {
 
   return (
     <div className="arch-bim-page">
-      {/* New Split Hero Section */}
+      {/* Hero Section */}
       <div className="service-hero-split">
         <div className="hero-text-content">
-          <span className="hero-small-label">Design Services</span>
-          <h1 className="hero-title-split">MEP Design</h1>
+          <span className="hero-small-label">MEP Engineering Services</span>
+          <h1 className="hero-title-split">MEP Engineering Services</h1>
           <p className="hero-desc-split">
-            Integrated MEP Design services ensuring seamless coordination of Mechanical, Electrical, and Plumbing systems for optimal building performance.
+            End-to-End MEP Engineering & BIM Delivery for Complex Projects
           </p>
           <button onClick={scrollToForm} className="hero-cta-btn">
             HIRE US
@@ -166,120 +172,174 @@ const MEPDesign = () => {
         </div>
         <div className="hero-image-content">
           <div className="hero-diagonal-bar"></div>
-          <img src={heroImage} alt="MEP Design" className="hero-img-split" loading="eager" />
+          <img src={heroImage} alt="MEP Engineering Services" className="hero-img-split" loading="eager" />
         </div>
       </div>
 
-      {/* Core Pillars Section (4 Columns) */}
-      <section className="arch-pillars-section">
-        <div className="arch-pillars-container">
-
-          {/* Column 1: Visualization */}
-          <div className="arch-pillar-col">
-            <div>
-              <h2 className="arch-pillar-title">Visualization</h2>
-              <p className="arch-pillar-desc">
-                We transform architectural concepts into precise 3D BIM models, giving you a clear and detailed digital view of your project from the earliest design stages. This allows better understanding, review, and informed decision-making before construction begins.
-              </p>
-            </div>
-            <span className="arch-pillar-num">01</span>
-          </div>
-
-          {/* Column 2: Precision & Control */}
-          <div className="arch-pillar-col">
-            <div>
-              <h2 className="arch-pillar-title">Precision & Control</h2>
-              <p className="arch-pillar-desc">
-                Our Architectural BIM services ensure accuracy across every element of the design. By identifying conflicts and potential issues early, we significantly reduce rework, delays, and unexpected costs during execution.
-              </p>
-            </div>
-            <span className="arch-pillar-num">02</span>
-          </div>
-
-          {/* Column 3: Collaboration */}
-          <div className="arch-pillar-col">
-            <div>
-              <h2 className="arch-pillar-title">Collaboration</h2>
-              <p className="arch-pillar-desc">
-                BIM enables seamless coordination between architects, engineers, and stakeholders. Structural systems, architectural intent, and aesthetic details are integrated into a unified model, ensuring consistency and clarity across the project lifecycle.
-              </p>
-            </div>
-            <span className="arch-pillar-num">03</span>
-          </div>
-
-          {/* Column 4: Advanced BIM Solutions */}
-          <div className="arch-pillar-col">
-            <div>
-              <h2 className="arch-pillar-title">Advanced BIM Solutions</h2>
-              <p className="arch-pillar-desc">
-                By leveraging cutting-edge BIM workflows, including Point Cloud to BIM, we enhance planning efficiency, optimize resources, and deliver high-quality outcomes. JSE Engineering provides a strong digital foundation for successful and future-ready projects.
-              </p>
-            </div>
-            <span className="arch-pillar-num">04</span>
-          </div>
-
-        </div>
-      </section>
-
-      {/* What is MEP Design Section */}
+      {/* Intro Section */}
       <section className="arch-what-section">
         <div className="arch-what-container">
-          {/* Text Side */}
-          <div className="arch-what-text">
-            <span className="arch-what-tagline">THE CONCEPT</span>
-            <h2 className="arch-what-title">What is MEP Design?</h2>
+          <div className="arch-what-text" style={{ width: '100%' }}>
+            <h2 className="arch-what-title">End-to-End MEP Engineering & BIM Delivery</h2>
             <p className="arch-what-desc">
-              MEP Design is a digital representation of the physical and functional characteristics of a building's mechanical, electrical, and plumbing systems. It goes beyond traditional 2D drawings by creating a 3D model that integrates all aspects of the design process.
+              JSE Engineering provides comprehensive MEP Engineering and BIM services supporting consultants, PMCs, developers, and contractors across commercial, residential, healthcare, hospitality, mixed-use, and infrastructure projects in the Middle East and international markets.
             </p>
             <p className="arch-what-desc">
-              This model becomes a shared resource for decision-making, providing accurate data throughout the building's lifecycle.
+              Our services cover the full project lifecycle—from engineering design through construction-stage BIM and as-built documentation—ensuring technical compliance, coordination of certainty, and constructible outcomes.
             </p>
-          </div>
-          {/* Image Side */}
-          <div className="arch-what-image-wrapper">
-            <div className="arch-image-back"></div>
-            <img src={whatIsImage} alt="What is MEP Design" className="arch-what-img"
-              loading="lazy"
-              decoding="async" />
           </div>
         </div>
       </section>
 
-
-      <section className="arch-services-section">
-        <div className="arch-services-container">
-          <div className="arch-services-header">
-            <span className="arch-services-tagline">OUR EXPERTISE</span>
-            <h2 className="arch-services-title">Our MEP Design Services Include</h2>
-            <p className="arch-services-desc">
-              Transform your architectural projects with JSE's cutting-edge BIM solutions.
-              Our BIM architectural services encompass comprehensive solutions tailored to meet the needs of modern construction projects. We specialize in:
+      {/* Engineering Design Scope */}
+      <section className="arch-choose-section">
+        <div className="arch-choose-container">
+          <div className="arch-choose-left">
+            <span className="arch-choose-tagline">OUR SERVICES</span>
+            <h2 className="arch-choose-heading">MEP Engineering & Design Services</h2>
+            <h3 style={{ color: '#fff', fontSize: '1.2rem', marginBottom: '1rem' }}>Engineering-Led Design Aligned to Authority and Project Requirements</h3>
+            <p className="arch-choose-desc">
+              JSE delivers disciplined MEP engineering design in accordance with international standards, regional authority regulations, and project-specific specifications.
+            </p>
+            <p className="arch-choose-desc">
+              All designs are developed with a strong focus on constructability, system performance, and operational efficiency.
             </p>
           </div>
+          <div className="arch-choose-right">
+            <h3 style={{ color: '#144AE0', marginBottom: '1rem' }}>Engineering Scope Includes:</h3>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              {ENG_SCOPE.map((item, index) => (
+                <li key={index} style={{ marginBottom: '0.8rem', color: '#cbd5e1', display: 'flex', gap: '0.8rem' }}>
+                  <span style={{ color: '#144AE0' }}>•</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
 
-          <div className="arch-services-grid">
-            {SERVICES_DATA.map((service, index) => (
-              <div key={index} className="arch-service-card">
-                <div className="arch-card-bg" style={{ backgroundImage: `url(${service.img})` }}></div>
-                <div className="arch-card-overlay"></div>
-                <div className="arch-card-content">
-                  <h3 className="arch-service-title">{service.title}</h3>
-                  <p className="arch-service-card-desc">{service.desc}</p>
-                </div>
+      {/* BIM Services by LOD */}
+      <section className="arch-lod-section">
+        <div className="arch-lod-container">
+          <div className="arch-lod-header">
+            <h2 className="arch-lod-heading">BIM Services by Level of Development (LOD)</h2>
+          </div>
+
+          <div className="arch-lod-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
+            {LOD_SCOPE.map((lod, index) => (
+              <div key={index} className="arch-lod-item" style={{ textAlign: 'left', alignItems: 'flex-start' }}>
+                <h3 className="arch-lod-title">{lod.title}</h3>
+                <ul style={{ listStyle: 'none', padding: 0, marginTop: '1rem' }}>
+                  {lod.items.map((item, i) => (
+                    <li key={i} style={{ marginBottom: '0.5rem', color: '#cbd5e1', fontSize: '0.9rem', display: 'flex', gap: '0.5rem' }}>
+                      <span style={{ color: '#144AE0', minWidth: '10px' }}>▪</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Form Section */}
+      {/* Value Engineering & Calculations */}
+      <section className="virtual-process-section">
+        <div className="virtual-process-container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem' }}>
+          {/* Value Engineering */}
+          <div>
+            <h2 className="virtual-process-heading" style={{ textAlign: 'left' }}>Value Engineering</h2>
+            <p style={{ color: '#cbd5e1', marginBottom: '1rem' }}>JSE supports value engineering exercises to:</p>
+            <ul className="process-list" style={{ listStyle: 'none', padding: 0 }}>
+              {VALUE_ENG_ITEMS.map((item, index) => (
+                <li key={index} style={{ marginBottom: '0.5rem', display: 'flex', gap: '0.8rem', color: '#fff' }}>
+                  <span style={{ color: '#144AE0', fontWeight: 'bold' }}>✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p style={{ color: '#cbd5e1', marginTop: '1rem', fontStyle: 'italic' }}>
+              Value engineering is carried out in close coordination with consultants and PMCs to ensure technical and commercial alignment.
+            </p>
+          </div>
+
+          {/* Calculations */}
+          <div>
+            <h2 className="virtual-process-heading" style={{ textAlign: 'left' }}>Engineering Calculations</h2>
+            <p style={{ color: '#cbd5e1', marginBottom: '1rem' }}>
+              We prepare validated engineering calculations to support design approvals and technical compliance, including:
+            </p>
+            <ul className="process-list" style={{ listStyle: 'none', padding: 0 }}>
+              {ENG_CALC_ITEMS.map((item, index) => (
+                <li key={index} style={{ marginBottom: '0.5rem', display: 'flex', gap: '0.8rem', color: '#fff' }}>
+                  <span style={{ color: '#144AE0', fontWeight: 'bold' }}>✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p style={{ color: '#cbd5e1', marginTop: '1rem', fontStyle: 'italic' }}>
+              All calculations are developed in line with applicable international standards and authority requirements.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Studio Team Delivery Model */}
+      <section className="arch-choose-section">
+        <div className="arch-choose-container">
+          <div className="arch-choose-left">
+            <h2 className="arch-choose-heading">Studio Team Delivery Model</h2>
+            <h3 style={{ color: '#fff', fontSize: '1.2rem', marginBottom: '1rem' }}>Dedicated MEP Engineering Teams for PMC and Consultant Support</h3>
+            <p className="arch-choose-desc">
+              JSE offers a Studio Team delivery model for clients requiring consistent, scalable engineering support across multiple projects. This model enables PMCs and consultants to expand delivery capacity while retaining full technical control.
+            </p>
+          </div>
+          <div className="arch-choose-right">
+            <div className="arch-choose-card">
+              <h3 className="arch-choose-card-title">Studio Team features:</h3>
+              <ul style={{ listStyle: 'none', padding: 0 }}>
+                {STUDIO_TEAM_FEATURES.map((item, index) => (
+                  <li key={index} style={{ marginBottom: '0.8rem', color: '#cbd5e1', display: 'flex', gap: '0.8rem' }}>
+                    <span style={{ color: '#144AE0' }}>•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose JSE */}
+      <section className="virtual-intro-section" style={{ background: '#0B1221' }}>
+        <div className="virtual-intro-container">
+          <div style={{ width: '100%', textAlign: 'center' }}>
+            <h2 style={{ marginBottom: '2rem' }}>Why Choose JSE</h2>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.5rem' }}>
+              {WHY_CHOOSE_JSE.map((item, index) => (
+                <div key={index} style={{
+                  background: 'rgba(255,255,255,0.05)',
+                  padding: '1.5rem',
+                  borderRadius: '8px',
+                  maxWidth: '300px',
+                  textAlign: 'left'
+                }}>
+                  <p style={{ color: '#fff' }}>{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sticky Contact Form */}
       <StickyContact ref={stickyContactRef}>
         <div className="form-container">
-          {/* Left Side: Title & Info */}
           <div className="form-info-side">
             <h2 className="form-heading">Start Your Project</h2>
             <p className="form-subtext">
-              Ready to optimize your workflow with JSE's MEP Design services? Fill out the details and we'll get in touch with you shortly.
+              Ready to optimize your workflow with JSE's MEP Engineering services? Fill out the details and we'll get in touch with you shortly.
             </p>
 
             <div className="form-contact-details">
@@ -305,7 +365,6 @@ const MEPDesign = () => {
             </div>
           </div>
 
-          {/* Right Side: Form */}
           <div className="form-input-side">
             <form onSubmit={handleSubmit} className="internship-form">
               <div className="form-group">
@@ -350,148 +409,6 @@ const MEPDesign = () => {
         </div>
       </StickyContact>
 
-      {/* Understanding BIM Levels Of Development Section */}
-      <section className="arch-lod-section">
-        <div className="arch-lod-container">
-          <div className="arch-lod-header">
-            <span className="arch-lod-tagline">BIM MATURITY</span>
-            <h2 className="arch-lod-heading">Understanding BIM Levels Of Development</h2>
-            <p className="arch-lod-intro">
-              Dive into the critical stages of BIM modeling with JSE, where LOD 100, 200, 300, 350, 400, and 500 guide our precision in design, fabrication, and as-built accuracy, ensuring your project’s success from conception to completion.
-            </p>
-          </div>
-
-          <div className="arch-lod-grid">
-            {/* Column 1: LOD 300 */}
-            <div className="arch-lod-item">
-              <div className="arch-lod-icon-box">
-                {/* Cube Icon */}
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-              </div>
-              <h3 className="arch-lod-title">LOD 300</h3>
-              <p className="arch-lod-desc">
-                Represents a design-level model with accurate geometry and specific dimensions for components, suitable for coordinating and constructing elements.
-              </p>
-            </div>
-
-            {/* Column 2: LOD 400 */}
-            <div className="arch-lod-item">
-              <div className="arch-lod-icon-box">
-                {/* Layers/Construction Icon */}
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-              </div>
-              <h3 className="arch-lod-title">LOD 400</h3>
-              <p className="arch-lod-desc">
-                A fabrication-ready model with detailed geometry and information, enabling precise assembly, installation, and construction of components.
-              </p>
-            </div>
-
-            {/* Column 3: LOD 500 */}
-            <div className="arch-lod-item">
-              <div className="arch-lod-icon-box">
-                {/* Checked Building/As-Built Icon */}
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-              </div>
-              <h3 className="arch-lod-title">LOD 500</h3>
-              <p className="arch-lod-desc">
-                The as-built model reflecting the final, field-verified condition of the building, including all relevant specifications and documentation for facility management.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Worldwide Iconic Projects Section */}
-      <section className="iconic-projects-section">
-        <div className="iconic-container">
-          <div className="iconic-header">
-            <span className="iconic-tagline">BIM projects</span>
-            <h2 className="iconic-heading">Worldwide Iconic Projects</h2>
-          </div>
-        </div>
-
-        {/* Marquee Carousel */}
-        <div className="iconic-marquee-wrapper">
-          <div className="iconic-marquee-track">
-            {/* Set 1 */}
-            {ICONIC_PROJECTS.map((project, index) => (
-              <div key={`iconic-${index}`} className="iconic-card">
-                <img src={project.img} alt={project.title} className="iconic-img" />
-                <div className="iconic-overlay">
-                  <div className="iconic-content">
-                    <h3 className="iconic-title">{project.title}</h3>
-                    <a href="/portfolio" className="iconic-cta">
-                      Know More <span className="arrow">→</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-            {/* Set 2 (Duplicate for loop) */}
-            {ICONIC_PROJECTS.map((project, index) => (
-              <div key={`iconic-dup-${index}`} className="iconic-card">
-                <img src={project.img} alt={project.title} className="iconic-img" />
-                <div className="iconic-overlay">
-                  <div className="iconic-content">
-                    <h3 className="iconic-title">{project.title}</h3>
-                    <a href="/portfolio" className="iconic-cta">
-                      Know More <span className="arrow">→</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose JSE Section */}
-      <section className="arch-choose-section">
-        <div className="arch-choose-container">
-          {/* Left Column: Text */}
-          <div className="arch-choose-left">
-            <span className="arch-choose-tagline">WHY CHOOSE US</span>
-            <h2 className="arch-choose-heading">Why Choose JSE for MEP Design Engineers?</h2>
-            <p className="arch-choose-desc">
-              Choosing JSE’s BIM Architectural Design Engineers means gaining a strategic partner focused on precision, efficiency, and innovation. Our team leverages advanced BIM workflows to deliver accurate, data-rich architectural models that enhance visualization, improve coordination, and reduce design conflicts from the earliest stages.
-            </p>
-          </div>
-
-          {/* Right Column: Cards Grid */}
-          <div className="arch-choose-right">
-            {CHOOSE_JSE_DATA.map((item, index) => (
-              <div key={index} className="arch-choose-card">
-                <h3 className="arch-choose-card-title">{item.title}</h3>
-                <p className="arch-choose-card-desc">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose JSE Section (Part 2 - Reversed) */}
-      <section className="arch-choose-section">
-        <div className="arch-choose-container">
-          {/* Left Column: Cards Grid (Visually Left) */}
-          <div className="arch-choose-right">
-            {CHOOSE_JSE_DATA_2.map((item, index) => (
-              <div key={index} className="arch-choose-card">
-                <h3 className="arch-choose-card-title">{item.title}</h3>
-                <p className="arch-choose-card-desc">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Right Column: Text (Visually Right) */}
-          <div className="arch-choose-left">
-            <p className="arch-choose-desc">
-              By integrating technical expertise with practical project insight, we streamline decision-making, optimize resources, and minimize costly revisions. With JSE, you benefit from a collaborative, future-ready approach that ensures your architectural vision is executed seamlessly, on time, and to the highest quality standards.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Additional Services Menu Section */}
       <section className="solutions-list-section">
         <motion.div
@@ -526,6 +443,6 @@ const MEPDesign = () => {
 
     </div>
   );
-}; // End of Component
+};
 
 export default MEPDesign;

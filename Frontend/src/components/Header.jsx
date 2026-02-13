@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useContactModal } from "../context/ContactModalContext";
 import "../styles/Header.css";
 import logo from "../assets/Logo/LOGO.png";
 
 const Header = () => {
+  const { openModal } = useContactModal();
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [servicesDropdown, setServicesDropdown] = useState(false);
@@ -155,9 +157,13 @@ const Header = () => {
             Career
           </Link>
 
-          <Link to="/#contact-form" className={`nav-link cta-button ${isActive("/contact") ? "active" : ""}`} onClick={() => setIsMobileMenuOpen(false)}>
+          <a href="#contact-form" className={`nav-link cta-button ${isActive("/contact") ? "active" : ""}`} onClick={(e) => {
+            e.preventDefault();
+            setIsMobileMenuOpen(false);
+            openModal();
+          }}>
             Contact Us
-          </Link>
+          </a>
         </nav >
       </div >
     </header >

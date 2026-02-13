@@ -2,17 +2,20 @@ import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import "../styles/Internship.css";
-import heroGroupImage from "../assets/images-home/internship/enlarging-img.JPG";
+import heroGroupImage from "../assets/images-home/internship/enlarging-img.jpeg";
 import eligibilityImage from "../assets/images-home/internship/whocanjoin.JPG";
 import hiringImage from "../assets/images-home/internship/hiring.JPG";
 import careerDevImage from "../assets/other/pexels-sora-shimazaki-5926389.jpg";
+import abroadImage from "../assets/replacement/abroad.JPG"; // New Image
+import vrImage from "../assets/images-home/virtual.jpeg"; // Fixed Import
 import internVideo from "../assets/images-home/intern-video/1a5cf5c19e1af4f9770f31343bd39fb9_0_14766666.mp4"; // Import Video
-import StickyContact from '../components/StickyContact';
+// StickyContact import removed
+import InternshipTimeline from '../components/InternshipTimeline';
 
 const Internship = () => {
   const imageRef = useRef(null);
   const videoRef = useRef(null);
-  const contactRef = useRef(null);
+  const formRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -93,6 +96,18 @@ const Internship = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Force Dark Body Background for this page only
+  useEffect(() => {
+    // Save original body style
+    const originalStyle = window.getComputedStyle(document.body).backgroundColor;
+    document.body.style.backgroundColor = '#0B1220';
+
+    return () => {
+      // Revert on cleanup
+      document.body.style.backgroundColor = '';
+    };
+  }, []);
+
   const internships = [
     {
       title: "Civil Engineering",
@@ -131,13 +146,16 @@ const Internship = () => {
 
 
 
+  /* Define theme colors to cycle through */
+  const themes = ['card-theme-blue', 'card-theme-purple', 'card-theme-green', 'card-theme-orange', 'card-theme-pink', 'card-theme-cyan'];
+
   return (
     <div className="internship-page">
       {/* Dark Hero Section matching other pages */}
       {/* Video Hero Section */}
       <section className="internship-hero-section">
         <video
-          className="hero-video"
+          className="internship-hero-video"
           autoPlay
           loop
           muted
@@ -146,7 +164,7 @@ const Internship = () => {
           <source src={internVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="hero-overlay"></div>
+        <div className="internship-hero-overlay"></div>
 
         <div className="internship-hero-content">
           <motion.div
@@ -154,15 +172,16 @@ const Internship = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="internship-breadcrumbs">
+            <h1 className="internship-hero-title" style={{ fontFamily: 'delight', fontWeight: 'bold', fontSize: '5rem' }}>Internship Programs</h1>
+            {/* <div className="internship-breadcrumbs">
               Home &gt; <span>Internship</span>
-            </div>
-            <h1 className="internship-hero-title" style={{ fontFamily: 'delight', fontWeight: 'bold', fontSize: '5rem' }}>Internship Programs</h1> {/* Increased Font Size */}
+            </div> */}
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              style={{ fontSize: '1.5rem', marginTop: '1rem', maxWidth: '600px' }}
+              style={{ fontSize: '1.5rem', marginTop: '1rem', maxWidth: '600px', color: '#fff' }}
             >
               Building the Future of Engineering
             </motion.p>
@@ -175,15 +194,15 @@ const Internship = () => {
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             >
               <button
-                className="internship-cta-btn"
-                onClick={() => contactRef.current.open()}
+                className="internship-cta-btn-glass"
+                onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Apply Now
               </button>
 
               <a
                 href="#explore"
-                className="internship-secondary-btn"
+                className="internship-cta-btn-glass"
                 onClick={(e) => {
                   e.preventDefault();
                   document.getElementById('explore').scrollIntoView({ behavior: 'smooth' });
@@ -199,13 +218,14 @@ const Internship = () => {
       {/* Intro Text Section */}
       <section className="internship-intro" id="explore">
         <div className="intro-heading-side">
-          <h2><span className="blue">Intern</span> <br />@JSE Engineering Pvt Ltd</h2>
+          {/* Explicit White Color for @JSE part */}
+          <h2><span className="blue">Intern</span> <br /><span style={{ color: '#ffffff' }}>@JSE Engineering Pvt Ltd</span></h2>
         </div>
         <div className="intro-text-side">
-          <p>
+          <p style={{ color: '#f1f5f9' }}>
             Your dream career isn’t far. It just needs the right beginning. Join our 100 days Internship Programme in Chennai, Tirunelveli, Trichy, and Vizag. Discover the version of YOU that the engineering world is waiting for.
           </p>
-          <p style={{ marginTop: '1rem' }}>
+          <p style={{ marginTop: '1rem', color: '#f1f5f9' }}>
             As an engineering student, explore your academic learning with real-life engineering practices directly from professionals at JSE.
           </p>
         </div>
@@ -224,15 +244,12 @@ const Internship = () => {
       {/* Who Can Join Us Section */}
       <section className="who-can-join-section">
         <div className="who-content-side">
-          <div className="dash-tagline">
-            ELIGIBILITY
-          </div>
           <h2 className="section-heading-blue">Who Can Join Us</h2>
           <div className="section-blob-text">
-            <p style={{ marginBottom: '1.5rem' }}>
+            <p style={{ marginBottom: '1.5rem', color: '#ffffff' }}>
               We welcome students from Civil, Mechanical, Electrical & Electronics Engineering, Electronics & communication, Architecture, Mechatronics, and related disciplines (Diploma / UG / PG) who want to gain real-time BIM design experience.
             </p>
-            <p>
+            <p style={{ color: '#ffffff' }}>
               Every day, you’ll work on designs that shape smarter buildings, efficient systems, and future-ready infrastructure.
             </p>
           </div>
@@ -284,82 +301,23 @@ const Internship = () => {
           <img src={hiringImage} alt="Recruitment Process" className="who-img" loading="lazy" />
         </div>
         <div className="who-content-side">
-          <div className="dash-tagline">
-            HIRING
-          </div>
           <h2 className="section-heading-blue">Recruitment Process</h2>
           <div className="section-blob-text">
-            <p style={{ marginBottom: '1.5rem' }}>
+            <p style={{ marginBottom: '1.5rem', color: '#ffffff' }}>
               Our internship hiring process looks beyond grades and focuses on giving every applicant a fair opportunity, specifically designed for students and fresh graduates.
             </p>
-            <p>
+            <p style={{ color: '#ffffff' }}>
               From basic screenings to technical evaluations, each step focuses on identifying your potential and preparing you for a meaningful internship experience.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Video Section */}
-      <section className="video-highlight-section">
-        <div className="video-wrapper">
-          <video
-            ref={videoRef}
-            src={internVideo}
-            className="internship-video"
-            muted
-            loop
-            playsInline
-            onClick={togglePlay} // Clicking video also toggles play
-          />
 
-          {/* Custom Controls Overlay */}
-          <div className={`video-overlay ${isPlaying ? 'playing' : ''}`}>
-            {/* Play Button */}
-            {!isPlaying && (
-              <button className="custom-play-btn" onClick={togglePlay} aria-label="Play Video">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </button>
-            )}
-          </div>
-
-          {/* Fullscreen Toggle (Always Visible or on Hover) */}
-          <button className="fullscreen-toggle-btn" onClick={toggleFullscreen} aria-label="Fullscreen">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Custom Fullscreen Modal Overlay */}
-        {isFullscreen && (
-          <div className="fullscreen-modal-overlay" onClick={toggleFullscreen}>
-            <div className="fullscreen-video-container" onClick={(e) => e.stopPropagation()}>
-              <video
-                src={internVideo}
-                className="fullscreen-video"
-                autoPlay
-                muted
-                loop
-                playsInline
-                controls={false} // Custom controls if needed, or browser default for fullscreen? User wanted "dark background", implying modal.
-              />
-              <button className="close-fullscreen-btn" onClick={toggleFullscreen}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-              </button>
-            </div>
-          </div>
-        )}
-      </section>
 
       {/* Tools & Technologies Section */}
       <section className="tools-section">
         <div className="section-header-center">
-          <div className="dash-tagline justify-center">SKILLS</div>
           <h2 className="section-heading-blue">Explore Our Internship Areas</h2>
           <p className="section-desc-center">
             Find your perfect engineering niche (courses, BIM tools & software) with internship paths built for curious minds
@@ -368,7 +326,8 @@ const Internship = () => {
 
         <div className="tools-grid">
           {tools.map((tool, index) => (
-            <div key={index} className="tool-card">
+            <div key={index} className={`tool-card ${themes[index % themes.length]}`}>
+              <div className="intern-pattern"></div>
               <div className="tool-icon-circle">
                 {tool.icon}
               </div>
@@ -378,16 +337,19 @@ const Internship = () => {
         </div>
       </section>
 
+      {/* Timeline Section */}
+      <InternshipTimeline />
+
       {/* Bento Grid Section */}
       <section className="bento-section">
         <div className="bento-heading-wrapper">
-          <div className="dash-tagline justify-center">WHY JOIN US</div>
           <h2 className="section-heading-blue">Program Benefits</h2>
         </div>
 
         <div className="bento-grid">
-          {/* 1. Job Assured (White, Wide) -> Blue Pattern */}
-          <div className="bento-card bento-blue bento-pattern span-2-col">
+          {/* 1. Job Assured (Blue Theme) */}
+          <div className="bento-card card-theme-blue span-2-col">
+            <div className="intern-pattern"></div>
             <div className="bento-content">
               <div className="bento-icon-box">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>
@@ -399,310 +361,306 @@ const Internship = () => {
             </div>
           </div>
 
-          {/* 2. 100 Days (Photo BG, Tall) - Swapped BG here from VR */}
-          <div className="bento-card bento-photo span-2-row" style={{ backgroundImage: `url(${careerDevImage})` }}>
+          {/* 2. 100 Days (Green Theme) */}
+          <div className="bento-card card-theme-green span-2-row">
+            <div className="intern-pattern"></div>
             <div className="bento-content" style={{ justifyContent: 'space-between' }}>
               <div className="bento-icon-box">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
               </div>
               <div className="bento-info">
-                <h3 className="bento-title">100 Working Days with Certification</h3>
-                <p className="bento-desc">An intensive, structured timeline designed to fast-track your industry readiness and expertise.</p>
+                <h3 className="bento-title">100 Days</h3>
+                <p className="bento-desc">Intensive 3-month program covering BIM Modelling (LOD 100-500) and site coordination.</p>
               </div>
             </div>
           </div>
 
-          {/* 3. UAE Standards (Dark, Pattern) */}
-          <div className="bento-card bento-dark bento-pattern">
+          {/* 3. Hands-on (Purple Theme) */}
+          <div className="bento-card card-theme-purple">
+            <div className="intern-pattern"></div>
             <div className="bento-content">
               <div className="bento-icon-box">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
               </div>
               <div className="bento-info">
-                <h3 className="bento-title">UAE Experience</h3>
-                <p className="bento-desc">Gain hands-on work experience following international UAE construction standards.</p>
+                <h3 className="bento-title">Hands-on</h3>
+                <p className="bento-desc">Live international projects (UAE, Qatar, USA, UK).</p>
               </div>
             </div>
           </div>
 
-          {/* 4. Report (White) */}
-          <div className="bento-card bento-white">
+          {/* 4. Experience Certificate (Orange Theme) */}
+          <div className="bento-card card-theme-orange">
+            <div className="intern-pattern"></div>
             <div className="bento-content">
               <div className="bento-icon-box">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
               </div>
               <div className="bento-info">
-                <h3 className="bento-title">Project Report</h3>
-                <p className="bento-desc">Submit your hands-on experience report as a valid final-year academic project.</p>
+                <h3 className="bento-title">Certification</h3>
+                <p className="bento-desc">Experience certificate upon successful completion.</p>
               </div>
             </div>
           </div>
 
-          {/* 5. VR Training (Dark - Was Photo) */}
-          <div className="bento-card bento-dark bento-pattern">
+          {/* 5. Software (Cyan Theme) */}
+          <div className="bento-card card-theme-cyan">
+            <div className="intern-pattern"></div>
             <div className="bento-content">
               <div className="bento-icon-box">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z"></path><path d="M6 9V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"></path></svg>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
               </div>
               <div className="bento-info">
-                <h3 className="bento-title">VR Training</h3>
-                <p className="bento-desc">Immersive virtual reality sessions to simulate real-world site conditions and safety.</p>
+                <h3 className="bento-title">Software</h3>
+                <p className="bento-desc">Master Revit, AutoCAD, Navisworks, Tekla & Dialux.</p>
               </div>
             </div>
           </div>
 
-          {/* 6. Mentorship (Blue, Pattern) */}
-          <div className="bento-card bento-blue bento-pattern">
+          {/* 6. Career Gap (Pink Theme) */}
+          <div className="bento-card card-theme-pink">
+            <div className="intern-pattern"></div>
             <div className="bento-content">
               <div className="bento-icon-box">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
               </div>
               <div className="bento-info">
-                <h3 className="bento-title">Global Mentorship</h3>
-                <p className="bento-desc">Learn directly from internationally experienced mentors and industry veterans.</p>
+                <h3 className="bento-title">Career Gap?</h3>
+                <p className="bento-desc">Perfect bridging program for career restarts.</p>
               </div>
             </div>
           </div>
 
-          {/* 7. Abroad (Photo BG, Wide) */}
-          <div className="bento-card bento-photo span-2-col" style={{ backgroundImage: `url(${eligibilityImage})` }}>
+          {/* 7. Abroad (Blue Theme, Wide) */}
+          <div className="bento-card card-theme-blue span-2-col">
+            <div className="intern-pattern"></div>
             <div className="bento-content">
               <div className="bento-icon-box">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
               </div>
               <div className="bento-info">
-                <h3 className="bento-title">Abroad Opportunities</h3>
+                <h3 className="bento-title"> Abroad Opportunities</h3>
                 <p className="bento-desc">Top performers receive direct referrals for career opportunities in the Middle East.</p>
               </div>
             </div>
           </div>
 
-          {/* 8. Scholarship (Dark) */}
-          <div className="bento-card bento-dark span-2-col bento-pattern">
+          {/* 8. Stipend (Purple Theme) */}
+          <div className="bento-card card-theme-purple">
+            <div className="intern-pattern"></div>
             <div className="bento-content">
               <div className="bento-icon-box">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
               </div>
               <div className="bento-info">
-                <h3 className="bento-title">Scholarship Program</h3>
-                <p className="bento-desc">Merit-based scholarships linked to your practicum performance and project outcomes.</p>
+                <h3 className="bento-title">Performance Stipend</h3>
+                <p className="bento-desc">Earn while you learn based on project performance.</p>
               </div>
             </div>
           </div>
 
-          {/* 9. Technology (White) -> Blue Pattern */}
-          <div className="bento-card bento-blue bento-pattern span-2-col">
+          {/* 9. Hostel (Green Theme) */}
+          <div className="bento-card card-theme-green">
+            <div className="intern-pattern"></div>
             <div className="bento-content">
               <div className="bento-icon-box">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
               </div>
               <div className="bento-info">
-                <h3 className="bento-title">Industry Tech</h3>
-                <p className="bento-desc">Gain exposure to specific technologies and tools used in modern engineering projects.</p>
+                <h3 className="bento-title">Accommodation</h3>
+                <p className="bento-desc">Hostel facilities available for outstation candidates.</p>
               </div>
             </div>
           </div>
 
-          {/* 10. Technical & Software (Photo BG now) */}
-          <div className="bento-card bento-photo span-2-col" style={{ backgroundImage: `url(${careerDevImage})` }}>
-            <div className="bento-content">
-              <div className="bento-icon-box">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-              </div>
-              <div className="bento-info">
-                <h3 className="bento-title">Technical & Software</h3>
-                <p className="bento-desc">Comprehensive training covering both core technical concepts and software application.</p>
-              </div>
-            </div>
-          </div>
 
         </div>
       </section>
+
       {/* Application Form Section */}
-      <StickyContact ref={contactRef}>
-        <div className="form-container">
+      {/* Application Form Section */}
+      <div className="form-container" ref={formRef}>
 
-          {/* Left: Join Our Team Info */}
-          <div className="form-info-side">
-            <h2 className="form-heading">Join Our Team</h2>
-            <p className="form-subtext">
-              Ready to kickstart your career? Apply now for our Internship Program.
-            </p>
+        {/* Left: Join Our Team Info */}
+        <div className="form-info-side">
+          <h2 className="form-heading">Join Our Team</h2>
+          <p className="form-subtext">
+            Ready to kickstart your career? Apply now for our Internship Program.
+          </p>
 
-            <div className="form-contact-details">
-              <p>72/4 Broadway,</p>
-              <p>Chennai, Tamil Nadu - 600108</p>
-              <br />
-              <p className="form-email">info@jseengineering.com</p>
-            </div>
-
-            <div className="form-socials">
-              {/* LinkedIn */}
-              <div className="social-circle">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                </svg>
-              </div>
-              {/* Facebook */}
-              <div className="social-circle">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-                </svg>
-              </div>
-              {/* Twitter/X */}
-              <div className="social-circle">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </div>
-            </div>
+          <div className="form-contact-details">
+            <p>72/4 Broadway,</p>
+            <p>Chennai, Tamil Nadu - 600108</p>
+            <br />
+            <p className="form-email">info@jseengineering.com</p>
           </div>
 
-          {/* Right: The Form */}
-          <div className="form-input-side">
-            <form onSubmit={handleSubmit} className="internship-form">
-
-              {/* Your Name */}
-              <div className="form-group">
-                <label>Your Name*</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input-line"
-                />
-              </div>
-
-              {/* Your Age */}
-              <div className="form-group">
-                <label>Your Age*</label>
-                <input
-                  type="number"
-                  name="age"
-                  value={formData.age}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input-line"
-                />
-              </div>
-
-              {/* Contact Number */}
-              <div className="form-group">
-                <label>Your Contact Number*</label>
-                <input
-                  type="tel"
-                  name="mobile"
-                  value={formData.mobile}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input-line"
-                />
-              </div>
-
-              {/* Mail ID */}
-              <div className="form-group">
-                <label>Your Mail ID*</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input-line"
-                />
-              </div>
-
-              {/* Residential Address */}
-              <div className="form-group">
-                <label>Residential Address*</label>
-                <textarea
-                  name="address"
-                  value={formData.address}
-                  onChange={handleInputChange}
-                  required
-                  rows="2"
-                  className="form-input-line"
-                ></textarea>
-              </div>
-
-              {/* College / University */}
-              <div className="form-group">
-                <label>Name of College / University*</label>
-                <input
-                  type="text"
-                  name="college"
-                  value={formData.college}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input-line"
-                />
-              </div>
-
-              {/* Department / Major */}
-              <div className="form-group">
-                <label>Department / Major*</label>
-                <input
-                  type="text"
-                  name="department"
-                  value={formData.department}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input-line"
-                />
-              </div>
-
-              {/* Year of Completion */}
-              <div className="form-group">
-                <label>Year of completion*</label>
-                <input
-                  type="text"
-                  name="year"
-                  value={formData.year}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input-line"
-                />
-              </div>
-
-              {/* Branch Dropdown */}
-              <div className="form-group">
-                <label>Branch You Wish To Join*</label>
-                <select
-                  name="branch"
-                  value={formData.branch}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input-line"
-                >
-                  <option value="" disabled>Select a Branch</option>
-                  <option value="Chennai">Chennai</option>
-                  <option value="Tirunelveli">Tirunelveli</option>
-                  <option value="Trichy">Trichy</option>
-                  <option value="Vizag">Vizag</option>
-                </select>
-              </div>
-
-              {/* Comments */}
-              <div className="form-group">
-                <label>Any Comments</label>
-                <textarea
-                  name="comments"
-                  value={formData.comments}
-                  onChange={handleInputChange}
-                  rows="3"
-                  className="form-input-line"
-                ></textarea>
-              </div>
-
-              <button type="submit" className="form-submit-btn">Submit</button>
-
-            </form>
+          <div className="form-socials">
+            {/* LinkedIn */}
+            <div className="social-circle">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+            </div>
+            {/* Facebook */}
+            <div className="social-circle">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+              </svg>
+            </div>
+            {/* Twitter/X */}
+            <div className="social-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </div>
           </div>
-
         </div>
-      </StickyContact>
+
+        {/* Right: The Form */}
+        <div className="form-input-side">
+          <form onSubmit={handleSubmit} className="internship-form">
+
+            {/* Your Name */}
+            <div className="form-group">
+              <label>Your Name*</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+                className="form-input-line"
+              />
+            </div>
+
+            {/* Your Age */}
+            <div className="form-group">
+              <label>Your Age*</label>
+              <input
+                type="number"
+                name="age"
+                value={formData.age}
+                onChange={handleInputChange}
+                required
+                className="form-input-line"
+              />
+            </div>
+
+            {/* Contact Number */}
+            <div className="form-group">
+              <label>Your Contact Number*</label>
+              <input
+                type="tel"
+                name="mobile"
+                value={formData.mobile}
+                onChange={handleInputChange}
+                required
+                className="form-input-line"
+              />
+            </div>
+
+            {/* Mail ID */}
+            <div className="form-group">
+              <label>Your Mail ID*</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                className="form-input-line"
+              />
+            </div>
+
+            {/* Residential Address */}
+            <div className="form-group">
+              <label>Residential Address*</label>
+              <textarea
+                name="address"
+                value={formData.address}
+                onChange={handleInputChange}
+                required
+                rows="2"
+                className="form-input-line"
+              ></textarea>
+            </div>
+
+            {/* College / University */}
+            <div className="form-group">
+              <label>Name of College / University*</label>
+              <input
+                type="text"
+                name="college"
+                value={formData.college}
+                onChange={handleInputChange}
+                required
+                className="form-input-line"
+              />
+            </div>
+
+            {/* Department / Major */}
+            <div className="form-group">
+              <label>Department / Major*</label>
+              <input
+                type="text"
+                name="department"
+                value={formData.department}
+                onChange={handleInputChange}
+                required
+                className="form-input-line"
+              />
+            </div>
+
+            {/* Year of Completion */}
+            <div className="form-group">
+              <label>Year of completion*</label>
+              <input
+                type="text"
+                name="year"
+                value={formData.year}
+                onChange={handleInputChange}
+                required
+                className="form-input-line"
+              />
+            </div>
+
+            {/* Branch Dropdown */}
+            <div className="form-group">
+              <label>Branch You Wish To Join*</label>
+              <select
+                name="branch"
+                value={formData.branch}
+                onChange={handleInputChange}
+                required
+                className="form-input-line"
+              >
+                <option value="" disabled>Select a Branch</option>
+                <option value="Chennai" style={{ color: 'black' }}>Chennai</option>
+                <option value="Tirunelveli" style={{ color: 'black' }}>Tirunelveli</option>
+                <option value="Trichy" style={{ color: 'black' }}>Trichy</option>
+                <option value="Vizag" style={{ color: 'black' }}>Vizag</option>
+              </select>
+            </div>
+
+            {/* Comments */}
+            <div className="form-group">
+              <label>Any Comments</label>
+              <textarea
+                name="comments"
+                value={formData.comments}
+                onChange={handleInputChange}
+                rows="3"
+                className="form-input-line"
+              ></textarea>
+            </div>
+
+            <button type="submit" className="form-submit-btn">Submit</button>
+
+          </form>
+        </div>
+
+      </div>
 
     </div>
   );

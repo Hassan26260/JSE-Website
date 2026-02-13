@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import PageTitleUpdater from "./components/PageTitleUpdater";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
@@ -48,7 +49,7 @@ import ElectricalElectronicsEngineering from "./pages/internship/ElectricalElect
 
 import MechatronicsEngineering from "./pages/internship/MechatronicsEngineering";
 import Architectural from "./pages/internship/Architectural";
-import Diploma from "./pages/internship/Diploma";
+
 
 
 // Admin Imports
@@ -67,6 +68,7 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        <PageTitleUpdater />
         <ScrollToTop />
         <Routes>
           {/* Admin Routes */}
@@ -132,7 +134,7 @@ function App() {
 
           <Route path="/internship/mechatronics-engineering" element={<MainLayout><MechatronicsEngineering /></MainLayout>} />
           <Route path="/internship/architectural" element={<MainLayout><Architectural /></MainLayout>} />
-          <Route path="/internship/diploma" element={<MainLayout><Diploma /></MainLayout>} />
+
 
         </Routes>
       </AuthProvider>

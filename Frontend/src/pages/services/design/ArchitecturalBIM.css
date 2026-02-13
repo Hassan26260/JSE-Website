@@ -678,9 +678,9 @@
 }
 
 .arch-service-card:hover .arch-card-overlay {
-    /* Blue solid overlay on hover */
-    background: rgba(20, 74, 224, 0.95);
-    /* Solid Brand Blue with slight transparency */
+    /* Blue solid overlay on hover REMOVED as per user request */
+    /* background: rgba(20, 74, 224, 0.95); */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9));
 }
 
 /* Content Layer */
@@ -1967,5 +1967,105 @@
 
     .arch-carousel-controls {
         justify-content: flex-start;
+    }
+}
+
+/* --- Expertise Modal Styles --- */
+.arch-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    /* Dark background */
+    backdrop-filter: blur(8px);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.arch-modal-content {
+    background: #0f172a;
+    /* Dark Slate BG */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 600px;
+    /* Compact width */
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.arch-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    z-index: 10;
+}
+
+.arch-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.arch-modal-image-wrapper {
+    width: 100%;
+    height: 300px;
+}
+
+.arch-modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.arch-modal-text {
+    padding: 2rem;
+    text-align: left;
+}
+
+.arch-modal-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.arch-modal-desc {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    /* Light Slate */
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .arch-modal-content {
+        max-width: 100%;
+    }
+
+    .arch-modal-image-wrapper {
+        height: 200px;
+    }
+
+    .arch-modal-title {
+        font-size: 1.5rem;
     }
 }

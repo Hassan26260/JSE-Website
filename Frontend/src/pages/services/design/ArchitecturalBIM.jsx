@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import StickyContact from '../../../components/StickyContact';
+
 import './ArchitecturalBIM.css';
 import heroImage from '../../../assets/images-home/home-new-img/BIM.webp';
 
@@ -143,6 +143,7 @@ const ArchitecturalBIM = () => {
   const contactRef = useRef(null);
 
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [selectedService, setSelectedService] = useState(null);
 
   const handleNextProject = () => {
     setCurrentProjectIndex((prev) => (prev + 1) % PROJECT_EXPERIENCE.length);
@@ -153,7 +154,7 @@ const ArchitecturalBIM = () => {
   };
 
   const scrollToForm = () => {
-    contactRef.current?.open();
+    contactRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   // Animation Variants (Staggered)
@@ -290,12 +291,12 @@ const ArchitecturalBIM = () => {
 
           <div className="arch-services-grid">
             {SERVICES_DATA.map((service, index) => (
-              <div key={index} className="arch-service-card">
+              <div key={index} className="arch-service-card" onClick={() => setSelectedService(service)}>
                 <div className="arch-card-bg" style={{ backgroundImage: `url(${service.img})` }}></div>
                 <div className="arch-card-overlay"></div>
                 <div className="arch-card-content">
                   <h3 className="arch-service-title">{service.title}</h3>
-                  <p className="arch-service-card-desc">{service.desc}</p>
+                  <p className="arch-service-card-desc">Click to view details</p>
                 </div>
               </div>
             ))}
@@ -303,8 +304,43 @@ const ArchitecturalBIM = () => {
         </div>
       </section>
 
+      {/* Expertise Modal */}
+      <AnimatePresence>
+        {selectedService && (
+          <motion.div
+            className="arch-modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedService(null)}
+          >
+            <motion.div
+              className="arch-modal-content"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button className="arch-modal-close" onClick={() => setSelectedService(null)}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+              <div className="arch-modal-image-wrapper">
+                <img src={selectedService.img} alt={selectedService.title} className="arch-modal-image" />
+              </div>
+              <div className="arch-modal-text">
+                <h3 className="arch-modal-title">{selectedService.title}</h3>
+                <p className="arch-modal-desc">{selectedService.desc}</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Form Section */}
-      <StickyContact ref={contactRef}>
+      <div ref={contactRef}>
         <div className="form-container">
           {/* Left Side: Title & Info */}
           <div className="form-info-side">
@@ -355,7 +391,7 @@ const ArchitecturalBIM = () => {
             </form>
           </div>
         </div>
-      </StickyContact>
+      </div>
 
 
 

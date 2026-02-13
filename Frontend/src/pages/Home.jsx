@@ -2,7 +2,7 @@ import "../styles/Home.css";
 import "../styles/Benefits.css";
 import "../styles/ClientMarquee.css"; // New Marquee Styles
 import "../styles/TestimonialCarousel.css"; // New 3D Carousel Styles
-import StickyContact from '../components/StickyContact';
+// StickyContact import removed
 import { motion, AnimatePresence } from "framer-motion";
 import heroBanner from "../assets/images-home/Herobanner.webp";
 import heroGroupImage from "../assets/images-home/hero-group-image.jpg";
@@ -45,7 +45,7 @@ import clientLogo13 from '../assets/client-logo/zone.png';
 
 import mapImage from "../assets/images-home/Map.png";
 // Use the new video file for the Hero background
-import heroVideo from "../assets/images-home/home-new-img/hero-video.mov";
+import heroVideo from "../assets/images-home/home-new-img/hero-video.mp4";
 import geoStatsVideo from "../assets/images-home/131857-751353013_small.mp4"; // New Video for Geo Stats
 
 // New Image Assets for Services (Solutions Beyond Software)
@@ -63,69 +63,29 @@ import aboutImage from "../assets/images-home/home-new-img/about-home-new.jpeg";
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-// Custom hook for counting up
-// Moved outside component to prevent re-creation and state loss on re-renders
-const useCountUp = (end, duration = 2000, start = false) => {
+// CountUp Component
+const StatCounter = ({ end, duration = 2000, suffix = "", start }) => {
   const [count, setCount] = useState(0);
-  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    if (!start || hasAnimated.current) return;
-
-    let startTime = null;
-    let animationFrameId;
-
-    const animate = (currentTime) => {
-      if (!startTime) startTime = currentTime;
-      const progress = currentTime - startTime;
-      const percentage = Math.min(progress / duration, 1);
-
-      // Ease out quart
-      const easeOutQuart = (x) => 1 - Math.pow(1 - x, 4);
-
-      const currentCount = Math.floor(easeOutQuart(percentage) * end);
-      setCount(currentCount);
-
-      if (progress < duration) {
-        animationFrameId = requestAnimationFrame(animate);
-      } else {
-        setCount(end);
-        hasAnimated.current = true;
-      }
-    };
-
-    animationFrameId = requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(animationFrameId);
+    if (start) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        setCount(Math.floor(progress * end));
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
   }, [end, duration, start]);
 
-  return count;
-};
-
-const StatCounter = ({ end, suffix = "", start }) => {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  if (isMobile) return <span>{end}{suffix}</span>;
-  const count = useCountUp(end, 2000, start);
   return <span>{count}{suffix}</span>;
 };
 
 const Home = () => {
-
-  const [statsStarted, setStatsStarted] = useState(false);
-  const statsRef = useRef(null);
-  const location = useLocation();
-
-  // Services Data (Updated with New Images)
-  const servicesData = [
-    { title: "MEP Engineering", desc: "Comprehensive MEP solutions including HVAC, Electrical, and Firefighting.", link: "/services/design/mep-design", img: mepImg },
-    { title: "Architectural BIM", desc: "Revolutionizing architecture with detailed BIM models.", link: "/services/design/architectural-bim", img: bimImg },
-    { title: "Structural Engineering", desc: "Advanced structural engineering and analysis.", link: "/services/design/structural", img: structImg },
-    { title: "Steel Structure Detailing", desc: "Accurate Tekla detailing and steel structures.", link: "/services/design/steel-structure-detailing", img: steelImg },
-    { title: "Infrastructural Services", desc: "Robust infrastructure solutions for modern communities.", link: "/services/infrastructural-services", img: infraImg },
-    { title: "Virtual Team for Hire", desc: "Hire own remote offshore architect team for modular construction needs.", link: "/services/virtual-team", img: virtualEngImage },
-    { title: "Secondment Team", desc: "Get on-demand access to our pool of experienced professionals.", link: "/services/secondment-team", img: secondmentImage }
-  ];
-
   // Hero Carousel Slides Data (Restored)
   const heroCarouselSlides = [
     {
@@ -186,6 +146,10 @@ const Home = () => {
   // Carousel Logic Removed as per simplified list requirement, but keeping state if needed for future
   const [slideDirection, setSlideDirection] = useState('next');
 
+  const location = useLocation();
+  const statsRef = useRef(null);
+  const [statsStarted, setStatsStarted] = useState(false);
+
   // Handle Hash Scroll (e.g. from Header Contact Us)
   useEffect(() => {
     if (location.hash) {
@@ -201,27 +165,6 @@ const Home = () => {
   // About Image Animation State
   const [aboutImageVisible, setAboutImageVisible] = useState(false);
   const aboutImageRef = useRef(null);
-
-  // Form State
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-  };
-
 
 
   // Stats Counting Logic
@@ -287,6 +230,16 @@ const Home = () => {
   // --- Infinite Carousel Logic ---
   const infiniteReviews = [...reviews, ...reviews];
   // ---------------------------
+
+  const servicesData = [
+    { title: "MEP Design", link: "/services/design/mep-design", img: mepImg },
+    { title: "BIM Services", link: "/services/design/architectural-bim", img: bimImg },
+    { title: "Structural Engineering", link: "/services/design/structural", img: structImg },
+    { title: "Steel Detailing", link: "/services/design/steel-structure-detailing", img: steelImg },
+    { title: "Infrastructure", link: "/services/infrastructural-services", img: infraImg },
+    { title: "Virtual Teams", link: "/services/virtual-team", img: virtualEngImage },
+    { title: "Secondment", link: "/services/secondment-team", img: secondmentImage },
+  ];
 
   const nextReview = () => {
     setCurrentReview((prev) => (prev + 1) % reviews.length);
@@ -409,7 +362,7 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             >
-              <a href="#services" className="hero-cta-btn-glass">Explore Our Expertise</a>
+              <a href="#solutions" className="hero-cta-btn-glass">Explore Our Expertise</a>
               <Link to="/portfolio" className="hero-cta-btn-glass">View Our Global Projects</Link>
             </motion.div>
           </div>
@@ -659,7 +612,7 @@ const Home = () => {
             className="benefits-cards-list"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
             variants={staggerContainer}
           >
             {[
@@ -752,7 +705,7 @@ const Home = () => {
         </section>
       </section>
 
-      <section className="solutions-list-section">
+      <section className="solutions-list-section" id="solutions">
         <motion.div
           className="solutions-list-container"
           initial="hidden"
@@ -813,9 +766,9 @@ const Home = () => {
             variants={slideInRight}
           >
             {[
-              { number: "70%", label: "Employee Owned" },
-              { number: "700+", label: "Active Projects" },
-              { number: "4,000+", label: "Global Deliveries" }
+              { number: "500+", label: "Expert Engineers on Staff" },
+              { number: "5", label: "Strategic Locations" },
+              { number: "99%", label: "Client Satisfaction Rate" }
             ].map((stat, index) => (
               <div
                 key={index}
@@ -828,100 +781,9 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
-
-
-
-      {/* Sticky Contact Component */}
-      <StickyContact>
-        <div className="form-container">
-          {/* Left Side: Title & Info */}
-          <motion.div
-            className="form-info-side"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={slideInLeft}
-          >
-            <h2 className="form-heading">Start Your Project</h2>
-            <p className="form-subtext">
-              Ready to optimize your workflow with JSE's Engineering services? Fill out the details and we'll get in touch with you shortly.
-            </p>
-
-            <div className="form-contact-details">
-              <p className="form-email">info@jseengineering.com</p>
-            </div>
-
-            <div className="form-socials">
-              <div className="social-circle">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                </svg>
-              </div>
-              <div className="social-circle">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-                </svg>
-              </div>
-              <div className="social-circle">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right Side: Form */}
-          <motion.div
-            className="form-input-side"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={slideInRight}
-          >
-            <form onSubmit={handleSubmit} className="internship-form">
-              <div className="form-group">
-                <label>Your Name*</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input-line"
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Your Mail ID*</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input-line"
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Message*</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows="4"
-                  required
-                  className="form-input-line"
-                ></textarea>
-              </div>
-
-              <button type="submit" className="form-submit-btn">Submit</button>
-            </form>
-          </motion.div>
-        </div>
-      </StickyContact>
     </div >
   );
 };
 
 export default Home;
+

@@ -253,6 +253,29 @@
     align-items: center;
     gap: 1rem;
     margin-bottom: 1rem;
+    position: relative;
+    /* For absolute positioning of close btn if needed, or flex */
+    justify-content: space-between;
+    /* Push close btn to right */
+}
+
+.timeline-close-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.timeline-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transform: scale(1.1);
 }
 
 .timeline-line {
@@ -330,8 +353,7 @@
 }
 
 
-margin-bottom: 2rem;
-}
+
 
 .chronicles-carousel-wrapper {
     margin-top: 2rem;
@@ -342,7 +364,7 @@ margin-bottom: 2rem;
     padding-left: 20%;
     /* Center start on mobile */
 }
-}
+
 
 /* Better way for reverse: order property if flex/grid items defined */
 .history-container.two-col.reverse-col {
@@ -398,8 +420,7 @@ margin-bottom: 2rem;
 }
 
 
-gap: 3rem;
-}
+
 
 .history-center-line {
     left: 20px;
@@ -435,6 +456,6 @@ gap: 3rem;
 .history-timeline-card::before {
     display: none;
 }
-}
+
 
 /* BIM Stats (Legacy - keeping for safety) */
