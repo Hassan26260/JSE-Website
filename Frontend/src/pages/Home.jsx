@@ -290,11 +290,31 @@ const Home = () => {
 
 
   const reviews = [
-    { text: "The architectural BIM models provided by JSE were incredibly detailed and accurate.", author: "Ganesh S.", role: "Senior Architect" },
-    { text: "JSE transformed our complex design vision into reality with comprehensive BIM solutions.", author: "Sarah L.", role: "Project Manager" },
-    { text: "JSE’s Tekla detailing services were a game changer for our project.", author: "Krishna Rao", role: "Project Engineer" },
-    { text: "Firefighting design services ensured our high-rise project met all safety standards.", author: "Daniel H.", role: "Safety Officer" },
-    { text: "JSE’s MEP design services are top-notch. Precision and clear communication.", author: "Emily R.", role: "Operations Head" }
+    {
+      text: "The team consistently exceeded expectations in their professionalism, meeting tight deadlines, and adapting to project changes. Their work quality and ability to incorporate feedback were outstanding. I am confident in our future collaborations and anticipate many successful projects.",
+      author: "Ananthakrishnan",
+      role: "APA Engineering"
+    },
+    {
+      text: "The team's dedication and problem-solving skills were instrumental in the 100% completion of the Digital Art Museum project. Their ownership of issues, both minor and major, led to the successful resolution of numerous clashes, culminating in the timely submission of the model.",
+      author: "Paresh Yashwant Katkar",
+      role: "BIM Manager - MEP, Buildings, Ramboll"
+    },
+    {
+      text: "The AVK Mall and T2 tender package was issued successfully due to the team's considerable efforts. Their hard work is much appreciated. I look forward to continued success with this team.",
+      author: "Chijyoti Challamarad",
+      role: "Principal Mechanical Engineer, Ramboll"
+    },
+    {
+      text: "The issuance of two major AVK assets for tender is a fantastic achievement. Congratulations to the entire team for their exceptional work on this significant milestone.",
+      author: "Michael Rimmer",
+      role: "Head of MEP, Middle East, Ramboll"
+    },
+    {
+      text: "The team's ability to excel under pressure, particularly when facing tight deadlines, demonstrates their strong work ethic and consistent high performance. I commend their dedication to delivering projects on time and to a high standard.",
+      author: "Yashin Maharaj",
+      role: "SSHIC MEPI Director"
+    }
   ];
 
   // --- Infinite Carousel Logic ---
