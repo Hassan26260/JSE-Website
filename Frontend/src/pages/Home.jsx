@@ -46,7 +46,7 @@ import clientLogo12 from '../assets/client-logo/al futtaim.png';
 import clientLogo13 from '../assets/client-logo/zone.png';
 
 import mapImage from "../assets/images-home/Map.png";
-import heroVideo from "../assets/images-home/hero-video.mp4";
+import heroVideo from "../assets/images-home/home-new-img/hero-video.mp4";
 import geoStatsVideo from "../assets/images-home/131857-751353013_small.mp4"; // New Video for Geo Stats
 
 // New Image Assets for Services (Solutions Beyond Software)
