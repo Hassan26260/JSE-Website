@@ -6,7 +6,7 @@ import StickyContact from "../components/StickyContact";
 import ContactForm from "../components/ContactForm";
 import { motion, AnimatePresence } from "framer-motion";
 import heroBanner from "../assets/images-home/Herobanner.webp";
-import heroGroupImage from "../assets/images-home/hero-group-image.jpg";
+import heroGroupImage from "../assets/images-home/home-new-img/about-home-new.jpeg";
 import whyChooseUsImage from "../assets/images-home/why choose us.png";
 import architecturalBim from "../assets/images-home/architectural-bim.webp";
 import hvacDesign from "../assets/images-home/hvac-design.webp";
@@ -405,8 +405,39 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              Engineering-Led BIM.<br />Built Right.
+              Precision Engineering.<br />Excellence in Design.
             </motion.h1>
+
+            <motion.p
+              className="hero-subtext"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              style={{ fontSize: '1.2rem', color: '#e2e8f0', marginBottom: '2rem', maxWidth: '600px', lineHeight: '1.6' }}
+            >
+              Delivering Design-Led MEP Engineering & BIM Solutions for Mega-Scale Global Construction Projects
+            </motion.p>
+
+            {/* New Animated Moto */}
+            <div style={{ display: 'inline-block', marginBottom: '2rem' }}>
+              <motion.p
+                className="hero-moto typing-effect"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.1, delay: 0.4 }}
+                style={{
+                  fontSize: '1.6rem',
+                  fontWeight: '700',
+                  color: '#144AE0', // Distinct amber/yellow accent color
+                  fontFamily: "monospace, 'Delight', sans-serif",
+                  cursor: 'default',
+                  margin: 0,
+                  textShadow: '0 2px 10px rgba(20, 74, 224, 0.4)'
+                }}
+              >
+                Building Personal Brands as Engineers
+              </motion.p>
+            </div>
 
             <motion.div
               className="hero-cta-group"
@@ -465,13 +496,19 @@ const Home = () => {
         <div className="about-container">
           <div className="about-content-left">
             {/* <span className="about-tagline dash-tagline">About JSE</span> */}
-            <h2 className="about-company-name">Pioneering Digital Engineering</h2>
-            <h3 className="about-subtitle">Global Leaders in BIM & MEP Services</h3>
-            <p className="about-description">
-              JSE Engineering Pvt. Ltd. is a premier BIM Digital Engineering & Construction
-              Consultancy. We specialize in transforming complex architectural visions into
-              precise, buildable reality through cutting-edge technology and global expertise.
-            </p>
+            <h2 className="about-company-name">About JSE Engineering</h2>
+
+            <div className="about-description-block" style={{ color: '#475569', fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1rem' }}>
+              <p style={{ marginBottom: '1rem' }}>
+                JSE Engineering is a premier multi-disciplinary engineering consulting firm established in 2005.
+              </p>
+              <p style={{ marginBottom: '1rem' }}>
+                Founded by lead consultants with over 20 years of expertise in the Middle East and Southeast Asia, we bridge the gap between complex engineering design, advanced BIM coordination, and physical construction execution.
+              </p>
+              <p>
+                Unlike standard BIM firms, we are Engineers First. We host specialized internal teams for MEP Engineering, Architecture, Structural BIM, and Steel Detailing (Tekla), allowing us to manage world-class projects from initial concept to final commissioning.
+              </p>
+            </div>
 
             <ul className="about-features-list">
               <li>
@@ -518,66 +555,110 @@ const Home = () => {
       <section className="client-marquee-section">
         <div className="container">
 
-          {/* Marquee 1: Global Consultants (Label Left, Marquee Right) */}
-          <div className="client-marquee-row consultant-row">
-            {/* Label (Stacked) */}
-            <div className="marquee-label">
-              <span className="label-line-1">Global</span>
-              <span className="label-line-2">Consultants</span>
-            </div>
-            {/* Vertical Divider */}
-            <div className="vertical-divider"></div>
-            {/* Marquee Track */}
-            <div className="marquee-container">
-              <div className="marquee-track">
-                {[
-                  consLogo1, consLogo2, consLogo3, consLogo4, consLogo5, consLogo6,
-                  consLogo7, consLogo8, consLogo9, consLogo10, consLogo11, consLogo12, consLogo13
-                ].map((logo, index) => (
-                  <img key={`cons-logo-${index}`} src={logo} alt={`Consultant Logo ${index + 1}`} className="client-logo" loading="lazy" />
-                ))}
-
-                {[
-                  consLogo1, consLogo2, consLogo3, consLogo4, consLogo5, consLogo6,
-                  consLogo7, consLogo8, consLogo9, consLogo10, consLogo11, consLogo12, consLogo13
-                ].map((logo, index) => (
-                  <img key={`cons-logo-dup-${index}`} src={logo} alt={`Consultant Logo ${index + 1}`} className="client-logo" loading="lazy" />
-                ))}
-              </div>
-            </div>
+          {/* Intro Section */}
+          <div className="client-partnerships-intro">
+            <h2 className="section-title">Our Strategic Partnerships</h2>
+            <p className="section-desc">
+              We tailor our technical expertise to meet the specific demands of the project lifecycle, acting as
+              a high-level technical engineering partner for our global clients.
+            </p>
           </div>
 
-          {/* Marquee 2: Global Contractors (Marquee Left, Label Right) */}
-          <div className="client-marquee-row client-row">
-            {/* Marquee Track (Left in Reverse) */}
-            <div className="marquee-container">
-              <div className="marquee-track reverse-track">
-                <img src={clientLogo1} alt="Client 1" className="client-logo" />
-                <img src={clientLogo2} alt="Client 2" className="client-logo" />
-                <img src={clientLogo3} alt="Client 3" className="client-logo" />
-                <img src={clientLogo4} alt="Client 4" className="client-logo" />
-                <img src={clientLogo5} alt="Client 5" className="client-logo" />
-                <img src={clientLogo6} alt="Client 6" className="client-logo" />
-                <img src={clientLogo7} alt="Client 7" className="client-logo" />
-                <img src={clientLogo8} alt="Client 8" className="client-logo" />
-                <img src={clientLogo9} alt="Client 9" className="client-logo" />
-                <img src={clientLogo10} alt="Client 10" className="client-logo" />
-                <img src={clientLogo11} alt="Client 11" className="client-logo" />
-                <img src={clientLogo12} alt="Client 12" className="client-logo" />
-                <img src={clientLogo13} alt="Client 13" className="client-logo" />
+          {/* Consultants Block */}
+          <div className="client-category-block">
+            <h3 className="client-category-title">International Design Consultants</h3>
 
-                <img src={clientLogo1} alt="Client 1" className="client-logo" />
-                <img src={clientLogo2} alt="Client 2" className="client-logo" />
-                <img src={clientLogo3} alt="Client 3" className="client-logo" />
+            {/* Marquee 1: Global Consultants */}
+            <div className="client-marquee-row consultant-row">
+              <div className="marquee-container">
+                <div className="marquee-track">
+                  {[
+                    consLogo1, consLogo2, consLogo3, consLogo4, consLogo5, consLogo6,
+                    consLogo7, consLogo8, consLogo9, consLogo10, consLogo11, consLogo12, consLogo13
+                  ].map((logo, index) => (
+                    <img key={`cons-logo-${index}`} src={logo} alt={`Consultant Logo ${index + 1}`} className="client-logo" loading="lazy" />
+                  ))}
+                  {[
+                    consLogo1, consLogo2, consLogo3, consLogo4, consLogo5, consLogo6,
+                    consLogo7, consLogo8, consLogo9, consLogo10, consLogo11, consLogo12, consLogo13
+                  ].map((logo, index) => (
+                    <img key={`cons-logo-dup-${index}`} src={logo} alt={`Consultant Logo ${index + 1}`} className="client-logo" loading="lazy" />
+                  ))}
+                </div>
               </div>
             </div>
-            {/* Vertical Divider */}
-            <div className="vertical-divider"></div>
-            {/* Label (Stacked) */}
-            <div className="marquee-label">
-              <span className="label-line-1">Global</span>
-              <span className="label-line-2">Contractors</span>
+
+            <p className="client-category-desc">
+              Partnering to provide Design-Led Engineering and BIM Services from Concept to IFC.
+            </p>
+            <ul className="client-category-list">
+              <li>
+                <strong>Design from Scratch:</strong> We act as your extended engineering arm, developing concepts into full detailed designs.
+              </li>
+              <li>
+                <strong>Engineering-Led BIM (LOD 100–300):</strong> We ensure the BIM model is a true reflection of engineering data with seamless inter-disciplinary coordination.
+              </li>
+              <li>
+                <strong>Local Authority Compliance:</strong> Designs are engineered to meet specific codes including QCS, Kahramaa, DEWA, PUB, SCDF, and SPAN.
+              </li>
+            </ul>
+          </div>
+
+          {/* Contractors Block */}
+          <div className="client-category-block">
+            <h3 className="client-category-title">International MEP & General Contractors</h3>
+
+
+            {/* Marquee 2: Global Contractors */}
+            <div className="client-marquee-row client-row">
+              <div className="marquee-container">
+                <div className="marquee-track reverse-track">
+                  <img src={clientLogo1} alt="Client 1" className="client-logo" />
+                  <img src={clientLogo2} alt="Client 2" className="client-logo" />
+                  <img src={clientLogo3} alt="Client 3" className="client-logo" />
+                  <img src={clientLogo4} alt="Client 4" className="client-logo" />
+                  <img src={clientLogo5} alt="Client 5" className="client-logo" />
+                  <img src={clientLogo6} alt="Client 6" className="client-logo" />
+                  <img src={clientLogo7} alt="Client 7" className="client-logo" />
+                  <img src={clientLogo8} alt="Client 8" className="client-logo" />
+                  <img src={clientLogo9} alt="Client 9" className="client-logo" />
+                  <img src={clientLogo10} alt="Client 10" className="client-logo" />
+                  <img src={clientLogo11} alt="Client 11" className="client-logo" />
+                  <img src={clientLogo12} alt="Client 12" className="client-logo" />
+                  <img src={clientLogo13} alt="Client 13" className="client-logo" />
+
+                  <img src={clientLogo1} alt="Client 1" className="client-logo" />
+                  <img src={clientLogo2} alt="Client 2" className="client-logo" />
+                  <img src={clientLogo3} alt="Client 3" className="client-logo" />
+                  <img src={clientLogo4} alt="Client 4" className="client-logo" />
+                  <img src={clientLogo5} alt="Client 5" className="client-logo" />
+                  <img src={clientLogo6} alt="Client 6" className="client-logo" />
+                  <img src={clientLogo7} alt="Client 7" className="client-logo" />
+                  <img src={clientLogo8} alt="Client 8" className="client-logo" />
+                  <img src={clientLogo9} alt="Client 9" className="client-logo" />
+                  <img src={clientLogo10} alt="Client 10" className="client-logo" />
+                  <img src={clientLogo11} alt="Client 11" className="client-logo" />
+                  <img src={clientLogo12} alt="Client 12" className="client-logo" />
+                  <img src={clientLogo13} alt="Client 13" className="client-logo" />
+                </div>
+              </div>
             </div>
+
+            <p className="client-category-desc">
+              Providing technical brainpower and high-detail modeling for error-free site execution.
+            </p>
+
+            <ul className="client-category-list">
+              <li>
+                <strong>Engineering Validation:</strong> We review IFC drawings to identify design gaps and raise proactive RFIs to prevent site delays.
+              </li>
+              <li>
+                <strong>LOD 400 & 500 Shop Drawings:</strong> We deliver constructive BIM models and 2D shop drawings extracted directly from BIM for installation.
+              </li>
+              <li>
+                <strong>Specialized Steel Detailing:</strong> Fabrication-ready NC Files, Erection Drawings, and Advanced Bills of Materials (BOMs).
+              </li>
+            </ul>
           </div>
 
         </div>

@@ -5,35 +5,138 @@
 
 /* Client Marquee Section */
 .client-marquee-section {
-    padding: 4rem 0 6rem 0rem;
-    /* Increased top/bottom padding significantly */
+    padding: 6rem 0;
     background-color: transparent;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+/* Strategic Partnerships Intro */
+.client-partnerships-intro {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto 3rem auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Enforce centering of flex children */
+    justify-content: center;
+}
+
+.client-partnerships-intro .section-title {
+    font-family: 'delight', sans-serif;
+    font-size: 4rem;
+    color: #144AE0;
+    margin-bottom: 1.5rem;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: none !important;
+}
+
+.client-partnerships-intro .section-desc {
+    font-size: 1.25rem;
+    color: #475569;
+    line-height: 1.8;
+    max-width: 1200px;
+    /* Optional: keep text readable but wider */
+    margin: 0 auto;
+}
+
+/* Category Blocks */
+.client-category-block {
+    margin-bottom: 4rem;
+}
+
+.client-category-block:last-child {
+    margin-bottom: 0;
+}
+
+.client-category-title {
+    font-family: 'delight', sans-serif;
+    font-size: 2rem;
+    color: #144AE0;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.client-category-desc {
+    text-align: center;
+    font-size: 1.15rem;
+    color: #334155;
+    max-width: 800px;
+    margin: 2rem auto;
+    line-height: 1.6;
+}
+
+/* List Styles */
+.client-category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    text-align: left;
+}
+
+.client-category-list li {
+    font-size: 1.05rem;
+    color: #f8fafc;
+    /* Light text for readability */
+    line-height: 1.7;
+    background: #0f172a;
+    /* Dark background */
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Subtle light border */
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
+    /* Premium shadow */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 
-/* Centered Header - REMOVED */
-.client-marquee-header {
-    display: none;
+/* Top Accent Line on Hover */
+.client-category-list li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #144AE0, #3b82f6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.client-marquee-tagline {
-    color: #666;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 600;
+.client-category-list li:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px -12px rgba(20, 74, 224, 0.25);
+    /* Colored shadow */
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.client-category-list li:hover::before {
+    opacity: 1;
+}
+
+.client-category-list strong {
     display: block;
-    margin-bottom: 0.5rem;
-}
-
-.client-marquee-title {
-    font-size: 2.5rem;
-    color: #144AE0;
-    font-weight: 800;
-    margin: 0;
-    font-family: system-ui, Segoe UI, Roboto, sans-serif;
+    color: #ffffff;
+    /* Bright white title */
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    font-size: 1.35rem;
+    /* Larger title */
+    letter-spacing: -0.02em;
 }
 
 /* Marquee Row Layout */
@@ -41,82 +144,19 @@
     display: flex;
     align-items: center;
     background: transparent;
-    box-shadow: none;
     width: 100%;
-    max-width: 100%;
-    padding: 0;
-    margin: 0;
+    overflow: hidden;
+    padding: 2rem 0;
+    /* Add padding inside row for hover space */
 }
 
-/* Top Marquee (Consultants) Spacing */
-.consultant-row {
-    margin-bottom: 120px;
-    /* Increased gap between marquees */
-}
-
-
-/* Reverse Layout for Clients */
-.client-marquee-row.reverse {
-    flex-direction: row-reverse;
-}
-
-/* Label Container (Stacked) */
-.marquee-label {
-    flex-shrink: 0;
-    padding: 0 1rem;
-    /* Reduced side padding from 2rem to 1rem */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    /* Tighter line height */
-    color: #0f172a;
-    z-index: 2;
-    background: #fff;
-}
-
-.marquee-label .highlight {
-    color: #144AE0;
-    margin-left: 10px;
-}
-
-/* Top Text: "Global" */
-.label-line-1 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    white-space: nowrap;
-}
-
-/* Bottom Text: "Consultants/Contractors" */
-.label-line-2 {
-    font-size: 2rem;
-    font-weight: 900;
-    color: #144AE0;
-    /* Blue */
-    text-transform: uppercase;
-    /* Optional for impact */
-    white-space: nowrap;
-    font-family: 'delight', system-ui;
-    /* Applied requested font */
-}
-
-/* Vertical Divider */
-.vertical-divider {
-    width: 3px;
-    height: 80px;
-    background-color: #cbd5e1;
-    margin: 0 1rem;
-    flex-shrink: 0;
-}
-
-/* Right Side: Infinite Marquee */
+/* Marquee Container & Animation */
 .marquee-container {
-    flex-grow: 1;
+    width: 100%;
     overflow: hidden;
     position: relative;
-    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .marquee-track {
@@ -124,31 +164,34 @@
     align-items: center;
     gap: 5rem;
     width: max-content;
-    animation: scrollMarquee 30s linear infinite;
+    animation: scrollMarquee 40s linear infinite;
+    /* Slower smooth scroll */
 }
 
-/* Apply Reverse Animation to the Second Marquee (Clients) */
-.client-row .marquee-track {
+/* Reverse Animation */
+.reverse-track {
     animation-direction: reverse;
 }
 
-
 /* Pause animation on hover */
-.marquee-container:hover .marquee-track {
+.marquee-container:hover .marquee-track,
+.marquee-container:hover .reverse-track {
     animation-play-state: paused;
 }
 
 .client-logo {
-    height: 80px;
-    /* Unified size as requested */
+    height: 100px;
+    /* Increased Size */
     width: auto;
     object-fit: contain;
+    /* Removed filter: grayscale(100%); to show original colors */
     opacity: 1;
-    transition: transform 0.3s;
+    /* Updated to 1 for full color visibility */
+    transition: all 0.4s ease;
 }
 
 .client-logo:hover {
-    transform: scale(1.15);
+    transform: scale(1.1);
 }
 
 @keyframes scrollMarquee {
@@ -163,46 +206,64 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-    .client-marquee-section {
-        gap: 3rem;
-        /* Restore gap on mobile if rows stack differently or just keep spacing */
-    }
-
-    .client-marquee-section>.client-marquee-row:first-of-type {
-        margin-bottom: 3rem;
-        /* Less margin on mobile */
-    }
-
-    .client-marquee-row,
-    .client-marquee-row.reverse {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .marquee-label {
-        padding: 0 0 1.5rem 0;
-        width: 100%;
-        border-bottom: 2px solid #e2e8f0;
-    }
-
-    .label-top {
-        font-size: 1.5rem;
-    }
-
-    .label-bottom {
+    .client-partnerships-intro .section-title {
         font-size: 2.2rem;
     }
 
-    .marquee-divider {
-        display: none;
+    .client-category-title {
+        font-size: 1.8rem;
     }
 
-    .marquee-container {
-        width: 100%;
-        mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    .client-category-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 1rem;
     }
 
-    .marquee-logo {
-        height: 60px;
+    .marquee-track {
+        gap: 3rem;
+    }
+
+    .client-logo {
+        height: 50px;
+    }
+}
+
+/* Typing Effect for Hero Moto */
+.typing-effect {
+    overflow: hidden;
+    /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid #144AE0;
+    /* The typwriter cursor updated to blue */
+    white-space: nowrap;
+    /* Keeps the content on a single line */
+    margin: 0 auto;
+    /* Gives that scrolling effect as the typing happens */
+    animation:
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: #144AE0;
     }
 }
