@@ -16,30 +16,30 @@ import bimModelling from "../assets/images-home/bim-modelling.webp";
 import electricalSystem from "../assets/images-home/electrical-system.webp";
 
 // Import Consultant Logos
-import consLogo1 from '../assets/client-logo/Consultant/logo1.webp';
-import consLogo2 from '../assets/client-logo/Consultant/logo2.webp';
-import consLogo3 from '../assets/client-logo/Consultant/logo3.webp';
-import consLogo4 from '../assets/client-logo/Consultant/logo4.webp';
-import consLogo5 from '../assets/client-logo/Consultant/logo5.webp';
-import consLogo6 from '../assets/client-logo/Consultant/logo6.webp';
-import consLogo7 from '../assets/client-logo/Consultant/logo7.webp';
-import consLogo8 from '../assets/client-logo/Consultant/logo8.webp';
-import consLogo9 from '../assets/client-logo/Consultant/logo9.webp';
-import consLogo10 from '../assets/client-logo/Consultant/logo10.webp';
-import consLogo11 from '../assets/client-logo/Consultant/logo11.webp';
-import consLogo12 from '../assets/client-logo/Consultant/logo12.webp';
-import consLogo13 from '../assets/client-logo/Consultant/logo13.webp';
+import consLogo1 from '../assets/client-logo/Consultant/logo1.png';
+import consLogo2 from '../assets/client-logo/Consultant/logo2.png';
+import consLogo3 from '../assets/client-logo/Consultant/logo3.png';
+import consLogo4 from '../assets/client-logo/Consultant/logo4.png';
+import consLogo5 from '../assets/client-logo/Consultant/logo5.png';
+import consLogo6 from '../assets/client-logo/Consultant/logo6.png';
+import consLogo7 from '../assets/client-logo/Consultant/logo7.png';
+import consLogo8 from '../assets/client-logo/Consultant/logo8.png';
+import consLogo9 from '../assets/client-logo/Consultant/logo9.png';
+import consLogo10 from '../assets/client-logo/Consultant/logo10.png';
+import consLogo11 from '../assets/client-logo/Consultant/logo11.png';
+import consLogo12 from '../assets/client-logo/Consultant/logo12.png';
+import consLogo13 from '../assets/client-logo/Consultant/logo13.png';
 
 // Import Client Logos (New)
-import clientLogo1 from '../assets/client-logo/Arabtec_Holding_Logo.jpg';
+import clientLogo1 from '../assets/client-logo/Arabtec_Holding_Logo.png';
 import clientLogo2 from '../assets/client-logo/L&T.png';
 import clientLogo3 from '../assets/client-logo/NAFFCO_Logo_(Transparent).png';
-import clientLogo4 from '../assets/client-logo/voltas.jpg';
-import clientLogo5 from '../assets/client-logo/aster.jpg';
-import clientLogo6 from '../assets/client-logo/johnson-controls-middletown.jpg';
+import clientLogo4 from '../assets/client-logo/voltas.png';
+import clientLogo5 from '../assets/client-logo/aster.png';
+import clientLogo6 from '../assets/client-logo/johnson-controls-middletown.png';
 import clientLogo7 from '../assets/client-logo/petrofac logo.png';
-import clientLogo8 from '../assets/client-logo/bk gulf.jpg';
-import clientLogo9 from '../assets/client-logo/emirates sas.jpg';
+import clientLogo8 from '../assets/client-logo/bk gulf.png';
+import clientLogo9 from '../assets/client-logo/emirates sas.png';
 import clientLogo10 from '../assets/client-logo/futuremetro logo.png';
 import clientLogo11 from '../assets/client-logo/al shandagha1.png';
 import clientLogo12 from '../assets/client-logo/al futtaim.png';
@@ -207,6 +207,9 @@ const Home = () => {
 
   // Accordion State
   const [activeService, setActiveService] = useState(null);
+
+  // Tabbed Showcase State
+  const [activePartnerTab, setActivePartnerTab] = useState('consultants');
 
   const toggleService = (index) => {
     setActiveService(activeService === index ? null : index);
@@ -553,114 +556,141 @@ const Home = () => {
       </section>
 
       <section className="client-marquee-section">
-        <div className="container">
+        <div className="container" style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2rem' }}>
 
           {/* Intro Section */}
           <div className="client-partnerships-intro">
-            <h2 className="section-title">Our Strategic Partnerships</h2>
+            <h2 className="client-partnerships-title">Our Strategic Partnerships</h2>
             <p className="section-desc">
               We tailor our technical expertise to meet the specific demands of the project lifecycle, acting as
               a high-level technical engineering partner for our global clients.
             </p>
           </div>
 
-          {/* Consultants Block */}
-          <div className="client-category-block">
-            <h3 className="client-category-title">International Design Consultants</h3>
-
-            {/* Marquee 1: Global Consultants */}
-            <div className="client-marquee-row consultant-row">
-              <div className="marquee-container">
-                <div className="marquee-track">
-                  {[
-                    consLogo1, consLogo2, consLogo3, consLogo4, consLogo5, consLogo6,
-                    consLogo7, consLogo8, consLogo9, consLogo10, consLogo11, consLogo12, consLogo13
-                  ].map((logo, index) => (
-                    <img key={`cons-logo-${index}`} src={logo} alt={`Consultant Logo ${index + 1}`} className="client-logo" loading="lazy" />
-                  ))}
-                  {[
-                    consLogo1, consLogo2, consLogo3, consLogo4, consLogo5, consLogo6,
-                    consLogo7, consLogo8, consLogo9, consLogo10, consLogo11, consLogo12, consLogo13
-                  ].map((logo, index) => (
-                    <img key={`cons-logo-dup-${index}`} src={logo} alt={`Consultant Logo ${index + 1}`} className="client-logo" loading="lazy" />
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <p className="client-category-desc">
-              Partnering to provide Design-Led Engineering and BIM Services from Concept to IFC.
-            </p>
-            <ul className="client-category-list">
-              <li>
-                <strong>Design from Scratch:</strong> We act as your extended engineering arm, developing concepts into full detailed designs.
-              </li>
-              <li>
-                <strong>Engineering-Led BIM (LOD 100–300):</strong> We ensure the BIM model is a true reflection of engineering data with seamless inter-disciplinary coordination.
-              </li>
-              <li>
-                <strong>Local Authority Compliance:</strong> Designs are engineered to meet specific codes including QCS, Kahramaa, DEWA, PUB, SCDF, and SPAN.
-              </li>
-            </ul>
+          {/* Tab Navigation */}
+          <div className="partnerships-tabs">
+            <button
+              className={`partner-tab-btn ${activePartnerTab === 'consultants' ? 'active' : ''}`}
+              onClick={() => setActivePartnerTab('consultants')}
+            >
+              Design Consultants
+            </button>
+            <button
+              className={`partner-tab-btn ${activePartnerTab === 'contractors' ? 'active' : ''}`}
+              onClick={() => setActivePartnerTab('contractors')}
+            >
+              MEP & General Contractors
+            </button>
           </div>
 
-          {/* Contractors Block */}
-          <div className="client-category-block">
-            <h3 className="client-category-title">International MEP & General Contractors</h3>
+          {/* Content Area */}
+          <div className="partnerships-content-wrapper">
+            <AnimatePresence mode="wait">
+              {activePartnerTab === 'consultants' && (
+                <motion.div
+                  key="consultants"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.4 }}
+                  className="client-category-block"
+                >
+                  <div className="marquee-wrapper">
+                    {/* Marquee 1: Global Consultants (Move Left) */}
+                    <div className="client-marquee-row consultant-row">
+                      <div className="marquee-container">
+                        <div className="marquee-track">
+                          {[
+                            consLogo1, consLogo2, consLogo3, consLogo4, consLogo5, consLogo6,
+                            consLogo7, consLogo8, consLogo9, consLogo10, consLogo11, consLogo12, consLogo13
+                          ].map((logo, index) => (
+                            <img key={`cons-logo-${index}`} src={logo} alt={`Consultant Logo ${index + 1}`} className="client-logo" loading="lazy" />
+                          ))}
+                          {[
+                            consLogo1, consLogo2, consLogo3, consLogo4, consLogo5, consLogo6,
+                            consLogo7, consLogo8, consLogo9, consLogo10, consLogo11, consLogo12, consLogo13
+                          ].map((logo, index) => (
+                            <img key={`cons-logo-dup-${index}`} src={logo} alt={`Consultant Logo ${index + 1}`} className="client-logo" loading="lazy" />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
+                  <div className="partner-value-props">
+                    <h3 className="partner-props-title">International Design Consultants</h3>
+                    <p className="partner-props-desc">Partnering to provide Design-Led Engineering and BIM Services from Concept to IFC.</p>
+                    <ul className="client-category-list">
+                      <li className="bento-glass-card">
+                        <strong>Design from Scratch</strong>
+                        <p>We act as your extended engineering arm, developing concepts into full detailed designs.</p>
+                      </li>
+                      <li className="bento-glass-card">
+                        <strong>Engineering-Led BIM (LOD 100–300)</strong>
+                        <p>We ensure the BIM model is a true reflection of engineering data with seamless inter-disciplinary coordination.</p>
+                      </li>
+                      <li className="bento-glass-card">
+                        <strong>Local Authority Compliance</strong>
+                        <p>Designs are engineered to meet specific codes including QCS, Kahramaa, DEWA, PUB, SCDF, and SPAN.</p>
+                      </li>
+                    </ul>
+                  </div>
+                </motion.div>
+              )}
 
-            {/* Marquee 2: Global Contractors */}
-            <div className="client-marquee-row client-row">
-              <div className="marquee-container">
-                <div className="marquee-track reverse-track">
-                  <img src={clientLogo1} alt="Client 1" className="client-logo" />
-                  <img src={clientLogo2} alt="Client 2" className="client-logo" />
-                  <img src={clientLogo3} alt="Client 3" className="client-logo" />
-                  <img src={clientLogo4} alt="Client 4" className="client-logo" />
-                  <img src={clientLogo5} alt="Client 5" className="client-logo" />
-                  <img src={clientLogo6} alt="Client 6" className="client-logo" />
-                  <img src={clientLogo7} alt="Client 7" className="client-logo" />
-                  <img src={clientLogo8} alt="Client 8" className="client-logo" />
-                  <img src={clientLogo9} alt="Client 9" className="client-logo" />
-                  <img src={clientLogo10} alt="Client 10" className="client-logo" />
-                  <img src={clientLogo11} alt="Client 11" className="client-logo" />
-                  <img src={clientLogo12} alt="Client 12" className="client-logo" />
-                  <img src={clientLogo13} alt="Client 13" className="client-logo" />
+              {activePartnerTab === 'contractors' && (
+                <motion.div
+                  key="contractors"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.4 }}
+                  className="client-category-block"
+                >
+                  <div className="marquee-wrapper">
+                    {/* Marquee 2: Global Contractors (Move Right) */}
+                    <div className="client-marquee-row client-row">
+                      <div className="marquee-container">
+                        <div className="marquee-track reverse-track">
+                          {[
+                            clientLogo1, clientLogo2, clientLogo3, clientLogo4, clientLogo5, clientLogo6,
+                            clientLogo7, clientLogo8, clientLogo9, clientLogo10, clientLogo11, clientLogo12, clientLogo13
+                          ].map((logo, index) => (
+                            <img key={`client-logo-${index}`} src={logo} alt={`Client Logo ${index + 1}`} className="client-logo" loading="lazy" />
+                          ))}
+                          {[
+                            clientLogo1, clientLogo2, clientLogo3, clientLogo4, clientLogo5, clientLogo6,
+                            clientLogo7, clientLogo8, clientLogo9, clientLogo10, clientLogo11, clientLogo12, clientLogo13
+                          ].map((logo, index) => (
+                            <img key={`client-logo-dup-${index}`} src={logo} alt={`Client Logo ${index + 1}`} className="client-logo" loading="lazy" />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-                  <img src={clientLogo1} alt="Client 1" className="client-logo" />
-                  <img src={clientLogo2} alt="Client 2" className="client-logo" />
-                  <img src={clientLogo3} alt="Client 3" className="client-logo" />
-                  <img src={clientLogo4} alt="Client 4" className="client-logo" />
-                  <img src={clientLogo5} alt="Client 5" className="client-logo" />
-                  <img src={clientLogo6} alt="Client 6" className="client-logo" />
-                  <img src={clientLogo7} alt="Client 7" className="client-logo" />
-                  <img src={clientLogo8} alt="Client 8" className="client-logo" />
-                  <img src={clientLogo9} alt="Client 9" className="client-logo" />
-                  <img src={clientLogo10} alt="Client 10" className="client-logo" />
-                  <img src={clientLogo11} alt="Client 11" className="client-logo" />
-                  <img src={clientLogo12} alt="Client 12" className="client-logo" />
-                  <img src={clientLogo13} alt="Client 13" className="client-logo" />
-                </div>
-              </div>
-            </div>
-
-            <p className="client-category-desc">
-              Providing technical brainpower and high-detail modeling for error-free site execution.
-            </p>
-
-            <ul className="client-category-list">
-              <li>
-                <strong>Engineering Validation:</strong> We review IFC drawings to identify design gaps and raise proactive RFIs to prevent site delays.
-              </li>
-              <li>
-                <strong>LOD 400 & 500 Shop Drawings:</strong> We deliver constructive BIM models and 2D shop drawings extracted directly from BIM for installation.
-              </li>
-              <li>
-                <strong>Specialized Steel Detailing:</strong> Fabrication-ready NC Files, Erection Drawings, and Advanced Bills of Materials (BOMs).
-              </li>
-            </ul>
+                  <div className="partner-value-props">
+                    <h3 className="partner-props-title">International MEP & General Contractors</h3>
+                    <p className="partner-props-desc">Providing technical brainpower and high-detail modeling for error-free site execution.</p>
+                    <ul className="client-category-list">
+                      <li className="bento-glass-card">
+                        <strong>Engineering Validation</strong>
+                        <p>We review IFC drawings to identify design gaps and raise proactive RFIs to prevent site delays.</p>
+                      </li>
+                      <li className="bento-glass-card">
+                        <strong>LOD 400 & 500 Shop Drawings</strong>
+                        <p>We deliver constructive BIM models and 2D shop drawings extracted directly from BIM for installation.</p>
+                      </li>
+                      <li className="bento-glass-card">
+                        <strong>Specialized Steel Detailing</strong>
+                        <p>Fabrication-ready NC Files, Erection Drawings, and Advanced Bills of Materials (BOMs).</p>
+                      </li>
+                    </ul>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-
         </div>
       </section>
 

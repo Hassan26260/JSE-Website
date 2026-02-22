@@ -1,0 +1,477 @@
+/* =========================================================================
+   VirtualTeamScoped.css - Custom Styling for the Virtual Team Page
+   ========================================================================= */
+:root {
+    --theme-blue: #3b82f6;
+    --theme-green: #22c55e;
+    --theme-purple: #a855f7;
+    --theme-orange: #f97316;
+    --theme-pink: #ec4899;
+    --theme-cyan: #06b6d4;
+}
+
+/* Whole Page Background */
+.virtual-team-page {
+    background-color: #0B1221;
+    min-height: 100vh;
+}
+
+/* Global Heading Font and Color for Virtual Team */
+.virtual-team-page h2,
+.virtual-team-page h3,
+.virtual-team-page h4,
+.virtual-team-page h5,
+.virtual-team-page h6 {
+    font-family: 'delight', sans-serif;
+    color: #144AE0;
+}
+
+.virtual-team-page h1 {
+    font-family: 'delight', sans-serif;
+}
+
+/* 1. Authority Intro (Single Column Centered) */
+.virtual-authority-section {
+    padding: 8rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: radial-gradient(circle at top right, rgba(20, 74, 224, 0.15), transparent 40%),
+        radial-gradient(circle at bottom left, rgba(79, 70, 229, 0.1), transparent 40%);
+    position: relative;
+    overflow: hidden;
+}
+
+.virtual-authority-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    /* Dotted Pattern */
+    background-image: radial-gradient(rgba(96, 165, 250, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.virtual-authority-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.virtual-authority-heading {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+}
+
+.virtual-authority-desc {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #f8fafc;
+    margin: 0;
+}
+
+.virtual-authority-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--theme-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+
+/* 2. The JSE Virtual Advantage (2x2 Flow) */
+.virtual-advantage-section {
+    padding: 8rem 2rem;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.virtual-advantage-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.virtual-advantage-intro {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 4rem auto;
+}
+
+.virtual-advantage-intro h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+}
+
+.virtual-advantage-intro p {
+    font-size: 1.15rem;
+    color: #f1f5f9;
+    line-height: 1.8;
+}
+
+.virtual-advantage-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.virtual-advantage-card {
+    background: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.virtual-advantage-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(59, 130, 246, 0.6);
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.15);
+}
+
+.virtual-advantage-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--theme-blue);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.virtual-advantage-card:hover .virtual-advantage-icon {
+    background: var(--theme-blue);
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.virtual-advantage-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+}
+
+.virtual-advantage-desc {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* 3. Our Virtual Team Structure (Modern Hover Cards) */
+.virtual-structure-section {
+    padding: 8rem 2rem;
+}
+
+.virtual-structure-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.virtual-structure-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.virtual-structure-header h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+}
+
+.virtual-structure-header p {
+    font-size: 1.15rem;
+    color: #f1f5f9;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.virtual-structure-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.virtual-structure-card {
+    background: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 3.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Base Pattern Overlay */
+.virtual-intern-pattern {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Individual Theme Overrides */
+.virtual-structure-card.card-theme-blue .virtual-intern-pattern {
+    background-image: radial-gradient(var(--theme-blue) 2px, transparent 2px);
+    background-size: 20px 20px;
+}
+
+.virtual-structure-card.card-theme-blue:hover {
+    border-color: var(--theme-blue);
+    box-shadow: 0 15px 45px rgba(59, 130, 246, 0.25);
+    transform: translateY(-12px);
+}
+
+.virtual-structure-card.card-theme-blue .virtual-role-badge {
+    color: var(--theme-blue);
+    background: rgba(59, 130, 246, 0.1);
+    border-color: var(--theme-blue);
+}
+
+.virtual-structure-card.card-theme-blue:hover .virtual-role-badge {
+    background: var(--theme-blue);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+}
+
+.virtual-structure-card.card-theme-purple .virtual-intern-pattern {
+    background: radial-gradient(circle, transparent 20%, var(--theme-purple) 20%, var(--theme-purple) 22%, transparent 22%, transparent 40%, var(--theme-purple) 40%, var(--theme-purple) 42%, transparent 42%);
+    background-size: 60px 60px;
+}
+
+.virtual-structure-card.card-theme-purple:hover {
+    border-color: var(--theme-purple);
+    box-shadow: 0 15px 45px rgba(168, 85, 247, 0.25);
+    transform: translateY(-12px);
+}
+
+.virtual-structure-card.card-theme-purple .virtual-role-badge {
+    color: var(--theme-purple);
+    background: rgba(168, 85, 247, 0.1);
+    border-color: var(--theme-purple);
+}
+
+.virtual-structure-card.card-theme-purple:hover .virtual-role-badge {
+    background: var(--theme-purple);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
+}
+
+.virtual-structure-card.card-theme-cyan .virtual-intern-pattern {
+    background-image: radial-gradient(circle, var(--theme-cyan) 2px, transparent 2.5px);
+    background-size: 15px 15px;
+}
+
+.virtual-structure-card.card-theme-cyan:hover {
+    border-color: var(--theme-cyan);
+    box-shadow: 0 15px 45px rgba(6, 182, 212, 0.25);
+    transform: translateY(-12px);
+}
+
+.virtual-structure-card.card-theme-cyan .virtual-role-badge {
+    color: var(--theme-cyan);
+    background: rgba(6, 182, 212, 0.1);
+    border-color: var(--theme-cyan);
+}
+
+.virtual-structure-card.card-theme-cyan:hover .virtual-role-badge {
+    background: var(--theme-cyan);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
+}
+
+.virtual-role-badge {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    border: 2px solid;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+    transition: all 0.4s ease;
+}
+
+.virtual-structure-title {
+    position: relative;
+    z-index: 1;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.virtual-structure-desc {
+    position: relative;
+    z-index: 1;
+    color: #94a3b8;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.virtual-structure-card:hover .virtual-structure-desc {
+    color: #cbd5e1;
+}
+
+
+/* 4. Who We Support (2-Column Split, 100vh) */
+.virtual-support-section {
+    min-height: 100vh;
+    display: flex;
+}
+
+.virtual-support-block {
+    flex: 1;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: transparent;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.virtual-support-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.support-block-left::before {
+    background: radial-gradient(circle at center, rgba(34, 197, 94, 0.8), var(--theme-green));
+}
+
+.support-block-right::before {
+    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.8), var(--theme-purple));
+}
+
+.virtual-support-block:last-child {
+    border-right: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.virtual-support-block:hover::before {
+    opacity: 1;
+}
+
+.virtual-support-label {
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: var(--theme-blue);
+    transition: color 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.virtual-support-title {
+    position: relative;
+    z-index: 1;
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    /* Override Delight Blue */
+}
+
+.virtual-support-desc {
+    color: #cbd5e1;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 0;
+    transition: color 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* Hover Overrides */
+.virtual-support-block:hover .virtual-support-label,
+.virtual-support-block:hover .virtual-support-desc {
+    color: #ffffff;
+}
+
+.virtual-team-page .virtual-support-block:hover h2 {
+    color: #ffffff;
+}
+
+/* -------------------------------------------------------------------------
+   Mobile Responsive Rules
+   ------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+    .virtual-authority-heading {
+        font-size: 2.5rem;
+    }
+
+    .virtual-advantage-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .virtual-structure-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .virtual-support-section {
+        flex-direction: column;
+    }
+
+    .virtual-support-block {
+        min-height: 50vh;
+        border: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    }
+}

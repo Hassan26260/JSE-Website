@@ -10,10 +10,9 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    position: relative;
 }
 
-/* Strategic Partnerships Intro */
 .client-partnerships-intro {
     text-align: center;
     width: 100%;
@@ -22,132 +21,111 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Enforce centering of flex children */
     justify-content: center;
 }
 
-.client-partnerships-intro .section-title {
+.client-partnerships-intro .client-partnerships-title {
     font-family: 'delight', sans-serif;
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: #144AE0;
     margin-bottom: 1.5rem;
     text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    max-width: none !important;
 }
 
 .client-partnerships-intro .section-desc {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     color: #475569;
     line-height: 1.8;
-    max-width: 1200px;
-    /* Optional: keep text readable but wider */
+    max-width: 900px;
     margin: 0 auto;
 }
 
-/* Category Blocks */
-.client-category-block {
+/* Tab Navigation */
+.partnerships-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
     margin-bottom: 4rem;
 }
 
-.client-category-block:last-child {
-    margin-bottom: 0;
-}
-
-.client-category-title {
-    font-family: 'delight', sans-serif;
-    font-size: 2rem;
-    color: #144AE0;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.client-category-desc {
-    text-align: center;
+.partner-tab-btn {
+    padding: 1.2rem 3rem;
     font-size: 1.15rem;
-    color: #334155;
-    max-width: 800px;
-    margin: 2rem auto;
-    line-height: 1.6;
-}
-
-/* List Styles */
-.client-category-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto;
-    max-width: 1400px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-    text-align: left;
-}
-
-.client-category-list li {
-    font-size: 1.05rem;
-    color: #f8fafc;
-    /* Light text for readability */
-    line-height: 1.7;
-    background: #0f172a;
-    /* Dark background */
-    padding: 2.5rem 2rem;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Subtle light border */
-    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
-    /* Premium shadow */
+    font-weight: 600;
+    color: #64748b;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 50px;
+    cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.partner-tab-btn:hover {
+    color: #144AE0;
+    background: rgba(20, 74, 224, 0.05);
+    border-color: rgba(20, 74, 224, 0.2);
+    transform: translateY(-2px);
+}
+
+.partner-tab-btn.active {
+    color: #ffffff;
+    background: #144AE0;
+    border-color: #144AE0;
+    box-shadow: 0 10px 20px rgba(20, 74, 224, 0.25);
+    transform: translateY(-2px);
+}
+
+/* Category Content Wrapper */
+.partnerships-content-wrapper {
     position: relative;
-    overflow: hidden;
+    min-height: 550px;
+    /* Prevent jumping during transitions */
+}
+
+.client-category-block {
     display: flex;
     flex-direction: column;
-}
-
-/* Top Accent Line on Hover */
-.client-category-list li::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #144AE0, #3b82f6);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.client-category-list li:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 50px -12px rgba(20, 74, 224, 0.25);
-    /* Colored shadow */
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.client-category-list li:hover::before {
-    opacity: 1;
-}
-
-.client-category-list strong {
-    display: block;
-    color: #ffffff;
-    /* Bright white title */
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-    font-size: 1.35rem;
-    /* Larger title */
-    letter-spacing: -0.02em;
+    gap: 3rem;
 }
 
 /* Marquee Row Layout */
+.marquee-wrapper {
+    background: transparent;
+    padding: 3rem 0;
+    border-top: 1px solid rgba(20, 74, 224, 0.2);
+    border-bottom: 1px solid rgba(20, 74, 224, 0.2);
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Subtle gradient lights on the borders for a high-tech feel */
+.marquee-wrapper::before,
+.marquee-wrapper::after {
+    content: '';
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(20, 74, 224, 0.8), transparent);
+}
+
+.marquee-wrapper::before {
+    top: -1px;
+}
+
+.marquee-wrapper::after {
+    bottom: -1px;
+}
+
 .client-marquee-row {
     display: flex;
     align-items: center;
     background: transparent;
     width: 100%;
     overflow: hidden;
-    padding: 2rem 0;
-    /* Add padding inside row for hover space */
 }
 
 /* Marquee Container & Animation */
@@ -155,17 +133,16 @@
     width: 100%;
     overflow: hidden;
     position: relative;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
 .marquee-track {
     display: flex;
     align-items: center;
-    gap: 5rem;
+    gap: 6rem;
     width: max-content;
-    animation: scrollMarquee 40s linear infinite;
-    /* Slower smooth scroll */
+    animation: scrollMarquee 45s linear infinite;
 }
 
 /* Reverse Animation */
@@ -180,18 +157,16 @@
 }
 
 .client-logo {
-    height: 100px;
-    /* Increased Size */
+    height: 90px;
     width: auto;
     object-fit: contain;
-    /* Removed filter: grayscale(100%); to show original colors */
-    opacity: 1;
-    /* Updated to 1 for full color visibility */
+    opacity: 0.9;
     transition: all 0.4s ease;
 }
 
 .client-logo:hover {
     transform: scale(1.1);
+    opacity: 1;
 }
 
 @keyframes scrollMarquee {
@@ -204,20 +179,124 @@
     }
 }
 
+/* Value Propositions */
+.partner-value-props {
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.partner-props-title {
+    font-family: 'delight', sans-serif;
+    font-size: 2.2rem;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.partner-props-desc {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Bento Style List */
+.client-category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: left;
+}
+
+.bento-glass-card {
+    background: #ffffff;
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Subtle glow effect on hover */
+.bento-glass-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at top right, rgba(20, 74, 224, 0.08), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.bento-glass-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(20, 74, 224, 0.1), 0 0 0 1px rgba(20, 74, 224, 0.2);
+}
+
+.bento-glass-card:hover::before {
+    opacity: 1;
+}
+
+.bento-glass-card strong {
+    display: block;
+    color: #1e293b;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    position: relative;
+    z-index: 1;
+}
+
+.bento-glass-card p {
+    color: #475569;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
 /* Responsive */
+@media (max-width: 1024px) {
+    .client-category-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .client-partnerships-intro .section-title {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
     }
 
-    .client-category-title {
+    .partnerships-tabs {
+        flex-direction: column;
+        padding: 0 2rem;
+    }
+
+    .partner-tab-btn {
+        width: 100%;
+    }
+
+    .partner-props-title {
         font-size: 1.8rem;
     }
 
     .client-category-list {
         grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 0 1rem;
+        gap: 1.5rem;
     }
 
     .marquee-track {
@@ -225,45 +304,10 @@
     }
 
     .client-logo {
-        height: 50px;
-    }
-}
-
-/* Typing Effect for Hero Moto */
-.typing-effect {
-    overflow: hidden;
-    /* Ensures the content is not revealed until the animation */
-    border-right: .15em solid #144AE0;
-    /* The typwriter cursor updated to blue */
-    white-space: nowrap;
-    /* Keeps the content on a single line */
-    margin: 0 auto;
-    /* Gives that scrolling effect as the typing happens */
-    animation:
-        typing 3.5s steps(40, end),
-        blink-caret .75s step-end infinite;
-}
-
-/* The typing effect */
-@keyframes typing {
-    from {
-        width: 0
+        height: 60px;
     }
 
-    to {
-        width: 100%
-    }
-}
-
-/* The typewriter cursor effect */
-@keyframes blink-caret {
-
-    from,
-    to {
-        border-color: transparent
-    }
-
-    50% {
-        border-color: #144AE0;
+    .marquee-wrapper {
+        padding: 2rem 0;
     }
 }

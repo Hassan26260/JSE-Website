@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import "../../styles/Page.css";
-import "./VirtualTeam.css";
+import "./VirtualTeamScoped.css";
 import StickyContact from '../../components/StickyContact';
 import heroImage from '../../assets/images-home/home-new-img/virtual-team.jpg';
 
@@ -26,26 +26,45 @@ const ADDITIONAL_SERVICES = [
   { title: "Secondment Team", desc: "Get on-demand access to our pool of experienced professionals.", link: "/services/secondment-team", img: secondmentImage }
 ];
 
-const BIM_CAPABILITIES = [
-  { title: "High-Volume MEP & BIM Delivery", desc: "MEP & BIM services at industrial scale" },
-  { title: "Architecture & Structural Engineering", desc: "Steel Structure (Tekla), Expertise across LOD 100 to LOD 500" },
-  { title: "End-to-End Engineering Support", desc: "Concept Design to IFC, MEP Design & Multi-discipline Coordination, BIM Modeling & Clash Detection, Electrical Calculations, Equipment Schedules & Technical Documentation" }
+const VIRTUAL_ADVANTAGES = [
+  {
+    title: "Seamless Integration",
+    desc: "We adapt to your company’s specific standards, software versions, and internal BIM workflows to ensure absolute consistency across all deliverables.",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+  },
+  {
+    title: "On-Demand Scalability",
+    desc: "Quickly expand your technical engineering capacity for mega-scale construction projects without long-term overhead.",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+  },
+  {
+    title: "Engineering-Led Expertise",
+    desc: "Every virtual team member is backed by our internal design strength, providing value-added validation for MEP, Architecture, and Steel Structures.",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+  },
+  {
+    title: "Real-Time Collaboration",
+    desc: "We utilize cloud-based BIM platforms and advanced communication tools to ensure 24/7 project transparency, coordination, and delivery efficiency.",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+  }
 ];
 
-const DELIVERY_MODEL = [
-  { title: "Radical Transparency & Accountability", desc: "" },
-  { title: "Daily Work Allocation Reports", desc: "" },
-  { title: "Metric-Driven Progress Tracking", desc: "" },
-  { title: "Direct Integration", desc: "" },
-  { title: "Performance Guarantee", desc: "" }
-];
-
-const WHY_TRUST_JSE = [
-  "Deep understanding of constructability and coordination",
-  "Proven experience working within consultant-led ecosystems",
-  "Proactive identification and resolution of design risks",
-  "Highly experienced Team Leads, Managers, and BIM Specialists",
-  "A truly “Readymade Virtual Engineering Partner”"
+const VIRTUAL_TEAM_STRUCTURE = [
+  {
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>,
+    title: "Dedicated Project Manager",
+    desc: "A single point of contact to manage your timelines, resource allocation, and communication."
+  },
+  {
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>,
+    title: "Senior Lead Engineers",
+    desc: "Discipline-specific leads (MEP, Structure, or Tekla) who oversee the technical accuracy of every calculation and model."
+  },
+  {
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>,
+    title: "Specialized QA/QC Team",
+    desc: "An independent internal team that performs rigorous audits to ensure zero-clash deliverables before they reach your desk."
+  }
 ];
 
 const VirtualTeam = () => {
@@ -124,12 +143,12 @@ const VirtualTeam = () => {
       {/* Hero Section */}
       <div className="service-hero-split">
         <div className="hero-text-content">
-          <span className="hero-small-label">Your Readymade Virtual Engineering Partner</span>
+          <span className="hero-small-label">Virtual Partners</span>
           <h1 className="hero-title-split">
-            Scalable. Transparent. High-Performance.
+            Virtual Team For Hire
           </h1>
           <p className="hero-desc-split">
-            JSE Engineering Private Limited provides world-class Virtual Engineering, MEP, and BIM services, acting as a seamless extension of your in-house design team. From Concept Design to IFC, we help global consultants scale faster without compromising quality, timelines, or control.
+            A dedicated virtual engineering team that integrates seamlessly into your workflow, delivering scalable MEP, Structural, and BIM expertise with corporate-level accountability.
           </p>
           <div className="hero-cta-group" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <button onClick={scrollToForm} className="hero-cta-btn">
@@ -147,87 +166,93 @@ const VirtualTeam = () => {
         </div>
       </div>
 
-      {/* Intro Section */}
-      <section className="virtual-intro-section">
-        <div className="virtual-intro-container">
-          <div className="virtual-intro-left">
-            <h2>Virtual Team Hiring Services<br />What Is the JSE Virtual Team?</h2>
+      {/* 1. Authority Introduction Section */}
+      <section className="virtual-authority-section">
+        <div className="virtual-authority-container">
+          <div className="virtual-authority-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
           </div>
-          <div className="virtual-intro-right">
-            <p>A dedicated, consultant-aligned engineering team that works exclusively on your projects and integrates fully with your workflows, tools, and design standards, while JSE manages all infrastructure, staffing, and administration.</p>
-            <h3 style={{ color: '#144AE0', marginTop: '1.5rem', fontSize: '1.5rem', fontStyle: 'italic' }}>
-              "You lead the design. We deliver at scale."
-            </h3>
-          </div>
-        </div>
-      </section>
-
-      {/* Capabilities Section */}
-      <section className="virtual-why-section">
-        <div className="virtual-why-container">
-          <div className="virtual-why-header">
-            <span className="dash-tagline">OUR EXPERTISE</span>
-            <h2 className="virtual-why-main-title">Engineering & BIM Capabilities</h2>
-          </div>
-
-          <div className="virtual-why-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
-            {BIM_CAPABILITIES.map((cap, index) => (
-              <div key={index} className="virtual-cap-card">
-                <h3 className="virtual-cap-title">{cap.title}</h3>
-                <p className="virtual-cap-desc">{cap.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Certified Quality Section */}
-      <section className="virtual-process-section" style={{ backgroundColor: '#0B1221' }}>
-        <div className="virtual-process-container">
-          <h2 className="virtual-process-heading">Certified Quality & Infrastructure</h2>
-          <p style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto', color: '#cbd5e1', fontSize: '1.1rem', lineHeight: '1.8' }}>
-            JSE ensures strict adherence to global BIM standards and consultant design protocols, supported by high-performance infrastructure and proven delivery systems that enable accuracy, speed, and reliability across all project stages.
+          <h2 className="virtual-authority-heading">
+            Dedicated Service:<br />
+            <span>Virtual Engineering Team Support</span>
+          </h2>
+          <p className="virtual-authority-desc">
+            In an era of global project delivery, JSE Engineering provides a seamless Virtual Office solution. We act as a dedicated, high-performance extension of your in-house engineering and BIM departments, allowing you to scale your operations without the overhead of local recruitment.
           </p>
         </div>
       </section>
 
-      {/* Delivery Model & Trust Section */}
-      <section className="tech-section">
-        <div className="tech-container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem' }}>
-          {/* Delivery Model */}
-          <div>
-            <h2 className="virtual-why-main-title" style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>The JSE Virtual Delivery Model</h2>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              {DELIVERY_MODEL.map((item, index) => (
-                <li key={index} style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '8px' }}>
-                  <span style={{ color: '#144AE0', fontWeight: 'bold', fontSize: '1.2rem' }}>✓</span>
-                  <span style={{ color: '#fff', fontSize: '1.1rem' }}>{item.title}</span>
-                </li>
-              ))}
-            </ul>
+      {/* 2. The JSE Virtual Advantage */}
+      <section className="virtual-advantage-section">
+        <div className="virtual-advantage-container">
+          <div className="virtual-advantage-intro">
+            <h2>The JSE Virtual Advantage</h2>
+            <p>Unlike standard outsourcing, our Virtual Team service is built on Engineering Leadership. You aren't just hiring drafters; you are integrating a team of experienced MEP Engineers, Structural Engineers, and Tekla Steel Detailing experts directly into your workflow.</p>
           </div>
 
-          {/* Why Trust */}
-          <div>
-            <h2 className="virtual-why-main-title" style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Why Global Consultants Trust JSE</h2>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              {WHY_TRUST_JSE.map((item, index) => (
-                <li key={index} style={{ marginBottom: '1rem', display: 'flex', alignItems: 'start', gap: '1rem', color: '#cbd5e1' }}>
-                  <span style={{ color: '#144AE0', fontWeight: 'bold' }}>•</span>
-                  <span style={{ fontSize: '1.05rem' }}>{item}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="virtual-advantage-grid">
+            {VIRTUAL_ADVANTAGES.map((adv, index) => {
+              const themes = ['card-theme-blue', 'card-theme-green', 'card-theme-purple', 'card-theme-cyan'];
+              return (
+                <div key={index} className={`virtual-advantage-card ${themes[index]}`}>
+                  <div className="virtual-intern-pattern"></div>
+                  <div className="virtual-advantage-icon">
+                    {adv.icon}
+                  </div>
+                  <h3 className="virtual-advantage-title">{adv.title}</h3>
+                  <p className="virtual-advantage-desc">{adv.desc}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
+      {/* 3. Our Virtual Team Structure */}
+      <section className="virtual-structure-section">
+        <div className="virtual-structure-container">
+          <div className="virtual-structure-header" style={{ textAlign: 'center' }}>
+            <h2>Our Virtual Team Structure</h2>
+            <p style={{ maxWidth: '800px', margin: '0 auto' }}>
+              Every virtual engagement is structured for corporate-level accountability and technical precision:
+            </p>
+          </div>
 
-      <section className="virtual-intro-section" style={{ padding: '4rem 0', background: 'transparent' }}>
-        <div className="virtual-intro-container" style={{ justifyContent: 'center', textAlign: 'center' }}>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', width: '100%' }}>Ready to Scale with Confidence?</h2>
-          <p style={{ fontSize: '1.2rem', color: '#cbd5e1', maxWidth: '800px', margin: '0 auto' }}>
-            JSE Engineering is ready to act as your high-performance design extension, offering rapid mobilization, transparent delivery, and uncompromised engineering excellence.
+          <div className="virtual-structure-grid">
+            {VIRTUAL_TEAM_STRUCTURE.map((item, index) => {
+              const themes = ['card-theme-blue', 'card-theme-purple', 'card-theme-cyan'];
+              return (
+                <div key={index} className={`virtual-structure-card ${themes[index]}`}>
+                  <div className="virtual-intern-pattern"></div>
+                  <div className="virtual-role-badge">
+                    {item.icon}
+                  </div>
+                  <h3 className="virtual-structure-title">{item.title}</h3>
+                  <p className="virtual-structure-desc">{item.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Who We Support */}
+      <section className="virtual-support-section">
+        {/* Consultants Left */}
+        <div className="virtual-support-block support-block-left">
+          <span className="virtual-support-label">Global Design Consultants</span>
+          <h2 className="virtual-support-title">Design-Led Support</h2>
+          <p className="virtual-support-desc">
+            Providing remote design-led BIM (LOD 100–300) and full MEP engineering support from concept to IFC.
+          </p>
+        </div>
+
+        {/* Contractors Right */}
+        <div className="virtual-support-block support-block-right">
+          <span className="virtual-support-label" style={{ color: '#60a5fa' }}>International Contractors</span>
+          <h2 className="virtual-support-title">Construction Validation</h2>
+          <p className="virtual-support-desc">
+            Delivering engineering validation, RFI management, and LOD 400 construction modeling as an off-site technical office.
           </p>
         </div>
       </section>
