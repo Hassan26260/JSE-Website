@@ -133,7 +133,7 @@ const Home = () => {
       ]
     },
     {
-      title: "BIM Services",
+      title: "Architectural BIM",
       link: "/services/design/architectural-bim",
       img: bimImg,
       heading: "Architecture & Structural BIM Detailing",
@@ -156,7 +156,7 @@ const Home = () => {
       ]
     },
     {
-      title: "Steel Detailing",
+      title: "Steel Structure Detailing",
       link: "/services/design/steel-structure-detailing",
       img: steelImg,
       heading: "Specialized Steel Detailing (Tekla Structures)",
@@ -168,7 +168,7 @@ const Home = () => {
       ]
     },
     {
-      title: "Infrastructure",
+      title: "Infrastructural services",
       link: "/services/infrastructural-services",
       img: infraImg,
       heading: "Infrastructure & External Networks (Civil 3D)",
@@ -179,7 +179,7 @@ const Home = () => {
       ]
     },
     {
-      title: "Virtual Teams",
+      title: "Virtual Team for Hire",
       link: "/services/virtual-team",
       img: virtualEngImage,
       heading: "Virtual Engineering Team Support",
@@ -192,7 +192,7 @@ const Home = () => {
       ]
     },
     {
-      title: "Secondment",
+      title: "Secondment Team",
       link: "/services/secondment-team",
       img: secondmentImage,
       heading: "Secondment Team Services",
@@ -873,17 +873,20 @@ const Home = () => {
                           <h3 className="solution-detail-title">{service.heading}</h3>
                           <p className="solution-detail-desc">{service.description}</p>
                           <ul className="solution-detail-list">
-                            {service.details.map((detail, idx) => (
-                              <li key={idx}>
-                                {detail.text ? (
-                                  <>
-                                    <strong>{detail.title}</strong> {detail.text}
-                                  </>
-                                ) : (
-                                  <strong style={{ color: '#cbd5e1', textDecoration: 'underline' }}>{detail.title}</strong>
-                                )}
-                              </li>
-                            ))}
+                            {service.details.map((detail, idx) => {
+                              if (!detail.text) {
+                                return (
+                                  <li key={idx} className="no-bullet">
+                                    {detail.title}
+                                  </li>
+                                );
+                              }
+                              return (
+                                <li key={idx}>
+                                  <strong>{detail.title}</strong> {detail.text}
+                                </li>
+                              );
+                            })}
                           </ul>
                           <Link to={service.link} className="solution-cta-btn">
                             Learn More

@@ -3802,6 +3802,21 @@
   top: -8px;
 }
 
+.solution-detail-list li.no-bullet {
+
+  margin-left: -1.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #60a5fa;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.solution-detail-list li.no-bullet::before {
+  content: none;
+  display: none;
+}
+
 .solution-detail-list li strong {
   color: #ffffff;
   font-weight: 700;
