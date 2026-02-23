@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import "../../styles/Page.css";
 import "./VirtualTeam.css";
-
-import heroImage from '../../assets/images-home/home-new-img/secondment.jpg.jpeg';
-import offerImage from '../../assets/images-home/secondment/what-we-offer.jpg';
+import "./SecondmentTeam.css";
+import heroImage from '../../assets/images-home/home-new-img/secondment.jpg.png';
+import offerImage from '../../assets/images-home/secondment/what-we-offer.png';
 
 // Standardized Images for Additional Services (Matching Home.jsx)
 import mepImg from '../../assets/images-home/home-new-img/MEP.png';
@@ -13,8 +13,8 @@ import archImg from '../../assets/images-home/home-new-img/BIM.webp';
 import structImg from '../../assets/images-home/home-new-img/structural-eng.webp';
 import steelImg from '../../assets/images-home/home-new-img/steel-detail.jfif';
 import infraImg from '../../assets/images-home/home-new-img/infrastructural.webp';
-import virtualEngImage from '../../assets/images-home/home-new-img/virtual-team.jpg';
-import secondmentImage from '../../assets/images-home/home-new-img/secondment.jpg.jpeg';
+import virtualEngImage from '../../assets/images-home/home-new-img/virtual-team.jpeg';
+import secondmentImage from '../../assets/images-home/home-new-img/secondment.jpg.png';
 
 // Additional Services Data
 const ADDITIONAL_SERVICES = [
@@ -193,96 +193,74 @@ const SecondmentTeam = () => {
         </div>
       </section>
 
-      {/* Why Choose JSE & What Should I Do */}
-      <section className="virtual-why-section">
-        <div className="virtual-why-container">
-          <div className="virtual-intro-left" style={{ marginBottom: '3rem' }}>
-            <h2 className="virtual-why-main-title">Why Choose JSE</h2>
-            <p className="virtual-why-desc" style={{ maxWidth: '800px' }}>
-              JSE Engineering understands the complexities of project-based work and the importance of having the right expertise at the right time. Our Secondment Team Services allow you to quickly augment your team with specialized talent without the lengthy recruitment process.
-            </p>
-            <p className="virtual-why-desc" style={{ maxWidth: '800px', marginTop: '1rem' }}>
-              By leveraging our deep pool of experienced professionals to your location, we can ensure that your projects are executed with precision and efficiency, backed by the most advanced BIM tools in the industry.
-            </p>
-            <p className="virtual-why-desc" style={{ maxWidth: '800px', marginTop: '1rem' }}>
-              In basis of our logistic architect service, the buider or real estate client handle the comfort of their contract talents including visas, travel, accommodation, and meals, allowing experts to focus entirely on delivering high-quality work.
-            </p>
+      {/* Why Choose JSE */}
+      <section className="virtual-why-section" style={{ paddingBottom: '4rem' }}>
+        <div className="virtual-why-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+          <h2 className="virtual-why-main-title" style={{ marginBottom: '2rem' }}>Why Choose JSE</h2>
+          <p className="virtual-why-desc" style={{ maxWidth: '900px', fontSize: '1.2rem', lineHeight: '1.8', color: '#475569' }}>
+            JSE Engineering understands the complexities of project-based work and the importance of having the right expertise at the right time. Our Secondment Team Services allow you to quickly augment your team with specialized talent without the lengthy recruitment process.
+          </p>
+          <p className="virtual-why-desc" style={{ maxWidth: '900px', fontSize: '1.2rem', lineHeight: '1.8', color: '#475569', marginTop: '1rem' }}>
+            By leveraging our deep pool of experienced professionals to your location, we can ensure that your projects are executed with precision and efficiency, backed by the most advanced BIM tools in the industry.
+          </p>
+          <p className="virtual-why-desc" style={{ maxWidth: '900px', fontSize: '1.2rem', lineHeight: '1.8', color: '#475569', marginTop: '1rem' }}>
+            In basis of our logistic architect service, the buider or real estate client handle the comfort of their contract talents including visas, travel, accommodation, and meals, allowing experts to focus entirely on delivering high-quality work.
+          </p>
+        </div>
+      </section>
+
+      {/* What Should I Do (Sticky Scroll Style from Home) */}
+      <section className="secondment-steps-section">
+        <div className="secondment-steps-container">
+          {/* Left Sticky Content */}
+          <div className="secondment-sticky-left">
+            <div className="secondment-header-content">
+              <span className="dash-tagline" style={{ display: 'flex', marginBottom: '1rem', fontSize: '0.9rem', fontWeight: 700, color: '#144AE0', letterSpacing: '0.15em', textTransform: 'uppercase' }}>ACTION PLAN</span>
+              <h2 className="secondment-section-title">What Should I Do If I Want JSE Secondment?</h2>
+              <p className="secondment-header-desc">
+                Follow these simple steps to seamlessly integrate our world-class engineering experts into your team.
+              </p>
+            </div>
           </div>
 
-          <div className="virtual-why-header">
-            <h2 className="virtual-why-main-title">What Should I Do If I Want JSE Secondment?</h2>
-          </div>
-
-          <div className="virtual-why-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
-            {ACTION_PLAN.map((item, index) => (
-              <div key={index} className="virtual-why-card">
-                <div className="virtual-why-card-icon" style={{ borderRadius: '50%', border: '1px solid #144AE0', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', color: '#144AE0' }}>{index + 1}</div>
-                <h3 className="virtual-why-card-title">{item}</h3>
+          {/* Right Scrollable Cards */}
+          <div className="secondment-cards-list">
+            {ACTION_PLAN.map((step, index) => (
+              <div key={index} className="secondment-step-card">
+                <div className="secondment-step-number">{index + 1}</div>
+                <div className="secondment-step-content">
+                  <h3 className="secondment-step-title">{step}</h3>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How We Execute */}
-      <section className="arch-choose-section">
-        <div className="arch-choose-container">
-          <div className="arch-choose-left">
-            <h2 className="arch-choose-heading">How We Execute</h2>
-            <p className="arch-choose-desc">
-              Our process begins with a thorough understanding of your project requirements. We help you identify the specific skills and experience needed, then present you with a curated selection of professionals proficient in essential BIM software like Autodesk Revit for architectural modelling, Navisworks for project review, and AutoCAD for detailed design work.
-            </p>
-          </div>
-          <div className="arch-choose-right">
-            <p className="arch-choose-desc">
-              After you select your team members via virtual interviews, we coordinate their deployment to your project site, ensuring they are fully integrated and productive from day one. With JSE’s Secondment Team Services, you gain the expertise you need, exactly when you need it, with the assurance of top-tier BIM support.
-            </p>
-          </div>
-        </div>
-      </section>
 
-      {/* Why Successful */}
-      <section className="virtual-process-section" style={{ background: '#0B1221' }}>
-        <div className="virtual-process-container">
-          <h2 className="virtual-process-heading">Why We Are A Successful Secondment Partner</h2>
-          <div className="virtual-why-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', marginTop: '3rem' }}>
+
+      {/* Why Successful (MEP Core Expertise Style) */}
+      <section className="secondment-success-section">
+        <div className="secondment-success-container">
+          <div className="secondment-success-header">
+            <h2 className="secondment-success-title">Why We Are A Successful Secondment Partner</h2>
+          </div>
+
+          <div className="secondment-success-grid">
             {SUCCESS_FACTORS.map((factor, index) => (
-              <div key={index} style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', borderLeft: '3px solid #144AE0' }}>
-                <h3 style={{ color: '#fff', fontSize: '1.2rem', marginBottom: '0.5rem' }}>{factor.title}</h3>
-                <p style={{ color: '#cbd5e1' }}>{factor.desc}</p>
+              <div key={index} className={`secondment-success-card secondment-pattern-${(index % 4) + 1}`}>
+                <div className="secondment-success-content">
+                  <h3 className="secondment-success-card-title">{factor.title}</h3>
+                  <p className="secondment-success-card-desc">{factor.desc}</p>
+                </div>
+                <div className="secondment-success-hover-bg"></div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Advanced Technologies */}
-      <section className="tech-section">
-        <div className="tech-container">
-          <h2 className="virtual-why-main-title">Advanced Technologies We Use</h2>
-          <p className="tech-desc-left" style={{ marginBottom: '2rem' }}>
-            Our secondment team are experts in the latest BIM technologies ensuring your design engineering project benefits from cutting-edge design and modeling capabilities.
-          </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
-            {TOOLS.map((tool, index) => (
-              <span key={index} style={{ padding: '0.8rem 1.5rem', background: 'rgba(255,255,255,0.05)', borderRadius: '30px', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' }}>
-                {tool}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      <section className="virtual-intro-section" style={{ padding: '4rem 0', background: 'transparent' }}>
-        <div className="virtual-intro-container" style={{ justifyContent: 'center', textAlign: 'center' }}>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', width: '100%' }}>Ready to leverage a specialized secondment team for your projects?</h2>
-          <p style={{ fontSize: '1.2rem', color: '#cbd5e1', maxWidth: '800px', margin: '0 auto' }}>
-            Want another hand for your project? Contact us today to learn about our secondment services.
-          </p>
-        </div>
-      </section>
-
-      
 
       {/* Additional Services Menu Section */}
       <section className="solutions-list-section">

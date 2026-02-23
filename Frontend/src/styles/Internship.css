@@ -191,8 +191,8 @@
     height: 100%;
     object-fit: cover;
     z-index: 0;
-    opacity: 0.3;
-    /* Reduced Opacity for Pattern Pop */
+    opacity: 0.6;
+    /* Increased Opacity so photo is prominent */
 }
 
 .internship-hero-overlay {
@@ -277,8 +277,8 @@
 }
 
 .tool-card {
-    background: rgba(17, 24, 39, 0.6);
-    /* Dark Glass */
+    background: rgba(17, 24, 39, 0.3);
+    /* Lighter Dark Glass so photo shines */
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
@@ -288,7 +288,7 @@
 
 /* --- Bento Section (Pattern Integration) --- */
 .bento-card {
-    background: rgba(17, 24, 39, 0.7);
+    background: rgba(17, 24, 39, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
@@ -306,8 +306,9 @@
 
 /* --- Form Section --- */
 .form-container {
-    background: rgba(11, 18, 32, 0.8);
+    background: rgba(11, 18, 32, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
 }
 
 .form-group label {
@@ -321,6 +322,19 @@
 
 .form-input-line::placeholder {
     color: rgba(255, 255, 255, 0.4);
+}
+
+.form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .form-row-2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
 }
 
 /* --- Footer Area --- */
@@ -1102,7 +1116,7 @@
 
 .career-dev-text {
     font-size: 1.1rem;
-    color: #334155;
+    color: white;
     line-height: 1.7;
     margin: 0;
 }

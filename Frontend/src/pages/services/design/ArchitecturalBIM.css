@@ -2027,13 +2027,22 @@
 
 .arch-modal-image-wrapper {
     width: 100%;
-    height: 300px;
+    max-height: 50vh;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f5f9;
 }
 
 .arch-modal-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    /* Prevents image cutting */
+    max-height: 50vh;
 }
 
 .arch-modal-text {

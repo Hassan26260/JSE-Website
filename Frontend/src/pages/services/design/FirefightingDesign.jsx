@@ -16,7 +16,7 @@ import structImg from '../../../assets/images-home/home-new-img/structural-eng.w
 import steelImg from '../../../assets/images-home/home-new-img/steel-detail.jfif';
 import infraImg from '../../../assets/images-home/home-new-img/infrastructural.webp';
 import virtualEngImage from '../../../assets/images-home/home-new-img/virtual-team.jpg';
-import secondmentImage from '../../../assets/images-home/home-new-img/secondment.jpg.jpeg';
+import secondmentImage from '../../../assets/images-home/home-new-img/secondment.jpg.png';
 
 // Reuse images for services
 import s1 from '../../../assets/images-home/skyscraper.webp';

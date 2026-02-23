@@ -19,8 +19,8 @@ import archImg from '../../../assets/images-home/home-new-img/BIM.webp';
 import structImg from '../../../assets/images-home/home-new-img/structural-eng.webp';
 import steelImg from '../../../assets/images-home/home-new-img/steel-detail.jfif';
 import infraImg from '../../../assets/images-home/home-new-img/infrastructural.webp';
-import virtualEngImage from '../../../assets/images-home/home-new-img/virtual-team.jpg';
-import secondmentImage from '../../../assets/images-home/home-new-img/secondment.jpg.jpeg';
+import virtualEngImage from '../../../assets/images-home/home-new-img/virtual-team.jpeg';
+import secondmentImage from '../../../assets/images-home/home-new-img/secondment.jpg.png';
 
 const ADDITIONAL_SERVICES = [
   { title: "MEP Engineering", desc: "Comprehensive MEP solutions including HVAC, Electrical, and Firefighting.", link: "/services/design/mep-design", img: mepImg },
@@ -176,7 +176,7 @@ const MEPDesign = () => {
         <div className="hero-text-content">
           <h1 className="hero-title-split">MEP Engineering Services</h1>
           <p className="hero-desc-split">
-            Engineering is the core of JSE. We do not simply model — we design, calculate, and validate.
+            Engineering defines JSE. We go beyond modeling we engineer, analyze, and verify every solution.
           </p>
           <button onClick={scrollToForm} className="hero-cta-btn">
             HIRE US
@@ -223,7 +223,7 @@ const MEPDesign = () => {
         {/* Consultants Left */}
         <div className="mep-support-block support-block-left">
           <span className="mep-support-label">Strategic Partnerships</span>
-          <h2 className="mep-support-title">For Consultants:<br />The Design Development Partner</h2>
+          <h2 className="mep-support-title">For Consultants<br />The Design Development Partner</h2>
           <p className="mep-support-desc">
             We act as your Design Brain, providing the technical depth and man-hour capacity needed to progress from concept to IFC. We take architectural intent and develop all required engineering calculations, system sizing, code-compliant BIM models, and 100% coordination across all building services disciplines.
           </p>
@@ -232,7 +232,7 @@ const MEPDesign = () => {
         {/* Contractors Right */}
         <div className="mep-support-block support-block-right">
           <span className="mep-support-label" style={{ color: '#60a5fa' }}>Equal Contribution</span>
-          <h2 className="mep-support-title">For Contractors:<br />The Construction Execution Partner</h2>
+          <h2 className="mep-support-title">For Contractors<br />The Construction Execution Partner</h2>
           <p className="mep-support-desc">
             We provide the engineering brainpower and high-detail BIM deliverables required for error-free site installation. We perform complete audits of IFC drawings, upgrade models to LOD 400 (shop drawings) / LOD 500 (as-built), and resolve constructability issues proactively to protect project budgets.
           </p>

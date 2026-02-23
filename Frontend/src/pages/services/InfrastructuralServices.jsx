@@ -12,8 +12,8 @@ import structImg from '../../assets/images-home/home-new-img/structural-eng.webp
 import steelImg from '../../assets/images-home/home-new-img/steel-detail.jfif';
 import heroImage from '../../assets/images-home/home-new-img/infrastructural.webp';
 import infraImg from '../../assets/images-home/home-new-img/infrastructural.webp';
-import virtualEngImage from '../../assets/images-home/home-new-img/virtual-team.jpg';
-import secondmentImage from '../../assets/images-home/home-new-img/secondment.jpg.jpeg';
+import virtualEngImage from '../../assets/images-home/home-new-img/virtual-team.jpeg';
+import secondmentImage from '../../assets/images-home/home-new-img/secondment.jpg.png';
 
 // Additional Services Data (Standardized to Home.jsx Solutions)
 const ADDITIONAL_SERVICES = [
@@ -215,20 +215,28 @@ const InfrastructuralServices = () => {
                 </div>
 
                 <div className="design-why-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))' }}>
-                    {CORE_SERVICES.map((service, index) => (
-                        <div key={index} className="design-why-card">
-                            <h4 className="design-card-title">{service.title}</h4>
-                            <p className="design-card-desc">{service.desc}</p>
-                            <div className="design-card-scope" style={{ marginTop: '1rem' }}>
-                                <strong style={{ color: '#aaa', display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Scope Includes:</strong>
-                                <ul style={{ paddingLeft: '1.2rem', margin: 0, color: '#e0e0e0' }}>
-                                    {service.scope.map((item, i) => (
-                                        <li key={i} style={{ marginBottom: '0.3rem', fontSize: '0.9rem' }}>{item}</li>
-                                    ))}
-                                </ul>
+                    {CORE_SERVICES.map((service, index) => {
+                        // If it's the 7th (last) item, force it to center under the grid
+                        const isLastItem = index === 6;
+                        return (
+                            <div
+                                key={index}
+                                className="design-why-card"
+                                style={isLastItem ? { gridColumn: '1 / -1', justifySelf: 'center', maxWidth: '450px' } : {}}
+                            >
+                                <h4 className="design-card-title">{service.title}</h4>
+                                <p className="design-card-desc">{service.desc}</p>
+                                <div className="design-card-scope" style={{ marginTop: '1rem' }}>
+                                    <strong style={{ color: '#0f172a', display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Scope Includes:</strong>
+                                    <ul style={{ paddingLeft: '1.2rem', margin: 0, color: '#475569' }}>
+                                        {service.scope.map((item, i) => (
+                                            <li key={i} style={{ marginBottom: '0.3rem', fontSize: '0.9rem' }}>{item}</li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </section>
 
@@ -277,7 +285,7 @@ const InfrastructuralServices = () => {
                         <div className="hardware-card" style={{ flexDirection: 'column', alignItems: 'flex-start', padding: '2rem' }}>
                             <ul className="process-list" style={{ listStyle: 'none', padding: 0 }}>
                                 {DELIVERABLES.map((item, index) => (
-                                    <li key={index} style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.8rem', color: '#fff' }}>
+                                    <li key={index} style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.8rem', color: '#0f172a' }}>
                                         <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#144AE0' }}></span>
                                         {item}
                                     </li>
@@ -289,7 +297,7 @@ const InfrastructuralServices = () => {
                 </div>
             </section>
 
-            
+
 
             {/* Additional Services Menu Section */}
             <section className="solutions-list-section">

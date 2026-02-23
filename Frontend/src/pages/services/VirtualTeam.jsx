@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import "../../styles/Page.css";
 import "./VirtualTeamScoped.css";
 
-import heroImage from '../../assets/images-home/home-new-img/virtual-team.jpg';
+import heroImage from '../../assets/images-home/home-new-img/virtual-team.jpeg';
 
 // Standardized Images for Additional Services (Matching Home.jsx)
 import mepImg from '../../assets/images-home/home-new-img/MEP.png';
@@ -12,8 +12,8 @@ import archImg from '../../assets/images-home/home-new-img/BIM.webp';
 import structImg from '../../assets/images-home/home-new-img/structural-eng.webp';
 import steelImg from '../../assets/images-home/home-new-img/steel-detail.jfif';
 import infraImg from '../../assets/images-home/home-new-img/infrastructural.webp';
-import virtualEngImage from '../../assets/images-home/home-new-img/virtual-team.jpg';
-import secondmentImage from '../../assets/images-home/home-new-img/secondment.jpg.jpeg';
+import virtualEngImage from '../../assets/images-home/home-new-img/virtual-team.jpeg';
+import secondmentImage from '../../assets/images-home/home-new-img/secondment.jpg.png';
 
 // Additional Services Data (Standardized to Home.jsx Solutions)
 const ADDITIONAL_SERVICES = [

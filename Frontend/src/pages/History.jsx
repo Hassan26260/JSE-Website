@@ -6,7 +6,7 @@ import "../styles/Page.css";
 import "./History.css";
 
 // Images
-import heroImage from "../assets/images-home/skyscraper.webp";
+import heroImage from "../assets/images-home/hist/skyscraper.png";
 import founderImage from "../assets/History/Founder.png";
 import mdImage from "../assets/History/MD.jpg";
 
@@ -23,6 +23,8 @@ import img2006 from "../assets/History/2006.jpg.jpeg";
 import imgMDOld from "../assets/History/MD old.jpg.jpeg";
 import imgHis2 from "../assets/History/his 2.jpg.jpeg";
 import imgHistoryPic from "../assets/History/history pic.jpg.jpeg";
+import imgLatest from "../assets/History/latest.JPG";
+import imgPresent from "../assets/History/present.jpg";
 
 const HISTORY_TIMELINE = [
     {
@@ -67,7 +69,7 @@ const HISTORY_TIMELINE = [
             "Expanded regional presence with new Branch Offices at Trichy & Tirunelveli, Tamil Nadu and Vizag, Andhra Pradesh – India.",
             "Commissioned a New Expanded Office at Chennai, enhancing operations and delivery capacity for global service requirements."
         ],
-        image: heroGroupImage
+        image: imgLatest
     },
     {
         year: "2026–Present",
@@ -75,7 +77,7 @@ const HISTORY_TIMELINE = [
         descPoints: [
             "Continuing to expand engineering, BIM, and digital delivery capabilities for international markets, leveraging advanced design technologies and multidisciplinary expertise."
         ],
-        image: hvacDesign
+        image: imgPresent
     }
 ];
 

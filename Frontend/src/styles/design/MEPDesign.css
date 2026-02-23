@@ -26,9 +26,23 @@
     flex-direction: column;
     justify-content: flex-start;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    flex: 1 1 300px;
-    max-width: 380px;
-    width: 100%;
+    /* Strict 3-card grid format with space for flex-gap */
+    flex: 0 0 calc(33.333% - 1rem);
+    max-width: calc(33.333% - 1rem);
+}
+
+@media (max-width: 1024px) {
+    .mep-expert-card {
+        flex: 0 0 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .mep-expert-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
 
 .mep-expert-card:hover {

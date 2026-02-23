@@ -31,6 +31,12 @@ const Footer = () => {
                             </svg>
                             <span>044 - 4261 1180</span>
                         </div>
+                        <div className="contact-item" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#94a3b8', fontSize: '0.85rem' }}>
+                            <svg className="contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                            </svg>
+                            <span className="address-text">Rayala Nagar, Ramapuram, Chennai,<br />Tamilnadu - 600089, India</span>
+                        </div>
                     </div>
 
                     {/* Socials */}
@@ -137,9 +143,8 @@ const Footer = () => {
                             <p className="footer-address-text">
                                 4th Floor, Karuna Conquest IT Park,<br />
                                 Ambattur Industrial Estate,<br />
-
-                                Chennai - 600058,<br />
-                                Tamil Nadu
+                                Chennai,<br />
+                                Tamil Nadu - 600058
                             </p>
                         </div>
                         {/* 2. Tirunelveli */}
@@ -148,8 +153,8 @@ const Footer = () => {
                             <p className="footer-address-text">
                                 Nellai City Centre Building,<br />
                                 Thiruvanthapuram Road,<br />
-                                Tirunelveli - 627002,<br />
-                                Tamil Nadu
+                                Tirunelveli,<br />
+                                Tamil Nadu - 627002
                             </p>
                         </div>
                         {/* 3. Trichy */}
@@ -158,8 +163,8 @@ const Footer = () => {
                             <p className="footer-address-text">
                                 1st Floor, Chintha Tower,<br />
                                 Cantonment,<br />
-                                Tiruchirappalli - 620001,<br />
-                                Tamil Nadu
+                                Tiruchirappalli,<br />
+                                Tamil Nadu - 620001
                             </p>
                         </div>
                         {/* 4. Visakhapatnam */}
@@ -168,8 +173,8 @@ const Footer = () => {
                             <p className="footer-address-text">
                                 Pravilika Residency, 1st Floor,<br />
                                 Central Library Road, Seethampeta,<br />
-                                Visakhapatnam - 530016,<br />
-                                Andhra Pradesh
+                                Visakhapatnam,<br />
+                                Andhra Pradesh - 530016
                             </p>
                         </div>
                     </div>

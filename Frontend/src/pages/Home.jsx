@@ -44,6 +44,7 @@ import clientLogo10 from '../assets/client-logo/futuremetro logo.png';
 import clientLogo11 from '../assets/client-logo/al shandagha1.png';
 import clientLogo12 from '../assets/client-logo/al futtaim.png';
 import clientLogo13 from '../assets/client-logo/zone.png';
+import clientLogo14 from '../assets/client-logo/alem.svg';
 
 import mapImage from "../assets/images-home/Map.png";
 import heroVideo from "../assets/images-home/home-new-img/hero-video.mp4";
@@ -55,8 +56,8 @@ import bimImg from "../assets/images-home/home-new-img/BIM.webp";
 import structImg from "../assets/images-home/home-new-img/structural-eng.webp";
 import steelImg from "../assets/images-home/home-new-img/steel-detail.jfif";
 import infraImg from "../assets/images-home/home-new-img/infrastructural.webp";
-import virtualEngImage from "../assets/images-home/home-new-img/virtual-team.jpg";
-import secondmentImage from "../assets/images-home/home-new-img/secondment.jpg.jpeg";
+import virtualEngImage from "../assets/images-home/home-new-img/virtual-team.jpeg";
+import secondmentImage from "../assets/images-home/home-new-img/secondment.jpg.png";
 
 
 
@@ -428,7 +429,7 @@ const Home = () => {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               style={{ fontSize: '1.2rem', color: '#e2e8f0', marginBottom: '2rem', maxWidth: '600px', lineHeight: '1.6' }}
             >
-              Delivering Design-Led MEP Engineering & BIM Solutions for Mega-Scale Global Construction Projects
+              Delivering Design Led MEP Engineering & BIM Solutions for Mega Scale Global Construction Projects
             </motion.p>
 
             {/* New Animated Moto */}
@@ -511,7 +512,7 @@ const Home = () => {
             {/* <span className="about-tagline dash-tagline">About JSE</span> */}
             <h2 className="about-company-name">About JSE Engineering</h2>
 
-            <div className="about-description-block" style={{ color: '#475569', fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1rem' }}>
+            <div className="about-description-block" style={{ color: '#475569', fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '3rem' }}>
               <p style={{ marginBottom: '1rem' }}>
                 JSE Engineering is a premier multi-disciplinary engineering consulting firm established in 2005.
               </p>
@@ -523,7 +524,7 @@ const Home = () => {
               </p>
             </div>
 
-            <ul className="about-features-list">
+            {/* <ul className="about-features-list">
               <li>
                 <span className="check-icon">✓</span>
                 <span>Global Project Delivery</span>
@@ -540,7 +541,7 @@ const Home = () => {
                 <span className="check-icon">✓</span>
                 <span>Elite Engineering Talent</span>
               </li>
-            </ul>
+            </ul> */}
 
             <Link to="/history" className="about-cta-btn">Discover Our Story</Link>
           </div>
@@ -638,13 +639,13 @@ const Home = () => {
                     <div className="marquee-track reverse-track">
                       {[
                         clientLogo1, clientLogo2, clientLogo3, clientLogo4, clientLogo5, clientLogo6,
-                        clientLogo7, clientLogo8, clientLogo9, clientLogo10, clientLogo11, clientLogo12, clientLogo13
+                        clientLogo7, clientLogo8, clientLogo9, clientLogo10, clientLogo11, clientLogo12, clientLogo13, clientLogo14
                       ].map((logo, index) => (
                         <img key={`client-logo-${index}`} src={logo} alt={`Client Logo ${index + 1}`} className="client-logo" loading="lazy" />
                       ))}
                       {[
                         clientLogo1, clientLogo2, clientLogo3, clientLogo4, clientLogo5, clientLogo6,
-                        clientLogo7, clientLogo8, clientLogo9, clientLogo10, clientLogo11, clientLogo12, clientLogo13
+                        clientLogo7, clientLogo8, clientLogo9, clientLogo10, clientLogo11, clientLogo12, clientLogo13, clientLogo14
                       ].map((logo, index) => (
                         <img key={`client-logo-dup-${index}`} src={logo} alt={`Client Logo ${index + 1}`} className="client-logo" loading="lazy" />
                       ))}

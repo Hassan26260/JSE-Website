@@ -10,12 +10,13 @@ import abroadImage from "../assets/replacement/abroad.JPG"; // New Image
 import vrImage from "../assets/images-home/virtual.jpeg"; // Fixed Import
 import internVideo from "../assets/images-home/intern-video/1a5cf5c19e1af4f9770f31343bd39fb9_0_14766666.mp4"; // Import Video
 // StickyContact import removed
+import { useContactModal } from "../context/ContactModalContext"; // Added Context
 import InternshipTimeline from '../components/InternshipTimeline';
 
 const Internship = () => {
   const imageRef = useRef(null);
   const videoRef = useRef(null);
-  const formRef = useRef(null);
+  const { openModal } = useContactModal(); // Modal generic hook
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -32,32 +33,6 @@ const Internship = () => {
 
   const toggleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
-  };
-
-  // Form State
-  const [formData, setFormData] = useState({
-    name: '',
-    age: '',
-    mobile: '',
-    email: '',
-    address: '',
-    college: '',
-    department: '',
-    year: '',
-    branch: '',
-    comments: ''
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Submitted:", formData);
-    alert("Application Submitted! (This is a frontend demo)");
-    // Backend logic here
   };
 
   useEffect(() => {
@@ -195,7 +170,7 @@ const Internship = () => {
             >
               <button
                 className="internship-cta-btn-glass"
-                onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={openModal} // Hook into the new global layout context
               >
                 Apply Now
               </button>
@@ -267,7 +242,7 @@ const Internship = () => {
         ></div>
         <div className="career-dev-card" style={{
           background: 'rgba(255, 255, 255, 0.1)',
-          backdropFilter: 'blur(12px)',
+          backdropFilter: 'blur(5px)',
           WebkitBackdropFilter: 'blur(12px)',
           border: '1px solid rgba(255, 255, 255, 0.2)',
           boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
@@ -461,9 +436,6 @@ const Internship = () => {
 
         </div>
       </section>
-
-      
-
     </div>
   );
 };
