@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import '../../../styles/design/MEPDesign.css'; // Scoped Styles explicitly for MEP Design
-import StickyContact from '../../../components/StickyContact';
+
 
 // Shared CSS
 import '../design/ArchitecturalBIM.css';
@@ -47,115 +47,79 @@ const getMepIcon = (index) => {
   return icons[index % icons.length];
 };
 
-const TOP_SERVICES = [
-  {
-    title: "Detailed M&E Design",
-    desc: "Full-scale Mechanical & Electrical design for functional, efficient environments, encompassing HVAC, electrical distribution, and specialized facility requirements."
-  },
-  {
-    title: "Lighting Design",
-    desc: "Innovative layout strategies optimized for both natural and artificial lights, balancing ambient performance with significant energy conservation."
-  },
-  {
-    title: "Air Conditioning/HVAC",
-    desc: "Advanced AC/HVAC models ensuring superior air quality and thermal control. Designed for occupant comfort and long-term energy efficiency."
-  },
-  {
-    title: "Plumbing and Sanitary",
-    desc: "Expertly calculated routing for water distribution, drainage, and sustainable water management systems complying strictly with public health codes."
-  },
-  {
-    title: "Fire Protection",
-    desc: "Comprehensive sprinkler and suppression systems, precisely coordinated to ensure maximum safety and compliance with international fire and life safety standards."
-  },
-  {
-    title: "Home Automation",
-    desc: "Intelligent BMS and residential automation integration, offering intuitive control over lighting, climate, security, and energy management."
-  },
-  {
-    title: "Electrical Control/Substations",
-    desc: "Detailed schematics for High/Low Voltage substations, switchgear, and robust power distribution capable of handling heavy industrial or commercial loads."
-  },
-  {
-    title: "IT and Telecommunications",
-    desc: "Seamless integration of voice, data, and communication infrastructure. Designing robust pathways and server room layouts for uninterrupted connectivity."
-  },
-  {
-    title: "Public Health Engineering",
-    desc: "Specialized design for greywater recycling, sophisticated waste management, and sustainable hygiene systems for large-scale developments."
-  },
-  {
-    title: "Sustainable Design (LEED)",
-    desc: "Engineering focused on minimizing carbon footprints. Green building design strategies to achieve high LEED ratings and optimize lifecycle costs."
-  }
-];
+// --- NEW STRUCTURED CONTENT DATA (V2) ---
 
-// Bento Theme array and icons for MEP Systems
-const themes = ['card-theme-blue', 'card-theme-purple', 'card-theme-green', 'card-theme-orange', 'card-theme-pink', 'card-theme-cyan'];
-const SYSTEM_ICONS = {
-  hvac: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 12m-10 0a10 10 0 1 0 20 0a10 10 0 1 0-20 0M12 12l4.9 4.9M12 12l-4.9 4.9M12 12l4.9-4.9M12 12l-4.9-4.9" /></svg>,
-  power: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>,
-  water: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" /></svg>,
-  fire: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>,
-  default: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+const STRATEGIC_PARTNERSHIPS = {
+  consultants: {
+    title: "For Consultants: The Design Development Partner",
+    desc: "We act as your Design Brain, providing the technical depth and man-hour capacity needed to progress from concept to IFC.",
+    points: [
+      { title: "From Scratch to IFC", text: "We take architectural intent and develop all required engineering calculations, system sizing, and technical selections." },
+      { title: "Design-Led BIM (LOD 100–300)", text: "We deliver fully engineered, code-compliant BIM models that ensure technical integrity during the design stage." },
+      { title: "Technical Synergy", text: "Simultaneous engineering and BIM modeling ensures 100% coordination across all building services disciplines." }
+    ]
+  },
+  contractors: {
+    title: "For Contractors: The Construction Execution Partner",
+    desc: "We provide the engineering brainpower and high-detail BIM deliverables required for error-free site installation.",
+    points: [
+      { title: "Engineering Validation", text: "We perform complete audits of IFC drawings and consultant designs to identify discrepancies before they impact construction." },
+      { title: "Execution-Led BIM (LOD 400–500)", text: "We upgrade models to LOD 400 for site-ready shop drawings and deliver LOD 500 as-built models for facility management." },
+      { title: "Proactive RFI Management", text: "We resolve constructability issues early, reducing site rework and protecting project budgets." }
+    ]
+  }
 };
 
-const MEP_SYSTEMS = [
-  { name: "HVAC Systems", icon: SYSTEM_ICONS.hvac, span: "span-2-col", theme: "card-theme-blue", desc: "Heating, Ventilation & Air Conditioning" },
-  { name: "Power Distribution", icon: SYSTEM_ICONS.power, span: "", theme: "card-theme-green", desc: "High/Low Voltage systems" },
-  { name: "Plumbing and Drainage", icon: SYSTEM_ICONS.water, span: "", theme: "card-theme-purple", desc: "Piping & sanitation" },
-  { name: "Fire Protection and Alarm", icon: SYSTEM_ICONS.fire, span: "span-2-row", theme: "card-theme-orange", desc: "Sprinklers & smoke detection" },
-  { name: "Lighting Design", icon: SYSTEM_ICONS.default, span: "", theme: "card-theme-cyan", desc: "Interior & exterior illumination" },
-  { name: "Building Management (BMS)", icon: SYSTEM_ICONS.default, span: "", theme: "card-theme-pink", desc: "Automated facility controls" },
-  { name: "Telecommunications & IT", icon: SYSTEM_ICONS.power, span: "", theme: "card-theme-purple", desc: "Data networks & telecom" },
-  { name: "Security and Access Control", icon: SYSTEM_ICONS.default, span: "span-2-col", theme: "card-theme-blue", desc: "CCTV & secure entry systems" },
-  { name: "Public Health Engineering", icon: SYSTEM_ICONS.water, span: "", theme: "card-theme-green", desc: "Hygiene & waste management" },
-  { name: "Renewable Energy Systems", icon: SYSTEM_ICONS.default, span: "", theme: "card-theme-orange", desc: "Solar & sustainable integrations" },
-  { name: "Vertical Transportation", icon: SYSTEM_ICONS.default, span: "", theme: "card-theme-cyan", desc: "Elevators & escalators" },
-  { name: "Energy Modeling", icon: SYSTEM_ICONS.hvac, span: "", theme: "card-theme-pink", desc: "Efficiency & LEED optimization" }
+const MEP_TECHNICAL_SPECTRUM = [
+  {
+    title: "Mechanical & HVAC Engineering",
+    desc: "Heat gain/loss estimation, energy modeling, ESP calculations, pump head analysis, and complex smoke management systems (staircase, lift, and car park pressurization).",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 12m-10 0a10 10 0 1 0 20 0a10 10 0 1 0-20 0M12 12l4.9 4.9M12 12l-4.9 4.9M12 12l4.9-4.9M12 12l-4.9-4.9" /></svg>
+  },
+  {
+    title: "Electrical & Power Systems Design",
+    desc: "Load schedules, voltage drop analysis, cable sizing, earthing and lightning protection, and UPS/central battery calculations.",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
+  },
+  {
+    title: "Public Health Eng. & Fire-Fighting",
+    desc: "Water supply and drainage demand calculations, grease trap sizing, and hydraulic analysis for fire suppression systems (sprinklers and hydrants).",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+  },
+  {
+    title: "ELV & Security Systems",
+    desc: "Building Management Systems (BMS), home automation, CCTV (IP Video/Dahua), access control, and structured cabling design.",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+  },
+  {
+    title: "Infrastructure Engineering (Civil 3D)",
+    desc: "External utility network design and buried MEP services modeling using Autodesk Civil 3D.",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+  }
 ];
 
-const WHY_CHOOSE_JSE_NEW = [
-  {
-    title: "Multi-Disciplinary Expertise",
-    desc: "Seamless integration of MEP, BIM, Electrical, ELV, Plumbing, HVAC & Firefighting designs under one roof.",
-    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 22v-5l5-5 5 5v5M12 12l5-5 5 5v5" /></svg>
-  },
-  {
-    title: "Precision & Coordination",
-    desc: "Designs optimized to minimize clashes, improve constructability, and reduce rework on site.",
-    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-  },
-  {
-    title: "BIM-Enabled Workflows",
-    desc: "Advanced BIM tools for better visualization, faster approvals, and accurate quantity take-offs.",
-    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /></svg>
-  },
-  {
-    title: "Cost-Optimized Solutions",
-    desc: "Efficient design methodologies that reduce material cost, energy consumption, and operational expenses.",
-    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-  },
-  {
-    title: "Fast Turnaround Delivery",
-    desc: "Structured processes ensure reliable timelines for consultants, contractors, and developers.",
-    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-  },
-  {
-    title: "Sector-Wide Experience",
-    desc: "From residential to commercial, industrial, healthcare, hospitality, and institutional sectors.",
-    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l8-4 8 4v14"></path></svg>
-  },
-  {
-    title: "Skilled Technical Team",
-    desc: "Dedicated specialists with options for secondment and virtual teams to support project execution.",
-    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-  },
-  {
-    title: "Client-Centric Support",
-    desc: "Transparent communication, progressive updates, and responsive assistance throughout project lifecycle.",
-    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-  }
+const SECTOR_EXPERTISE = [
+  { name: "Transportation", desc: "Metro rail systems and international airports", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l8-4 8 4v14"></path></svg> },
+  { name: "Mission-Critical Facilities", desc: "Tier III & IV data centers and district cooling plants (DCP)", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> },
+  { name: "Healthcare & Hospitality", desc: "Multi-specialty hospitals, luxury hotels, and mega-scale shopping malls", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg> },
+  { name: "High-Rise & Industrial", desc: "Premium residential towers and large-scale manufacturing plants", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> }
+];
+
+const TECH_STACK = [
+  { discipline: "HVAC Design", software: ["HAP", "ASHRAE Duct Fitting Database"] },
+  { discipline: "Electrical Analysis", software: ["AMTECH", "DIALux", "Ecodial"] },
+  { discipline: "PHE & Fire-Fighting", software: ["ELITE", "Hydraulic Analysis Tools"] },
+  { discipline: "Infrastructure", software: ["Autodesk Civil 3D"] },
+  { discipline: "ELV & Security", software: ["IP Video Tool", "DAHUA Design Tools"] },
+  { discipline: "BIM & Coordination", software: ["Revit", "Navisworks", "BIM 360 (CDE)"] }
+];
+
+const QA_PROTOCOLS = [
+  { title: "Design Verification", desc: "Comprehensive audit of project inputs with proactive RFI resolution.", icon: <span style={{ fontSize: '1.5rem', fontWeight: 800 }}>1</span> },
+  { title: "Model Coordination", desc: "Continuous cross-discipline coordination using Navisworks for a zero-conflict digital twin.", icon: <span style={{ fontSize: '1.5rem', fontWeight: 800 }}>2</span> },
+  { title: "Internal QA/QC", desc: "Independent audits and detailed check prints for client review.", icon: <span style={{ fontSize: '1.5rem', fontWeight: 800 }}>3</span> },
+  { title: "Model Health Monitoring", desc: "Periodic reporting through Power BI to ensure full BIM compliance and quality control.", icon: <span style={{ fontSize: '1.5rem', fontWeight: 800 }}>4</span> },
+  { title: "Final Submission", desc: "Approved deliverables are extracted and uploaded to BIM 360 for real-time site access and tracking.", icon: <span style={{ fontSize: '1.5rem', fontWeight: 800 }}>5</span> }
 ];
 
 const MEPDesign = () => {
@@ -210,10 +174,9 @@ const MEPDesign = () => {
       {/* Hero Section */}
       <div className="service-hero-split">
         <div className="hero-text-content">
-          <span className="hero-small-label">MEP Engineering Services</span>
           <h1 className="hero-title-split">MEP Engineering Services</h1>
           <p className="hero-desc-split">
-            End-to-End MEP Engineering & BIM Delivery for Complex Projects
+            Engineering is the core of JSE. We do not simply model — we design, calculate, and validate.
           </p>
           <button onClick={scrollToForm} className="hero-cta-btn">
             HIRE US
@@ -229,30 +192,23 @@ const MEPDesign = () => {
         </div>
       </div>
 
-      {/* 1. Intro Authority Section (2-Column) */}
+      {/* 1. Authority Intro Section (2-Column) */}
       <section className="arch-what-section">
         <div className="arch-what-container">
-          {/* Text Side */}
           <div className="arch-what-text">
             <h2 className="arch-what-title" style={{ textAlign: 'left', marginBottom: '1.5rem', color: '#1e293b' }}>
-              Integrating Excellence with Global MEP Design Solutions
+              MEP Engineering & BIM Solutions
             </h2>
             <div style={{ color: '#000', fontSize: '1.1rem', lineHeight: '1.8' }}>
               <p style={{ marginBottom: '1.5rem' }}>
-                At JSE Engineering Pvt Ltd, our International MEP Design Services leverage three decades of engineering expertise and a proven track record of over 6,000 successful projects. We specialize in crafting sophisticated Mechanical, Electrical, and Plumbing (MEP) systems that meet global standards and adapt seamlessly to diverse building requirements.
-              </p>
-              <p style={{ marginBottom: '1.5rem' }}>
-                Our engineering team employs cutting-edge technology and innovative design practices to deliver solutions that ensure efficiency, performance, reliability, and compliance across international construction projects.
-              </p>
-              <p style={{ marginBottom: '1.5rem' }}>
-                When you choose JSE, you partner with a seasoned team that brings unparalleled experience and a commitment to excellence. Our global perspective and deep understanding of local regulations allow us to navigate complex design challenges with ease, providing solutions that are both innovative and compliant.
+                Engineering is the core of JSE. We do not simply model — we design, calculate, and validate.
+                Our MEP division provides a complete multi-disciplinary service led by highly experienced professionals capable of taking a project from a blank page through to final Issued for Construction (IFC) status.
               </p>
               <p>
-                Trust JSE Engineering to deliver MEP designs that not only meet but exceed expectations, offering peace of mind and exceptional results on an international scale.
+                We deliver fully constructible engineering information for contractors while maintaining design integrity for consultants. JSE provides equal, specialized support to both Design Consultants and MEP Contractors, ensuring coordinated, code-compliant, and execution-ready building services.
               </p>
             </div>
           </div>
-          {/* Image Side */}
           <div className="arch-what-image-wrapper">
             <div className="arch-image-back"></div>
             <img src={mepAboutImage} alt="About MEP Design" className="arch-what-img" loading="lazy" decoding="async" />
@@ -260,27 +216,50 @@ const MEPDesign = () => {
         </div>
       </section>
 
-      {/* 2. Top MEP Design Services Offers (Expertise Grid) */}
+      {/* --- NEW V2 SECTIONS START --- */}
+
+      {/* 2. Strategic Partnerships (Split Screen Design based on Virtual Team) */}
+      <section className="mep-support-section">
+        {/* Consultants Left */}
+        <div className="mep-support-block support-block-left">
+          <span className="mep-support-label">Strategic Partnerships</span>
+          <h2 className="mep-support-title">For Consultants:<br />The Design Development Partner</h2>
+          <p className="mep-support-desc">
+            We act as your Design Brain, providing the technical depth and man-hour capacity needed to progress from concept to IFC. We take architectural intent and develop all required engineering calculations, system sizing, code-compliant BIM models, and 100% coordination across all building services disciplines.
+          </p>
+        </div>
+
+        {/* Contractors Right */}
+        <div className="mep-support-block support-block-right">
+          <span className="mep-support-label" style={{ color: '#60a5fa' }}>Equal Contribution</span>
+          <h2 className="mep-support-title">For Contractors:<br />The Construction Execution Partner</h2>
+          <p className="mep-support-desc">
+            We provide the engineering brainpower and high-detail BIM deliverables required for error-free site installation. We perform complete audits of IFC drawings, upgrade models to LOD 400 (shop drawings) / LOD 500 (as-built), and resolve constructability issues proactively to protect project budgets.
+          </p>
+        </div>
+      </section>
+
+      {/* 3. Full MEP Technical Spectrum */}
       <section className="arch-services-section" style={{ background: '#0B1221' }}>
         <div className="arch-services-container">
           <div className="arch-services-header">
-            <span className="arch-services-tagline">OUR OFFERINGS</span>
-            <h2 className="arch-services-title">Top MEP Design Services JSE Offers</h2>
+            <span className="arch-services-tagline">CORE EXPERTISE</span>
+            <h2 className="arch-services-title">Full MEP Technical Spectrum</h2>
+            <p style={{ color: '#94a3b8', fontSize: '1.15rem', maxWidth: '800px', margin: '1rem auto 0', lineHeight: 1.6 }}>
+              Our expertise spans the entire building services lifecycle, adhering to international standards such as ASHRAE, NFPA, IEC, and applicable local authority regulations.
+            </p>
           </div>
 
           <div className="mep-expert-grid">
-            {TOP_SERVICES.map((service, index) => (
+            {MEP_TECHNICAL_SPECTRUM.map((service, index) => (
               <div key={index} className="mep-expert-card">
-                {/* Icon */}
                 <div className={`mep-expert-icon mep-icon-color-${(index % 6) + 1}`}>
-                  {getMepIcon(index)}
+                  {service.icon}
                 </div>
-                {/* Content */}
                 <div className="mep-expert-content">
                   <h3 className="mep-expert-title">{service.title}</h3>
                   <p className="mep-expert-desc">{service.desc}</p>
                 </div>
-                {/* Pattern border decoration */}
                 <div className={`mep-expert-pattern mep-pattern-${(index % 6) + 1}`}></div>
               </div>
             ))}
@@ -288,90 +267,97 @@ const MEPDesign = () => {
         </div>
       </section>
 
-      {/* 3. What JSE Does (Authority Highlight Block) */}
-      <section style={{
-        background: 'linear-gradient(135deg, #144AE0 0%, #0a2570 100%)',
-        padding: '5rem 2rem',
-        textAlign: 'center',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '1000px', margin: '0 auto' }}>
-          <h2 style={{
-            color: '#fff',
-            fontSize: 'clamp(2rem, 4vw, 3rem)',
-            fontWeight: '600',
-            lineHeight: '1.4',
-            fontFamily: "'delight', sans-serif"
-          }}>
-            With over <span style={{ color: '#fbbf24' }}>450+ BIM professionals</span>, JSE Engineering Pvt Ltd specializes in digitally constructing MEP services in BIM.
-          </h2>
-        </div>
-        {/* Subtle background decoration */}
-        <div style={{
-          position: 'absolute',
-          top: '-50%',
-          right: '-10%',
-          width: '500px',
-          height: '500px',
-          background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)',
-          borderRadius: '50%',
-          zIndex: 1
-        }} />
-      </section>
-
-      {/* 4. MEP Systems We Design and Model (Infinite Carousel) */}
-      <section className="mep-carousel-section">
+      {/* 4. Sector Expertise (Marquee Carousel) */}
+      <section className="mep-carousel-section" style={{ background: '#071230' }}>
         <div className="mep-carousel-header">
-          <span className="mep-carousel-tagline">SYSTEMS REACH</span>
-          <h2 className="mep-carousel-title">MEP Systems We Design and Model</h2>
-          <p style={{
-            color: '#94a3b8',
-            fontSize: '1.15rem',
-            lineHeight: '1.8',
-            maxWidth: '700px',
-            margin: '1.5rem auto 0 auto'
-          }}>
-            Integrating expertise, innovation, and sustainability in every MEP design.
+          <span className="mep-carousel-tagline">MULTI-DISCIPLINARY</span>
+          <h2 className="mep-carousel-title" style={{ fontSize: '2.5rem' }}>Sector Expertise in Mega-Scale Infrastructure</h2>
+          <p style={{ color: '#94a3b8', fontSize: '1.15rem', maxWidth: '700px', margin: '1.5rem auto 0 auto' }}>
+            Our MEP engineering teams specialize in protocols required for high-complexity, world-class projects across multiple sectors.
           </p>
         </div>
 
         <div className="mep-carousel-wrapper">
           <div className="mep-carousel-track">
             {/* Render array twice for infinite seamless loop */}
-            {[...MEP_SYSTEMS, ...MEP_SYSTEMS].map((system, index) => (
-              <div key={index} className="mep-system-card">
-                <div className="mep-system-icon-box" style={{ background: 'rgba(255,255,255,0.05)', color: '#144AE0' }}>
-                  {system.icon}
+            {[...SECTOR_EXPERTISE, ...SECTOR_EXPERTISE].map((sector, index) => (
+              <div key={index} className="mep-system-card" style={{ borderColor: 'rgba(59, 130, 246, 0.2)' }}>
+                <div className="mep-system-icon-box" style={{ background: 'rgba(59, 130, 246, 0.1)', color: '#3b82f6' }}>
+                  {sector.icon}
                 </div>
-                <h3 className="mep-system-title">{system.name}</h3>
-                <p className="mep-system-desc">{system.desc}</p>
+                <h3 className="mep-system-title">{sector.name}</h3>
+                <p className="mep-system-desc">{sector.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 5. Why Choose JSE Engineering (Scoped Home Page Style) */}
-      <section className="mep-why-section">
+      {/* 5. Engineering Tech Stack (Interactive & Animation Heavy) */}
+      <section className="mep-tech-stack-section">
+        {/* Animated Background Elements */}
+        <div className="tech-bg-orb tech-orb-1"></div>
+        <div className="tech-bg-orb tech-orb-2"></div>
+
+        <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <span style={{ fontSize: '0.9rem', fontWeight: 800, color: '#60a5fa', letterSpacing: '0.2em', textTransform: 'uppercase' }}>TOOLS & INNOVATION</span>
+            <h2 style={{ fontFamily: "'delight', system-ui", fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', color: '#ffffff', marginTop: '1rem', textShadow: '0 0 30px rgba(59, 130, 246, 0.3)' }}>Our Engineering Technology Stack</h2>
+            <p style={{ color: '#94a3b8', fontSize: '1.15rem', maxWidth: '800px', margin: '1.5rem auto 0', lineHeight: 1.6 }}>
+              We utilize advanced engineering and BIM tools to ensure uncompromising accuracy, seamless compliance, and maximum efficiency throughout the design lifecycle.
+            </p>
+          </div>
+
+          <div className="mep-tech-grid">
+            {TECH_STACK.map((stack, idx) => (
+              <div key={idx} className={`mep-tech-card tech-theme-${(idx % 4) + 1}`}>
+                <div className="tech-card-inner">
+                  {/* Front Side */}
+                  <div className="tech-card-front">
+                    <div className="tech-icon-wrapper">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                      </svg>
+                    </div>
+                    <h3 className="tech-discipline-front">{stack.discipline}</h3>
+                  </div>
+                  {/* Back Side */}
+                  <div className="tech-card-back">
+                    <h3 className="tech-discipline-back">{stack.discipline}</h3>
+                    <div className="tech-software-list">
+                      {stack.software.map((sw, sIdx) => (
+                        <span key={sIdx} className="tech-software-tag">{sw}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. QA Protocols (Sticky) */}
+      <section className="mep-why-section" style={{ background: '#f8fafc' }}>
         <div className="mep-why-container">
-          {/* Left Sticky Content */}
           <div className="mep-why-sticky-left">
             <div className="mep-why-header-content">
-              <h2 className="mep-why-section-title">Why Choose JSE Engineering for Best MEP Design?</h2>
+              <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#144AE0', letterSpacing: '0.15em', textTransform: 'uppercase', display: 'block', marginBottom: '1rem' }}>ROADMAP</span>
+              <h2 className="mep-why-section-title">Project Protocols & Quality Assurance</h2>
+              <p style={{ color: '#475569', fontSize: '1.1rem', marginTop: '1rem' }}>To protect technical integrity on every project, we follow a strict BIM implementation roadmap.</p>
             </div>
           </div>
-
-          {/* Right Scrollable Cards */}
           <div className="mep-why-cards-list">
-            {WHY_CHOOSE_JSE_NEW.map((item, index) => (
-              <div key={index} className="mep-why-card">
-                <div className="mep-why-icon-wrapper">
-                  {item.icon}
+            {QA_PROTOCOLS.map((step, index) => (
+              <div key={index} className="mep-why-card" style={{ padding: '2rem', gap: '1rem' }}>
+                <div className="mep-why-icon-wrapper" style={{ width: '50px', height: '50px' }}>
+                  {step.icon}
                 </div>
                 <div className="mep-why-card-content">
-                  <h3 className="mep-why-card-title">{item.title}</h3>
-                  <p className="mep-why-card-desc">{item.desc}</p>
+                  <h3 className="mep-why-card-title">{step.title}</h3>
+                  <p className="mep-why-card-desc">{step.desc}</p>
                 </div>
               </div>
             ))}
@@ -379,81 +365,9 @@ const MEPDesign = () => {
         </div>
       </section>
 
-      {/* Sticky Contact Form */}
-      <StickyContact ref={stickyContactRef}>
-        <div className="form-container">
-          <div className="form-info-side">
-            <h2 className="form-heading">Start Your Project</h2>
-            <p className="form-subtext">
-              Ready to optimize your workflow with JSE's MEP Engineering services? Fill out the details and we'll get in touch with you shortly.
-            </p>
+      {/* --- NEW V2 SECTIONS END --- */}
 
-            <div className="form-contact-details">
-              <p className="form-email">info@jseengineering.com</p>
-            </div>
 
-            <div className="form-socials">
-              <div className="social-circle">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                </svg>
-              </div>
-              <div className="social-circle">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-                </svg>
-              </div>
-              <div className="social-circle">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          <div className="form-input-side">
-            <form onSubmit={handleSubmit} className="internship-form">
-              <div className="form-group">
-                <label>Your Name*</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input-line"
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Your Mail ID*</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input-line"
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Message*</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows="4"
-                  required
-                  className="form-input-line"
-                ></textarea>
-              </div>
-
-              <button type="submit" className="form-submit-btn">Submit</button>
-            </form>
-          </div>
-        </div>
-      </StickyContact>
 
       {/* Additional Services Menu Section */}
       <section className="solutions-list-section">
@@ -487,7 +401,7 @@ const MEPDesign = () => {
         </motion.div>
       </section>
 
-    </div>
+    </div >
   );
 };
 

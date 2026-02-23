@@ -49,25 +49,51 @@ const ContactForm = () => {
                 </p>
 
                 <div className="form-contact-details">
-                    <p className="form-email">info@jseengineering.com</p>
+                    <p className="form-email">admin@jseeng.com</p>
                 </div>
 
                 <div className="form-socials">
-                    <div className="social-circle">
+                    {/* Facebook */}
+                    <a href="https://www.facebook.com/people/JSE-Engineering-Private-Limited/61566541223516/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Facebook">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                         </svg>
-                    </div>
-                    <div className="social-circle">
+                    </a>
+
+                    {/* LinkedIn */}
+                    <a href="https://www.linkedin.com/company/jseengineeringpvtltd/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
                         </svg>
-                    </div>
-                    <div className="social-circle">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </a>
+
+                    {/* Instagram */}
+                    <a href="https://www.instagram.com/jse_engineering_pvt.ltd?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                         </svg>
-                    </div>
+                    </a>
+
+                    {/* Threads */}
+                    <a href="https://www.threads.net/@jse_engineering_pvt.ltd" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Threads">
+                        {/* We use an inline outline logo since importing the image might break relative path inside Form component without setup */}
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="none"></path>
+                            <path d="M12 16.5C14.4853 16.5 16.5 14.4853 16.5 12C16.5 9.51472 14.4853 7.5 12 7.5C9.51472 7.5 7.5 9.51472 7.5 12C7.5 14.4853 9.51472 16.5 12 16.5Z" fill="none"></path>
+                            <path d="M15.5 10.5L12 14" stroke="currentColor" strokeWidth="2"></path>
+                        </svg>
+                    </a>
+
+                    {/* YouTube */}
+                    <a href="https://www.youtube.com/@JSEEngineeringPvtLtd" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="YouTube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                        </svg>
+                    </a>
                 </div>
             </motion.div>
 

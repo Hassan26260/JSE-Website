@@ -102,7 +102,7 @@ const Footer = () => {
                 </div>
 
                 {/* Column 3 */}
-                <div className="footer-col" style={{ flexGrow: 1.5 }}> {/* Increase width for 2 columns */}
+                <div className="footer-col" style={{ flexGrow: 1.5, display: 'none' }}> {/* Increase width for 2 columns */}
                     <div className="footer-group">
                         <h4 className="footer-heading">Industries / Sectors</h4>
                         <ul className="footer-links industries-list">

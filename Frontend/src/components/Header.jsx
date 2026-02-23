@@ -127,7 +127,7 @@ const Header = () => {
                 </Link>
 
                 <Link to="/services/infrastructural-services" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
-                  Infrastructural services
+                  Infrastructure Services
                 </Link>
 
                 <Link to="/services/virtual-team" className="dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>

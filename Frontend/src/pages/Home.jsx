@@ -136,10 +136,10 @@ const Home = () => {
       title: "Architectural BIM",
       link: "/services/design/architectural-bim",
       img: bimImg,
-      heading: "Architecture & Structural BIM Detailing",
+      heading: "Architecture BIM",
       description: "Our specialized teams ensure a fully coordinated project environment across all disciplines.",
       details: [
-        { title: "Concept to BIM:", text: "Developing architectural and structural BIM models (LOD 200–300) from initial concepts." },
+        { title: "Concept to BIM:", text: "Developing architectural BIM models (LOD 200–300) from initial concepts." },
         { title: "Data Extraction:", text: "Expert extraction of high-accuracy 2D construction documentation directly from BIM" }
       ]
     },
@@ -168,7 +168,7 @@ const Home = () => {
       ]
     },
     {
-      title: "Infrastructural services",
+      title: "Infrastructure Services",
       link: "/services/infrastructural-services",
       img: infraImg,
       heading: "Infrastructure & External Networks (Civil 3D)",
@@ -317,6 +317,16 @@ const Home = () => {
       text: "The team's ability to excel under pressure, particularly when facing tight deadlines, demonstrates their strong work ethic and consistent high performance. I commend their dedication to delivering projects on time and to a high standard.",
       author: "Yashin Maharaj",
       role: "SSHIC MEPI Director"
+    },
+    {
+      text: "Please be informed that we have obtained DEWA LV approval for Capria East 3B. Id like to express my heartfelt congratulations to you and the wider team who have gone the extra mile to achieve this great milestone. As always, I truly appreciate your efforts for the projects that we have worked in together. We’ve come a long way in obtaining challenging DEWA approvals from La Mer project to Nobu Project and now to 3B. Looking forward to achieving more milestones with you.",
+      author: "Arvind Rajiv",
+      role: "Senior Electrical Engineer, SSH"
+    },
+    {
+      text: "Overall, the effort and quality are appreciated. Positive Points. The overall model structure is clear and well-organized. Good accuracy in geometry and alignment with design drawings. Proper use of Revit families and consistent naming conventions. The Model visualization effectively.",
+      author: "Mubarak Basha",
+      role: "Senior BIM Technician - Mechanical, SSH"
     }
   ];
 
@@ -547,7 +557,7 @@ const Home = () => {
                 loading="lazy"
               />
               <div className="about-floating-badge">
-                <span className="badge-number">15+</span>
+                <span className="badge-number">20+</span>
                 <span className="badge-text">Years of<br />Excellence</span>
               </div>
             </div>
@@ -567,129 +577,99 @@ const Home = () => {
             </p>
           </div>
 
-          {/* Tab Navigation */}
-          <div className="partnerships-tabs">
-            <button
-              className={`partner-tab-btn ${activePartnerTab === 'consultants' ? 'active' : ''}`}
-              onClick={() => setActivePartnerTab('consultants')}
-            >
-              Design Consultants
-            </button>
-            <button
-              className={`partner-tab-btn ${activePartnerTab === 'contractors' ? 'active' : ''}`}
-              onClick={() => setActivePartnerTab('contractors')}
-            >
-              MEP & General Contractors
-            </button>
-          </div>
-
           {/* Content Area */}
           <div className="partnerships-content-wrapper">
-            <AnimatePresence mode="wait">
-              {activePartnerTab === 'consultants' && (
-                <motion.div
-                  key="consultants"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4 }}
-                  className="client-category-block"
-                >
-                  <div className="marquee-wrapper">
-                    {/* Marquee 1: Global Consultants (Move Left) */}
-                    <div className="client-marquee-row consultant-row">
-                      <div className="marquee-container">
-                        <div className="marquee-track">
-                          {[
-                            consLogo1, consLogo2, consLogo3, consLogo4, consLogo5, consLogo6,
-                            consLogo7, consLogo8, consLogo9, consLogo10, consLogo11, consLogo12, consLogo13
-                          ].map((logo, index) => (
-                            <img key={`cons-logo-${index}`} src={logo} alt={`Consultant Logo ${index + 1}`} className="client-logo" loading="lazy" />
-                          ))}
-                          {[
-                            consLogo1, consLogo2, consLogo3, consLogo4, consLogo5, consLogo6,
-                            consLogo7, consLogo8, consLogo9, consLogo10, consLogo11, consLogo12, consLogo13
-                          ].map((logo, index) => (
-                            <img key={`cons-logo-dup-${index}`} src={logo} alt={`Consultant Logo ${index + 1}`} className="client-logo" loading="lazy" />
-                          ))}
-                        </div>
-                      </div>
+            <div className="client-category-block" style={{ marginBottom: '15rem' }}>
+              <div className="partner-value-props">
+                <h3 className="partner-props-title">International Design Consultants</h3>
+                <p className="partner-props-desc" style={{ marginBottom: '2rem' }}>Partnering to provide Design-Led Engineering and BIM Services from Concept to IFC.</p>
+              </div>
+
+              <div className="marquee-wrapper" style={{ marginBottom: '3rem' }}>
+                {/* Marquee 1: Global Consultants (Move Left) */}
+                <div className="client-marquee-row consultant-row">
+                  <div className="marquee-container">
+                    <div className="marquee-track">
+                      {[
+                        consLogo1, consLogo2, consLogo3, consLogo4, consLogo5, consLogo6,
+                        consLogo7, consLogo8, consLogo9, consLogo10, consLogo11, consLogo12, consLogo13
+                      ].map((logo, index) => (
+                        <img key={`cons-logo-${index}`} src={logo} alt={`Consultant Logo ${index + 1}`} className="client-logo" loading="lazy" />
+                      ))}
+                      {[
+                        consLogo1, consLogo2, consLogo3, consLogo4, consLogo5, consLogo6,
+                        consLogo7, consLogo8, consLogo9, consLogo10, consLogo11, consLogo12, consLogo13
+                      ].map((logo, index) => (
+                        <img key={`cons-logo-dup-${index}`} src={logo} alt={`Consultant Logo ${index + 1}`} className="client-logo" loading="lazy" />
+                      ))}
                     </div>
                   </div>
+                </div>
+              </div>
 
-                  <div className="partner-value-props">
-                    <h3 className="partner-props-title">International Design Consultants</h3>
-                    <p className="partner-props-desc">Partnering to provide Design-Led Engineering and BIM Services from Concept to IFC.</p>
-                    <ul className="client-category-list">
-                      <li className="bento-glass-card">
-                        <strong>Design from Scratch</strong>
-                        <p>We act as your extended engineering arm, developing concepts into full detailed designs.</p>
-                      </li>
-                      <li className="bento-glass-card">
-                        <strong>Engineering-Led BIM (LOD 100–300)</strong>
-                        <p>We ensure the BIM model is a true reflection of engineering data with seamless inter-disciplinary coordination.</p>
-                      </li>
-                      <li className="bento-glass-card">
-                        <strong>Local Authority Compliance</strong>
-                        <p>Designs are engineered to meet specific codes including QCS, Kahramaa, DEWA, PUB, SCDF, and SPAN.</p>
-                      </li>
-                    </ul>
-                  </div>
-                </motion.div>
-              )}
+              <div className="partner-value-props">
+                <ul className="client-category-list">
+                  <li className="bento-glass-card">
+                    <strong>Design from Scratch</strong>
+                    <p>We act as your extended engineering arm, developing concepts into full detailed designs.</p>
+                  </li>
+                  <li className="bento-glass-card">
+                    <strong>Engineering-Led BIM (LOD 100–300)</strong>
+                    <p>We ensure the BIM model is a true reflection of engineering data with seamless inter-disciplinary coordination.</p>
+                  </li>
+                  <li className="bento-glass-card">
+                    <strong>Local Authority Compliance</strong>
+                    <p>Designs are engineered to meet specific codes including QCS, Kahramaa, DEWA, PUB, SCDF, and SPAN.</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
 
-              {activePartnerTab === 'contractors' && (
-                <motion.div
-                  key="contractors"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4 }}
-                  className="client-category-block"
-                >
-                  <div className="marquee-wrapper">
-                    {/* Marquee 2: Global Contractors (Move Right) */}
-                    <div className="client-marquee-row client-row">
-                      <div className="marquee-container">
-                        <div className="marquee-track reverse-track">
-                          {[
-                            clientLogo1, clientLogo2, clientLogo3, clientLogo4, clientLogo5, clientLogo6,
-                            clientLogo7, clientLogo8, clientLogo9, clientLogo10, clientLogo11, clientLogo12, clientLogo13
-                          ].map((logo, index) => (
-                            <img key={`client-logo-${index}`} src={logo} alt={`Client Logo ${index + 1}`} className="client-logo" loading="lazy" />
-                          ))}
-                          {[
-                            clientLogo1, clientLogo2, clientLogo3, clientLogo4, clientLogo5, clientLogo6,
-                            clientLogo7, clientLogo8, clientLogo9, clientLogo10, clientLogo11, clientLogo12, clientLogo13
-                          ].map((logo, index) => (
-                            <img key={`client-logo-dup-${index}`} src={logo} alt={`Client Logo ${index + 1}`} className="client-logo" loading="lazy" />
-                          ))}
-                        </div>
-                      </div>
+            <div className="client-category-block">
+              <div className="partner-value-props">
+                <h3 className="partner-props-title">International MEP & General Contractors</h3>
+                <p className="partner-props-desc" style={{ marginBottom: '2rem' }}>Providing technical brainpower and high-detail modeling for error-free site execution.</p>
+              </div>
+
+              <div className="marquee-wrapper" style={{ marginBottom: '3rem' }}>
+                {/* Marquee 2: Global Contractors (Move Right) */}
+                <div className="client-marquee-row client-row">
+                  <div className="marquee-container">
+                    <div className="marquee-track reverse-track">
+                      {[
+                        clientLogo1, clientLogo2, clientLogo3, clientLogo4, clientLogo5, clientLogo6,
+                        clientLogo7, clientLogo8, clientLogo9, clientLogo10, clientLogo11, clientLogo12, clientLogo13
+                      ].map((logo, index) => (
+                        <img key={`client-logo-${index}`} src={logo} alt={`Client Logo ${index + 1}`} className="client-logo" loading="lazy" />
+                      ))}
+                      {[
+                        clientLogo1, clientLogo2, clientLogo3, clientLogo4, clientLogo5, clientLogo6,
+                        clientLogo7, clientLogo8, clientLogo9, clientLogo10, clientLogo11, clientLogo12, clientLogo13
+                      ].map((logo, index) => (
+                        <img key={`client-logo-dup-${index}`} src={logo} alt={`Client Logo ${index + 1}`} className="client-logo" loading="lazy" />
+                      ))}
                     </div>
                   </div>
+                </div>
+              </div>
 
-                  <div className="partner-value-props">
-                    <h3 className="partner-props-title">International MEP & General Contractors</h3>
-                    <p className="partner-props-desc">Providing technical brainpower and high-detail modeling for error-free site execution.</p>
-                    <ul className="client-category-list">
-                      <li className="bento-glass-card">
-                        <strong>Engineering Validation</strong>
-                        <p>We review IFC drawings to identify design gaps and raise proactive RFIs to prevent site delays.</p>
-                      </li>
-                      <li className="bento-glass-card">
-                        <strong>LOD 400 & 500 Shop Drawings</strong>
-                        <p>We deliver constructive BIM models and 2D shop drawings extracted directly from BIM for installation.</p>
-                      </li>
-                      <li className="bento-glass-card">
-                        <strong>Specialized Steel Detailing</strong>
-                        <p>Fabrication-ready NC Files, Erection Drawings, and Advanced Bills of Materials (BOMs).</p>
-                      </li>
-                    </ul>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+              <div className="partner-value-props">
+                <ul className="client-category-list">
+                  <li className="bento-glass-card">
+                    <strong>Engineering Validation</strong>
+                    <p>We review IFC drawings to identify design gaps and raise proactive RFIs to prevent site delays.</p>
+                  </li>
+                  <li className="bento-glass-card">
+                    <strong>LOD 400 & 500 Shop Drawings</strong>
+                    <p>We deliver constructive BIM models and 2D shop drawings extracted directly from BIM for installation.</p>
+                  </li>
+                  <li className="bento-glass-card">
+                    <strong>Specialized Steel Detailing</strong>
+                    <p>Fabrication-ready NC Files, Erection Drawings, and Advanced Bills of Materials (BOMs).</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -939,11 +919,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Sticky Contact Form Popup */}
-      <StickyContact>
-        <ContactForm />
-      </StickyContact>
 
     </div>
   );

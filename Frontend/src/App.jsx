@@ -13,20 +13,20 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 // Service pages
 import VirtualTeam from "./pages/services/VirtualTeam";
 import SecondmentTeam from "./pages/services/SecondmentTeam";
-import DesignEngineeringProjects from "./pages/services/DesignEngineeringProjects";
+// import DesignEngineeringProjects from "./pages/services/DesignEngineeringProjects";
 import InfrastructuralServices from "./pages/services/InfrastructuralServices";
 
 // Design service pages
 import ArchitecturalBIM from "./pages/services/design/ArchitecturalBIM";
 import SteelStructureDetailing from "./pages/services/design/SteelStructureDetailing";
 import MEPDesign from "./pages/services/design/MEPDesign";
-import PlumbingPublicHealth from "./pages/services/design/PlumbingPublicHealth";
-import HVACDesign from "./pages/services/design/HVACDesign";
-import FirefightingDesign from "./pages/services/design/FirefightingDesign";
+// import PlumbingPublicHealth from "./pages/services/design/PlumbingPublicHealth";
+// import HVACDesign from "./pages/services/design/HVACDesign";
+// import FirefightingDesign from "./pages/services/design/FirefightingDesign";
 
 import Structural from "./pages/services/design/Structural";
-import ElectricalSystemDesign from "./pages/services/design/ElectricalSystemDesign";
-import ELV from "./pages/services/design/ELV";
+// import ElectricalSystemDesign from "./pages/services/design/ElectricalSystemDesign";
+// import ELV from "./pages/services/design/ELV";
 
 // Industry pages
 import Healthcare from "./pages/industries/Healthcare";
@@ -99,7 +99,7 @@ function App() {
           {/* Service routes */}
           <Route path="/services/virtual-team" element={<MainLayout><VirtualTeam /></MainLayout>} />
           <Route path="/services/secondment-team" element={<MainLayout><SecondmentTeam /></MainLayout>} />
-          <Route path="/services/design" element={<MainLayout><DesignEngineeringProjects /></MainLayout>} />
+          {/* <Route path="/services/design" element={<MainLayout><DesignEngineeringProjects /></MainLayout>} /> */}
           <Route path="/services/infrastructural-services" element={<MainLayout><InfrastructuralServices /></MainLayout>} />
 
           {/* Industry routes */}
@@ -120,12 +120,12 @@ function App() {
           <Route path="/services/design/architectural-bim" element={<MainLayout><ArchitecturalBIM /></MainLayout>} />
           <Route path="/services/design/steel-structure-detailing" element={<MainLayout><SteelStructureDetailing /></MainLayout>} />
           <Route path="/services/design/mep-design" element={<MainLayout><MEPDesign /></MainLayout>} />
-          <Route path="/services/design/plumbing-public-health" element={<MainLayout><PlumbingPublicHealth /></MainLayout>} />
-          <Route path="/services/design/hvac-design" element={<MainLayout><HVACDesign /></MainLayout>} />
-          <Route path="/services/design/firefighting-design" element={<MainLayout><FirefightingDesign /></MainLayout>} />
+          {/* <Route path="/services/design/plumbing-public-health" element={<MainLayout><PlumbingPublicHealth /></MainLayout>} /> */}
+          {/* <Route path="/services/design/hvac-design" element={<MainLayout><HVACDesign /></MainLayout>} /> */}
+          {/* <Route path="/services/design/firefighting-design" element={<MainLayout><FirefightingDesign /></MainLayout>} /> */}
           <Route path="/services/design/structural" element={<MainLayout><Structural /></MainLayout>} />
-          <Route path="/services/design/electrical-system-design" element={<MainLayout><ElectricalSystemDesign /></MainLayout>} />
-          <Route path="/services/design/elv" element={<MainLayout><ELV /></MainLayout>} />
+          {/* <Route path="/services/design/electrical-system-design" element={<MainLayout><ElectricalSystemDesign /></MainLayout>} /> */}
+          {/* <Route path="/services/design/elv" element={<MainLayout><ELV /></MainLayout>} /> */}
 
           {/* Internship routes */}
           <Route path="/internship/civil-engineering" element={<MainLayout><CivilEngineering /></MainLayout>} />

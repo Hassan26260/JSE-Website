@@ -9,6 +9,7 @@ const Portfolio = () => {
   // State for Multi-Select Filters
   const [selectedCategories, setSelectedCategories] = useState(["All"]);
   const [selectedCountries, setSelectedCountries] = useState(["All"]);
+  const [selectedSectors, setSelectedSectors] = useState(["All"]);
 
   // Projects Data
   const [allProjects, setAllProjects] = useState([]);
@@ -17,6 +18,7 @@ const Portfolio = () => {
   // Dropdown visibility state
   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
+  const [isSectorDropdownOpen, setIsSectorDropdownOpen] = useState(false);
 
   // Modal State
   const [selectedProject, setSelectedProject] = useState(null);
@@ -55,6 +57,16 @@ const Portfolio = () => {
     "Architectural & Structural",
     "Steel Structural Detailing"
   ];
+
+  const sectorOptions = useMemo(() => {
+    const sectors = new Set();
+    allProjects.forEach(project => {
+      if (project.category === "MEP" && project.subCategory) {
+        sectors.add(project.subCategory);
+      }
+    });
+    return Array.from(sectors).sort();
+  }, [allProjects]);
 
   const countryOptions = [
     "UAE",
@@ -133,6 +145,7 @@ const Portfolio = () => {
       if (!event.target.closest('.custom-dropdown-container')) {
         setIsCategoryDropdownOpen(false);
         setIsCountryDropdownOpen(false);
+        setIsSectorDropdownOpen(false);
       }
     };
     document.addEventListener('click', handleClickOutside);
@@ -142,11 +155,19 @@ const Portfolio = () => {
 
   // -- Render Logic --
 
+  const showSectorFilter = selectedCategories.includes("MEP") && !selectedCategories.includes("All");
+
   const contentToRender = allProjects.filter(project => {
     const pCountry = project.country ? project.country.toUpperCase() : "OTHERS";
     const matchesCountry = selectedCountries.includes("All") || selectedCountries.includes(pCountry);
     const matchesCategory = selectedCategories.includes("All") || selectedCategories.includes(project.category);
-    return matchesCountry && matchesCategory;
+
+    let matchesSector = true;
+    if (showSectorFilter && project.category === "MEP") {
+      matchesSector = selectedSectors.includes("All") || selectedSectors.includes(project.subCategory);
+    }
+
+    return matchesCountry && matchesCategory && matchesSector;
   });
 
   const FilterDropdown = ({ title, options, selected, onToggle, isOpen, setIsOpen }) => (
@@ -157,8 +178,8 @@ const Portfolio = () => {
         style={{
           width: '100%',
           padding: '0.75rem 1rem',
-          backgroundColor: 'white',
-          border: '1px solid #e5e7eb',
+          backgroundColor: 'transparent',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
           borderRadius: '8px',
           textAlign: 'left',
           display: 'flex',
@@ -166,7 +187,7 @@ const Portfolio = () => {
           alignItems: 'center',
           cursor: 'pointer',
           fontWeight: '500',
-          color: '#374151',
+          color: 'white',
           boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
         }}
       >
@@ -182,10 +203,10 @@ const Portfolio = () => {
           right: 0,
           zIndex: 50,
           marginTop: '0.5rem',
-          backgroundColor: 'white',
-          border: '1px solid #e5e7eb',
+          backgroundColor: '#0f172a',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
           borderRadius: '8px',
-          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(0, 0, 0, 0.1)',
           padding: '0.5rem',
           maxHeight: '300px',
           overflowY: 'auto'
@@ -199,15 +220,15 @@ const Portfolio = () => {
               alignItems: 'center',
               gap: '0.5rem',
               borderRadius: '4px',
-              backgroundColor: selected.includes("All") ? '#eff6ff' : 'transparent',
-              color: selected.includes("All") ? '#1d4ed8' : '#374151'
+              backgroundColor: selected.includes("All") ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
+              color: 'white'
             }}
           >
             <input type="checkbox" checked={selected.includes("All")} readOnly style={{ cursor: 'pointer' }} />
             <span>All</span>
           </div>
 
-          <div style={{ height: '1px', backgroundColor: '#e5e7eb', margin: '0.5rem 0' }}></div>
+          <div style={{ height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.1)', margin: '0.5rem 0' }}></div>
 
           {options.map(option => (
             <div
@@ -220,8 +241,8 @@ const Portfolio = () => {
                 alignItems: 'center',
                 gap: '0.5rem',
                 borderRadius: '4px',
-                backgroundColor: selected.includes(option) ? '#eff6ff' : 'transparent',
-                color: selected.includes(option) ? '#1d4ed8' : '#374151'
+                backgroundColor: selected.includes(option) ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
+                color: 'white'
               }}
             >
               <input type="checkbox" checked={selected.includes(option)} readOnly style={{ cursor: 'pointer' }} />
@@ -259,7 +280,7 @@ const Portfolio = () => {
             selected={selectedCountries}
             onToggle={(item) => toggleSelection(item, selectedCountries, setSelectedCountries)}
             isOpen={isCountryDropdownOpen}
-            setIsOpen={(val) => { setIsCountryDropdownOpen(val); setIsCategoryDropdownOpen(false); }}
+            setIsOpen={(val) => { setIsCountryDropdownOpen(val); setIsCategoryDropdownOpen(false); setIsSectorDropdownOpen(false); }}
           />
 
           <FilterDropdown
@@ -268,12 +289,23 @@ const Portfolio = () => {
             selected={selectedCategories}
             onToggle={(item) => toggleSelection(item, selectedCategories, setSelectedCategories)}
             isOpen={isCategoryDropdownOpen}
-            setIsOpen={(val) => { setIsCategoryDropdownOpen(val); setIsCountryDropdownOpen(false); }}
+            setIsOpen={(val) => { setIsCategoryDropdownOpen(val); setIsCountryDropdownOpen(false); setIsSectorDropdownOpen(false); }}
           />
 
-          {(!selectedCountries.includes("All") || !selectedCategories.includes("All")) && (
+          {showSectorFilter && (
+            <FilterDropdown
+              title="Sector"
+              options={sectorOptions}
+              selected={selectedSectors}
+              onToggle={(item) => toggleSelection(item, selectedSectors, setSelectedSectors)}
+              isOpen={isSectorDropdownOpen}
+              setIsOpen={(val) => { setIsSectorDropdownOpen(val); setIsCategoryDropdownOpen(false); setIsCountryDropdownOpen(false); }}
+            />
+          )}
+
+          {(!selectedCountries.includes("All") || !selectedCategories.includes("All") || !selectedSectors.includes("All")) && (
             <button
-              onClick={() => { setSelectedCountries(["All"]); setSelectedCategories(["All"]); }}
+              onClick={() => { setSelectedCountries(["All"]); setSelectedCategories(["All"]); setSelectedSectors(["All"]); }}
               style={{
                 marginLeft: 'auto',
                 border: 'none',
@@ -370,20 +402,7 @@ const Portfolio = () => {
 
             <div className="modal-info">
               <h2 className="modal-title">{selectedProject.title}</h2>
-              <div className="modal-meta-tags" style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
-                <span className="modal-tag" style={{ backgroundColor: '#eff6ff', color: '#1d4ed8', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontSize: '0.875rem', fontWeight: '500' }}>
-                  {selectedProject.country}
-                </span>
-                <span className="modal-tag" style={{ backgroundColor: '#fdf2f8', color: '#db2777', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontSize: '0.875rem', fontWeight: '500' }}>
-                  {selectedProject.category}
-                </span>
-                {selectedProject.subCategory && (
-                  <span className="modal-tag" style={{ backgroundColor: '#f0fdf4', color: '#15803d', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontSize: '0.875rem', fontWeight: '500' }}>
-                    {selectedProject.subCategory}
-                  </span>
-                )}
-              </div>
-              <h4 className="modal-subtitle">About Project</h4>
+              <h4 className="modal-subtitle" style={{ marginTop: '1rem' }}>About Project</h4>
               <p className="modal-description" style={{ whiteSpace: 'pre-line' }}>
                 {selectedProject.description || "We were awarded with a 5 star hotel in which we succesfully generated and constructed Model of MEP services for the complete building consisting of Basement ﬂoor+ Ground+8 storey + Roof +Top Roof and Complete 2D shop drawings had been extracted and implemented in construction for our client M/s. BK Gulf, Dubai."}
               </p>

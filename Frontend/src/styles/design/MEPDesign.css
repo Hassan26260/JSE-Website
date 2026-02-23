@@ -476,3 +476,253 @@
         margin-bottom: 1rem;
     }
 }
+
+/* =========================================================================
+   6. STRATEGIC PARTNERSHIPS (Split Screen - Virtual Team Style)
+   ========================================================================= */
+.mep-support-section {
+    min-height: 80vh;
+    display: flex;
+    background-color: #0f172a;
+    /* Dark static color */
+}
+
+.mep-support-block {
+    flex: 1;
+    padding: 6rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: transparent;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background-color 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.mep-support-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+}
+
+/* Left & Right Block Hover - Our Blue (#144AE0) matching the user's specific request */
+.support-block-left::before,
+.support-block-right::before {
+    background: radial-gradient(circle at center, rgba(20, 74, 224, 0.9), #144AE0);
+}
+
+.mep-support-block:last-child {
+    border-right: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mep-support-block:hover::before {
+    opacity: 1;
+}
+
+.mep-support-label {
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #3b82f6;
+    /* Initial accent color */
+    transition: color 0.4s ease;
+}
+
+.mep-support-title {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    font-family: 'delight', sans-serif;
+    line-height: 1.2;
+}
+
+.mep-support-desc {
+    color: #94a3b8;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    max-width: 550px;
+    margin: 0;
+    transition: color 0.4s ease;
+}
+
+.mep-support-block:hover .mep-support-label,
+.mep-support-block:hover .mep-support-desc {
+    color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+    .mep-support-section {
+        flex-direction: column;
+    }
+
+    .mep-support-block {
+        min-height: 50vh;
+        border: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        padding: 4rem 2rem;
+    }
+}
+
+
+/* =========================================================================
+   7. TECH STACK (Interactive 3D Flip Cards)
+   ========================================================================= */
+.mep-tech-stack-section {
+    background: #071230;
+    padding: 8rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Floating animated background orbs */
+.tech-bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 1;
+    opacity: 0.5;
+}
+
+.tech-orb-1 {
+    top: -10%;
+    left: -10%;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, rgba(20, 74, 224, 0.4), transparent 70%);
+    animation: float-orb 15s ease-in-out infinite alternate;
+}
+
+.tech-orb-2 {
+    bottom: -10%;
+    right: -10%;
+    width: 30vw;
+    height: 30vw;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent 70%);
+    animation: float-orb 20s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes float-orb {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(10%, 10%) scale(1.1);
+    }
+}
+
+.mep-tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    perspective: 1000px;
+}
+
+.mep-tech-card {
+    background-color: transparent;
+    height: 300px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.tech-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+.mep-tech-card:hover .tech-card-inner {
+    transform: rotateY(180deg);
+}
+
+.tech-card-front,
+.tech-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Front Design */
+.tech-card-front {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.tech-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(20, 74, 224, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #60a5fa;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 20px rgba(20, 74, 224, 0.3);
+}
+
+.tech-discipline-front {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Back Design */
+.tech-card-back {
+    background: linear-gradient(135deg, #144AE0 0%, #0a2570 100%);
+    color: white;
+    transform: rotateY(180deg);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tech-discipline-back {
+    color: #fbbf24;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.tech-software-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.tech-software-tag {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+}

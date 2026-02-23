@@ -178,7 +178,7 @@ const PrivacyPolicy = () => {
                                     <ul>
                                         <li>Australia: <a href="mailto:justin@jseeng.in">justin@jseeng.in</a></li>
                                         <li>UAE: <a href="mailto:greenco1@emirates.net.ae">greenco1@emirates.net.ae</a></li>
-                                        <li>Chennai: <a href="mailto:jse@jseeng.com">jse@jseeng.com</a></li>
+                                        <li>Chennai: <a href="mailto:jse@jseeng.com">JSE@jseeng.com</a></li>
                                     </ul>
                                 </div>
 

@@ -158,7 +158,6 @@ const Structural = () => {
             {/* Split Hero Section */}
             <div className="service-hero-split">
                 <div className="hero-text-content">
-                    <span className="hero-small-label">Design Services</span>
                     <h1 className="hero-title-split">Structural Engineering</h1>
                     <p className="hero-desc-split">
                         High-Performance Structural Engineering Solutions. We transform complex design concepts into efficient, economical, and resilient structures.
