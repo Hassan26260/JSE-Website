@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import "../styles/Internship.css";
-import heroGroupImage from "../assets/images-home/internship/enlarging-img.jpeg";
+import heroGroupImage from "../assets/images-home/internship/enlarging-img.png";
 import eligibilityImage from "../assets/images-home/internship/whocanjoin.JPG";
 import hiringImage from "../assets/images-home/internship/hiring.JPG";
-import careerDevImage from "../assets/other/pexels-sora-shimazaki-5926389.jpg";
+import careerDevImage from "../assets/other/pexels-sora-shimazaki-5926389.png";
 import abroadImage from "../assets/replacement/abroad.JPG"; // New Image
 import vrImage from "../assets/images-home/virtual.jpeg"; // Fixed Import
 import internVideo from "../assets/images-home/intern-video/1a5cf5c19e1af4f9770f31343bd39fb9_0_14766666.mp4"; // Import Video

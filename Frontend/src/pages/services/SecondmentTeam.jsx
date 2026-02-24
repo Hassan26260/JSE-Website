@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import "../../styles/Page.css";
 import "./VirtualTeam.css";
 import "./SecondmentTeam.css";
-import heroImage from '../../assets/images-home/home-new-img/secondment.jpg.png';
-import offerImage from '../../assets/images-home/secondment/what-we-offer.png';
+import heroImage from '../../assets/images-home/home-new-img/secondment.jpg.jpeg';
+import offerImage from '../../assets/images-home/secondment/what-we-offer.jpeg';
 
 // Standardized Images for Additional Services (Matching Home.jsx)
 import mepImg from '../../assets/images-home/home-new-img/MEP.png';
@@ -14,7 +14,7 @@ import structImg from '../../assets/images-home/home-new-img/structural-eng.webp
 import steelImg from '../../assets/images-home/home-new-img/steel-detail.jfif';
 import infraImg from '../../assets/images-home/home-new-img/infrastructural.webp';
 import virtualEngImage from '../../assets/images-home/home-new-img/virtual-team.jpeg';
-import secondmentImage from '../../assets/images-home/home-new-img/secondment.jpg.png';
+import secondmentImage from '../../assets/images-home/home-new-img/secondment.jpg.jpeg';
 
 // Additional Services Data
 const ADDITIONAL_SERVICES = [

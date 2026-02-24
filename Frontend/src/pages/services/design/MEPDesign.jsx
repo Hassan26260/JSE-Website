@@ -20,7 +20,7 @@ import structImg from '../../../assets/images-home/home-new-img/structural-eng.w
 import steelImg from '../../../assets/images-home/home-new-img/steel-detail.jfif';
 import infraImg from '../../../assets/images-home/home-new-img/infrastructural.webp';
 import virtualEngImage from '../../../assets/images-home/home-new-img/virtual-team.jpeg';
-import secondmentImage from '../../../assets/images-home/home-new-img/secondment.jpg.png';
+import secondmentImage from '../../../assets/images-home/home-new-img/secondment.jpg.jpeg';
 
 const ADDITIONAL_SERVICES = [
   { title: "MEP Engineering", desc: "Comprehensive MEP solutions including HVAC, Electrical, and Firefighting.", link: "/services/design/mep-design", img: mepImg },

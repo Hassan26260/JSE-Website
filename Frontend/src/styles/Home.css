@@ -863,7 +863,106 @@
   }
 }
 
+/* -------------------------------------------------------------------------- */
+/* NEW: Home Page Neon Partnerships (Cloned from MEP)                         */
+/* -------------------------------------------------------------------------- */
+.home-neon-partnerships {
+  background-color: #050b14;
+  /* Deep dark background to make neon pop */
+  position: relative;
+  overflow: hidden;
+  margin-top: -2rem;
+  /* Pull up slightly into the about section */
+  min-height: 100vh;
+  display: flex;
+}
 
+/* Popping Dot-Matrix Background Pattern */
+.home-neon-partnerships::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#144AE0 1.5px, transparent 1.5px);
+  background-size: 30px 30px;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ensure the wrapper respects z-index so text sits above dots */
+.home-neon-partnerships .mep-support-section {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  /* Override MEP default bg */
+  padding: 0;
+  flex: 1;
+  min-height: 100vh;
+}
+
+/* Base block styles from MEP */
+.home-neon-partnerships .mep-support-block {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(10, 15, 30, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 4rem;
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+/* Neon Hover Effects & Dotted Patterns */
+.home-neon-partnerships .mep-support-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px);
+  background-size: 25px 25px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.4s ease;
+}
+
+.home-neon-partnerships .support-block-left:hover {
+  transform: translateY(-5px);
+  border-color: #144AE0;
+  box-shadow: inset 0 0 20px rgba(20, 74, 224, 0.15), 0 0 30px rgba(20, 74, 224, 0.2);
+  z-index: 2;
+}
+
+.home-neon-partnerships .support-block-left:hover::before {
+  background-image: radial-gradient(#144AE0 2px, transparent 2px);
+  opacity: 0.15;
+}
+
+.home-neon-partnerships .support-block-right:hover {
+  transform: translateY(-5px);
+  border-color: #06b6d4;
+  box-shadow: inset 0 0 20px rgba(6, 182, 212, 0.15), 0 0 30px rgba(6, 182, 212, 0.2);
+  z-index: 2;
+}
+
+.home-neon-partnerships .support-block-right:hover::before {
+  background-image: radial-gradient(#06b6d4 2px, transparent 2px);
+  opacity: 0.15;
+}
+
+/* Text overrides for dark mode */
+.home-neon-partnerships .mep-support-title {
+  color: white;
+}
+
+.home-neon-partnerships .mep-support-desc {
+  color: #94a3b8;
+}
 
 
 /* Solutions Section */
@@ -2535,8 +2634,8 @@
   /* Hide overflow */
   padding: 2rem 0;
   /* fade edges */
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), black 3%, black 97%, rgba(0, 0, 0, 0.4));
+  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), black 3%, black 97%, rgba(0, 0, 0, 0.4));
 }
 
 .reviews-track {
@@ -2568,30 +2667,74 @@
 .jse-review-card {
   min-width: 450px;
   max-width: 450px;
-  background: #F8F9FA;
-  /* Light Tint */
+  background: #0B1221;
+  /* Dark Slate Theme */
   padding: 3rem;
   border-radius: 20px;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 8px;
-  /* Subtle unique shape? Optional */
   transition: all 0.3s ease;
   cursor: default;
-  /* Pause on hover handling */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  /* Subtle dark mode border */
   flex-shrink: 0;
 }
 
 .jse-review-card:hover {
-  background: #ffffff;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  background: #111827;
+  /* Slightly lighter slate for hover interaction */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  /* Stronger dark mode shadow */
   /* Lift on hover */
   transform: translateY(-5px);
-  border-color: #f1f5f9;
+  border-color: #1e293b;
 }
+
+/* --- Phase 16: Rotating Neon Ambient Tints for Testimonials --- */
+.jse-review-card:nth-child(4n+1) {
+  box-shadow: 0 5px 20px rgba(59, 130, 246, 0.1);
+  border-top: 3px solid rgba(59, 130, 246, 0.4);
+  /* Blue */
+}
+
+.jse-review-card:nth-child(4n+1):hover {
+  box-shadow: 0 10px 40px rgba(59, 130, 246, 0.2);
+}
+
+.jse-review-card:nth-child(4n+2) {
+  box-shadow: 0 5px 20px rgba(168, 85, 247, 0.1);
+  border-top: 3px solid rgba(168, 85, 247, 0.4);
+  /* Purple */
+}
+
+.jse-review-card:nth-child(4n+2):hover {
+  box-shadow: 0 10px 40px rgba(168, 85, 247, 0.2);
+}
+
+.jse-review-card:nth-child(4n+3) {
+  box-shadow: 0 5px 20px rgba(34, 197, 94, 0.1);
+  border-top: 3px solid rgba(34, 197, 94, 0.4);
+  /* Green */
+}
+
+.jse-review-card:nth-child(4n+3):hover {
+  box-shadow: 0 10px 40px rgba(34, 197, 94, 0.2);
+}
+
+.jse-review-card:nth-child(4n+4) {
+  box-shadow: 0 5px 20px rgba(6, 182, 212, 0.1);
+  border-top: 3px solid rgba(6, 182, 212, 0.4);
+  /* Cyan */
+}
+
+.jse-review-card:nth-child(4n+4):hover {
+  box-shadow: 0 10px 40px rgba(6, 182, 212, 0.2);
+}
+
+/* ----------------------------------------------------------------- */
 
 /* New Quote Icon inside card */
 .review-quote-icon {
@@ -2608,14 +2751,16 @@
   font-family: "Lato", sans-serif;
   font-size: 1.15rem;
   line-height: 1.6;
-  color: #1a1a1a;
+  color: #f1f5f9;
+  /* Bright Off-White for contrast */
   margin-bottom: 2rem;
   font-weight: 500;
 }
 
 .review-footer {
   margin-top: auto;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  /* Dark mode separator */
   padding-top: 1.5rem;
 }
 
@@ -2623,14 +2768,16 @@
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 1rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #ffffff;
+  /* Pure White */
   margin-bottom: 0.2rem;
 }
 
 .review-role {
   font-family: "Lato", sans-serif;
   font-size: 0.85rem;
-  color: #64748b;
+  color: #94a3b8;
+  /* Slate grey */
   font-weight: 500;
 }
 
@@ -3670,6 +3817,11 @@
   background-color: #f8fafc;
 }
 
+/* Hover activates blue text */
+.solution-accordion-header:hover .solution-list-text {
+  color: #144AE0;
+}
+
 .solution-list-text {
   font-family: 'Delight', sans-serif;
   font-size: 2rem;
@@ -3685,7 +3837,10 @@
 
 /* Arrow - Hidden by default, visible on hover or active */
 .solution-arrow {
-  font-size: 1.5rem;
+  /* Increased size */
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
   color: #144AE0;
   opacity: 0;
   transform: translateX(-10px);

@@ -13,7 +13,7 @@ import steelImg from '../../assets/images-home/home-new-img/steel-detail.jfif';
 import heroImage from '../../assets/images-home/home-new-img/infrastructural.webp';
 import infraImg from '../../assets/images-home/home-new-img/infrastructural.webp';
 import virtualEngImage from '../../assets/images-home/home-new-img/virtual-team.jpeg';
-import secondmentImage from '../../assets/images-home/home-new-img/secondment.jpg.png';
+import secondmentImage from '../../assets/images-home/home-new-img/secondment.jpg.jpeg';
 
 // Additional Services Data (Standardized to Home.jsx Solutions)
 const ADDITIONAL_SERVICES = [

@@ -6,7 +6,7 @@ import StickyContact from "../components/StickyContact";
 import ContactForm from "../components/ContactForm";
 import { motion, AnimatePresence } from "framer-motion";
 import heroBanner from "../assets/images-home/Herobanner.webp";
-import heroGroupImage from "../assets/images-home/home-new-img/about-home-new.jpeg";
+import heroGroupImage from "../assets/images-home/home-new-img/about-home-new.png";
 import whyChooseUsImage from "../assets/images-home/why choose us.png";
 import architecturalBim from "../assets/images-home/architectural-bim.webp";
 import hvacDesign from "../assets/images-home/hvac-design.webp";
@@ -57,7 +57,7 @@ import structImg from "../assets/images-home/home-new-img/structural-eng.webp";
 import steelImg from "../assets/images-home/home-new-img/steel-detail.jfif";
 import infraImg from "../assets/images-home/home-new-img/infrastructural.webp";
 import virtualEngImage from "../assets/images-home/home-new-img/virtual-team.jpeg";
-import secondmentImage from "../assets/images-home/home-new-img/secondment.jpg.png";
+import secondmentImage from "../assets/images-home/home-new-img/secondment.jpg.jpeg";
 
 
 
@@ -328,6 +328,11 @@ const Home = () => {
       text: "Overall, the effort and quality are appreciated. Positive Points. The overall model structure is clear and well-organized. Good accuracy in geometry and alignment with design drawings. Proper use of Revit families and consistent naming conventions. The Model visualization effectively.",
       author: "Mubarak Basha",
       role: "Senior BIM Technician - Mechanical, SSH"
+    },
+    {
+      text: "I would like to formally acknowledge and express my sincere appreciation for the outstanding efforts demonstrated by the BIM engineers from your team on our recent projects. In particular, the individuals listed below have shown exceptional commitment and professionalism. Their performance has been truly commendable. We look forward to continued collaboration with your team on future initiatives.",
+      author: "Sujesh Thozhukkatt",
+      role: "BIM Manager, Jacobs"
     }
   ];
 
@@ -442,7 +447,7 @@ const Home = () => {
                 style={{
                   fontSize: '1.6rem',
                   fontWeight: '700',
-                  color: '#144AE0', // Distinct amber/yellow accent color
+                  color: 'white', // Updated to white per request
                   fontFamily: "monospace, 'Delight', sans-serif",
                   cursor: 'default',
                   margin: 0,
@@ -519,8 +524,17 @@ const Home = () => {
               <p style={{ marginBottom: '1rem' }}>
                 Founded by lead consultants with over 20 years of expertise in the Middle East and Southeast Asia, we bridge the gap between complex engineering design, advanced BIM coordination, and physical construction execution.
               </p>
+              <p style={{ marginBottom: '1rem' }}>
+                Unlike standard BIM firms, we are Engineers First. We host specialized internal teams for:
+              </p>
+              <ul style={{ listStyleType: 'disc', paddingLeft: '2rem', marginBottom: '1rem', color: '#475569' }}>
+                <li style={{ marginBottom: '0.5rem' }}>MEP Engineering</li>
+                <li style={{ marginBottom: '0.5rem' }}>Architecture</li>
+                <li style={{ marginBottom: '0.5rem' }}>Structural BIM</li>
+                <li style={{ marginBottom: '0.5rem' }}>Steel Detailing (Tekla)</li>
+              </ul>
               <p>
-                Unlike standard BIM firms, we are Engineers First. We host specialized internal teams for MEP Engineering, Architecture, Structural BIM, and Steel Detailing (Tekla), allowing us to manage world-class projects from initial concept to final commissioning.
+                This allows us to manage world-class projects from initial concept to final commissioning.
               </p>
             </div>
 
@@ -562,6 +576,29 @@ const Home = () => {
                 <span className="badge-text">Years of<br />Excellence</span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW: Cloned Strategic Partnerships from MEP with Neon Styles */}
+      <section className="home-neon-partnerships">
+        <div className="mep-support-section">
+          {/* Consultants Left */}
+          <div className="mep-support-block support-block-left">
+            <span className="mep-support-label">Strategic Partnerships</span>
+            <h2 className="mep-support-title">For Consultants<br />The Design Development Partner</h2>
+            <p className="mep-support-desc">
+              We act as your Design Brain, providing the technical depth and man-hour capacity needed to progress from concept to IFC. We take architectural intent and develop all required engineering calculations, system sizing, code-compliant BIM models, and 100% coordination across all building services disciplines.
+            </p>
+          </div>
+
+          {/* Contractors Right */}
+          <div className="mep-support-block support-block-right">
+            <span className="mep-support-label" style={{ color: '#60a5fa' }}>Equal Contribution</span>
+            <h2 className="mep-support-title">For Contractors<br />The Construction Execution Partner</h2>
+            <p className="mep-support-desc">
+              We provide the engineering brainpower and high-detail BIM deliverables required for error-free site installation. We perform complete audits of IFC drawings, upgrade models to LOD 400 (shop drawings) / LOD 500 (as-built), and resolve constructability issues proactively to protect project budgets.
+            </p>
           </div>
         </div>
       </section>
@@ -722,44 +759,29 @@ const Home = () => {
           <div className="benefits-cards-list">
             {[
               {
-                title: "Multi-Disciplinary Expertise",
-                desc: "Seamless integration of MEP, BIM, Electrical, ELV, Plumbing, HVAC & Firefighting designs under one roof.",
+                title: "Proactive Issue Ownership",
+                desc: "We don't just report clashes; we take ownership of the resolution.",
                 icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 22v-5l5-5 5 5v5M12 12l5-5 5 5v5" /></svg>
               },
               {
-                title: "Precision & Coordination",
-                desc: "Designs optimized to minimize clashes, improve constructability, and reduce rework on site.",
+                title: "Performance Under Pressure",
+                desc: "Proven ability to meet critical tender and submission deadlines for mega-scale infrastructure.",
                 icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
               },
               {
-                title: "BIM-Enabled Workflows",
-                desc: "Advanced BIM tools for better visualization, faster approvals, and accurate quantity take-offs.",
+                title: "Technical Adaptability",
+                desc: "Seamlessly incorporating client feedback and adapting to evolving project requirements.",
                 icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /></svg>
+              },
+              {
+                title: "Consistency",
+                desc: "Maintaining a 100% quality compliance record across diverse sectors including Malls, Museums, and Transportation Hubs.",
+                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
               },
               {
                 title: "Cost-Optimized Solutions",
                 desc: "Efficient design methodologies that reduce material cost, energy consumption, and operational expenses.",
-                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-              },
-              {
-                title: "Fast Turnaround Delivery",
-                desc: "Structured processes ensure reliable timelines for consultants, contractors, and developers.",
                 icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              },
-              {
-                title: "Sector-Wide Experience",
-                desc: "From residential to commercial, industrial, healthcare, hospitality, and institutional sectors.",
-                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l8-4 8 4v14"></path></svg>
-              },
-              {
-                title: "Skilled Technical Team",
-                desc: "Dedicated specialists with options for secondment and virtual teams to support project execution.",
-                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-              },
-              {
-                title: "Client-Centric Support",
-                desc: "Transparent communication, progressive updates, and responsive assistance throughout project lifecycle.",
-                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
               }
             ].map((item, index) => (
               <div key={index} className="benefit-card-new">
@@ -830,7 +852,7 @@ const Home = () => {
                 >
                   <span className="solution-list-text">{service.title}</span>
                   <span className={`solution-arrow ${activeService === index ? 'rotated' : ''}`}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                   </span>
