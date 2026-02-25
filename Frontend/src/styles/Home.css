@@ -903,7 +903,7 @@
   min-height: 100vh;
 }
 
-/* Base block styles from MEP */
+/* Base block styles from MEP - With Flex Layout for Hover Shift */
 .home-neon-partnerships .mep-support-block {
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(10, 15, 30, 0.6);
@@ -913,6 +913,11 @@
   position: relative;
   transition: all 0.4s ease;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 400px;
+  /* Provides space for vertical centering to be visible */
 }
 
 /* Neon Hover Effects & Dotted Patterns */
@@ -933,35 +938,50 @@
 
 .home-neon-partnerships .support-block-left:hover {
   transform: translateY(-5px);
-  border-color: #144AE0;
-  box-shadow: inset 0 0 20px rgba(20, 74, 224, 0.15), 0 0 30px rgba(20, 74, 224, 0.2);
+  border-color: rgba(20, 74, 224, 0.8);
+  box-shadow: inset 0 0 30px rgba(20, 74, 224, 0.3), 0 0 50px rgba(20, 74, 224, 0.4);
   z-index: 2;
 }
 
 .home-neon-partnerships .support-block-left:hover::before {
-  background-image: radial-gradient(#144AE0 2px, transparent 2px);
-  opacity: 0.15;
+  background-image: radial-gradient(rgba(20, 74, 224, 0.9) 2px, transparent 2px);
+  opacity: 0.25;
 }
 
 .home-neon-partnerships .support-block-right:hover {
   transform: translateY(-5px);
-  border-color: #06b6d4;
-  box-shadow: inset 0 0 20px rgba(6, 182, 212, 0.15), 0 0 30px rgba(6, 182, 212, 0.2);
+  border-color: rgba(6, 182, 212, 0.8);
+  box-shadow: inset 0 0 30px rgba(6, 182, 212, 0.3), 0 0 50px rgba(6, 182, 212, 0.4);
   z-index: 2;
 }
 
 .home-neon-partnerships .support-block-right:hover::before {
-  background-image: radial-gradient(#06b6d4 2px, transparent 2px);
-  opacity: 0.15;
+  background-image: radial-gradient(rgba(6, 182, 212, 0.9) 2px, transparent 2px);
+  opacity: 0.25;
 }
 
-/* Text overrides for dark mode */
+/* Text overrides for dark mode & new interactive logic */
 .home-neon-partnerships .mep-support-title {
   color: white;
+  margin: 0;
+  transition: all 0.5s ease;
 }
 
 .home-neon-partnerships .mep-support-desc {
   color: #94a3b8;
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+/* On hover: unveil the description, title pushes up automatically via flex container */
+.home-neon-partnerships .mep-support-block:hover .mep-support-desc {
+  opacity: 1;
+  max-height: 400px;
+  /* Safe upper bound to allow slide down */
+  margin-top: 1.5rem;
 }
 
 

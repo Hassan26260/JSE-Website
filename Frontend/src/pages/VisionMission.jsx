@@ -5,8 +5,7 @@ import "../styles/Page.css";
 import "./VisionMission.css";
 
 // Images
-import heroImage from "../assets/images-home/skyscraper.webp";
-// Fallback if skyscraper is missing, usually Vite handles imports fine.
+import heroImage from "../assets/vision/ICE_9377.JPG";
 
 // Core Values Data
 const coreValues = [

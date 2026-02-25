@@ -31,12 +31,12 @@ const Footer = () => {
                             </svg>
                             <span>044 - 4261 1180</span>
                         </div>
-                        <div className="contact-item" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#94a3b8', fontSize: '0.85rem' }}>
+                        {/* <div className="contact-item" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#94a3b8', fontSize: '0.85rem' }}>
                             <svg className="contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                             </svg>
                             <span className="address-text">Rayala Nagar, Ramapuram, Chennai,<br />Tamilnadu - 600089, India</span>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Socials */}
@@ -88,7 +88,7 @@ const Footer = () => {
                     <div className="footer-group">
                         <h4 className="footer-heading">Discover JSE</h4>
                         <ul className="footer-links">
-                            <li><Link to="/who-we-are" className="footer-link">Who We Are</Link></li>
+                            {/* <li><Link to="/who-we-are" className="footer-link">Who We Are</Link></li> */}
                             <li><Link to="/vision-mission" className="footer-link">Our Vision & Mission</Link></li>
                             <li><Link to="/history" className="footer-link">Our History</Link></li>
                         </ul>

@@ -333,6 +333,26 @@ const Home = () => {
       text: "I would like to formally acknowledge and express my sincere appreciation for the outstanding efforts demonstrated by the BIM engineers from your team on our recent projects. In particular, the individuals listed below have shown exceptional commitment and professionalism. Their performance has been truly commendable. We look forward to continued collaboration with your team on future initiatives.",
       author: "Sujesh Thozhukkatt",
       role: "BIM Manager, Jacobs"
+    },
+    {
+      text: "It’s been great working with you, and you are really doing great , many thanks for the relentless support and you are a key member in the project and team , continue the same way.",
+      author: "Egis",
+      role: "Client"
+    },
+    {
+      text: "Thank you for the good work you have done on this project.\n\nWe appreciate your contribution and look forward to working with you again in the future.\n\nWishing you the best!",
+      author: "vishnu MP",
+      role: "Electric Engineer, APA Engineering"
+    },
+    {
+      text: "I would like to sincerely thank everyone who worked yesterday to complete and submit the package.\n\nAll the below-listed personnel may take compensatory off for today, as they worked late night yesterday.",
+      author: "Meinhart",
+      role: "Client"
+    },
+    {
+      text: "Throughout our work together, I’ve found him to be consistently proactive and reliable. He approaches meetings with a professional and confident posture, contributes thoughtfully, and ensures discussions remain productive.\n\nWhen challenges arise, he demonstrates innovation by suggesting practical solutions and putting forward ideas that add real value.\n\nHis approach not only supports the smooth progress of our joint efforts but also strengthens the cooperation between our teams.\n\nGiven the quality of his contributions, I believe he would be very deserving of an on-the-spot bonus as recognition for his efforts.",
+      author: "Esign",
+      role: "Client"
     }
   ];
 
@@ -424,7 +444,7 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              Precision Engineering.<br />Excellence in Design.
+              Precision Engineering<br />Excellence in Design
             </motion.h1>
 
             <motion.p
