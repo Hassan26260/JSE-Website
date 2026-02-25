@@ -6,7 +6,7 @@ import "../styles/Page.css";
 import "./History.css";
 
 // Images
-import heroImage from "../assets/images-home/hist/skyscraper.jpg";
+import heroImage from "../assets/images-home/hist/skyscraper.JPG";
 import founderImage from "../assets/History/Founder.png";
 import mdImage from "../assets/History/MD.jpg";
 
