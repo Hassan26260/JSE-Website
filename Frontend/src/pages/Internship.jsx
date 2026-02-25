@@ -235,21 +235,11 @@ const Internship = () => {
       </section>
 
       {/* Career Development Section */}
-      <section className="career-development-section">
-        <div
-          className="career-parallax-bg"
-          style={{ backgroundImage: `url(${careerDevImage})` }}
-        ></div>
-        <div className="career-dev-card" style={{
-          background: 'rgba(255, 255, 255, 0.1)',
-          backdropFilter: 'blur(5px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
-        }}>
-          <h2 className="career-dev-title">Career Development</h2>
-          <div className="title-underline"></div>
-          <p className="career-dev-text">
+      <section className="career-development-blue-section">
+        <div className="career-dev-blue-container">
+          <h2 className="career-dev-blue-title">Career Development</h2>
+          <div className="career-dev-blue-divider"></div>
+          <p className="career-dev-blue-text">
             As an intern, you can easily broaden your exposure to the BIM industry and deepen your hands-on experience by joining our 100-days Internship program. From learning advanced modelling workflows to understanding real project coordination, you can learn from our seniors or managers everyday and grow into an industry-ready PRO engineer.
           </p>
         </div>

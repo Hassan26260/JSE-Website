@@ -299,16 +299,16 @@ const Home = () => {
       author: "Ananthakrishnan",
       role: "APA Engineering"
     },
-    {
-      text: "The team's dedication and problem-solving skills were instrumental in the 100% completion of the Digital Art Museum project. Their ownership of issues, both minor and major, led to the successful resolution of numerous clashes, culminating in the timely submission of the model.",
-      author: "Paresh Yashwant Katkar",
-      role: "BIM Manager - MEP, Buildings, Ramboll"
-    },
-    {
-      text: "The AVK Mall and T2 tender package was issued successfully due to the team's considerable efforts. Their hard work is much appreciated. I look forward to continued success with this team.",
-      author: "Chijyoti Challamarad",
-      role: "Principal Mechanical Engineer, Ramboll"
-    },
+    // {
+    //   text: "The team's dedication and problem-solving skills were instrumental in the 100% completion of the Digital Art Museum project. Their ownership of issues, both minor and major, led to the successful resolution of numerous clashes, culminating in the timely submission of the model.",
+    //   author: "Paresh Yashwant Katkar",
+    //   role: "BIM Manager - MEP, Buildings, Ramboll"
+    // },
+    // {
+    //   text: "The AVK Mall and T2 tender package was issued successfully due to the team's considerable efforts. Their hard work is much appreciated. I look forward to continued success with this team.",
+    //   author: "Chijyoti Challamarad",
+    //   role: "Principal Mechanical Engineer, Ramboll"
+    // },
     {
       text: "The issuance of two major AVK assets for tender is a fantastic achievement. Congratulations to the entire team for their exceptional work on this significant milestone.",
       author: "Michael Rimmer",
@@ -335,24 +335,29 @@ const Home = () => {
       role: "BIM Manager, Jacobs"
     },
     {
-      text: "It’s been great working with you, and you are really doing great , many thanks for the relentless support and you are a key member in the project and team , continue the same way.",
-      author: "Egis",
-      role: "Client"
+      text: "Great work all. It’s been a tough journey, but thanks to all your hard work, the end product is well appreciated.",
+      author: "Anil Menon",
+      role: "CKR"
     },
     {
-      text: "Thank you for the good work you have done on this project.\n\nWe appreciate your contribution and look forward to working with you again in the future.\n\nWishing you the best!",
-      author: "vishnu MP",
-      role: "Electric Engineer, APA Engineering"
+      text: "We met with the client yesterday to go through the wet-stamp and work in progress drawings on MGM.\n\nI am proud to say that the client has complimented us on the presentation of the drawings, noting that even the costing drawings are of wet-stamp quality. This is a result of the India teams hard work and efforts.\n\nI would like to thank you all for your hard work in reaching this achievement.",
+      author: "Brian Lugg",
+      role: "Technical Director, CKR"
     },
     {
-      text: "I would like to sincerely thank everyone who worked yesterday to complete and submit the package.\n\nAll the below-listed personnel may take compensatory off for today, as they worked late night yesterday.",
-      author: "Meinhart",
-      role: "Client"
+      text: "I wanted to take a moment to share some feedback regarding JSE Teams' collaboration with us on till now.\n\nThroughout our work together, I’ve found them to be consistently proactive and reliable, and they approach meetings with a professional and confident posture, contributes thoughtfully and ensures discussions remain productive. When challenges arise, they demonstrate innovation by suggesting practical solutions and putting forward ideas that add real value.\n\nTheir approach not only supports the smooth progress of our joint efforts but also strengthens the cooperation between our teams.",
+      author: "ALINA Giju",
+      role: "Project Manager, DESIGN MATTERS SRL"
     },
     {
-      text: "Throughout our work together, I’ve found him to be consistently proactive and reliable. He approaches meetings with a professional and confident posture, contributes thoughtfully, and ensures discussions remain productive.\n\nWhen challenges arise, he demonstrates innovation by suggesting practical solutions and putting forward ideas that add real value.\n\nHis approach not only supports the smooth progress of our joint efforts but also strengthens the cooperation between our teams.\n\nGiven the quality of his contributions, I believe he would be very deserving of an on-the-spot bonus as recognition for his efforts.",
-      author: "Esign",
-      role: "Client"
+      text: "Thank you for the good work you have done on this project. We appreciate your contribution and look forward to working with you again in the future. Wishing you the best!",
+      author: "Vishnu MP",
+      role: "Electrical Engineer, APA Engineering"
+    },
+    {
+      text: "I am pleased to inform you that things are going great with the team we have on board so far. We would like to hire many members of your team.\n\nThank you for your support.",
+      author: "Dimitri Lourandos",
+      role: "SolutionStation"
     }
   ];
 
