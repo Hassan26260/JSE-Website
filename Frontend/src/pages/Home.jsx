@@ -212,6 +212,24 @@ const Home = () => {
   // Tabbed Showcase State
   const [activePartnerTab, setActivePartnerTab] = useState('consultants');
 
+  // Solutions Carousel State
+  const [carouselIndex, setCarouselIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCarouselIndex((prev) => (prev + 1) % servicesData.length);
+  };
+
+  const prevSlide = () => {
+    setCarouselIndex((prev) => (prev - 1 + servicesData.length) % servicesData.length);
+  };
+
+  // Helper for Carousel text truncation
+  const truncateText = (text, maxLength) => {
+    if (!text) return "";
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength) + "...";
+  };
+
   const toggleService = (index) => {
     setActiveService(activeService === index ? null : index);
   };
@@ -950,6 +968,57 @@ const Home = () => {
           </div>
         </motion.div>
       </section>
+
+      {/* --- NEW Solutions Carousel Section (Phase 31) --- */}
+      <section className="solutions-carousel-section" id="solutions-carousel">
+        <div className="solutions-carousel-header">
+          <h2 className="solutions-title" style={{ textAlign: "center" }}>SOLUTIONS BEYOND SOFTWARE (CAROUSEL UI)</h2>
+          <p className="solutions-description" style={{ margin: '1rem auto 0 auto', color: '#64748b', textAlign: "center" }}>
+            JSE offers customized engineering solutions to fulfill our clients project requirement.
+          </p>
+        </div>
+
+        <div className="solutions-carousel-container">
+          <div className="carousel-nav-controls">
+            <button className="carousel-nav-btn" onClick={prevSlide} aria-label="Previous Slide">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button className="carousel-nav-btn" onClick={nextSlide} aria-label="Next Slide">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={carouselIndex}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
+              className="carousel-slide-group"
+            >
+              <div className="carousel-image-wrapper">
+                <img src={servicesData[carouselIndex].img} alt={servicesData[carouselIndex].title} loading="lazy" />
+              </div>
+
+              <div className="carousel-content-box">
+                <h3 className="carousel-content-title">{servicesData[carouselIndex].title}</h3>
+                <p className="carousel-content-desc">
+                  {truncateText(servicesData[carouselIndex].description, 120)}
+                </p>
+                <Link to={servicesData[carouselIndex].link} className="carousel-learn-more-btn">
+                  Learn More
+                </Link>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </section>
+
 
       <section className="geo-stats-section">
         <div className="geo-stats-container">

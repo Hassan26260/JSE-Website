@@ -1312,6 +1312,7 @@
   opacity: 0.8;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -4082,5 +4083,214 @@
 
   .solution-detail-desc {
     font-size: 1rem;
+  }
+}
+
+/* --- Phase 31: Solutions Section Carousel (Reference Match) --- */
+.solutions-carousel-section {
+  padding: 6rem 0;
+  background-color: #ffffff;
+  /* Typically clean white or light grey for contrast */
+  position: relative;
+  overflow: hidden;
+}
+
+.solutions-carousel-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.solutions-carousel-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  height: 550px;
+  /* Fixed height for consistent slide flips */
+  display: flex;
+  align-items: center;
+}
+
+.carousel-slide-group {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+/* Let container stretch completely on the right to simulate margin overlap */
+.solutions-carousel-container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  height: 550px;
+  /* Fixed height for consistent slide flips */
+  display: flex;
+  align-items: center;
+}
+
+/* Left Image Area */
+.carousel-image-wrapper {
+  width: 70%;
+  height: 100%;
+  /* Matches container height */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Right Overlapping Blue Box */
+.carousel-content-box {
+  width: 42%;
+  /* Rectangular */
+  height: 85%;
+  /* Shorter than the image wrapper so the top edge drops lower */
+  background-color: #144AE0;
+  /* Signature JSE Blue */
+  color: #ffffff;
+  padding: 4rem 3rem;
+  /* Reduced overall padding slightly */
+  position: absolute;
+  right: -2rem;
+  /* Pull strongly past the center container margin to overlap the page edge */
+  bottom: 0;
+  z-index: 10;
+  box-shadow: -15px 15px 50px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.carousel-content-title {
+  font-family: 'delight', system-ui;
+  font-size: 2.1rem;
+  /* Matched to solution-list-text requested aesthetic sizing */
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.carousel-content-desc {
+  font-family: "Lato", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.carousel-learn-more-btn {
+  display: inline-block;
+  padding: 0.8rem 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  color: white;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.carousel-learn-more-btn:hover {
+  background: white;
+  color: #0B3A82;
+  border-color: white;
+}
+
+/* Navigation Controls (Above the blue box) */
+.carousel-nav-controls {
+  position: absolute;
+  right: 0rem;
+  top: 7%;
+  /* Place above the shortened blue box (which is 85% height aligned bottom) */
+  transform: translateY(-50%);
+  display: flex;
+  gap: 1.5rem;
+  z-index: 20;
+}
+
+.carousel-nav-btn {
+  background: transparent;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: opacity 0.3s transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-nav-btn:hover {
+  opacity: 0.6;
+  transform: scale(1.1);
+}
+
+/* Responsive Logic */
+@media (max-width: 1024px) {
+  .solutions-carousel-container {
+    height: auto;
+    min-height: 700px;
+    padding: 0 2rem;
+  }
+
+  .carousel-slide-group {
+    flex-direction: column;
+    position: relative;
+    /* release absolute positioning so height grows */
+  }
+
+  .carousel-image-wrapper {
+    width: 100%;
+    height: 400px;
+  }
+
+  .carousel-content-box {
+    width: 90%;
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    margin-top: -6rem;
+    /* Pull up to overlap */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3rem 2.5rem;
+  }
+
+  .carousel-nav-controls {
+    right: 5%;
+    top: -4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-image-wrapper {
+    height: 300px;
+  }
+
+  .solutions-carousel-container {
+    min-height: 600px;
+  }
+
+  .carousel-content-box {
+    margin-top: -4rem;
+    padding: 2rem 1.5rem;
+    width: 95%;
+  }
+
+  .carousel-content-title {
+    font-size: 1.8rem;
   }
 }
