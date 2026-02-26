@@ -229,8 +229,8 @@ const Home = () => {
   };
 
   const itemFadeUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+    hidden: { opacity: 0, y: 70 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
 
   // Handle Hash Scroll (e.g. from Header Contact Us)
@@ -299,16 +299,16 @@ const Home = () => {
       author: "Ananthakrishnan",
       role: "APA Engineering"
     },
-    // {
-    //   text: "The team's dedication and problem-solving skills were instrumental in the 100% completion of the Digital Art Museum project. Their ownership of issues, both minor and major, led to the successful resolution of numerous clashes, culminating in the timely submission of the model.",
-    //   author: "Paresh Yashwant Katkar",
-    //   role: "BIM Manager - MEP, Buildings, Ramboll"
-    // },
-    // {
-    //   text: "The AVK Mall and T2 tender package was issued successfully due to the team's considerable efforts. Their hard work is much appreciated. I look forward to continued success with this team.",
-    //   author: "Chijyoti Challamarad",
-    //   role: "Principal Mechanical Engineer, Ramboll"
-    // },
+    {
+      text: "The team's dedication and problem-solving skills were instrumental in the 100% completion of the Digital Art Museum project. Their ownership of issues, both minor and major, led to the successful resolution of numerous clashes, culminating in the timely submission of the model.",
+      author: "Paresh Yashwant Katkar",
+      role: "BIM Manager - MEP, Buildings, Ramboll"
+    },
+    {
+      text: "The AVK Mall and T2 tender package was issued successfully due to the team's considerable efforts. Their hard work is much appreciated. I look forward to continued success with this team.",
+      author: "Chijyoti Challamarad",
+      role: "Principal Mechanical Engineer, Ramboll"
+    },
     {
       text: "The issuance of two major AVK assets for tender is a fantastic achievement. Congratulations to the entire team for their exceptional work on this significant milestone.",
       author: "Michael Rimmer",
@@ -537,7 +537,13 @@ const Home = () => {
 
       {/* About Section */}
       <section className="about-section">
-        <div className="about-container">
+        <motion.div
+          className="about-container"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <div className="about-content-left">
             {/* <span className="about-tagline dash-tagline">About JSE</span> */}
             <h2 className="about-company-name">About JSE Engineering</h2>
@@ -563,33 +569,11 @@ const Home = () => {
               </p>
             </div>
 
-            {/* <ul className="about-features-list">
-              <li>
-                <span className="check-icon">✓</span>
-                <span>Global Project Delivery</span>
-              </li>
-              <li>
-                <span className="check-icon">✓</span>
-                <span>End-to-End BIM Solutions</span>
-              </li>
-              <li>
-                <span className="check-icon">✓</span>
-                <span>Sustainability Focused</span>
-              </li>
-              <li>
-                <span className="check-icon">✓</span>
-                <span>Elite Engineering Talent</span>
-              </li>
-            </ul> */}
-
             <Link to="/history" className="about-cta-btn">Discover Our Story</Link>
           </div>
 
           <div className="about-image-container">
-            <div
-              className={`about-image-wrapper ${aboutImageVisible ? 'visible' : ''}`}
-              ref={aboutImageRef}
-            >
+            <div className="about-image-wrapper visible">
               <img
                 src={heroGroupImage}
                 alt="JSE Engineering Office"
@@ -602,34 +586,53 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* NEW: Cloned Strategic Partnerships from MEP with Neon Styles */}
       <section className="home-neon-partnerships">
-        <div className="mep-support-section">
+        <div className="mep-support-section" style={{ overflow: 'hidden' }}>
           {/* Consultants Left */}
-          <div className="mep-support-block support-block-left">
+          <motion.div
+            className="mep-support-block support-block-left"
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <span className="mep-support-label">Strategic Partnerships</span>
             <h2 className="mep-support-title">For Consultants<br />The Design Development Partner</h2>
             <p className="mep-support-desc">
               We act as your Design Brain, providing the technical depth and man-hour capacity needed to progress from concept to IFC. We take architectural intent and develop all required engineering calculations, system sizing, code-compliant BIM models, and 100% coordination across all building services disciplines.
             </p>
-          </div>
+          </motion.div>
 
           {/* Contractors Right */}
-          <div className="mep-support-block support-block-right">
+          <motion.div
+            className="mep-support-block support-block-right"
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <span className="mep-support-label" style={{ color: '#60a5fa' }}>Equal Contribution</span>
             <h2 className="mep-support-title">For Contractors<br />The Construction Execution Partner</h2>
             <p className="mep-support-desc">
               We provide the engineering brainpower and high-detail BIM deliverables required for error-free site installation. We perform complete audits of IFC drawings, upgrade models to LOD 400 (shop drawings) / LOD 500 (as-built), and resolve constructability issues proactively to protect project budgets.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       <section className="client-marquee-section">
-        <div className="container" style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2rem' }}>
+        <motion.div
+          className="container"
+          style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2rem' }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
 
           {/* Intro Section */}
           <div className="client-partnerships-intro">
@@ -677,7 +680,7 @@ const Home = () => {
                     <p>We act as your extended engineering arm, developing concepts into full detailed designs.</p>
                   </li>
                   <li className="bento-glass-card">
-                    <strong>Engineering-Led BIM (LOD 100–300)</strong>
+                    <strong>Engineering-Led BIM <br />(LOD 100–300)</strong>
                     <p>We ensure the BIM model is a true reflection of engineering data with seamless inter-disciplinary coordination.</p>
                   </li>
                   <li className="bento-glass-card">
@@ -734,11 +737,17 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <section className="client-reviews-section">
-        <div className="reviews-container">
+        <motion.div
+          className="reviews-container"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           {/* Header */}
           <div className="reviews-header">
             <h2 className="reviews-title">Client Testimonials</h2>
@@ -762,13 +771,19 @@ const Home = () => {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <section className="benefits-section">
-        <div className="benefits-container">
+        <motion.div
+          className="benefits-container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+        >
           {/* Left Sticky Content */}
-          <div className="benefits-sticky-left">
+          <motion.div variants={itemFadeUp} className="benefits-sticky-left">
             <div className="benefits-header-content">
               {/* <p className="dash-tagline">WHY CHOOSE US</p> */}
               <h2 className="benefits-section-title">Why Choose JSE?</h2>
@@ -778,7 +793,7 @@ const Home = () => {
               </p> */}
 
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Scrollable Cards */}
           <div className="benefits-cards-list">
@@ -809,7 +824,7 @@ const Home = () => {
                 icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
               }
             ].map((item, index) => (
-              <div key={index} className="benefit-card-new">
+              <motion.div key={index} variants={itemFadeUp} className="benefit-card-new">
                 <div className="benefit-icon-wrapper">
                   {item.icon}
                 </div>
@@ -817,12 +832,18 @@ const Home = () => {
                   <h3 className="benefit-card-title">{item.title}</h3>
                   <p className="benefit-card-desc">{item.desc}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
         <section className="stats-section" ref={statsRef}>
-          <div className="container-stats">
+          <motion.div
+            className="container-stats"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <h2 className="stats-title-center">Standout Statistics</h2>
 
             <div className="stats-grid">
@@ -843,7 +864,7 @@ const Home = () => {
                 <p>Years of Industry Experience</p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
       </section>
 
@@ -955,9 +976,9 @@ const Home = () => {
               <motion.div
                 key={index}
                 className="geo-stat-box"
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 70 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }}
+                transition={{ duration: 0.8, delay: index * 0.2, ease: "easeOut" }}
                 viewport={{ once: true }}
               >
                 <span className="geo-stat-number">{stat.number}</span>

@@ -4,8 +4,8 @@ import '../styles/Career.css';
 import heroImage from '../assets/replacement/career.jpg'; // New Image
 import internVideo from "../assets/careers-page/WhatsApp Video 2026-02-11 at 16.58.18.mp4"; // New Video
 import CareerApplicationForm from './CareerApplicationForm';
-// import api from '../services/api'; // API disabled
-import { DUMMY_JOBS } from '../data/dummyData';
+import api from '../services/api'; // API enabled
+// import { DUMMY_JOBS } from '../data/dummyData';
 
 // Life at JSE Images
 import lifeImg1 from '../assets/images-home/career/innovation&tech.jpg';
@@ -29,16 +29,15 @@ const Career = () => {
 
   // Fetch Jobs on Mount
   useEffect(() => {
-    // const fetchJobs = async () => {
-    //   try {
-    //     const { data } = await api.get('/jobs');
-    //     setJobs(data);
-    //   } catch (error) {
-    //     console.error("Failed to fetch jobs:", error);
-    //   }
-    // };
-    // fetchJobs();
-    setJobs(DUMMY_JOBS);
+    const fetchJobs = async () => {
+      try {
+        const { data } = await api.get('/jobs');
+        setJobs(data);
+      } catch (error) {
+        console.error("Failed to fetch jobs:", error);
+      }
+    };
+    fetchJobs();
   }, []);
 
   useEffect(() => {
