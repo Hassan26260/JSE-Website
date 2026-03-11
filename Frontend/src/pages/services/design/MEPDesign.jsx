@@ -72,17 +72,17 @@ const STRATEGIC_PARTNERSHIPS = {
 
 const MEP_TECHNICAL_SPECTRUM = [
   {
-    title: "Mechanical & HVAC Engineering",
+    title: "HVAC",
     desc: "Heat gain/loss estimation, energy modeling, ESP calculations, pump head analysis, and complex smoke management systems (staircase, lift, and car park pressurization).",
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 12m-10 0a10 10 0 1 0 20 0a10 10 0 1 0-20 0M12 12l4.9 4.9M12 12l-4.9 4.9M12 12l4.9-4.9M12 12l-4.9-4.9" /></svg>
   },
   {
-    title: "Electrical & Power Systems Design",
+    title: "Electrical Systems Design",
     desc: "Load schedules, voltage drop analysis, cable sizing, earthing and lightning protection, and UPS/central battery calculations.",
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
   },
   {
-    title: "Public Health Eng. & Fire-Fighting",
+    title: "Public Health Eng & Fire-Fighting",
     desc: "Water supply and drainage demand calculations, grease trap sizing, and hydraulic analysis for fire suppression systems (sprinklers and hydrants).",
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
   },
@@ -97,12 +97,17 @@ const MEP_TECHNICAL_SPECTRUM = [
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
   }
 ];
+// New Sector Expertise Images
+import transImg from '../../../assets/images-home/hero-sample/abudhabi international airport.jpg';
+import missionImg from '../../../assets/images-home/home-new-img/design-eng.jpeg';
+import healthImg from '../../../assets/images-home/mep-about.jpg';
+import highRiseImg from '../../../assets/images-home/home-new-img/about-home-new.png';
 
 const SECTOR_EXPERTISE = [
-  { name: "Transportation", desc: "Metro rail systems and international airports", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l8-4 8 4v14"></path></svg> },
-  { name: "Mission-Critical Facilities", desc: "Tier III & IV data centers and district cooling plants (DCP)", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> },
-  { name: "Healthcare & Hospitality", desc: "Multi-specialty hospitals, luxury hotels, and mega-scale shopping malls", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg> },
-  { name: "High-Rise & Industrial", desc: "Premium residential towers and large-scale manufacturing plants", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> }
+  { name: "Transportation", desc: "Metro rail systems and international airports", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l8-4 8 4v14"></path></svg>, image: transImg },
+  { name: "Mission-Critical Facilities", desc: "Tier III & IV data centers and district cooling plants (DCP)", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>, image: missionImg },
+  { name: "Healthcare & Hospitality", desc: "Multi-specialty hospitals, luxury hotels, and mega-scale shopping malls", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>, image: healthImg },
+  { name: "High-Rise & Industrial", desc: "Premium residential towers and large-scale manufacturing plants", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>, image: highRiseImg }
 ];
 
 const TECH_STACK = [
@@ -268,25 +273,27 @@ const MEPDesign = () => {
       </section>
 
       {/* 4. Sector Expertise (Marquee Carousel) */}
-      <section className="mep-carousel-section" style={{ background: '#071230' }}>
+      <section className="mep-carousel-section">
         <div className="mep-carousel-header">
           <span className="mep-carousel-tagline">MULTI-DISCIPLINARY</span>
           <h2 className="mep-carousel-title" style={{ fontSize: '2.5rem' }}>Sector Expertise in Mega-Scale Infrastructure</h2>
-          <p style={{ color: '#94a3b8', fontSize: '1.15rem', maxWidth: '700px', margin: '1.5rem auto 0 auto' }}>
+          <p style={{ color: '#475569', fontSize: '1.15rem', maxWidth: '700px', margin: '1.5rem auto 0 auto' }}>
             Our MEP engineering teams specialize in protocols required for high-complexity, world-class projects across multiple sectors.
           </p>
         </div>
 
-        <div className="mep-carousel-wrapper">
-          <div className="mep-carousel-track">
-            {/* Render array twice for infinite seamless loop */}
-            {[...SECTOR_EXPERTISE, ...SECTOR_EXPERTISE].map((sector, index) => (
-              <div key={index} className="mep-system-card" style={{ borderColor: 'rgba(59, 130, 246, 0.2)' }}>
-                <div className="mep-system-icon-box" style={{ background: 'rgba(59, 130, 246, 0.1)', color: '#3b82f6' }}>
-                  {sector.icon}
+        <div className="mep-carousel-wrapper blur-edges">
+          <div className="mep-carousel-track cinematic-track">
+            {/* Render array highly repeated for infinite seamless loop */}
+            {[...SECTOR_EXPERTISE, ...SECTOR_EXPERTISE, ...SECTOR_EXPERTISE, ...SECTOR_EXPERTISE].map((sector, index) => (
+              <div key={index} className={`mep-system-card cinematic-card mep-stagger-${index % 4}`}>
+                <div className="cinematic-card-img-wrapper">
+                  <img src={sector.image} alt={sector.name} className="cinematic-card-img" loading="lazy" />
                 </div>
-                <h3 className="mep-system-title">{sector.name}</h3>
-                <p className="mep-system-desc">{sector.desc}</p>
+                <div className="cinematic-card-body">
+                  <h3 className="cinematic-card-title">{sector.name}</h3>
+                  <p className="cinematic-card-desc">{sector.desc}</p>
+                </div>
               </div>
             ))}
           </div>

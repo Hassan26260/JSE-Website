@@ -201,7 +201,7 @@
    2. MEP SYSTEMS CAROUSEL (Edge-to-edge width, animated)
    ------------------------------------------------------------------------- */
 .mep-carousel-section {
-    background: #0B1221;
+    background: #eef2f5;
     padding: 6rem 0;
     position: relative;
     overflow: hidden;
@@ -226,29 +226,34 @@
 }
 
 .mep-carousel-title {
-    color: #fff;
+    color: #0f172a;
     font-family: 'delight', sans-serif;
     font-size: 3rem;
     margin: 0;
 }
 
-.mep-carousel-wrapper {
+.mep-carousel-wrapper.blur-edges {
     position: relative;
     width: 100%;
-    /* Gradient masks on edges for smooth fading */
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    /* Strong gradient masks on edges for cinematic smooth fading */
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    padding: 3rem 0;
+    /* Add padding to accommodate card stagger */
 }
 
-.mep-carousel-track {
+.mep-carousel-track.cinematic-track {
     display: flex;
     width: max-content;
     animation: mepCarouselScroll 60s linear infinite;
-    gap: 2rem;
+    gap: 3rem;
+    /* Generous horizontal spacing */
     padding: 1rem 0;
+    align-items: center;
+    /* Baseline alignment before stagger offsets */
 }
 
-.mep-carousel-track:hover {
+.mep-carousel-track.cinematic-track:hover {
     animation-play-state: paused;
 }
 
@@ -258,77 +263,179 @@
     }
 
     100% {
-        transform: translateX(-50%);
+        /* Scrolls one exact full cycle of the 4 items */
+        transform: translateX(calc(-25% - 0.75rem));
     }
-
-    /* Scrolls half width (first array instance) */
 }
 
-.mep-system-card {
+/* Premium Cinematic Card Design */
+.cinematic-card {
     position: relative;
-    background-color: #1e293b;
+    background-color: #0d1a2c;
+    /* Deep dark blue */
     border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    width: 320px;
-    min-height: 220px;
+    border-radius: 20px;
+    width: 380px;
+    min-height: 400px;
     flex-shrink: 0;
-    padding: 2rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
     overflow: hidden;
 }
 
-.mep-system-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-    border-color: rgba(20, 74, 224, 0.4);
+/* Staggered Vertical Alignment (Zig-Zag) */
+.mep-stagger-0 {
+    transform: translateY(-30px);
 }
 
-/* Subtle pattern inside the system card (mimicking Internship) */
-.mep-system-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 16px 16px;
-    opacity: 0.5;
-    pointer-events: none;
-    z-index: 1;
+.mep-stagger-1 {
+    transform: translateY(20px);
 }
 
-.mep-system-icon-box {
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.mep-stagger-2 {
+    transform: translateY(-40px);
+}
+
+.mep-stagger-3 {
+    transform: translateY(10px);
+}
+
+/* Hover Overrides Stagger Temporarily to Lift */
+.cinematic-card:hover {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    border-color: rgba(34, 197, 94, 0.4);
+    z-index: 10;
+}
+
+.mep-stagger-0:hover {
+    transform: translateY(-40px) scale(1.02);
+}
+
+.mep-stagger-1:hover {
+    transform: translateY(10px) scale(1.02);
+}
+
+.mep-stagger-2:hover {
+    transform: translateY(-50px) scale(1.02);
+}
+
+.mep-stagger-3:hover {
+    transform: translateY(0px) scale(1.02);
+}
+
+/* Top Image Container */
+.cinematic-card-img-wrapper {
+    width: 100%;
+    height: 220px;
+    border-radius: 14px;
+    overflow: hidden;
     margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 2;
+    background: #000;
 }
 
-.mep-system-title {
-    color: #fff;
-    font-size: 1.25rem;
-    font-weight: 700;
+.cinematic-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    opacity: 0.9;
+}
+
+.cinematic-card:hover .cinematic-card-img {
+    transform: scale(1.08);
+    opacity: 1;
+}
+
+/* Card Body Typography */
+.cinematic-card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.cinematic-card-title {
+    color: #22c55e;
+    /* Bright accent green matching reference */
+    font-size: 1.5rem;
+    font-weight: 800;
     margin-bottom: 0.75rem;
-    position: relative;
-    z-index: 2;
+    line-height: 1.2;
+    transition: color 0.3s ease;
 }
 
-.mep-system-desc {
-    color: #94a3b8;
-    font-size: 0.95rem;
-    line-height: 1.5;
+.cinematic-card:hover .cinematic-card-title {
+    color: #4ade80;
+    /* Brighter green on hover */
+}
+
+.cinematic-card-desc {
+    color: #e2e8f0;
+    /* Crisp light grey */
+    font-size: 1rem;
+    line-height: 1.6;
     margin: 0;
-    position: relative;
-    z-index: 2;
+}
+
+/* Responsive Handling */
+@media (max-width: 1024px) {
+    .mep-stagger-0 {
+        transform: translateY(-15px);
+    }
+
+    .mep-stagger-1 {
+        transform: translateY(10px);
+    }
+
+    .mep-stagger-2 {
+        transform: translateY(-20px);
+    }
+
+    .mep-stagger-3 {
+        transform: translateY(5px);
+    }
+
+    .mep-stagger-0:hover {
+        transform: translateY(-20px) scale(1.02);
+    }
+
+    .mep-stagger-1:hover {
+        transform: translateY(5px) scale(1.02);
+    }
+
+    .mep-stagger-2:hover {
+        transform: translateY(-25px) scale(1.02);
+    }
+
+    .mep-stagger-3:hover {
+        transform: translateY(0px) scale(1.02);
+    }
+}
+
+@media (max-width: 768px) {
+    .mep-carousel-wrapper.blur-edges {
+        mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        padding: 1rem 0;
+    }
+
+    /* Remove Stagger on Mobile */
+    .mep-stagger-0,
+    .mep-stagger-1,
+    .mep-stagger-2,
+    .mep-stagger-3 {
+        transform: translateY(0) !important;
+    }
+
+    .cinematic-card:hover {
+        transform: scale(1.02) !important;
+    }
+
+    .cinematic-card {
+        width: 320px;
+        min-height: 380px;
+    }
 }
 
 

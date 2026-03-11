@@ -315,68 +315,87 @@ const Home = () => {
     {
       text: "The team consistently exceeded expectations in their professionalism, meeting tight deadlines, and adapting to project changes. Their work quality and ability to incorporate feedback were outstanding. I am confident in our future collaborations and anticipate many successful projects.",
       author: "Ananthakrishnan",
-      role: "APA Engineering"
+      role: "APA Engineering",
+      country: "USA"
     },
     {
       text: "The team's dedication and problem-solving skills were instrumental in the 100% completion of the Digital Art Museum project. Their ownership of issues, both minor and major, led to the successful resolution of numerous clashes, culminating in the timely submission of the model.",
       author: "Paresh Yashwant Katkar",
-      role: "BIM Manager - MEP, Buildings, Ramboll"
+      role: "BIM Manager - MEP, Buildings, Ramboll",
+      country: "UAE"
     },
     {
       text: "The AVK Mall and T2 tender package was issued successfully due to the team's considerable efforts. Their hard work is much appreciated. I look forward to continued success with this team.",
       author: "Chijyoti Challamarad",
-      role: "Principal Mechanical Engineer, Ramboll"
+      role: "Principal Mechanical Engineer, Ramboll",
+      country: "UAE"
     },
     {
       text: "The issuance of two major AVK assets for tender is a fantastic achievement. Congratulations to the entire team for their exceptional work on this significant milestone.",
       author: "Michael Rimmer",
-      role: "Head of MEP, Middle East, Ramboll"
+      role: "Head of MEP, Middle East, Ramboll",
+      country: "UAE"
     },
     {
       text: "The team's ability to excel under pressure, particularly when facing tight deadlines, demonstrates their strong work ethic and consistent high performance. I commend their dedication to delivering projects on time and to a high standard.",
       author: "Yashin Maharaj",
-      role: "SSHIC MEPI Director"
+      role: "SSH MEPI Director",
+      country: "UAE"
     },
     {
       text: "Please be informed that we have obtained DEWA LV approval for Capria East 3B. Id like to express my heartfelt congratulations to you and the wider team who have gone the extra mile to achieve this great milestone. As always, I truly appreciate your efforts for the projects that we have worked in together. We’ve come a long way in obtaining challenging DEWA approvals from La Mer project to Nobu Project and now to 3B. Looking forward to achieving more milestones with you.",
       author: "Arvind Rajiv",
-      role: "Senior Electrical Engineer, SSH"
+      role: "Senior Electrical Engineer, SSH",
+      country: "UAE"
     },
     {
       text: "Overall, the effort and quality are appreciated. Positive Points. The overall model structure is clear and well-organized. Good accuracy in geometry and alignment with design drawings. Proper use of Revit families and consistent naming conventions. The Model visualization effectively.",
       author: "Mubarak Basha",
-      role: "Senior BIM Technician - Mechanical, SSH"
+      role: "Senior BIM Technician - Mechanical, SSH",
+      country: "UAE"
     },
     {
       text: "I would like to formally acknowledge and express my sincere appreciation for the outstanding efforts demonstrated by the BIM engineers from your team on our recent projects. In particular, the individuals listed below have shown exceptional commitment and professionalism. Their performance has been truly commendable. We look forward to continued collaboration with your team on future initiatives.",
       author: "Sujesh Thozhukkatt",
-      role: "BIM Manager, Jacobs"
+      role: "BIM Manager, Jacobs",
+      country: "UAE"
     },
     {
       text: "Great work all. It’s been a tough journey, but thanks to all your hard work, the end product is well appreciated.",
       author: "Anil Menon",
-      role: "CKR"
+      role: "CKR",
+      country: "UAE"
     },
     {
       text: "We met with the client yesterday to go through the wet-stamp and work in progress drawings on MGM.\n\nI am proud to say that the client has complimented us on the presentation of the drawings, noting that even the costing drawings are of wet-stamp quality. This is a result of the India teams hard work and efforts.\n\nI would like to thank you all for your hard work in reaching this achievement.",
       author: "Brian Lugg",
-      role: "Technical Director, CKR"
+      role: "Technical Director, CKR",
+      country: "UAE"
     },
     {
       text: "I wanted to take a moment to share some feedback regarding JSE Teams' collaboration with us on till now.\n\nThroughout our work together, I’ve found them to be consistently proactive and reliable, and they approach meetings with a professional and confident posture, contributes thoughtfully and ensures discussions remain productive. When challenges arise, they demonstrate innovation by suggesting practical solutions and putting forward ideas that add real value.\n\nTheir approach not only supports the smooth progress of our joint efforts but also strengthens the cooperation between our teams.",
       author: "ALINA Giju",
-      role: "Project Manager, DESIGN MATTERS SRL"
+      role: "Project Manager, DESIGN MATTERS SRL",
+
     },
     {
       text: "Thank you for the good work you have done on this project. We appreciate your contribution and look forward to working with you again in the future. Wishing you the best!",
       author: "Vishnu MP",
-      role: "Electrical Engineer, APA Engineering"
+      role: "Electrical Engineer, APA Engineering",
+      country: "USA"
     },
     {
       text: "I am pleased to inform you that things are going great with the team we have on board so far. We would like to hire many members of your team.\n\nThank you for your support.",
       author: "Dimitri Lourandos",
-      role: "SolutionStation"
-    }
+      role: "SolutionStation",
+      country: "South Africa"
+    },
+    {
+      text: "We would like to extend our sincere appreciation to the team for their outstanding contributions and exceptional work Thank you for your support.",
+      author: "Samynathan Velayutham",
+      role: "Design Lead Central Design MEP",
+      country: "USA"
+    },
   ];
 
   // --- Infinite Carousel Logic ---
@@ -424,19 +443,23 @@ const Home = () => {
   const heroCarouselSlides = [
     {
       icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>,
-      text: "Turning design intent into build-ready reality."
+      text: "Empowering our team to deliver world-class excellence on every global project."
     },
     {
       icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>,
-      text: "Technical authority that de-risks complex construction."
+      text: "Virtual Office integration into your workflow."
     },
     {
       icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>,
-      text: "High-fidelity BIM that validates projects before build."
+      text: "Integrated expertise across MEP, Architecture, Structure, and specialized Tekla Steel Detailing all under one roof."
     },
     {
       icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>,
-      text: "Engineering precision for confident project execution."
+      text: "Engineers First, Digital Second We design, calculate, and validate every system before it ever enters a digital environment."
+    },
+    {
+      icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>,
+      text: "Engineering the Workable Model We use high-precision environments to ensure every system is technically sound and site-ready."
     }
   ];
 
@@ -607,40 +630,7 @@ const Home = () => {
         </motion.div>
       </section>
 
-      {/* NEW: Cloned Strategic Partnerships from MEP with Neon Styles */}
-      <section className="home-neon-partnerships">
-        <div className="mep-support-section" style={{ overflow: 'hidden' }}>
-          {/* Consultants Left */}
-          <motion.div
-            className="mep-support-block support-block-left"
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <span className="mep-support-label">Strategic Partnerships</span>
-            <h2 className="mep-support-title">For Consultants<br />The Design Development Partner</h2>
-            <p className="mep-support-desc">
-              We act as your Design Brain, providing the technical depth and man-hour capacity needed to progress from concept to IFC. We take architectural intent and develop all required engineering calculations, system sizing, code-compliant BIM models, and 100% coordination across all building services disciplines.
-            </p>
-          </motion.div>
 
-          {/* Contractors Right */}
-          <motion.div
-            className="mep-support-block support-block-right"
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <span className="mep-support-label" style={{ color: '#60a5fa' }}>Equal Contribution</span>
-            <h2 className="mep-support-title">For Contractors<br />The Construction Execution Partner</h2>
-            <p className="mep-support-desc">
-              We provide the engineering brainpower and high-detail BIM deliverables required for error-free site installation. We perform complete audits of IFC drawings, upgrade models to LOD 400 (shop drawings) / LOD 500 (as-built), and resolve constructability issues proactively to protect project budgets.
-            </p>
-          </motion.div>
-        </div>
-      </section>
 
       <section className="client-marquee-section">
         <motion.div
@@ -661,16 +651,13 @@ const Home = () => {
             </p>
           </div>
 
-          {/* Content Area */}
-          <div className="partnerships-content-wrapper">
-            <div className="client-category-block" style={{ marginBottom: '15rem' }}>
-              <div className="partner-value-props">
-                <h3 className="partner-props-title">International Design Consultants</h3>
-                <p className="partner-props-desc" style={{ marginBottom: '2rem' }}>Partnering to provide Design-Led Engineering and BIM Services from Concept to IFC.</p>
-              </div>
+          {/* Clean Stacked Marquee Area */}
+          <div className="partnerships-marquee-stack" style={{ display: 'flex', flexDirection: 'column', gap: '3rem', marginTop: '4rem' }}>
 
-              <div className="marquee-wrapper" style={{ marginBottom: '3rem' }}>
-                {/* Marquee 1: Global Consultants (Move Left) */}
+            {/* Consultant Marquee */}
+            <div className="marquee-row-group">
+              <h3 className="marquee-sub-label" style={{ textAlign: 'center', fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '2px', color: '#64748b', marginBottom: '1.5rem', fontWeight: '700' }}>International Design Consultants</h3>
+              <div className="marquee-wrapper" style={{ padding: '2rem 0', margin: '0' }}>
                 <div className="client-marquee-row consultant-row">
                   <div className="marquee-container">
                     <div className="marquee-track">
@@ -690,33 +677,12 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-
-              <div className="partner-value-props">
-                <ul className="client-category-list">
-                  <li className="bento-glass-card">
-                    <strong>Design from Scratch</strong>
-                    <p>We act as your extended engineering arm, developing concepts into full detailed designs.</p>
-                  </li>
-                  <li className="bento-glass-card">
-                    <strong>Engineering-Led BIM <br />(LOD 100–300)</strong>
-                    <p>We ensure the BIM model is a true reflection of engineering data with seamless inter-disciplinary coordination.</p>
-                  </li>
-                  <li className="bento-glass-card">
-                    <strong>Local Authority Compliance</strong>
-                    <p>Designs are engineered to meet specific codes including QCS, Kahramaa, DEWA, PUB, SCDF, and SPAN.</p>
-                  </li>
-                </ul>
-              </div>
             </div>
 
-            <div className="client-category-block">
-              <div className="partner-value-props">
-                <h3 className="partner-props-title">International MEP & General Contractors</h3>
-                <p className="partner-props-desc" style={{ marginBottom: '2rem' }}>Providing technical brainpower and high-detail modeling for error-free site execution.</p>
-              </div>
-
-              <div className="marquee-wrapper" style={{ marginBottom: '3rem' }}>
-                {/* Marquee 2: Global Contractors (Move Right) */}
+            {/* Contractor Marquee */}
+            <div className="marquee-row-group">
+              <h3 className="marquee-sub-label" style={{ textAlign: 'center', fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '2px', color: '#64748b', marginBottom: '1.5rem', fontWeight: '700' }}>International MEP & General Contractors</h3>
+              <div className="marquee-wrapper" style={{ padding: '2rem 0', margin: '0' }}>
                 <div className="client-marquee-row client-row">
                   <div className="marquee-container">
                     <div className="marquee-track reverse-track">
@@ -736,24 +702,8 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-
-              <div className="partner-value-props">
-                <ul className="client-category-list">
-                  <li className="bento-glass-card">
-                    <strong>Engineering Validation</strong>
-                    <p>We review IFC drawings to identify design gaps and raise proactive RFIs to prevent site delays.</p>
-                  </li>
-                  <li className="bento-glass-card">
-                    <strong>LOD 400 & 500 Shop Drawings</strong>
-                    <p>We deliver constructive BIM models and 2D shop drawings extracted directly from BIM for installation.</p>
-                  </li>
-                  <li className="bento-glass-card">
-                    <strong>Specialized Steel Detailing</strong>
-                    <p>Fabrication-ready NC Files, Erection Drawings, and Advanced Bills of Materials (BOMs).</p>
-                  </li>
-                </ul>
-              </div>
             </div>
+
           </div>
         </motion.div>
       </section>
@@ -784,6 +734,7 @@ const Home = () => {
                   <div className="review-footer">
                     <h4 className="review-name">{review.author}</h4>
                     <p className="review-role">{review.role}</p>
+                    {review.country && <p className="review-country">{review.country}</p>}
                   </div>
                 </div>
               ))}
@@ -792,98 +743,147 @@ const Home = () => {
         </motion.div>
       </section>
 
-      <section className="benefits-section">
-        <motion.div
-          className="benefits-container"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={staggerContainer}
-        >
-          {/* Left Sticky Content */}
-          <motion.div variants={itemFadeUp} className="benefits-sticky-left">
-            <div className="benefits-header-content">
-              {/* <p className="dash-tagline">WHY CHOOSE US</p> */}
-              <h2 className="benefits-section-title">Why Choose JSE?</h2>
-              {/* <p className="benefits-header-desc">
-                Partnering with JSE means choosing clarity, precision, and efficiency.
-                We deliver engineering solutions that streamline construction and maximize value.
-              </p> */}
+      <section className="scroll-comparison-section">
+        <div className="scroll-comparison-header">
+          <h2 className="comparison-title">WHY CHOOSE JSE</h2>
+        </div>
+
+        {[
+          {
+            theme: "Design Approach",
+            icon: (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2BC48A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                <path d="M2 2l7.586 7.586"></path>
+                <circle cx="11" cy="11" r="2"></circle>
+              </svg>
+            ),
+            consultantTitle: "Design from Scratch:",
+            consultantDesc: "We act as your extended engineering arm, developing concepts into full detailed designs.",
+            contractorTitle: "Engineering Validation:",
+            contractorDesc: "We review IFC drawings to identify design gaps and raise proactive RFIs to prevent site delays."
+          },
+          {
+            theme: "BIM Execution Level",
+            icon: (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2BC48A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            ),
+            consultantTitle: "Engineering-Led BIM (LOD 100–300):",
+            consultantDesc: "We ensure the BIM model is a true reflection of engineering data with seamless inter-disciplinary coordination.",
+            contractorTitle: "LOD 400 & 500 Shop Drawings:",
+            contractorDesc: "We deliver constructive BIM models and 2D shop drawings extracted directly from BIM for installation."
+          },
+          {
+            theme: "Technical Expertise",
+            icon: (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2BC48A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                <path d="M2 12h20"></path>
+              </svg>
+            ),
+            consultantTitle: "Local Authority Compliance:",
+            consultantDesc: "Designs are engineered to meet specific codes including QCS, Kahramaa, DEWA, PUB, SCDF, and SPAN.",
+            contractorTitle: "Specialized Steel Detailing:",
+            contractorDesc: "Fabrication-ready NC Files, Erection Drawings, and Advanced Bills of Materials (BOMs)."
+          },
+          {
+            theme: "Project Coordination",
+            icon: (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2BC48A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            ),
+            consultantTitle: "Technical Synergy:",
+            consultantDesc: "Simultaneous engineering and BIM modeling ensures 100% coordination across all building services disciplines.",
+            contractorTitle: "Proactive RFI Management:",
+            contractorDesc: "We resolve constructability issues early, reducing site rework and protecting project budgets."
+          }
+        ].map((panel, index) => (
+          <div key={index} className="split-panel">
+            <div className="split-panel-content">
+
+              {/* Consultant (Left) */}
+              <motion.div
+                className="compare-card compare-card-left"
+                initial={{ opacity: 0, x: -60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <div className="card-tag">CONSULTANT</div>
+                <h3 className="compare-card-title">{panel.consultantTitle}</h3>
+                <p className="compare-card-desc">{panel.consultantDesc}</p>
+              </motion.div>
+
+              {/* Center Axis & Icon */}
+              <div className="compare-center-axis">
+                <div className="axis-line"></div>
+                <motion.div
+                  className="compare-icon-circle"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  {panel.icon}
+                </motion.div>
+              </div>
+
+              {/* Contractor (Right) */}
+              <motion.div
+                className="compare-card compare-card-right"
+                initial={{ opacity: 0, x: 60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <div className="card-tag">CONTRACTOR</div>
+                <h3 className="compare-card-title">{panel.contractorTitle}</h3>
+                <p className="compare-card-desc">{panel.contractorDesc}</p>
+              </motion.div>
 
             </div>
-          </motion.div>
+          </div>
+        ))}
+      </section>
+      <section className="stats-section" ref={statsRef}>
+        <motion.div
+          className="container-stats"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <h2 className="stats-title-center">Standout Statistics</h2>
 
-          {/* Right Scrollable Cards */}
-          <div className="benefits-cards-list">
-            {[
-              {
-                title: "Proactive Issue Ownership",
-                desc: "We don't just report clashes; we take ownership of the resolution.",
-                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 22v-5l5-5 5 5v5M12 12l5-5 5 5v5" /></svg>
-              },
-              {
-                title: "Performance Under Pressure",
-                desc: "Proven ability to meet critical tender and submission deadlines for mega-scale infrastructure.",
-                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-              },
-              {
-                title: "Technical Adaptability",
-                desc: "Seamlessly incorporating client feedback and adapting to evolving project requirements.",
-                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /></svg>
-              },
-              {
-                title: "Consistency",
-                desc: "Maintaining a 100% quality compliance record across diverse sectors including Malls, Museums, and Transportation Hubs.",
-                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-              },
-              {
-                title: "Cost-Optimized Solutions",
-                desc: "Efficient design methodologies that reduce material cost, energy consumption, and operational expenses.",
-                icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              }
-            ].map((item, index) => (
-              <motion.div key={index} variants={itemFadeUp} className="benefit-card-new">
-                <div className="benefit-icon-wrapper">
-                  {item.icon}
-                </div>
-                <div className="benefit-card-content">
-                  <h3 className="benefit-card-title">{item.title}</h3>
-                  <p className="benefit-card-desc">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="stats-grid">
+            <div className="stat-item">
+              <h3><StatCounter end={6000} suffix="+" start={statsStarted} /></h3>
+              <p>Successful Projects Delivered</p>
+            </div>
+            <div className="stat-item">
+              <h3><StatCounter end={20} suffix="+" start={statsStarted} /></h3>
+              <p>Countries</p>
+            </div>
+            <div className="stat-item">
+              <h3><StatCounter end={1000} suffix="+" start={statsStarted} /></h3>
+              <p>Delighted Global Clients Served</p>
+            </div>
+            <div className="stat-item">
+              <h3><StatCounter end={25} suffix="+" start={statsStarted} /></h3>
+              <p>Years of Industry Experience</p>
+            </div>
           </div>
         </motion.div>
-        <section className="stats-section" ref={statsRef}>
-          <motion.div
-            className="container-stats"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <h2 className="stats-title-center">Standout Statistics</h2>
-
-            <div className="stats-grid">
-              <div className="stat-item">
-                <h3><StatCounter end={6000} suffix="+" start={statsStarted} /></h3>
-                <p>Successful Projects Delivered</p>
-              </div>
-              <div className="stat-item">
-                <h3><StatCounter end={20} suffix="+" start={statsStarted} /></h3>
-                <p>Countries</p>
-              </div>
-              <div className="stat-item">
-                <h3><StatCounter end={1000} suffix="+" start={statsStarted} /></h3>
-                <p>Delighted Global Clients Served</p>
-              </div>
-              <div className="stat-item">
-                <h3><StatCounter end={25} suffix="+" start={statsStarted} /></h3>
-                <p>Years of Industry Experience</p>
-              </div>
-            </div>
-          </motion.div>
-        </section>
       </section>
 
       <section className="solutions-list-section" id="solutions">
@@ -1058,7 +1058,7 @@ const Home = () => {
         </div>
       </section>
 
-    </div>
+    </div >
   );
 };
 
