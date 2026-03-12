@@ -10,6 +10,10 @@ import Career from "./pages/Career";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 
+// Blog pages
+import Blogs from "./pages/Blogs";
+import BlogPost from "./pages/BlogPost";
+
 // Service pages
 import VirtualTeam from "./pages/services/VirtualTeam";
 import SecondmentTeam from "./pages/services/SecondmentTeam";
@@ -95,6 +99,8 @@ function App() {
           <Route path="/career" element={<MainLayout><Career /></MainLayout>} />
           <Route path="/contact" element={<MainLayout><Contact /></MainLayout>} />
           <Route path="/privacy-policy" element={<MainLayout><PrivacyPolicy /></MainLayout>} />
+          <Route path="/blog" element={<MainLayout><Blogs /></MainLayout>} />
+          <Route path="/blog/:id" element={<MainLayout><BlogPost /></MainLayout>} />
 
           {/* Service routes */}
           <Route path="/services/virtual-team" element={<MainLayout><VirtualTeam /></MainLayout>} />

@@ -1,0 +1,210 @@
+.blog-post-page {
+    background-color: #f8fafc;
+    /* Light readability background for the text */
+    min-height: 100vh;
+}
+
+.blog-post-not-found {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 120px;
+}
+
+/* Massive Hero Section */
+.blog-post-hero {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    min-height: 500px;
+    background-color: #0f172a;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.blog-hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+}
+
+.blog-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(15, 23, 42, 1) 0%, rgba(15, 23, 42, 0.4) 50%, rgba(15, 23, 42, 0.1) 100%);
+    z-index: 2;
+}
+
+.blog-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2rem 2rem 5rem 2rem;
+}
+
+.blog-post-category-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.blog-post-main-title {
+    color: #ffffff;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    line-height: 1.2;
+    margin: 0;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Reading Container */
+.blog-post-reading-container {
+    max-width: 1200px;
+    /* Optimal reading width */
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 4;
+}
+
+.blog-post-content-wrapper {
+    background: #ffffff;
+    padding: 4rem;
+    border-radius: 20px 20px 0 0;
+    margin-top: -3rem;
+    /* Overlap the hero */
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.05);
+}
+
+/* Rich Text Formatting */
+.rich-text-content {
+    color: #334155;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    font-family: 'Inter', sans-serif;
+}
+
+.rich-text-content p {
+    margin-bottom: 1.5rem;
+}
+
+.rich-text-content h3 {
+    color: #0f172a;
+    font-size: 2rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    margin: 2.5rem 0 1rem 0;
+    letter-spacing: -0.5px;
+}
+
+.rich-text-content h4 {
+    color: #1e293b;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem 0;
+}
+
+.rich-text-content ul {
+    margin: 1.5rem 0 2rem 2rem;
+    list-style-type: square;
+}
+
+.rich-text-content li {
+    margin-bottom: 0.8rem;
+    padding-left: 0.5rem;
+}
+
+.rich-text-content li::marker {
+    color: #144AE0;
+    /* JSE Primary accent on dots */
+}
+
+.rich-text-content strong {
+    color: #0f172a;
+    font-weight: 700;
+}
+
+/* Footer Return Button */
+.blog-post-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.back-to-blogs-btn {
+    background: #144AE0;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.back-to-blogs-btn-glass {
+    background: rgba(20, 74, 224, 0.1);
+    color: #144AE0;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    border: 1px solid rgba(20, 74, 224, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.back-to-blogs-btn-glass:hover {
+    background: #144AE0;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(20, 74, 224, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .blog-post-hero {
+        height: 50vh;
+        min-height: 400px;
+    }
+
+    .blog-hero-content {
+        padding: 2rem 1rem 4rem 1rem;
+    }
+
+    .blog-post-content-wrapper {
+        padding: 2rem 1rem;
+    }
+
+    .rich-text-content {
+        font-size: 1.05rem;
+    }
+
+    .rich-text-content h3 {
+        font-size: 1.6rem;
+    }
+}
