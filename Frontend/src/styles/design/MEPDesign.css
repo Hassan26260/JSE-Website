@@ -112,25 +112,22 @@
     transform: scale(1.1);
 }
 
-/* Pattern Variations */
+/* Pattern Variations (Pure White Transparent) */
 .mep-pattern-1 {
-    /* Blue Dots */
-    background-image: radial-gradient(#3b82f6 2px, transparent 2px);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.4) 2px, transparent 2px);
     background-size: 20px 20px;
     mask-image: radial-gradient(circle at 100% 100%, black 0%, transparent 70%);
     -webkit-mask-image: radial-gradient(circle at 100% 100%, black 0%, transparent 70%);
 }
 
 .mep-pattern-2 {
-    /* Green Stripes */
-    background: repeating-linear-gradient(-45deg, #22c55e, #22c55e 2px, transparent 2px, transparent 10px);
+    background: repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3) 2px, transparent 2px, transparent 10px);
     mask-image: radial-gradient(circle at 100% 100%, black 0%, transparent 70%);
     -webkit-mask-image: radial-gradient(circle at 100% 100%, black 0%, transparent 70%);
 }
 
 .mep-pattern-3 {
-    /* Purple Concentric */
-    background: radial-gradient(circle, transparent 20%, #a855f7 20%, #a855f7 22%, transparent 22%, transparent 40%, #a855f7 40%, #a855f7 42%, transparent 42%);
+    background: radial-gradient(circle, transparent 20%, rgba(255, 255, 255, 0.3) 20%, rgba(255, 255, 255, 0.3) 22%, transparent 22%, transparent 40%, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.3) 42%, transparent 42%);
     background-size: 200% 200%;
     background-position: 100% 100%;
     mask-image: radial-gradient(circle at 100% 100%, black 0%, transparent 70%);
@@ -138,62 +135,80 @@
 }
 
 .mep-pattern-4 {
-    /* Orange Grid */
-    background-image: linear-gradient(#f97316 1px, transparent 1px), linear-gradient(90deg, #f97316 1px, transparent 1px);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
     background-size: 20px 20px;
     mask-image: radial-gradient(circle at 100% 100%, black 0%, transparent 70%);
     -webkit-mask-image: radial-gradient(circle at 100% 100%, black 0%, transparent 70%);
 }
 
 .mep-pattern-5 {
-    /* Pink Waves */
-    background: radial-gradient(circle at 100% 50%, transparent 20%, #ec4899 21%, #ec4899 24%, transparent 25%, transparent 33%, #ec4899 34%, #ec4899 37%, transparent 38%);
+    background: radial-gradient(circle at 100% 50%, transparent 20%, rgba(255, 255, 255, 0.3) 21%, rgba(255, 255, 255, 0.3) 24%, transparent 25%, transparent 33%, rgba(255, 255, 255, 0.3) 34%, rgba(255, 255, 255, 0.3) 37%, transparent 38%);
     background-size: 100% 100%;
     mask-image: radial-gradient(circle at 100% 100%, black 0%, transparent 70%);
     -webkit-mask-image: radial-gradient(circle at 100% 100%, black 0%, transparent 70%);
 }
 
 .mep-pattern-6 {
-    /* Cyan Geometric */
-    background-image: linear-gradient(30deg, #06b6d4 12%, transparent 12.5%, transparent 87%, #06b6d4 87.5%, #06b6d4),
-        linear-gradient(150deg, #06b6d4 12%, transparent 12.5%, transparent 87%, #06b6d4 87.5%, #06b6d4),
-        linear-gradient(30deg, #06b6d4 12%, transparent 12.5%, transparent 87%, #06b6d4 87.5%, #06b6d4),
-        linear-gradient(150deg, #06b6d4 12%, transparent 12.5%, transparent 87%, #06b6d4 87.5%, #06b6d4),
-        linear-gradient(60deg, #06b6d477 25%, transparent 25.5%, transparent 75%, #06b6d477 75%, #06b6d477),
-        linear-gradient(60deg, #06b6d477 25%, transparent 25.5%, transparent 75%, #06b6d477 75%, #06b6d477);
+    background-image: linear-gradient(30deg, rgba(255, 255, 255, 0.3) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.3) 87.5%, rgba(255, 255, 255, 0.3)),
+        linear-gradient(150deg, rgba(255, 255, 255, 0.3) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.3) 87.5%, rgba(255, 255, 255, 0.3)),
+        linear-gradient(30deg, rgba(255, 255, 255, 0.3) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.3) 87.5%, rgba(255, 255, 255, 0.3)),
+        linear-gradient(150deg, rgba(255, 255, 255, 0.3) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.3) 87.5%, rgba(255, 255, 255, 0.3)),
+        linear-gradient(60deg, rgba(255, 255, 255, 0.15) 25%, transparent 25.5%, transparent 75%, rgba(255, 255, 255, 0.15) 75%, rgba(255, 255, 255, 0.15)),
+        linear-gradient(60deg, rgba(255, 255, 255, 0.15) 25%, transparent 25.5%, transparent 75%, rgba(255, 255, 255, 0.15) 75%, rgba(255, 255, 255, 0.15));
     background-size: 20px 35px;
     mask-image: radial-gradient(circle at 100% 100%, black 0%, transparent 70%);
     -webkit-mask-image: radial-gradient(circle at 100% 100%, black 0%, transparent 70%);
 }
 
-.mep-icon-color-1 {
-    color: #3b82f6;
-    background: rgba(59, 130, 246, 0.1);
+/* Standardized White Icon for Vibrant Cards */
+.mep-icon-white {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
 }
 
-.mep-icon-color-2 {
-    color: #22c55e;
-    background: rgba(34, 197, 94, 0.1);
+/* Vibrant Solid Background Themes */
+.mep-card-bg-1 {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
 }
 
-.mep-icon-color-3 {
-    color: #a855f7;
-    background: rgba(168, 85, 247, 0.1);
+.mep-card-bg-2 {
+    background-color: #22c55e;
+    border-color: #22c55e;
 }
 
-.mep-icon-color-4 {
-    color: #f97316;
-    background: rgba(249, 115, 22, 0.1);
+.mep-card-bg-3 {
+    background-color: #a855f7;
+    border-color: #a855f7;
 }
 
-.mep-icon-color-5 {
-    color: #ec4899;
-    background: rgba(236, 72, 153, 0.1);
+.mep-card-bg-4 {
+    background-color: #f97316;
+    border-color: #f97316;
 }
 
-.mep-icon-color-6 {
-    color: #06b6d4;
-    background: rgba(6, 182, 212, 0.1);
+.mep-card-bg-5 {
+    background-color: #ec4899;
+    border-color: #ec4899;
+}
+
+.mep-card-bg-6 {
+    background-color: #06b6d4;
+    border-color: #06b6d4;
+}
+
+/* Force Text and Hover states inside vibrant cards to be pure White */
+.mep-expert-card[class*="mep-card-bg-"] .mep-expert-title {
+    color: #ffffff;
+}
+
+.mep-expert-card[class*="mep-card-bg-"] .mep-expert-desc {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.mep-expert-card[class*="mep-card-bg-"]:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 
@@ -789,10 +804,10 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Front Design */
+/* Front Design - Light Face Redesign for Contrast */
 .tech-card-front {
-    background: rgba(15, 23, 42, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(10px);
 }
 
@@ -800,19 +815,22 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: rgba(20, 74, 224, 0.2);
+    background: rgba(20, 74, 224, 0.1);
+    /* Lighter blue backing */
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #60a5fa;
+    color: #144AE0;
+    /* Standard JSE Blue */
     margin-bottom: 1.5rem;
-    box-shadow: 0 0 20px rgba(20, 74, 224, 0.3);
+    box-shadow: 0 0 20px rgba(20, 74, 224, 0.15);
 }
 
 .tech-discipline-front {
-    color: #fff;
+    color: #0f172a;
+    /* Dark slate text for white card contrast */
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 800;
     margin: 0;
 }
 

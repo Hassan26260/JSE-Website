@@ -99,15 +99,18 @@ const MEP_TECHNICAL_SPECTRUM = [
 ];
 // New Sector Expertise Images
 import transImg from '../../../assets/images-home/hero-sample/abudhabi international airport.jpg';
-import missionImg from '../../../assets/images-home/home-new-img/design-eng.jpeg';
-import healthImg from '../../../assets/images-home/mep-about.jpg';
-import highRiseImg from '../../../assets/images-home/home-new-img/about-home-new.png';
+// import missionImg from '../../../assets/images-home/home-new-img/design-eng.jpeg';
+// import healthImg from '../../../assets/images-home/mep-about.jpg';
+// import highRiseImg from '../../../assets/images-home/home-new-img/about-home-new.png';
+import residential from '../../../assets/other/residential.webp'
+import hotels from '../../../assets/other/Sheraton-Taiba-Hotel.jpg.jpeg'
+import server from '../../../assets/other/servers.jpg'
 
 const SECTOR_EXPERTISE = [
-  { name: "Transportation", desc: "Metro rail systems and international airports", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l8-4 8 4v14"></path></svg>, image: transImg },
-  { name: "Mission-Critical Facilities", desc: "Tier III & IV data centers and district cooling plants (DCP)", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>, image: missionImg },
-  { name: "Healthcare & Hospitality", desc: "Multi-specialty hospitals, luxury hotels, and mega-scale shopping malls", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>, image: healthImg },
-  { name: "High-Rise & Industrial", desc: "Premium residential towers and large-scale manufacturing plants", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>, image: highRiseImg }
+  { name: "Transportation", desc: "Metro rail systems and International Airports", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l8-4 8 4v14"></path></svg>, image: transImg },
+  { name: "Mission-Critical Facilities", desc: "Tier III & IV Data Centers and District Cooling Plants (DCP)", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>, image: server },
+  { name: "Healthcare & Hospitality", desc: "Multi-specialty hospitals, Luxury Hotels, and mega-scale Shopping Malls", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>, image: hotels },
+  { name: "High-Rise & Industrial", desc: "Premium Residential Towers and large-scale manufacturing plants", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>, image: residential }
 ];
 
 const TECH_STACK = [
@@ -224,8 +227,7 @@ const MEPDesign = () => {
       {/* --- NEW V2 SECTIONS START --- */}
 
       {/* 2. Strategic Partnerships (Split Screen Design based on Virtual Team) */}
-      <section className="mep-support-section">
-        {/* Consultants Left */}
+      {/* <section className="mep-support-section">
         <div className="mep-support-block support-block-left">
           <span className="mep-support-label">Strategic Partnerships</span>
           <h2 className="mep-support-title">For Consultants<br />The Design Development Partner</h2>
@@ -234,7 +236,6 @@ const MEPDesign = () => {
           </p>
         </div>
 
-        {/* Contractors Right */}
         <div className="mep-support-block support-block-right">
           <span className="mep-support-label" style={{ color: '#60a5fa' }}>Equal Contribution</span>
           <h2 className="mep-support-title">For Contractors<br />The Construction Execution Partner</h2>
@@ -242,7 +243,7 @@ const MEPDesign = () => {
             We provide the engineering brainpower and high-detail BIM deliverables required for error-free site installation. We perform complete audits of IFC drawings, upgrade models to LOD 400 (shop drawings) / LOD 500 (as-built), and resolve constructability issues proactively to protect project budgets.
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* 3. Full MEP Technical Spectrum */}
       <section className="arch-services-section" style={{ background: '#0B1221' }}>
@@ -257,8 +258,8 @@ const MEPDesign = () => {
 
           <div className="mep-expert-grid">
             {MEP_TECHNICAL_SPECTRUM.map((service, index) => (
-              <div key={index} className="mep-expert-card">
-                <div className={`mep-expert-icon mep-icon-color-${(index % 6) + 1}`}>
+              <div key={index} className={`mep-expert-card mep-card-bg-${(index % 6) + 1}`}>
+                <div className="mep-expert-icon mep-icon-white">
                   {service.icon}
                 </div>
                 <div className="mep-expert-content">

@@ -128,12 +128,12 @@ import carltonImg from '../../../assets/Architectural-bim/cartton.webp';
 
 const PROJECT_EXPERIENCE = [
   {
-    title: "Carlton House Terrace – London, UK",
+    title: "Carlton House Terrace London, UK",
     desc: "Carlton House Terrace is an iconic architectural landmark located in the St James’s district of Westminster, London. The project features elegant white stucco terraces overlooking The Mall and St. James’s Park. Our BIM approach ensured heritage-sensitive modeling, precision detailing, and seamless coordination for this prestigious development.",
     img: carltonImg
   },
   {
-    title: "Al Ain Hospital – Abu Dhabi, UAE",
+    title: "Al Ain Hospital Abu Dhabi, UAE",
     desc: "The Al Ain Hospital project is one of the most significant healthcare developments in the UAE, designed to meet international medical standards. JSE Engineering supported the project through advanced Architectural BIM visualization, enhancing patient experience and departmental navigation using interactive digital applications integrated within the BIM environment.",
     img: alAinImg
   }
@@ -406,7 +406,7 @@ const ArchitecturalBIM = () => {
       </section>
 
       {/* Worldwide Iconic Projects Section */}
-      <section className="iconic-projects-section">
+      {/* <section className="iconic-projects-section">
         <div className="iconic-container">
           <div className="iconic-header">
             <span className="iconic-tagline">BIM projects</span>
@@ -414,10 +414,8 @@ const ArchitecturalBIM = () => {
           </div>
         </div>
 
-        {/* Marquee Carousel */}
         <div className="iconic-marquee-wrapper">
           <div className="iconic-marquee-track">
-            {/* Set 1 */}
             {ICONIC_PROJECTS.map((project, index) => (
               <div key={`iconic-${index}`} className="iconic-card">
                 <img src={project.img} alt={project.title} className="iconic-img" />
@@ -431,7 +429,6 @@ const ArchitecturalBIM = () => {
                 </div>
               </div>
             ))}
-            {/* Set 2 (Duplicate for loop) */}
             {ICONIC_PROJECTS.map((project, index) => (
               <div key={`iconic-dup-${index}`} className="iconic-card">
                 <img src={project.img} alt={project.title} className="iconic-img" />
@@ -447,7 +444,7 @@ const ArchitecturalBIM = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Why Choose JSE Section */}
       <section className="arch-choose-section">

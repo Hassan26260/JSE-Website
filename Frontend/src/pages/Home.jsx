@@ -15,36 +15,13 @@ import mepDesign from "../assets/images-home/mep-design.webp";
 import bimModelling from "../assets/images-home/bim-modelling.webp";
 import electricalSystem from "../assets/images-home/electrical-system.webp";
 
-// Import Consultant Logos
-import consLogo1 from '../assets/client-logo/Consultant/logo1.png';
-import consLogo2 from '../assets/client-logo/Consultant/logo2.png';
-import consLogo3 from '../assets/client-logo/Consultant/logo3.png';
-import consLogo4 from '../assets/client-logo/Consultant/logo4.png';
-import consLogo5 from '../assets/client-logo/Consultant/logo5.png';
-import consLogo6 from '../assets/client-logo/Consultant/logo6.png';
-import consLogo7 from '../assets/client-logo/Consultant/logo7.png';
-import consLogo8 from '../assets/client-logo/Consultant/logo8.png';
-import consLogo9 from '../assets/client-logo/Consultant/logo9.png';
-import consLogo10 from '../assets/client-logo/Consultant/logo10.png';
-import consLogo11 from '../assets/client-logo/Consultant/logo11.png';
-import consLogo12 from '../assets/client-logo/Consultant/logo12.png';
-import consLogo13 from '../assets/client-logo/Consultant/logo13.png';
+// Dynamically Import Consultant Logos
+const consultantLogosMap = import.meta.glob('../assets/client-logo/consultant/*.{png,jpg,jpeg,svg,gif,webp}', { eager: true, import: 'default' });
+const consultantLogoArray = Object.values(consultantLogosMap);
 
-// Import Client Logos (New)
-import clientLogo1 from '../assets/client-logo/Arabtec_Holding_Logo.png';
-import clientLogo2 from '../assets/client-logo/L&T.png';
-import clientLogo3 from '../assets/client-logo/NAFFCO_Logo_(Transparent).png';
-import clientLogo4 from '../assets/client-logo/voltas.png';
-import clientLogo5 from '../assets/client-logo/aster.png';
-import clientLogo6 from '../assets/client-logo/johnson-controls-middletown.png';
-import clientLogo7 from '../assets/client-logo/petrofac logo.png';
-import clientLogo8 from '../assets/client-logo/bk gulf.png';
-import clientLogo9 from '../assets/client-logo/emirates sas.png';
-import clientLogo10 from '../assets/client-logo/futuremetro logo.png';
-import clientLogo11 from '../assets/client-logo/al shandagha1.png';
-import clientLogo12 from '../assets/client-logo/al futtaim.png';
-import clientLogo13 from '../assets/client-logo/zone.png';
-import clientLogo14 from '../assets/client-logo/alem.svg';
+// Dynamically Import Contractor Logos
+const contractorLogosMap = import.meta.glob('../assets/client-logo/contractors/*.{png,jpg,jpeg,svg,gif,webp}', { eager: true, import: 'default' });
+const contractorLogoArray = Object.values(contractorLogosMap);
 
 import mapImage from "../assets/images-home/Map.png";
 import heroVideo from "../assets/images-home/home-new-img/hero-video.mp4";
@@ -339,7 +316,7 @@ const Home = () => {
     {
       text: "The team's ability to excel under pressure, particularly when facing tight deadlines, demonstrates their strong work ethic and consistent high performance. I commend their dedication to delivering projects on time and to a high standard.",
       author: "Yashin Maharaj",
-      role: "SSH MEPI Director",
+      role: "MEPI Director, SSH",
       country: "UAE"
     },
     {
@@ -374,8 +351,9 @@ const Home = () => {
     },
     {
       text: "I wanted to take a moment to share some feedback regarding JSE Teams' collaboration with us on till now.\n\nThroughout our work together, I’ve found them to be consistently proactive and reliable, and they approach meetings with a professional and confident posture, contributes thoughtfully and ensures discussions remain productive. When challenges arise, they demonstrate innovation by suggesting practical solutions and putting forward ideas that add real value.\n\nTheir approach not only supports the smooth progress of our joint efforts but also strengthens the cooperation between our teams.",
-      author: "ALINA Giju",
+      author: "Alina Giju",
       role: "Project Manager, DESIGN MATTERS SRL",
+      country: "Romania"
 
     },
     {
@@ -455,7 +433,7 @@ const Home = () => {
     },
     {
       icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>,
-      text: "Engineers First, Digital Second We design, calculate, and validate every system before it ever enters a digital environment."
+      text: <>Engineers First, Digital Second <br /> We design, calculate, and validate every system before it ever enters a digital environment.</>,
     },
     {
       icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>,
@@ -656,21 +634,15 @@ const Home = () => {
 
             {/* Consultant Marquee */}
             <div className="marquee-row-group">
-              <h3 className="marquee-sub-label" style={{ textAlign: 'center', fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '2px', color: '#64748b', marginBottom: '1.5rem', fontWeight: '700' }}>International Design Consultants</h3>
+              <h3 className="marquee-sub-label" style={{ textAlign: 'center', fontSize: '2rem', fontFamily: 'roboto', textTransform: 'uppercase', letterSpacing: '2px', color: 'black', marginBottom: '1rem', marginTop: '2rem', fontWeight: '300' }}>International Design Consultants</h3>
               <div className="marquee-wrapper" style={{ padding: '2rem 0', margin: '0' }}>
                 <div className="client-marquee-row consultant-row">
                   <div className="marquee-container">
                     <div className="marquee-track">
-                      {[
-                        consLogo1, consLogo2, consLogo3, consLogo4, consLogo5, consLogo6,
-                        consLogo7, consLogo8, consLogo9, consLogo10, consLogo11, consLogo12, consLogo13
-                      ].map((logo, index) => (
+                      {consultantLogoArray.map((logo, index) => (
                         <img key={`cons-logo-${index}`} src={logo} alt={`Consultant Logo ${index + 1}`} className="client-logo" loading="lazy" />
                       ))}
-                      {[
-                        consLogo1, consLogo2, consLogo3, consLogo4, consLogo5, consLogo6,
-                        consLogo7, consLogo8, consLogo9, consLogo10, consLogo11, consLogo12, consLogo13
-                      ].map((logo, index) => (
+                      {consultantLogoArray.map((logo, index) => (
                         <img key={`cons-logo-dup-${index}`} src={logo} alt={`Consultant Logo ${index + 1}`} className="client-logo" loading="lazy" />
                       ))}
                     </div>
@@ -681,21 +653,15 @@ const Home = () => {
 
             {/* Contractor Marquee */}
             <div className="marquee-row-group">
-              <h3 className="marquee-sub-label" style={{ textAlign: 'center', fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '2px', color: '#64748b', marginBottom: '1.5rem', fontWeight: '700' }}>International MEP & General Contractors</h3>
+              <h3 className="marquee-sub-label" style={{ textAlign: 'center', fontSize: '2rem', fontFamily: 'roboto', textTransform: 'uppercase', letterSpacing: '2px', color: 'black', marginBottom: '1rem', marginTop: '2rem', fontWeight: '300' }}>International MEP & General Contractors</h3>
               <div className="marquee-wrapper" style={{ padding: '2rem 0', margin: '0' }}>
                 <div className="client-marquee-row client-row">
                   <div className="marquee-container">
                     <div className="marquee-track reverse-track">
-                      {[
-                        clientLogo1, clientLogo2, clientLogo3, clientLogo4, clientLogo5, clientLogo6,
-                        clientLogo7, clientLogo8, clientLogo9, clientLogo10, clientLogo11, clientLogo12, clientLogo13, clientLogo14
-                      ].map((logo, index) => (
+                      {contractorLogoArray.map((logo, index) => (
                         <img key={`client-logo-${index}`} src={logo} alt={`Client Logo ${index + 1}`} className="client-logo" loading="lazy" />
                       ))}
-                      {[
-                        clientLogo1, clientLogo2, clientLogo3, clientLogo4, clientLogo5, clientLogo6,
-                        clientLogo7, clientLogo8, clientLogo9, clientLogo10, clientLogo11, clientLogo12, clientLogo13, clientLogo14
-                      ].map((logo, index) => (
+                      {contractorLogoArray.map((logo, index) => (
                         <img key={`client-logo-dup-${index}`} src={logo} alt={`Client Logo ${index + 1}`} className="client-logo" loading="lazy" />
                       ))}
                     </div>
@@ -970,7 +936,7 @@ const Home = () => {
       </section>
 
       {/* --- NEW Solutions Carousel Section (Phase 31) --- */}
-      <section className="solutions-carousel-section" id="solutions-carousel">
+      {/* <section className="solutions-carousel-section" id="solutions-carousel">
         <div className="solutions-carousel-header">
           <h2 className="solutions-title" style={{ textAlign: "center" }}>SOLUTIONS BEYOND SOFTWARE (CAROUSEL UI)</h2>
           <p className="solutions-description" style={{ margin: '1rem auto 0 auto', color: '#64748b', textAlign: "center" }}>
@@ -1017,7 +983,7 @@ const Home = () => {
             </motion.div>
           </AnimatePresence>
         </div>
-      </section>
+      </section> */}
 
 
       <section className="geo-stats-section">

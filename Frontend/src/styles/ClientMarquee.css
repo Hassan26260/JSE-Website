@@ -91,7 +91,7 @@
 }
 
 /* Marquee Row Layout */
-.marquee-wrapper {
+/* .marquee-wrapper {
     background: transparent;
     padding: 3rem 0;
     border-top: 1px solid rgba(20, 74, 224, 0.2);
@@ -99,7 +99,7 @@
     width: 100%;
     margin: 0 auto;
     position: relative;
-}
+} */
 
 /* Subtle gradient lights on the borders for a high-tech feel */
 .marquee-wrapper::before,
@@ -142,7 +142,7 @@
     align-items: center;
     gap: 6rem;
     width: max-content;
-    animation: scrollMarquee 45s linear infinite;
+    animation: scrollMarquee 75s linear infinite;
 }
 
 /* Reverse Animation */

@@ -1846,7 +1846,7 @@
 /* Global Project Experience Carousel */
 .arch-project-carousel-section {
     padding: 80px 5%;
-    background-color: #ffffff;
+    background-color: #071230;
     overflow: hidden;
 }
 
@@ -1879,8 +1879,8 @@
 
 .arch-carousel-project-title {
     font-size: 2.2rem;
-    font-weight: 700;
-    color: #0f172a;
+    font-weight: 800;
+    color: #e5e7eb;
     margin-bottom: 20px;
     line-height: 1.2;
     font-family: 'Delight', sans-serif;
@@ -1888,7 +1888,7 @@
 
 .arch-carousel-project-desc {
     font-size: 1.05rem;
-    color: #475569;
+    color: #9ca3af;
     line-height: 1.7;
     margin-bottom: 30px;
 }

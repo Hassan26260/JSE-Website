@@ -2065,7 +2065,7 @@
 
 .scroll-comparison-header {
   text-align: center;
-  padding: 6rem 2rem 2rem 2rem;
+  padding: 6rem 2rem rem 2rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -2177,7 +2177,7 @@
 
 .axis-line {
   position: absolute;
-  top: -50vh;
+  top: 20vh;
   bottom: -50vh;
   left: 50%;
   transform: translateX(-50%);
