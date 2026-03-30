@@ -725,9 +725,9 @@ const Home = () => {
                 <circle cx="11" cy="11" r="2"></circle>
               </svg>
             ),
-            consultantTitle: "Design from Scratch:",
+            consultantTitle: "Design from Scratch",
             consultantDesc: "We act as your extended engineering arm, developing concepts into full detailed designs.",
-            contractorTitle: "Engineering Validation:",
+            contractorTitle: "Engineering Validation",
             contractorDesc: "We review IFC drawings to identify design gaps and raise proactive RFIs to prevent site delays."
           },
           {
@@ -739,9 +739,9 @@ const Home = () => {
                 <line x1="12" y1="22.08" x2="12" y2="12"></line>
               </svg>
             ),
-            consultantTitle: "Engineering-Led BIM (LOD 100–300):",
+            consultantTitle: "Engineering-Led BIM (LOD 100–300)",
             consultantDesc: "We ensure the BIM model is a true reflection of engineering data with seamless inter-disciplinary coordination.",
-            contractorTitle: "LOD 400 & 500 Shop Drawings:",
+            contractorTitle: "LOD 400 & 500 Shop Drawings",
             contractorDesc: "We deliver constructive BIM models and 2D shop drawings extracted directly from BIM for installation."
           },
           {
@@ -753,9 +753,9 @@ const Home = () => {
                 <path d="M2 12h20"></path>
               </svg>
             ),
-            consultantTitle: "Local Authority Compliance:",
+            consultantTitle: "Local Authority Compliance",
             consultantDesc: "Designs are engineered to meet specific codes including QCS, Kahramaa, DEWA, PUB, SCDF, and SPAN.",
-            contractorTitle: "Specialized Steel Detailing:",
+            contractorTitle: "Specialized Steel Detailing",
             contractorDesc: "Fabrication-ready NC Files, Erection Drawings, and Advanced Bills of Materials (BOMs)."
           },
           {
@@ -768,9 +768,9 @@ const Home = () => {
                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
               </svg>
             ),
-            consultantTitle: "Technical Synergy:",
+            consultantTitle: "Technical Synergy",
             consultantDesc: "Simultaneous engineering and BIM modeling ensures 100% coordination across all building services disciplines.",
-            contractorTitle: "Proactive RFI Management:",
+            contractorTitle: "Proactive RFI Management",
             contractorDesc: "We resolve constructability issues early, reducing site rework and protecting project budgets."
           }
         ].map((panel, index) => (

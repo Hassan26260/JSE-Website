@@ -9,6 +9,7 @@ import Internship from "./pages/Internship";
 import Career from "./pages/Career";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import FAQ from "./pages/FAQ";
 
 // Blog pages
 import Blogs from "./pages/Blogs";
@@ -99,6 +100,7 @@ function App() {
           <Route path="/career" element={<MainLayout><Career /></MainLayout>} />
           <Route path="/contact" element={<MainLayout><Contact /></MainLayout>} />
           <Route path="/privacy-policy" element={<MainLayout><PrivacyPolicy /></MainLayout>} />
+          <Route path="/faq" element={<MainLayout><FAQ /></MainLayout>} />
           <Route path="/blog" element={<MainLayout><Blogs /></MainLayout>} />
           <Route path="/blog/:id" element={<MainLayout><BlogPost /></MainLayout>} />
 

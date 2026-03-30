@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { Box, Layers, Ruler, Lightbulb, Network, Fan, Zap, Droplet, Hammer, Building2 } from "lucide-react";
 import "../styles/Internship.css";
 import heroGroupImage from "../assets/images-home/internship/enlarging-img.png";
 import eligibilityImage from "../assets/images-home/internship/whocanjoin.JPG";
@@ -107,16 +108,16 @@ const Internship = () => {
   ];
 
   const tools = [
-    { title: "BIM", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18v-8a2 2 0 0 0-2-2h-3v-3a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v3h-3a2 2 0 0 0-2 2v8z" /></svg> },
-    { title: "Revit MEP-3D", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16zM7.5 4.21l4.5 2.6 4.5-2.6m-9 15.58V9.42l4.5 2.6v7.79m4.5-7.79l4.5-2.6v7.79" /></svg> },
-    { title: "AutoCAD-2D", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12h20M12 2v20" /></svg> },
-    { title: "Dialux", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a6 6 0 0 1 6 6c0 2.22-1.21 4.15-3 5.19V17a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-3.81A6 6 0 0 1 6 8a6 6 0 0 1 6-6z" /></svg> },
-    { title: "Naviswork", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12h20M12 2a10 10 0 0 1 0 20 10 10 0 0 1 0-20z" /></svg> },
-    { title: "HVAC", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 12m-10 0a10 10 0 1 0 20 0a10 10 0 1 0-20 0M12 12l4.9 4.9M12 12l-4.9 4.9M12 12l4.9-4.9M12 12l-4.9-4.9" /></svg> },
-    { title: "Electrical & Extra Low Voltage", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg> },
-    { title: "PHE & Firefighting", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" /></svg> },
-    { title: "TEKLA", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l8-4 8 4v14" /></svg> },
-    { title: "ARCH", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 22v-5l5-5 5 5v5M12 12l5-5 5 5v5" /></svg> },
+    { title: "BIM", icon: <Box size={28} strokeWidth={2} /> },
+    { title: "Revit MEP-3D", icon: <Layers size={28} strokeWidth={2} /> },
+    { title: "AutoCAD-2D", icon: <Ruler size={28} strokeWidth={2} /> },
+    { title: "Dialux", icon: <Lightbulb size={28} strokeWidth={2} /> },
+    { title: "Naviswork", icon: <Network size={28} strokeWidth={2} /> },
+    { title: "HVAC", icon: <Fan size={28} strokeWidth={2} /> },
+    { title: "Electrical & Extra Low Voltage", icon: <Zap size={28} strokeWidth={2} /> },
+    { title: "PHE & Firefighting", icon: <Droplet size={28} strokeWidth={2} /> },
+    { title: "TEKLA", icon: <Hammer size={28} strokeWidth={2} /> },
+    { title: "ARCH", icon: <Building2 size={28} strokeWidth={2} /> },
   ];
 
 

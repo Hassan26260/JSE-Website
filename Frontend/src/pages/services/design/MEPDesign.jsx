@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Wind, Zap, Droplet, Map, ShieldCheck, Box } from 'lucide-react';
 import '../../../styles/design/MEPDesign.css'; // Scoped Styles explicitly for MEP Design
 
 
@@ -115,12 +114,12 @@ const SECTOR_EXPERTISE = [
 ];
 
 const TECH_STACK = [
-  { discipline: "HVAC Design", software: ["HAP", "ASHRAE Duct Fitting Database"], icon: <Wind size={24} strokeWidth={2.5} /> },
-  { discipline: "Electrical Analysis", software: ["AMTECH", "DIALux", "Ecodial"], icon: <Zap size={24} strokeWidth={2.5} /> },
-  { discipline: "PHE & Fire-Fighting", software: ["ELITE", "Hydraulic Analysis Tools"], icon: <Droplet size={24} strokeWidth={2.5} /> },
-  { discipline: "Infrastructure", software: ["Autodesk Civil 3D"], icon: <Map size={24} strokeWidth={2.5} /> },
-  { discipline: "ELV & Security", software: ["IP Video Tool", "DAHUA Design Tools"], icon: <ShieldCheck size={24} strokeWidth={2.5} /> },
-  { discipline: "BIM & Coordination", software: ["Revit", "Navisworks", "BIM 360 (CDE)"], icon: <Box size={24} strokeWidth={2.5} /> }
+  { discipline: "HVAC Design", software: ["HAP", "ASHRAE Duct Fitting Database"], icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 12m-10 0a10 10 0 1 0 20 0a10 10 0 1 0-20 0M12 12l4.9 4.9M12 12l-4.9 4.9M12 12l4.9-4.9M12 12l-4.9-4.9" /></svg> },
+  { discipline: "Electrical Analysis", software: ["AMTECH", "DIALux", "Ecodial"], icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg> },
+  { discipline: "PHE & Fire-Fighting", software: ["ELITE", "Hydraulic Analysis Tools"], icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> },
+  { discipline: "Infrastructure", software: ["Autodesk Civil 3D"], icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg> },
+  { discipline: "ELV & Security", software: ["IP Video Tool", "DAHUA Design Tools"], icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg> },
+  { discipline: "BIM & Coordination", software: ["Revit", "Navisworks", "BIM 360 (CDE)"], icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> }
 ];
 
 const QA_PROTOCOLS = [
@@ -327,7 +326,7 @@ const MEPDesign = () => {
                   <h3 className="solid-tech-title">{stack.discipline}</h3>
                 </div>
                 
-                <p className="solid-tech-desc">Primary Software & Integration Tools:</p>
+                <p className="solid-tech-desc">Primary Software & Integration Tools</p>
                 
                 <div className="solid-tech-software-list">
                   {stack.software.map((sw, sIdx) => (
