@@ -482,7 +482,7 @@ const Home = () => {
             </motion.p>
 
             {/* New Animated Moto */}
-            <div style={{ display: 'inline-block', marginBottom: '2rem' }}>
+            {/* <div style={{ display: 'inline-block', marginBottom: '2rem' }}>
               <motion.p
                 className="hero-moto typing-effect"
                 initial={{ opacity: 0 }}
@@ -491,7 +491,7 @@ const Home = () => {
                 style={{
                   fontSize: '1.6rem',
                   fontWeight: '700',
-                  color: 'white', // Updated to white per request
+                  color: 'white', 
                   fontFamily: "monospace, 'Delight', sans-serif",
                   cursor: 'default',
                   margin: 0,
@@ -500,7 +500,7 @@ const Home = () => {
               >
                 Building Personal Brands as Engineers
               </motion.p>
-            </div>
+            </div> */}
 
             <motion.div
               className="hero-cta-group"

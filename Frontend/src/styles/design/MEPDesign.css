@@ -765,103 +765,86 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    perspective: 1000px;
 }
 
-.mep-tech-card {
-    background-color: transparent;
-    height: 300px;
-    perspective: 1000px;
-    cursor: pointer;
-}
-
-.tech-card-inner {
+/* Solid White High Contrast Tech Stack */
+.mep-solid-tech-card {
+    background: #ffffff; /* pure white contrast */
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
     position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform-style: preserve-3d;
-}
-
-.mep-tech-card:hover .tech-card-inner {
-    transform: rotateY(180deg);
-}
-
-.tech-card-front,
-.tech-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border-radius: 20px;
-    padding: 2rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    align-items: flex-start; /* Strict left alignment */
+    height: 100%;
+    z-index: 2;
+    border: 1px solid #e2e8f0;
 }
 
-/* Front Design - Light Face Redesign for Contrast */
-.tech-card-front {
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(10px);
+.mep-solid-tech-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-.tech-icon-wrapper {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: rgba(20, 74, 224, 0.1);
-    /* Lighter blue backing */
+.solid-tech-header {
     display: flex;
-    justify-content: center;
     align-items: center;
-    color: #144AE0;
-    /* Standard JSE Blue */
-    margin-bottom: 1.5rem;
-    box-shadow: 0 0 20px rgba(20, 74, 224, 0.15);
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+    width: 100%;
 }
 
-.tech-discipline-front {
-    color: #0f172a;
-    /* Dark slate text for white card contrast */
-    font-size: 1.5rem;
+.solid-tech-icon {
+    width: 60px;
+    height: 60px;
+    background: #f0f7ff; /* Gentle light blue backing */
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #144AE0; /* Standard JSE Blue */
+    flex-shrink: 0;
+}
+
+.solid-tech-title {
+    color: #0f172a; /* Slate 900 for stark contrast */
+    font-size: 1.4rem;
     font-weight: 800;
     margin: 0;
+    line-height: 1.3;
 }
 
-/* Back Design */
-.tech-card-back {
-    background: linear-gradient(135deg, #144AE0 0%, #0a2570 100%);
-    color: white;
-    transform: rotateY(180deg);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.tech-discipline-back {
-    color: #fbbf24;
-    font-size: 1.25rem;
+.solid-tech-desc {
+    color: #64748b; /* Slate 500 */
+    font-size: 0.95rem;
     margin-bottom: 1.5rem;
-    font-weight: 700;
+    font-weight: 500;
 }
 
-.tech-software-list {
+.solid-tech-software-list {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
-    justify-content: center;
+    margin-top: auto;
 }
 
-.tech-software-tag {
-    background: rgba(255, 255, 255, 0.15);
+.solid-software-pill {
+    background: #f1f5f9; /* Slate 100 */
+    border: 1px solid #e2e8f0;
+    color: #334155; /* Slate 700 */
+    font-size: 0.85rem;
     padding: 0.5rem 1rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
+    border-radius: 8px; /* Professional square-ish pins */
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.solid-software-pill:hover {
+    background: #144AE0;
+    color: #ffffff;
+    border-color: #144AE0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(20, 74, 224, 0.2);
 }

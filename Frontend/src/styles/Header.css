@@ -44,17 +44,33 @@
   list-style: none;
 }
 
-.logo-text {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #000000;
-  /* margin-left: 0.5rem; */
+.logo-typography {
+  display: flex;
+  flex-direction: column;
   margin-left: 1rem;
+  justify-content: center;
+}
+
+.logo-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #000000;
   line-height: 1.1;
   transition: color 0.3s ease;
 }
 
-.header:not(.scrolled) .logo-text {
+.logo-tagline {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #000000;
+  transition: color 0.3s ease;
+  margin-top: 2px;
+  opacity: 0.85;
+  letter-spacing: 0.3px;
+}
+
+.header:not(.scrolled) .logo-text,
+.header:not(.scrolled) .logo-tagline {
   color: #ffffff;
 }
 
@@ -347,6 +363,18 @@
   .logo-image {
     height: 30px;
     /* Scale down logo */
+  }
+
+  .logo-typography {
+    margin-left: 0.75rem;
+  }
+
+  .logo-text {
+    font-size: 0.95rem;
+  }
+
+  .logo-tagline {
+    font-size: 0.65rem;
   }
 
   /* Hamburger Toggle */

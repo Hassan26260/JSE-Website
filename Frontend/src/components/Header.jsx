@@ -79,7 +79,10 @@ const Header = () => {
             width="180"
             height="60"
           />
-          <span className="logo-text">JSE Engineering <span className="logo-subtext">Pvt Ltd</span></span>
+          <div className="logo-typography">
+            <span className="logo-text">JSE ENGINEERING <span className="logo-subtext">PVT LTD</span></span>
+            <span className="logo-tagline">Building Personal Brand as Engineers</span>
+          </div>
         </Link>
 
         <button

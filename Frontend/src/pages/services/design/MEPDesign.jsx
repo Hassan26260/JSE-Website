@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Wind, Zap, Droplet, Map, ShieldCheck, Box } from 'lucide-react';
 import '../../../styles/design/MEPDesign.css'; // Scoped Styles explicitly for MEP Design
 
 
@@ -114,12 +115,12 @@ const SECTOR_EXPERTISE = [
 ];
 
 const TECH_STACK = [
-  { discipline: "HVAC Design", software: ["HAP", "ASHRAE Duct Fitting Database"] },
-  { discipline: "Electrical Analysis", software: ["AMTECH", "DIALux", "Ecodial"] },
-  { discipline: "PHE & Fire-Fighting", software: ["ELITE", "Hydraulic Analysis Tools"] },
-  { discipline: "Infrastructure", software: ["Autodesk Civil 3D"] },
-  { discipline: "ELV & Security", software: ["IP Video Tool", "DAHUA Design Tools"] },
-  { discipline: "BIM & Coordination", software: ["Revit", "Navisworks", "BIM 360 (CDE)"] }
+  { discipline: "HVAC Design", software: ["HAP", "ASHRAE Duct Fitting Database"], icon: <Wind size={24} strokeWidth={2.5} /> },
+  { discipline: "Electrical Analysis", software: ["AMTECH", "DIALux", "Ecodial"], icon: <Zap size={24} strokeWidth={2.5} /> },
+  { discipline: "PHE & Fire-Fighting", software: ["ELITE", "Hydraulic Analysis Tools"], icon: <Droplet size={24} strokeWidth={2.5} /> },
+  { discipline: "Infrastructure", software: ["Autodesk Civil 3D"], icon: <Map size={24} strokeWidth={2.5} /> },
+  { discipline: "ELV & Security", software: ["IP Video Tool", "DAHUA Design Tools"], icon: <ShieldCheck size={24} strokeWidth={2.5} /> },
+  { discipline: "BIM & Coordination", software: ["Revit", "Navisworks", "BIM 360 (CDE)"], icon: <Box size={24} strokeWidth={2.5} /> }
 ];
 
 const QA_PROTOCOLS = [
@@ -318,28 +319,20 @@ const MEPDesign = () => {
 
           <div className="mep-tech-grid">
             {TECH_STACK.map((stack, idx) => (
-              <div key={idx} className={`mep-tech-card tech-theme-${(idx % 4) + 1}`}>
-                <div className="tech-card-inner">
-                  {/* Front Side */}
-                  <div className="tech-card-front">
-                    <div className="tech-icon-wrapper">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                        <polyline points="2 17 12 22 22 17"></polyline>
-                        <polyline points="2 12 12 17 22 12"></polyline>
-                      </svg>
-                    </div>
-                    <h3 className="tech-discipline-front">{stack.discipline}</h3>
+              <div key={idx} className="mep-solid-tech-card">
+                <div className="solid-tech-header">
+                  <div className="solid-tech-icon">
+                    {stack.icon}
                   </div>
-                  {/* Back Side */}
-                  <div className="tech-card-back">
-                    <h3 className="tech-discipline-back">{stack.discipline}</h3>
-                    <div className="tech-software-list">
-                      {stack.software.map((sw, sIdx) => (
-                        <span key={sIdx} className="tech-software-tag">{sw}</span>
-                      ))}
-                    </div>
-                  </div>
+                  <h3 className="solid-tech-title">{stack.discipline}</h3>
+                </div>
+                
+                <p className="solid-tech-desc">Primary Software & Integration Tools:</p>
+                
+                <div className="solid-tech-software-list">
+                  {stack.software.map((sw, sIdx) => (
+                    <span key={sIdx} className="solid-software-pill">{sw}</span>
+                  ))}
                 </div>
               </div>
             ))}
