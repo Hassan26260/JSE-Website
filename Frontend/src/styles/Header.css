@@ -370,11 +370,11 @@
   }
 
   .logo-text {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
 
   .logo-tagline {
-    font-size: 0.65rem;
+    display: none; /* Hide tagline on mobile to prevent overlap */
   }
 
   /* Hamburger Toggle */
@@ -398,8 +398,19 @@
     transition: all 0.3s ease;
   }
 
+  /* Force dark bars when menu is open or header is scrolled */
+  .mobile-menu-toggle.active .bar,
+  .header.scrolled .bar {
+    background-color: #333 !important;
+  }
+
   .header:not(.scrolled) .bar {
     background-color: #ffffff;
+  }
+
+  /* Ensure bars are dark if menu is open even if not scrolled */
+  .mobile-menu-toggle.active .bar {
+    background-color: #333 !important;
   }
 
   /* Animation */
@@ -473,9 +484,30 @@
     /* Hide submenus by default */
   }
 
-  /* Show submenus on hover/active - simple fallback for mobile */
-  .dropdown:hover .dropdown-menu,
-  .dropdown.active .dropdown-menu {
+  /* Force dropdown text to be dark on mobile regardless of scroll state */
+  .dropdown > span {
+    color: #333 !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .dropdown > span::after {
+    content: "▼";
+    font-size: 0.7rem;
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+    background: none !important; /* Remove the underline animation */
+    width: auto !important;
+    position: static !important;
+  }
+
+  .dropdown.mobile-expanded > span::after {
+    transform: rotate(180deg);
+  }
+
+  /* Show submenus when expanded */
+  .dropdown.mobile-expanded .dropdown-menu {
     display: block;
   }
 }

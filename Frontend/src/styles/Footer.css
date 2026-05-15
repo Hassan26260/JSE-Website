@@ -313,4 +313,28 @@
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
+
+    .footer-addresses-grid.compact-grid {
+        flex-direction: column !important;
+        gap: 3rem !important;
+    }
+
+    .address-group-wrapper {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        width: 100% !important;
+    }
+
+    .address-group-divider {
+        display: none !important;
+    }
+
+    .footer-address-block {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .footer-address-text {
+        font-size: 0.9rem !important; /* Slightly larger for readability on mobile */
+    }
 }

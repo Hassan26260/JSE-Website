@@ -264,7 +264,7 @@ const InfrastructuralServices = () => {
 
             {/* Why JSE & Deliverables Split Section */}
             <section className="virtual-process-section" style={{ backgroundColor: '#0B1221' }}>
-                <div className="virtual-process-container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'start' }}>
+                <div className="virtual-process-container infra-split-section">
 
                     {/* Why JSE */}
                     <div>

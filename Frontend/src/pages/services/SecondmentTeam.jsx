@@ -186,6 +186,9 @@ const SecondmentTeam = () => {
                     )}
                   </div>
                 </div>
+                <div className="timeline-center-marker">
+                  <div className="marker-dot"></div>
+                </div>
                 <div className="timeline-empty-side"></div>
               </div>
             ))}

@@ -1193,3 +1193,25 @@
     color: #475569;
     line-height: 1.8;
 }
+/* Infrastructure Services Custom Styles */
+.infra-split-section {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 3rem !important;
+  align-items: start !important;
+}
+
+@media (max-width: 900px) {
+  .infra-split-section {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .infra-split-section .virtual-process-heading {
+    text-align: center !important;
+    font-size: 2rem !important;
+  }
+  .infra-split-section .hardware-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}

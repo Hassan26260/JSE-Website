@@ -679,6 +679,7 @@
 
     .virtual-process-timeline {
         gap: 3rem;
+        padding-left: 0; /* Remove padding to fix alignment */
     }
 
     .timeline-center-line {
@@ -688,17 +689,28 @@
 
     .timeline-row,
     .timeline-row.row-right {
-        flex-direction: row;
+        flex-direction: row !important;
         justify-content: flex-start;
         align-items: flex-start;
+        gap: 0;
     }
 
     .timeline-center-marker {
-        min-width: 40px;
-        margin-right: 1rem;
+        order: 1;
+        min-width: 40px; /* Perfectly centers a 20px dot at 20px */
+        margin: 0;
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        z-index: 5;
+    }
+
+    .marker-dot {
+        background-color: #071230 !important; /* Solid background to match desktop */
     }
 
     .timeline-content-side {
+        order: 2;
         width: 100%;
         padding: 0;
         justify-content: flex-start;

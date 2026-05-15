@@ -41,11 +41,30 @@
     z-index: 3;
     width: 100%;
     max-width: 1440px;
-    margin: 0 0 0 100px;
+    margin: 0 0 0 100px; /* Restored original desktop margin */
     padding: 3rem 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-start; /* Restored original desktop alignment */
+}
+
+.hero-cta-group {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+@media (max-width: 768px) {
+    .career-hero-content {
+        margin: 0 auto !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 3rem 1.5rem !important;
+    }
+
+    .hero-cta-group {
+        justify-content: center !important;
+    }
 }
 
 .career-breadcrumbs {

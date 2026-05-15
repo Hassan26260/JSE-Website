@@ -94,7 +94,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   scroll-behavior: smooth;
-  /* overflow-x: hidden; - Removed to fix sticky scroll issues */
+  overflow-x: hidden !important; /* Prevent horizontal scroll completely */
+  width: 100%;
 }
 
 #root {
@@ -102,15 +103,19 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-
+  overflow-x: hidden;
 }
 
 /* Global Mobile Typography Overrides */
 @media (max-width: 768px) {
   .dash-tagline {
     font-size: 0.75rem !important;
-    /* Force smaller size */
     letter-spacing: 0.1em !important;
+  }
+
+  h1 {
+    font-size: 2.2rem !important;
+    line-height: 1.2 !important;
   }
 
   h2,
@@ -118,8 +123,14 @@ body {
   .stats-title,
   .solutions-title,
   .about-company-name {
-    font-size: 1.75rem !important;
-    /* Reduce huge headings */
+    font-size: 1.8rem !important;
     line-height: 1.3 !important;
+    text-align: center !important;
+  }
+
+  p, .section-desc {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    text-align: center !important;
   }
 }

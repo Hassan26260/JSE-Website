@@ -101,12 +101,17 @@ const Header = () => {
           </Link>
 
           <div
-            className={`nav-link dropdown ${isActive("/services") ? "active" : ""}`}
+            className={`nav-link dropdown ${isActive("/services") ? "active" : ""} ${servicesDropdown ? "mobile-expanded" : ""}`}
             onMouseEnter={handleServicesMouseEnter}
             onMouseLeave={handleServicesMouseLeave}
+            onClick={() => {
+              if (window.innerWidth <= 1024) {
+                setServicesDropdown(!servicesDropdown);
+              }
+            }}
           >
             <span>Services</span>
-            {servicesDropdown && (
+            {(servicesDropdown || (window.innerWidth <= 1024 && servicesDropdown)) && (
               <div
                 className="dropdown-menu"
                 onMouseEnter={handleServicesMouseEnter}

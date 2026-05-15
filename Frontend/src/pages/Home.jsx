@@ -612,8 +612,7 @@ const Home = () => {
 
       <section className="client-marquee-section">
         <motion.div
-          className="container"
-          style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2rem' }}
+          className="container partnerships-container"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
@@ -630,12 +629,12 @@ const Home = () => {
           </div>
 
           {/* Clean Stacked Marquee Area */}
-          <div className="partnerships-marquee-stack" style={{ display: 'flex', flexDirection: 'column', gap: '3rem', marginTop: '4rem' }}>
+          <div className="partnerships-marquee-stack">
 
             {/* Consultant Marquee */}
             <div className="marquee-row-group">
-              <h3 className="marquee-sub-label" style={{ textAlign: 'center', fontSize: '2rem', fontFamily: 'roboto', textTransform: 'uppercase', letterSpacing: '2px', color: 'black', marginBottom: '1rem', marginTop: '2rem', fontWeight: '300' }}>International Design Consultants</h3>
-              <div className="marquee-wrapper" style={{ padding: '2rem 0', margin: '0' }}>
+              <h3 className="marquee-category-title">International Design Consultants</h3>
+              <div className="marquee-wrapper">
                 <div className="client-marquee-row consultant-row">
                   <div className="marquee-container">
                     <div className="marquee-track">
@@ -653,8 +652,8 @@ const Home = () => {
 
             {/* Contractor Marquee */}
             <div className="marquee-row-group">
-              <h3 className="marquee-sub-label" style={{ textAlign: 'center', fontSize: '2rem', fontFamily: 'roboto', textTransform: 'uppercase', letterSpacing: '2px', color: 'black', marginBottom: '1rem', marginTop: '2rem', fontWeight: '300' }}>International MEP & General Contractors</h3>
-              <div className="marquee-wrapper" style={{ padding: '2rem 0', margin: '0' }}>
+              <h3 className="marquee-category-title">International MEP & General Contractors</h3>
+              <div className="marquee-wrapper">
                 <div className="client-marquee-row client-row">
                   <div className="marquee-container">
                     <div className="marquee-track reverse-track">

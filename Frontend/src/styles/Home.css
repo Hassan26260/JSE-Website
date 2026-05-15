@@ -221,67 +221,84 @@
   .hero-content-wrapper {
     flex-direction: column;
     justify-content: center;
-    padding: 6rem 1.5rem 2rem 1.5rem;
-    /* More top padding for nav */
-    text-align: left;
-    /* Align left like reference? Or center? Reference looks left-aligned actually */
+    padding: 6rem 1rem 2rem 1rem;
     height: auto;
     min-height: 100vh;
   }
 
   .hero-main-content {
-    margin-top: 0;
+    margin-top: 2rem;
     margin-bottom: 2rem;
-    padding: 0;
-    text-align: left;
-    transform: none;
+    text-align: center;
     max-width: 100%;
   }
 
   .main-hero-title {
-    font-size: 2.6rem;
-    /* Good size for mobile */
-    line-height: 1.1;
-    margin-bottom: 0.8rem;
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
   }
 
   .hero-subtext {
-    font-size: 1.1rem !important;
-    line-height: 1.5;
+    font-size: 1rem !important;
+    line-height: 1.6;
     margin-bottom: 2rem !important;
-    max-width: 100% !important;
+    text-align: center;
   }
 
   .hero-cta-group {
     flex-direction: column;
-    align-items: flex-start;
-    /* Left align buttons */
+    align-items: center;
     gap: 1rem;
-    width: 100%;
   }
 
-  .hero-cta-btn-glass {
-    width: 100%;
-    /* Full width buttons on mobile look tidy */
-    text-align: center;
-    padding: 0.8rem 1.5rem;
-    font-size: 0.9rem;
+  .hero-glass-card-container {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    bottom: auto !important;
+    right: auto !important;
+    padding: 0 1.5rem !important;
+    margin-top: 4rem !important;
   }
 
   .hero-glass-card {
-    position: relative;
-    /* Stack on mobile */
-    bottom: auto;
-    right: auto;
-    width: 100%;
-    margin-top: 2rem;
+    position: relative !important; /* Force relative to allow margin-top to work */
+    width: 100% !important;
+    margin: 6rem auto 2rem auto !important; /* Even larger margin for clear separation */
     padding: 1.5rem;
     min-height: auto;
+    background: rgba(255, 255, 255, 0.15);
+    bottom: auto !important;
+    right: auto !important;
   }
 
   .glass-card-content {
     height: auto;
-    gap: 1.5rem;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .glass-slide {
+    position: relative !important; /* Force relative to show content */
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .glass-text {
+    font-size: 1rem;
+    text-align: center;
+    color: #ffffff;
+    line-height: 1.4;
+  }
+
+  .glass-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -859,11 +876,32 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   }
 
-  .about-image {
-    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.05);
-    /* Reduced shadow size */
+  .about-image-container {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin-top: 3rem !important;
+    padding: 0 !important;
   }
+
+  .about-image-wrapper {
+    margin: 0 auto !important;
+    width: 90% !important;
+    max-width: 450px !important;
+    position: relative !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .about-image {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 20px !important;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.05) !important;
+  }
+
 }
+
 
 /* -------------------------------------------------------------------------- */
 /* NEW: Home Page Neon Partnerships (Cloned from MEP)                         */
@@ -3038,13 +3076,6 @@
 
   /* Lowered breakpoint */
   .geo-stats-container {
-    grid-template-columns: 1fr;
-    padding: 3rem;
-    gap: 3rem;
-    width: 95%;
-  }
-
-  .geo-stats-content {
     flex-direction: row;
     justify-content: space-around;
     gap: 1.5rem;
@@ -4408,4 +4439,44 @@
   .carousel-content-title {
     font-size: 1.8rem;
   }
+}
+/* === MOBILE RESPONSIVENESS OVERRIDES === */
+@media (max-width: 768px) {
+  .home-page { overflow-x: hidden; }
+  .main-hero-title { font-size: 2.4rem !important; text-align: center !important; }
+  .hero-subtext { text-align: center !important; font-size: 1rem !important; }
+  .hero-glass-card { width: 95% !important; left: 2.5% !important; right: auto !important; position: relative !important; margin: 2rem 0 !important; }
+  .about-company-name { font-size: 2.2rem !important; text-align: center !important; }
+  .about-container { flex-direction: column !important; text-align: center !important; }
+  .about-content-left { padding: 0 !important; }
+  .about-floating-badge { left: 50% !important; transform: translateX(-50%) !important; bottom: -10px !important; }
+  .marquee-category-title { font-size: 1.4rem !important; margin-top: 2rem !important; }
+  .client-logo { height: 50px !important; width: auto !important; }
+  .split-panel { padding: 4rem 1rem !important; height: auto !important; min-height: auto !important; }
+  .split-panel-content { display: flex !important; flex-direction: column !important; gap: 2rem !important; }
+  .compare-card { width: 100% !important; min-height: auto !important; padding: 2rem !important; text-align: center !important; align-items: center !important; }
+  .compare-card-title { font-size: 1.5rem !important; }
+  .compare-card-desc { font-size: 0.95rem !important; max-width: 100% !important; }
+}
+
+/* Final Centering Override */
+@media (max-width: 768px) {
+  .hero-glass-card-container { display: flex !important; justify-content: center !important; width: 100% !important; right: auto !important; position: relative !important; }
+  .hero-glass-card { margin: 0 auto !important; width: 90% !important; left: auto !important; right: auto !important; position: relative !important; }
+}
+
+/* Fix for Why Choose JSE Header on Mobile */
+@media (max-width: 768px) {
+  .scroll-comparison-header { position: relative !important; padding: 4rem 1rem 2rem 1rem !important; margin-top: 0 !important; background-color: #F4F8FC; }
+  .scroll-comparison-header .comparison-title { font-size: 2.2rem !important; }
+  .scroll-comparison-section { padding-top: 0 !important; }
+}
+
+/* Final Geo Stats Mobile Fix */
+@media (max-width: 768px) {
+  .geo-stats-container { flex-direction: column !important; padding: 2rem 1rem !important; gap: 2rem !important; }
+  .geo-globe-wrapper { width: 100% !important; height: 250px !important; margin-top: 0 !important; }
+  .geo-stats-content { flex-direction: column !important; gap: 2rem !important; padding: 0 !important; }
+  .geo-stat-number { font-size: 3rem !important; }
+  .geo-stat-label { font-size: 0.9rem !important; }
 }

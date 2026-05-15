@@ -1433,22 +1433,38 @@
 /* Responsive */
 @media (max-width: 1024px) {
     .bento-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr) !important;
+        grid-auto-rows: auto !important;
+        gap: 1.5rem !important;
     }
 
     .span-2-row {
-        grid-row: span 1;
-        min-height: 300px;
-    }
-}
-
-@media (max-width: 640px) {
-    .bento-grid {
-        grid-template-columns: 1fr;
+        grid-row: span 1 !important;
     }
 
     .span-2-col {
-        grid-column: span 1;
+        grid-column: span 2 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    .span-2-col, .span-2-row {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+    }
+
+    .bento-card {
+        padding: 2rem 1.5rem !important;
+        min-height: 200px !important;
+    }
+
+    .bento-title {
+        font-size: 1.8rem !important;
     }
 }
 
