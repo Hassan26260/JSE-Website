@@ -7,7 +7,13 @@ import connectDB from './config/db.js';
 // I have extracted this data and formatted it for the DB.
 // Path adjustments: '../assets/portfolio.img/...' -> '/portfolio.img/...'
 
-dotenv.config();
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({ path: path.join(__dirname, '../.env') });
 
 const projects = [
     // --- MEP PROJECTS ---
@@ -92,13 +98,8 @@ const projects = [
 // This is much smarter.
 
 import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const PUBLIC_ROOT = path.join(__dirname, '../public/portfolio.img');
+const PUBLIC_ROOT = path.join(__dirname, '../../Frontend/public/portfolio.img');
 
 const PROJECT_LOCATIONS = {
     // DUBAI

@@ -19,13 +19,10 @@ export const adminLogin = async (req, res) => {
     return res.status(401).json({ message: "Invalid credentials" });
   }
 
-  // Optimize: Compare directly if using simple env auth, or use bcrypt.compare if we want to simulate real auth.
-  // The previous code was: const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD, 10);
-  // This means it was generating a NEW hash every time and comparing, which is valid bcrypt usage but creates a hash cost.
-  // Since we only have one user, we can just compare the password directly to the ENV variable (if it's plain text).
-  // Assuming ADMIN_PASSWORD in .env is the PLAIN TEXT password.
-
-  if (password !== process.env.ADMIN_PASSWORD) {
+  // Optimize: Compare against the pre-hashed password stored in the ENV variable
+  const isMatch = await bcrypt.compare(password, process.env.ADMIN_PASSWORD_HASH);
+  
+  if (!isMatch) {
     return res.status(401).json({ message: "Invalid credentials" });
   }
 
