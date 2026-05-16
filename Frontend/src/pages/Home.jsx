@@ -6,7 +6,7 @@ import StickyContact from "../components/StickyContact";
 import ContactForm from "../components/ContactForm";
 import { motion, AnimatePresence } from "framer-motion";
 import heroBanner from "../assets/images-home/Herobanner.webp";
-import heroGroupImage from "../assets/images-home/home-new-img/about-home-new.png";
+import heroGroupImage from "../assets/images-home/home-new-img/about-home-new.jpeg";
 import whyChooseUsImage from "../assets/images-home/why choose us.png";
 import architecturalBim from "../assets/images-home/architectural-bim.webp";
 import hvacDesign from "../assets/images-home/hvac-design.webp";
