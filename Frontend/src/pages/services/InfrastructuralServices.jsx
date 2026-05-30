@@ -208,13 +208,13 @@ const InfrastructuralServices = () => {
             </section>
 
             {/* Core Services Section */}
-            <section className="design-why-section">
+            <section className="design-why-section infra-core-services-section" style={{ backgroundColor: '#0B1221', padding: '8rem 0' }}>
                 <div className="design-header-center">
-                    <span className="dash-tagline">OUR SERVICES</span>
-                    <h2 className="design-heading-blue">Core Infrastructure Services</h2>
+                    <span className="dash-tagline" style={{ color: '#60a5fa', fontWeight: '700', letterSpacing: '2px' }}>OUR SERVICES</span>
+                    <h2 className="design-heading-blue" style={{ color: '#ffffff', fontFamily: 'delight, sans-serif' }}>Core Infrastructure Services</h2>
                 </div>
 
-                <div className="design-why-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))' }}>
+                <div className="design-why-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
                     {CORE_SERVICES.map((service, index) => {
                         // If it's the 7th (last) item, force it to center under the grid
                         const isLastItem = index === 6;
@@ -222,13 +222,27 @@ const InfrastructuralServices = () => {
                             <div
                                 key={index}
                                 className="design-why-card"
-                                style={isLastItem ? { gridColumn: '1 / -1', justifySelf: 'center', maxWidth: '450px' } : {}}
+                                style={{
+                                    ...(isLastItem ? { gridColumn: '1 / -1', justifySelf: 'center', maxWidth: '450px' } : {}),
+                                    background: 'rgba(255, 255, 255, 0.18)',
+                                    backdropFilter: 'blur(16px)',
+                                    WebkitBackdropFilter: 'blur(16px)',
+                                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                                    borderRadius: '24px',
+                                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
+                                    transition: 'all 0.3s ease',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'flex-start',
+                                    textAlign: 'left',
+                                    padding: '2rem'
+                                }}
                             >
-                                <h4 className="design-card-title">{service.title}</h4>
-                                <p className="design-card-desc">{service.desc}</p>
-                                <div className="design-card-scope" style={{ marginTop: '1rem' }}>
-                                    <strong style={{ color: '#0f172a', display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Scope Includes:</strong>
-                                    <ul style={{ paddingLeft: '1.2rem', margin: 0, color: '#475569' }}>
+                                <h4 className="design-card-title" style={{ color: '#ffffff', fontSize: '1.25rem', marginBottom: '0.75rem', fontWeight: '700' }}>{service.title}</h4>
+                                <p className="design-card-desc" style={{ color: '#cbd5e1', fontSize: '0.95rem', lineHeight: '1.6', margin: 0 }}>{service.desc}</p>
+                                <div className="design-card-scope" style={{ marginTop: '1.5rem', width: '100%' }}>
+                                    <strong style={{ color: '#60a5fa', display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Scope Includes:</strong>
+                                    <ul style={{ paddingLeft: '1.2rem', margin: 0, color: '#cbd5e1' }}>
                                         {service.scope.map((item, i) => (
                                             <li key={i} style={{ marginBottom: '0.3rem', fontSize: '0.9rem' }}>{item}</li>
                                         ))}
@@ -285,8 +299,8 @@ const InfrastructuralServices = () => {
                         <div className="hardware-card" style={{ flexDirection: 'column', alignItems: 'flex-start', padding: '2rem' }}>
                             <ul className="process-list" style={{ listStyle: 'none', padding: 0 }}>
                                 {DELIVERABLES.map((item, index) => (
-                                    <li key={index} style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.8rem', color: '#0f172a' }}>
-                                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#144AE0' }}></span>
+                                    <li key={index} style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.8rem', color: '#cbd5e1' }}>
+                                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#60a5fa' }}></span>
                                         {item}
                                     </li>
                                 ))}

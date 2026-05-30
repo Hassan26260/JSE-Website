@@ -128,23 +128,25 @@
 }
 
 .virtual-advantage-card {
-    background: rgba(17, 24, 39, 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     padding: 3rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
 }
 
 .virtual-advantage-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(59, 130, 246, 0.6);
-    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.15);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
 }
 
 .virtual-advantage-icon {
@@ -222,9 +224,10 @@
 }
 
 .virtual-structure-card {
-    background: rgba(17, 24, 39, 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     padding: 3.5rem 2rem;
     text-align: center;
@@ -232,7 +235,7 @@
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     z-index: 1;
 }
 
@@ -417,6 +420,10 @@
     transition: color 0.4s ease;
     position: relative;
     z-index: 1;
+}
+
+.support-block-right .virtual-support-label {
+    color: #60a5fa;
 }
 
 .virtual-support-title {

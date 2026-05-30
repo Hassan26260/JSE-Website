@@ -248,7 +248,7 @@ const VirtualTeam = () => {
 
         {/* Contractors Right */}
         <div className="virtual-support-block support-block-right">
-          <span className="virtual-support-label" style={{ color: '#60a5fa' }}>International Contractors</span>
+          <span className="virtual-support-label">International Contractors</span>
           <h2 className="virtual-support-title">Construction Validation</h2>
           <p className="virtual-support-desc">
             Delivering engineering validation, RFI management, and LOD 400 construction modeling as an off-site technical office.

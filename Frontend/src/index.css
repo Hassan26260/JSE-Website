@@ -134,3 +134,25 @@ body {
     text-align: center !important;
   }
 }
+
+/* Ultrawide & Widescreen Monitor Layout Optimization */
+@media (min-width: 1600px) {
+  .container,
+  .content-section,
+  .design-intro-container,
+  .design-why-grid,
+  .design-process-container,
+  .arch-services-container,
+  .service-expert-grid,
+  .virtual-process-container,
+  .virtual-authority-container,
+  .virtual-advantage-container,
+  .virtual-structure-container,
+  .secondment-steps-container,
+  .secondment-success-container,
+  .solutions-list-container,
+  .mep-why-container,
+  .mep-process-container {
+    max-width: 1680px !important;
+  }
+}

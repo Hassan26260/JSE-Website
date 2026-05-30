@@ -490,7 +490,7 @@
     font-family: 'delight', system-ui;
     font-size: 4rem;
     font-weight: 800;
-    color: #144AE0;
+    color: #144AE0; /* Gorgeous standard JSE brand blue */
     margin-bottom: 1.5rem;
     line-height: 1.1;
 }
@@ -501,18 +501,20 @@
     gap: 3rem;
 }
 
-/* Card Style */
+/* Card Style -> Redesigned to Bold Transparent Dark Blue floating on White Page Background */
 .mep-why-card {
-    background: #ffffff;
+    background: rgba(7, 18, 48, 0.92); /* Rich transparent dark blue */
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 24px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 30px rgba(7, 18, 48, 0.25);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.4s ease;
     display: flex;
     align-items: flex-start;
     padding: 2.5rem;
     max-width: 90%;
-    border: 1px solid #f1f5f9;
     gap: 1.5rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .mep-why-card:nth-child(odd) {
@@ -525,26 +527,36 @@
 }
 
 .mep-why-card:hover {
+    background: rgba(7, 18, 48, 0.97); /* Solidifies slightly on hover */
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    border-color: #144AE0;
+    box-shadow: 0 20px 45px rgba(20, 74, 224, 0.35);
+    border-color: #60a5fa;
 }
 
 .mep-why-icon-wrapper {
     flex-shrink: 0;
     width: 60px;
     height: 60px;
-    background: #f0f7ff;
+    background: rgba(255, 255, 255, 0.1); /* Frosted white glass badge */
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #144AE0;
+    color: #60a5fa; /* Vibrant blue step number */
+    transition: all 0.3s ease;
 }
 
 .mep-why-icon-wrapper svg {
     width: 30px;
     height: 30px;
+}
+
+.mep-why-card:hover .mep-why-icon-wrapper {
+    background: #144AE0;
+    color: #ffffff;
+    border-color: #144AE0;
+    transform: scale(1.05);
 }
 
 .mep-why-card-content {
@@ -556,14 +568,14 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
-    color: #0f172a;
+    color: #ffffff; /* Crisp white title for high contrast */
     margin: 0 0 0.5rem 0;
 }
 
 .mep-why-card-desc {
     font-size: 1rem;
-    color: #64748b;
-    line-height: 1.5;
+    color: #cbd5e1; /* Soft slate description for premium reading contrast */
+    line-height: 1.6;
     margin: 0;
 }
 
@@ -767,44 +779,52 @@
     gap: 2rem;
 }
 
-/* Solid White High Contrast Tech Stack */
+/* Solid White High Contrast Tech Stack -> Redesigned to Whitish Transparent Glassmorphism */
 .mep-solid-tech-card {
-    background: #ffffff; /* pure white contrast */
-    border-radius: 16px;
-    padding: 2.5rem 2rem;
+    background: rgba(255, 255, 255, 0.18); /* Whitish transparent frosted glass */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.4s ease;
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* Strict left alignment */
     height: 100%;
     z-index: 2;
-    border: 1px solid #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* White glass border */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .mep-solid-tech-card:hover {
+    background: rgba(255, 255, 255, 0.26); /* Brighter glass on hover */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-color: rgba(255, 255, 255, 0.35);
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
 }
 
 .solid-tech-header {
     display: flex;
     align-items: center;
     gap: 1.25rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     width: 100%;
 }
 
 .solid-tech-icon {
     width: 50px;
     height: 50px;
-    background: #f0f7ff; /* Gentle light blue backing */
+    background: rgba(255, 255, 255, 0.08); /* Frosted JSE backing */
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #144AE0; /* Standard JSE Blue */
+    color: #60a5fa; /* Vibrant blue */
     flex-shrink: 0;
 }
 
@@ -815,7 +835,7 @@
 }
 
 .solid-tech-title {
-    color: #0f172a; /* Slate 900 for stark contrast */
+    color: #ffffff; /* Stark white JSE text */
     font-size: 1.4rem;
     font-weight: 800;
     margin: 0;
@@ -823,7 +843,7 @@
 }
 
 .solid-tech-desc {
-    color: #64748b; /* Slate 500 */
+    color: #94a3b8; /* Slate 400 */
     font-size: 0.95rem;
     margin-bottom: 1.5rem;
     font-weight: 500;
@@ -837,9 +857,9 @@
 }
 
 .solid-software-pill {
-    background: #f1f5f9; /* Slate 100 */
-    border: 1px solid #e2e8f0;
-    color: #334155; /* Slate 700 */
+    background: rgba(255, 255, 255, 0.08); /* Translucent pill background */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #f1f5f9; /* Slate 100 */
     font-size: 0.85rem;
     padding: 0.5rem 1rem;
     border-radius: 8px; /* Professional square-ish pins */

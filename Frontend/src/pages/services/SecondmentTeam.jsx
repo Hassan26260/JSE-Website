@@ -70,7 +70,6 @@ const SecondmentTeam = () => {
     email: '',
     message: ''
   });
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -180,8 +179,8 @@ const SecondmentTeam = () => {
                   <div className="timeline-card">
                     <h3>{step.title}</h3>
                     {step.desc.length > 0 && (
-                      <ul style={{ paddingLeft: '1.2rem', marginTop: '0.5rem', listStyle: 'none' }}>
-                        {step.desc.map((d, i) => <li key={i} style={{ color: '#64748b' }}>• {d}</li>)}
+                      <ul className="timeline-card-list">
+                        {step.desc.map((d, i) => <li key={i}>• {d}</li>)}
                       </ul>
                     )}
                   </div>
@@ -242,21 +241,31 @@ const SecondmentTeam = () => {
 
 
 
-      {/* Why Successful (MEP Core Expertise Style) */}
+      {/* Why Successful (Interactive Showcase Redesign) */}
       <section className="secondment-success-section">
         <div className="secondment-success-container">
           <div className="secondment-success-header">
             <h2 className="secondment-success-title">Why We Are A Successful Secondment Partner</h2>
+            <p className="secondment-success-subtitle">
+              Discover the core values and operational advantages that enable us to deliver reliable, high-performing offshore engineering teams.
+            </p>
           </div>
 
-          <div className="secondment-success-grid">
+          <div className="secondment-success-bento">
             {SUCCESS_FACTORS.map((factor, index) => (
-              <div key={index} className={`secondment-success-card secondment-pattern-${(index % 4) + 1}`}>
-                <div className="secondment-success-content">
-                  <h3 className="secondment-success-card-title">{factor.title}</h3>
-                  <p className="secondment-success-card-desc">{factor.desc}</p>
+              <div key={index} className={`bento-card bento-card-${index + 1}`}>
+                <div className="bento-card-header">
+                  <span className="bento-card-number">
+                    {(index + 1).toString().padStart(2, '0')}
+                  </span>
+                  {index === 7 && <span className="bento-badge">FUTURE-READY</span>}
+                  {index === 5 && <span className="bento-badge pulse">ACTIVE SUPPORT</span>}
                 </div>
-                <div className="secondment-success-hover-bg"></div>
+                <div className="bento-card-content">
+                  <h3 className="bento-card-title">{factor.title}</h3>
+                  <p className="bento-card-desc">{factor.desc}</p>
+                </div>
+                <div className="bento-card-glow"></div>
               </div>
             ))}
           </div>
