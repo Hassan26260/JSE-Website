@@ -2970,6 +2970,12 @@
     animation-duration: 40s;
     /* Faster on mobile? Or consistent */
   }
+
+  .jse-review-card .review-name,
+  .jse-review-card .review-role,
+  .jse-review-card .review-country {
+    text-align: left !important;
+  }
 }
 
 
